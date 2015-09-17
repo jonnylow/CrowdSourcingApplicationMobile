@@ -31,6 +31,11 @@ angular.module('crowdsourcing', ['ionic'])
       controller: "loginController"
   })
 
+    .state('home', {
+      url: '/home',
+      templateUrl: 'templates/home/homepage.html'
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 

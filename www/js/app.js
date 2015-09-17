@@ -1,4 +1,4 @@
-angular.module('crowdsourcing', ['ionic'])
+angular.module('crowdsourcing', ['ionic', 'jrCrop'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,6 +30,12 @@ angular.module('crowdsourcing', ['ionic'])
       templateUrl: 'templates/account/login.html',
       controller: "loginController"
   })
+
+    .state('registration', {
+      url: '/register',
+      templateUrl: 'templates/account/registration.html',
+      controller: "registrationController"
+    })
 
     .state('home', {
       url: '/home',

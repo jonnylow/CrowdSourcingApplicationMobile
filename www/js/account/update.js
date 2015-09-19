@@ -17,7 +17,7 @@ angular.module('crowdsourcing')
               {
                 if(tempConfirmpassword == tempNewPassword)
                 {
-                  var urlString = "http://localhost/AddUserAccount.php?nric="+$scope.nric+"&password="+tempNewPassword;
+                  var urlString = "http://localhost/UpdateUserAccount.php?nric="+$scope.nric+"&password="+tempNewPassword;
 
                   $http.get(urlString)
                     .success(function (data) {

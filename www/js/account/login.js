@@ -32,7 +32,7 @@ angular.module('crowdsourcing')
                         window.localStorage.setItem("score", loginDetails[i].Score);
                         window.localStorage.setItem("photo", loginDetails[i].Photo);
 
-                        $state.go('home', {}, {reload: true});
+                        $state.go('tab.home', {}, {reload: true});
                       }
                     }
 

@@ -37,9 +37,16 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
       controller: "registrationController"
     })
 
+    .state('viewAccount', {
+      url: '/viewAccount',
+      templateUrl: 'templates/account/view.html',
+      controller: "viewAccountController"
+    })
+
     .state('home', {
       url: '/home',
-      templateUrl: 'templates/home/homepage.html'
+      templateUrl: 'templates/home/homepage.html',
+      controller: "homeController"
     })
 
   // if none of the above states are matched, use this as the fallback

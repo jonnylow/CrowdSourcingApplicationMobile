@@ -22,6 +22,7 @@ angular.module('crowdsourcing')
                           title: 'Success',
                           template: 'Successfully Login'
                         });
+                        window.localStorage.setItem("userNRIC", tempNRIC);
                         $state.go('home', {}, {reload: true});
                       }
                     }

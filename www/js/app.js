@@ -43,6 +43,12 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
       controller: "viewAccountController"
     })
 
+    .state('updateAccount', {
+      url: '/updateAccount',
+      templateUrl: 'templates/account/update.html',
+      controller: "updateAccountController"
+    })
+
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home/homepage.html',

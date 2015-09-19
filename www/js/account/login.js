@@ -22,7 +22,16 @@ angular.module('crowdsourcing')
                           title: 'Success',
                           template: 'Successfully Login'
                         });
-                        window.localStorage.setItem("userNRIC", tempNRIC);
+                        window.localStorage.setItem("userNRIC", loginDetails[i].NRIC);
+                        window.localStorage.setItem("firstName", loginDetails[i].FirstName);
+                        window.localStorage.setItem("lastName", loginDetails[i].LastName);
+                        window.localStorage.setItem("contactNo", loginDetails[i].ContactNo);
+                        window.localStorage.setItem("address", loginDetails[i].Address);
+                        window.localStorage.setItem("password", loginDetails[i].Password);
+                        window.localStorage.setItem("dateOfBirth", loginDetails[i].DateofBirth);
+                        window.localStorage.setItem("score", loginDetails[i].Score);
+                        window.localStorage.setItem("photo", loginDetails[i].Photo);
+
                         $state.go('home', {}, {reload: true});
                       }
                     }

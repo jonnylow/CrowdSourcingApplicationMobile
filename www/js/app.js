@@ -75,7 +75,8 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
       url: '/me',
       views: {
         'tab-me': {
-          templateUrl: 'templates/me/me.html'
+          templateUrl: 'templates/account/view.html',
+          controller: "viewAccountController"
         }
       }
     })
@@ -92,18 +93,18 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
       controller: "registrationController"
     })
 
-    .state('viewAccount', {
-      url: '/viewAccount',
-      templateUrl: 'templates/account/view.html',
-      controller: "viewAccountController"
-    })
-
     .state('updateAccount', {
       url: '/updateAccount',
       templateUrl: 'templates/account/update.html',
       controller: "updateAccountController"
     })
-
+/*
+    .state('viewAccount', {
+      url: '/viewAccount',
+      templateUrl: 'templates/account/view.html',
+      controller: "viewAccountController"
+    })
+*/
     /*.state('home', {
       url: '/home',
       templateUrl: 'templates/home/homepage.html',

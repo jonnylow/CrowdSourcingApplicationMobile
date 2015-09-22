@@ -20,4 +20,9 @@ angular.module('crowdsourcing')
 
           $state.go('login', {}, {reload: true});
         }
+
+        $scope.scan = function() {
+          $state.go('scan', {}, {reload: true});
+        }
+
     });

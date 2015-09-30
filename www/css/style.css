@@ -1,1 +1,32 @@
 /* Empty. Add your own CSS if you like */
+
+
+.scroll-content{
+ 
+ background-image: url("../img/elderly.jpg");
+ background-size:350px 550px;
+ background-repeat: no-repeat;
+ opacity: 0.9;
+}
+
+#button {
+ background-color: transparent; 
+ padding: 10px 40px;
+ font: 13px sans-serif;
+ text-decoration: none;
+ border: 1px solid #FFFFFF;
+ color: #FFFFFF;
+ position: relative;
+ top: 50%;
+ left: 50%;
+ margin-right: -50%;
+ transform: translate(-50%, -50%) 
+}
+
+#button:hover { 
+ background-color: #000000; 
+ opacity: 0.5;
+}
+
+
+

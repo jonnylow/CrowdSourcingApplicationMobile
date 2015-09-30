@@ -1,36 +1,38 @@
 <ion-view view-title="Registration">
   <ion-content>
     <form ng-submit="register(fields)">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Name</span>
-          <input type="text" placeholder="John" ng-model="fields.name">
+        
+		<label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-person light"></i><font color=#ffffff> Name</span>
+          <input type="text" style="color:#ffffff" placeholder="Name" ng-model="fields.name">
         </label>
 
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Email</span>
-          <input type="text" placeholder="name@gmail.com" ng-model="fields.email">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-email light"></i><font color=#ffffff> Email</font></span>
+          <input type="text" style="color:#ffffff" placeholder="Email" ng-model="fields.email">
         </label>
 
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Password</span>
-          <input type="password" placeholder="xxxxxxxxxx" ng-model="fields.password">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-locked light"></i><font color=#ffffff> Password</font></span>
+          <input type="password" style="color:#ffffff" placeholder="Password" ng-model="fields.password">
         </label>
 
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Confirm Password</span>
-          <input type="password" placeholder="xxxxxxxxxx" ng-model="fields.confirmpassword">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-locked light"></i><font color=#ffffff> Confirm Password</span>
+          <input type="password" style="color:#ffffff" placeholder="Password" ng-model="fields.confirmpassword">
         </label>
 
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Contact Number</span>
-          <input type="text" placeholder="98766783" ng-model="fields.contactnumber">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-iphone light"></i><font color=#ffffff> Contact Number</span>
+          <input type="text" style="color:#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
         </label>
 
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Date of Birth</span><br>
-          <input type="date" ng-model="fields.dob">
+        <label class="item item-input item-floating-label">
+          <span class="input-label"><i class="icon ion-calendar light"></i><font color=#ffffff> Date of Birth</font></span><br>
+          <input type="date" style="color:#ffffff" ng-model="fields.dob">
         </label>
-      <button class="button button-block button-stable">Sign Up!</button>
+		<br> <br>
+      <input type="submit" value ="Sign Up!" id="button">
     </form>
   </ion-content>
 </ion-view>

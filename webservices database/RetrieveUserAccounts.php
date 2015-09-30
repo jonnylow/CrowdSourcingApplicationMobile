@@ -13,7 +13,7 @@
 
  
 //query
-$result = mysqli_query($db,"SELECT * FROM volunteer");
+$result = mysqli_query($db,"SELECT * FROM VolunteerCFS");
  if (!$result) {
  die("Database query failed: " . mysql_error());
  }
@@ -23,17 +23,17 @@ $array = array();
 
  while ($row = mysqli_fetch_array($result)) {
 	$array[$int] = array();
-	$array[$int]['NRIC'] = $row[0];
-	$array[$int]['FirstName'] = $row[1];
-	$array[$int]['LastName'] = $row[2];
-	$array[$int]['ContactNo'] = $row[3];
-	$array[$int]['Address'] = $row[4];
-	$array[$int]['Password'] = $row[5];
-	$array[$int]['DateofBirth'] = $row[6];
-	$array[$int]['Score'] = $row[7];
-	$array[$int]['Photo'] = $row[8];
+	$array[$int]['Phone'] = $row[0];
+	$array[$int]['Name'] = $row[1];
+	$array[$int]['Email'] = $row[2];
+	$array[$int]['Password'] = $row[3];
+	$array[$int]['DOB'] = $row[4];
+	$array[$int]['HaveCar'] = $row[5];
+	$array[$int]['KnowCPR'] = $row[6];
 	$int++;
+
  }
+
 
 //Step5
  mysqli_close($db);

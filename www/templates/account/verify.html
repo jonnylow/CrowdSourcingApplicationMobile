@@ -1,0 +1,16 @@
+<ion-view view-title="Registration">
+  <ion-content>
+    <form ng-submit="verify(fields)">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Contact Number</span>
+        <input type="text" ng-readonly="true" value={{tempContactNumber}}>
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">One Time Password</span>
+        <input type="password" placeholder="xxxxxxxxxx" ng-model="fields.otp">
+      </label>
+      <button class="button button-block button-stable">Verify</button>
+    </form>
+  </ion-content>
+</ion-view>

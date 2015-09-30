@@ -1,0 +1,10 @@
+<ion-view view-title="Registration">
+  <ion-content>
+    <form ng-submit="verify(fields)">
+      <ion-checkbox ng-model="fields.carChecked">Do you have a Car?</ion-checkbox>
+      <ion-checkbox ng-model="fields.cprChecked">Do you know CPR?</ion-checkbox>
+
+      <button class="button button-block button-stable">Complete Registration</button>
+    </form>
+  </ion-content>
+</ion-view>

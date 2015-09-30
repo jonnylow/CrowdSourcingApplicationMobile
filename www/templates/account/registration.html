@@ -1,37 +1,14 @@
 <ion-view view-title="Registration">
   <ion-content>
     <form ng-submit="register(fields)">
-      <div class="list">
-        <div class="item range range-positive"/>
-        &nbsp<label>Profile Picture<br />
-        <img data-ng-src="{{image_url}}" height="50" width="50" ><br>
-        <button type="button" ng-click="launchPhotoLibrary()">Add</button>
-      </label>
-      </div>
-
         <label class="item item-input item-stacked-label">
-          <span class="input-label">NRIC</span>
-          <input type="text" placeholder="SxxxxxxxD" ng-model="fields.nric">
+          <span class="input-label">Name</span>
+          <input type="text" placeholder="John" ng-model="fields.name">
         </label>
 
         <label class="item item-input item-stacked-label">
-          <span class="input-label">First Name</span>
-          <input type="text" placeholder="John" ng-model="fields.firstname">
-        </label>
-
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Last Name</span>
-          <input type="text" placeholder="Tan" ng-model="fields.lastname">
-        </label>
-
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Contact Number</span>
-          <input type="text" placeholder="9876 6783" ng-model="fields.contactnumber">
-        </label>
-
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Address</span>
-          <input type="text" placeholder="52 Bras Basah Road" ng-model="fields.address">
+          <span class="input-label">Email</span>
+          <input type="text" placeholder="name@gmail.com" ng-model="fields.email">
         </label>
 
         <label class="item item-input item-stacked-label">
@@ -43,8 +20,17 @@
           <span class="input-label">Confirm Password</span>
           <input type="password" placeholder="xxxxxxxxxx" ng-model="fields.confirmpassword">
         </label>
-      </div>
-      <button class="button button-block button-stable">Create New Account</button>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Contact Number</span>
+          <input type="text" placeholder="98766783" ng-model="fields.contactnumber">
+        </label>
+
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Date of Birth</span><br>
+          <input type="date" ng-model="fields.dob">
+        </label>
+      <button class="button button-block button-stable">Sign Up!</button>
     </form>
   </ion-content>
 </ion-view>

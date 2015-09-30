@@ -85,6 +85,18 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
       controller: "registrationController"
     })
 
+    .state('verify', {
+      url: '/verify',
+      templateUrl: 'templates/account/verify.html',
+      controller: "verifyController"
+    })
+
+    .state('moreQuestions', {
+      url: '/moreQuestions',
+      templateUrl: 'templates/account/moreQuestions.html',
+      controller: "moreQuestionsController"
+    })
+
     .state('updateAccount', {
       url: '/updateAccount',
       templateUrl: 'templates/account/update.html',

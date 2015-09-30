@@ -108,6 +108,12 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
       templateUrl: 'templates/home/scan.html'
     })
 
+    .state('listTransport', {
+      url: '/listTransport',
+      templateUrl: 'templates/list/listTransport.html',
+      controller: "listTransportController"
+    })
+
 
 
 /*

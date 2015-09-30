@@ -21,4 +21,8 @@ angular.module('crowdsourcing')
           $state.go('scan', {}, {reload: true});
         }
 
+    $scope.list = function() {
+      $state.go('listTransport', {}, {reload: true});
+    }
+
     });

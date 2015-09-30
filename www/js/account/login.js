@@ -18,10 +18,6 @@ angular.module('crowdsourcing')
                       if(tempNRIC == loginDetails[i].Email && tempPassword == loginDetails[i].Password)
                       {
                         loginCheck = 1;
-                        var alertPopup = $ionicPopup.alert({
-                          title: 'Success',
-                          template: 'Successfully Login'
-                        });
 
                         window.localStorage.setItem("loginUserName", loginDetails[i].Name);
                         window.localStorage.setItem("loginUserEmail", loginDetails[i].Email);

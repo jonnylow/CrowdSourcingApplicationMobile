@@ -66,7 +66,7 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
       url: '/me',
       views: {
         'tab-me': {
-          templateUrl: 'templates/account/view.html',
+          templateUrl: 'templates/me/me.html',
           controller: "viewAccountController"
         }
       }

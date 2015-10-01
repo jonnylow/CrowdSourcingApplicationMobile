@@ -30,6 +30,7 @@ angular.module('crowdsourcing')
               var m = google.maps.geometry.spherical.computeDistanceBetween(from, to).toFixed(2);
               var km = (m/1000).toFixed(2);
 
+              //push to arrays to store all activities in array (also use for displaying)
               $scope.transportID.push(transportDetails[i].TransportID);
               $scope.transportName.push(transportDetails[i].ActivityName);
               $scope.transportDateTimeStart.push("Date/Time: " + $scope.temp[0] + " | " + $scope.temp[1]);

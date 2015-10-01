@@ -1,12 +1,18 @@
-<ion-view view-title="Google Maps V3 example">
+<ion-view view-title="Nearby Location">
+  <ion-nav-buttons side="right">
+    <button class="button" ui-sref="listTransport">List</button>
+  </ion-nav-buttons>
+
   <ion-content>
     <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents">
-      <ui-gmap-marker coords="marker.coords" idkey="marker.id"></ui-gmap-marker>
-      <ui-gmap-marker coords="marker1.coords" idkey="marker1.id"></ui-gmap-marker>
+      <ui-gmap-marker ng-repeat="loc in markers" coords=loc.coords idkey=loc.id></ui-gmap-marker>
     </ui-gmap-google-map>
 
-    <label class="item item-input item-stacked-label">
-      test 1
+    <label class="item item-input item-stacked-label" ng-repeat="id in transportID track by $index">
+      {{$index+1}} - <br>
+      {{transportName[$index]}}<br>
+      {{transportDateTimeStart[$index]}}<br>
+      Pickup Location {{transportFromDistance[$index]}} away from you!
     </label>
   </ion-content>
 

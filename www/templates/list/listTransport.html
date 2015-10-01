@@ -11,7 +11,8 @@
     <label class="item item-input item-stacked-label" ng-repeat="id in transportID track by $index">
       {{$index+1}} - <br>
       {{transportName[$index]}}<br>
-      {{transportDateTimeStart[$index]}}
+      {{transportDateTimeStart[$index]}} <br>
+      Pickup Location {{transportFromDistance[$index]}} away from you!
     </label>
   </ion-content>
 </ion-view>

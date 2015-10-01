@@ -3,11 +3,15 @@
     <button class="button" ng-click="">Back</button>
   </ion-nav-buttons>
 
+  <ion-nav-buttons side="right">
+    <button class="button" ui-sref="scan">Map</button>
+  </ion-nav-buttons>
+
   <ion-content>
-    <label class="item item-input item-stacked-label">
-      sdf<br>
-      sdf<br>
-      sdf
+    <label class="item item-input item-stacked-label" ng-repeat="id in transportID track by $index">
+      {{$index+1}} - <br>
+      {{transportName[$index]}}<br>
+      {{transportDateTimeStart[$index]}}
     </label>
   </ion-content>
 </ion-view>

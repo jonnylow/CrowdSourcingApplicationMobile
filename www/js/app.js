@@ -1,4 +1,4 @@
-angular.module('crowdsourcing', ['ionic', 'jrCrop'])
+angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -105,7 +105,8 @@ angular.module('crowdsourcing', ['ionic', 'jrCrop'])
 
     .state('scan', {
       url: '/scan',
-      templateUrl: 'templates/home/scan.html'
+      templateUrl: 'templates/scan/scan.html',
+      controller: "scanController"
     })
 
     .state('listTransport', {

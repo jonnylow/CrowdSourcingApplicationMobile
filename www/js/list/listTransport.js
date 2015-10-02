@@ -34,7 +34,7 @@ angular.module('crowdsourcing')
               $scope.transportID.push(transportDetails[i].TransportID);
               $scope.transportName.push(transportDetails[i].ActivityName);
               $scope.transportDateTimeStart.push("Date/Time: " + $scope.temp[0] + " | " + $scope.temp[1]);
-              $scope.transportFromDistance.push(m + " m" + " OR "+ km);
+              $scope.transportFromDistance.push(m + " m" + " OR "+ km + " km");
             }
           }
         }

@@ -1,11 +1,7 @@
 angular.module('crowdsourcing')
 
-    .controller('homeController', function ($scope, $ionicPopup, $state, $http) {
+    .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover) {
         $scope.name = window.localStorage.getItem("loginUserName");
-
-        $scope.viewAccount = function() {
-          $state.go('viewAccount', {}, {reload: true});
-        }
 
         $scope.logout = function() {
           window.localStorage.removeItem("loginUserName");
@@ -13,6 +9,7 @@ angular.module('crowdsourcing')
           window.localStorage.removeItem("loginUserPassword");
           window.localStorage.removeItem("loginUserContactNumber");
           window.localStorage.removeItem("loginUserDOB");
+          $scope.closePopover();
 
           $state.go('login', {}, {reload: true});
         }
@@ -21,8 +18,22 @@ angular.module('crowdsourcing')
           $state.go('scan', {}, {reload: true});
         }
 
-    $scope.list = function() {
-      $state.go('listTransport', {}, {reload: true});
-    }
+        // .fromTemplateUrl() method
+        $ionicPopover.fromTemplateUrl('templates/home/menu_popout.html', {
+          scope: $scope
+        }).then(function(popover) {
+          $scope.popover = popover;
+        });
+
+        $scope.openPopover = function($event) {
+          $scope.popover.show($event);
+        };
+        $scope.closePopover = function() {
+          $scope.popover.hide();
+        };
+        //Cleanup the popover when we're done with it!
+        $scope.$on('$destroy', function() {
+          $scope.popover.remove();
+        });
 
     });

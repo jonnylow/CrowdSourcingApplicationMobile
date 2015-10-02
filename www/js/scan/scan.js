@@ -76,7 +76,7 @@ angular.module('crowdsourcing')
                     $scope.transportName.push(transportDetails[i].ActivityName);
                     $scope.transportLocationFrom.push(transportDetails[i].LocationFrom);
                     $scope.transportDateTimeStart.push("Date/Time: " + $scope.temp[0] + " | " + $scope.temp[1]);
-                    $scope.transportFromDistance.push(m + " m" + " OR " + km);
+                    $scope.transportFromDistance.push(m + " m" + " OR "+ km + " km");
 
                     //check if marker already exists (by checking with the markers array)
                     //if exists skip this marker, if it is a new position, add this new marker

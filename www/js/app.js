@@ -115,6 +115,18 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "listTransportController"
     })
 
+    .state('activityDetails', {
+      url: '/activityDetails/:transportId/:transportActivityName',
+      templateUrl: 'templates/activity/activityDetails.html',
+      controller: "activityDetailsController"
+    })
+
+    .state('activityConfirmation', {
+      url: '/activityConfirmation/:transportId/:transportActivityName',
+      templateUrl: 'templates/activity/activityConfirmation.html',
+      controller: "activityConfirmationController"
+    })
+
 
 
 /*

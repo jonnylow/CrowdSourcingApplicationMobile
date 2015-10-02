@@ -41,4 +41,9 @@ angular.module('crowdsourcing')
       })
 
       navigator.geolocation.getCurrentPosition($scope.getLocation);
+
+      $scope.proceed = function(id, name)
+      {
+        $state.go('activityDetails', {transportId: id, transportActivityName: name});
+      }
     });

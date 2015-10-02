@@ -130,13 +130,19 @@ angular.module('crowdsourcing')
                 var tempLocFrom = $scope.transportLocationFrom[i];
                 if(tempLocFrom == locationFrom)
                 {
-                  $scope.transportIDDisplay.push($scope.transportIDDisplay[i]);
+                  $scope.transportIDDisplay.push($scope.transportID[i]);
                   $scope.transportNameDisplay.push($scope.transportName[i]);
                   $scope.transportDateTimeStartDisplay.push($scope.transportDateTimeStart[i]);
                   $scope.transportFromDistanceDisplay.push($scope.transportFromDistance[i]);
                 }
               }
             }
+          }
+
+          //proceed to activity details page
+          $scope.proceed = function(id, name)
+          {
+            $state.go('activityDetails', {transportId: id, transportActivityName: name});
           }
         }
     });

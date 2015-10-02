@@ -22,12 +22,12 @@
       </ui-gmap-marker>
     </ui-gmap-google-map>
 
-    <label class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index">
+    <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
       {{$index+1}} - <br>
       {{transportNameDisplay[$index]}}<br>
       {{transportDateTimeStartDisplay[$index]}}<br>
       Pickup Location {{transportFromDistanceDisplay[$index]}} away from you!
-    </label>
+    </ion-item>
   </ion-content>
 
 </ion-view>

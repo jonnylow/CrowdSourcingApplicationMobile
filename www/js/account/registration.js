@@ -1,6 +1,13 @@
 angular.module('crowdsourcing')
 
     .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Notice',
+      template: '<img src="../img/elderly.jpg" alt="Error Loading Image" style="width:230px;height:150px;">'
+                +'<div align="justify">Registered volunteers are required to have a one-off  orientation session with the Centre for Seniors (CFS). CFS will ' +
+                'contact you after registration</div>'
+    });
+
       $scope.register = function(fields)
       {
         if(fields != null) {

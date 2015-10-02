@@ -8,11 +8,11 @@
   </ion-nav-buttons>
 
   <ion-content>
-    <label class="item item-input item-stacked-label" ng-repeat="id in transportID track by $index">
+    <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
       {{$index+1}} - <br>
       {{transportName[$index]}}<br>
       {{transportDateTimeStart[$index]}} <br>
       Pickup Location {{transportFromDistance[$index]}} away from you!
-    </label>
+    </ion-item>
   </ion-content>
 </ion-view>

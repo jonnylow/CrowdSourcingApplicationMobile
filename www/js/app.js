@@ -57,7 +57,8 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       url: '/myactivity',
       views: {
         'tab-activity': {
-          templateUrl: 'templates/activity/myactivity.html'
+          templateUrl: 'templates/activity/myactivity.html',
+          controller: "activityController"
         }
       }
     })

@@ -59,6 +59,36 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
               window.localStorage.setItem("tempALocationTo", $scope.locationTo);
 
+              var currentdate = new Date();
+
+              var dd = currentdate.getDate();
+              var mm = currentdate.getMonth()+1;
+              var yyyy = currentdate.getFullYear();
+              if(dd<10){
+                dd='0'+dd
+              }
+              if(mm<10){
+                mm='0'+mm
+              }
+              currentdate = yyyy+'-'+mm+'-'+dd + ' ' + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+              var urlString = "http://localhost/AddNewActivity.php?phone="+window.localStorage.getItem("loginUserContactNumber")+"&transportID="+$scope.transportId+"&registerDateTime="+currentdate;
+
+              $http.get(urlString)
+                .success(function (data) {
+                  /*success
+                  var status = data;
+                  if (status != null) {
+                    var alertPopup = $ionicPopup.alert({
+                      title: 'Status',
+                      template: status.status[0]
+                    });
+                  }*/
+                })
+
+                .error(function (data) {
+                  alert("Error in connection");
+                });
               $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
             }
           });

@@ -1,6 +1,21 @@
-<ion-view view-title="My Activity">
-
+<<ion-view view-title="My Activity">
+  <ion-nav-buttons side="left">
+    <button class="button" ui-sref="homepage">Back</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button" ui-sref="History">History</button>
+  </ion-nav-buttons>
   <ion-content>
-     My Activity
+
+    <div class="list">
+
+      <div class="item item-button-right">
+        <h3>Display Title here</h3>
+        Date Here
+        <button class="button button-positive">
+          PENDING
+        </button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

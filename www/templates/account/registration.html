@@ -1,40 +1,78 @@
-<ion-view view-title="Registration">
+ <link href="../css/main.css" rel="stylesheet">
+
+<ion-view hide-nav-bar="true">
   <ion-nav-buttons side="left">
     <button class="button" ui-sref="login">Back</button>
   </ion-nav-buttons>
-  <ion-content>
-    <form ng-submit="register(fields)">
-		<label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-person light"></i><font color=#ffffff> Name</span>
-          <input type="text" style="color:#ffffff" placeholder="Name" ng-model="fields.name">
-        </label>
+  <ion-content padding="true">
+    <!-- Registration form-->
+    <form ng-submit="register(fields)"> 
+      
+      <!--name & D.O.B-->
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input">
+            <i class="icon ion-person placeholder-icon"></i>
+            <input type="text" placeholder="Name" ng-model="fields.name" >
+            </label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input">
+              <i class="icon ion-calendar placeholder-icon"></i>
+              <input type="text" colour:"#ffffff" placeholder="Date of Birth" ng-model="fields.dob">
+            </label>
+          </div>
+        </div>
+      </div>
 
-        <label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-email light"></i><font color=#ffffff> Email</font></span>
-          <input type="text" style="color:#ffffff" placeholder="Email" ng-model="fields.email">
-        </label>
+      <!--email-->
+      <div class="col2">
+        <div class="transbox"> 
+          <label class="item item-input">
+            <i class="icon ion-email placeholder-icon"></i>
+            <input type="text" placeholder="Email" ng-model="fields.email" >
+          </label>
+        </div>
+      </div>
 
-        <label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-locked light"></i><font color=#ffffff> Password</font></span>
-          <input type="password" style="color:#ffffff" placeholder="Password" ng-model="fields.password">
-        </label>
+      <!--password & confirm password-->
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input" >
+              <i class="icon ion-locked placeholder-icon"></i>
+                <input type="password" colour:"#ffffff" placeholder="Password" ng-model="fields.password"> 
+            </label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input">
+              <i class="icon ion-locked placeholder-icon"></i>
+                <input type="password" colour:"#ffffff" placeholder="Confirm" ng-model="fields.confirmpassword">
+            </label>
+          </div>
+        </div>
+      </div>
 
-        <label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-locked light"></i><font color=#ffffff> Confirm Password</span>
-          <input type="password" style="color:#ffffff" placeholder="Password" ng-model="fields.confirmpassword">
-        </label>
-
-        <label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-iphone light"></i><font color=#ffffff> Contact Number</span>
-          <input type="text" style="color:#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
-        </label>
-
-        <label class="item item-input item-floating-label">
-          <span class="input-label"><i class="icon ion-calendar light"></i><font color=#ffffff> Date of Birth</font></span><br>
-          <input type="date" style="color:#ffffff" ng-model="fields.dob">
-        </label>
-		<br> <br>
-      <input type="submit" value ="Sign Up!" id="button">
+      <!--contact number-->
+      <div class="col2">
+        <div class="transbox">
+          <label class="item item-input">
+            <i class="icon ion-iphone placeholder-icon"></i>
+            <input type="text" colour:"#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
+          </label>
+        </div>
+      </div>
+      <br>
+    
+    <button  class="button button-block button-calm">Sign Up!</button>
     </form>
+    
+    <!--cancel button-->
+    <button ui-sref="login" class="button button-block button-light">Cancel</button>
   </ion-content>
 </ion-view>

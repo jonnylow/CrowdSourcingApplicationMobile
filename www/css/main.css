@@ -1,0 +1,67 @@
+/* CSS for Login and Registration page */
+
+.scroll-content{
+
+ background-image: url("../img/elderly.jpg");
+ background-size: 510px 660px;
+ background-repeat: no-repeat;
+ opacity: 0.9;
+}
+
+div.col2{
+
+ margin-left: -3%;
+ margin-right: -4%;
+ margin-bottom: -5%;
+}
+
+div.row{
+ margin:1%;
+ width: 100%; padding: 0.1px;
+}
+
+div.col{
+ margin:-5%;
+ padding-top: 5%;
+}
+
+div.transbox {
+ margin: 20px;
+ background-color: transparent ;
+ border: 2px solid white;
+ opacity:0.6;
+ filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox1 {
+ margin: 5px;
+ background-color: transparent ;
+ border: 2px solid white;
+ opacity:0.6;
+ filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox input
+{
+ margin: 1%;
+ color: #ffffff;
+ width: 200px; border: 1px padding: 5px;
+}
+
+div.transbox1 input
+{
+ margin: 1%;
+ color: #ffffff;
+ width: 200px; border: 1px padding: 5px;
+}
+
+label.item
+{
+ background-color: transparent;
+ 
+}
+
+
+
+
+

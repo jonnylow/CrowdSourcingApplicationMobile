@@ -30,6 +30,7 @@ $array = array();
 	$array[$int]['DOB'] = $row[4];
 	$array[$int]['HaveCar'] = $row[5];
 	$array[$int]['KnowCPR'] = $row[6];
+	$array[$int]['accountApproved'] = $row[7];
 	$int++;
 
  }

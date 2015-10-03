@@ -17,15 +17,24 @@ angular.module('crowdsourcing')
                     for (var i = 0; i < loginDetails.length; i++) {
                       if(tempNRIC == loginDetails[i].Email && tempPassword == loginDetails[i].Password)
                       {
-                        loginCheck = 1;
+                        if(loginDetails[i].accountApproved != 0) {
+                          loginCheck = 1;
 
-                        window.localStorage.setItem("loginUserName", loginDetails[i].Name);
-                        window.localStorage.setItem("loginUserEmail", loginDetails[i].Email);
-                        window.localStorage.setItem("loginUserPassword", loginDetails[i].Password);
-                        window.localStorage.setItem("loginUserContactNumber", loginDetails[i].Phone);
-                        window.localStorage.setItem("loginUserDOB", loginDetails[i].DOB);
+                          window.localStorage.setItem("loginUserName", loginDetails[i].Name);
+                          window.localStorage.setItem("loginUserEmail", loginDetails[i].Email);
+                          window.localStorage.setItem("loginUserPassword", loginDetails[i].Password);
+                          window.localStorage.setItem("loginUserContactNumber", loginDetails[i].Phone);
+                          window.localStorage.setItem("loginUserDOB", loginDetails[i].DOB);
 
-                        $state.go('tab.home', {}, {reload: true});
+                          $state.go('tab.home', {}, {reload: true});
+                        }
+                        else {
+                          loginCheck = 1;
+                          var alertPopup = $ionicPopup.alert({
+                            title: 'Sorry',
+                            template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
+                          });
+                        }
                       }
                     }
 

@@ -1,7 +1,12 @@
 angular.module('crowdsourcing')
 
     .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover) {
-        $scope.name = window.localStorage.getItem("loginUserName");
+        if(window.localStorage.getItem("loginUserName") != null) {
+          $scope.name = window.localStorage.getItem("loginUserName");
+        }
+        else {
+          $state.go('login', {}, {reload: true});
+        }
 
         $scope.logout = function() {
           window.localStorage.removeItem("loginUserName");

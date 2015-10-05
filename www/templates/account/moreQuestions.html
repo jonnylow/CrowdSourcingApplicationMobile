@@ -1,15 +1,19 @@
-<ion-view view-title="Registration">
+<link href="../css/main.css" rel="stylesheet">
+<ion-view hide-nav-bar="true">
   <ion-content>
     <form ng-submit="verify(fields)">
-      <ion-checkbox ng-model="fields.carChecked">Do you have a Car?</ion-checkbox>
+      <ion-checkbox ng-model="fields.carChecked"><font color="white">I have a car</ion-checkbox></font>
+
+      <div class="morebox" >
+        <label class="item item-input item-stacked-label">
+          <font color="white">Occupation</font>
+          <input type="text" ng-model="fields.occupation">
+        </label>
+       </div>
+
 
       <label class="item item-input item-stacked-label">
-        <span class="input-label">Occupation</span>
-        <input type="text" ng-model="fields.occupation">
-      </label>
-
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Area of Preferences 1</span><br>
+        <font color="white">Area of Preferences 1</font><br>
         <select ng-model="fields.preferences_1">
           <option value="Befriend-senior-citizens">Befriend senior citizens</option>
           <option value="Organise/participate-in-fund-raising-activities">Organise/participate in fund raising activities</option>
@@ -24,7 +28,7 @@
       </label>
 
       <label class="item item-input item-stacked-label">
-        <span class="input-label">Area of Preferences 2</span><br>
+        <font color="white">Area of Preferences 2</font><br>
         <select ng-model="fields.preferences_2">
           <option value="Befriend-senior-citizens">Befriend senior citizens</option>
           <option value="Organise/participate-in-fund-raising-activities">Organise/participate in fund raising activities</option>
@@ -38,7 +42,24 @@
         </select>
       </label>
 
-      <button class="button button-block button-stable">Complete Registration</button>
+      <!--front nric-->
+      <br>
+      <div class="item range range-positive" style="color:#ffffff; border:none"/>
+      <label class="ic">IC Photo (Front)<br />
+        <img data-ng-src="{{image_url_front}}" height="50" width="50" ><br>
+      <button type="button" ng-click="launchPhotoLibraryFront()">Add</button>
+    </label>
+      </div>
+      <br>
+      <!--back nric-->
+      <div class="item range range-positive"style="color:#ffffff; border:none;"/>
+        <label class="ic" style="border:none;">IC Photo (Back)<br />
+      <img data-ng-src="{{image_url_back}}" height="50" width="50" ><br>
+      <button type="button" ng-click="launchPhotoLibraryBack()">Add</button>
+    </label>
+      </div>
+
+      <button class="button button-block button-calm">Register</button>
     </form>
   </ion-content>
 </ion-view>

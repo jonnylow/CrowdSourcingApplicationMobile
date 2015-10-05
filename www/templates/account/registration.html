@@ -10,7 +10,7 @@
 
       <!--name & D.O.B-->
       <div class="row">
-        <div class="col">
+        <div class="col col-30">
           <div class="transbox">
             <label class="item item-input">
             <i class="icon ion-person placeholder-icon light"></i>
@@ -18,7 +18,7 @@
             </label>
           </div>
         </div>
-        <div class="col">
+        <div class="col col-70">
           <div class="transbox">
             <label class="item item-input">
               <i class="icon ion-calendar placeholder-icon light"></i>
@@ -29,12 +29,14 @@
       </div>
 
       <!--email-->
-      <div class="col2">
-        <div class="transbox">
-          <label class="item item-input">
-            <i class="icon ion-email placeholder-icon light"></i>
-            <input type="text" placeholder="Email" ng-model="fields.email" >
-          </label>
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input">
+              <i class="icon ion-email placeholder-icon light"></i>
+              <input type="text" placeholder="Email" ng-model="fields.email" >
+            </label>
+          </div>
         </div>
       </div>
 
@@ -52,64 +54,52 @@
           <div class="transbox">
             <label class="item item-input">
               <i class="icon ion-locked placeholder-icon light"></i>
-                <input type="password" colour:"#ffffff" placeholder="Confirm" ng-model="fields.confirmpassword">
+                <input type="password" colour:"#ffffff" placeholder="Confirm Password" ng-model="fields.confirmpassword">
             </label>
           </div>
         </div>
       </div>
 
       <!--contact number-->
-      <div class="col2">
-        <div class="transbox">
-          <label class="item item-input">
-            <i class="icon ion-iphone placeholder-icon light"></i>
-            <input type="text" colour:"#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
-          </label>
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input">
+              <i class="icon ion-iphone placeholder-icon light"></i>
+              <input type="text" colour:"#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
+            </label>
+          </div>
         </div>
+        <br>
       </div>
-      <br>
 
       <!--NRIC-->
-      <div class="col2">
-        <div class="transbox">
-          <label class="item item-input">
-            <i class="icon ion-iphone placeholder-icon light"></i>
-            <input type="text" colour:"#ffffff" placeholder="NRIC" ng-model="fields.nric">
-          </label>
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input">
+              <i class="icon ion-card placeholder-icon light"></i>
+              <input type="text" colour:"#ffffff" placeholder="NRIC" ng-model="fields.nric">
+            </label>
+          </div>
         </div>
+        <br>
       </div>
-      <br>
 
       <!--Gender-->
-      <div class="col2">
-        <div class="transbox">
-          <label class="item item-input">
-            <i class="icon ion-iphone placeholder-icon light"></i>
-            <select ng-model="fields.gender">
-              <option value="M">M</option>
-              <option value="F">F</option>
-            </select>
-          </label>
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <label class="item item-input">
+              <i class="icon ion-transgender placeholder-icon light"></i>
+              <select ng-model="fields.gender">
+                <option value="M">M</option>
+                <option value="F">F</option>
+              </select>
+            </label>
+          </div>
         </div>
-      </div>
-      <br>
-
-      <!--front nric-->
-      <div class="item range range-positive"/>
-      &nbsp<label>IC Photo (Front)<br />
-      <img data-ng-src="{{image_url_front}}" height="50" width="50" ><br>
-      <button type="button" ng-click="launchPhotoLibraryFront()">Add</button>
-    </label>
-      </div>
-
-      <!--back nric-->
-      <div class="item range range-positive"/>
-      &nbsp<label>IC Photo (Back)<br />
-      <img data-ng-src="{{image_url_back}}" height="50" width="50" ><br>
-      <button type="button" ng-click="launchPhotoLibraryBack()">Add</button>
-    </label>
-      </div>
-
+      </div>  
 
     <button  class="button button-block button-calm">Sign Up!</button>
     </form>

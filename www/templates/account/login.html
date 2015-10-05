@@ -5,36 +5,47 @@
 <br><br>
 
 <!--iCare logo-->
+<!--<div class="logo"><img src="../img/icare.png" alt="image"></div>-->
 <div style="text-align: center;">
-  <IMG SRC="../img/icare.png" ALT="image" style="width:200px;height:200px;">
+ <img src="../img/icare.png" class = "fullscreen-image"/>
 </div>
-<br>
 
 <!-- Login form-->
 <form ng-submit="login(fields)">
 
   <!--email-->
-  <div class="transbox1">
-
-    <label class="item item-input">
-    <i class="icon ion-email placeholder-icon"></i>
-    <input type="text" placeholder="Email" ng-model="fields.email" >
-    </label>
-  </div>
+ <div class="email-divider">
+  <div class="row">
+  <div class="iconcontainer">
+    <i class="icon ion-email light larger" ></i>
+   </div> 
+ 
+    <div class="transbox1">
+      <label class="item item-input">
+      <!--<i class="icon ion-email placeholder-icon light"></i>-->
+      <input type="text" placeholder="Email" ng-model="fields.email" >
+      </label>
+    </div>
+</div></div>
 
   <!--password-->
+  <div class="email-divider">
+  <div class="row">
+  <div class="iconcontainer">
+    <i class="icon ion-locked light larger" ></i>
+   </div>
   <div class="transbox1">
-
     <label class="item item-input">
-    <i class="icon ion-locked placeholder-icon"></i>
+    <!--<i class="icon ion-locked placeholder-icon light"></i>-->
     <input type="password" colour:"#ffffff" placeholder="Password" ng-model="fields.password">
     </label>
   </div>
+</div></div>
 
-  <br>
 
-  <button class="button button-block button-energized">Login</button>
-</form>
+  <button class="button button-block button-light">Login</button>
+  </div>
+
 
   <!--forget password link!! rmb to do-->
 <p style="text-align: center;">

@@ -1,16 +1,21 @@
-<ion-view view-title="Registration">
+<link href="../css/main.css" rel="stylesheet">
+<ion-view hide-nav-bar="true">
   <ion-content>
     <form ng-submit="verify(fields)">
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Contact Number</span>
-        <input type="text" ng-readonly="true" value={{tempContactNumber}}>
-      </label>
+      <div class="box" >
+        <label class="item item-input item-stacked-label">
+          <font color="white">Contact Number</font>
+          <input type="text" ng-readonly="true" value={{tempContactNumber}} style="background-color:#202020;color:white;opacity:0.8;">
+        </label>
+      </div>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">One Time Password</span>
-        <input type="password" placeholder="xxxxxxxxxx" ng-model="fields.otp">
-      </label>
-      <button class="button button-block button-stable">Verify</button>
+      <div class="box" ">
+        <label class="item item-input item-stacked-label">
+          <font color="white">One Time Password</font>
+          <input type="password" placeholder="xxxxxxxxxx" style="color:#ffffff"ng-model="fields.otp">
+        </label>
+      </div>
+      <button class="button button-block button-calm">Verify</button>
     </form>
   </ion-content>
 </ion-view>

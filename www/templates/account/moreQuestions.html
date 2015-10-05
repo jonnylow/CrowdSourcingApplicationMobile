@@ -2,7 +2,41 @@
   <ion-content>
     <form ng-submit="verify(fields)">
       <ion-checkbox ng-model="fields.carChecked">Do you have a Car?</ion-checkbox>
-      <ion-checkbox ng-model="fields.cprChecked">Do you know CPR?</ion-checkbox>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Occupation</span>
+        <input type="text" ng-model="fields.occupation">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Area of Preferences 1</span><br>
+        <select ng-model="fields.preferences_1">
+          <option value="Befriend-senior-citizens">Befriend senior citizens</option>
+          <option value="Organise/participate-in-fund-raising-activities">Organise/participate in fund raising activities</option>
+          <option value="Organize/participate-in-social-activities-or-outings">Organize/participate in social activities or outings</option>
+          <option value="Design/Maintain-Webpage">Design/Maintain Webpage</option>
+          <option value="Organise/participate-in-publicity-events">Organise/participate in publicity events</option>
+          <option value="Written-translation-for-brochures">Written translation for brochures</option>
+          <option value="Prepare-publicity-materials">Prepare publicity materials</option>
+          <option value="Lead-games/exercises">Lead games/exercises</option>
+          <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
+        </select>
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Area of Preferences 2</span><br>
+        <select ng-model="fields.preferences_2">
+          <option value="Befriend-senior-citizens">Befriend senior citizens</option>
+          <option value="Organise/participate-in-fund-raising-activities">Organise/participate in fund raising activities</option>
+          <option value="Organize/participate-in-social-activities-or-outings">Organize/participate in social activities or outings</option>
+          <option value="Design/Maintain-Webpage">Design/Maintain Webpage</option>
+          <option value="Organise/participate-in-publicity-events">Organise/participate in publicity events</option>
+          <option value="Written-translation-for-brochures">Written translation for brochures</option>
+          <option value="Prepare-publicity-materials">Prepare publicity materials</option>
+          <option value="Lead-games/exercises">Lead games/exercises</option>
+          <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
+        </select>
+      </label>
 
       <button class="button button-block button-stable">Complete Registration</button>
     </form>

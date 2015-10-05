@@ -1,11 +1,13 @@
 /* CSS for Login and Registration page */
 
+/* background image */
 .scroll-content{
 
  background-image: url("../img/elderly.jpg");
- background-size: 510px 660px;
+ background-size: ;
  background-repeat: no-repeat;
  opacity: 0.9;
+ overflow: false;
 }
 
 div.col2{
@@ -57,11 +59,36 @@ div.transbox1 input
 
 label.item
 {
- background-color: transparent;
- 
+ background-color: transparent; 
 }
 
+/* pop-up */
+.popup-container .popup {
+    width: 75%;
+}
 
+.popup-title {
+    font-size: 180%;
+    color: #333333;
+    font-weight: 300;
+}
 
+.popup-sub-title {
+    margin: 5% 0 0 0;
+    padding: 2%;
+    font-size: 100%;
+    color: #666666;
+    font-family: 'helvetica';
+    font-weight: 100;
+}
 
+/* icare icon */
+.fullscreen-image {
+    max-width: 50%;
+    max-height: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
 

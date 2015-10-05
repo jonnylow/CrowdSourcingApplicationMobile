@@ -6,8 +6,8 @@
   </ion-nav-buttons>
   <ion-content padding="true">
     <!-- Registration form-->
-    <form ng-submit="register(fields)"> 
-      
+    <form ng-submit="register(fields)">
+
       <!--name & D.O.B-->
       <div class="row">
         <div class="col">
@@ -22,7 +22,7 @@
           <div class="transbox">
             <label class="item item-input">
               <i class="icon ion-calendar placeholder-icon light"></i>
-              <input type="text" colour:"#ffffff" placeholder="Date of Birth" ng-model="fields.dob">
+              <input type="date" colour:"#ffffff" placeholder="Date of Birth" ng-model="fields.dob">
             </label>
           </div>
         </div>
@@ -30,7 +30,7 @@
 
       <!--email-->
       <div class="col2">
-        <div class="transbox"> 
+        <div class="transbox">
           <label class="item item-input">
             <i class="icon ion-email placeholder-icon light"></i>
             <input type="text" placeholder="Email" ng-model="fields.email" >
@@ -44,7 +44,7 @@
           <div class="transbox">
             <label class="item item-input" >
               <i class="icon ion-locked placeholder-icon light"></i>
-                <input type="password" colour:"#ffffff" placeholder="Password" ng-model="fields.password"> 
+                <input type="password" colour:"#ffffff" placeholder="Password" ng-model="fields.password">
             </label>
           </div>
         </div>
@@ -68,10 +68,52 @@
         </div>
       </div>
       <br>
-    
+
+      <!--NRIC-->
+      <div class="col2">
+        <div class="transbox">
+          <label class="item item-input">
+            <i class="icon ion-iphone placeholder-icon light"></i>
+            <input type="text" colour:"#ffffff" placeholder="NRIC" ng-model="fields.nric">
+          </label>
+        </div>
+      </div>
+      <br>
+
+      <!--Gender-->
+      <div class="col2">
+        <div class="transbox">
+          <label class="item item-input">
+            <i class="icon ion-iphone placeholder-icon light"></i>
+            <select ng-model="fields.gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <br>
+
+      <!--front nric-->
+      <div class="item range range-positive"/>
+      &nbsp<label>IC Photo (Front)<br />
+      <img data-ng-src="{{image_url_front}}" height="50" width="50" ><br>
+      <button type="button" ng-click="launchPhotoLibraryFront()">Add</button>
+    </label>
+      </div>
+
+      <!--back nric-->
+      <div class="item range range-positive"/>
+      &nbsp<label>IC Photo (Back)<br />
+      <img data-ng-src="{{image_url_back}}" height="50" width="50" ><br>
+      <button type="button" ng-click="launchPhotoLibraryBack()">Add</button>
+    </label>
+      </div>
+
+
     <button  class="button button-block button-calm">Sign Up!</button>
     </form>
-    
+
     <!--cancel button-->
     <button ui-sref="login" class="button button-block button-light">Cancel</button>
   </ion-content>

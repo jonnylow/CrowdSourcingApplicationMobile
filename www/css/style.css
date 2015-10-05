@@ -2,28 +2,40 @@
 
 .angular-google-map-container {height: 300px;}
 
-.button.button-light {
-	border-color: #EEA04D;
-	background-color: #EEA04D;
- 	color: #FFFFFF;
+/* orange button */
+.button.button-energized {
+  border-color: #EEA04D;
+  background-color: #EEA04D;
+  color: #FFFFFF;
 }
-.button.button-light:hover {
-	color: #FFFFFF;
-    opacity: 0.5; }
-.button.button-light.active, .button.button-light.activated {
+.button.button-energized:hover {
+  color: #FFFFFF;
+    opacity: 0.5; 
+  }
+
+.button.button-energized.active, .button.button-energized.activated {
       border-color: #EEA04D;
       background-color: #EEA04D;
-      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+}
 
+/* greem button */
 .button.button-calm {
-	border-color: #29A29C;
-	background-color: #29A29C;
- 	color: #FFFFFF;
+  border-color: #29A29C;
+  background-color: #29A29C;
+  color: #FFFFFF;
 }
 .button.button-calm:hover {
-	color: #FFFFFF;
+   color: #FFFFFF;
     opacity: 0.5; }
+
 .button.button-calm.active, .button.button-calm.activated {
       border-color: #29A29C;
       background-color: #29A29C;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+
+/* button-light hover*/
+.button.button-light:hover {
+      color: #444;
+      opacity: 0.5;
+      text-decoration: none; }

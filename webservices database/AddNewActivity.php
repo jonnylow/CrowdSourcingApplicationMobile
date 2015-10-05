@@ -2,7 +2,7 @@
 $servername = "www.changhuapeng.com";
 $username = "volunteer";
 $password = "iamaguest";
-$dbname = "volunteer";
+$dbname = "laravel";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,13 +13,12 @@ $dbname = "volunteer";
 	}
 
 	 // prepare and bind
-	$stmt = $conn->prepare("INSERT INTO TaskCFS (`Phone`, `TransportID`, `RegisterDateTime`) VALUES (?,?,?)");
-	$stmt->bind_param("iis", $phone, $transportID, $registerDateTime);
+	$stmt = $conn->prepare("INSERT INTO tasks (`activity_id`, `volunteer_id`) VALUES (?,?)");
+	$stmt->bind_param("ii", $activity_id, $volunteer_id);
 	
 	//get parameters
-	$phone = $_GET['phone'];
-	$transportID = $_GET['transportID'];
-	$registerDateTime = $_GET['registerDateTime'];
+	$activity_id = $_GET['activity_id'];
+	$volunteer_id = $_GET['volunteer_id'];
 		
 	$passed = $stmt->execute();
 

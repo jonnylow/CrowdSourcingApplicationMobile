@@ -8,23 +8,20 @@ angular.module('crowdsourcing')
                 var tempNRIC = fields.email;
                 var tempPassword = fields.password;
 
-                $http.get("http://localhost/RetrieveUserAccounts.php")
+                $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveUserAccounts.php")
                 .success(function (data) {
                   var loginDetails = data;
                   var loginCheck = 0;
 
                   if (loginDetails != null) {
                     for (var i = 0; i < loginDetails.length; i++) {
-                      if(tempNRIC == loginDetails[i].Email && tempPassword == loginDetails[i].Password)
+                      if(tempNRIC == loginDetails[i].email && tempPassword == loginDetails[i].password)
                       {
-                        if(loginDetails[i].accountApproved != 0) {
+                        if(loginDetails[i].is_approved != 0) {
                           loginCheck = 1;
 
-                          window.localStorage.setItem("loginUserName", loginDetails[i].Name);
-                          window.localStorage.setItem("loginUserEmail", loginDetails[i].Email);
-                          window.localStorage.setItem("loginUserPassword", loginDetails[i].Password);
-                          window.localStorage.setItem("loginUserContactNumber", loginDetails[i].Phone);
-                          window.localStorage.setItem("loginUserDOB", loginDetails[i].DOB);
+                          window.localStorage.setItem("loginId", loginDetails[i].volunteer_id);
+                          window.localStorage.setItem("loginUserName", loginDetails[i].name);
 
                           $state.go('tab.home', {}, {reload: true});
                         }

@@ -54,43 +54,43 @@ angular.module('crowdsourcing')
           }
 
           //retrieve from DB
-          $http.get("http://localhost/RetrieveTransportActivity.php")
+          $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
             .success(function (data) {
               var transportDetails = data;
 
               if (transportDetails != null) {
                 for(var i = 0; i<transportDetails.length; i++)
                 {
-                  if(transportDetails[i].TransportID != null && transportDetails[i].ActivityName && transportDetails[i].DateTimeStart
-                    && transportDetails[i].LocationFromLat !=null && transportDetails[i].LocationFromLong != null) {
+                  if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start
+                    && transportDetails[i].location_from_lat !=null && transportDetails[i].location_from_long != null) {
 
                     //calculate distance in M and KM to 2dp & format date/time
-                    $scope.temp = transportDetails[i].DateTimeStart.split(' ');
+                    $scope.temp = transportDetails[i].datetime_start.split(' ');
                     var from = new google.maps.LatLng($scope.myLocation.lat, $scope.myLocation.lng);
-                    var to = new google.maps.LatLng(parseFloat(transportDetails[i].LocationFromLat), parseFloat(transportDetails[i].LocationFromLong));
+                    var to = new google.maps.LatLng(parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long));
                     var m = google.maps.geometry.spherical.computeDistanceBetween(from, to).toFixed(2);
                     var km = (m / 1000).toFixed(2);
 
                     //push each activities into the main arrays that store all activities
-                    $scope.transportID.push(transportDetails[i].TransportID);
-                    $scope.transportName.push(transportDetails[i].ActivityName);
-                    $scope.transportLocationFrom.push(transportDetails[i].LocationFrom);
+                    $scope.transportID.push(transportDetails[i].activity_id);
+                    $scope.transportName.push(transportDetails[i].name);
+                    $scope.transportLocationFrom.push(transportDetails[i].location_from);
                     $scope.transportDateTimeStart.push("Date/Time: " + $scope.temp[0] + " | " + $scope.temp[1]);
                     $scope.transportFromDistance.push(m + " m" + " OR "+ km + " km");
 
                     //check if marker already exists (by checking with the markers array)
                     //if exists skip this marker, if it is a new position, add this new marker
-                    if ($scope.markerExist([parseFloat(transportDetails[i].LocationFromLat), parseFloat(transportDetails[i].LocationFromLong)]) == false) {
-                      $scope.transportLocationFromLatLng.push([parseFloat(transportDetails[i].LocationFromLat), parseFloat(transportDetails[i].LocationFromLong)])
+                    if ($scope.markerExist([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)]) == false) {
+                      $scope.transportLocationFromLatLng.push([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)])
 
                       var tempMarker = {
                         id: i + 1,
                         coords: {
-                          latitude: parseFloat(transportDetails[i].LocationFromLat),
-                          longitude: parseFloat(transportDetails[i].LocationFromLong)
+                          latitude: parseFloat(transportDetails[i].location_from_lat),
+                          longitude: parseFloat(transportDetails[i].location_from_long)
                         },
                         "window": {
-                          "title": transportDetails[i].LocationFrom
+                          "title": transportDetails[i].location_from
                         }
                       };
                       $scope.markers.push(tempMarker);

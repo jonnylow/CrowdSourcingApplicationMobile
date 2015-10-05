@@ -1,6 +1,7 @@
 angular.module('crowdsourcing')
 
-    .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover) {
+    .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory) {
+
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
         }
@@ -10,10 +11,11 @@ angular.module('crowdsourcing')
 
         $scope.logout = function() {
           window.localStorage.removeItem("loginUserName");
-          window.localStorage.removeItem("loginUserEmail");
-          window.localStorage.removeItem("loginUserPassword");
-          window.localStorage.removeItem("loginUserContactNumber");
-          window.localStorage.removeItem("loginUserDOB");
+          window.localStorage.removeItem("loginId");
+          window.localStorage.clear();
+          $ionicHistory.clearCache();
+          $ionicHistory.clearHistory();
+          $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
           $scope.closePopover();
 
           $state.go('login', {}, {reload: true});

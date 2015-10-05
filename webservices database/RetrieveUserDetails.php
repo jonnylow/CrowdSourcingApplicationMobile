@@ -11,9 +11,9 @@
  die("Database selection also failed miserably: " . mysql_error());
  }
 
- 
+$id = $_GET['id'];
 //query
-$result = mysqli_query($db,"SELECT * FROM volunteers");
+$result = mysqli_query($db,"SELECT * FROM volunteers where volunteer_id=$id");
  if (!$result) {
  die("Database query failed: " . mysql_error());
  }
@@ -33,9 +33,8 @@ $array = array();
 	$array[$int]['contact_no'] = $row[7];
 	$array[$int]['occupation'] = $row[8];
 	$array[$int]['has_car'] = $row[9];
-	$array[$int]['area_of_preference_1'] = $row[10];
-	$array[$int]['area_of_preference_2'] = $row[11];
-	$array[$int]['is_approved'] = $row[15];
+	$array[$int]['area_of_preference_1'] = $row[11];
+	$array[$int]['area_of_preference_2'] = $row[12];
 	
 	$int++;
 

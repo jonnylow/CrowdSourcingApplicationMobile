@@ -6,14 +6,14 @@
  }
 
  //select database
- $db_select = mysqli_select_db($db,"volunteer");
+ $db_select = mysqli_select_db($db,"laravel");
  if (!$db_select) {
  die("Database selection also failed miserably: " . mysql_error());
  }
 
  
 //query
-$result = mysqli_query($db,"SELECT * FROM Transport");
+$result = mysqli_query($db,"SELECT * FROM activities");
  if (!$result) {
  die("Database query failed: " . mysql_error());
  }
@@ -23,23 +23,22 @@ $array = array();
 
  while ($row = mysqli_fetch_array($result)) {
 	$array[$int] = array();
-	$array[$int]['TransportID'] = $row[0];
-	$array[$int]['ActivityName'] = $row[1];
-	$array[$int]['LocationFrom'] = $row[2];
-	$array[$int]['LocationFromLong'] = $row[3];
-	$array[$int]['LocationFromLat'] = $row[4];
-	$array[$int]['LocationTo'] = $row[5];
-	$array[$int]['LocationToLong'] = $row[6];
-	$array[$int]['LocationToLat'] = $row[7];
-	$array[$int]['DateTimeStart'] = $row[8];
-	$array[$int]['ExpectedDuration'] = $row[9];
-	$array[$int]['ElderlyName'] = $row[10];
-	$array[$int]['NextofKinName'] = $row[11];
-	$array[$int]['NextofKinContact'] = $row[12];
-	$array[$int]['MoreInformation'] = $row[13];
-	$array[$int]['NeedCar'] = $row[14];
-	$array[$int]['NeedCPR'] = $row[15];
-	$array[$int]['SeniorCenterID'] = $row[16];
+	$array[$int]['activity_id'] = $row[0];
+	$array[$int]['name'] = $row[1];
+	$array[$int]['location_from'] = $row[2];
+	$array[$int]['location_from_long'] = $row[3];
+	$array[$int]['location_from_lat'] = $row[4];
+	$array[$int]['location_to'] = $row[5];
+	$array[$int]['location_to_long'] = $row[6];
+	$array[$int]['location_to_lat'] = $row[7];
+	$array[$int]['datetime_start'] = $row[8];
+	$array[$int]['expected_duration_minutes'] = $row[9];
+	$array[$int]['more_information'] = $row[10];
+	$array[$int]['elderly_name'] = $row[11];
+	$array[$int]['next_of_kin_name'] = $row[12];
+	$array[$int]['next_of_kin_contact'] = $row[13];
+	$array[$int]['senior_centre_id'] = $row[14];
+	$array[$int]['vwo_user_id'] = $row[15];
 	$int++;
 
  }

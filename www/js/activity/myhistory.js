@@ -5,27 +5,28 @@ angular.module('crowdsourcing')
         $scope.transportName=[];
       	$scope.transportDateTimeStart=[];
 
-    	if(window.localStorage.getItem("loginUserContactNumber") != null) {
-        $scope.phone = window.localStorage.getItem("loginUserContactNumber");
+        if(window.localStorage.getItem("loginUserName") != null) {
+          $scope.name = window.localStorage.getItem("loginUserName");
+          $scope.id = window.localStorage.getItem("loginId");
         }
         else {
           $state.go('login', {}, {reload: true});
         }
 
-       	var urlString = "http://localhost/RetrieveTransportByUser.php?phone="+$scope.phone;
+       	var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=2";
 
-       	$http.get(urlString)
-      	.success(function (data) {
+    $http.get(urlString)
+      .success(function (data) {
         var transportDetails = data;
         if (transportDetails != null){
-        	for(var i = 0; i<transportDetails.length; i++){
-        		if(transportDetails[i].TransportID != null && transportDetails[i].ActivityName && transportDetails[i].DateTimeStart){
-              var temp =transportDetails[i].DateTimeStart.split(' ');
-        			$scope.transportID.push(transportDetails[i].TransportID);
-        			$scope.transportName.push(transportDetails[i].ActivityName);
+          for(var i = 0; i<transportDetails.length; i++){
+            if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start){
+              var temp =transportDetails[i].datetime_start.split(' ');
+              $scope.transportID.push(transportDetails[i].activity_id);
+              $scope.transportName.push(transportDetails[i].name);
               $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
-        		}
-        	}
+            }
+          }
         }
-  })
+      })
 });

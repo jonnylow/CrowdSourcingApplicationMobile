@@ -6,38 +6,23 @@ angular.module('crowdsourcing')
       $scope.transportActivityName = $stateParams.transportActivityName;
     }
 
-    $http.get("http://localhost/RetrieveTransportActivityDetails.php?transportId=" + $scope.transportId)
+    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivityDetails.php?transportId=" + $scope.transportId)
       .success(function (data) {
         var transportDetails = data;
 
         if (transportDetails != null) {
           if(transportDetails[0] != null)
           {
-            if(transportDetails[0].DateTimeStart != null && transportDetails[0].ExpectedDuration != null && transportDetails[0].LocationFrom != null
-            && transportDetails[0].LocationTo !=null && transportDetails[0].MoreInformation != null && transportDetails[0].NeedCPR != null &&
-              transportDetails[0].NeedCar!=null)
+            if(transportDetails[0].datetime_start != null && transportDetails[0].expected_duration_minutes != null && transportDetails[0].location_from != null
+            && transportDetails[0].location_to !=null && transportDetails[0].more_information != null)
               {
-                var temp =transportDetails[0].DateTimeStart.split(' ');
+                var temp =transportDetails[0].datetime_start.split(' ');
                 $scope.date = temp[0];
                 $scope.time = temp[1];
-                $scope.expectedDuration = transportDetails[0].ExpectedDuration + " Hour";
-                $scope.locationFrom = transportDetails[0].LocationFrom;
-                $scope.locationTo = transportDetails[0].LocationTo;
-                $scope.moreInformation = transportDetails[0].MoreInformation;
-                if(transportDetails[0].NeedCPR == 1) {
-                  $scope.needCPR = true;
-                }
-                else {
-                  $scope.needCPR = false;
-                }
-
-                if(transportDetails[0].NeedCar == 1) {
-                  $scope.needCar = true;
-                }
-                else {
-                  $scope.needCar = false;
-                }
-                $scope.variable = {cpr: $scope.needCPR,car: $scope.needCar};
+                $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
+                $scope.locationFrom = transportDetails[0].location_from;
+                $scope.locationTo = transportDetails[0].location_to;
+                $scope.moreInformation = transportDetails[0].more_information;
               }
           }
         }
@@ -59,20 +44,7 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
               window.localStorage.setItem("tempALocationTo", $scope.locationTo);
 
-              var currentdate = new Date();
-
-              var dd = currentdate.getDate();
-              var mm = currentdate.getMonth()+1;
-              var yyyy = currentdate.getFullYear();
-              if(dd<10){
-                dd='0'+dd
-              }
-              if(mm<10){
-                mm='0'+mm
-              }
-              currentdate = yyyy+'-'+mm+'-'+dd + ' ' + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-
-              var urlString = "http://localhost/AddNewActivity.php?phone="+window.localStorage.getItem("loginUserContactNumber")+"&transportID="+$scope.transportId+"&registerDateTime="+currentdate;
+              var urlString = "http://www.changhuapeng.com/volunteer/php/AddNewActivity.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
               $http.get(urlString)
                 .success(function (data) {
@@ -84,12 +56,13 @@ angular.module('crowdsourcing')
                       template: status.status[0]
                     });
                   }*/
+
+                  $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
                 })
 
                 .error(function (data) {
                   alert("Error in connection");
                 });
-              $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
             }
           });
       }

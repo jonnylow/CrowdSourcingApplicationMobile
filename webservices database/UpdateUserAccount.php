@@ -2,9 +2,9 @@
 $servername = "www.changhuapeng.com";
 $username = "volunteer";
 $password = "iamaguest";
-$dbname = "volunteer";
+$dbname = "laravel";
 
-if(!empty($_GET['nric']) && !empty($_GET['password']))
+if(!empty($_GET['id']) && !empty($_GET['password']))
 {	
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,11 +15,11 @@ if(!empty($_GET['nric']) && !empty($_GET['password']))
 	}
 
 	 // prepare and bind
-	$stmt = $conn->prepare("UPDATE volunteer SET `Password`=? WHERE `NRIC`=?");
-	$stmt->bind_param("ss", $password, $nric);
+	$stmt = $conn->prepare("UPDATE volunteers SET `password`=? WHERE `volunteer_id`=?");
+	$stmt->bind_param("si", $password, $id);
 	
 	//get parameters
-	$nric = $_GET['nric'];
+	$id = $_GET['id'];
 	$password = $_GET['password'];
 	
 	$passed = $stmt->execute();

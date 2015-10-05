@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
         $scope.transportID=[];
         $scope.transportName=[];
       	$scope.transportDateTimeStart=[];
@@ -13,12 +13,10 @@ angular.module('crowdsourcing')
         }
 
        	var urlString = "http://localhost/RetrieveTransportByUser.php?phone="+$scope.phone;
-       	//console.log(urlString);
 
        	$http.get(urlString)
       	.success(function (data) {
         var transportDetails = data;
-        //console.log(transportDetails);
         if (transportDetails != null){
         	for(var i = 0; i<transportDetails.length; i++){
         		if(transportDetails[i].TransportID != null && transportDetails[i].ActivityName && transportDetails[i].DateTimeStart){

@@ -26,15 +26,20 @@ if(!empty($_GET['phone']))
 	while ($row = mysqli_fetch_array($result)) {
 		$array[]= $row["TransportID"];
 	}
+	//print_r($array);
+
 
 	$int = 0;
 	$arrayTransport = array();
-	$datetime = new DateTime();
-	date_format($datetime,"yyyy-mm-dd hh:mm:ss");
-	//and DateTimeStart > $datetime 
+	
+	//
 
 	foreach($array as $transportID){
-		$result = mysqli_query($db,"SELECT * FROM Transport where transportID=$transportID ");
+		//echo $transportID;
+		
+		//echo "SELECT * FROM Transport where transportID=".$transportID." and DateTimeStart > ".$datetime;
+		$result = mysqli_query($db,"SELECT * FROM Transport where transportID=$transportID and DateTimeStart > now()");
+		//printf("Error: %s.\n", $stmt->error);
 		if (!$result) {
 		die("Database query failed: " . mysql_error());
 		}

@@ -128,6 +128,12 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "activityConfirmationController"
     })
 
+      .state('myhistory', {
+      url: '/myhistory',
+      templateUrl: 'templates/activity/myhistory.html',
+      controller: "myhistoryController"
+    })
+
 
 
 /*

@@ -4,6 +4,7 @@ angular.module('crowdsourcing')
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
+      $scope.id = window.localStorage.getItem("loginId");
     }
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId)
@@ -47,6 +48,37 @@ angular.module('crowdsourcing')
     $scope.back=function()
     {
       $ionicHistory.goBack();
+    }
+
+    $scope.withdraw=function()
+    {
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Withdraw?',
+        template: 'Are you sure you want to withdraw your application?'
+      });
+
+      confirmPopup.then(function(res) {
+        if(res) {
+          urlString = "http://www.changhuapeng.com/volunteer/php/Withdraw.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
+
+          $http.get(urlString)
+            .success(function (data) {
+              var status = data;
+              if (status != null) {
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Status',
+                  template: status.status[0]
+                });
+                window.location.reload(true);
+                $state.go('tab.activity', {}, {reload: true});
+              }
+            })
+
+            .error(function (data) {
+              alert("Error in connection");
+            });
+        }
+      });
     }
 
 });

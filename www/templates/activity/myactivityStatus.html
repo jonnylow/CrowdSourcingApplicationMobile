@@ -1,0 +1,11 @@
+<ion-view view-title={{transportActivityName}}>
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="back()">Back</button>
+  </ion-nav-buttons>
+  <br><br><br>
+    <button class="button button-block button-calm" ng-disabled="pickedup" ng-click="updateStatus('Pick-up')">Picked up</button>
+  <button class="button button-block button-calm" ng-disabled="checkup" ng-click="updateStatus('At Check-up')">At Check-up</button>
+  <button class="button button-block button-calm" ng-disabled="checkupcomplete" ng-click="updateStatus('Check-up completed')">Check-up Completed</button>
+  <button class="button button-block button-calm" ng-disabled="completed" ng-click="updateStatus('completed')">Completed</button>
+  </ion-content>
+</ion-view>

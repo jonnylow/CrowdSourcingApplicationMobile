@@ -24,7 +24,7 @@ angular.module('crowdsourcing')
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationTo = transportDetails[0].location_to;
               $scope.moreInformation = transportDetails[0].more_information;
-
+              $scope.transportStatus = transportDetails[0].status;
               if(transportDetails[0].status != "completed" && transportDetails[0].approval=="approved")
               {
                 $scope.eldery = false;
@@ -33,7 +33,7 @@ angular.module('crowdsourcing')
               else
               {
                 $scope.eldery = true;
-                $scope.updateStatus = false;
+                $scope.updateStatus = true;
               }
             }
           }
@@ -48,6 +48,11 @@ angular.module('crowdsourcing')
     $scope.back=function()
     {
       $ionicHistory.goBack();
+    }
+
+    $scope.status=function(id, name)
+    {
+      $state.go('myactivityStatus', {transportId: id, transportActivityName: name, status: $scope.transportStatus});
     }
 
     $scope.withdraw=function()

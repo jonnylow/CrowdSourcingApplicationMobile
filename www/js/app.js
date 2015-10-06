@@ -146,6 +146,12 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "elderyInformationController"
     })
 
+    .state('myactivityStatus', {
+      url: '/myactivityStatus/:transportId/:transportActivityName/:status',
+      templateUrl: 'templates/activity/myactivityStatus.html',
+      controller: "myactivityStatusController"
+    })
+
 
 
 /*

@@ -1,21 +1,12 @@
 /* CSS for Login and Registration page */
 
-/* background image */
 .scroll-content{
 
  background-image: url("../img/elderly.jpg");
- background-size: ;
+ background-size: 1000px 1000px;
  background-repeat: no-repeat;
- opacity: 0.9;
- overflow: false;
 }
 
-div.col2{
-
- margin-left: -3%;
- margin-right: -4%;
- margin-bottom: -5%;
-}
 
 div.row{
  margin:1%;
@@ -23,72 +14,118 @@ div.row{
 }
 
 div.col{
- margin:-5%;
- padding-top: 5%;
+ margin-top:-1%;
 }
 
 div.transbox {
  margin: 20px;
- background-color: transparent ;
- border: 2px solid white;
+ margin-top: 5px;
+ background-color: #202020 ;
+ border: none;
  opacity:0.6;
  filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 
+div.email-divider{
+	/*width:100%;
+	height: 20%*/;
+
+
+}
+
+
 div.transbox1 {
- margin: 5px;
- background-color: transparent ;
- border: 2px solid white;
- opacity:0.6;
+ margin-right: 0;
+ margin-bottom: 0;
+ background-color: #202020   ;
+ border: none ;
+ opacity:0.5;
  filter: alpha(opacity=60); /* For IE8 and earlier */
+ width: 80%; 
+ float: left;
+}
+
+div.iconcontainer{
+	margin-bottom: 0;
+	width: 15%; 
+	float:left;
+	background-color: #000000;
+	opacity: 0.8;
+	text-align: center;
+	padding-top: 5% ;
+	padding-left: 2% ;
+	padding-bottom: 2% ;
+}
+
+.larger{
+	font-size: 25px;
 }
 
 div.transbox input
 {
  margin: 1%;
  color: #ffffff;
- width: 200px; border: 1px padding: 5px;
+ width: 200px; 
+ border: none;
+ padding: 5px;
 }
 
 div.transbox1 input
 {
  margin: 1%;
  color: #ffffff;
- width: 200px; border: 1px padding: 5px;
+ width: 200px; 
+ padding: 5px;
 }
 
 label.item
 {
- background-color: transparent; 
+ background-color: transparent;
+ border:none;
+ 
 }
 
-/* pop-up */
-.popup-container .popup {
-    width: 75%;
+@media screen and (max-device-width: 480px){
+	
 }
 
-.popup-title {
-    font-size: 180%;
-    color: #333333;
-    font-weight: 300;
-}
-
-.popup-sub-title {
-    margin: 5% 0 0 0;
-    padding: 2%;
-    font-size: 100%;
-    color: #666666;
-    font-family: 'helvetica';
-    font-weight: 100;
+@media screen and (min-device-width: 1080px){
+		
 }
 
 /* icare icon */
 .fullscreen-image {
-    max-width: 50%;
-    max-height: 50%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
+ max-width: 50%;
+ max-height: 50%;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ top: 0;
 }
 
+div.box{
+	background-color:transparent; 
+	margin:5%;
+	width:80%;	
+}
+
+div.box input{
+	background-color: #202020;
+	text-align: center;
+	color:#ffffff
+	opacity:0.8;
+}
+
+div.morebox{
+	background-color:transparent; 
+	width:80%;
+}
+
+div.morebox input{
+	background-color: #ffffff;
+	color:#000000;
+}
+
+div.item{
+	background-color: transparent ;
+}

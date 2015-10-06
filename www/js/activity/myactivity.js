@@ -44,4 +44,9 @@ angular.module('crowdsourcing')
         	}
         }
   })
+
+    $scope.proceed = function(id, name)
+    {
+      $state.go('myactivityDetails', {transportId: id, transportActivityName: name});
+    }
 });

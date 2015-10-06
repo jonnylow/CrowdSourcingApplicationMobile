@@ -31,6 +31,7 @@ angular.module('crowdsourcing')
       //need to link up to backend database.
       $scope.apply=function()
       {
+        if(window.localStorage.getItem("loginUserName") != null) {
           var confirmPopup = $ionicPopup.confirm({
             title: 'Apply?',
             template: 'Are you sure you want to apply for this transport activity?'
@@ -49,13 +50,13 @@ angular.module('crowdsourcing')
               $http.get(urlString)
                 .success(function (data) {
                   /*success
-                  var status = data;
-                  if (status != null) {
-                    var alertPopup = $ionicPopup.alert({
-                      title: 'Status',
-                      template: status.status[0]
-                    });
-                  }*/
+                   var status = data;
+                   if (status != null) {
+                   var alertPopup = $ionicPopup.alert({
+                   title: 'Status',
+                   template: status.status[0]
+                   });
+                   }*/
 
                   $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
                 })
@@ -65,6 +66,28 @@ angular.module('crowdsourcing')
                 });
             }
           });
+        }
+        else {
+          var myPopup = $ionicPopup.show({
+            title: 'Notice',
+            subTitle: 'You must login first',
+            scope: $scope,
+            buttons: [
+              {
+                text: 'Cancel',
+                onTap: function(e) {
+                  $state.go('scan', {}, {reload: true});
+                }},
+              {
+                text: '<b>Ok</b>',
+                type: 'button-calm',
+                onTap: function(e) {
+                  $state.go('login', {}, {reload: true});
+                }
+              },
+            ]
+          });
+        }
       }
 
       $scope.back=function()

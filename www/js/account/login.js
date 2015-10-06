@@ -22,7 +22,7 @@ angular.module('crowdsourcing')
 
                           window.localStorage.setItem("loginId", loginDetails[i].volunteer_id);
                           window.localStorage.setItem("loginUserName", loginDetails[i].name);
-
+                          window.location.reload(true);
                           $state.go('tab.home', {}, {reload: true});
                         }
                         else {

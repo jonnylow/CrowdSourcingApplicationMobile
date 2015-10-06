@@ -6,7 +6,25 @@ angular.module('crowdsourcing')
         $scope.id = window.localStorage.getItem("loginId");
       }
       else {
-        $state.go('login', {}, {reload: true});
+        var myPopup = $ionicPopup.show({
+          title: 'Notice',
+          subTitle: 'You must login first',
+          scope: $scope,
+          buttons: [
+            {
+              text: 'Cancel',
+              onTap: function(e) {
+                $state.go('tab.home', {}, {reload: true});
+              }},
+            {
+              text: '<b>Ok</b>',
+              type: 'button-calm',
+              onTap: function(e) {
+                $state.go('login', {}, {reload: true});
+              }
+            },
+          ]
+        });
       }
 
     var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;

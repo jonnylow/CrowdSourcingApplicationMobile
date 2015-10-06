@@ -12,7 +12,31 @@ angular.module('crowdsourcing')
           $scope.id = window.localStorage.getItem("loginId");
         }
         else {
-          $state.go('login', {}, {reload: true});
+          if(window.localStorage.getItem("loginUserName") != null) {
+            $scope.name = window.localStorage.getItem("loginUserName");
+            $scope.id = window.localStorage.getItem("loginId");
+          }
+          else {
+            var myPopup = $ionicPopup.show({
+              title: 'Notice',
+              subTitle: 'You must login first',
+              scope: $scope,
+              buttons: [
+                {
+                  text: 'Cancel',
+                  onTap: function(e) {
+                    $state.go('tab.home', {}, {reload: true});
+                  }},
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button-calm',
+                  onTap: function(e) {
+                    $state.go('login', {}, {reload: true});
+                  }
+                },
+              ]
+            });
+          }
         }
 
        	var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=1";

@@ -1,10 +1,17 @@
+<link href="../css/home.css" rel="stylesheet">
 <ion-popover-view>
-  <ion-header-bar>
-    <h1 class="title">Options</h1>
-  </ion-header-bar>
-  <ion-content>
-    <button class="button button-block button-stable">Help</button>
-    <button class="button button-block button-stable">Feedback</button>
-    <button class="button button-block button-stable" ng-click="logout()">Logout</button>
+  <ion-content has-header="false" scroll="false" class="padding">
+  <div class="list">
+      <a class="item">
+      	Help
+      </a>
+      <a class="item">
+      	Feedback
+      </a>
+      <a class="item" ng-click="logout()">
+      
+      	Logout
+      </a>
+  </div>
   </ion-content>
 </ion-popover-view>

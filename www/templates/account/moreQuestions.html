@@ -1,9 +1,14 @@
 <link href="../css/main.css" rel="stylesheet">
 <ion-view hide-nav-bar="true">
-  <ion-content>
+  <ion-pane padding="true" >
+  <div style="text-align: center; ">
+ <img src="../img/Button3.png" class = "page-image"/>
+</div>
     <form ng-submit="verify(fields)">
+      <!--Have a car checkbox-->
       <ion-checkbox ng-model="fields.carChecked"><font color="white">I have a car</ion-checkbox></font>
 
+      <!--Occupation-->
       <div class="morebox" >
         <label class="item item-input item-stacked-label">
           <font color="white">Occupation</font>
@@ -11,7 +16,7 @@
         </label>
        </div>
 
-
+        <!--Area of Preferences 1-->
       <label class="item item-input item-stacked-label">
         <font color="white">Area of Preferences 1</font><br>
         <select ng-model="fields.preferences_1">
@@ -27,6 +32,7 @@
         </select>
       </label>
 
+      <!--Area of Preferences 2-->
       <label class="item item-input item-stacked-label">
         <font color="white">Area of Preferences 2</font><br>
         <select ng-model="fields.preferences_2">
@@ -43,8 +49,9 @@
       </label>
 
       <!--front nric-->
-      <br>
-      <div class="item range range-positive" style="color:#ffffff; border:none"/>
+    
+      <div class="row" style="text-align:center;">
+      <div class="item range range-positive" style="color:#ffffff; border:none;margin-top:1px;"/>
       <label class="ic">IC Photo (Front)<br />
         <img data-ng-src="{{image_url_front}}" height="50" width="50" ><br>
       <button type="button" ng-click="launchPhotoLibraryFront()">Add</button>
@@ -58,8 +65,9 @@
       <button type="button" ng-click="launchPhotoLibraryBack()">Add</button>
     </label>
       </div>
-
+    </div>
       <button class="button button-block button-calm">Register</button>
+      <button ui-sref="verify" class="button button-block button-light">Back</button>
     </form>
-  </ion-content>
+  </ion-pane>
 </ion-view>

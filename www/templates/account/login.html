@@ -1,7 +1,7 @@
 <link href="../css/main.css" rel="stylesheet">
 
 <ion-view hide-nav-bar="true">
-<ion-content background="../img/elderly.jpg" padding="true">
+<ion-pane background="../img/elderly.jpg" padding="true">
 <br><br>
 
 <!--iCare logo-->
@@ -15,32 +15,34 @@
 
   <!--email-->
  <div class="email-divider">
-  <div class="row">
-  <div class="iconcontainer">
-    <i class="icon ion-email light larger" ></i>
-   </div> 
- 
-    <div class="transbox1">
-      <label class="item item-input">
-      <!--<i class="icon ion-email placeholder-icon light"></i>-->
-      <input type="text" placeholder="Email" ng-model="fields.email" >
-      </label>
+    <div class="row">
+      <div class="iconcontainer">
+        <i class="icon ion-email light larger" ></i>
+       </div> 
+   
+      <div class="transbox1">
+        <label class="item item-input">
+        <!--<i class="icon ion-email placeholder-icon light"></i>-->
+        <input type="text" placeholder="Email" ng-model="fields.email" >
+        </label>
+      </div>
     </div>
-</div></div>
+  </div>
 
   <!--password-->
   <div class="email-divider">
-  <div class="row">
-  <div class="iconcontainer">
-    <i class="icon ion-locked light larger" ></i>
-   </div>
-  <div class="transbox1">
-    <label class="item item-input">
-    <!--<i class="icon ion-locked placeholder-icon light"></i>-->
-    <input type="password" colour:"#ffffff" placeholder="Password" ng-model="fields.password">
-    </label>
+    <div class="row">
+      <div class="iconcontainer">
+        <i class="icon ion-locked light larger" ></i>
+      </div>
+      <div class="transbox1">
+        <label class="item item-input">
+        <!--<i class="icon ion-locked placeholder-icon light"></i>-->
+        <input type="password" colour:"#ffffff" placeholder="Password" ng-model="fields.password">
+        </label>
+      </div>
+    </div>
   </div>
-</div></div>
 
 
   <button class="button button-block button-energized">Login</button>
@@ -56,6 +58,6 @@
 
   <!--Register button-->
   <button ui-sref="registration" class="button button-block button-calm">Register!</button>
-</ion-content>
+</ion-pane>
 
 

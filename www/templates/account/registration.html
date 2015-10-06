@@ -1,16 +1,16 @@
  <link href="../css/main.css" rel="stylesheet">
-
 <ion-view hide-nav-bar="true">
-  <ion-nav-buttons side="left">
-    <button class="button" ui-sref="login">Back</button>
-  </ion-nav-buttons>
-  <ion-content padding="true">
+<ion-pane padding="true">
+<!--progress bar-->
+<div style="text-align: center; ">
+ <img src="../img/Button1.png" class = "page-image"/>
+</div>
     <!-- Registration form-->
     <form ng-submit="register(fields)">
 
       <!--name & D.O.B-->
       <div class="row">
-        <div class="col col-30">
+        <div class="col col-33" >
           <div class="transbox">
             <label class="item item-input">
             <i class="icon ion-person placeholder-icon light"></i>
@@ -18,7 +18,7 @@
             </label>
           </div>
         </div>
-        <div class="col col-70">
+        <div class="col col-67">
           <div class="transbox">
             <label class="item item-input">
               <i class="icon ion-calendar placeholder-icon light"></i>
@@ -51,9 +51,8 @@
           </div>
         </div>
         <div class="col">
-          <div class="transbox">
-            <label class="item item-input">
-              <i class="icon ion-locked placeholder-icon light"></i>
+          <div class="transbox" >
+            <label class="item item-input" style="padding-left:0px;">              
                 <input type="password" colour:"#ffffff" placeholder="Confirm Password" ng-model="fields.confirmpassword">
             </label>
           </div>
@@ -88,8 +87,8 @@
 
       <!--Gender-->
       <div class="row">
-        <div class="col">
-          <div class="transbox">
+        <div class="col" >
+          <div class="transbox" style="width:30%; padding:5px;">
             <label class="item item-input">
               <i class="icon ion-transgender placeholder-icon light"></i>
               <select ng-model="fields.gender">
@@ -106,5 +105,5 @@
 
     <!--cancel button-->
     <button ui-sref="login" class="button button-block button-light">Cancel</button>
-  </ion-content>
+  </ion-pane>
 </ion-view>

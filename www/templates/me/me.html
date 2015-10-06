@@ -1,45 +1,60 @@
+<link href="../css/profile.css" rel="stylesheet">
 <ion-view view-title="View Account">
   <ion-content>
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">NRIC: {{nric}}</span>
-    </label>
+  
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Name: {{username}}</span>
-    </label>
+  <div class="list card">  
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-card"></i>
+      NRIC: {{nric}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Email: {{email}}</span>
-    </label>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-person"></i>
+      Name: {{username}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Contact Number: {{contactnumber}}</span>
-    </label>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-email"></i>
+      Email: {{email}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Date Of Birth: {{dob}}</span>
-    </label>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-iphone"></i>
+      Contact Number: {{contactnumber}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Gender: {{gender}}</span>
-    </label>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-calendar"></i>
+      Date Of Birth: {{dob}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Occuption: {{occuption}}</span>
-    </label>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-transgender"></i>
+      Gender: {{gender}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Preference 1: {{preference1}}</span>
-    </label>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-briefcase"></i>
+      Occuption: {{occuption}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Preference 2: {{preference2}}</span>
-    </label>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-heart"></i>
+      Preference 1: {{preference1}}
+    </a>
 
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-heart"></i>
+      Preference 2: {{preference2}}
+    </a>
 
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Password: xxxx xxxx</span>
-      <button class="button button-block button-stable" ui-sref="updateAccount">Change Password</button>
+    <a href="#" class="item item-icon-left">
+      <i class="icon ion-locked"></i>
+      Password: xxxx xxxx
+    </a>
+  </div>
+      <button class="button button-block button-calm" ui-sref="updateAccount">Change Password</button>
     </label>
   </ion-content>
 </ion-view>

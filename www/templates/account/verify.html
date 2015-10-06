@@ -1,6 +1,10 @@
 <link href="../css/main.css" rel="stylesheet">
 <ion-view hide-nav-bar="true">
-  <ion-content>
+<ion-pane padding="true">
+<div style="text-align: center; ">
+ <img src="../img/Button2.png" class = "page-image"/>
+</div>
+
     <form ng-submit="verify(fields)">
       <div class="box" >
         <label class="item item-input item-stacked-label">
@@ -16,6 +20,7 @@
         </label>
       </div>
       <button class="button button-block button-calm">Verify</button>
+      <button ui-sref="registration" class="button button-block button-light">Back</button>
     </form>
-  </ion-content>
+  </ion-pane>
 </ion-view>

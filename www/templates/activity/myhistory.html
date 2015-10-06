@@ -6,7 +6,7 @@
   	 <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index">
       {{transportName[$index]}}<br>
       {{transportDateTimeStart[$index]}} <br>
-      <button class="icon ion-checkmark-round"></button>
+       <button class="button button-positive">{{transportStatus[$index]}}</button>
     </ion-item>
   </ion-content>
 </ion-view>

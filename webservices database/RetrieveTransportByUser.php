@@ -18,12 +18,12 @@ if(!empty($_GET['id']) && !empty($_GET['type']))
 	$type = $_GET['type'];
 	//query
 	if ($type == 1){
-		$result = mysqli_query($db,"SELECT * FROM tasks where volunteer_id=$id");
+		$result = mysqli_query($db,"SELECT * FROM tasks where volunteer_id=$id and (approval='pending' or approval='approved') and status != 'completed'");
 		if (!$result) {
 	 	die("Database query failed: " . mysql_error());
 	 	}
 	} else {
-		$result = mysqli_query($db,"SELECT * FROM tasks where volunteer_id=$id and status='completed'");
+		$result = mysqli_query($db,"SELECT * FROM tasks where volunteer_id=$id and approval!='pending'");
 		if (!$result) {
 	 	die("Database query failed: " . mysql_error());
 	 	}
@@ -46,7 +46,7 @@ if(!empty($_GET['id']) && !empty($_GET['type']))
 		//echo $transportID;
 		
 		//echo "SELECT * FROM Transport where transportID=".$transportID." and DateTimeStart > ".$datetime;
-		$result = mysqli_query($db,"SELECT * FROM activities where activity_id=$transportID");
+		$result = mysqli_query($db,"SELECT * FROM activities a, tasks t where a.activity_id=$transportID and a.activity_id=t.activity_id and volunteer_id=$id and datetime_start > now()");
 		//printf("Error: %s.\n", $stmt->error);
 		if (!$result) {
 		die("Database query failed: " . mysql_error());
@@ -70,6 +70,8 @@ if(!empty($_GET['id']) && !empty($_GET['type']))
 			$array[$int]['next_of_kin_contact'] = $row[13];
 			$array[$int]['senior_centre_id'] = $row[14];
 			$array[$int]['vwo_user_id'] = $row[15];
+			$array[$int]['status'] = $row[21];
+			$array[$int]['approval'] = $row[22];
 			$int++;
 	 	}
 	}

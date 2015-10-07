@@ -1,7 +1,6 @@
 /* CSS for Login and Registration page */
 
 .scroll-content{
-
  background-image: url("../img/elderly.jpg");
  background-size: 1000px 1000px;
  background-repeat: no-repeat;
@@ -132,8 +131,8 @@ div.morebox{
 }
 
 div.morebox input{
-	background-color: #202020;
-	color:#ffffff;
+	background-color: #D7D4D4;
+	color:#000000;
 	opacity:0.6;
 }
 
@@ -146,4 +145,24 @@ select {
 	opacity:0.8;
 	color:#000000;
 	width:80%;
+}
+
+div.date-ph{
+	height:49px;
+	padding-left: 10px;
+	margin-right: 0px;
+	margin-bottom: 6px;
+ 	margin-top: 2px;
+ 	background-color: #202020 ;
+ 	border: none;
+ 	opacity:0.6;
+ 	filter: alpha(opacity=60); 
+	color:#C8C6C6;
+	text-align: center;
+	line-height: 50px; /* for example. */
+}
+
+i.icon.ion-calendar{
+	padding:5px;
+	padding-right: 10px;
 }

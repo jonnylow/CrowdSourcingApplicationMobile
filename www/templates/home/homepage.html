@@ -1,17 +1,21 @@
-<link href="../css/home.css" rel="stylesheet">
+<link href="css/home.css" rel="stylesheet">
 
-<ion-view class="pane" view-title="Home">
-  <ion-nav-bar class="bar-light">
-    <ion-nav-buttons side="left">
-      <button class="button button-dark" ng-click="scan()">Scan</button>
-    </ion-nav-buttons>
-  </ion>
+<ion-view>
 
-  <ion-nav-buttons side="secondary">
-    <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
-  </ion-nav-buttons>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <img src="../img/icare.png" side="right" class="iconsize-image"/>
+    <div class="button-bar">
+      <a class="button button-icon">
+      <a class="button button-icon"></a>
+      <a class="button button-icon"></a>
+      <button class="button button-icon ion-ios-location" ui-sref="scan"></button>
+      <button class="button button-icon ion-search" ng-click="goSearch()"></button>
+      <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
+      </div>
+  </ion-header-bar>
 
-  <ion-content>
+
+  <ion-content has-header="true">
     <div class="list card">
   Welcome {{name}}!
   <div class="item item-avatar">

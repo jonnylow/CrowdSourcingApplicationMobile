@@ -28,7 +28,6 @@ angular.module('crowdsourcing')
         }
       })
 
-      //need to link up to backend database.
       $scope.apply=function()
       {
         if(window.localStorage.getItem("loginUserName") != null) {

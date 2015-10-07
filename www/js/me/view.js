@@ -48,4 +48,9 @@ angular.module('crowdsourcing')
       .error(function (data) {
         alert("Error in connection");
       });
+
+      $scope.manageAccount = function()
+      {
+        $state.go('manageAccount', {id: $scope.id});
+      }
     });

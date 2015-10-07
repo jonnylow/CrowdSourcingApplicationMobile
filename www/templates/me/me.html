@@ -1,9 +1,9 @@
 <link href="../css/profile.css" rel="stylesheet">
 <ion-view view-title="View Account">
   <ion-content>
-  
 
-  <div class="list card">  
+
+  <div class="list card">
     <a href="#" class="item item-icon-left">
       <i class="icon ion-card"></i>
       NRIC: {{nric}}
@@ -55,6 +55,7 @@
     </a>
   </div>
       <button class="button button-block button-calm" ui-sref="updateAccount">Change Password</button>
+    <button class="button button-block button-calm" ng-click="manageAccount()">Manage Account</button>
     </label>
   </ion-content>
 </ion-view>

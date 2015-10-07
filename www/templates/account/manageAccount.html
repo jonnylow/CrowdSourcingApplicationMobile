@@ -1,0 +1,111 @@
+<ion-view view-title="Update Acount">
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="back()">Back</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <!-- Registration form-->
+    <form ng-submit="update(fields)">
+
+      <!--NRIC-->
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <font color="white">NRIC</font><br>
+            <label class="item item-input">
+              <i class="icon ion-card placeholder-icon light"></i>
+              <input readonly=true type="text" colour:"#ffffff" placeholder="NRIC" ng-model="fields.nric">
+            </label>
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <!--email-->
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <font color="white">Email</font><br>
+            <label class="item item-input">
+              <i class="icon ion-email placeholder-icon light"></i>
+              <input readonly=true type="text" placeholder="Email" ng-model="fields.email" >
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!--name & D.O.B-->
+      <div class="row">
+        <div class="col" >
+          <div class="transbox">
+            <font color="white">Name</font><br>
+            <label class="item item-input">
+              <i class="icon ion-person placeholder-icon light"></i>
+              <input type="text" placeholder="Name" ng-model="fields.name" >
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!--contact number-->
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <font color="white">Contact Number</font><br>
+            <label class="item item-input">
+              <i class="icon ion-iphone placeholder-icon light"></i>
+              <input type="text" colour:"#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
+            </label>
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <!--contact number-->
+      <div class="row">
+        <div class="col">
+          <div class="transbox">
+            <font color="white">Occupation</font><br>
+            <label class="item item-input">
+              <i class="icon ion-iphone placeholder-icon light"></i>
+              <input type="text" colour:"#ffffff" placeholder="Occupation" ng-model="fields.occupation">
+            </label>
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <!--Area of Preferences 1-->
+      <label class="item item-input item-stacked-label">
+        <font color="white">Area of Preferences 1</font><br>
+        <select ng-model="fields.preferences_1">
+          <option value="Befriend-senior-citizens">Befriend senior citizens</option>
+          <option value="Organise/participate-in-fund-raising-activities">Organise/participate in fund raising activities</option>
+          <option value="Organize/participate-in-social-activities-or-outings">Organize/participate in social activities or outings</option>
+          <option value="Design/Maintain-Webpage">Design/Maintain Webpage</option>
+          <option value="Organise/participate-in-publicity-events">Organise/participate in publicity events</option>
+          <option value="Written-translation-for-brochures">Written translation for brochures</option>
+          <option value="Prepare-publicity-materials">Prepare publicity materials</option>
+          <option value="Lead-games/exercises">Lead games/exercises</option>
+          <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
+        </select>
+      </label>
+
+      <!--Area of Preferences 2-->
+      <label class="item item-input item-stacked-label">
+        <font color="white">Area of Preferences 2</font><br>
+        <select ng-model="fields.preferences_2">
+          <option value="Befriend-senior-citizens">Befriend senior citizens</option>
+          <option value="Organise/participate-in-fund-raising-activities">Organise/participate in fund raising activities</option>
+          <option value="Organize/participate-in-social-activities-or-outings">Organize/participate in social activities or outings</option>
+          <option value="Design/Maintain-Webpage">Design/Maintain Webpage</option>
+          <option value="Organise/participate-in-publicity-events">Organise/participate in publicity events</option>
+          <option value="Written-translation-for-brochures">Written translation for brochures</option>
+          <option value="Prepare-publicity-materials">Prepare publicity materials</option>
+          <option value="Lead-games/exercises">Lead games/exercises</option>
+          <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
+        </select>
+      </label>
+      <button  class="button button-block button-calm">Update</button>
+    </form>
+  </ion-content>
+</ion-view>

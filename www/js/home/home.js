@@ -21,8 +21,9 @@ angular.module('crowdsourcing')
       $ionicHistory.clearHistory();
       $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
       $scope.closePopover();
-      window.location.reload(true);
-      $state.go('loginHome', {}, {reload: true});
+      //window.location.reload(true);
+      //$state.go('loginHome', {}, {reload: true});
+      $state.transitionTo('loginHome', null, {'reload':true});
     }
 
 

@@ -74,7 +74,7 @@ angular.module('crowdsourcing')
                   title: 'Status',
                   template: status.status[0]
                 });
-                window.location.reload(true);
+                //window.location.reload(true);
                 $state.go('tab.activity', {}, {reload: true});
               }
             })

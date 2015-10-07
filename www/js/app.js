@@ -35,6 +35,7 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       })
 
     .state('tab.home', {
+      cache: false,
       url: '/home',
       views: {
         'tab-home': {
@@ -54,6 +55,7 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
     })
 
     .state('tab.activity', {
+      cache: false,
       url: '/myactivity',
       views: {
         'tab-activity': {
@@ -64,6 +66,7 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
     })
 
     .state('tab.me', {
+      cache: false,
       url: '/me',
       views: {
         'tab-me': {
@@ -74,11 +77,13 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
     })
 
     .state('loginHome', {
+      cache: false,
       url: '/loginHome',
       templateUrl: 'templates/commons/login_home.html'
     })
 
     .state('login', {
+      cache: false,
       url: '/login',
       templateUrl: 'templates/account/login.html',
       controller: "loginController"
@@ -109,67 +114,60 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
     })
 
     .state('scan', {
+      cache: false,
       url: '/scan',
       templateUrl: 'templates/scan/scan.html',
       controller: "scanController"
     })
 
     .state('listTransport', {
+      cache: false,
       url: '/listTransport',
       templateUrl: 'templates/list/listTransport.html',
       controller: "listTransportController"
     })
 
     .state('activityDetails', {
+      cache: false,
       url: '/activityDetails/:transportId/:transportActivityName',
       templateUrl: 'templates/activity/activityDetails.html',
       controller: "activityDetailsController"
     })
 
     .state('activityConfirmation', {
+      cache: false,
       url: '/activityConfirmation/:transportId/:transportActivityName',
       templateUrl: 'templates/activity/activityConfirmation.html',
       controller: "activityConfirmationController"
     })
 
       .state('myhistory', {
+      cache: false,
       url: '/myhistory',
       templateUrl: 'templates/activity/myhistory.html',
       controller: "myhistoryController"
     })
 
     .state('myactivityDetails', {
+      cache: false,
       url: '/myactivityDetails/:transportId/:transportActivityName',
       templateUrl: 'templates/activity/myactivityDetails.html',
       controller: "myactivityDetailsController"
     })
 
     .state('elderyInformation', {
+      cache: false,
       url: '/elderyInformation/:transportId/:transportActivityName',
       templateUrl: 'templates/activity/elderyInformation.html',
       controller: "elderyInformationController"
     })
 
     .state('myactivityStatus', {
+      cache: false,
       url: '/myactivityStatus/:transportId/:transportActivityName/:status',
       templateUrl: 'templates/activity/myactivityStatus.html',
       controller: "myactivityStatusController"
     })
-
-
-
-/*
-    .state('viewAccount', {
-      url: '/viewAccount',
-      templateUrl: 'templates/account/view.html',
-      controller: "viewAccountController"
-    })
-*/
-    /*.state('home', {
-      url: '/home',
-      templateUrl: 'templates/home/homepage.html',
-      controller: "homeController"
-    })*/
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/loginHome');

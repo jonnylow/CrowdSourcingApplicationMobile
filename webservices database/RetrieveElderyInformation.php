@@ -1,30 +1,17 @@
 <?php
 //connect
- $db = mysqli_connect("www.changhuapeng.com","volunteer","iamaguest"); 
- if (!$db) {
- die("Database connection failed miserably: " . mysql_error());
- }
-
- //select database
- $db_select = mysqli_select_db($db,"laravel");
- if (!$db_select) {
- die("Database selection also failed miserably: " . mysql_error());
- }
+$db = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 
 if(!empty($_GET['transportId']))
 {	
 	$transportId = $_GET['transportId'];
 	//query
-	$result = mysqli_query($db,"SELECT * FROM activities a, tasks t, senior_centres s where a.activity_id =$transportId and a.activity_id=t.activity_id and s.senior_centre_id=a.senior_centre_id");
-
-	 if (!$result) {
-	 die("Database query failed: " . mysql_error());
-	 }
+	$result = pg_query($db,"SELECT * FROM activities a, tasks t, senior_centres s where a.activity_id =$transportId and a.activity_id=t.activity_id and s.senior_centre_id=a.senior_centre_id");
 	 
 	 $int = 0;
 	$array = array();
 
-	 while ($row = mysqli_fetch_array($result)) {
+	 while ($row = pg_fetch_array($result)) {
 		$array[$int] = array();
 		$array[$int]['activity_id'] = $row[0];
 		$array[$int]['name'] = $row[1];
@@ -48,8 +35,6 @@ if(!empty($_GET['transportId']))
 		$int++;
 
 	 }
-	//Step5
-	 mysqli_close($db);
 	 
 	 $json_string = json_encode($array, JSON_PRETTY_PRINT);
 	 echo $json_string;

@@ -1,27 +1,14 @@
 <?php
 //connect
- $db = mysqli_connect("www.changhuapeng.com","volunteer","iamaguest"); 
- if (!$db) {
- die("Database connection failed miserably: " . mysql_error());
- }
+ $db = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 
- //select database
- $db_select = mysqli_select_db($db,"laravel");
- if (!$db_select) {
- die("Database selection also failed miserably: " . mysql_error());
- }
-
- 
 //query
-$result = mysqli_query($db,"SELECT * FROM activities");
- if (!$result) {
- die("Database query failed: " . mysql_error());
- }
- 
+$result = pg_query($db,"SELECT * FROM activities");
+
  $int = 0;
 $array = array();
 
- while ($row = mysqli_fetch_array($result)) {
+ while ($row = pg_fetch_array($result)) {
 	$array[$int] = array();
 	$array[$int]['activity_id'] = $row[0];
 	$array[$int]['name'] = $row[1];
@@ -42,10 +29,6 @@ $array = array();
 	$int++;
 
  }
-
-
-//Step5
- mysqli_close($db);
  
  $json_string = json_encode($array, JSON_PRETTY_PRINT);
  echo $json_string;

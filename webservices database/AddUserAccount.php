@@ -1,20 +1,6 @@
 <?php
-$servername = "www.changhuapeng.com";
-$username = "volunteer";
-$password = "iamaguest";
-$dbname = "laravel";
-
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-		
-	 // prepare and bind
-	$stmt = $conn->prepare("INSERT INTO volunteers (`nric`,`name`,`email`,`password`,`gender`,`date_of_birth`,`contact_no`,`occupation`,`has_car`,`area_of_preference_1`,`area_of_preference_2`,`image_nric_front`,`image_nric_back`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-	$stmt->bind_param("sssssssssssss", $nric, $name, $email, $password, $gender, $dateOfBirth, $contactNo, $occupation, $hasCar, $areaPreferences1, $areaPreferences2, $nricFront, $nricBack);
+	$conn = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 	
 	//get parameters
 	$nric = $_GET['nric'];
@@ -31,7 +17,8 @@ $dbname = "laravel";
 	$nricFront= $_GET['frontIC'];
 	$nricBack= $_GET['backIC'];
 	
-	$passed = $stmt->execute();
+	$result = pg_prepare($conn, "my_query", 'INSERT INTO volunteers (nric, name, email,password,gender,date_of_birth,contact_no,occupation,has_car,area_of_preference_1,area_of_preference_2,image_nric_front,image_nric_back) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)');
+	$passed = pg_execute($conn, "my_query", array($nric, $name, $email, $password, $gender, $dateOfBirth, $contactNo, $occupation, $hasCar, $areaPreferences1, $areaPreferences2, $nricFront, $nricBack));
 	
 	if($passed){
 		$a = array("status" => array("Created successfully")); 
@@ -42,8 +29,4 @@ $dbname = "laravel";
 		$json_string = json_encode($a, JSON_PRETTY_PRINT);
 		echo $json_string;
 	}
-
-	$stmt->close();
-	$conn->close();
-
 ?>

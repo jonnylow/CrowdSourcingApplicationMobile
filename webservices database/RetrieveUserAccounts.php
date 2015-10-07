@@ -1,27 +1,13 @@
 <?php
 //connect
- $db = mysqli_connect("www.changhuapeng.com","volunteer","iamaguest"); 
- if (!$db) {
- die("Database connection failed miserably: " . mysql_error());
- }
+$db = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 
- //select database
- $db_select = mysqli_select_db($db,"laravel");
- if (!$db_select) {
- die("Database selection also failed miserably: " . mysql_error());
- }
+$result = pg_query($db,"SELECT * FROM volunteers");
 
- 
-//query
-$result = mysqli_query($db,"SELECT * FROM volunteers");
- if (!$result) {
- die("Database query failed: " . mysql_error());
- }
- 
- $int = 0;
+$int = 0;
 $array = array();
 
- while ($row = mysqli_fetch_array($result)) {
+ while ($row = pg_fetch_array($result)) {
 	$array[$int] = array();
 	$array[$int]['volunteer_id'] = $row[0];
 	$array[$int]['nric'] = $row[1];
@@ -33,8 +19,8 @@ $array = array();
 	$array[$int]['contact_no'] = $row[7];
 	$array[$int]['occupation'] = $row[8];
 	$array[$int]['has_car'] = $row[9];
-	$array[$int]['area_of_preference_1'] = $row[10];
-	$array[$int]['area_of_preference_2'] = $row[11];
+	$array[$int]['area_of_preference_1'] = $row[11];
+	$array[$int]['area_of_preference_2'] = $row[12];
 	$array[$int]['is_approved'] = $row[15];
 	
 	$int++;
@@ -43,7 +29,7 @@ $array = array();
 
 
 //Step5
- mysqli_close($db);
+pg_close($db);
  
  $json_string = json_encode($array, JSON_PRETTY_PRINT);
  echo $json_string;

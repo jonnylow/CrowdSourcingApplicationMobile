@@ -17,7 +17,7 @@ angular.module('crowdsourcing')
                     for (var i = 0; i < loginDetails.length; i++) {
                       if(tempNRIC == loginDetails[i].email && tempPassword == loginDetails[i].password)
                       {
-                        if(loginDetails[i].is_approved != 0) {
+                        if(loginDetails[i].is_approved != 'f') {
                           loginCheck = 1;
 
                           window.localStorage.setItem("loginId", loginDetails[i].volunteer_id);

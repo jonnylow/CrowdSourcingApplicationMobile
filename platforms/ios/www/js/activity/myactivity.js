@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover) {
 
         $scope.transportID=[];
         $scope.transportName=[];
@@ -73,5 +73,45 @@ angular.module('crowdsourcing')
     $scope.proceed = function(id, name)
     {
       $state.go('myactivityDetails', {transportId: id, transportActivityName: name});
+    }
+
+    // .fromTemplateUrl() method
+    if (window.localStorage.getItem("loginUserName") == null) {
+      $ionicPopover.fromTemplateUrl('templates/home/menu_popout_guest.html', {
+        scope: $scope
+      }).then(function (popover) {
+        $scope.popover = popover;
+      });
+    }
+    else {
+      $ionicPopover.fromTemplateUrl('templates/home/menu_popout.html', {
+        scope: $scope
+      }).then(function (popover) {
+        $scope.popover = popover;
+      });
+    }
+
+    $scope.openPopover = function($event) {
+      $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+      $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.popover.remove();
+    });
+
+    $scope.logout = function () {
+      window.localStorage.removeItem("loginUserName");
+      window.localStorage.removeItem("loginId");
+      window.localStorage.clear();
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
+      $scope.closePopover();
+      //window.location.reload(true);
+      $state.go('login', {}, {reload: true});
+      //$state.transitionTo('loginHome', null, {'reload':true});
     }
 });

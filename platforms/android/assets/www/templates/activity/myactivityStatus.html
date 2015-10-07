@@ -1,7 +1,9 @@
 <ion-view view-title={{transportActivityName}}>
+  <ion-nav-bar class="bar-stable">
   <ion-nav-buttons side="left">
     <button class="button" ng-click="back()">Back</button>
   </ion-nav-buttons>
+  </ion-nav-bar>
   <br><br><br>
     <button class="button button-block button-calm" ng-disabled="pickedup" ng-click="updateStatus('Pick-up')">Picked up</button>
   <button class="button button-block button-calm" ng-disabled="checkup" ng-click="updateStatus('At Check-up')">At Check-up</button>

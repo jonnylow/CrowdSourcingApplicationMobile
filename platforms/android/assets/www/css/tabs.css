@@ -1,0 +1,16 @@
+/* tabs */
+.tabs-stable .tabs{
+  background-color: rgba(48,56,67,0.95);
+  background-image: none;
+  
+}
+
+.tabs.tabs-stable {
+  border-color: none;
+}
+
+.tabs-striped.tabs-background-positive .tabs {
+  background-color: #29A29C;
+  background-image: none; 
+  border-color: #29A29C;
+}

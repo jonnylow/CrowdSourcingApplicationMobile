@@ -1,4 +1,6 @@
 <ion-view view-title="Nearby Location">
+
+  <ion-nav-bar class="bar-stable">
   <ion-nav-buttons side="left">
     <button class="button" ui-sref="tab.home">Back to Home</button>
   </ion-nav-buttons>
@@ -6,9 +8,10 @@
   <ion-nav-buttons side="right">
     <button class="button" ui-sref="listTransport">List View</button>
   </ion-nav-buttons>
+</ion-nav-bar>
 
-  <ion-content scroll="false">
-    <ui-gmap-google-map data-tap-disabled="true" center='map.center' zoom='map.zoom' events="map.markersEvents">
+  <ion-content scroll='false'>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents" data-tap-disabled="true">
       <ui-gmap-marker coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
         <ui-gmap-window show="true">
           <div>{{currentLocationMarker.window.title}}</div>

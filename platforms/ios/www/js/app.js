@@ -51,11 +51,19 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       }
     })
 
-    .state('tab.search', {
+    .state('search', {
+      cache: false,
       url: '/search',
+      templateUrl: 'templates/search/search.html'
+    })
+
+    .state('tab.me', {
+      cache: false,
+      url: '/me',
       views: {
-        'tab-search': {
-          templateUrl: 'templates/search/search.html'
+        'tab-me': {
+          templateUrl: 'templates/me/me.html',
+          controller: "viewAccountController"
         }
       }
     })
@@ -71,22 +79,24 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       }
     })
 
-    .state('tab.me', {
+    .state('tab.myhistory', {
       cache: false,
-      url: '/me',
+      url: '/myhistory',
       views: {
-        'tab-me': {
-          templateUrl: 'templates/me/me.html',
-          controller: "viewAccountController"
+        'tab-activity': {
+          templateUrl: 'templates/activity/myhistory.html',
+          controller: "myhistoryController"
         }
       }
     })
 
-    .state('loginHome', {
+/*
+    .state('myhistory', {
       cache: false,
-      url: '/loginHome',
-      templateUrl: 'templates/commons/login_home.html'
-    })
+      url: '/myhistory',
+      templateUrl: 'templates/activity/myhistory.html',
+      controller: "myhistoryController"
+    })*/
 
     .state('login', {
       cache: false,
@@ -147,13 +157,6 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "activityConfirmationController"
     })
 
-      .state('myhistory', {
-      cache: false,
-      url: '/myhistory',
-      templateUrl: 'templates/activity/myhistory.html',
-      controller: "myhistoryController"
-    })
-
     .state('myactivityDetails', {
       cache: false,
       url: '/myactivityDetails/:transportId/:transportActivityName',
@@ -175,7 +178,13 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "myactivityStatusController"
     })
 
+    .state('manageAccount', {
+      url: '/manageAccount/:id',
+      templateUrl: 'templates/account/manageAccount.html',
+      controller: "manageAccountController"
+    })
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/loginHome');
+  $urlRouterProvider.otherwise('/login');
 
 });

@@ -98,12 +98,6 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "myhistoryController"
     })*/
 
-    .state('loginHome', {
-      cache: false,
-      url: '/loginHome',
-      templateUrl: 'templates/commons/login_home.html'
-    })
-
     .state('login', {
       cache: false,
       url: '/login',
@@ -191,6 +185,6 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/loginHome');
+  $urlRouterProvider.otherwise('/login');
 
 });

@@ -1,7 +1,10 @@
-<ion-view view-title="Update Acount">
-  <ion-content>
+<link href="css/profile.css" rel="stylesheet">
+<ion-view view-title="Update Account">
+  <ion-content padding="true">
+  
+
     <form ng-submit="update(fields)">
-      <div class="list">
+      <div class="list card">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Current Password</span>
           <input type="password" placeholder="xxxxxxxx" ng-model="fields.currentpassword">
@@ -17,7 +20,8 @@
           <input type="password" placeholder="xxxxxxxx" ng-model="fields.confirmpassword">
         </label>
       </div>
-      <button class="button button-block button-stable">Update Account</button>
+      <button class="button button-block button-orange">Update Account</button>
+      <button ui-sref="tab.me" class="button button-block button-stable">Back</button>
     </form>
   </ion-content>
 </ion-view>

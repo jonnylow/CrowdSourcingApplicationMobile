@@ -1,11 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
-.pane {
+/*.pane {
     background-image: url("../img/elderly.jpg"); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-}
+}*/
 
 .angular-google-map-container {height: 300px;}
 
@@ -23,6 +23,7 @@
 .button.button-energized.active, .button.button-energized.activated {
       border-color: #EEA04D;
       background-color: #EEA04D;
+      opacity: 0.5;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
 }
 
@@ -52,22 +53,30 @@
   border-color: transparent;
   background-color: transparent;
   color: #FFFFFF;
+
 }
 
-/* bottom tabs */
-.tabs-positive .tabs{
-  background-color: rgba(48,56,67,0.95);
-  background-image: none;
-  
+/* transparent button with white border */
+.button.button-assertive {
+  border-color: #FFCC80;
+  background-color: #FFCC80;
+  color: #ffffff;
 }
 
-.tabs.tabs-positive {
-  border-color: none;
-}
+.button.button-assertive:hover {
+   color: #FFFFFF;
+    opacity: 0.5; }
+
+.button.button-assertive.active, .button.button-assertive.activated {
+      border-color: #FFCC80;
+      background-color: #FFCC80;
+      opacity: 0.5;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
 
 /* nav bar */
+/* ios 
 .bar.bar-light {
-  background-color: #848484;
+  background-color: #29A29C;
   color: #fff;
 }
 
@@ -85,13 +94,37 @@
  
 .scroll-content {
   overflow: visible !important;
+}*/
+
+/* android */
+.bar.bar-positive {
+  background: #29A29C;
+  z-index: -1;
+  border-bottom-width: 0;
 }
- 
- /* not sure if it helps nav bar */
+
+.bar.bar-positive .title {
+  color: #fff; 
+}
+
+.button.button-full {
+  margin-top: 0;
+}
+
+ /* not sure if it helps nav bar 
 .platform-ios.platform-cordova:not(.fullscreen) .has-header {
   top:0px;
-}
+} */
 
 .tab-item {
   color: white;
+}
+
+.iconsize-image {
+ max-width: 150%;
+ max-height: 150%;
+ bottom: 0;
+ margin-left: 2%;
+ right: 0;
+ top: 0;
 }

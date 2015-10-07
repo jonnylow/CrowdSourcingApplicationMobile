@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('viewAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
+    .controller('viewAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $ionicHistory, $timeout) {
       if(window.localStorage.getItem("loginUserName") != null) {
         $scope.name = window.localStorage.getItem("loginUserName");
         $scope.id = window.localStorage.getItem("loginId");
@@ -32,7 +32,7 @@ angular.module('crowdsourcing')
     $http.get(urlString)
       .success(function (data) {
         var userDetails = data;
-        if (userDetails != null) {
+        if (userDetails != null && userDetails.length!=0 ) {
           $scope.username = userDetails[0].name;
           $scope.nric=userDetails[0].nric;
           $scope.email =userDetails[0].email;
@@ -48,4 +48,51 @@ angular.module('crowdsourcing')
       .error(function (data) {
         alert("Error in connection");
       });
+
+      $scope.manageAccount = function()
+      {
+        $state.go('manageAccount', {id: $scope.id});
+      }
+
+      // .fromTemplateUrl() method
+      if (window.localStorage.getItem("loginUserName") == null) {
+        $ionicPopover.fromTemplateUrl('templates/home/menu_popout_guest.html', {
+          scope: $scope
+        }).then(function (popover) {
+          $scope.popover = popover;
+        });
+      }
+      else {
+        $ionicPopover.fromTemplateUrl('templates/home/menu_popout.html', {
+          scope: $scope
+        }).then(function (popover) {
+          $scope.popover = popover;
+        });
+      }
+
+      $scope.openPopover = function($event) {
+        $scope.popover.show($event);
+      };
+      $scope.closePopover = function() {
+        $scope.popover.hide();
+      };
+      //Cleanup the popover when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+      });
+
+    $scope.logout = function () {
+      window.localStorage.removeItem("loginUserName");
+      window.localStorage.removeItem("loginId");
+      window.localStorage.clear();
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
+      $scope.closePopover();
+      //window.location.reload(true);
+      $state.go('login', {}, {reload: true});
+      //$state.transitionTo('loginHome', null, {'reload':true});
+    }
+
+
     });

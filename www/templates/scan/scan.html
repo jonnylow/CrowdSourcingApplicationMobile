@@ -10,8 +10,8 @@
   </ion-nav-buttons>
 </ion-nav-bar>
 
-  <ion-content>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents">
+  <ion-content scroll='false'>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents" data-tap-disabled="true">
       <ui-gmap-marker coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
         <ui-gmap-window show="true">
           <div>{{currentLocationMarker.window.title}}</div>

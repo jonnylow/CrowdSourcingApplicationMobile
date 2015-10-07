@@ -25,7 +25,6 @@ angular.module('crowdsourcing')
                 {
                   text: 'Cancel',
                   onTap: function(e) {
-                    $ionicHistory.clearCache();
                     $state.go('tab.home', {}, {reload: true});
                   }},
                 {

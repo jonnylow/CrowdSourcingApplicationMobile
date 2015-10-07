@@ -1,0 +1,45 @@
+<link href="../css/home.css" rel="stylesheet">
+
+<ion-view class="pane" view-title="Home">
+  <ion-nav-bar class="bar-light">
+    <ion-nav-buttons side="left">
+      <button class="button button-dark" ng-click="scan()">Scan</button>
+    </ion-nav-buttons>
+  </ion>
+
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <div class="list card">
+  Welcome {{name}}!
+  <div class="item item-avatar">
+    <img src="img/img_logo.jpg">
+    <h2>Recommended</h2>
+    <p>22nd August 2015</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="img/img_event.jpg" height="500" width="10">
+    <p>
+      <h2>Anti Cyber Bullying Campaign!</h2>
+      This activity promotes anti cyber bullying as a cause. Volunteers will be required to assist to educate children on the importance of whistleblowing on a cyber bully
+    </p>
+    <p>
+      <div style="height: 30px; width: 70%; transition: width 0.1s; background: blue;"> <h3 class="light">70% </h3> </div>
+      <a href="#" class="subdued energized">5 People have applied</a><a href="#" class="subdued royal">3 Days to go</a>
+
+    </p>
+  </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="www.google.com.sg">
+      <i class="icon ion-share"></i>
+      Apply
+    </a>
+  </div>
+
+</div>
+  </ion-content>
+</ion-view>

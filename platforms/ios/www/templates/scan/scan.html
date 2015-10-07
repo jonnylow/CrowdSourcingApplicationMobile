@@ -1,0 +1,33 @@
+<ion-view view-title="Nearby Location">
+  <ion-nav-buttons side="left">
+    <button class="button" ui-sref="tab.home">Back to Home</button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button" ui-sref="listTransport">List View</button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents">
+      <ui-gmap-marker coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
+        <ui-gmap-window show="true">
+          <div>{{currentLocationMarker.window.title}}</div>
+        </ui-gmap-window>
+      </ui-gmap-marker>
+
+      <ui-gmap-marker ng-repeat="loc in markers" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title)">
+        <ui-gmap-window>
+          <div>{{loc.window.title}}</div>
+        </ui-gmap-window>
+      </ui-gmap-marker>
+    </ui-gmap-google-map>
+
+    <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
+      {{$index+1}} - <br>
+      {{transportNameDisplay[$index]}}<br>
+      {{transportDateTimeStartDisplay[$index]}}<br>
+      Pickup Location {{transportFromDistanceDisplay[$index]}} away from you!
+    </ion-item>
+  </ion-content>
+
+</ion-view>

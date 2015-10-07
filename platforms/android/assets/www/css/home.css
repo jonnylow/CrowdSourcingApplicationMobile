@@ -1,0 +1,14 @@
+/* CSS for Home page */
+
+.popover {
+    height: auto;
+    width: 50%;
+    top: 0px;
+} 
+.popover ion-content {
+    position: relative;
+}
+
+a.item:active {
+	background-color: #29A29C;
+}

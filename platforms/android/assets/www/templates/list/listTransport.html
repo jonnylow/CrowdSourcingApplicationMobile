@@ -1,0 +1,18 @@
+<ion-view view-title="Nearby Location">
+  <ion-nav-buttons side="left">
+    <button class="button" ui-sref="tab.home">Back to Home</button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button" ui-sref="scan">Map View</button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
+      {{$index+1}} - <br>
+      {{transportName[$index]}}<br>
+      {{transportDateTimeStart[$index]}} <br>
+      Pickup Location {{transportFromDistance[$index]}} away from you!
+    </ion-item>
+  </ion-content>
+</ion-view>

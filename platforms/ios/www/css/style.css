@@ -1,0 +1,97 @@
+/* Empty. Add your own CSS if you like */
+
+.pane {
+    background-image: url("../img/elderly.jpg"); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.angular-google-map-container {height: 300px;}
+
+/* orange button */
+.button.button-energized {
+  border-color: #EEA04D;
+  background-color: #EEA04D;
+  color: #FFFFFF;
+}
+.button.button-energized:hover {
+  color: #FFFFFF;
+    opacity: 0.5; 
+  }
+
+.button.button-energized.active, .button.button-energized.activated {
+      border-color: #EEA04D;
+      background-color: #EEA04D;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/* green button */
+.button.button-calm {
+  border-color: #29A29C;
+  background-color: #29A29C;
+  color: #FFFFFF;
+}
+.button.button-calm:hover {
+   color: #FFFFFF;
+    opacity: 0.5; }
+
+.button.button-calm.active, .button.button-calm.activated {
+      border-color: #29A29C;
+      background-color: #29A29C;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+
+/* button-light hover*/
+.button.button-light:hover {
+      color: #444;
+      opacity: 0.5;
+      text-decoration: none; }
+
+/* transparent button */
+.button.button-dark {
+  border-color: transparent;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+/* bottom tabs */
+.tabs-positive .tabs{
+  background-color: rgba(48,56,67,0.95);
+  background-image: none;
+  
+}
+
+.tabs.tabs-positive {
+  border-color: none;
+}
+
+/* nav bar */
+.bar.bar-light {
+  background-color: #848484;
+  color: #fff;
+}
+
+.bar.bar-light .title{
+  color: #fff;
+}
+
+.button.button-icon {
+  color: #fff;
+}
+.bar.bar-header {
+  background: rgba(39,46,54,0.95);
+  border-bottom-width: 0;
+}
+ 
+.scroll-content {
+  overflow: visible !important;
+}
+ 
+ /* not sure if it helps nav bar */
+.platform-ios.platform-cordova:not(.fullscreen) .has-header {
+  top:0px;
+}
+
+.tab-item {
+  color: white;
+}

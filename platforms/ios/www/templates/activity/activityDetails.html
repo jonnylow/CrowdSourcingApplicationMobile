@@ -1,0 +1,35 @@
+<ion-view view-title={{transportActivityName}}>
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="back()">Back</button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="apply()">Apply</button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <label class="item item-input item-stacked-label">
+      Date: {{date}}
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      Time: {{time}}
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      Expected Duration: {{expectedDuration}}
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      Pickup: {{locationFrom}}
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      Dropoff: {{locationTo}}
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      Additional Information: {{moreInformation}}
+    </label>
+  </ion-content>
+</ion-view>

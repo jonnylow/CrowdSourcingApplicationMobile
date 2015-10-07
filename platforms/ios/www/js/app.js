@@ -16,6 +16,12 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
   });
 })
 
+  .config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.style('standard'); // other values: striped
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+  }])
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states

@@ -49,14 +49,16 @@ angular.module('crowdsourcing')
 
               $http.get(urlString)
                 .success(function (data) {
-                  /*success
-                   var status = data;
-                   if (status != null) {
-                   var alertPopup = $ionicPopup.alert({
-                   title: 'Status',
-                   template: status.status[0]
-                   });
-                   }*/
+
+                  var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
+                  $http.get(sendEmail)
+                    .success(function (data) {
+
+                    })
+
+                    .error(function (data) {
+                      alert("Error in connection");
+                    });
 
                   $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
                 })

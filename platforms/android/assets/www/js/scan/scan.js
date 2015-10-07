@@ -53,6 +53,8 @@ angular.module('crowdsourcing')
             });
           }
 
+          navigator.geolocation.getCurrentPosition($scope.drawMap);
+
           //retrieve from DB
           $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
             .success(function (data) {
@@ -99,8 +101,6 @@ angular.module('crowdsourcing')
                 }
               }
             })
-
-          navigator.geolocation.getCurrentPosition($scope.drawMap);
 
           //check if marker already exist in the marker array
           $scope.markerExist = function(search)

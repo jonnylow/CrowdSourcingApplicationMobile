@@ -6,13 +6,13 @@
     <a class="button button-icon"></a>
     <a class="button button-icon"></a>
     <button class="button button-icon ion-ios-location" ui-sref="scan"></button>
-    <button class="button button-icon ion-search" ui-sref="tab.search"></button>
+    <button class="button button-icon ion-search" ui-sref="search"></button>
     <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
   </div>
 </ion-header-bar>
   <ion-content has-header="true">
     <div class="button-bar">
- <button class="button button-energized " ui-sref="myhistory">History</button>
+ <button class="button button-energized " ui-sref="tab.myhistory">History</button>
  <button class="button button-assertive" ui-sref="tab.activity">Current</button>
  </div>
   	 <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index">
@@ -22,10 +22,21 @@
       </div>
       <div class="item item-text-wrap">
         {{transportDateTimeStart[$index]}} <br>
-        <button class="button button-full button-positive">{{transportStatus[$index]}}</button>
+
+        <div ng-if="transportStatus[$index] == 'Withdraw'">
+          <button class="button button-full button-energized">{{transportStatus[$index]}}</button>
+        </div>
+
+        <div ng-if="transportStatus[$index] == 'Rejected'">
+          <button class="button button-full button-assertive">{{transportStatus[$index]}}</button>
+        </div>
+
+        <div ng-if="transportStatus[$index] == 'Completed'">
+          <button class="button button-full button-balanced">{{transportStatus[$index]}}</button>
+        </div>
       </div>
     </div>
-         
+
     </ion-item>
   </ion-content>
 </ion-view>

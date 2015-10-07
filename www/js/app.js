@@ -51,11 +51,19 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       }
     })
 
-    .state('tab.search', {
+    .state('search', {
+      cache: false,
       url: '/search',
+      templateUrl: 'templates/search/search.html'
+    })
+
+    .state('tab.me', {
+      cache: false,
+      url: '/me',
       views: {
-        'tab-search': {
-          templateUrl: 'templates/search/search.html'
+        'tab-me': {
+          templateUrl: 'templates/me/me.html',
+          controller: "viewAccountController"
         }
       }
     })
@@ -71,16 +79,24 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       }
     })
 
-    .state('tab.me', {
+    .state('tab.myhistory', {
       cache: false,
-      url: '/me',
+      url: '/myhistory',
       views: {
-        'tab-me': {
-          templateUrl: 'templates/me/me.html',
-          controller: "viewAccountController"
+        'tab-activity': {
+          templateUrl: 'templates/activity/myhistory.html',
+          controller: "myhistoryController"
         }
       }
     })
+
+/*
+    .state('myhistory', {
+      cache: false,
+      url: '/myhistory',
+      templateUrl: 'templates/activity/myhistory.html',
+      controller: "myhistoryController"
+    })*/
 
     .state('loginHome', {
       cache: false,
@@ -145,13 +161,6 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       url: '/activityConfirmation/:transportId/:transportActivityName',
       templateUrl: 'templates/activity/activityConfirmation.html',
       controller: "activityConfirmationController"
-    })
-
-      .state('myhistory', {
-      cache: false,
-      url: '/myhistory',
-      templateUrl: 'templates/activity/myhistory.html',
-      controller: "myhistoryController"
     })
 
     .state('myactivityDetails', {

@@ -90,4 +90,9 @@ angular.module('crowdsourcing')
       $state.go('login', {}, {reload: true});
       //$state.transitionTo('loginHome', null, {'reload':true});
     }
+
+    $scope.proceed = function(id, name)
+    {
+      $state.go('myPastActivityDetails', {transportId: id, transportActivityName: name});
+    }
 });

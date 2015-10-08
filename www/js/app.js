@@ -164,6 +164,13 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "myactivityDetailsController"
     })
 
+    .state('myPastActivityDetails', {
+      cache: false,
+      url: '/myPastActivityDetails/:transportId/:transportActivityName',
+      templateUrl: 'templates/activity/myPastActivityDetails.html',
+      controller: "myPastActivityDetailsController"
+    })
+
     .state('elderyInformation', {
       cache: false,
       url: '/elderyInformation/:transportId/:transportActivityName',

@@ -24,21 +24,21 @@
 
     <!--historical activity listing-->
     <div class="list card">
-      <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index">
+      <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
         <div class="item item-avatar">
           <img src="img/henderson.jpg">
           <h2>{{transportName[$index]}}</h2>
           <p>{{transportDateTimeStart[$index]}}</p>
-  
-            <div ng-if="transportStatus[$index] == 'Withdraw'">Status: 
+
+            <div ng-if="transportStatus[$index] == 'Withdraw'">Status:
           <button class="button button-full button-energized">{{transportStatus[$index]}}</button>
         </div>
 
-        <div ng-if="transportStatus[$index] == 'Rejected'">Status: 
+        <div ng-if="transportStatus[$index] == 'Rejected'">Status:
           <button class="button button-full button-assertive">{{transportStatus[$index]}}</button>
         </div>
 
-        <div ng-if="transportStatus[$index] == 'Completed'">Status: 
+        <div ng-if="transportStatus[$index] == 'Completed'">Status:
           <button class="button button-full button-balanced">{{transportStatus[$index]}}</button>
         </div>
         </div>

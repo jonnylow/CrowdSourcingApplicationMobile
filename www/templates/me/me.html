@@ -12,59 +12,58 @@
 </ion-header-bar>
   <ion-content has-header="true" padding="true">
 
-
-  <div class="list card">
-    <a href="#" class="item item-icon-left">
+<div class="list card">  
+    <div class="item item-icon-left">
       <i class="icon ion-card"></i>
       NRIC: {{nric}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-person"></i>
       Name: {{username}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-email"></i>
       Email: {{email}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-iphone"></i>
       Contact Number: {{contactnumber}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-calendar"></i>
       Date Of Birth: {{dob}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-transgender"></i>
       Gender: {{gender}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-briefcase"></i>
       Occuption: {{occuption}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-heart"></i>
       Preference 1: {{preference1}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left">
       <i class="icon ion-heart"></i>
       Preference 2: {{preference2}}
-    </a>
+    </div>
 
-    <a href="#" class="item item-icon-left">
+    <div class="item item-icon-left item-button-right">
       <i class="icon ion-locked"></i>
       Password: xxxx xxxx
-    </a>
+      <button class="button button-energized button-small" ui-sref="updateAccount">Change</button>
+    </div>
   </div>
-      <button class="button button-block button-calm" ui-sref="updateAccount">Change Password</button>
 
       <button class="button button-block button-calm" ng-click="manageAccount()" ui-sref="manageAccount">Manage Account</button>
     </label>

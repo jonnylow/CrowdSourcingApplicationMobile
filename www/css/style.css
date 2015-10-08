@@ -11,9 +11,10 @@
 
 /* orange button */
 .button.button-energized {
-  border-color: #EEA04D;
-  background-color: #EEA04D;
+  border-color: #FF9800;
+  background-color: #FF9800;
   color: #FFFFFF;
+
 }
 .button.button-energized:hover {
   color: #FFFFFF;
@@ -21,8 +22,8 @@
   }
 
 .button.button-energized.active, .button.button-energized.activated {
-      border-color: #EEA04D;
-      background-color: #EEA04D;
+      border-color: #FF9800;
+      background-color: #FF9800;
       opacity: 0.5;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
 }
@@ -56,21 +57,21 @@
 
 }
 
-/* transparent button with white border */
+/* faded orange button*/
 .button.button-assertive {
-  border-color: #FFCC80;
-  background-color: #FFCC80;
+  border-color: #FFE0B2;
+  background-color: #FFE0B2;
   color: #ffffff;
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .button.button-assertive:hover {
    color: #FFFFFF;
-    opacity: 0.5; }
+}
 
 .button.button-assertive.active, .button.button-assertive.activated {
-      border-color: #FFCC80;
-      background-color: #FFCC80;
-      opacity: 0.5;
+      border-color: #FFE0B2;
+      background-color: #FFE0B2;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
 
 /* nav bar */

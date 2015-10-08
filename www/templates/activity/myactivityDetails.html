@@ -1,37 +1,48 @@
 <ion-view view-title={{transportActivityName}}>
-  <ion-nav-bar class="bar-stable">
-  <ion-nav-buttons side="left">
-    <button class="button" ng-click="back()">Back</button>
-  </ion-nav-buttons>
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
+    </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content>
-    <label class="item item-input item-stacked-label">
-      Date: {{date}}
-    </label>
+ <ion-content>
+    <!--current activity listing-->
+    <div class="list card">
+      <div class="item item-divider">
+        My Activity Details
+      </div>
+      <div class="item item-text-wrap">
+        Date: {{date}}
+      </div>
+      <div class="item item-text-wrap">
+        Time: {{time}}
+      </div>
+      <div class="item item-text-wrap">
+        Expected Duration: {{expectedDuration}}
+      </div>
+      <div class="item item-text-wrap">
+        Pick-up: {{locationFrom}}
+      </div>
+      <div class="item item-text-wrap">
+        Drop-off: {{locationTo}}
+      </div>
+      <div class="item item-button-right">
+        Status: {{transportStatus}}
+        <button class="button button-energized" ng-disabled="updateStatus" ng-click="status(transportId, transportActivityName)">Update Status</button>
+      </div>
+      <div class="item item-text-wrap">
+        Additional Information: {{moreInformation}}
+      </div>
+      <div class="item item-button-right">
+        Elderly Information
+        <button class="button button-energized" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">More</button>
+      </div>
+    </div>
 
-    <label class="item item-input item-stacked-label">
-      Time: {{time}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Expected Duration: {{expectedDuration}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Pickup: {{locationFrom}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Dropoff: {{locationTo}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Additional Information: {{moreInformation}}
-    </label>
-    <br>
-    <button class="button button-positive" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">Elderly Information</button>
-    <button class="button button-positive" ng-disabled="updateStatus" ng-click="status(transportId, transportActivityName)">Update Status</button>
-    <button class="button button-positive" ng-click="withdraw()">Withdraw</button>
+    <!--withdraw-->
+    <div style="margin-left:5%">
+      <button class="button ion-close-round button-clear button-assertive" ng-click="withdraw()"> Withdraw from activity</button>
+    </div>
   </ion-content>
 </ion-view>

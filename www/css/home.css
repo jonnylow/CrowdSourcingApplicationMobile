@@ -12,3 +12,28 @@
 a.item:active {
 	background-color: #29A29C;
 }
+
+.scanimage-screen {
+	width: 80%; 
+	height: 80%;
+	box-shadow: outset 0 10px 40px rgba(0, 0, 0, 1); 
+}
+
+
+.button-float{
+  background-color: #ef473a !important;
+  z-index: 12 !important;
+  position: relative !important; 
+  display: inline-block;
+  margin: 5px;
+  width: 300px;
+  min-height: 300px;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+}
+
+.button-float:active{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4) !important;
+  background-color: #ef473a;
+  opacity: 50% !important;
+}

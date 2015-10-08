@@ -1,38 +1,37 @@
+<link href="css/activity.css" rel="stylesheet">
 <ion-view view-title={{transportActivityName}}>
-  <ion-nav-bar class="bar-stable">
-
-  <ion-nav-buttons side="left">
-    <button class="button" ng-click="back()">Back</button>
-  </ion-nav-buttons>
-
-  <ion-nav-buttons side="right">
-    <button class="button" ng-click="apply()">Apply</button>
-  </ion-nav-buttons>
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
+    </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content>
-    <label class="item item-input item-stacked-label">
-      Date: {{date}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Time: {{time}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Expected Duration: {{expectedDuration}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Pickup: {{locationFrom}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Dropoff: {{locationTo}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Additional Information: {{moreInformation}}
-    </label>
+  <!--activity details-->
+    <div class="list card">
+      <div class="item item-divider item-button-right">
+        Activity Details
+        <button class="button button-positive" ng-click="apply()">Apply</button>
+      </div>
+      <div class="item item-text-wrap">
+        Date: {{date}}
+      </div>
+      <div class="item item-text-wrap">
+        Time: {{time}}
+      </div>
+      <div class="item item-text-wrap">
+        Expected Duration: {{expectedDuration}}
+      </div>
+      <div class="item item-text-wrap">
+        Pick-up: {{locationFrom}}
+      </div>
+      <div class="item item-text-wrap">
+        Drop-off: {{locationTo}}
+      </div>
+      <div class="item item-text-wrap">
+        Additional Information: {{moreInformation}}
+      </div>
+    </div>
   </ion-content>
 </ion-view>

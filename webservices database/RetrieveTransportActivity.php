@@ -3,7 +3,7 @@
  $db = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 
 //query
-$result = pg_query($db,"SELECT * FROM activities");
+$result = pg_query($db,"SELECT * FROM activities where datetime_start > now() and activity_id not in(SELECT activity_id FROM tasks where approval='approved')");
 
  $int = 0;
 $array = array();

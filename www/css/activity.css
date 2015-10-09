@@ -1,3 +1,16 @@
-.item-divider {
+
+.item-divider.header {
   min-height: 50px;
+  background-color: #AEE1E0;
+}
+
+.item-divider.confirm {
+  min-height: 50px;
+  background-color: #AEDFDD;
+}
+
+button.button-positive.apply{
+	margin-left:35%;
+	padding-left: 30px;
+	padding-right: 30px;
 }

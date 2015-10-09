@@ -10,9 +10,8 @@
   <ion-content>
   <!--activity details-->
     <div class="list card">
-      <div class="item item-divider item-button-right">
+      <div class="item item-divider header item-button-right">
         Activity Details
-        <button class="button button-positive" ng-click="apply()">Apply</button>
       </div>
       <div class="item item-text-wrap">
         Date: {{date}}
@@ -33,5 +32,7 @@
         Additional Information: {{moreInformation}}
       </div>
     </div>
+
+    <button class="button button-positive apply" ng-click="apply()">Apply</button>
   </ion-content>
 </ion-view>

@@ -1,3 +1,24 @@
 .item-button-right{
 	padding-right: 0;
 }
+
+.button.button-selected{
+	font-weight: ;
+	border-color: #79D3CF;
+	background-color: #79D3CF;
+	color:#fff;
+}
+
+.item-divider {
+  min-height: 40px;
+  background-color: #AEE1E0;
+}
+
+.withdraw{
+	border:1px solid red;
+	width:60%;
+	padding-left: 15px;
+	margin-left:17%;
+	background-color:#E10233;
+	color:#fff;
+}

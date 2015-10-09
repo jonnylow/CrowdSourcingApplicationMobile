@@ -9,25 +9,6 @@
 
 .angular-google-map-container {height: 300px;}
 
-/* orange button */
-.button.button-energized {
-  border-color: #FF9800;
-  background-color: #FF9800;
-  color: #FFFFFF;
-
-}
-.button.button-energized:hover {
-  color: #FFFFFF;
-    opacity: 0.5; 
-  }
-
-.button.button-energized.active, .button.button-energized.activated {
-      border-color: #FF9800;
-      background-color: #FF9800;
-      opacity: 0.5;
-      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
-}
-
 /* green button */
 .button.button-calm {
   border-color: #29A29C;
@@ -54,25 +35,7 @@
   border-color: transparent;
   background-color: transparent;
   color: #FFFFFF;
-
 }
-
-/* faded orange button*/
-.button.button-assertive {
-  border-color: #FFE0B2;
-  background-color: #FFE0B2;
-  color: #ffffff;
-  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.15);
-}
-
-.button.button-assertive:hover {
-   color: #FFFFFF;
-}
-
-.button.button-assertive.active, .button.button-assertive.activated {
-      border-color: #FFE0B2;
-      background-color: #FFE0B2;
-      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
 
 /* nav bar */
 /* ios 
@@ -111,11 +74,6 @@
 .button.button-full {
   margin-top: 0;
 }
-
- /* not sure if it helps nav bar 
-.platform-ios.platform-cordova:not(.fullscreen) .has-header {
-  top:0px;
-} */
 
 .tab-item {
   color: white;

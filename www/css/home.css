@@ -21,19 +21,19 @@ a.item:active {
 
 
 .button-float{
-  background-color: #ef473a !important;
+  background-color: #FF9800 !important;
   z-index: 12 !important;
   position: relative !important; 
   display: inline-block;
-  margin: 5px;
-  width: 300px;
-  min-height: 300px;
+  margin: 2px;
+  width: 235px;
+  min-height: 235px;
   border-radius: 50% !important;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
 }
 
 .button-float:active{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4) !important;
-  background-color: #ef473a;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
+  background-color: #FF9800;
   opacity: 50% !important;
 }

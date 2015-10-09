@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('myactivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('myPastActivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -34,15 +34,6 @@ angular.module('crowdsourcing')
               {
                 $scope.eldery = true;
                 $scope.updateStatus = true;
-              }
-
-              if(transportDetails[0].status != "New Task")
-              {
-                $scope.withdrawShow = true;
-              }
-              else
-              {
-                $scope.withdrawShow = false;
               }
             }
           }

@@ -1,25 +1,26 @@
 <ion-view view-title={{transportActivityName}}>
-  <ion-nav-bar class="bar-stable">
-  <ion-nav-buttons side="left">
-    <button class="button" ng-click="back()">Back</button>
-  </ion-nav-buttons>
-</ion-nav-bar>
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
   <ion-content>
-    <label class="item item-input item-stacked-label">
-      Eldery Name: {{name}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Centre for Seniors Branch: {{branchName}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Next of Kin: {{kin}}
-    </label>
-
-    <label class="item item-input item-stacked-label">
-      Contact Number: {{contact}}
-    </label>
+  <!--elderly information-->
+    <div class="list card">
+      <div class="item item-divider">
+        Elderly Information
+      </div>
+      <div class="item item-text-wrap">
+        Name: {{name}}
+      </div>
+      <div class="item item-text-wrap">
+        Branch: {{branchName}}
+      </div>
+      <div class="item item-text-wrap">
+        Next-of-Kin: {{kin}}<br>
+        Contact Number: {{contact}}
+      </div>
   </ion-content>
 </ion-view>

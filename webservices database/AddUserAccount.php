@@ -1,4 +1,5 @@
 <?php
+	echo $hash;
 	// Create connection
 	$conn = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 	
@@ -17,8 +18,10 @@
 	$nricFront= $_GET['frontIC'];
 	$nricBack= $_GET['backIC'];
 	
+	$hashPassword = md5($password);
+	
 	$result = pg_prepare($conn, "my_query", 'INSERT INTO volunteers (nric, name, email,password,gender,date_of_birth,contact_no,occupation,has_car,area_of_preference_1,area_of_preference_2,image_nric_front,image_nric_back) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)');
-	$passed = pg_execute($conn, "my_query", array($nric, $name, $email, $password, $gender, $dateOfBirth, $contactNo, $occupation, $hasCar, $areaPreferences1, $areaPreferences2, $nricFront, $nricBack));
+	$passed = pg_execute($conn, "my_query", array($nric, $name, $email, $hashPassword, $gender, $dateOfBirth, $contactNo, $occupation, $hasCar, $areaPreferences1, $areaPreferences2, $nricFront, $nricBack));
 	
 	if($passed){
 		$a = array("status" => array("Created successfully")); 

@@ -15,35 +15,31 @@
   </ion-header-bar>
 
 
+<!--body-->
   <ion-content has-header="true">
-    <div class="list card">
-  Welcome {{name}}!
-  <div class="item item-avatar">
-    <img src="img/img_logo.jpg">
-    <h2>Recommended</h2>
-    <p>22nd August 2015</p>
-  </div>
-
-  <div class="item item-body">
-    <img class="full-image" src="img/img_event.jpg" height="500" width="10">
-    <p>
-      <h2>Anti Cyber Bullying Campaign!</h2>
-      This activity promotes anti cyber bullying as a cause. Volunteers will be required to assist to educate children on the importance of whistleblowing on a cyber bully
-    </p>
-    <p>
-      <div style="height: 30px; width: 70%; transition: width 0.1s; background: blue;"> <h3 class="light">70% </h3> </div>
-      <a href="#" class="subdued energized">5 People have applied</a><a href="#" class="subdued royal">3 Days to go</a>
-
-    </p>
-  </div>
-
-  <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="www.google.com.sg">
-      <i class="icon ion-share"></i>
-      Apply
+  <!-- Recommendation -->
+  <div class="list card">
+    <div class="item item-divider">
+    Recommended for you!
+    </div>
+    <a class="item item-avatar" href="#">
+      <img src="img/henderson.jpg">
+      <h2>Henderson <-> SGH</h2>
+      <p>15/10/2015, 1pm</p>
+    </a>
+    <a class="item item-avatar" href="#">
+      <img src="img/henderson.jpg">
+      <h2>Henderson <-> KTPH</h2>
+      <p>16/10/2015, 3pm</p>
     </a>
   </div>
 
-</div>
+  <!-- Scan button -->
+  <div style="text-align: center;">
+    <button class="button button-float" ui-sref="scan">
+      <h1 style="color: white">Scan</h1>
+      <h4 style="color: white">for nearby activites</h4>
+    </button>
+  </div>
   </ion-content>
 </ion-view>

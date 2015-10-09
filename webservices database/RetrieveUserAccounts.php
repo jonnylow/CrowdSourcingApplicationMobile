@@ -2,7 +2,8 @@
 //connect
 $db = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 
-$result = pg_query($db,"SELECT * FROM volunteers");
+$email = $_GET['email'];
+$result = pg_query($db,"SELECT * FROM volunteers where email='$email'");
 
 $int = 0;
 $array = array();

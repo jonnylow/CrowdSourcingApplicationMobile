@@ -8,34 +8,38 @@ angular.module('crowdsourcing')
                 var tempNRIC = fields.email;
                 var tempPassword = fields.password;
 
-                $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveUserAccounts.php")
+              $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+tempNRIC+"&password="+tempPassword)
                 .success(function (data) {
-                  var loginDetails = data;
-                  var loginCheck = 0;
+                  var status = data;
 
-                  if (loginDetails != null) {
-                    for (var i = 0; i < loginDetails.length; i++) {
-                      if(tempNRIC == loginDetails[i].email && tempPassword == loginDetails[i].password)
-                      {
-                        if(loginDetails[i].is_approved != 'f') {
-                          loginCheck = 1;
-
-                          window.localStorage.setItem("loginId", loginDetails[i].volunteer_id);
-                          window.localStorage.setItem("loginUserName", loginDetails[i].name);
-                          $state.go('tab.home', {}, {reload: true});
-                        }
-                        else {
-                          loginCheck = 1;
-                          var alertPopup = $ionicPopup.alert({
-                            title: 'Sorry',
-                            template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
-                          });
-                        }
-                      }
-                    }
-
-                    if(loginCheck == 0)
+                  if (status != null) {
+                    if(status.status[0] == "true")
                     {
+                      $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveUserAccounts.php?email="+tempNRIC)
+                        .success(function (data) {
+                          var loginDetails = data;
+
+                          if (loginDetails != null) {
+                            if(loginDetails[0].is_approved != 'f') {
+                              window.localStorage.setItem("loginId", loginDetails[0].volunteer_id);
+                              window.localStorage.setItem("loginUserName", loginDetails[0].name);
+                              $state.go('tab.home', {}, {reload: true});
+                            }
+                            else {
+                              var alertPopup = $ionicPopup.alert({
+                                title: 'Sorry',
+                                template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
+                              });
+                            }
+                          }
+                        })
+
+                        .error(function (data) {
+                          alert("Error in connection");
+                        });
+                    }
+                    else {
+
                       var alertPopup = $ionicPopup.alert({
                         title: 'Error',
                         template: 'Incorrect Email or Password.'

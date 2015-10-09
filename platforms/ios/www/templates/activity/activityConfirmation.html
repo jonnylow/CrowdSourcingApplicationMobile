@@ -1,17 +1,24 @@
+<link href="css/activity.css" rel="stylesheet">
 <ion-view view-title={{transportActivityName}}>
 
   <ion-content>
-    <br>
-    Application Successfully! <br><br>
-    Date: {{date}}<br>
-    Time: {{time}}<br>
-    Expected Duration: {{expectedDuration}}<br>
-    Pick Up Location: {{locationFrom}}<br>
-    Drop Off Location: {{locationTo}}
-
-    <br><br>
-    Your Application is in process. Please wait for the SMS Confirmation from the centre.
-
-    <button class="button button-block button-assertive" ng-click="back()">Back to Home</button>
+    <div class="card confirm">
+        <div class="item item-divider confirm">  
+            Application Successfully!
+        </div>
+        <div class="item item-text-wrap ">   
+            Date: {{date}}<br>
+            Time: {{time}}<br>
+            Expected Duration: {{expectedDuration}}<br>
+            Pick Up Location: {{locationFrom}}<br>
+            Drop Off Location: {{locationTo}}
+        </div>
+        <div class="item item-divider confirm">  
+            Your Application is in process. <br>
+            Please wait for the SMS Confirmation from <br>
+            the centre.
+        </div>
+    </div>
+    <button class="button button-block button-calm" ng-click="back()">Back to Home</button>
   </ion-content>
 </ion-view>

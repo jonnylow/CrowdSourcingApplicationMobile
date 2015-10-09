@@ -1,20 +1,30 @@
+<link href="css/scan.css" rel="stylesheet">
 <ion-view view-title="Nearby Location">
-  <ion-nav-bar class="bar-stable">
-  <ion-nav-buttons side="left">
-    <button class="button" ui-sref="tab.home">Back to Home</button>
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+    <button class="button button-calm" ui-sref="scan">Map View</button>
   </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-nav-buttons side="right">
-    <button class="button" ui-sref="scan">Map View</button>
-  </ion-nav-buttons>
-
   <ion-content>
-    <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
-      {{$index+1}} - <br>
-      {{transportName[$index]}}<br>
-      {{transportDateTimeStart[$index]}} <br>
-      Pickup Location {{transportFromDistance[$index]}} away from you!
-    </ion-item>
+    <div class="list card">
+    <ion-item ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
+    
+      <div class="item item-divider">     
+        {{$index+1}} -
+        {{transportName[$index]}}<br>
+      </div>
+      <div class="item item-text-wrap">
+        {{transportDateTimeStart[$index]}} <br>
+        Pickup Location {{transportFromDistance[$index]}} away from you!
+      
+      </div>
+      </ion-item>
+  </div>
+  
   </ion-content>
 </ion-view>

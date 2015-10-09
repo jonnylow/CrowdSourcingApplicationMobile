@@ -1,36 +1,48 @@
+<link href="css/scan.css" rel="stylesheet">
 <ion-view view-title="Nearby Location">
+<!--header bar-->
 
-  <ion-nav-bar class="bar-stable">
-  <ion-nav-buttons side="left">
-    <button class="button" ui-sref="tab.home">Back to Home</button>
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+    <button class="button button-calm" ui-sref="listTransport">List View</button>
   </ion-nav-buttons>
-
-  <ion-nav-buttons side="right">
-    <button class="button" ui-sref="listTransport">List View</button>
-  </ion-nav-buttons>
-</ion-nav-bar>
+  </ion-nav-bar>
 
   <ion-content scroll='false'>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents" data-tap-disabled="true">
-      <ui-gmap-marker coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
-        <ui-gmap-window show="true">
-          <div>{{currentLocationMarker.window.title}}</div>
-        </ui-gmap-window>
-      </ui-gmap-marker>
+    <div class="parent">
+      <div class="section1">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.markersEvents" data-tap-disabled="true">
+          <ui-gmap-marker coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
+            <ui-gmap-window show="true">
+              <div>{{currentLocationMarker.window.title}}</div>
+            </ui-gmap-window>
+          </ui-gmap-marker>
 
-      <ui-gmap-marker ng-repeat="loc in markers" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title)">
-        <ui-gmap-window>
-          <div>{{loc.window.title}}</div>
-        </ui-gmap-window>
-      </ui-gmap-marker>
-    </ui-gmap-google-map>
-
-    <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
-      {{$index+1}} - <br>
-      {{transportNameDisplay[$index]}}<br>
-      {{transportDateTimeStartDisplay[$index]}}<br>
-      Pickup Location {{transportFromDistanceDisplay[$index]}} away from you!
-    </ion-item>
+          <ui-gmap-marker ng-repeat="loc in markers track by $index" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title, $index)">
+            <ui-gmap-window show="markersStatus[$index]">
+              <div>{{loc.window.title}}</div>
+            </ui-gmap-window>
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div>
+    
+      <div class="section2">
+        <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
+        <div class="card">
+          <div class="item item-divider">  
+            {{$index+1}} -
+            {{transportNameDisplay[$index]}}
+          </div>
+          <div class="item item-text-wrap">  
+            {{transportDateTimeStartDisplay[$index]}}<br><br>
+            Pickup Location {{transportFromDistanceDisplay[$index]}} away from you!
+        </div>
+        </ion-item>
+      </div>
+    </div>
   </ion-content>
 
 </ion-view>

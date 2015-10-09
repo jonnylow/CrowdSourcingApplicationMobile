@@ -1,13 +1,16 @@
 <ion-view view-title={{transportActivityName}}>
-  <ion-nav-bar class="bar-stable">
-  <ion-nav-buttons side="left">
-    <button class="button" ng-click="back()">Back</button>
-  </ion-nav-buttons>
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
+    </ion-nav-buttons>
   </ion-nav-bar>
-  <br><br><br>
-    <button class="button button-block button-calm" ng-disabled="pickedup" ng-click="updateStatus('Pick-up')">Picked up</button>
-  <button class="button button-block button-calm" ng-disabled="checkup" ng-click="updateStatus('At Check-up')">At Check-up</button>
-  <button class="button button-block button-calm" ng-disabled="checkupcomplete" ng-click="updateStatus('Check-up completed')">Check-up Completed</button>
-  <button class="button button-block button-calm" ng-disabled="completed" ng-click="updateStatus('completed')">Completed</button>
+
+  <ion-content padding="true">
+    <br>
+    <button class="button button-block button-energized" ng-disabled="pickedup" ng-click="updateStatus('Pick-up')">Picked up</button>
+    <button class="button button-block button-energized" ng-disabled="checkup" ng-click="updateStatus('At Check-up')">At Check-up</button>
+    <button class="button button-block button-energized" ng-disabled="checkupcomplete" ng-click="updateStatus('Check-up completed')">Check-up Completed</button>
+    <button class="button button-block button-energized" ng-disabled="completed" ng-click="updateStatus('completed')">Completed</button>
   </ion-content>
 </ion-view>

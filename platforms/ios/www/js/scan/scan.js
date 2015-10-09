@@ -15,6 +15,7 @@ angular.module('crowdsourcing')
 
         //store all markers for transport activities
         $scope.markers = [];
+        $scope.markersStatus = [];
 
         //for dynamic displaying
         $scope.transportIDDisplay=[];
@@ -96,6 +97,7 @@ angular.module('crowdsourcing')
                         }
                       };
                       $scope.markers.push(tempMarker);
+                      $scope.markersStatus.push(false);
                     }
                   }
                 }
@@ -114,8 +116,14 @@ angular.module('crowdsourcing')
           }
 
           //refresh list of activities each time marker is click
-          $scope.displayItems = function(locationFrom)
+          $scope.displayItems = function(locationFrom, markerIndex)
           {
+            for(var j = 0; j<$scope.markersStatus.length; j++)
+            {
+              $scope.markersStatus[j] = false;
+            }
+            $scope.markersStatus[markerIndex] = true;
+
             if(locationFrom != null)
             {
               //clear display list

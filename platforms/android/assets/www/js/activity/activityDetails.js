@@ -44,22 +44,50 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
               window.localStorage.setItem("tempALocationTo", $scope.locationTo);
 
-              var urlString = "http://www.changhuapeng.com/volunteer/php/AddNewActivity.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
-
-              $http.get(urlString)
+              var checkUrlString = "http://www.changhuapeng.com/volunteer/php/CheckActivityApplication.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+              $http.get(checkUrlString)
                 .success(function (data) {
+                  if(data.status[0]=="do not exist")
+                  {
+                    var urlString = "http://www.changhuapeng.com/volunteer/php/AddNewActivity.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
-                  var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
-                  $http.get(sendEmail)
-                    .success(function (data) {
+                    $http.get(urlString)
+                      .success(function (data) {
 
-                    })
+                        var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
+                        $http.get(sendEmail)
+                          .success(function (data) {
+                          //email send
+                          })
 
-                    .error(function (data) {
-                      alert("Error in connection");
+                          .error(function (data) {
+                            alert("Error in connection");
+                          });
+
+                        $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
+                      })
+
+                      .error(function (data) {
+                        alert("Error in connection");
+                      });
+                  }
+                  else
+                  {
+                    var myPopup = $ionicPopup.show({
+                      title: 'Notice',
+                      subTitle: 'You have already applied for this activity. Please wait for centre to approve your application',
+                      scope: $scope,
+                      buttons: [
+                        {
+                          text: '<b>Ok</b>',
+                          type: 'button-calm',
+                          onTap: function(e) {
+                            $state.go('scan', {}, {reload: true});
+                          }
+                        },
+                      ]
                     });
-
-                  $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
+                  }
                 })
 
                 .error(function (data) {

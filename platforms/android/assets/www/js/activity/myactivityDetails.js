@@ -35,6 +35,15 @@ angular.module('crowdsourcing')
                 $scope.eldery = true;
                 $scope.updateStatus = true;
               }
+
+              if(transportDetails[0].status != "New Task")
+              {
+                $scope.withdrawShow = true;
+              }
+              else
+              {
+                $scope.withdrawShow = false;
+              }
             }
           }
         }

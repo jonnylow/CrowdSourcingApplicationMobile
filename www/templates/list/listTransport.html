@@ -13,18 +13,19 @@
   <ion-content>
     <div class="list card">
     <ion-item ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
-    
-      <div class="item item-divider">     
+
+      <div class="item item-divider">
         {{$index+1}} -
         {{transportName[$index]}}<br>
       </div>
       <div class="item item-text-wrap">
-        {{transportDateTimeStart[$index]}} <br>
+        {{transportDateStart[$index]}} <br><br>
+        {{transportTimeStart[$index]}} <br><br>
         Pickup Location {{transportFromDistance[$index]}} away from you!
-      
+
       </div>
       </ion-item>
   </div>
-  
+
   </ion-content>
 </ion-view>

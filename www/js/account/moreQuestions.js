@@ -58,12 +58,12 @@ angular.module('crowdsourcing')
           }
           else
           {
-            alert("Please fill in all fields.");
+            alert("Please fill in all required fields.");
           }
         }
         else
         {
-          alert("Please fill in all fields.");
+          alert("Please fill in all required fields.");
         }
       }
 

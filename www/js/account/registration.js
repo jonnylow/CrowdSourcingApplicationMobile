@@ -97,15 +97,15 @@ angular.module('crowdsourcing')
                         })
                     }
                     else {
-                      alert("Invalid email address. Please try again.")
+                      alert("Invalid email address. Please try again.");
                     }
                   }
                   else {
-                    alert("Please fill in a valid phone number. Please try again.")
+                    alert("Invalid phone number. Please try again.");
                   }
                 }
                 else {
-                  alert("Passwords does not match. Please try again.");
+                  alert("Passwords do not match. Please try again.");
                 }
               }
               else {

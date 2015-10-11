@@ -7,7 +7,8 @@ angular.module('crowdsourcing')
         $scope.transportID=[];
         $scope.transportName=[];
         $scope.transportLocationFrom=[];
-        $scope.transportDateTimeStart=[];
+        $scope.transportDateStart=[];
+        $scope.transportTimeStart=[];
         $scope.transportFromDistance=[];
 
         //this array is use to track markers duplication. Is not in sync with the rest of the array above
@@ -20,11 +21,12 @@ angular.module('crowdsourcing')
         //for dynamic displaying
         $scope.transportIDDisplay=[];
         $scope.transportNameDisplay=[];
-        $scope.transportDateTimeStartDisplay=[];
+        $scope.transportDateStartDisplay=[];
+        $scope.transportTimeStartDisplay=[];
         $scope.transportFromDistanceDisplay=[];
 
         //plot map
-        if($scope.transportID != null && $scope.transportName != null && $scope.transportDateTimeStart !=null) {
+        if($scope.transportID != null && $scope.transportName != null && $scope.transportDateStart !=null && $scope.transportTimeStart !=null) {
           $scope.drawMap = function (position) {
             //$scope.$apply is needed to trigger the digest cycle when the geolocation arrives and to update all the watchers
             $scope.$apply(function () {
@@ -78,7 +80,8 @@ angular.module('crowdsourcing')
                     $scope.transportID.push(transportDetails[i].activity_id);
                     $scope.transportName.push(transportDetails[i].name);
                     $scope.transportLocationFrom.push(transportDetails[i].location_from);
-                    $scope.transportDateTimeStart.push("Date/Time: " + $scope.temp[0] + " | " + $scope.temp[1]);
+                    $scope.transportDateStart.push("Date: " + $scope.temp[0]);
+                    $scope.transportTimeStart.push("Time: " + $scope.temp[1]);
                     $scope.transportFromDistance.push(m + " m" + " OR "+ km + " km");
 
                     //check if marker already exists (by checking with the markers array)
@@ -129,7 +132,8 @@ angular.module('crowdsourcing')
               //clear display list
               $scope.transportIDDisplay=[];
               $scope.transportNameDisplay=[];
-              $scope.transportDateTimeStartDisplay=[];
+              $scope.transportDateStartDisplay=[];
+              $scope.transportTimeStartDisplay=[];
               $scope.transportFromDistanceDisplay=[];
 
               //loop through the transportLocationFrom (name of pickup), if it is the same, copy to the display list of arrays to show on list
@@ -140,7 +144,8 @@ angular.module('crowdsourcing')
                 {
                   $scope.transportIDDisplay.push($scope.transportID[i]);
                   $scope.transportNameDisplay.push($scope.transportName[i]);
-                  $scope.transportDateTimeStartDisplay.push($scope.transportDateTimeStart[i]);
+                  $scope.transportDateStartDisplay.push($scope.transportDateStart[i]);
+                  $scope.transportTimeStartDisplay.push($scope.transportTimeStart[i]);
                   $scope.transportFromDistanceDisplay.push($scope.transportFromDistance[i]);
                 }
               }

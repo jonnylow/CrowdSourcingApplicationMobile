@@ -23,6 +23,7 @@ angular.module('crowdsourcing')
                             if(loginDetails[0].is_approved != 'f') {
                               window.localStorage.setItem("loginId", loginDetails[0].volunteer_id);
                               window.localStorage.setItem("loginUserName", loginDetails[0].name);
+                              window.localStorage.setItem("loginEmail", loginDetails[0].email);
                               $state.go('tab.home', {}, {reload: true});
                             }
                             else {

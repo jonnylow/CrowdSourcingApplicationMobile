@@ -44,7 +44,7 @@ angular.module('crowdsourcing')
        	$http.get(urlString)
       	.success(function (data) {
         var transportDetails = data;
-
+    console.log(urlString);
         if (transportDetails != null){
         	for(var i = 0; i<transportDetails.length; i++){
 

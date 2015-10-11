@@ -28,16 +28,17 @@
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
-    
+
       <div class="section2">
         <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
         <div class="card">
-          <div class="item item-divider">  
+          <div class="item item-divider">
             {{$index+1}} -
             {{transportNameDisplay[$index]}}
           </div>
-          <div class="item item-text-wrap">  
-            {{transportDateTimeStartDisplay[$index]}}<br><br>
+          <div class="item item-text-wrap">
+            {{transportDateStartDisplay[$index]}}<br><br>
+            {{transportTimeStartDisplay[$index]}}<br><br>
             Pickup Location {{transportFromDistanceDisplay[$index]}} away from you!
         </div>
         </ion-item>

@@ -4,6 +4,7 @@ angular.module('crowdsourcing')
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
+          $scope.email = window.localStorage.getItem("loginEmail");
         }
         else {
           $state.go('login', {}, {reload: true});
@@ -20,51 +21,67 @@ angular.module('crowdsourcing')
               var tempNewPassword = fields.newpassword;
               var tempConfirmpassword = fields.confirmpassword;
 
-              var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;
-
-              $http.get(urlString)
+              $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+ $scope.email+"&password="+tempCurrentPassword)
                 .success(function (data) {
-                  var userDetails = data;
-                  if (userDetails != null) {
-                    if(tempCurrentPassword == userDetails[0].password)
+                  var status = data;
+
+                  if (status != null) {
+                    if(status.status[0] == "true")
                     {
-                      if(tempConfirmpassword == tempNewPassword)
-                      {
-                        urlString = "http://www.changhuapeng.com/volunteer/php/UpdateUserAccount.php?id="+$scope.id+"&password="+tempNewPassword;
+                      var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;
 
-                        $http.get(urlString)
-                          .success(function (data) {
-                            var status = data;
-                            if (status != null) {
-                              var alertPopup = $ionicPopup.alert({
-                                title: 'Status',
-                                template: status.status[0]
-                              });
-                              window.localStorage.setItem("loginUserPassword", tempNewPassword);
-                              $scope.fields= {currentpassword: "",confirmpassword: "", newpassword:""};
-                              $state.go('tab.me', {}, {reload: true});
-                            }
-                          })
+                      $http.get(urlString)
+                        .success(function (data) {
+                          var userDetails = data;
+                          if (userDetails != null) {
+                              if(tempConfirmpassword == tempNewPassword)
+                              {
+                                if(tempCurrentPassword != tempNewPassword) {
+                                  urlString = "http://www.changhuapeng.com/volunteer/php/UpdateUserAccount.php?id=" + $scope.id + "&password=" + tempNewPassword;
 
-                          .error(function (data) {
-                            alert("Error in connection");
-                          });
-                      }
-                      else
-                      {
-                        alert("Passwords does not match. Please try again.");
-                      }
+                                  $http.get(urlString)
+                                    .success(function (data) {
+                                      var status = data;
+                                      if (status != null) {
+                                        var alertPopup = $ionicPopup.alert({
+                                          title: 'Status',
+                                          template: status.status[0]
+                                        });
+                                        window.localStorage.setItem("loginUserPassword", tempNewPassword);
+                                        $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
+                                        $state.go('tab.me', {}, {reload: true});
+                                      }
+                                    })
+
+                                    .error(function (data) {
+                                      alert("Error in connection");
+                                    });
+                                }
+                                else
+                                {
+                                  alert("Old & New Password are the same. Please change a new password. ");
+                                }
+                              }
+                              else
+                              {
+                                alert("Passwords do not match. Please try again.");
+                              }
+                          }
+                        })
+
+                        .error(function (data) {
+                          alert("Error in connection");
+                        });
                     }
-                    else
-                    {
-                      alert("Incorrect current password entered. Please try again. ");
+                    else {
+
+                      var alertPopup = $ionicPopup.alert({
+                        title: 'Error',
+                        template: 'Incorrect Current Password.'
+                      });
                     }
                   }
                 })
-
-                .error(function (data) {
-                  alert("Error in connection");
-                });
             }
             else
             {

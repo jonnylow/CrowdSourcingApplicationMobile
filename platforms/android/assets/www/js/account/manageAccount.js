@@ -42,23 +42,35 @@ angular.module('crowdsourcing')
             var p1 = fields.preferences_1;
             var p2 = fields.preferences_2;
 
-            urlStringUpdate = "http://www.changhuapeng.com/volunteer/php/UpdateUserDetails.php?id="+$scope.id+"&name="+name+"&number="+contact+"&occupation="+occupation+"&p1="+p1+"&p2="+p2;
+            if (validateName(name) == true) {
+              if (contact.length == 8 && !isNaN(contact) && validateContact(contact) == true) {
+                urlStringUpdate = "http://www.changhuapeng.com/volunteer/php/UpdateUserDetails.php?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
 
-            $http.get(urlStringUpdate)
-              .success(function (data) {
-                var status = data;
-                if (status != null) {
-                  var alertPopup = $ionicPopup.alert({
-                    title: 'Status',
-                    template: status.status[0]
+                $http.get(urlStringUpdate)
+                  .success(function (data) {
+                    var status = data;
+                    if (status != null) {
+                      var alertPopup = $ionicPopup.alert({
+                        title: 'Status',
+                        template: status.status[0]
+                      });
+                      $state.go('tab.me', {}, {reload: true});
+                    }
+                  })
+
+                  .error(function (data) {
+                    alert("Error in connection");
                   });
-                  $state.go('tab.me', {}, {reload: true});
-                }
-              })
-
-              .error(function (data) {
-                alert("Error in connection");
-              });
+              }
+              else
+              {
+                alert("Invalid phone number. Please try again.");
+              }
+            }
+            else
+            {
+              alert("Name should consists of alphabetical letters only.");
+            }
           }
           else
           {
@@ -70,6 +82,23 @@ angular.module('crowdsourcing')
           alert("Please do not leave any fields empty.");
         }
       }
+
+    function validateName(name) {
+      return /^[a-zA-Z]+$/.test(name);
+    }
+
+    function validateContact(contact){
+      if(contact.charAt(0) == "9" || contact.charAt(0) == "8" || contact.charAt(0) == "6")
+      {
+        //valid
+        return true;
+      }
+      else
+      {
+        //not valid
+        return false;
+      }
+    }
 
       $scope.back=function()
       {

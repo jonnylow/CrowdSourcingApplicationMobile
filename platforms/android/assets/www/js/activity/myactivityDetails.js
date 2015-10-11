@@ -25,10 +25,22 @@ angular.module('crowdsourcing')
               $scope.locationTo = transportDetails[0].location_to;
               $scope.moreInformation = transportDetails[0].more_information;
               $scope.transportStatus = transportDetails[0].status;
+
+              var date_test = $scope.date + " " + $scope.time;
+              var transportDateTime = new Date(date_test.replace(/-/g,"/"));
+              var currentDateTime = new Date();
+              transportDateTime.setMinutes(transportDateTime.getMinutes() - 30);
+
               if(transportDetails[0].status != "completed" && transportDetails[0].approval=="approved")
               {
                 $scope.eldery = false;
-                $scope.updateStatus = false;
+                if(currentDateTime >=transportDateTime) {
+                  $scope.updateStatus = false;
+                }
+                else
+                {
+                  $scope.updateStatus = true;
+                }
               }
               else
               {

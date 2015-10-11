@@ -4,7 +4,8 @@ angular.module('crowdsourcing')
       $scope.myLocation = {lng : '', lat: ''};
       $scope.transportID=[];
       $scope.transportName=[];
-      $scope.transportDateTimeStart=[];
+      $scope.transportDateStart=[];
+      $scope.transportTimeStart=[];
       $scope.transportFromDistance=[];
 
     $scope.getLocation= function (position) {
@@ -33,7 +34,8 @@ angular.module('crowdsourcing')
               //push to arrays to store all activities in array (also use for displaying)
               $scope.transportID.push(transportDetails[i].activity_id);
               $scope.transportName.push(transportDetails[i].name);
-              $scope.transportDateTimeStart.push("Date/Time: " + $scope.temp[0] + " | " + $scope.temp[1]);
+              $scope.transportDateStart.push("Date: " + $scope.temp[0]);
+              $scope.transportTimeStart.push("Time: " + $scope.temp[1]);
               $scope.transportFromDistance.push(m + " m" + " OR "+ km + " km");
             }
           }

@@ -22,8 +22,8 @@ if(!empty($_GET['id']) && !empty($_GET['type']))
 		$arrayTransport = array();
 
 		foreach($array as $transportID){
-			$result = pg_query($db,"SELECT * FROM activities a, tasks t where a.activity_id=$transportID and a.activity_id=t.activity_id and volunteer_id=$id and datetime_start > now()");
-
+			$result = pg_query($db,"SELECT * FROM activities a, tasks t where a.activity_id=$transportID and a.activity_id=t.activity_id and volunteer_id=$id");
+// and datetime_start > now()
 			if (!$result) {
 			die("Database query failed: " . mysql_error());
 			}

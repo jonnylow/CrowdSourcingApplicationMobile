@@ -16,7 +16,7 @@
 }
 
 div.row{
- width: 100%; 
+ width: 100%;
  padding: 0.1px;
  margin-top: 8px;
 }
@@ -48,13 +48,13 @@ div.transbox1 {
  border: none ;
  opacity:0.6;
  filter: alpha(opacity=60); /* For IE8 and earlier */
- width: 100%; 
+ width: 100%;
  float: left;
 }
 
 div.iconcontainer{
 	margin-bottom: 0;
-	width: 15%; 
+	width: 15%;
 	float:left;
 	background-color: #fff;
 	opacity: 0.6;
@@ -72,7 +72,7 @@ div.transbox input
 {
  margin: 1%;
  color: #000;
- width: 200px; 
+ width: 200px;
  border: none;
  padding: 5px;
 }
@@ -81,7 +81,7 @@ div.transbox1 input
 {
  margin: 1%;
  color: #000;
- width: 200px; 
+ width: 200px;
  padding: 5px;
 }
 
@@ -89,7 +89,7 @@ label.item
 {
  background-color: transparent;
  border:none;
- 
+
 }
 
 /* icare icon */
@@ -112,9 +112,9 @@ label.item
 }
 
 div.box{
-	background-color:transparent; 
+	background-color:transparent;
 	margin:5%;
-	width:80%;	
+	width:80%;
 }
 
 div.box input{
@@ -125,7 +125,7 @@ div.box input{
 }
 
 div.morebox{
-	background-color:transparent; 
+	background-color:transparent;
 	width:80%;
 	margin-top: 2px;
 }
@@ -156,7 +156,7 @@ div.date-ph{
  	background-color: #fff;
  	border: none;
  	opacity:0.6;
- 	filter: alpha(opacity=60); 
+ 	filter: alpha(opacity=60);
 	color:#C8C6C6;
 	text-align: center;
 	line-height: 50px; /* for example. */
@@ -170,6 +170,13 @@ i.icon.ion-calendar{
 
 .date{
 	width:40%;
+}
+
+i.icon.login.ion-home{
+  float:right;
+  font-size: 40px;
+  margin-top: -45px;
+  margin-right: ;
 }
 
 

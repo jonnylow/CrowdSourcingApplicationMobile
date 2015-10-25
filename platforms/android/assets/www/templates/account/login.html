@@ -6,6 +6,7 @@
 
 <!--iCare logo-->
 <!--<div class="logo"><img src="../img/icare.png" alt="image"></div>-->
+  <i class="icon login ion-home placeholder-icon light" ui-sref="tab.home"></i>
 <div style="text-align: center;">
  <img src="img/icare.png" class = "fullscreen-image"/>
 </div>
@@ -17,13 +18,13 @@
  <div class="email-divider">
     <div class="row">
       <div class="iconcontainer">
-        <i class="icon ion-email light larger" ></i>
+        <i class="icon ion-email dark larger" ></i>
        </div>
 
       <div class="transbox1">
         <label class="item item-input">
         <!--<i class="icon ion-email placeholder-icon light"></i>-->
-        <input type="text" placeholder="Email" ng-model="fields.email" >
+        <input type="email" placeholder="Email" ng-model="fields.email" >
         </label>
       </div>
     </div>
@@ -33,7 +34,7 @@
   <div class="email-divider">
     <div class="row">
       <div class="iconcontainer">
-        <i class="icon ion-locked light larger" ></i>
+        <i class="icon ion-locked dark larger" ></i>
       </div>
       <div class="transbox1">
         <label class="item item-input">
@@ -59,10 +60,10 @@
   <!--Register button-->
   <button ui-sref="registration" class="button button-block button-calm">Register!</button>
 
-  <!--Main Pagebutton-->
+  <!--Main Pagebutton
   <p style="text-align: center;">
     <a ui-sref="tab.home" style="color: #ffffff;">Proceed Without Logging In</a>
-  </p>
+  </p>-->
 </ion-pane>
 
 

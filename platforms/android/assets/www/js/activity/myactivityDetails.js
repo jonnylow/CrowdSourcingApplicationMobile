@@ -34,13 +34,13 @@ angular.module('crowdsourcing')
               if(transportDetails[0].status != "completed" && transportDetails[0].approval=="approved")
               {
                 $scope.eldery = false;
-                if(currentDateTime >=transportDateTime) {
+                //if(currentDateTime >=transportDateTime) {
+                  //$scope.updateStatus = false;
+               // }
+                //else
+                //{
                   $scope.updateStatus = false;
-                }
-                else
-                {
-                  $scope.updateStatus = true;
-                }
+               // }
               }
               else
               {

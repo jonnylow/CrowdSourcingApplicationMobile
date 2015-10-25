@@ -39,7 +39,7 @@ angular.module('crowdsourcing')
                // }
                 //else
                 //{
-                  $scope.updateStatus = true;
+                  $scope.updateStatus = false;
                // }
               }
               else

@@ -59,8 +59,8 @@ angular.module('crowdsourcing')
                           var status = data;
                           if(status.status[0] != "exist")
                           {
-                            if(validateNRIC(tempNRIC) == true)
-                            {
+                            //if(validateNRIC(tempNRIC) == true)
+                            //{
                               var urlStringNRIC = "http://www.changhuapeng.com/volunteer/php/CheckNRIC.php?nric="+tempNRIC;
 
                               $http.get(urlStringNRIC)
@@ -77,18 +77,18 @@ angular.module('crowdsourcing')
                                     window.localStorage.setItem("tempNRIC", tempNRIC);
                                     window.localStorage.setItem("tempGender", tempGender);
 
-                                    $state.go('verify', {}, {reload: true});
+                                    $state.go('moreQuestions', {}, {reload: true});
                                   }
                                   else
                                   {
                                     alert("NRIC has already been registered. Please try again.");
                                   }
                                 })
-                            }
-                            else
-                            {
-                              alert("Invalid NRIC. Please try again.");
-                            }
+                            //}
+                            //else
+                            //{
+                            //  alert("Invalid NRIC. Please try again.");
+                            //}
                           }
                           else
                           {

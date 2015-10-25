@@ -2,23 +2,22 @@
 <ion-view view-title={{transportActivityName}}>
 
   <ion-content>
-    <div class="card confirm">
-        <div class="item item-divider confirm">  
-            Application Successfully!
+    <div class="list card">
+        <div class="item item-divider header">  
+            Confirmation of Activity Application
         </div>
-        <div class="item item-text-wrap ">   
-            Date: {{date}}<br>
-            Time: {{time}}<br>
-            Expected Duration: {{expectedDuration}}<br>
-            Pick Up Location: {{locationFrom}}<br>
-            Drop Off Location: {{locationTo}}
-        </div>
-        <div class="item item-divider confirm">  
-            Your Application is in process. <br>
+        <div class="item details item-text-wrap" >   
+            Date: {{date}}<br><br>
+            Time: {{time}}<br><br>
+            Expected Duration: {{expectedDuration}}<br><br>
+            Pick Up Location: {{locationFrom}}<br><br>
+            Drop Off Location: {{locationTo}}<br><br><br>
+        
+            <b>Your Application is in process. <br>
             Please wait for the SMS Confirmation from <br>
-            the centre.
+            the centre.</b>
         </div>
     </div>
-    <button class="button button-block button-calm" ng-click="back()">Back to Home</button>
+    <button class="button home button-calm" ng-click="back()">Back to Home</button>
   </ion-content>
 </ion-view>

@@ -1,7 +1,8 @@
 
 .item-divider.header {
-  min-height: 50px;
+  min-height: 45px;
   background-color: #AEE1E0;
+  font-size: 18px;
 }
 
 .item-divider.confirm {
@@ -9,8 +10,19 @@
   background-color: #AEDFDD;
 }
 
+.item.details{
+	font-size: 20px;
+}
+
 button.button-positive.apply{
 	margin-left:35%;
 	padding-left: 30px;
 	padding-right: 30px;
+}
+
+button.home{
+	width:50%;
+	margin-left: 22%;
+	margin-top: 10px;
+	font-size: 20px;
 }

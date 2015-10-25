@@ -9,7 +9,7 @@
       <a class="button button-icon"></a>
       <a class="button button-icon"></a>
       <button class="button button-icon ion-ios-location" ui-sref="scan"></button>
-      <button class="button button-icon ion-search" ui-sref="search"></button>
+      <button class="button button-icon ion-search" ui-sref="#"></button>
       <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
       </div>
   </ion-header-bar>
@@ -18,27 +18,28 @@
 <!--body-->
   <ion-content has-header="true">
   <!-- Recommendation -->
-  <div class="list card">
+  <div class="card">
     <div class="item item-divider">
     Recommended for you!
     </div>
-    <a class="item item-avatar" href="#">
+    <div class="item item-divider item-avatar" href="#">
       <img src="img/henderson.jpg">
       <h2>Henderson <-> SGH</h2>
       <p>15/10/2015, 1pm</p>
-    </a>
-    <a class="item item-avatar" href="#">
+    </div>
+    <div class="item item-divider item-avatar" href="#">
       <img src="img/henderson.jpg">
       <h2>Henderson <-> KTPH</h2>
       <p>16/10/2015, 3pm</p>
-    </a>
+    </div>
   </div>
 
   <!-- Scan button -->
   <div style="text-align: center;">
     <button class="button button-float" ui-sref="scan">
+      <h1 class="ion-map" style="color: white;"></h1>
+      <h3 style="color: white">Press to</h3>
       <h1 style="color: white">Scan</h1>
-      <h4 style="color: white">for nearby activites</h4>
     </button>
   </div>
   </ion-content>

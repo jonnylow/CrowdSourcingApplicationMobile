@@ -12,7 +12,9 @@
 }
 
 ion-item.item{
-	padding:5px;
+	padding-right:5px;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 .item-divider {
   min-height: 30px;

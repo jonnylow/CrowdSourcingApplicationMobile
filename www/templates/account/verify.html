@@ -4,19 +4,16 @@
 <div style="text-align: center; ">
  <img src="img/Button3.png" class = "page-image"/>
 </div>
-
+<h4><b>A One-Time Password has been sent to your contact number: {{tempContactNumber}}</b></h4>
+ 
+ <br>
     <form ng-submit="verify(fields)">
-      <div class="box" >
-        <label class="item item-input item-stacked-label">
-          <font color="white">Contact Number</font>
-          <input type="text" ng-readonly="true" value={{tempContactNumber}} style="background-color:#202020;color:white;opacity:0.8;">
-        </label>
-      </div>
+      
 
       <div class="box">
         <label class="item item-input item-stacked-label">
           <font color="white">One Time Password</font>
-          <input type="password" placeholder="xxxxxxxxxx" style="color:#000"ng-model="fields.otp">
+          <input class="otp" type="password" placeholder="xxxxxxxxxx" style="color:#fff;" ng-model="fields.otp">
         </label>
       </div>
       <button class="button button-block button-calm">Complete Registration</button>

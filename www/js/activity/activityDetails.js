@@ -24,8 +24,8 @@ angular.module('crowdsourcing')
                 $scope.locationTo = transportDetails[0].location_to;
                 $scope.moreInformation = transportDetails[0].more_information;
               }
-          }
-        }
+          }        }
+
       })
 
       $scope.apply=function()

@@ -2,6 +2,10 @@ angular.module('crowdsourcing')
 
     .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
         $scope.myLocation = {lng : '', lat: ''};
+        $scope.showTag = false;
+        $scope.radius = 1000;
+        $scope.zoom = 14;
+        $scope.fields = {filter:"5"};
 
         //store all activities data
         $scope.transportID=[];
@@ -39,8 +43,34 @@ angular.module('crowdsourcing')
                   longitude: $scope.myLocation.lng
                 },
                 zoom: 11,
-                pan: 1
+                pan: 1,
+                "options": {
+                  "zoomControl": false,
+                  "mapTypeControl": false,
+                  "streetViewControl": false,
+                  "draggable": true,
+                  "optimized": true}
               };
+
+              $scope.circles = [
+                {
+                  id: 1,
+                  center: {
+                    latitude: $scope.myLocation.lat,
+                    longitude: $scope.myLocation.lng
+                  },
+                  radius: 1000,
+                  stroke: {
+                    color: '#08B21F',
+                    weight: 2,
+                    opacity: 1
+                  },
+                  fill: {
+                    color: '#08B21F',
+                    opacity: 0.5
+                  }
+                }
+              ];
 
               //plot marker for 'mylocation'
               $scope.currentLocationMarker = {
@@ -54,6 +84,7 @@ angular.module('crowdsourcing')
                 }
               };
             });
+            $scope.showTag = true;
           }
 
           navigator.geolocation.getCurrentPosition($scope.drawMap);
@@ -82,7 +113,7 @@ angular.module('crowdsourcing')
                     $scope.transportLocationFrom.push(transportDetails[i].location_from);
                     $scope.transportDateStart.push("Date: " + $scope.temp[0]);
                     $scope.transportTimeStart.push("Time: " + $scope.temp[1]);
-                    $scope.transportFromDistance.push(m + " m" + " OR "+ km + " km");
+                    $scope.transportFromDistance.push(km + " km");
 
                     //check if marker already exists (by checking with the markers array)
                     //if exists skip this marker, if it is a new position, add this new marker
@@ -121,6 +152,7 @@ angular.module('crowdsourcing')
           //refresh list of activities each time marker is click
           $scope.displayItems = function(locationFrom, markerIndex)
           {
+            $scope.showTag = false;
             for(var j = 0; j<$scope.markersStatus.length; j++)
             {
               $scope.markersStatus[j] = false;
@@ -156,6 +188,36 @@ angular.module('crowdsourcing')
           $scope.proceed = function(id, name)
           {
             $state.go('activityDetails', {transportId: id, transportActivityName: name});
+          }
+
+          $scope.valueChanged = function()
+          {
+            if($scope.fields.filter == "5")
+            {
+              $scope.zoom = 14;
+              $scope.radius = 1000;
+            }
+            if($scope.fields.filter == "10")
+            {
+              $scope.zoom = 13;
+              $scope.radius = 1800;
+            }
+            if($scope.fields.filter == "20")
+            {
+              $scope.zoom = 12;
+              $scope.radius = 2800;
+            }
+            if($scope.fields.filter == "30")
+            {
+              $scope.zoom = 11;
+              $scope.radius = 5000;
+            }
+            if($scope.fields.filter == "all")
+            {
+              $scope.zoom = 10;
+              $scope.radius = 15000;
+            }
+
           }
         }
     });

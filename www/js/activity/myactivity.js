@@ -23,11 +23,6 @@ angular.module('crowdsourcing')
               scope: $scope,
               buttons: [
                 {
-                  text: 'Cancel',
-                  onTap: function(e) {
-                    $state.go('tab.home', {}, {reload: true});
-                  }},
-                {
                   text: '<b>Ok</b>',
                   type: 'button-calm',
                   onTap: function(e) {
@@ -44,7 +39,7 @@ angular.module('crowdsourcing')
        	$http.get(urlString)
       	.success(function (data) {
         var transportDetails = data;
-    console.log(urlString);
+
         if (transportDetails != null){
         	for(var i = 0; i<transportDetails.length; i++){
 

@@ -5,9 +5,10 @@ angular.module('crowdsourcing')
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
       $scope.id = window.localStorage.getItem("loginId");
+      $scope.loadingshow = true;
     }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId)
+    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId +"&id="+$scope.id)
       .success(function (data) {
         var transportDetails = data;
 
@@ -62,6 +63,7 @@ angular.module('crowdsourcing')
             }
           }
         }
+        $scope.loadingshow = false;
       })
 
     $scope.proceed = function(id, name)
@@ -74,7 +76,7 @@ angular.module('crowdsourcing')
       $ionicHistory.goBack();
     }
 
-    $scope.status=function(id, name)
+    $scope.goStatus=function(id, name)
     {
       $state.go('myactivityStatus', {transportId: id, transportActivityName: name, status: $scope.transportStatus});
     }
@@ -88,6 +90,7 @@ angular.module('crowdsourcing')
 
       confirmPopup.then(function(res) {
         if(res) {
+          $scope.loadingshow = true;
           urlString = "http://www.changhuapeng.com/volunteer/php/Withdraw.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
 
           $http.get(urlString)
@@ -104,6 +107,7 @@ angular.module('crowdsourcing')
 
               var status = data;
               if (status != null) {
+                $scope.loadingshow = false;
                 var alertPopup = $ionicPopup.alert({
                   title: 'Status',
                   template: status.status[0]

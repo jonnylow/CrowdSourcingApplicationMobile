@@ -5,6 +5,7 @@ angular.module('crowdsourcing')
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
     }
+    $scope.loadingshow = true;
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivityDetails.php?transportId=" + $scope.transportId)
       .success(function (data) {
@@ -23,8 +24,10 @@ angular.module('crowdsourcing')
                 $scope.locationFrom = transportDetails[0].location_from;
                 $scope.locationTo = transportDetails[0].location_to;
                 $scope.moreInformation = transportDetails[0].more_information;
+                $scope.loadingshow = false;
               }
-          }        }
+          }
+        }
 
       })
 
@@ -38,6 +41,7 @@ angular.module('crowdsourcing')
 
           confirmPopup.then(function(res) {
             if(res) {
+              $scope.loadingshow = true;
               window.localStorage.setItem("tempADate", $scope.date);
               window.localStorage.setItem("tempATime", $scope.time);
               window.localStorage.setItem("tempAExpectedDuration", $scope.expectedDuration);
@@ -53,6 +57,7 @@ angular.module('crowdsourcing')
 
                     $http.get(urlString)
                       .success(function (data) {
+                        $scope.loadingshow = false;
 
                         var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
                         $http.get(sendEmail)
@@ -73,6 +78,7 @@ angular.module('crowdsourcing')
                   }
                   else
                   {
+                    $scope.loadingshow = false;
                     var myPopup = $ionicPopup.show({
                       title: 'Notice',
                       subTitle: 'You have already applied for this activity. Please wait for centre to approve your application',

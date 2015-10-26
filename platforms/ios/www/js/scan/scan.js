@@ -28,7 +28,7 @@ angular.module('crowdsourcing')
         $scope.transportDateStartDisplay=[];
         $scope.transportTimeStartDisplay=[];
         $scope.transportFromDistanceDisplay=[];
-
+        $scope.loadingshow = true;
         //plot map
         if($scope.transportID != null && $scope.transportName != null && $scope.transportDateStart !=null && $scope.transportTimeStart !=null) {
           $scope.drawMap = function (position) {
@@ -136,6 +136,7 @@ angular.module('crowdsourcing')
                   }
                 }
               }
+              $scope.loadingshow = false;
             })
 
           //check if marker already exist in the marker array
@@ -152,6 +153,7 @@ angular.module('crowdsourcing')
           //refresh list of activities each time marker is click
           $scope.displayItems = function(locationFrom, markerIndex)
           {
+            $scope.loadingshow = true;
             $scope.showTag = false;
             for(var j = 0; j<$scope.markersStatus.length; j++)
             {
@@ -182,6 +184,7 @@ angular.module('crowdsourcing')
                 }
               }
             }
+            $scope.loadingshow = false;
           }
 
           //proceed to activity details page

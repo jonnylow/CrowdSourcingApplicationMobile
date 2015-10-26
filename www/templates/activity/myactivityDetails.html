@@ -8,6 +8,10 @@
   </ion-nav-bar>
 
  <ion-content>
+   <!--
+  <div class="spinner">
+    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
+  </div>-->
     <!--current activity listing-->
     <div class="list card">
       <div class="item item-divider">
@@ -30,7 +34,7 @@
       </div>
       <div class="item item-button-right">
         Status: {{transportStatus}}
-        <button class="button button-energized" ng-disabled="updateStatus" ng-click="status(transportId, transportActivityName)">Update Status</button>
+        <button class="button button-energized" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>
       </div>
       <div class="item item-text-wrap">
         Additional Information: {{moreInformation}}

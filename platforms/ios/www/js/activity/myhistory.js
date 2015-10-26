@@ -9,6 +9,7 @@ angular.module('crowdsourcing')
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
+          $scope.loadingshow = true;
         }
         else {
           $state.go('login', {}, {reload: true});
@@ -49,6 +50,7 @@ angular.module('crowdsourcing')
             }
           }
         }
+        $scope.loadingshow = false;
       })
 
     // .fromTemplateUrl() method

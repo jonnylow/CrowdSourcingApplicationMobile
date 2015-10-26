@@ -19,6 +19,7 @@ angular.module('crowdsourcing')
 
       $scope.verify = function(fields)
       {
+        $scope.loadingshow = true;
         if(fields != null) {
           if (fields.otp!= null && fields.otp.trim() != "")
           {
@@ -46,6 +47,7 @@ angular.module('crowdsourcing')
 
                   var status = data;
                   if (status != null) {
+                    $scope.loadingshow = false;
                     var alertPopup = $ionicPopup.alert({
                       title: 'Status',
                       template: status.status[0]
@@ -61,18 +63,21 @@ angular.module('crowdsourcing')
             }
             else
             {
+              $scope.loadingshow = false;
               alert("Wrong One Time Password. Please try again.");
               $scope.fields= {otp: ""};
             }
           }
           else
           {
+            $scope.loadingshow = false;
             alert("Please fill in all fields.");
           }
 
         }
         else
         {
+          $scope.loadingshow = false;
           alert("Please fill in all fields.");
         }
       }

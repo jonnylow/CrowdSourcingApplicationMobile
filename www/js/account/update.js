@@ -13,6 +13,7 @@ angular.module('crowdsourcing')
         $scope.fields= {currentpassword: "",confirmpassword: "", newpassword:""};
         $scope.update = function(fields)
         {
+          $scope.loadingshow = true;
           if(fields != null) {
             if (fields.currentpassword != null && fields.currentpassword.trim() != "" && fields.newpassword != null && fields.newpassword.trim() != ""
               && fields.confirmpassword!= null && fields.confirmpassword.trim() != "")
@@ -43,6 +44,8 @@ angular.module('crowdsourcing')
                                     .success(function (data) {
                                       var status = data;
                                       if (status != null) {
+                                        $scope.loadingshow = false;
+
                                         var alertPopup = $ionicPopup.alert({
                                           title: 'Status',
                                           template: status.status[0]
@@ -59,11 +62,13 @@ angular.module('crowdsourcing')
                                 }
                                 else
                                 {
+                                  $scope.loadingshow = false;
                                   alert("Old & New Password are the same. Please change a new password. ");
                                 }
                               }
                               else
                               {
+                                $scope.loadingshow = false;
                                 alert("Passwords do not match. Please try again.");
                               }
                           }
@@ -74,7 +79,7 @@ angular.module('crowdsourcing')
                         });
                     }
                     else {
-
+                      $scope.loadingshow = false;
                       var alertPopup = $ionicPopup.alert({
                         title: 'Error',
                         template: 'Incorrect Current Password.'
@@ -85,12 +90,14 @@ angular.module('crowdsourcing')
             }
             else
             {
+              $scope.loadingshow = false;
               alert("Please fill in all fields.");
             }
 
           }
           else
           {
+            $scope.loadingshow = false;
             alert("Please fill in all fields.");
           }
         }

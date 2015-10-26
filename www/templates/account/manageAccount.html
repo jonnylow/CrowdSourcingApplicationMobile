@@ -8,15 +8,19 @@
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.me"></button>
-    </ion-nav-buttons>      
+    </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content>
+    <!--
+  <div class="spinner">
+    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
+  </div>-->
     <!-- Registration form-->
     <form ng-submit="update(fields)">
 
-    <div class="list card">  
-      <div class="item update item-icon-left">      
+    <div class="list card">
+      <div class="item update item-icon-left">
         <div class="row">
           <div class="col icon">
             <i class="icon ion-card"></i>
@@ -25,12 +29,12 @@
             <b>NRIC:</b>
           </div>
           <div class="col field">
-            <input class="readonly" readonly=true type="text" placeholder="NRIC" ng-model="fields.nric"> 
-          </div>     
-        </div>  
+            <input class="readonly" readonly=true type="text" placeholder="NRIC" ng-model="fields.nric">
+          </div>
+        </div>
       </div>
 
-      <div class="item update item-icon-left">      
+      <div class="item update item-icon-left">
         <div class="row">
           <div class="col icon">
             <i class="icon ion-email"></i>
@@ -39,12 +43,12 @@
             <b>Email:</b>
           </div>
           <div class="col field">
-            <input class="readonly" readonly=true type="text" placeholder="Email" ng-model="fields.email" > 
-          </div> 
+            <input class="readonly" readonly=true type="text" placeholder="Email" ng-model="fields.email" >
+          </div>
         </div>
       </div>
 
-      <div class="item update item-icon-left">      
+      <div class="item update item-icon-left">
         <div class="row">
           <div class="col icon">
             <i class="icon ion-person"></i>
@@ -56,11 +60,11 @@
             <label class="item update item-input">
               <input class="edit" type="text" placeholder="Name" ng-model="fields.name" >
             </label>
-          </div> 
-        </div> 
+          </div>
+        </div>
       </div>
 
-      <div class="item update item-icon-left">      
+      <div class="item update item-icon-left">
         <div class="row">
           <div class="col icon">
             <i class="icon ion-iphone"></i>
@@ -72,11 +76,11 @@
             <label class="item update item-input">
               <input class="edit contact" type="text" colour:"#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
             </label>
-          </div> 
+          </div>
         </div>
       </div>
 
-      <div class="item update item-icon-left">      
+      <div class="item update item-icon-left">
         <div class="row">
           <div class="col icon">
             <i class="icon ion-briefcase"></i>
@@ -88,11 +92,11 @@
             <label class="item update item-input">
               <input class="edit occupation" type="text" colour:"#ffffff" placeholder="Occupation" ng-model="fields.occupation">
             </label>
-          </div> 
+          </div>
         </div>
       </div>
 
-      <div class="item update item-icon-left">      
+      <div class="item update item-icon-left">
         <div class="row">
           <div class="col icon aop">
             <div class="update icon">
@@ -116,11 +120,11 @@
                 <option value="Lead-games/exercises">Lead games/exercises</option>
                 <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
               </select>
-            </label>          
-          </div> 
+            </label>
+          </div>
         </div>
-        
-        <div class="item update item-icon-left">      
+
+        <div class="item update item-icon-left">
         <div class="row">
           <div class="col icon aop">
             <div class="update icon">
@@ -144,9 +148,9 @@
                 <option value="Lead-games/exercises">Lead games/exercises</option>
                 <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
               </select>
-            </label>          
-          </div> 
-        </div>   
+            </label>
+          </div>
+        </div>
 
 
 

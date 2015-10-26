@@ -14,21 +14,21 @@ angular.module('crowdsourcing')
         $scope.checkupcomplete = true;
         $scope.completed = true;
       }
-      else if($scope.transportStatus == "Pick-up")
+      else if($scope.transportStatus == "pick-up")
       {
         $scope.pickedup = true;
         $scope.checkup=false;
         $scope.checkupcomplete = true;
         $scope.completed = true;
       }
-      else if($scope.transportStatus == "At Check-up")
+      else if($scope.transportStatus == "at check-up")
       {
         $scope.pickedup = true;
         $scope.checkup=true;
         $scope.checkupcomplete = false;
         $scope.completed = true;
       }
-      else if($scope.transportStatus == "Check-up completed")
+      else if($scope.transportStatus == "check-up completed")
       {
         $scope.pickedup = true;
         $scope.checkup=true;
@@ -46,12 +46,14 @@ angular.module('crowdsourcing')
 
       confirmPopup.then(function(res) {
         if(res) {
+          $scope.loadingshow = true;
           urlString = "http://www.changhuapeng.com/volunteer/php/updateActivityStatus.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId+"&status="+status;
 
           $http.get(urlString)
             .success(function (data) {
               var status = data;
               if (status != null) {
+                $scope.loadingshow = false;
                 var alertPopup = $ionicPopup.alert({
                   title: 'Status',
                   template: status.status[0]

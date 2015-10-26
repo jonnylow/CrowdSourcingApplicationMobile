@@ -7,10 +7,14 @@
   </ion-nav-bar>
 
   <ion-content padding="true">
+    <!--
+  <div class="spinner">
+    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
+  </div>-->
     <br>
-    <button class="button button-block button-energized" ng-disabled="pickedup" ng-click="updateStatus('Pick-up')">Picked up</button>
-    <button class="button button-block button-energized" ng-disabled="checkup" ng-click="updateStatus('At Check-up')">At Check-up</button>
-    <button class="button button-block button-energized" ng-disabled="checkupcomplete" ng-click="updateStatus('Check-up completed')">Check-up Completed</button>
+    <button class="button button-block button-energized" ng-disabled="pickedup" ng-click="updateStatus('pick-up')">Picked up</button>
+    <button class="button button-block button-energized" ng-disabled="checkup" ng-click="updateStatus('at check-up')">At Check-up</button>
+    <button class="button button-block button-energized" ng-disabled="checkupcomplete" ng-click="updateStatus('check-up completed')">Check-up Completed</button>
     <button class="button button-block button-energized" ng-disabled="completed" ng-click="updateStatus('completed')">Completed</button>
   </ion-content>
 </ion-view>

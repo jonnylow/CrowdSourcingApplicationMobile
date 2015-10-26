@@ -15,12 +15,16 @@
 
   <!--body-->
   <ion-content has-header="true">
+    <!--
+  <div class="spinner">
+    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
+  </div>-->
     <!--history to current tab-->
     <div class="button-bar">
       <button class="button button-selected" ui-sref="tab.activity">Current</button>
       <button class="button button-nonselected " ui-sref="tab.myhistory">History</button>
     </div>
-      
+
 
 <!--current activity listing-->
     <div class="list card">
@@ -29,18 +33,18 @@
           <img src="img/henderson.jpg">
           <h2>{{transportName[$index]}}</h2>
           <p>{{transportDateTimeStart[$index]}}</p>
-          
-          <div ng-if="transportStatus[$index] == 'In-Progress'">Status: 
+
+          <div ng-if="transportStatus[$index] == 'In-Progress'">Status:
             <button class="button button-full button-positive">{{transportStatus[$index]}}</button>
           </div>
 
           <div ng-if="transportStatus[$index] == 'Pending'">
-            Status: 
+            Status:
             <button class="button button-full button-energized">{{transportStatus[$index]}}</button>
           </div>
 
           <div ng-if="transportStatus[$index] == 'Approved'">
-            Status: 
+            Status:
             <button class="button button-full button-balanced">{{transportStatus[$index]}}</button>
           </div>
 

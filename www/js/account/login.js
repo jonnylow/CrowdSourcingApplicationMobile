@@ -2,6 +2,7 @@ angular.module('crowdsourcing')
 
     .controller('loginController', function ($scope, $ionicPopup, $state, $http) {
       $scope.login = function(fields){
+          $scope.loadingshow = true;
           if(fields != null) {
             if (fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != "")
             {
@@ -21,12 +22,14 @@ angular.module('crowdsourcing')
 
                           if (loginDetails != null) {
                             if(loginDetails[0].is_approved != 'f') {
+                              $scope.loadingshow = false;
                               window.localStorage.setItem("loginId", loginDetails[0].volunteer_id);
                               window.localStorage.setItem("loginUserName", loginDetails[0].name);
                               window.localStorage.setItem("loginEmail", loginDetails[0].email);
                               $state.go('tab.home', {}, {reload: true});
                             }
                             else {
+                              $scope.loadingshow = false;
                               var alertPopup = $ionicPopup.alert({
                                 title: 'Sorry',
                                 template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
@@ -40,7 +43,7 @@ angular.module('crowdsourcing')
                         });
                     }
                     else {
-
+                      $scope.loadingshow = false;
                       var alertPopup = $ionicPopup.alert({
                         title: 'Error',
                         template: 'Incorrect Email or Password.'
@@ -56,12 +59,14 @@ angular.module('crowdsourcing')
             else
             {
               alert("Please fill in all fields.");
+              $scope.loadingshow = false;
             }
 
           }
           else
           {
             alert("Please fill in all fields.");
+            $scope.loadingshow = false;
           }
         }
     });

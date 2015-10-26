@@ -21,6 +21,7 @@ angular.module('crowdsourcing')
 
       $scope.register = function(fields)
       {
+        $scope.loadingshow = true;
         if(fields != null) {
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
@@ -69,6 +70,7 @@ angular.module('crowdsourcing')
                                   var status = data;
                                   if(status.status[0] != "exist")
                                   {
+                                    $scope.loadingshow = false;
                                     window.localStorage.setItem("tempName", tempName);
                                     window.localStorage.setItem("tempEmail", tempEmail);
                                     window.localStorage.setItem("tempPassword", tempPassword);
@@ -81,6 +83,7 @@ angular.module('crowdsourcing')
                                   }
                                   else
                                   {
+                                    $scope.loadingshow = false;
                                     alert("NRIC has already been registered. Please try again.");
                                   }
                                 })
@@ -92,37 +95,45 @@ angular.module('crowdsourcing')
                           }
                           else
                           {
+                            $scope.loadingshow = false;
                             alert("Email address has already been registered. Please try again.");
                           }
                         })
                     }
                     else {
+                      $scope.loadingshow = false;
                       alert("Invalid email address. Please try again.");
                     }
                   }
                   else {
+                    $scope.loadingshow = false;
                     alert("Invalid phone number. Please try again.");
                   }
                 }
                 else {
+                  $scope.loadingshow = false;
                   alert("Passwords do not match. Please try again.");
                 }
               }
               else {
+                $scope.loadingshow = false;
                 alert("Name should consists of alphabetical letters only.");
               }
             }
             else {
+              $scope.loadingshow = false;
               alert("Date of Birth cannot larger than current date.");
             }
           }
           else
           {
+            $scope.loadingshow = false;
             alert("Please fill in all fields.");
           }
         }
         else
         {
+          $scope.loadingshow = false;
           alert("Please fill in all fields.");
         }
       }
@@ -144,7 +155,7 @@ angular.module('crowdsourcing')
     }
 
     function validateName(name) {
-      return /^[a-zA-Z]+$/.test(name);
+      return /^[a-zA-Z\s]+$/.test(name);
     }
 
     function validateDOB(tempDOB){

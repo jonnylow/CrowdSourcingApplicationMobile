@@ -10,13 +10,9 @@ angular.module('crowdsourcing')
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
+          $scope.loadingshow = true;
         }
         else {
-          if(window.localStorage.getItem("loginUserName") != null) {
-            $scope.name = window.localStorage.getItem("loginUserName");
-            $scope.id = window.localStorage.getItem("loginId");
-          }
-          else {
             var myPopup = $ionicPopup.show({
               title: 'Notice',
               subTitle: 'You must login first',
@@ -31,7 +27,6 @@ angular.module('crowdsourcing')
                 },
               ]
             });
-          }
         }
 
        	var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=1";
@@ -63,6 +58,7 @@ angular.module('crowdsourcing')
         		}
         	}
         }
+            $scope.loadingshow = false;
   })
 
     $scope.proceed = function(id, name)

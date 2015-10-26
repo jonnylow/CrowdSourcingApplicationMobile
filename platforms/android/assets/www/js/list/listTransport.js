@@ -7,6 +7,7 @@ angular.module('crowdsourcing')
       $scope.transportDateStart=[];
       $scope.transportTimeStart=[];
       $scope.transportFromDistance=[];
+    $scope.loadingshow = true;
 
     $scope.getLocation= function (position) {
       $scope.$apply(function () {
@@ -43,7 +44,7 @@ angular.module('crowdsourcing')
       })
 
       navigator.geolocation.getCurrentPosition($scope.getLocation);
-
+    $scope.loadingshow = false;
       $scope.proceed = function(id, name)
       {
         $state.go('activityDetails', {transportId: id, transportActivityName: name});

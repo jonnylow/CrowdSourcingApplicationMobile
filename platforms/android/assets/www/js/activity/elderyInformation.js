@@ -4,6 +4,7 @@ angular.module('crowdsourcing')
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
+      $scope.loadingshow = true;
     }
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveElderyInformation.php?transportId=" + $scope.transportId)
@@ -20,6 +21,7 @@ angular.module('crowdsourcing')
                 $scope.branchName=elderyInformation[0].senior_centre_name;
                 $scope.kin=elderyInformation[0].next_of_kin_name;
                 $scope.contact=elderyInformation[0].next_of_kin_contact;
+              $scope.loadingshow = false;
             }
           }
         }

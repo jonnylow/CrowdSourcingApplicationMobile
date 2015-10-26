@@ -26,3 +26,13 @@ button.home{
 	margin-top: 10px;
 	font-size: 20px;
 }
+
+div.spinner {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin-top: 250px;
+  height: 85px;
+  text-align: center;
+  z-index: 1;
+}

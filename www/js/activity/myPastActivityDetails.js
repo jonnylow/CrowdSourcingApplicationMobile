@@ -5,6 +5,7 @@ angular.module('crowdsourcing')
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
       $scope.id = window.localStorage.getItem("loginId");
+      $scope.loadingshow = true;
     }
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId)
@@ -38,6 +39,7 @@ angular.module('crowdsourcing')
             }
           }
         }
+        $scope.loadingshow = false;
       })
 
     $scope.proceed = function(id, name)

@@ -4,6 +4,7 @@ angular.module('crowdsourcing')
       if(window.localStorage.getItem("loginUserName") != null) {
         $scope.name = window.localStorage.getItem("loginUserName");
         $scope.id = window.localStorage.getItem("loginId");
+        $scope.loadingshow = true;
       }
       else {
         var myPopup = $ionicPopup.show({
@@ -37,6 +38,7 @@ angular.module('crowdsourcing')
           $scope.occuption=userDetails[0].occupation;
           $scope.preference1=userDetails[0].area_of_preference_1;
           $scope.preference2=userDetails[0].area_of_preference_2;
+          $scope.loadingshow = false;
         }
       })
 

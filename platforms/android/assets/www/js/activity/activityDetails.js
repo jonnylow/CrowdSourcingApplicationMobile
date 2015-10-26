@@ -103,11 +103,6 @@ angular.module('crowdsourcing')
             scope: $scope,
             buttons: [
               {
-                text: 'Cancel',
-                onTap: function(e) {
-                  $state.go('scan', {}, {reload: true});
-                }},
-              {
                 text: '<b>Ok</b>',
                 type: 'button-calm',
                 onTap: function(e) {

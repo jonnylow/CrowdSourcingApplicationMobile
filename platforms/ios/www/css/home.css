@@ -4,7 +4,7 @@
     height: auto;
     width: 50%;
     top: 0px;
-} 
+}
 .popover ion-content {
     position: relative;
 }
@@ -14,9 +14,9 @@
 }
 
 .scanimage-screen {
-	width: 80%; 
+	width: 80%;
 	height: 80%;
-	box-shadow: outset 0 10px 40px rgba(0, 0, 0, 1); 
+	box-shadow: outset 0 10px 40px rgba(0, 0, 0, 1);
 }
 
 
@@ -40,7 +40,7 @@
 }
 
 h1 {
-  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Century Gothic', CenturyGothic, sans-serif;
   font-size: 55px;
   font-style: normal;
   font-variant: normal;

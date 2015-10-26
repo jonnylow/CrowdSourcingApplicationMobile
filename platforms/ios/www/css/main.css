@@ -8,7 +8,7 @@
 }
 
 .pane{
-	background-image: url("../img/elderly.jpg");
+background-image: url("../img/elderly.jpg");
  background-size: 1000px 1000px;
  background-repeat: no-repeat;
  padding:15px;
@@ -177,6 +177,21 @@ i.icon.login.ion-home{
   font-size: 40px;
   margin-top: -45px;
   margin-right: ;
+}
+
+h4{
+	color:#fff;
+	margin:10px;
+	font-size: 17px;
+	text-align: center;
+	margin-bottom: -10px;
+}
+
+input.otp{
+	width:100;
+	margin: -5;
+	opacity: 0.6;
+	text-align: left;
 }
 
 

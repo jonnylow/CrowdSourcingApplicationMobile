@@ -31,6 +31,9 @@ angular.module('crowdsourcing')
               var currentDateTime = new Date();
               transportDateTime.setMinutes(transportDateTime.getMinutes() - 30);
 
+              //console.log($scope.id);
+              //console.log(transportDetails[0].status);
+              //console.log(transportDetails[0].approval);
               if(transportDetails[0].status != "completed" && transportDetails[0].approval=="approved")
               {
                 $scope.eldery = false;
@@ -48,7 +51,7 @@ angular.module('crowdsourcing')
                 $scope.updateStatus = true;
               }
 
-              if(transportDetails[0].status != "New Task")
+              if(transportDetails[0].status != "new task")
               {
                 $scope.withdrawShow = true;
               }

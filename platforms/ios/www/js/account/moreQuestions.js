@@ -10,6 +10,8 @@ angular.module('crowdsourcing')
     $scope.tempGender = window.localStorage.getItem("tempGender");
     $scope.tempFrontIC = "frontIC";
     $scope.tempBackIC = "backIC";
+    $scope.showFront = true;
+    $scope.showBack = true;
 
       $scope.fields= {carChecked: false, occupation:""};
 
@@ -42,4 +44,82 @@ angular.module('crowdsourcing')
           alert("Please fill in all required fields.");
         }
       }
-    });
+
+    $scope.getPhotoFront = function() {
+      var image = document.getElementById('frontic');
+      if(image.src.indexOf("base64") == -1) {
+        if (navigator.camera) {
+          navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 20,
+            destinationType: Camera.DestinationType.DATA_URL
+          });
+          $scope.showFront = false;
+        }
+        else {
+          alert("No Camera Detected");
+        }
+      }
+      else
+      {
+        image.src = "";
+        $scope.showFront = true;
+      }
+
+      function onSuccess(imageData) {
+        var image = document.getElementById('frontic');
+        image.style.dispay = 'block';
+        image.src = "data:image/png;base64," + imageData;
+      }
+
+      function onFail(message) {
+        alert('Failed because: ' + message);
+        $scope.showFront = true;
+      }
+    }
+
+    $scope.deletePhotoFront = function() {
+        var image = document.getElementById('frontic');
+        image.style.dispay = 'block';
+        image.src = "";
+        $scope.showFront = true;
+    }
+
+    $scope.getPhotoBack = function() {
+      var image = document.getElementById('backic');
+      if(image.src.indexOf("base64") == -1) {
+        if (navigator.camera) {
+          navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 20,
+            destinationType: Camera.DestinationType.DATA_URL
+          });
+          $scope.showBack = false;
+        }
+        else {
+          alert("No Camera Detected");
+        }
+      }
+      else
+      {
+        image.src = "";
+        $scope.showBack = true;
+      }
+
+      function onSuccess(imageData) {
+        var image = document.getElementById('backic');
+        image.style.dispay = 'block';
+        image.src = "data:image/png;base64," + imageData;
+      }
+
+      function onFail(message) {
+        alert('Failed because: ' + message);
+      }
+    }
+
+    $scope.deletePhotoBack = function() {
+      var image = document.getElementById('backic');
+      image.style.dispay = 'block';
+      image.src = "";
+      $scope.showBack = true;
+    }
+
+  });

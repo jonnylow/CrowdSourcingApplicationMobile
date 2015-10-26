@@ -49,10 +49,10 @@ angular.module('crowdsourcing')
         			$scope.transportName.push(transportDetails[i].name);
               $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
 
-              if(transportDetails[i].approval == "pending" && transportDetails[i].status == "New Task") {
+              if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
                 $scope.transportStatus.push("Pending");
               }
-              else if(transportDetails[i].approval == "approved" && transportDetails[i].status == "New Task")
+              else if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
               {
                 $scope.transportStatus.push("Approved");
               }

@@ -7,7 +7,7 @@ angular.module('crowdsourcing')
       $scope.transportStatus= $stateParams.status;
       $scope.id = window.localStorage.getItem("loginId");
 
-      if($scope.transportStatus == "New Task")
+      if($scope.transportStatus == "new task")
       {
         $scope.pickedup = false;
         $scope.checkup=true;

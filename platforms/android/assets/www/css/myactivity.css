@@ -21,11 +21,11 @@
 }
 
 .withdraw{
-	border:1px solid red;
+	
 	width:60%;
 	padding-left: 15px;
 	margin-left:17%;
-	background-color:#E10233;
+	background-color:#FF2B2B;
 	color:#fff;
 }
 
@@ -37,4 +37,9 @@ div.spinner {
   height: 85px;
   text-align: center;
   z-index: 1;
+}
+
+.button.button-light.button-clear{
+  color:#fff;
+
 }

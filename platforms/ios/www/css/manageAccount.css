@@ -57,16 +57,20 @@ margin-top: 0px;
 
 
 select.aop{
-	margin-top: 10px;
+	margin-top: 3px;
 	margin-left: -14px;
 	width:300px;
 	font-size: 17px;
 	padding:5px;
+	background-color: transparent;
+	height: 40px;
+
 }
 
 .update.icon{
 	margin-top: -23px;
 	background-color: transparent;
+	margin-left: -10px;
 }
 
 div.spinner {

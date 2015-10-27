@@ -24,7 +24,7 @@ angular.module('crowdsourcing')
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationTo = transportDetails[0].location_to;
-              $scope.moreInformation = transportDetails[0].meore_information;
+              $scope.moreInformation = transportDetails[0].more_information;
               $scope.transportStatus = transportDetails[0].status;
 
               var date_test = $scope.date + " " + $scope.time;

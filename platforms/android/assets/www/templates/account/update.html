@@ -1,26 +1,25 @@
 <link href="css/profile.css" rel="stylesheet">
 <ion-view view-title="Update Account">
   <ion-content padding="true">
-    <!--
-  <div class="spinner">
-    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
-  </div>-->
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
 
     <form ng-submit="update(fields)">
       <div class="list card">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Current Password</span>
-          <input type="password" placeholder="xxxxxxxx" ng-model="fields.currentpassword">
+          <input type="password" placeholder="" ng-model="fields.currentpassword">
         </label>
 
         <label class="item item-input item-stacked-label">
           <span class="input-label">New Password</span>
-          <input type="password" placeholder="xxxxxxxx" ng-model="fields.newpassword">
+          <input type="password" placeholder="" ng-model="fields.newpassword">
         </label>
 
         <label class="item item-input item-stacked-label">
           <span class="input-label">Confirm Password</span>
-          <input type="password" placeholder="xxxxxxxx" ng-model="fields.confirmpassword">
+          <input type="password" placeholder="" ng-model="fields.confirmpassword">
         </label>
       </div>
       <button class="button button-block button-orange">Update Account</button>

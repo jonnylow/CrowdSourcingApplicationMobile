@@ -1,6 +1,30 @@
 angular.module('crowdsourcing')
 
     .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout) {
+    //checkConnection();
+    if(typeof cordova != 'undefined'){
+      cordova.plugins.diagnostic.isLocationEnabled(function(enabled){
+        if(!enabled)
+        {
+          var myPopup = $ionicPopup.show({
+            title: '<b>Notice</b>',
+            subTitle: 'No location services detected. Please enable before using iCare.',
+            scope: $scope,
+            buttons: [
+              {
+                text: 'Proceed to Location Services',
+                type: 'button-calm',
+                onTap: function(e) {
+                  cordova.plugins.diagnostic.switchToLocationSettings();
+                }
+              },
+            ]
+          });
+        }
+      }, function(error){
+        alert("The following error occurred: "+error);
+      });
+    }
 
     if (window.localStorage.getItem("loginUserName") != null) {
       $timeout(function() {
@@ -64,5 +88,37 @@ angular.module('crowdsourcing')
         $scope.$on('$destroy', function() {
           $scope.popover.remove();
         });
+
+    //check connection
+    function checkConnection() {
+      var networkState = navigator.connection.type;
+
+      var states = {};
+      states[Connection.UNKNOWN] = 'Unknown connection';
+      states[Connection.ETHERNET] = 'Ethernet connection';
+      states[Connection.WIFI] = 'WiFi connection';
+      states[Connection.CELL_2G] = 'Cell 2G connection';
+      states[Connection.CELL_3G] = 'Cell 3G connection';
+      states[Connection.CELL_4G] = 'Cell 4G connection';
+      states[Connection.CELL] = 'Cell generic connection';
+      states[Connection.NONE] = 'No network connection';
+
+      if (states[networkState] == 'No network connection' || states[networkState] == 'Unknown connection'){
+        var myPopup = $ionicPopup.show({
+          title: '<b>Notice</b>',
+          subTitle: 'No network connection detected. Please enable before using iCare.',
+          scope: $scope,
+          buttons: [
+            {
+              text: 'Proceed to Network Settings',
+              type: 'button-calm',
+              onTap: function(e) {
+                cordova.plugins.diagnostic.switchToMobileDataSettings();
+              }
+            },
+          ]
+        });
+      }
+    }
 
     });

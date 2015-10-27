@@ -11,15 +11,14 @@
   </ion-nav-bar>
 
   <ion-content>
-    <!--
-  <div class="spinner">
-    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
-  </div>-->
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
     <div class="list card">
     <ion-item ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
 
-      <div class="item item-divider">
-        {{$index+1}} -
+      <div class="item item-divider item-text-wrap">
+        {{$index+1}}.
         {{transportName[$index]}}<br>
       </div>
       <div class="item item-text-wrap">

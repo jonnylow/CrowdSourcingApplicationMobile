@@ -7,10 +7,9 @@
   </ion-nav-bar>
 
   <ion-content padding="true">
-    <!--
-  <div class="spinner">
-    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
-  </div>-->
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
     <br>
     <button class="button button-block button-energized" ng-disabled="pickedup" ng-click="updateStatus('pick-up')">Picked up</button>
     <button class="button button-block button-energized" ng-disabled="checkup" ng-click="updateStatus('at check-up')">At Check-up</button>

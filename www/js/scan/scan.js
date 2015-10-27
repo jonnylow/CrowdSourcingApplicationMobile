@@ -3,9 +3,9 @@ angular.module('crowdsourcing')
     .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
         $scope.myLocation = {lng : '', lat: ''};
         $scope.showTag = false;
-        $scope.radius = 1000;
-        $scope.zoom = 14;
-        $scope.fields = {filter:"5"};
+        $scope.radius = 2800;
+        $scope.zoom = 12;
+        $scope.fields = {filter:"20"};
 
         //store all activities data
         $scope.transportID=[];
@@ -135,8 +135,8 @@ angular.module('crowdsourcing')
                     }
                   }
                 }
+                $scope.loadingshow = false;
               }
-              $scope.loadingshow = false;
             })
 
           //check if marker already exist in the marker array

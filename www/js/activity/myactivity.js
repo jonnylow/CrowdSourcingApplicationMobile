@@ -57,9 +57,35 @@ angular.module('crowdsourcing')
               }
         		}
         	}
+          $scope.shiftArrays();
         }
             $scope.loadingshow = false;
   })
+
+    $scope.shiftArrays = function()
+    {
+      for(var i = 0; i<$scope.transportStatus.length; i++){
+        if($scope.transportStatus[i] == "In-Progress"){
+          //store in temp var
+          var tempStatus = $scope.transportStatus[i];
+          var tempID = $scope.transportID[i];
+          var tempName = $scope.transportName[i];
+          var dateTime = $scope.transportDateTimeStart[i];
+
+          //remove element in arrays
+          $scope.transportStatus.splice(i,1);
+          $scope.transportID.splice(i,1);
+          $scope.transportName.splice(i,1);
+          $scope.transportDateTimeStart.splice(i,1);
+
+          //put var as the top element
+          $scope.transportStatus.unshift(tempStatus);
+          $scope.transportID.unshift(tempID);
+          $scope.transportName.unshift(tempName);
+          $scope.transportDateTimeStart.unshift(dateTime);
+        }
+      }
+    }
 
     $scope.proceed = function(id, name)
     {

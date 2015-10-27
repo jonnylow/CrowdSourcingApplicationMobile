@@ -51,6 +51,12 @@
 		6CDB8435D5254F4ABFB1D80D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4266DCA8B3641CC93F0664F /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		60AC6BB20D5449F69639D4E8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D6643195914634B709F4D4 /* CoreLocation.framework */; };
 		15FEF19898C540E1AB3E305F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F2A365DA2741C3BF7DAA3F /* AVFoundation.framework */; };
+		A5E24DCEB6DD476E811CC4BB /* Diagnostic.m in Sources */ = {isa = PBXBuildFile; fileRef = D146F6AD4B3E4C1AB7CFA049 /* Diagnostic.m */; };
+		FDB43A704EF34E419186A7FF /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30A8DD50838C4CEAA4DEB379 /* CoreBluetooth.framework */; };
+		24926102549242DB9C7CA346 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3EA82FCCE46258B4CB825 /* Photos.framework */; };
+		AAE27D848A464F50AF5E8B7C /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 92972CEAFEA94AAA8BF35508 /* CDVConnection.m */; };
+		4D1AF5BFBF664075B4EABC91 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 473E5860CF9A4DC8948A9105 /* CDVReachability.m */; };
+		8B7CD4BB13C648DAA4B2CCB9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B30142F6B149F4A4424BE2 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +144,15 @@
 		F4266DCA8B3641CC93F0664F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "ImageIO.framework"; path = "System/Library/Frameworks/ImageIO.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		06D6643195914634B709F4D4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		61F2A365DA2741C3BF7DAA3F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		D146F6AD4B3E4C1AB7CFA049 /* Diagnostic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Diagnostic.m"; path = "cordova.plugins.diagnostic/Diagnostic.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		65071163FF224890A6B52887 /* Diagnostic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Diagnostic.h"; path = "cordova.plugins.diagnostic/Diagnostic.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		30A8DD50838C4CEAA4DEB379 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreBluetooth.framework"; path = "System/Library/Frameworks/CoreBluetooth.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		E3F3EA82FCCE46258B4CB825 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Photos.framework"; path = "System/Library/Frameworks/Photos.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		92972CEAFEA94AAA8BF35508 /* CDVConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVConnection.m"; path = "cordova-plugin-network-information/CDVConnection.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		473E5860CF9A4DC8948A9105 /* CDVReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVReachability.m"; path = "cordova-plugin-network-information/CDVReachability.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		D27FA83E0524454B9932E3CF /* CDVConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVConnection.h"; path = "cordova-plugin-network-information/CDVConnection.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		A6F6AB8AAF484D2489B97B64 /* CDVReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVReachability.h"; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		F0B30142F6B149F4A4424BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +167,9 @@
 				6CDB8435D5254F4ABFB1D80D /* ImageIO.framework in Frameworks */,
 				60AC6BB20D5449F69639D4E8 /* CoreLocation.framework in Frameworks */,
 				15FEF19898C540E1AB3E305F /* AVFoundation.framework in Frameworks */,
+				FDB43A704EF34E419186A7FF /* CoreBluetooth.framework in Frameworks */,
+				24926102549242DB9C7CA346 /* Photos.framework in Frameworks */,
+				8B7CD4BB13C648DAA4B2CCB9 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +245,9 @@
 				F4266DCA8B3641CC93F0664F /* ImageIO.framework */,
 				06D6643195914634B709F4D4 /* CoreLocation.framework */,
 				61F2A365DA2741C3BF7DAA3F /* AVFoundation.framework */,
+				30A8DD50838C4CEAA4DEB379 /* CoreBluetooth.framework */,
+				E3F3EA82FCCE46258B4CB825 /* Photos.framework */,
+				F0B30142F6B149F4A4424BE2 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -261,6 +282,12 @@
 				13C4CE15F6DA4B37960F214E /* CDVCamera.h */,
 				76A932F3DBC64ACBB38B0BAB /* CDVJpegHeaderWriter.h */,
 				BA9B2FC2CD6D410A9486B750 /* CDVExif.h */,
+				D146F6AD4B3E4C1AB7CFA049 /* Diagnostic.m */,
+				65071163FF224890A6B52887 /* Diagnostic.h */,
+				92972CEAFEA94AAA8BF35508 /* CDVConnection.m */,
+				473E5860CF9A4DC8948A9105 /* CDVReachability.m */,
+				D27FA83E0524454B9932E3CF /* CDVConnection.h */,
+				A6F6AB8AAF484D2489B97B64 /* CDVReachability.h */,
 			);
 			name = Plugins;
 			path = "iCare/Plugins";
@@ -454,6 +481,9 @@
 				10192A95C31A40329B40A058 /* UIImage+CropScaleOrientation.m in Sources */,
 				00A453365B134413AE9E041D /* CDVCamera.m in Sources */,
 				B9750332B4014A0A990C1541 /* CDVJpegHeaderWriter.m in Sources */,
+				A5E24DCEB6DD476E811CC4BB /* Diagnostic.m in Sources */,
+				AAE27D848A464F50AF5E8B7C /* CDVConnection.m in Sources */,
+				4D1AF5BFBF664075B4EABC91 /* CDVReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

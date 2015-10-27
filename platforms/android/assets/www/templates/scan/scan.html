@@ -12,10 +12,9 @@
   </ion-nav-bar>
 
   <ion-content scroll='false'>
-    <!--
-  <div class="spinner">
-    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
-  </div>-->
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
     <div class="row">
       <div class="col">
         <div class="transbox">
@@ -60,8 +59,8 @@
       <div class="section2">
         <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
         <div class="card">
-          <div class="item item-divider">
-            {{$index+1}} -
+          <div class="item item-divider item-text-wrap">
+            {{$index+1}}.
             {{transportNameDisplay[$index]}}
           </div>
           <div class="item item-text-wrap">

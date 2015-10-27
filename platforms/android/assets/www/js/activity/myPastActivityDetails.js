@@ -8,15 +8,15 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
     }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId)
+    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId+"&id="+$scope.id)
       .success(function (data) {
         var transportDetails = data;
-
         if (transportDetails != null) {
           if(transportDetails[0] != null)
           {
+
             if(transportDetails[0].datetime_start != null && transportDetails[0].expected_duration_minutes != null && transportDetails[0].location_from != null
-              && transportDetails[0].location_to !=null && transportDetails[0].more_information != null)
+              && transportDetails[0].location_to !=null)
             {
               var temp =transportDetails[0].datetime_start.split(' ');
               $scope.date = temp[0];
@@ -24,7 +24,13 @@ angular.module('crowdsourcing')
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationTo = transportDetails[0].location_to;
-              $scope.moreInformation = transportDetails[0].more_information;
+              if(transportDetails[0].more_information == null) {
+                $scope.moreInformation = transportDetails[0].more_information;
+              }
+              else
+              {
+                $scope.moreInformation = "Na";
+              }
               $scope.transportStatus = transportDetails[0].status;
               if(transportDetails[0].status != "completed" && transportDetails[0].approval=="approved")
               {

@@ -31,6 +31,14 @@
                         {
                             "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -46,7 +54,7 @@
                     "CoreLocation.framework": [
                         {
                             "xml": false,
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "CoreGraphics.framework": [
@@ -70,6 +78,24 @@
                     "AVFoundation.framework": [
                         {
                             "xml": false,
+                            "count": 2
+                        }
+                    ],
+                    "CoreBluetooth.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "Photos.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": true,
                             "count": 1
                         }
                     ]
@@ -104,6 +130,12 @@
             "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
         },
         "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
+        },
+        "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
+        },
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
         }
     },

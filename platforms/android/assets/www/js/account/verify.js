@@ -15,7 +15,35 @@ angular.module('crowdsourcing')
     $scope.tempFrontIC = "frontIC";
     $scope.tempBackIC = "backIC";
 
-      $scope.fields= {otp: ""};
+    $scope.fields= {otp: ""};
+    var otpCheck;
+
+    var myPopup = $ionicPopup.show({
+      title: 'Notice',
+      subTitle: 'The one-time password will be send to you via sms',
+      scope: $scope,
+      buttons: [
+        {
+          text: '<b>Ok</b>',
+          type: 'button-calm'
+        },
+      ]
+    });
+
+    //=========uncomment bottom line if do not want to use OTP========//
+    //otpCheck = "123";
+
+     //=========comment this few lines if do not want to use OTP========//
+     otpCheck = Math.floor(Math.random()*90000) + 10000;
+     var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
+    $scope.loadingshow = true;
+    $http.get(sendURL)
+      .success(function (data) {
+        //message sent
+        var status = data;
+        $scope.loadingshow = false;
+      })
+     //=========comment this few lines if do not want to use OTP=========//
 
       $scope.verify = function(fields)
       {
@@ -24,7 +52,7 @@ angular.module('crowdsourcing')
           if (fields.otp!= null && fields.otp.trim() != "")
           {
             var tempOTP= fields.otp;
-            if(tempOTP == "123") {
+            if(tempOTP == otpCheck) {
               window.localStorage.removeItem("tempName");
               window.localStorage.removeItem("tempEmail");
               window.localStorage.removeItem("tempPassword");
@@ -80,5 +108,20 @@ angular.module('crowdsourcing')
           $scope.loadingshow = false;
           alert("Please fill in all fields.");
         }
+      }
+
+      $scope.resend = function()
+      {
+        var myPopup = $ionicPopup.show({
+          title: 'Notice',
+          subTitle: 'The one-time password will be send to you via sms',
+          scope: $scope,
+          buttons: [
+            {
+              text: '<b>Ok</b>',
+              type: 'button-calm'
+            },
+          ]
+        });
       }
     });

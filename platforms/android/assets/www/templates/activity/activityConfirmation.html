@@ -1,18 +1,22 @@
 <link href="css/activity.css" rel="stylesheet">
-<ion-view view-title={{transportActivityName}}>
+<!--<ion-view view-title={{transportActivityName}}>-->
+<ion-view view-title="Confirmation of Activity Application">
+  <!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+  </ion-nav-bar>
 
   <ion-content>
     <div class="list card">
-        <div class="item item-divider header">  
+        <div class="item item-divider header">
             Confirmation of Activity Application
         </div>
-        <div class="item details item-text-wrap" >   
-            Date: {{date}}<br><br>
-            Time: {{time}}<br><br>
-            Expected Duration: {{expectedDuration}}<br><br>
-            Pick Up Location: {{locationFrom}}<br><br>
-            Drop Off Location: {{locationTo}}<br><br><br>
-        
+        <div class="item details item-text-wrap" >
+          <b>Date:</b> {{date}}<br><br>
+          <b>Time:</b> {{time}}<br><br>
+          <b>Expected Duration:</b> {{expectedDuration}}<br><br>
+          <b>Pick Up Location:</b> {{locationFrom}}<br><br>
+          <b>Drop Off Location:</b> {{locationTo}}<br><br><br>
+
             <b>Your Application is in process. <br>
             Please wait for the SMS Confirmation from <br>
             the centre.</b>

@@ -20,19 +20,27 @@ angular.module('crowdsourcing')
         if(fields != null) {
           if (fields.occupation!= null && fields.occupation.trim() != "")
           {
-            if(fields.carChecked == true) {
-              $scope.tempCarChecked = 1;
-            }
-            else{
-              $scope.tempCarChecked = 0;
-            }
+            var image = document.getElementById('frontic');
+            var image1 = document.getElementById('backic');
+            if(image.src.indexOf("base64") != -1 && image1.src.indexOf("base64") != -1) {
+              if (fields.carChecked == true) {
+                $scope.tempCarChecked = 1;
+              }
+              else {
+                $scope.tempCarChecked = 0;
+              }
 
-            window.localStorage.setItem("tempHaveCar", $scope.tempCarChecked);
-            window.localStorage.setItem("tempOccupation", fields.occupation);
-            window.localStorage.setItem("tempPreferences1", fields.preferences_1);
-            window.localStorage.setItem("tempPreferences2", fields.preferences_2);
+              window.localStorage.setItem("tempHaveCar", $scope.tempCarChecked);
+              window.localStorage.setItem("tempOccupation", fields.occupation);
+              window.localStorage.setItem("tempPreferences1", fields.preferences_1);
+              window.localStorage.setItem("tempPreferences2", fields.preferences_2);
 
-            $state.go('verify', {}, {reload: true});
+              $state.go('verify', {}, {reload: true});
+            }
+            else
+            {
+              alert("Please take front & back IC photos before proceeding.");
+            }
           }
           else
           {

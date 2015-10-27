@@ -16,10 +16,9 @@
 
   <!--body-->
   <ion-content has-header="true">
-    <!--
-  <div class="spinner">
-    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
-  </div>-->
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
     <!--history to current tab-->
     <div class="button-bar">
       <button class="button button-nonselected" ui-sref="tab.activity">Current</button>
@@ -30,7 +29,7 @@
     <!--historical activity listing-->
     <div class="list card">
       <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
-        <div class="item item-avatar">
+        <div class="item item-avatar item-text-wrap">
           <img src="img/henderson.jpg">
           <h2>{{transportName[$index]}}</h2>
           <p>{{transportDateTimeStart[$index]}}</p>

@@ -1,10 +1,9 @@
 <link href="css/main.css" rel="stylesheet">
 <ion-view hide-nav-bar="true">
 <ion-content padding="true">
-  <!--
-  <div class="spinner">
-    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
-  </div>-->
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
 <div style="text-align: center; ">
  <img src="img/Button3.png" class = "page-image"/>
 </div>
@@ -17,8 +16,11 @@
       <div class="box">
         <label class="item item-input item-stacked-label">
           <font color="white">One Time Password</font>
-          <input class="otp" type="password" placeholder="xxxxxxxxxx" style="color:#000;" ng-model="fields.otp">
+          <input class="otp" type="password" placeholder="" style="color:#000;" ng-model="fields.otp">
         </label>
+        <p style="text-align: center;">
+          <a ng-click="resend()" style="color: #ffffff;"><u>Resend One-Time Password</u></a>
+        </p>
       </div>
       <button class="button button-block button-calm">Complete Registration</button>
       <button ui-sref="moreQuestions" class="button button-block button-light">Back</button>

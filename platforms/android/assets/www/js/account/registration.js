@@ -21,8 +21,8 @@ angular.module('crowdsourcing')
 
       $scope.register = function(fields)
       {
-        $scope.loadingshow = true;
         if(fields != null) {
+          $scope.loadingshow = true;
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
             && fields.confirmpassword!= null && fields.confirmpassword.trim() != "" && fields.dob!= null && fields.nric!= null
@@ -70,7 +70,6 @@ angular.module('crowdsourcing')
                                   var status = data;
                                   if(status.status[0] != "exist")
                                   {
-                                    $scope.loadingshow = false;
                                     window.localStorage.setItem("tempName", tempName);
                                     window.localStorage.setItem("tempEmail", tempEmail);
                                     window.localStorage.setItem("tempPassword", tempPassword);
@@ -83,7 +82,6 @@ angular.module('crowdsourcing')
                                   }
                                   else
                                   {
-                                    $scope.loadingshow = false;
                                     alert("NRIC has already been registered. Please try again.");
                                   }
                                 })
@@ -95,13 +93,12 @@ angular.module('crowdsourcing')
                           }
                           else
                           {
-                            $scope.loadingshow = false;
                             alert("Email address has already been registered. Please try again.");
                           }
                         })
                     }
                     else {
-                      $scope.loadingshow = false;
+
                       alert("Invalid email address. Please try again.");
                     }
                   }
@@ -155,7 +152,7 @@ angular.module('crowdsourcing')
     }
 
     function validateName(name) {
-      return /^[a-zA-Z\s]+$/.test(name);
+      return /^[a-zA-Z]+$/.test(name);
     }
 
     function validateDOB(tempDOB){

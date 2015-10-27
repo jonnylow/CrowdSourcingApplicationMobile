@@ -2,11 +2,12 @@
 //connect
 $db = pg_connect("host=changhuapeng.com dbname=volunteer user=volunteer password=iamaguest");
 
-if(!empty($_GET['transportId']))
+if(!empty($_GET['transportId']) && !empty($_GET['id']))
 {	
 	$transportId = $_GET['transportId'];
+	$id= $_GET['id'];
 	//query
-	$result = pg_query($db,"SELECT * FROM activities a, tasks t, senior_centres s where a.activity_id =$transportId and a.activity_id=t.activity_id and s.senior_centre_id=a.senior_centre_id");
+	$result = pg_query($db,"SELECT * FROM activities a, tasks t, senior_centres s where a.activity_id =$transportId and t.volunteer_id =$id and a.activity_id=t.activity_id and s.senior_centre_id=a.senior_centre_id");
 	 
 	 $int = 0;
 	$array = array();

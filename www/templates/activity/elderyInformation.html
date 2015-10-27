@@ -7,10 +7,9 @@
   </ion-nav-bar>
 
   <ion-content>
-    <!--
-  <div class="spinner">
-    <ion-spinner icon="android" ng-show=loadingshow></ion-spinner>
-  </div>-->
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
   <!--elderly information-->
     <div class="list card">
       <div class="item item-divider">
@@ -19,9 +18,10 @@
       <div class="item item-text-wrap">
         Name: {{name}}
       </div>
+      <!--
       <div class="item item-text-wrap">
         Branch: {{branchName}}
-      </div>
+      </div>-->
       <div class="item item-text-wrap">
         Next-of-Kin: {{kin}}<br>
         Contact Number: {{contact}}

@@ -82,6 +82,7 @@ angular.module('crowdsourcing')
                                   }
                                   else
                                   {
+                                    $scope.loadingshow = false;
                                     alert("NRIC has already been registered. Please try again.");
                                   }
                                 })
@@ -93,12 +94,13 @@ angular.module('crowdsourcing')
                           }
                           else
                           {
+                            $scope.loadingshow = false;
                             alert("Email address has already been registered. Please try again.");
                           }
                         })
                     }
                     else {
-
+                      $scope.loadingshow = false;
                       alert("Invalid email address. Please try again.");
                     }
                   }

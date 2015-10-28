@@ -204,3 +204,10 @@ div.spinner {
   z-index: 1;
 }
 
+label.ic.front{
+	margin-left: 30px;
+}
+
+label.ic.back{
+	margin-left: 40px;
+}

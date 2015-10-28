@@ -95,7 +95,7 @@ angular.module('crowdsourcing')
 
           $http.get(urlString)
             .success(function (data) {
-              var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
+              var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=leejia.yong.2013@sis.smu.edu.sg&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
               $http.get(sendEmail)
                 .success(function (data) {
 

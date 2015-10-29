@@ -14,11 +14,12 @@
 </ion-header-bar>
 
 
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
+
   <!--body-->
   <ion-content has-header="true">
-    <div class="spinner" ng-show=loadingshow>
-      <ion-spinner icon="android"></ion-spinner>
-    </div>
     <!--history to current tab-->
     <div class="button-bar">
       <button class="button button-nonselected" ui-sref="tab.activity">Current</button>

@@ -11,10 +11,12 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content>
-    <div class="spinner" ng-show=loadingshow>
-      <ion-spinner icon="android"></ion-spinner>
-    </div>
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
+
+  <ion-content ng-show=!loadingshow>
+
     <!-- Registration form-->
     <form ng-submit="update(fields)">
 

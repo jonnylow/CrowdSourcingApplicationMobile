@@ -10,11 +10,11 @@
     <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
   </div>
 </ion-header-bar>
-  <ion-content has-header="true" padding="true">
-    <div class="spinner" ng-show=loadingshow>
-      <ion-spinner icon="android"></ion-spinner>
-    </div>
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
 
+  <ion-content has-header="true" padding="true" ng-show=!loadingshow>
 <div class="list card">
     <div class="item item-icon-left">
       <i class="icon ion-card"></i>

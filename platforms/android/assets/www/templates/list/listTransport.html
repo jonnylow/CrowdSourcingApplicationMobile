@@ -10,10 +10,11 @@
   </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content>
-    <div class="spinner" ng-show=loadingshow>
-      <ion-spinner icon="android"></ion-spinner>
-    </div>
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
+
+  <ion-content ng-show=!loadingshow>
     <div class="list card">
     <ion-item ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
 

@@ -154,7 +154,7 @@ angular.module('crowdsourcing')
     }
 
     function validateName(name) {
-      return /^[a-zA-Z]+$/.test(name);
+      return /^[a-zA-Z\s]+$/.test(name);
     }
 
     function validateDOB(tempDOB){

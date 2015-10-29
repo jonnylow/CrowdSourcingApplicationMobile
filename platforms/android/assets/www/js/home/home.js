@@ -6,6 +6,7 @@ angular.module('crowdsourcing')
       cordova.plugins.diagnostic.isLocationEnabled(function(enabled){
         if(!enabled)
         {
+          $state.go('login', {}, {reload: true});
           var myPopup = $ionicPopup.show({
             title: '<b>Notice</b>',
             subTitle: 'No location services detected. Please enable before using iCare.',

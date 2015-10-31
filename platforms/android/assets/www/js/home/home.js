@@ -2,6 +2,7 @@ angular.module('crowdsourcing')
 
     .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout) {
     //checkConnection();
+    //window.location.reload(true);
     if(typeof cordova != 'undefined'){
       cordova.plugins.diagnostic.isLocationEnabled(function(enabled){
         if(!enabled)

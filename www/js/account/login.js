@@ -9,64 +9,85 @@ angular.module('crowdsourcing')
                 var tempNRIC = fields.email;
                 var tempPassword = fields.password;
 
-              $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+tempNRIC+"&password="+tempPassword)
-                .success(function (data) {
-                  var status = data;
+              if (validateEmail(tempNRIC) == true) {
+                $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+tempNRIC+"&password="+tempPassword)
+                  .success(function (data) {
+                    var status = data;
 
-                  if (status != null) {
-                    if(status.status[0] == "true")
-                    {
-                      $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveUserAccounts.php?email="+tempNRIC)
-                        .success(function (data) {
-                          var loginDetails = data;
+                    if (status != null) {
+                      if(status.status[0] == "true")
+                      {
+                        $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveUserAccounts.php?email="+tempNRIC)
+                          .success(function (data) {
+                            var loginDetails = data;
 
-                          if (loginDetails != null) {
-                            if(loginDetails[0].is_approved != 'f') {
-                              $scope.loadingshow = false;
-                              window.localStorage.setItem("loginId", loginDetails[0].volunteer_id);
-                              window.localStorage.setItem("loginUserName", loginDetails[0].name);
-                              window.localStorage.setItem("loginEmail", loginDetails[0].email);
-                              $state.go('tab.home', {}, {reload: true});
+                            if (loginDetails != null) {
+                              if(loginDetails[0].is_approved != 'f') {
+                                $scope.loadingshow = false;
+                                window.localStorage.setItem("loginId", loginDetails[0].volunteer_id);
+                                window.localStorage.setItem("loginUserName", loginDetails[0].name);
+                                window.localStorage.setItem("loginEmail", loginDetails[0].email);
+                                $state.go('tab.home', {}, {reload: true});
+                              }
+                              else {
+                                $scope.loadingshow = false;
+                                var alertPopup = $ionicPopup.alert({
+                                  title: 'Sorry',
+                                  template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
+                                });
+                              }
                             }
-                            else {
-                              $scope.loadingshow = false;
-                              var alertPopup = $ionicPopup.alert({
-                                title: 'Sorry',
-                                template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
-                              });
-                            }
-                          }
-                        })
+                          })
 
-                        .error(function (data) {
-                          alert("Error in connection");
+                          .error(function (data) {
+                            alert("Error in connection");
+                          });
+                      }
+                      else {
+                        $scope.loadingshow = false;
+                        var alertPopup = $ionicPopup.alert({
+                          title: 'Error',
+                          template: 'Incorrect Email or Password.'
                         });
+                      }
                     }
-                    else {
-                      $scope.loadingshow = false;
-                      var alertPopup = $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'Incorrect Email or Password.'
-                      });
-                    }
-                  }
-                })
+                  })
 
-                .error(function (data) {
-                  alert("Error in connection");
+                  .error(function (data) {
+                    alert("Error in connection");
+                  });
+              }
+              else
+              {
+                $scope.loadingshow = false;
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Error',
+                  template: 'Invalid email address. Please try again.'
                 });
+              }
             }
             else
             {
-              alert("Please fill in all fields.");
+              var alertPopup = $ionicPopup.alert({
+                title: 'Error',
+                template: 'Please fill in all fields.'
+              });
               $scope.loadingshow = false;
             }
 
           }
           else
           {
-            alert("Please fill in all fields.");
+            var alertPopup = $ionicPopup.alert({
+              title: 'Error',
+              template: 'Please fill in all fields.'
+            });
             $scope.loadingshow = false;
           }
         }
+
+    function validateEmail(email) {
+      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      return re.test(email);
+    }
     });

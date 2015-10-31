@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
+    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory) {
     $scope.tempName = window.localStorage.getItem("tempName");
     $scope.tempEmail = window.localStorage.getItem("tempEmail");
     $scope.tempPassword = window.localStorage.getItem("tempPassword");
@@ -81,6 +81,9 @@ angular.module('crowdsourcing')
                       template: status.status[0]
                     });
 
+                    $ionicHistory.clearCache();
+                    $ionicHistory.clearHistory();
+                    $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
                     $state.go('login', {}, {reload: true});
                   }
                 })

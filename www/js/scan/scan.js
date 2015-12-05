@@ -93,7 +93,7 @@ angular.module('crowdsourcing')
           $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
             .success(function (data) {
               var transportDetails = data;
-
+             // console.log(data);
               if (transportDetails != null) {
                 for(var i = 0; i<transportDetails.length; i++)
                 {

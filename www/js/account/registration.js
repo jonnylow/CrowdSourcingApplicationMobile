@@ -78,6 +78,7 @@ angular.module('crowdsourcing')
                                     window.localStorage.setItem("tempNRIC", tempNRIC);
                                     window.localStorage.setItem("tempGender", tempGender);
 
+                                    $scope.loadingshow = false;
                                     $state.go('moreQuestions', {}, {reload: true});
                                   }
                                   else

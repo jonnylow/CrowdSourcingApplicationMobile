@@ -16,6 +16,14 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
   });
 })
 
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyBbjSHUY2EgODcwXrHZsuYJ228CxICux3E',
+      v: '3.17',
+      libraries: 'weather,geometry,visualization'
+    });
+  })
+
   .config(['$ionicConfigProvider', function($ionicConfigProvider) {
 
     $ionicConfigProvider.tabs.style('standard'); // other values: striped

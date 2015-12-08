@@ -30,7 +30,7 @@
     </div>
     <div class="parent">
       <div class="section1">
-        <ui-gmap-google-map center='map.center' options=map.options zoom=zoom events="map.markersEvents" data-tap-disabled="true">
+        <ui-gmap-google-map center=center options=map.options zoom=zoom events="map.markersEvents" data-tap-disabled="true">
           <ui-gmap-marker icon= '{url: "img/blue-dot.png" }' coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
             <ui-gmap-window show="true">
               <div>{{currentLocationMarker.window.title}}</div>
@@ -66,7 +66,7 @@
           <div class="item item-text-wrap">
             {{transportDateStartDisplay[$index]}}<br>
             {{transportTimeStartDisplay[$index]}}<br>
-            Pickup Location {{transportFromDistanceDisplay[$index]}} away from you!
+            Pickup Location: {{transportFromDistanceDisplay[$index]}}
         </div>
         </ion-item>
       </div>

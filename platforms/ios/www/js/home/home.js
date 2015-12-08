@@ -28,6 +28,12 @@ angular.module('crowdsourcing')
       });
     }
 
+    //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      window.localStorage.setItem("userLat", pos.coords.latitude);
+      window.localStorage.setItem("userLong", pos.coords.longitude);
+    });
+
     if (window.localStorage.getItem("loginUserName") != null) {
       $timeout(function() {
         $scope.name = window.localStorage.getItem("loginUserName");
@@ -42,6 +48,8 @@ angular.module('crowdsourcing')
     $scope.logout = function () {
       window.localStorage.removeItem("loginUserName");
       window.localStorage.removeItem("loginId");
+      window.localStorage.removeItem("userLat");
+      window.localStorage.removeItem("userLong");
       window.localStorage.clear();
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();

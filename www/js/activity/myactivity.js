@@ -120,6 +120,31 @@ angular.module('crowdsourcing')
     $scope.shiftArrays = function()
     {
       for(var i = 0; i<$scope.transportStatus.length; i++){
+        if($scope.transportStatus[i] == "Approved"){
+          //store in temp var
+          var tempStatus = $scope.transportStatus[i];
+          var tempID = $scope.transportID[i];
+          var tempName = $scope.transportName[i];
+          var dateTime = $scope.transportDateTimeStart[i];
+          var tempDisplay = $scope.transportStatusToDisplay[i];
+
+          //remove element in arrays
+          $scope.transportStatus.splice(i,1);
+          $scope.transportID.splice(i,1);
+          $scope.transportName.splice(i,1);
+          $scope.transportDateTimeStart.splice(i,1);
+          $scope.transportStatusToDisplay.splice(i,1);
+
+          //put var as the top element
+          $scope.transportStatus.unshift(tempStatus);
+          $scope.transportID.unshift(tempID);
+          $scope.transportName.unshift(tempName);
+          $scope.transportDateTimeStart.unshift(dateTime);
+          $scope.transportStatusToDisplay.unshift(tempDisplay);
+        }
+      }
+
+      for(var i = 0; i<$scope.transportStatus.length; i++){
         if($scope.transportStatus[i] == "In-Progress"){
           //store in temp var
           var tempStatus = $scope.transportStatus[i];
@@ -143,6 +168,56 @@ angular.module('crowdsourcing')
           $scope.transportStatusToDisplay.unshift(tempDisplay);
         }
       }
+    }
+
+    $scope.updateStatus=function(id, status)
+    {
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Update Status?',
+        template: "Are you sure you want to update status for this activity to '" + status + "' ?"
+      });
+
+      confirmPopup.then(function(res) {
+        if(res) {
+          if(status == "Pick-Up")
+          {
+            status = "pick-up";
+          }
+          else if(status == "At Check-Up")
+          {
+            status = "at check-up";
+          }
+          else if(status == "Check-Up Completed")
+          {
+            status = "check-up completed";
+          }
+          else if(status == "Completed")
+          {
+            status = "completed";
+          }
+
+          $scope.loadingshow = true;
+          urlString = "http://www.changhuapeng.com/volunteer/php/updateActivityStatus.php?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
+
+          $http.get(urlString)
+            .success(function (data) {
+              var status = data;
+              if (status != null) {
+                $scope.loadingshow = false;
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Status',
+                  template: status.status[0]
+                });
+                //window.location.reload(true);
+                $state.go('tab.activity', {}, {reload: true});
+              }
+            })
+
+            .error(function (data) {
+              alert("Error in connection");
+            });
+        }
+      });
     }
 
     $scope.proceed = function(id, name)

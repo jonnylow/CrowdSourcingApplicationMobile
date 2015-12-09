@@ -53,8 +53,16 @@
           <div ng-if="transportStatus[$index] == 'Withdrawn'">
             Approval Status: {{transportStatus[$index]}}
           </div>
+
           <br>
-          <button class="button button-full button-balanced"> {{transportStatusToDisplay[$index]}}</button>
+
+          <div ng-if="transportStatusToDisplay[$index] == 'Pick-Up' || transportStatusToDisplay[$index] == 'At Check-Up' || transportStatusToDisplay[$index] == 'Check-Up Completed' || transportStatusToDisplay[$index] == 'Completed'">
+            <button class="button button-full button-balanced" ng-click="updateStatus(transportID[$index], transportStatusToDisplay[$index])"> Next Update: {{transportStatusToDisplay[$index]}}</button>
+          </div>
+
+          <div ng-if="transportStatusToDisplay[$index] == 'No status to update'">
+            <button class="button button-full button-calm">No status to update</button>
+          </div>
         </div>
       </ion-item>
     </div>

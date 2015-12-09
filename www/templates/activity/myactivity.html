@@ -34,20 +34,27 @@
           <h2>{{transportName[$index]}}</h2>
           <p>{{transportDateTimeStart[$index]}}</p>
 
-          <div ng-if="transportStatus[$index] == 'In-Progress'">Status:
-            <button class="button button-full button-positive">{{transportStatus[$index]}}</button>
+          <div ng-if="transportStatus[$index] == 'In-Progress'">
+            Approval Status: {{transportStatus[$index]}}
           </div>
 
           <div ng-if="transportStatus[$index] == 'Pending'">
-            Status:
-            <button class="button button-full button-energized">{{transportStatus[$index]}}</button>
+            Approval Status: {{transportStatus[$index]}}
           </div>
 
           <div ng-if="transportStatus[$index] == 'Approved'">
-            Status:
-            <button class="button button-full button-balanced">{{transportStatus[$index]}}</button>
+            Approval Status: {{transportStatus[$index]}}
           </div>
 
+          <div ng-if="transportStatus[$index] == 'Rejected'">
+            Approval Status: {{transportStatus[$index]}}
+          </div>
+
+          <div ng-if="transportStatus[$index] == 'Withdrawn'">
+            Approval Status: {{transportStatus[$index]}}
+          </div>
+          <br>
+          <button class="button button-full button-balanced"> {{transportStatusToDisplay[$index]}}</button>
         </div>
       </ion-item>
     </div>

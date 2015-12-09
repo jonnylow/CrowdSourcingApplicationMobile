@@ -6,6 +6,7 @@ angular.module('crowdsourcing')
         $scope.transportName=[];
       	$scope.transportDateTimeStart=[];
         $scope.transportStatus=[];
+        $scope.transportStatusToDisplay=[];
 
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
@@ -40,20 +41,74 @@ angular.module('crowdsourcing')
 
         		if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
               var temp =transportDetails[i].datetime_start.split(' ');
-        			$scope.transportID.push(transportDetails[i].activity_id);
-        			$scope.transportName.push(transportDetails[i].name);
-              $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
-
-              if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
-                $scope.transportStatus.push("Pending");
-              }
-              else if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
+              if(transportDetails[i].approval == "approved")
               {
-                $scope.transportStatus.push("Approved");
+                $scope.transportID.push(transportDetails[i].activity_id);
+                $scope.transportName.push(transportDetails[i].name);
+                $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
+
+                if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
+                  $scope.transportStatus.push("Pending");
+                  $scope.transportStatusToDisplay.push("No status to update");
+                }
+                else if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
+                {
+                  $scope.transportStatus.push("Approved");
+                  $scope.transportStatusToDisplay.push("Pick-Up");
+                }
+                else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
+                {
+                  $scope.transportStatus.push("Rejected");
+                  $scope.transportStatusToDisplay.push("No status to update");
+                }
+                else if(transportDetails[i].approval == "withdrawn" && transportDetails[i].status == "new task")
+                {
+                  $scope.transportStatus.push("Withdrawn");
+                  $scope.transportStatusToDisplay.push("No status to update");
+                }
+                else
+                {
+                  $scope.transportStatus.push("In-Progress");
+                  if(transportDetails[i].status == "pick-up")
+                  {
+                    $scope.transportStatusToDisplay.push("At Check-Up");
+                  }
+                  else if(transportDetails[i].status == "at check-up")
+                  {
+                    $scope.transportStatusToDisplay.push("Check-Up Completed");
+                  }
+                  else if(transportDetails[i].status == "check-up completed")
+                  {
+                    $scope.transportStatusToDisplay.push("Completed");
+                  }
+                }
               }
               else
               {
-                $scope.transportStatus.push("In-Progress");
+                var date_temp = temp[0] + " " + temp[1];
+                var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
+                var currentDateTime = new Date();
+                if(transportDateTime >= currentDateTime)
+                {
+                  $scope.transportID.push(transportDetails[i].activity_id);
+                  $scope.transportName.push(transportDetails[i].name);
+                  $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
+
+                  if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
+                    $scope.transportStatus.push("Pending");
+                    $scope.transportStatusToDisplay.push("No status to update");
+                  }
+                  else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
+                  {
+                    $scope.transportStatus.push("Rejected");
+                    $scope.transportStatusToDisplay.push("No status to update");
+                  }
+                  else if(transportDetails[i].approval == "withdrawn" && transportDetails[i].status == "new task")
+                  {
+                    $scope.transportStatus.push("Withdrawn");
+                    $scope.transportStatusToDisplay.push("No status to update");
+                  }
+                }
               }
         		}
         	}
@@ -71,18 +126,21 @@ angular.module('crowdsourcing')
           var tempID = $scope.transportID[i];
           var tempName = $scope.transportName[i];
           var dateTime = $scope.transportDateTimeStart[i];
+          var tempDisplay = $scope.transportStatusToDisplay[i];
 
           //remove element in arrays
           $scope.transportStatus.splice(i,1);
           $scope.transportID.splice(i,1);
           $scope.transportName.splice(i,1);
           $scope.transportDateTimeStart.splice(i,1);
+          $scope.transportStatusToDisplay.splice(i,1);
 
           //put var as the top element
           $scope.transportStatus.unshift(tempStatus);
           $scope.transportID.unshift(tempID);
           $scope.transportName.unshift(tempName);
           $scope.transportDateTimeStart.unshift(dateTime);
+          $scope.transportStatusToDisplay.unshift(tempDisplay);
         }
       }
     }

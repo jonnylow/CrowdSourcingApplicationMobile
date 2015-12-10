@@ -41,11 +41,12 @@ angular.module('crowdsourcing')
 
         		if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
               var temp =transportDetails[i].datetime_start.split(' ');
+              var datesTemp = temp[0].split('-');
               if(transportDetails[i].approval == "approved")
               {
                 $scope.transportID.push(transportDetails[i].activity_id);
                 $scope.transportName.push(transportDetails[i].name);
-                $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
+                $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
 
                 if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
                   $scope.transportStatus.push("Pending");
@@ -83,7 +84,7 @@ angular.module('crowdsourcing')
                   }
                 }
               }
-              else
+              else //if approval status not approved, check the date/time so that only future events are shown
               {
                 var date_temp = temp[0] + " " + temp[1];
                 var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
@@ -92,7 +93,7 @@ angular.module('crowdsourcing')
                 {
                   $scope.transportID.push(transportDetails[i].activity_id);
                   $scope.transportName.push(transportDetails[i].name);
-                  $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
+                  $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
 
                   if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
                     $scope.transportStatus.push("Pending");
@@ -117,6 +118,7 @@ angular.module('crowdsourcing')
             $scope.loadingshow = false;
   })
 
+    //arrange the array to ensure 'approved' and 'inprogress' to be at the top
     $scope.shiftArrays = function()
     {
       for(var i = 0; i<$scope.transportStatus.length; i++){
@@ -216,6 +218,10 @@ angular.module('crowdsourcing')
             .error(function (data) {
               alert("Error in connection");
             });
+        }
+        else
+        {
+          $state.go('tab.activity', {}, {reload: true});
         }
       });
     }

@@ -19,13 +19,24 @@ angular.module('crowdsourcing')
               && transportDetails[0].location_to !=null && transportDetails[0].more_information != null)
             {
               var temp =transportDetails[0].datetime_start.split(' ');
-              $scope.date = temp[0];
+              var datesTemp = temp[0].split('-');
+              $scope.date = datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0];
               $scope.time = temp[1];
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationTo = transportDetails[0].location_to;
               $scope.moreInformation = transportDetails[0].more_information;
-              $scope.transportStatus = transportDetails[0].status;
+              $scope.approvalStatus = capitalizeFirstLetter(transportDetails[0].approval);
+              var transportStatusToDisplay;
+              if(transportDetails[0].status == "new task")
+              {
+                transportStatusToDisplay = "Activity not started yet";
+              }
+              else
+              {
+                transportStatusToDisplay = transportDetails[0].status;
+              }
+              $scope.transportStatus = capitalizeFirstLetter(transportStatusToDisplay);
 
               var date_test = $scope.date + " " + $scope.time;
               var transportDateTime = new Date(date_test.replace(/-/g,"/"));
@@ -52,19 +63,27 @@ angular.module('crowdsourcing')
                 $scope.updateStatus = true;
               }
 
-              if(transportDetails[0].status != "new task")
-              {
-                $scope.withdrawShow = true;
+              if(transportDetails[0].approval != "withdrawn" && transportDetails[0].approval != "rejected") {
+                if (transportDetails[0].status != "new task") {
+                  $scope.withdrawShow = true;
+                }
+                else {
+                  $scope.withdrawShow = false;
+                }
               }
               else
               {
-                $scope.withdrawShow = false;
+                $scope.withdrawShow = true;
               }
             }
           }
         }
         $scope.loadingshow = false;
       })
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     $scope.proceed = function(id, name)
     {

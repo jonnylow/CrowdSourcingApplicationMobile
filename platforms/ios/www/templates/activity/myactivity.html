@@ -34,20 +34,35 @@
           <h2>{{transportName[$index]}}</h2>
           <p>{{transportDateTimeStart[$index]}}</p>
 
-          <div ng-if="transportStatus[$index] == 'In-Progress'">Status:
-            <button class="button button-full button-positive">{{transportStatus[$index]}}</button>
+          <div ng-if="transportStatus[$index] == 'In-Progress'">
+            Approval Status: {{transportStatus[$index]}}
           </div>
 
           <div ng-if="transportStatus[$index] == 'Pending'">
-            Status:
-            <button class="button button-full button-energized">{{transportStatus[$index]}}</button>
+            Approval Status: {{transportStatus[$index]}}
           </div>
 
           <div ng-if="transportStatus[$index] == 'Approved'">
-            Status:
-            <button class="button button-full button-balanced">{{transportStatus[$index]}}</button>
+            Approval Status: {{transportStatus[$index]}}
           </div>
 
+          <div ng-if="transportStatus[$index] == 'Rejected'">
+            Approval Status: {{transportStatus[$index]}}
+          </div>
+
+          <div ng-if="transportStatus[$index] == 'Withdrawn'">
+            Approval Status: {{transportStatus[$index]}}
+          </div>
+
+          <br>
+
+          <div ng-if="transportStatusToDisplay[$index] == 'Pick-Up' || transportStatusToDisplay[$index] == 'At Check-Up' || transportStatusToDisplay[$index] == 'Check-Up Completed' || transportStatusToDisplay[$index] == 'Completed'">
+            <button class="button button-full button-balanced" ng-click="updateStatus(transportID[$index], transportStatusToDisplay[$index])"> Next Update: {{transportStatusToDisplay[$index]}}</button>
+          </div>
+
+          <div ng-if="transportStatusToDisplay[$index] == 'No status to update'">
+            <button class="button button-full button-calm">No status to update</button>
+          </div>
         </div>
       </ion-item>
     </div>

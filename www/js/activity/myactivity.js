@@ -48,24 +48,10 @@ angular.module('crowdsourcing')
                 $scope.transportName.push(transportDetails[i].name);
                 $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
 
-                if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
-                  $scope.transportStatus.push("Pending");
-                  $scope.transportStatusToDisplay.push("No status to update");
-                }
-                else if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
+                if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
                 {
                   $scope.transportStatus.push("Approved");
                   $scope.transportStatusToDisplay.push("Pick-Up");
-                }
-                else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
-                {
-                  $scope.transportStatus.push("Rejected");
-                  $scope.transportStatusToDisplay.push("No status to update");
-                }
-                else if(transportDetails[i].approval == "withdrawn" && transportDetails[i].status == "new task")
-                {
-                  $scope.transportStatus.push("Withdrawn");
-                  $scope.transportStatusToDisplay.push("No status to update");
                 }
                 else
                 {
@@ -121,6 +107,31 @@ angular.module('crowdsourcing')
     //arrange the array to ensure 'approved' and 'inprogress' to be at the top
     $scope.shiftArrays = function()
     {
+      for(var i = 0; i<$scope.transportStatus.length; i++){
+        if($scope.transportStatus[i] == "Pending"){
+          //store in temp var
+          var tempStatus = $scope.transportStatus[i];
+          var tempID = $scope.transportID[i];
+          var tempName = $scope.transportName[i];
+          var dateTime = $scope.transportDateTimeStart[i];
+          var tempDisplay = $scope.transportStatusToDisplay[i];
+
+          //remove element in arrays
+          $scope.transportStatus.splice(i,1);
+          $scope.transportID.splice(i,1);
+          $scope.transportName.splice(i,1);
+          $scope.transportDateTimeStart.splice(i,1);
+          $scope.transportStatusToDisplay.splice(i,1);
+
+          //put var as the top element
+          $scope.transportStatus.unshift(tempStatus);
+          $scope.transportID.unshift(tempID);
+          $scope.transportName.unshift(tempName);
+          $scope.transportDateTimeStart.unshift(dateTime);
+          $scope.transportStatusToDisplay.unshift(tempDisplay);
+        }
+      }
+
       for(var i = 0; i<$scope.transportStatus.length; i++){
         if($scope.transportStatus[i] == "Approved"){
           //store in temp var

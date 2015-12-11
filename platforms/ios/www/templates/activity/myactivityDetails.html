@@ -32,11 +32,14 @@
       <div class="item item-text-wrap">
         <b>Drop-off:</b> {{locationTo}}
       </div>
+      <div class="item item-text-wrap">
+        <b>Approval Status:</b> {{approvalStatus}}
+      </div>
       <div class="item item-button-right">
 
-        <b>Status:</b><br> {{transportStatus}}
+        <b>Transport Status:</b> {{transportStatus}}
 
-        <button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>
+        <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
       </div>
       <div class="item item-text-wrap">
         <b>Additional Information:</b> {{moreInformation}}

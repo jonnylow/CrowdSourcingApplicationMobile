@@ -5,6 +5,7 @@ angular.module('crowdsourcing')
         $scope.transportName=[];
       	$scope.transportDateTimeStart=[];
         $scope.transportStatus=[];
+        $scope.completedStatus=[]
 
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
@@ -26,26 +27,47 @@ angular.module('crowdsourcing')
 
             if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
               var temp =transportDetails[i].datetime_start.split(' ');
+              var datesTemp = temp[0].split('-');
 
-              if(transportDetails[i].approval == "withdrawn") {
-                $scope.transportStatus.push("Withdraw");
-                $scope.transportID.push(transportDetails[i].activity_id);
-                $scope.transportName.push(transportDetails[i].name);
-                $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
-              }
-              else if(transportDetails[i].approval == "rejected")
+              if(transportDetails[i].approval == "approved" && transportDetails[i].status== "completed")
               {
-                $scope.transportStatus.push("Rejected");
+                $scope.transportStatus.push("Approved");
+                $scope.completedStatus.push("Completed");
                 $scope.transportID.push(transportDetails[i].activity_id);
                 $scope.transportName.push(transportDetails[i].name);
-                $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
+                $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
               }
-              else if(transportDetails[i].approval == "approved" && transportDetails[i].status== "completed")
+              else
               {
-                $scope.transportStatus.push("Completed");
-                $scope.transportID.push(transportDetails[i].activity_id);
-                $scope.transportName.push(transportDetails[i].name);
-                $scope.transportDateTimeStart.push("Date/Time: " + temp[0] + " | " + temp[1]);
+                var date_temp = temp[0] + " " + temp[1];
+                var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
+                var currentDateTime = new Date();
+                if(transportDateTime < currentDateTime)
+                {
+                  if(transportDetails[i].approval == "withdrawn") {
+                    $scope.transportStatus.push("Withdraw");
+                    $scope.completedStatus.push("Not Applicable");
+                    $scope.transportID.push(transportDetails[i].activity_id);
+                    $scope.transportName.push(transportDetails[i].name);
+                    $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                  }
+                  else if(transportDetails[i].approval == "rejected")
+                  {
+                    $scope.transportStatus.push("Rejected");
+                    $scope.completedStatus.push("Not Applicable");
+                    $scope.transportID.push(transportDetails[i].activity_id);
+                    $scope.transportName.push(transportDetails[i].name);
+                    $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                  }
+                  else if(transportDetails[i].approval == "pending")
+                  {
+                    $scope.transportStatus.push("Pending");
+                    $scope.completedStatus.push("Not Applicable");
+                    $scope.transportID.push(transportDetails[i].activity_id);
+                    $scope.transportName.push(transportDetails[i].name);
+                    $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                  }
+                }
               }
             }
           }

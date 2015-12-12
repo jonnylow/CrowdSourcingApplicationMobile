@@ -119,4 +119,12 @@ angular.module('crowdsourcing')
     {
       $state.go('myPastActivityDetails', {transportId: id, transportActivityName: name});
     }
+
+    $scope.goCurrent = function()
+    {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+      $state.go('tab.activity');
+    }
 });

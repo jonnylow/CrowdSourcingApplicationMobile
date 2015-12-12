@@ -281,4 +281,12 @@ angular.module('crowdsourcing')
       $state.go('login', {}, {reload: true});
       //$state.transitionTo('loginHome', null, {'reload':true});
     }
+
+    $scope.goHistory = function()
+    {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+      $state.go('tab.myhistory');
+    }
 });

@@ -1,4 +1,4 @@
-<link href="css/scan.css" rel="stylesheet">
+
 <ion-view view-title="Nearby Location">
 <!--header bar-->
 
@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <div class="transbox">
+        <div class="transbox2">
           Filter By Distance: <select ng-model="fields.filter" ng-change="valueChanged()">
           <option value="5">100M Radius</option>
           <option value="10">1KM Radius</option>
@@ -59,7 +59,7 @@
       <div class="section2">
         <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
         <div class="card">
-          <div class="item item-divider item-text-wrap">
+          <div class="item item-divider scan item-text-wrap">
             {{$index+1}}.
             {{transportNameDisplay[$index]}}
           </div>

@@ -1,6 +1,6 @@
- <link href="css/main.css" rel="stylesheet">
+
 <ion-view hide-nav-bar="true">
-<ion-content padding="true">
+<ion-content class="main" padding="true">
   <div class="spinner" ng-show=loadingshow>
     <ion-spinner icon="android"></ion-spinner>
   </div>
@@ -102,7 +102,7 @@
           <div class="transbox" style="width:100%; padding-right:15px;">
             <label class="item item-input">
               <i class="icon ion-transgender placeholder-icon dark"></i>
-              <select ng-model="fields.gender">
+              <select class="dropdown" ng-model="fields.gender">
                 <option value="" disabled selected>Gender*</option>
                 <option value="M">M</option>
                 <option value="F">F</option>

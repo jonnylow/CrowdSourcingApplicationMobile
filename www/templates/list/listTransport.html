@@ -1,4 +1,3 @@
-<link href="css/scan.css" rel="stylesheet">
 <ion-view view-title="Nearby Location">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
@@ -18,7 +17,7 @@
     <div class="list card">
     <ion-item ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
 
-      <div class="item item-divider item-text-wrap">
+      <div class="item item-divider scan item-text-wrap">
         {{$index+1}}.
         {{transportName[$index]}}<br>
       </div>

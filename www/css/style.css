@@ -1,14 +1,9 @@
-/* Empty. Add your own CSS if you like */
 
-/*.pane {
-    background-image: url("../img/elderly.jpg"); 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-}*/
+.angular-google-map-container {
+  height: 300px;
+}
 
-.angular-google-map-container {height: 300px;}
-
+/*everything that we overwrite from ionic*/
 /* green button */
 .button.button-calm {
   border-color: #29A29C;
@@ -37,30 +32,6 @@
   color: #FFFFFF;
 }
 
-/* nav bar */
-/* ios 
-.bar.bar-light {
-  background-color: #29A29C;
-  color: #fff;
-}
-
-.bar.bar-light .title{
-  color: #fff;
-}
-
-.button.button-icon {
-  color: #fff;
-}
-.bar.bar-header {
-  background: rgba(39,46,54,0.95);
-  border-bottom-width: 0;
-}
- 
-.scroll-content {
-  overflow: visible !important;
-}*/
-
-/* android */
 .bar.bar-positive {
   background: #29A29C;
   z-index: -1;
@@ -87,3 +58,443 @@
  right: 0;
  top: 0;
 }
+
+div.spinner {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin-top: 250px;
+  height: 85px;
+  text-align: center;
+  z-index: 1;
+}
+
+h1 {
+  font-family: 'Century Gothic', CenturyGothic, sans-serif;
+  font-size: 55px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 40px;
+}
+
+h3 {
+  font-size: 40px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 100;
+  line-height: 10px;
+}
+
+h4{
+  color:#fff;
+  margin:10px;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+div.row{
+ width: 100%;
+ padding: 0.1px;
+ margin-top: 8px;
+}
+
+.larger{
+  font-size: 25px;
+}
+
+div.col{
+ margin-top:-1%;
+ padding-left: 0;
+}
+
+select.dropdown {
+  background-color:#fff;
+  border-color: transparent;
+  color:#000000;
+  width:100%;
+  height: 30px;
+}
+
+i.icon.login.ion-home{
+  float:right;
+  font-size: 40px;
+  margin-top: -45px;
+  margin-right: ;
+}
+
+i.icon.ion-calendar{
+  padding:5px;
+  padding-right: 10px;
+}
+
+.item.item-divider{
+  padding-bottom: 15px;
+}
+
+.button-float{
+  background-color: #29A29C !important;
+  z-index: 12 !important;
+  position: relative !important;
+  display: inline-block;
+  margin: 2px;
+  margin-top: 10px;
+  width: 70vw;
+  min-height: 70vw;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+}
+
+.button-float:active{
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
+  background-color: #FF9800;
+  opacity: 50% !important;
+}
+
+button.button-positive.apply{
+  margin-left:35%;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+button.home{
+  width:50%;
+  margin-left: 22%;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.item-divider.header {
+  min-height: 45px;
+  background-color: #AEE1E0;
+  font-size: 18px;
+}
+
+.button.button-light.withdraw{
+  color:#fff;
+  width:60%;
+  padding-left: 15px;
+  margin-left:17%;
+  background-color:#FF2B2B;
+}
+
+/*end of everything that we overwrite from ionic*/
+
+/*Login and registration Page*/
+
+.scroll-content.main{
+ background-image: url("../img/elderly.jpg");
+ background-size: 1000px 1000px;
+ background-repeat: no-repeat;
+ z-index: -1;
+}
+
+div.transbox1 {
+ margin-right: 0;
+ margin-bottom: 0px;
+ background-color: #fff   ;
+ border: none ;
+ opacity:0.6;
+ filter: alpha(opacity=60); /* For IE8 and earlier */
+ width: 100%;
+ float: left;
+}
+
+div.iconcontainer{
+  margin-bottom: 0;
+  width: 15%;
+  float:left;
+  background-color: #fff;
+  opacity: 0.6;
+  text-align: center;
+  padding-top: 4% ;
+  padding-left: 1% ;
+  padding-bottom: 2% ;
+}
+
+div.transbox1 input{
+ margin: 1%;
+ color: #000;
+ width: 200px;
+ padding: 5px;
+}
+
+label.item
+{
+ background-color: transparent;
+ border:none;
+
+}
+
+.fullscreen-image {
+ max-width: 50%;
+ max-height: 50%;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ margin-top: 10%;
+}
+
+.page-image{
+ max-width: 50%;
+ max-height: 20%;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ top: 0;
+}
+
+div.transbox {
+ margin-bottom: 3px;
+ margin-top: 1px;
+ background-color: #fff ;
+ border: none;
+ opacity:0.6;
+ filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.date-ph{
+  height:49px;
+  margin-right: 0px;
+  margin-bottom: 6px;
+  margin-top: 2px;
+  background-color: #fff;
+  border: none;
+  opacity:0.6;
+  filter: alpha(opacity=60);
+  color:#C8C6C6;
+  text-align: center;
+  line-height: 50px; /* for example. */
+
+}
+
+.date{
+  width:40%;
+}
+
+div.item{
+  background-color: transparent ;
+}
+
+div.transbox input
+{
+ margin: 1%;
+ color: #000;
+ width: 200px;
+ border: none;
+ padding: 5px;
+}
+
+/*end of login and registration page*/
+
+/*more questions page*/
+label.ic.front{
+  margin-left: 30px;
+}
+
+label.ic.back{
+  margin-left: 40px;
+}
+
+div.morebox{
+  background-color:transparent;
+  width:80%;
+  margin-top: 2px;
+}
+
+div.morebox input{
+  background-color: #fff;
+  color:#000;
+  opacity:0.8;
+}
+/*end of more questions page*/
+
+/*verify page*/
+
+input.otp{
+  width:100;
+  margin: -5;
+  opacity: 0.6;
+  text-align: left;
+}
+
+div.box{
+  background-color:transparent;
+  margin:5%;
+  width:80%;
+}
+
+div.box input{
+  background-color: #fff;
+  text-align: center;
+  color:#000
+  opacity:0.6;
+}
+
+/*end of verify page*/
+
+/*home page*/
+.popover {
+    height: auto;
+    width: 50%;
+    top: 0px;
+}
+
+.popover ion-content {
+    position: relative;
+}
+
+.item.popout:active {
+  background-color: #29A29C;
+}
+
+/*end of home page*/
+
+/*activity page*/
+.item.details{
+  font-size: 17px;
+}
+/*end of activity page*/
+
+/*myactivity page*/
+.item-button-right{
+  padding-right: 0;
+}
+.button.button-selected{
+  border-color: #65B0AD;
+  background-color: #65B0AD;
+  color:#fff;
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.26) !important;
+  text-decoration: underline;
+}
+
+.button.button-nonselected{
+  border-color: #49817E;
+  background-color: #49817E;
+  color: #B5B5B5;
+}
+
+.item-divider {
+  min-height: 40px;
+  background-color: #AEE1E0;
+}
+/*end of myactivity page*/
+
+/*scan page*/
+.parent{
+  height:100%;
+}
+
+.section2{
+  height:40%;
+  overflow-x: scroll;
+}
+
+.section1{
+  max-height:60%;
+}
+
+ion-item.item{
+  padding-right:5px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.item-divider.scan {
+  min-height: 30px;
+  background-color: #B3E4DF;
+}
+
+.transbox2{
+  padding:5px;
+}
+/*end of scan page*/
+
+/*profile page*/
+
+div.list.profile{
+  opacity:0.7;
+  margin: 11px;
+}
+
+
+button.button.button-energized.profile{
+  background-color: #FDA500;
+}
+/*end of profile page*/
+
+/*manage account page*/
+
+.col.icon{
+  margin-left: -10px;
+}
+
+.col.label{
+  margin-top: 9px;
+  margin-left: 50px;
+  background-color: transparent;
+}
+
+.col.field{
+  margin-left: -180px;
+}
+
+.item.update.item-icon-left{
+  padding:5px;
+}
+
+input.readonly{
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  font-size: 17px;
+
+}
+
+input.edit{
+  font-size: 17px;
+  background-color: transparent;
+}
+
+input.edit.contact{
+  margin-left: 77px;
+  font-size: 17px;
+  background-color: transparent;
+}
+
+input.edit.occupation{
+  margin-left: 40px;
+  font-size: 17px;
+  background-color: transparent;
+}
+
+label.item.update{
+  background-color: transparent;
+}
+
+.col.label.edit{
+  margin-top: 13px;
+}
+
+.col.label.aop{
+margin-top: 0px;
+}
+
+select.aop{
+  margin-top: 3px;
+  margin-left: -14px;
+  width:300px;
+  font-size: 17px;
+  padding:5px;
+  background-color: transparent;
+  height: 40px;
+
+}
+
+.update.icon{
+  margin-top: -23px;
+  background-color: transparent;
+  margin-left: -10px;
+}
+/*end of manage account page*/

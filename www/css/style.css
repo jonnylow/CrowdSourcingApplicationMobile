@@ -126,6 +126,7 @@ i.icon.login.ion-home{
 
 i.icon.ion-calendar{
   padding:5px;
+  padding-left:1px;
   padding-right: 10px;
 }
 
@@ -245,45 +246,26 @@ label.item
  top: 0;
 }
 
-div.transbox {
- margin-bottom: 3px;
- margin-top: 1px;
- background-color: #fff ;
- border: none;
- opacity:0.6;
- filter: alpha(opacity=60); /* For IE8 and earlier */
-}
-
-div.date-ph{
-  height:49px;
-  margin-right: 0px;
-  margin-bottom: 6px;
-  margin-top: 2px;
+.dobBox{
+  margin-bottom:7px;
+  margin-top:3px;
   background-color: #fff;
   border: none;
   opacity:0.6;
-  filter: alpha(opacity=60);
-  color:#C8C6C6;
-  text-align: center;
-  line-height: 50px; /* for example. */
-
-}
-
-.date{
-  width:40%;
+  width:98.5%;
 }
 
 div.item{
   background-color: transparent ;
 }
-
-div.transbox input
-{
- margin: 1%;
- color: #000;
- width: 200px;
- border: none;
- padding: 5px;
+.list.registration{
+  margin-top: 7px;
+}
+.item.item-input.registration{
+  background-color: #fff;
+  border-color: #A4A4A4;
+  color:#000;
+  opacity: 0.9;
 }
 
 /*end of login and registration page*/

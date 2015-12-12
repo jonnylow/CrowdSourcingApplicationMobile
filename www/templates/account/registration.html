@@ -12,18 +12,47 @@
     <form ng-submit="register(fields)">
 
       <!--email-->
-      <div class="row">
-        <div class="col">
-          <div class="transbox">
-            <label class="item item-input">
-              <i class="icon ion-email placeholder-icon dark"></i>
-              <input type="text" autocapitalize="off" placeholder="Username (Email)" ng-model="fields.email" >
-            </label>
-          </div>
+      <div class="list registration">
+        <div class="item item-input registration">
+          <span class="input-label"><i class="icon ion-email placeholder-icon dark"></i>Username</span>
+          <input type="text" autocapitalize="off" placeholder="email" ng-model="fields.email" >
+        </div>
+        <div class="item item-input registration" >
+          <span class="input-label"><i class="icon ion-locked placeholder-icon dark"></i>Password</span>
+          <input type="password"  placeholder="***" ng-model="fields.password">
+        </div>
+        <div class="item item-input registration" >
+          <span class="input-label"><i class="icon ion-locked placeholder-icon dark"></i>Confirm Password</span>
+          <input type="password" placeholder="***" ng-model="fields.confirmpassword">
+        </div>
+        <div class="item item-input registration" >
+          <span class="input-label"><i class="icon ion-person placeholder-icon dark"></i>Name</span>
+          <input type="text" placeholder="John Doe" ng-model="fields.name" >
+        </div>
+        <div class="item item-input registration">
+          <span class="input-label dob" >
+          <i class="icon ion-calendar placeholder-icon dark"></i>Date of Birth</span>
+          <input class="date-input dob"type="date" color="#ffffff" ng-model="fields.dob">
+        </div>
+        <div class="item item-input registration">
+           <span class="input-label"><i class="icon ion-iphone placeholder-icon dark"></i>Contact Number </span>
+          <input type="text" placeholder="eg: 91234567" colour:"#ffffff" ng-model="fields.contactnumber">
+        </div>
+        <div class="item item-input registration">
+          <span class="input-label"><i class="icon ion-card placeholder-icon dark"></i>NRIC</span>
+          <input type="text" placeholder="eg: S1234567U" colour:"#ffffff" ng-model="fields.nric">
+        </div>
+        <div class="item item-input registration">
+          <i class="icon ion-transgender placeholder-icon dark"></i>
+          <select class="dropdown" ng-model="fields.gender">
+            <option value="" disabled selected>Gender*</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
         </div>
       </div>
 
-      <!--password & confirm password-->
+      <!--password & confirm password
       <div class="row">
         <div class="col">
           <div class="transbox">
@@ -43,7 +72,7 @@
         </div>
       </div>
 
-      <!--name & D.O.B-->
+      <!--name & D.O.B
       <div class="row">
         <div class="col" >
           <div class="transbox">
@@ -56,21 +85,16 @@
       </div>
 
       <div class="row">
-        <div class="date">
-          <div class="date-ph">
-            <i class="icon ion-calendar dark"></i>
-            Date Of Birth
-          </div>
-        </div>
-        <div class="col">
-          <div class="transbox">
-            <label class="item item-input">        <input id="date-input"type="date" color="#ffffff" placeholder="Date of Birth" ng-model="fields.dob">
-            </label>
-          </div>
-        </div>
+        <div class="dobBox">
+          <label class="item item-input">
+                  <span class="input-label dob" style="color:#A4A4A4">
+                    <i class="icon ion-calendar placeholder-icon dark"></i>Date of Birth</span>
+                   <input class="date-input dob"type="date" color="#ffffff" ng-model="fields.dob">
+          </label>
+        </div>            
       </div>
 
-      <!--contact number-->
+      <!--contact number
       <div class="row">
         <div class="col">
           <div class="transbox">
@@ -83,7 +107,7 @@
         <br>
       </div>
 
-      <!--NRIC-->
+      <!--NRIC
       <div class="row">
         <div class="col">
           <div class="transbox">
@@ -96,7 +120,7 @@
         <br>
       </div>
 
-      <!--Gender-->
+      <!--Gender
       <div class="row">
         <div class="col" >
           <div class="transbox" style="width:100%; padding-right:15px;">
@@ -110,7 +134,7 @@
             </label>
           </div>
         </div>
-      </div>
+      </div>-->
 
     <button  class="button button-block button-calm">Next</button>
     </form>

@@ -9,7 +9,7 @@ angular.module('crowdsourcing')
         {
           text: 'Cancel',
           onTap: function(e) {
-            $state.go('login', {}, {reload: true});
+            $state.go('landingPage', {}, {reload: true});
           }},
         {
           text: '<b>Ok</b>',

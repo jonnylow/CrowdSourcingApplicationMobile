@@ -106,6 +106,13 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "myhistoryController"
     })*/
 
+  .state('landingPage', {
+      cache: false,
+      url: '/landingPage',
+      templateUrl: 'templates/account/landingPage.html',
+      controller: "loginController"
+  })
+
     .state('login', {
       cache: false,
       url: '/login',
@@ -200,6 +207,6 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/landingPage');
 
 });

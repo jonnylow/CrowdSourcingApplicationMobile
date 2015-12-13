@@ -1,16 +1,4 @@
 <ion-view view-title="My Activity">
-  <!--header bar -->
-  <ion-header-bar class="bar bar-header bar-positive">
-  <img src="img/icare.png" side="right" class="iconsize-image"/>
-  <div class="button-bar">
-    <a class="button button-icon"></a>
-    <a class="button button-icon"></a>
-    <button class="button button-icon ion-ios-location" ui-sref="scan"></button>
-    <button class="button button-icon ion-search" ui-sref="search"></button>
-    <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
-  </div>
-</ion-header-bar>
-
 
   <div class="spinner" ng-show=loadingshow>
     <ion-spinner icon="android"></ion-spinner>
@@ -23,7 +11,6 @@
       <button class="button button-nonselected" ng-click="goCurrent()">Current</button>
       <button class="button button-selected">History</button>
     </div>
-
 
     <!--historical activity listing-->
     <div class="list card">

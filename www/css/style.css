@@ -1,22 +1,57 @@
 
+/******************Background*********************/
+/*Background color for everything except main page*/
+.pane {
+    background-color: #F1F3F5; 
+    background-image: #F1F3F5; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+/*Background image/gradient color for main page*/
+.scroll-content.main{
+ background-image: url("../img/elderly.jpg");
+ background-size: 1000px 1000px;
+ background-repeat: no-repeat;
+ z-index: -1;
+}
+
+/****************Google Map**********************/
 .angular-google-map-container {
   height: 300px;
 }
 
-/*everything that we overwrite from ionic*/
-/* green button */
+
+/****************Ionic overwrites**********************/
+/***BUTTONS***/
+/*First default button - Pink*/
 .button.button-calm {
-  border-color: #29A29C;
-  background-color: #29A29C;
+  border-color: #EF5256;
+  background-color: #EF5256;
   color: #FFFFFF;
 }
 .button.button-calm:hover {
-   color: #FFFFFF;
-    opacity: 0.5; }
+  color: #FFFFFF;
+  opacity: 0.5; 
+}
 
 .button.button-calm.active, .button.button-calm.activated {
-      border-color: #29A29C;
-      background-color: #29A29C;
+  border-color: #EF5256;
+  background-color: #EF5256;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/*Second default button - Green*/
+.button.button-energized {
+  border-color: #A1B575;
+  background-color: #A1B575;
+  color: #FFFFFF;
+}
+
+.button.button-energized.active, .button.button-energized.activated {
+      border-color: #A1B575;
+      background-color: #A1B575;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
 
 /* button-light hover*/
@@ -25,113 +60,15 @@
       opacity: 0.5;
       text-decoration: none; }
 
-/* transparent button */
+/*Transparent button */
 .button.button-dark {
   border-color: transparent;
   background-color: transparent;
   color: #FFFFFF;
 }
 
-.bar.bar-positive {
-  background: #29A29C;
-  z-index: -1;
-  border-bottom-width: 0;
-}
-
-.bar.bar-positive .title {
-  color: #fff; 
-}
-
 .button.button-full {
   margin-top: 0;
-}
-
-.tab-item {
-  color: white;
-}
-
-.iconsize-image {
- max-width: 150%;
- max-height: 150%;
- bottom: 0;
- margin-left: 2%;
- right: 0;
- top: 0;
-}
-
-div.spinner {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  margin-top: 250px;
-  height: 85px;
-  text-align: center;
-  z-index: 1;
-}
-
-h1 {
-  font-family: 'Century Gothic', CenturyGothic, sans-serif;
-  font-size: 55px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 40px;
-}
-
-h3 {
-  font-size: 40px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 100;
-  line-height: 10px;
-}
-
-h4{
-  color:#fff;
-  margin:10px;
-  font-size: 17px;
-  text-align: center;
-  margin-bottom: -10px;
-}
-
-div.row{
- width: 100%;
- padding: 0.1px;
- margin-top: 8px;
-}
-
-.larger{
-  font-size: 25px;
-}
-
-div.col{
- margin-top:-1%;
- padding-left: 0;
-}
-
-select.dropdown {
-  background-color:#fff;
-  border-color: transparent;
-  color:#000000;
-  width:100%;
-  height: 30px;
-}
-
-i.icon.login.ion-home{
-  float:right;
-  font-size: 40px;
-  margin-top: -45px;
-  margin-right: ;
-}
-
-i.icon.ion-calendar{
-  padding:5px;
-  padding-left:1px;
-  padding-right: 10px;
-}
-
-.item.item-divider{
-  padding-bottom: 15px;
 }
 
 .button-float{
@@ -166,12 +103,6 @@ button.home{
   font-size: 20px;
 }
 
-.item-divider.header {
-  min-height: 45px;
-  background-color: #AEE1E0;
-  font-size: 18px;
-}
-
 .button.button-light.withdraw{
   color:#fff;
   width:60%;
@@ -180,15 +111,137 @@ button.home{
   background-color:#FF2B2B;
 }
 
+/***BAR***/
+.bar.bar-positive {
+  background: #29A29C;
+  z-index: -1;
+  border-bottom-width: 0;
+}
+
+.bar.bar-positive .title {
+  color: #fff; 
+}
+
+/***IMAGES***/
+.iconsize-image {
+ max-width: 100%;
+ max-height: 100%;
+ bottom: 0;
+ margin-left: 2%;
+ right: 0;
+ top: 0;
+}
+
+/***SPINNER***/
+div.spinner {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin-top: 250px;
+  height: 85px;
+  text-align: center;
+  z-index: 1;
+}
+
+/***FONTS***/
+h1 {
+  font-family: 'Century Gothic', CenturyGothic, sans-serif;
+  font-size: 55px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 40px;
+}
+
+h3 {
+  font-size: 40px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 100;
+  line-height: 10px;
+}
+
+h4{
+  color:#fff;
+  margin:10px;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/***BOX SIZES***/
+div.row{
+ width: 100%;
+ padding: 0.1px;
+ margin-top: 8px;
+}
+
+.larger{
+  font-size: 25px;
+}
+
+div.col{
+ margin-top:-1%;
+ padding-left: 0;
+}
+
+select.dropdown {
+  background-color:#fff;
+  border: transparent;
+  color:#000000;
+  width:100%;
+  height: 30px;
+
+}
+
+.item.item-divider{
+  padding-bottom: 15px;
+}
+
+.item-divider.header {
+  min-height: 45px;
+  background-color: #AEE1E0;
+  font-size: 18px;
+}
+
+.item.item-input.item-stacked-label{
+  margin-left: -10px;
+  width:100%;
+}
+
+/***ICONS***/
+i.icon.ion-calendar{
+  padding:5px;
+  padding-left:14px;
+}
+
+i.icon{
+  padding:5px;
+}
+
 /*end of everything that we overwrite from ionic*/
 
-/*Login and registration Page*/
+/**********************LOGIN & REGISTRATION**********************/
+.list-inset.login{
+  opacity:0.9;
+}
 
-.scroll-content.main{
- background-image: url("../img/elderly.jpg");
- background-size: 1000px 1000px;
- background-repeat: no-repeat;
- z-index: -1;
+.item-input.login{
+  font-style: bold;
+}
+
+.item-input.login1{
+  background-color: #fff;
+  color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
 }
 
 div.transbox1 {
@@ -209,7 +262,7 @@ div.iconcontainer{
   background-color: #fff;
   opacity: 0.6;
   text-align: center;
-  padding-top: 4% ;
+  padding-top: 0% ;
   padding-left: 1% ;
   padding-bottom: 2% ;
 }
@@ -225,12 +278,11 @@ label.item
 {
  background-color: transparent;
  border:none;
-
 }
 
 .fullscreen-image {
- max-width: 50%;
- max-height: 50%;
+ max-width: 80%;
+ max-height: 80%;
  bottom: 0;
  left: 0;
  right: 0;
@@ -238,7 +290,7 @@ label.item
 }
 
 .page-image{
- max-width: 50%;
+ max-width: 90%;
  max-height: 20%;
  bottom: 0;
  left: 0;
@@ -258,30 +310,82 @@ label.item
 div.item{
   background-color: transparent ;
 }
-.list.registration{
+
+.list.list-inset.registration{
   margin-top: 7px;
+  box-shadow: 3px 2px 5px 3px rgba(0,0,0,0.26);
+  margin-top: 40px;
 }
-.item.item-input.registration{
+
+label.item.item-input.registration{
   background-color: #fff;
-  border-color: #A4A4A4;
-  color:#000;
-  opacity: 0.9;
+  color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+}
+
+
+span.input-label.dob{
+  color:#A4A4A4;
+}
+
+input.registration{
+  margin-left: 10px;
+}
+
+h1.title.registration{
+  font-weight: bold;
+  background-color: #52989C;
+  color:#fff;
+  z-index: -1;
+}
+
+.bar.bar-header.registration{
+  background-color: #52989C;
+}
+
+i.icon.ion-close-round.light{
+  font-size: 20px;
+}
+
+button.button.button-block.button-calm.registration{
+  background-color: #EF5256;
+  border-color: #EF5256;
+  border-radius: 7px;
 }
 
 /*end of login and registration page*/
 
-/*more questions page*/
+/**********************MORE QUESTIONS**********************/
+label.item.item-input.morequestions{
+  background-color: #fff;
+  color:#000; 
+  margin-left: 15px;
+  width: 120%;
+  height: 50px;
+}
+
+input.morequestions{
+  margin-left: 10px;
+}
+
 label.ic.front{
   margin-left: 30px;
+  color:#000;
 }
 
 label.ic.back{
   margin-left: 40px;
+  color:#000;
 }
 
 div.morebox{
   background-color:transparent;
   width:80%;
+  margin-left: -10px;
   margin-top: 2px;
 }
 
@@ -290,15 +394,51 @@ div.morebox input{
   color:#000;
   opacity:0.8;
 }
+
+.HaveCar{
+  margin-top: 35px;
+}
+
+.button.button-block.button-light.morequestions{
+  margin-top:-5px;
+  margin-bottom: -10px;
+  border-radius: 7px;
+}
+
+.button.button-block.button-calm.morequestions{
+  margin-top:-5px;
+  margin-bottom: -10px;
+  border:transparent;
+  background-color: #EF5256;
+  border-radius: 7px;
+}
+
+button.button.button-light.button-small.NRICbutton{
+  background-color: #fff;
+  border-color: #A4A4A4;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+
 /*end of more questions page*/
 
-/*verify page*/
+/**********************VERIFY**********************/
+h4.verify{
+  color:#000;
+  margin:10px;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: -10px;
+  margin-top: 50px;
+}
 
 input.otp{
   width:100;
   margin: -5;
   opacity: 0.6;
   text-align: left;
+  box-shadow: 3px 1px 1px 1px #A4A4A4;
 }
 
 div.box{
@@ -312,6 +452,16 @@ div.box input{
   text-align: center;
   color:#000
   opacity:0.6;
+}
+
+button.button.button-block.button-calm.verify{
+  border:transparent;
+  background-color: #EF5256;
+  border-radius: 7px;
+}
+
+button.button.button-block.button-light.verify{
+  border-radius: 7px;
 }
 
 /*end of verify page*/
@@ -347,8 +497,6 @@ div.box input{
   border-color: #65B0AD;
   background-color: #65B0AD;
   color:#fff;
-  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.26) !important;
-  text-decoration: underline;
 }
 
 .button.button-nonselected{

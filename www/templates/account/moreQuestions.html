@@ -1,23 +1,28 @@
 <ion-view hide-nav-bar="true">
   <ion-content class="main" padding="true" >
-  <div style="text-align: center; ">
- <img src="img/Button2.png" class = "page-image"/>
-</div>
+  <!--header-->
+  <div class="bar bar-header registration">
+    <i class="icon ion-close-round light"></i>
+    <h1 class="title registration">Sign Up</h1>
+  </div>
+
     <form ng-submit="verify(fields)">
       <!--Have a car checkbox-->
-      <ion-checkbox ng-model="fields.carChecked"><font color="white">I have a car</ion-checkbox></font>
+      <div class="HaveCar">
+        <ion-checkbox ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
+      </div>
 
       <!--Occupation-->
       <div class="morebox" >
-        <label class="item occupation item-input item-stacked-label">
-
-          <input placeholder="   Occupation" class="occupation"type="text" ng-model="fields.occupation" style="background-colo:transparent;">
+        <label class="item item-input morequestions">
+          <i class="icon ion-briefcase dark larger"></i>
+          <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
         </label>
-       </div>
+       </div><br>
 
         <!--Area of Preferences 1-->
-      <label class="item item-input item-stacked-label">
-        <font color="white">Area of Preferences 1</font><br>
+      <label class="item item-input item-stacked-label" >
+        <font color="black" >Area of Preferences 1</font><br>
         <select class="dropdown" ng-model="fields.preferences_1">
           <option value="" disabled selected>Preference*</option>
           <option value="Befriend-senior-citizens">Befriend senior citizens</option>
@@ -34,7 +39,7 @@
 
       <!--Area of Preferences 2-->
       <label class="item item-input item-stacked-label">
-        <font color="white">Area of Preferences 2</font><br>
+        <font color="black">Area of Preferences 2</font><br>
         <select class="dropdown" ng-model="fields.preferences_2">
           <option value="" disabled selected>Preference*</option>
           <option value="Befriend-senior-citizens">Befriend senior citizens  </option>
@@ -53,10 +58,10 @@
 
       <div class="row" style="text-align:center;">
       <div class="item range range-positive" style="color:#ffffff; border:none;margin-top:1px;"/>
-        <label class="ic front">IC Photo (Front)<br />
+        <label class="ic front">IC Photo (Front)<br>
           <img id="frontic" src="" height="100" width="100" ><br>
-          <button type="button" ng-click="getPhotoFront()" ng-show=showFront>Add</button>
-          <button type="button" ng-click="deletePhotoFront()" ng-show=!showFront>Delete</button>
+          <button class="button button-light button-small NRICbutton" type="button" ng-click="getPhotoFront()" ng-show=showFront>Add</button>
+          <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoFront()" ng-show=!showFront>Delete</button>
         </label>
 
       </div>
@@ -65,15 +70,26 @@
      <div class="item range range-positive"style="color:#ffffff; border:none;"/>
       <label class="ic back">IC Photo (Back)<br />
         <img id="backic" src="" height="100" width="100" ><br>
-        <button type="button" ng-click="getPhotoBack()" ng-show=showBack>Add</button>
-        <button type="button" ng-click="deletePhotoBack()" ng-show=!showBack>Delete</button>
+        <button class="button button-light button-small NRICbutton" type="button" ng-click="getPhotoBack()" ng-show=showBack>Add</button>
+        <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoBack()" ng-show=!showBack>Delete</button>
       </label>
 
       </div>
     </div>
+    <br>
+    <div style="text-align: center; ">
+     <img src="img/steps002.png" class = "page-image"/>
+    </div>
 
-      <button class="button button-block button-calm">Next</button>
-      <button ui-sref="registration" class="button button-block button-light">Back</button>
+    <div class="row">
+      <div class="col 50">
+         <button ui-sref="registration" class="button button-block button-light morequestions">Back</button>
+      </div>
+      <div class="col 50">
+      <button class="button button-block button-calm morequestions">Next</button>
+      </div>
+    </div>
+    
     </form>
   </ion-content>
 </ion-view>

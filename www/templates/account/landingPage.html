@@ -1,30 +1,21 @@
-<link href="css/main.css" rel="stylesheet">
-
 <ion-view hide-nav-bar="true">
-<ion-content background="img/elderly.jpg" padding="true">
-  <div class="spinner" ng-show=loadingshow>
-    <ion-spinner icon="android"></ion-spinner>
-  </div>
-<br><br>
+  <ion-content class="main" padding="true">
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
 
-<!--iCare logo-->
-<!--<div class="logo"><img src="../img/icare.png" alt="image"></div>
-  <i class="icon login ion-home placeholder-icon light" ui-sref="tab.home"></i>-->
-<div style="text-align: center;">
- <img src="img/icare.png" class = "fullscreen-image"/>
-</div>
+    <div style="text-align: center;">
+     <img src="img/careridemainwhite.png" class = "mainimage"/>
+    </div>
+    <br>
+    <button ui-sref="login" class="button button-block button-energized">Login</button>
+    <button ui-sref="registration" class="button button-block button-calm">Register!</button>
+    <p style="text-align: center;">
+        <a ui-sref="tab.home" style="color: #ffffff;">Proceed Without Logging In</a>
+    </p>
 
-<!-- Login form-->
+  </ion-content>
+</ion-view>
 
-
-  <!--Register button-->
-  <button ui-sref="login" class="button button-block button-calm">Login</button>
-  <button ui-sref="registration" class="button button-block button-calm">Register!</button>
-
-  <!--Main Pagebutton-->
-  <p style="text-align: center;">
-    <a ui-sref="tab.home" style="color: #ffffff;">Proceed Without Logging In</a>
-  </p>
-</ion-content>
 
 

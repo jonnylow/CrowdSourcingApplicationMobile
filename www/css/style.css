@@ -11,10 +11,7 @@
 
 /*Background image/gradient color for main page*/
 .scroll-content.main{
- background-image: url("../img/elderly.jpg");
- background-size: 1000px 1000px;
- background-repeat: no-repeat;
- z-index: -1;
+background: linear-gradient(#6991A4, #4E989A);
 }
 
 /****************Google Map**********************/
@@ -223,7 +220,20 @@ i.icon{
   padding:5px;
 }
 
+i.icon.ion-heart.larger{
+  margin-right: 10px;
+  margin-left: 15px;
+  margin-top: -10px;
+  margin-bottom: -5px;
+}
 /*end of everything that we overwrite from ionic*/
+
+/**********************LANDING PAGE**********************/
+.mainimage{
+  max-width: 60%;
+  max-height: 60%;
+  margin-top:5%;
+}
 
 /**********************LOGIN & REGISTRATION**********************/
 .list-inset.login{
@@ -313,7 +323,7 @@ div.item{
 
 .list.list-inset.registration{
   margin-top: 7px;
-  box-shadow: 3px 2px 5px 3px rgba(0,0,0,0.26);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.26);
   margin-top: 40px;
 }
 
@@ -347,8 +357,10 @@ h1.title.registration{
   background-color: #52989C;
 }
 
-i.icon.ion-close-round.light{
+a.icon.ion-close-round.light{
   font-size: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
 button.button.button-block.button-calm.registration{
@@ -356,6 +368,7 @@ button.button.button-block.button-calm.registration{
   border-color: #EF5256;
   border-radius: 7px;
 }
+
 
 /*end of login and registration page*/
 
@@ -548,9 +561,10 @@ div.list.profile{
   margin: 11px;
 }
 
-
-button.button.button-energized.profile{
-  background-color: #FDA500;
+.button.button-energized.me{
+  border-color: #94A66D;
+  background-color: #94A66D;
+  color: #FFFFFF;
 }
 /*end of profile page*/
 
@@ -574,46 +588,44 @@ button.button.button-energized.profile{
   padding:5px;
 }
 
-input.readonly{
+input.readonly.me{
   padding: 10px;
   text-align: left;
   width: 100%;
   font-size: 17px;
-
+  background-color: #E6E6E6;
 }
 
-input.edit{
+/*input.edit{
   font-size: 17px;
   background-color: transparent;
+  padding-right: 0px;
 }
 
 input.edit.contact{
-  margin-left: 77px;
+  margin-left: 130px;
   font-size: 17px;
   background-color: transparent;
 }
 
 input.edit.occupation{
-  margin-left: 40px;
+  margin-left: 80px;
   font-size: 17px;
   background-color: transparent;
-}
+}*/
 
-label.item.update{
+label.item.item-input.update{
   background-color: transparent;
+  padding-right: 0px;
 }
-
-.col.label.edit{
-  margin-top: 13px;
-}
-
-.col.label.aop{
-margin-top: 0px;
+ 
+label.item.item-input.update input{
+  padding-right:0px;
 }
 
 select.aop{
   margin-top: 3px;
-  margin-left: -14px;
+  margin-left: 5px;
   width:300px;
   font-size: 17px;
   padding:5px;
@@ -626,5 +638,48 @@ select.aop{
   margin-top: -23px;
   background-color: transparent;
   margin-left: -10px;
+}
+
+h3.me{
+  font-size: 23px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: -10px;
+}
+
+.updateinfo{
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+label.item.item-input.update{
+  background-color: #fff;
+  border-color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+}
+
+label.item.item-input.update.occupation{
+  background-color: transparent;
+  border-color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+
+}
+
+label.item.item-input.item-stacked-label{
+  background-color: transparent;
+  border-color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-top:none;
 }
 /*end of manage account page*/

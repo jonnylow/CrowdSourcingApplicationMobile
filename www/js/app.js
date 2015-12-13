@@ -109,8 +109,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
   .state('landingPage', {
       cache: false,
       url: '/landingPage',
-      templateUrl: 'templates/account/landingPage.html',
-      controller: "loginController"
+      templateUrl: 'templates/account/landingPage.html'
   })
 
     .state('login', {

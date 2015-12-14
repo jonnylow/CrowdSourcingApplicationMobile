@@ -1,4 +1,4 @@
-angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
+angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgoogle-maps', 'jrCrop'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -106,6 +106,12 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
       controller: "myhistoryController"
     })*/
 
+  .state('landingPage', {
+      cache: false,
+      url: '/landingPage',
+      templateUrl: 'templates/account/landingPage.html'
+  })
+
     .state('login', {
       cache: false,
       url: '/login',
@@ -200,6 +206,6 @@ angular.module('crowdsourcing', ['ionic', 'uiGmapgoogle-maps', 'jrCrop'])
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/landingPage');
 
 });

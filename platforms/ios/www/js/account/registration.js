@@ -9,7 +9,7 @@ angular.module('crowdsourcing')
         {
           text: 'Cancel',
           onTap: function(e) {
-            $state.go('login', {}, {reload: true});
+            $state.go('landingPage', {}, {reload: true});
           }},
         {
           text: '<b>Ok</b>',
@@ -25,12 +25,12 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
-            && fields.confirmpassword!= null && fields.confirmpassword.trim() != "" && fields.dob!= null && fields.nric!= null
+            &&  fields.dob!= null && fields.nric!= null
             && fields.nric.trim() != "" && fields.gender!= null && fields.gender.trim() != "") {
             var tempName = fields.name;
             var tempEmail = fields.email;
             var tempPassword = fields.password;
-            var tempConfirmpassword = fields.confirmpassword;
+            //var tempConfirmpassword = fields.confirmpassword;
             var tempContactnumber = fields.contactnumber;
             var tempDOB = fields.dob;
             var tempNRIC = fields.nric;
@@ -49,7 +49,7 @@ angular.module('crowdsourcing')
               tempDOB = yyyy + '-' + mm + '-' + dd;
 
               if (validateName(tempName) == true) {
-                if (tempPassword == tempConfirmpassword) {
+                //if (tempPassword == tempConfirmpassword) {
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
                       var urlString = "http://www.changhuapeng.com/volunteer/php/CheckEmail.php?email="+tempEmail;
@@ -109,11 +109,11 @@ angular.module('crowdsourcing')
                     $scope.loadingshow = false;
                     alert("Invalid phone number. Please try again.");
                   }
-                }
+                /*}
                 else {
                   $scope.loadingshow = false;
                   alert("Passwords do not match. Please try again.");
-                }
+                }*/
               }
               else {
                 $scope.loadingshow = false;

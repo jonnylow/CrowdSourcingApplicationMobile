@@ -1,15 +1,16 @@
-<link href="css/main.css" rel="stylesheet">
-
 <ion-view hide-nav-bar="true">
-<ion-content background="img/elderly.jpg" padding="true">
+
+<ion-content padding="true">
   <div class="spinner" ng-show=loadingshow>
     <ion-spinner icon="android"></ion-spinner>
   </div>
+
+  <div class="bar bar-header registration">
+  <a ui-sref="landingPage" class="icon ion-close-round light"></a>
+  <h2 class="title main" style="color: #FFF; z-index:-1;">Log In</h2>
+</div>
 <br><br>
 
-<!--iCare logo-->
-<!--<div class="logo"><img src="../img/icare.png" alt="image"></div>
-  <i class="icon login ion-home placeholder-icon light" ui-sref="tab.home"></i>-->
 <div style="text-align: center;">
  <img src="img/icare.png" class = "fullscreen-image"/>
 </div>
@@ -17,54 +18,34 @@
 <!-- Login form-->
 <form ng-submit="login(fields)">
 
-  <!--email-->
- <div class="email-divider">
-    <div class="row">
-      <div class="iconcontainer">
-        <i class="icon ion-email dark larger" ></i>
-       </div>
-
-      <div class="transbox1">
-        <label class="item item-input">
-        <!--<i class="icon ion-email placeholder-icon light"></i>-->
-        <input type="text" autocapitalize="off" placeholder="Email" ng-model="fields.email" >
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <!--password-->
-  <div class="email-divider">
-    <div class="row">
-      <div class="iconcontainer">
-        <i class="icon ion-locked dark larger" ></i>
-      </div>
-      <div class="transbox1">
-        <label class="item item-input">
-        <!--<i class="icon ion-locked placeholder-icon light"></i>-->
-        <input type="password" colour:"#ffffff" placeholder="Password" ng-model="fields.password">
-        </label>
-      </div>
-    </div>
-  </div>
+  <div class="list list-inset login">
+  <label class="item item-input login">
+    <input type="text" placeholder="Email address" ng-model="fields.email">
+  </label>
+  <label class="item item-input login1">
+    <input type="password" placeholder="Password" ng-model="fields.password">
+  </label>
+</div>
 
 
-  <button class="button button-block button-energized">Login</button>
+
+  <button class="button button-block button-energized">Log In</button>
   </div>
 
 
   <!--forget password link!! rmb to do-->
-<!--<p style="text-align: center;">
-  <a href="#" style="color: #ffffff;">Forget Password?</a>
-</p>-->
+<p style="text-align: center;">
+  <a href="#" style="color: #53585F;">Forgotten your Password?</a>
+</p>
 
-  <!--Register button-->
-  <button ui-sref="registration" class="button button-block button-calm">Register!</button>
 
-  <!--Main Pagebutton-->
+  <!--Register button
+  <button ui-sref="registration" class="button button-block button-calm">Create an Account</button>-->
+
+  <!--Main Pagebutton
   <p style="text-align: center;">
     <a ui-sref="tab.home" style="color: #ffffff;">Proceed Without Logging In</a>
-  </p>
+  </p>-->
 </ion-content>
 
 

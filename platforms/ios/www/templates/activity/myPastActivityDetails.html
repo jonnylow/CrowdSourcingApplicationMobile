@@ -11,32 +11,42 @@
   </div>
 
  <ion-content ng-show=!loadingshow>
-    <!--current activity listing-->
-    <div class="list card">
-      <div class="item item-divider">
-        My Activity Details
-      </div>
-      <div class="item item-text-wrap">
-        Date: {{date}}
-      </div>
-      <div class="item item-text-wrap">
-        Time: {{time}}
-      </div>
-      <div class="item item-text-wrap">
-        Expected Duration: {{expectedDuration}}
-      </div>
-      <div class="item item-text-wrap">
-        Pick-up: {{locationFrom}}
-      </div>
-      <div class="item item-text-wrap">
-        Drop-off: {{locationTo}}
-      </div>
-      <div class="item item-button-right">
-        Status: {{transportStatus}}
-      </div>
-      <div class="item item-text-wrap">
-        Additional Information: {{moreInformation}}
-      </div>
-    </div>
+   <!--current activity listing-->
+   <div class="list card">
+     <div class="item item-divider">
+       <b>My Activity Details</b>
+     </div>
+     <div class="item item-text-wrap">
+       <b>Date:</b> {{date}}
+     </div>
+     <div class="item item-text-wrap">
+       <b>Time:</b> {{time}}
+     </div>
+     <div class="item item-text-wrap">
+       <b>Expected Duration:</b> {{expectedDuration}}
+     </div>
+     <div class="item item-text-wrap">
+       <b>Pick-up:</b> {{locationFrom}}
+     </div>
+     <div class="item item-text-wrap">
+       <b>Drop-off:</b> {{locationTo}}
+     </div>
+     <div class="item item-text-wrap">
+       <b>Approval Status:</b> {{approvalStatus}}
+     </div>
+     <div class="item item-button-right">
+
+       <b>Transport Status:</b> {{transportStatus}}
+
+       <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
+     </div>
+     <div class="item item-text-wrap">
+       <b>Additional Information:</b> {{moreInformation}}
+     </div>
+     <div class="item item-button-right">
+       <b>Elderly Information</b>
+       <button class="button button-energized" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">More</button>
+     </div>
+   </div>
   </ion-content>
 </ion-view>

@@ -6,12 +6,12 @@ angular.module('crowdsourcing')
       $scope.tempPassword = window.localStorage.getItem("tempPassword");
       $scope.tempContactNumber = window.localStorage.getItem("tempContactnumber");
       $scope.tempDOB = window.localStorage.getItem("tempDOB");
-    $scope.tempNRIC = window.localStorage.getItem("tempNRIC");
-    $scope.tempGender = window.localStorage.getItem("tempGender");
-    $scope.tempFrontIC = "frontIC";
-    $scope.tempBackIC = "backIC";
-    $scope.showFront = true;
-    $scope.showBack = true;
+      $scope.tempNRIC = window.localStorage.getItem("tempNRIC");
+      $scope.tempGender = window.localStorage.getItem("tempGender");
+      $scope.tempFrontIC = "frontIC";
+      $scope.tempBackIC = "backIC";
+      $scope.showFront = true;
+      $scope.showBack = true;
 
       $scope.fields= {carChecked: false, occupation:""};
 
@@ -61,7 +61,6 @@ angular.module('crowdsourcing')
             quality: 20,
             destinationType: Camera.DestinationType.DATA_URL
           });
-          $scope.showFront = false;
         }
         else {
           alert("No Camera Detected");
@@ -77,11 +76,14 @@ angular.module('crowdsourcing')
         var image = document.getElementById('frontic');
         image.style.dispay = 'block';
         image.src = "data:image/png;base64," + imageData;
+        $scope.showFront = false;
+        $scope.$apply();
       }
 
       function onFail(message) {
-        alert('Failed because: ' + message);
+        //alert('Failed because: ' + message);
         $scope.showFront = true;
+        $scope.$apply();
       }
     }
 
@@ -100,7 +102,6 @@ angular.module('crowdsourcing')
             quality: 20,
             destinationType: Camera.DestinationType.DATA_URL
           });
-          $scope.showBack = false;
         }
         else {
           alert("No Camera Detected");
@@ -116,10 +117,14 @@ angular.module('crowdsourcing')
         var image = document.getElementById('backic');
         image.style.dispay = 'block';
         image.src = "data:image/png;base64," + imageData;
+        $scope.showBack = false;
+        $scope.$apply();
       }
 
       function onFail(message) {
-        alert('Failed because: ' + message);
+        //alert('Failed because: ' + message);
+        $scope.showBack = true;
+        $scope.$apply();
       }
     }
 

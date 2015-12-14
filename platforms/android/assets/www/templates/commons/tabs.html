@@ -7,7 +7,20 @@ navigation history that also transitions its views in and out.
 
 <link href="css/tabs.css" rel="stylesheet">
 
-<ion-tabs class = "tabs-striped tabs-top tabs-background-positive tabs-color-light">
+<!--header-->
+<ion-header-bar class="bar bar-header bar-positive">
+  <img src="img/careridewhite.png" side="right" class="iconsize-image"/>
+  <div class="button-bar">
+    <a class="button button-icon"></a>
+    <a class="button button-icon"></a>
+    <button class="button button-icon ion-ios-location" ui-sref="scan"></button>
+    <button class="button button-icon ion-search" ui-sref="#"></button>
+    <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
+    </div>
+</ion-header-bar>
+
+<!--tabs-->
+<ion-tabs class = "tabs-striped tabs-top">
 
   <ion-tab title="Home" ui-sref="tab.home">
     <ion-nav-view name="tab-home"></ion-nav-view>

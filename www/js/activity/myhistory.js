@@ -1,12 +1,6 @@
 angular.module('crowdsourcing')
 
     .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicHistory, $ionicPopover) {
-        $scope.transportID=[];
-        $scope.transportName=[];
-      	$scope.transportDateTimeStart=[];
-        $scope.transportStatus=[];
-        $scope.completedStatus=[]
-
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -16,64 +10,79 @@ angular.module('crowdsourcing')
           $state.go('login', {}, {reload: true});
         }
 
-       	var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=2";
+    $scope.toLoad = function()
+    {
+      $scope.transportID=[];
+      $scope.transportName=[];
+      $scope.transportDateTimeStart=[];
+      $scope.transportStatus=[];
+      $scope.completedStatus=[]
 
-    $http.get(urlString)
-      .success(function (data) {
-        var transportDetails = data;
+      var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=2";
 
-        if (transportDetails != null){
-          for(var i = 0; i<transportDetails.length; i++){
+      $http.get(urlString)
+        .success(function (data) {
+          var transportDetails = data;
 
-            if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
-              var temp =transportDetails[i].datetime_start.split(' ');
-              var datesTemp = temp[0].split('-');
+          if (transportDetails != null){
+            for(var i = 0; i<transportDetails.length; i++){
 
-              if(transportDetails[i].approval == "approved" && transportDetails[i].status== "completed")
-              {
-                $scope.transportStatus.push("Approved");
-                $scope.completedStatus.push("Completed");
-                $scope.transportID.push(transportDetails[i].activity_id);
-                $scope.transportName.push(transportDetails[i].name);
-                $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
-              }
-              else
-              {
-                var date_temp = temp[0] + " " + temp[1];
-                var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
-                var currentDateTime = new Date();
-                if(transportDateTime < currentDateTime)
+              if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
+                var temp =transportDetails[i].datetime_start.split(' ');
+                var datesTemp = temp[0].split('-');
+
+                if(transportDetails[i].approval == "approved" && transportDetails[i].status== "completed")
                 {
-                  if(transportDetails[i].approval == "withdrawn") {
-                    $scope.transportStatus.push("Withdraw");
-                    $scope.completedStatus.push("Not Applicable");
-                    $scope.transportID.push(transportDetails[i].activity_id);
-                    $scope.transportName.push(transportDetails[i].name);
-                    $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
-                  }
-                  else if(transportDetails[i].approval == "rejected")
+                  $scope.transportStatus.push("Approved");
+                  $scope.completedStatus.push("Completed");
+                  $scope.transportID.push(transportDetails[i].activity_id);
+                  $scope.transportName.push(transportDetails[i].name);
+                  $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                }
+                else
+                {
+                  var date_temp = temp[0] + " " + temp[1];
+                  var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
+                  var currentDateTime = new Date();
+                  if(transportDateTime < currentDateTime)
                   {
-                    $scope.transportStatus.push("Rejected");
-                    $scope.completedStatus.push("Not Applicable");
-                    $scope.transportID.push(transportDetails[i].activity_id);
-                    $scope.transportName.push(transportDetails[i].name);
-                    $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
-                  }
-                  else if(transportDetails[i].approval == "pending")
-                  {
-                    $scope.transportStatus.push("Pending");
-                    $scope.completedStatus.push("Not Applicable");
-                    $scope.transportID.push(transportDetails[i].activity_id);
-                    $scope.transportName.push(transportDetails[i].name);
-                    $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                    if(transportDetails[i].approval == "withdrawn") {
+                      $scope.transportStatus.push("Withdraw");
+                      $scope.completedStatus.push("Not Applicable");
+                      $scope.transportID.push(transportDetails[i].activity_id);
+                      $scope.transportName.push(transportDetails[i].name);
+                      $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                    }
+                    else if(transportDetails[i].approval == "rejected")
+                    {
+                      $scope.transportStatus.push("Rejected");
+                      $scope.completedStatus.push("Not Applicable");
+                      $scope.transportID.push(transportDetails[i].activity_id);
+                      $scope.transportName.push(transportDetails[i].name);
+                      $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                    }
+                    else if(transportDetails[i].approval == "pending")
+                    {
+                      $scope.transportStatus.push("Pending");
+                      $scope.completedStatus.push("Not Applicable");
+                      $scope.transportID.push(transportDetails[i].activity_id);
+                      $scope.transportName.push(transportDetails[i].name);
+                      $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                    }
                   }
                 }
               }
             }
           }
-        }
-        $scope.loadingshow = false;
-      })
+          $scope.loadingshow = false;
+        })
+        .finally(function() {
+          // Stop the ion-refresher from spinning
+          $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
+
+    $scope.toLoad();
 
     // .fromTemplateUrl() method
     if (window.localStorage.getItem("loginUserName") == null) {

@@ -1,21 +1,11 @@
-<link href="css/profile.css" rel="stylesheet">
 <ion-view view-title="View Account">
-  <ion-header-bar class="bar bar-header bar-positive">
-  <img src="img/icare.png" side="right" class="iconsize-image"/>
-  <div class="button-bar">
-    <a class="button button-icon"></a>
-    <a class="button button-icon"></a>
-    <button class="button button-icon ion-ios-location" ui-sref="scan"></button>
-    <button class="button button-icon ion-search" ui-sref="#"></button>
-    <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
-  </div>
-</ion-header-bar>
+
   <div class="spinner" ng-show=loadingshow>
     <ion-spinner icon="android"></ion-spinner>
   </div>
 
-  <ion-content has-header="true" padding="true" ng-show=!loadingshow>
-<div class="list card">
+  <ion-content padding="true" ng-show=!loadingshow>
+<div class="list profile card">
     <div class="item item-icon-left">
       <i class="icon ion-card"></i>
       NRIC: {{nric}}
@@ -64,7 +54,7 @@
     <div class="item item-icon-left item-button-right">
       <i class="icon ion-locked"></i>
       Password: **** ****
-      <button class="button button-energized button-small" ui-sref="updateAccount">Change</button>
+      <button class="button button-energized profile button-small" ui-sref="updateAccount">Change</button>
     </div>
   </div>
 

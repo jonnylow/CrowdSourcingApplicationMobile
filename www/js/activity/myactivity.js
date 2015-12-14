@@ -2,12 +2,6 @@ angular.module('crowdsourcing')
 
     .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover) {
 
-        $scope.transportID=[];
-        $scope.transportName=[];
-      	$scope.transportDateTimeStart=[];
-        $scope.transportStatus=[];
-        $scope.transportStatusToDisplay=[];
-
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -30,79 +24,94 @@ angular.module('crowdsourcing')
             });
         }
 
-       	var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=1";
+    $scope.toLoad = function()
+    {
+      $scope.transportID=[];
+      $scope.transportName=[];
+      $scope.transportDateTimeStart=[];
+      $scope.transportStatus=[];
+      $scope.transportStatusToDisplay=[];
 
-       	$http.get(urlString)
-      	.success(function (data) {
-        var transportDetails = data;
+      var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=1";
 
-        if (transportDetails != null){
-        	for(var i = 0; i<transportDetails.length; i++){
+      $http.get(urlString)
+        .success(function (data) {
+          var transportDetails = data;
 
-        		if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
-              var temp =transportDetails[i].datetime_start.split(' ');
-              var datesTemp = temp[0].split('-');
-              if(transportDetails[i].approval == "approved")
-              {
-                $scope.transportID.push(transportDetails[i].activity_id);
-                $scope.transportName.push(transportDetails[i].name);
-                $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+          if (transportDetails != null){
+            for(var i = 0; i<transportDetails.length; i++){
 
-                if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
-                {
-                  $scope.transportStatus.push("Approved");
-                  $scope.transportStatusToDisplay.push("Pick-Up");
-                }
-                else
-                {
-                  $scope.transportStatus.push("In-Progress");
-                  if(transportDetails[i].status == "pick-up")
-                  {
-                    $scope.transportStatusToDisplay.push("At Check-Up");
-                  }
-                  else if(transportDetails[i].status == "at check-up")
-                  {
-                    $scope.transportStatusToDisplay.push("Check-Up Completed");
-                  }
-                  else if(transportDetails[i].status == "check-up completed")
-                  {
-                    $scope.transportStatusToDisplay.push("Completed");
-                  }
-                }
-              }
-              else //if approval status not approved, check the date/time so that only future events are shown
-              {
-                var date_temp = temp[0] + " " + temp[1];
-                var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
-                var currentDateTime = new Date();
-                if(transportDateTime >= currentDateTime)
+              if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
+                var temp =transportDetails[i].datetime_start.split(' ');
+                var datesTemp = temp[0].split('-');
+                if(transportDetails[i].approval == "approved")
                 {
                   $scope.transportID.push(transportDetails[i].activity_id);
                   $scope.transportName.push(transportDetails[i].name);
                   $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
 
-                  if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
-                    $scope.transportStatus.push("Pending");
-                    $scope.transportStatusToDisplay.push("No status to update");
-                  }
-                  else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
+                  if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
                   {
-                    $scope.transportStatus.push("Rejected");
-                    $scope.transportStatusToDisplay.push("No status to update");
+                    $scope.transportStatus.push("Approved");
+                    $scope.transportStatusToDisplay.push("Pick-Up");
                   }
-                  else if(transportDetails[i].approval == "withdrawn" && transportDetails[i].status == "new task")
+                  else
                   {
-                    $scope.transportStatus.push("Withdrawn");
-                    $scope.transportStatusToDisplay.push("No status to update");
+                    $scope.transportStatus.push("In-Progress");
+                    if(transportDetails[i].status == "pick-up")
+                    {
+                      $scope.transportStatusToDisplay.push("At Check-Up");
+                    }
+                    else if(transportDetails[i].status == "at check-up")
+                    {
+                      $scope.transportStatusToDisplay.push("Check-Up Completed");
+                    }
+                    else if(transportDetails[i].status == "check-up completed")
+                    {
+                      $scope.transportStatusToDisplay.push("Completed");
+                    }
+                  }
+                }
+                else //if approval status not approved, check the date/time so that only future events are shown
+                {
+                  var date_temp = temp[0] + " " + temp[1];
+                  var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
+                  var currentDateTime = new Date();
+                  if(transportDateTime >= currentDateTime)
+                  {
+                    $scope.transportID.push(transportDetails[i].activity_id);
+                    $scope.transportName.push(transportDetails[i].name);
+                    $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+
+                    if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
+                      $scope.transportStatus.push("Pending");
+                      $scope.transportStatusToDisplay.push("No status to update");
+                    }
+                    else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
+                    {
+                      $scope.transportStatus.push("Rejected");
+                      $scope.transportStatusToDisplay.push("No status to update");
+                    }
+                    else if(transportDetails[i].approval == "withdrawn" && transportDetails[i].status == "new task")
+                    {
+                      $scope.transportStatus.push("Withdrawn");
+                      $scope.transportStatusToDisplay.push("No status to update");
+                    }
                   }
                 }
               }
-        		}
-        	}
-          $scope.shiftArrays();
-        }
-            $scope.loadingshow = false;
-  })
+            }
+            $scope.shiftArrays();
+          }
+          $scope.loadingshow = false;
+        })
+        .finally(function() {
+          // Stop the ion-refresher from spinning
+          $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
+
+    $scope.toLoad();
 
     //arrange the array to ensure 'approved' and 'inprogress' to be at the top
     $scope.shiftArrays = function()

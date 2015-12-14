@@ -19,7 +19,8 @@ angular.module('crowdsourcing')
               && transportDetails[0].location_to !=null)
             {
               var temp =transportDetails[0].datetime_start.split(' ');
-              $scope.date = temp[0];
+              var datesTemp = temp[0].split('-');
+              $scope.date = datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0];
               $scope.time = temp[1];
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
@@ -29,24 +30,38 @@ angular.module('crowdsourcing')
               }
               else
               {
-                $scope.moreInformation = "Na";
+                $scope.moreInformation = "No additional information";
               }
-              $scope.transportStatus = transportDetails[0].status;
-              if(transportDetails[0].status != "completed" && transportDetails[0].approval=="approved")
+
+              $scope.approvalStatus = capitalizeFirstLetter(transportDetails[0].approval);
+              var transportStatusToDisplay;
+              if(transportDetails[0].status == "new task")
+              {
+                transportStatusToDisplay = "Activity not started yet";
+              }
+              else
+              {
+                transportStatusToDisplay = transportDetails[0].status;
+              }
+              $scope.transportStatus = capitalizeFirstLetter(transportStatusToDisplay);
+
+              if(transportDetails[0].status == "completed" && transportDetails[0].approval=="approved")
               {
                 $scope.eldery = false;
-                $scope.updateStatus = false;
               }
               else
               {
                 $scope.eldery = true;
-                $scope.updateStatus = true;
               }
             }
           }
         }
         $scope.loadingshow = false;
       })
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     $scope.proceed = function(id, name)
     {
@@ -55,53 +70,9 @@ angular.module('crowdsourcing')
 
     $scope.back=function()
     {
-      $ionicHistory.goBack();
-    }
-
-    $scope.status=function(id, name)
-    {
-      $state.go('myactivityStatus', {transportId: id, transportActivityName: name, status: $scope.transportStatus});
-    }
-
-    $scope.withdraw=function()
-    {
-      var confirmPopup = $ionicPopup.confirm({
-        title: 'Withdraw?',
-        template: 'Are you sure you want to withdraw your application?'
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
       });
-
-      confirmPopup.then(function(res) {
-        if(res) {
-          urlString = "http://www.changhuapeng.com/volunteer/php/Withdraw.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
-
-          $http.get(urlString)
-            .success(function (data) {
-              var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
-              $http.get(sendEmail)
-                .success(function (data) {
-
-                })
-
-                .error(function (data) {
-                  alert("Error in connection");
-                });
-
-              var status = data;
-              if (status != null) {
-                var alertPopup = $ionicPopup.alert({
-                  title: 'Status',
-                  template: status.status[0]
-                });
-                //window.location.reload(true);
-                $state.go('tab.activity', {}, {reload: true});
-              }
-            })
-
-            .error(function (data) {
-              alert("Error in connection");
-            });
-        }
-      });
+      $state.go('tab.myhistory');
     }
-
 });

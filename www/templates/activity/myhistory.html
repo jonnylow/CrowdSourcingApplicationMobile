@@ -4,13 +4,32 @@
     <ion-spinner icon="android"></ion-spinner>
   </div>
 
-  <!--body-->
-  <ion-content has-header="true">
-    <!--history to current tab-->
+  <!--history to current tab
+  Leejia & Clara:  Can change CSS to make this bar appear? Currently it is being overlap by the current tab bar.
+  -->
+  <ion-header-bar class="bar-subheader">
     <div class="button-bar">
       <button class="button button-nonselected" ng-click="goCurrent()">Current</button>
       <button class="button button-selected">History</button>
     </div>
+  </ion-header-bar>
+  <!--history to current tab-->
+
+  <!--body-->
+  <ion-content has-header="true">
+
+    <!--history to current tab
+    Leejia & Clara: Need to remove this bar because auto refresher is pulling this bar down each time content is refreshing
+    *remove this only after doing the top css to make header bar visible*
+    -->
+      <div class="button-bar">
+        <button class="button button-nonselected" ng-click="goCurrent()">Current</button>
+        <button class="button button-selected">History</button>
+      </div>
+    <!--history to current tab-->
+
+    <!--Pull to refresh-->
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="toLoad()"></ion-refresher>
 
     <!--historical activity listing-->
     <div class="list card">

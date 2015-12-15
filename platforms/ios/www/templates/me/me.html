@@ -5,56 +5,47 @@
   </div>
 
   <ion-content padding="true" ng-show=!loadingshow>
+  <h2 style="text-align:center;">{{username}}</h2>
 <div class="list profile card">
-    <div class="item item-icon-left">
-      <i class="icon ion-card"></i>
-      NRIC: {{nric}}
-    </div>
-
-    <div class="item item-icon-left">
-      <i class="icon ion-person"></i>
+  <!--<div class="item">
       Name: {{username}}
-    </div>
+  </div>
 
-    <div class="item item-icon-left">
-      <i class="icon ion-email"></i>
+  <div class="item">
+    <font weight="bold">NRIC:</font> {{nric}}
+  </div>-->
+
+    <div class="item">
       Email: {{email}}
     </div>
 
-    <div class="item item-icon-left">
-      <i class="icon ion-iphone"></i>
+    <div class="item">
       Contact Number: {{contactnumber}}
     </div>
 
-    <div class="item item-icon-left">
-      <i class="icon ion-calendar"></i>
+    <!--<div class="item">
       Date Of Birth: {{dob}}
     </div>
 
-    <div class="item item-icon-left">
-      <i class="icon ion-transgender"></i>
+    <div class="item">
       Gender: {{gender}}
     </div>
 
-    <div class="item item-icon-left">
-      <i class="icon ion-briefcase"></i>
+    <div class="item">
       Occuption: {{occuption}}
     </div>
 
-    <div class="item item-icon-left item-text-wrap">
-      <i class="icon ion-heart"></i>
+    <div class="item">
       Preference 1: {{preference1}}
     </div>
 
-    <div class="item item-icon-left item-text-wrap">
-      <i class="icon ion-heart"></i>
+    <div class="item">
       Preference 2: {{preference2}}
-    </div>
+    </div>-->
 
-    <div class="item item-icon-left item-button-right">
-      <i class="icon ion-locked"></i>
+    <div class="item item-button-right">
       Password: **** ****
-      <button class="button button-energized profile button-small" ui-sref="updateAccount">Change</button>
+      <button class="button button-energized me" ui-sref="updateAccount"><font size=3px style="font-weight:bold;">Change</font></button>
     </div>
   </div>
 

@@ -2,8 +2,8 @@
 /******************Background*********************/
 /*Background color for everything except main page*/
 .pane {
-    background-color: #F1F3F5; 
-    background-image: #F1F3F5; 
+    background-color: #F1F3F5;
+    background-image: #F1F3F5;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -30,13 +30,13 @@ background: linear-gradient(#6991A4, #4E989A);
 }
 .button.button-calm:hover {
   color: #FFFFFF;
-  opacity: 0.5; 
+  opacity: 0.5;
 }
 
 .button.button-calm.active, .button.button-calm.activated {
   border-color: #EF5256;
   background-color: #EF5256;
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 /*Second default button - Green*/
@@ -116,9 +116,18 @@ button.home{
 }
 
 .bar.bar-positive .title {
-  color: #fff; 
+  color: #fff;
 }
 
+.bar-subheader{
+  top:92px;
+  padding:0;
+
+}
+
+.has-subheader{
+  top: 136px;
+}
 /***IMAGES***/
 .iconsize-image {
  max-width: 100%;
@@ -375,7 +384,7 @@ button.button.button-block.button-calm.registration{
 /**********************MORE QUESTIONS**********************/
 label.item.item-input.morequestions{
   background-color: #fff;
-  color:#000; 
+  color:#000;
   margin-left: 15px;
   width: 120%;
   height: 50px;
@@ -494,11 +503,48 @@ button.button.button-block.button-light.verify{
   background-color: #29A29C;
 }
 
+.homeicon-image{
+  max-width: 18px;
+  max-height: 14px;
+}
+
+h2.home{
+  color: #557292;
+  font-size: 13px;
+}
+
+.item.item-divider.home{
+  padding-bottom: 8px;
+  border: transparent;
+}
+
+.item.item-text-wrap.home{
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-top-color: #ddd;
+}
+
+a.home{
+  float:right;
+  color: #A6AAA9;
+}
 /*end of home page*/
 
 /*activity page*/
 .item.details{
   font-size: 17px;
+}
+
+.item.activity{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.button.myactivity{
+  height: 44px;
 }
 /*end of activity page*/
 
@@ -522,6 +568,8 @@ button.button.button-block.button-light.verify{
   min-height: 40px;
   background-color: #AEE1E0;
 }
+
+
 /*end of myactivity page*/
 
 /*scan page*/
@@ -618,7 +666,7 @@ label.item.item-input.update{
   background-color: transparent;
   padding-right: 0px;
 }
- 
+
 label.item.item-input.update input{
   padding-right:0px;
 }

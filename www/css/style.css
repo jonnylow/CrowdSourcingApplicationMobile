@@ -2,8 +2,8 @@
 /******************Background*********************/
 /*Background color for everything except main page*/
 .pane {
-    background-color: #F1F3F5; 
-    background-image: #F1F3F5; 
+    background-color: #F1F3F5;
+    background-image: #F1F3F5;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -30,13 +30,13 @@ background: linear-gradient(#6991A4, #4E989A);
 }
 .button.button-calm:hover {
   color: #FFFFFF;
-  opacity: 0.5; 
+  opacity: 0.5;
 }
 
 .button.button-calm.active, .button.button-calm.activated {
   border-color: #EF5256;
   background-color: #EF5256;
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 /*Second default button - Green*/
@@ -116,13 +116,13 @@ button.home{
 }
 
 .bar.bar-positive .title {
-  color: #fff; 
+  color: #fff;
 }
 
 .bar-subheader{
   top:92px;
   padding:0;
-  
+
 }
 
 .has-subheader{
@@ -384,7 +384,7 @@ button.button.button-block.button-calm.registration{
 /**********************MORE QUESTIONS**********************/
 label.item.item-input.morequestions{
   background-color: #fff;
-  color:#000; 
+  color:#000;
   margin-left: 15px;
   width: 120%;
   height: 50px;
@@ -666,7 +666,7 @@ label.item.item-input.update{
   background-color: transparent;
   padding-right: 0px;
 }
- 
+
 label.item.item-input.update input{
   padding-right:0px;
 }

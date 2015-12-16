@@ -32,26 +32,12 @@
             <div class="item item-text-wrap">
                 <h2>{{item.name}}</h2>
                 <p>{{item.dateTime}}</p>
-                <div ng-if="item.status == 'In-Progress'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Pending'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Approved'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Rejected'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Withdrawn'">
-                  Approval Status: {{item.status}}
-                </div>
+                Current Status: {{item.status}}
 
-                <br>
+                <br><br>
 
                 <div ng-if="item.statusDisplay == 'Pick-Up' || item.statusDisplay == 'At Check-Up' || item.statusDisplay == 'Check-Up Completed' || item.statusDisplay == 'Completed'">
-                  <button class="button button-full button-balanced" ng-click="updateStatus(item.id, item.statusDisplay)"> Next Update: {{item.statusDisplay}}</button>
+                  <button class="button button-full button-balanced" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
                 </div>
 
                 <div ng-if="item.statusDisplay == 'No status to update'">

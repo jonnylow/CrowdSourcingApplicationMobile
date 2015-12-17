@@ -19,23 +19,24 @@
 <form ng-submit="login(fields)">
 
   <div class="list list-inset login">
-  <label class="item item-input login">
-    <input type="text" placeholder="Email address" ng-model="fields.email">
-  </label>
-  <label class="item item-input login1">
-    <input type="password" placeholder="Password" ng-model="fields.password">
-  </label>
-</div>
+    <label class="item item-input login">
+      <input type="text" placeholder="Email address" ng-model="fields.email">
+    </label>
+    <label class="item item-input login1">
+      <input type="password" ng-if="!showPasswordIsChecked" placeholder="Password" ng-model="fields.password">
+      <input class="showPassword" type="text" ng-if="showPasswordIsChecked" ng-model="fields.password" required>
+    </label>
+  </div>
 
+  <ion-checkbox class="loginShowPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>   
 
 
   <button class="button button-block button-energized">Log In</button>
-  </div>
-
+</form>
 
   <!--forget password link!! rmb to do-->
 <p style="text-align: center;">
-  <a href="#" style="color: #53585F;">Forgotten your Password?</a>
+  <a href="#" style="color: #53585F;">Forgot your Password?</a>
 </p>
 
 

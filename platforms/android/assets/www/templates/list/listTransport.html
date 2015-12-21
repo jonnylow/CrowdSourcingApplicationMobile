@@ -2,14 +2,7 @@
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
-      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
-    </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-    <button class="button button-transparent" ui-sref="scan">Map View</button>
-  </ion-nav-buttons>
-
-    <ion-nav-buttons>
-      <button class="button button-transparent" ng-click="toggleSearchOption()">Toggle</button>
+      <button class="button ion-chevron-left button-clear button-light" ng-click="goBack()"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
@@ -19,14 +12,13 @@
 
   <!--search bar-->
   <ion-header-bar class="bar-subheader">
-    <input type="search" placeholder="Search by activity name" ng-model="searchText.name" ng-show="show">
-    <input type="search" placeholder="Search by start time" ng-model="searchText.time" ng-show="!show">
+    <input type="date" placeholder="Search by activity date" ng-model="searchText">
   </ion-header-bar>
 
   <ion-content ng-show=!loadingshow>
 
     <div class="list card">
-      <ion-item ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
+      <ion-item ng-repeat="activity in transportActivity | filter:searchFilter" ng-click="proceed(activity.id, activity.name)">
 
         <div class="item item-divider scan item-text-wrap">
           {{activity.no}}.

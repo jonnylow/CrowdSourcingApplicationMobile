@@ -264,5 +264,19 @@ angular.module('crowdsourcing')
             }
 
           }
+
+          $scope.goList = function()
+          {
+            if($scope.transportIDDisplay.length != 0) {
+              $state.go('listTransport', {transportIds: $scope.transportIDDisplay});
+            }
+            else
+            {
+              var alertPopup = $ionicPopup.alert({
+                title: 'Error',
+                template: 'Please select a red marker first.'
+              });
+            }
+          }
         }
     });

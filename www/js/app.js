@@ -146,8 +146,8 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     })
 
     .state('listTransport', {
-      cache: false,
-      url: '/listTransport',
+      //cache: false,
+      url: '/listTransport/:transportIds',
       templateUrl: 'templates/list/listTransport.html',
       controller: "listTransportController"
     })

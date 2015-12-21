@@ -142,5 +142,4 @@ angular.module('crowdsourcing')
         }
       });
     }
-
 });

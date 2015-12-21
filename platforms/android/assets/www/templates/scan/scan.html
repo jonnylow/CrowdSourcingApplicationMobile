@@ -7,7 +7,7 @@
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
       <ion-nav-buttons side="right">
-    <button class="button button-transparent" ui-sref="listTransport">List View</button>
+    <button class="button button-transparent" ng-click="goList()">View More</button>
   </ion-nav-buttons>
   </ion-nav-bar>
 
@@ -58,16 +58,17 @@
 
       <div class="section2">
         <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
-        <div class="card">
-          <div class="item item-divider scan item-text-wrap">
-            {{$index+1}}.
-            {{transportNameDisplay[$index]}}
+          <div class="card">
+            <div class="item item-divider scan item-text-wrap">
+              {{$index+1}}.
+              {{transportNameDisplay[$index]}}
+            </div>
+            <div class="item item-text-wrap">
+              {{transportDateStartDisplay[$index]}}<br>
+              {{transportTimeStartDisplay[$index]}}<br>
+              Pickup Location: {{transportFromDistanceDisplay[$index]}}
+            </div>
           </div>
-          <div class="item item-text-wrap">
-            {{transportDateStartDisplay[$index]}}<br>
-            {{transportTimeStartDisplay[$index]}}<br>
-            Pickup Location: {{transportFromDistanceDisplay[$index]}}
-        </div>
         </ion-item>
       </div>
     </div>

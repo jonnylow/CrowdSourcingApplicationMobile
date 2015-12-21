@@ -43,10 +43,12 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
   // tabs
     .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/commons/tabs.html'
-      })
+      cache: false,
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/commons/tabs.html',
+      controller: "tabsController"
+    })
 
     .state('tab.home', {
       cache: false,
@@ -57,12 +59,6 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
           controller: "homeController"
         }
       }
-    })
-
-    .state('search', {
-      cache: false,
-      url: '/search',
-      templateUrl: 'templates/search/search.html'
     })
 
     .state('tab.me', {
@@ -98,13 +94,12 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       }
     })
 
-/*
-    .state('myhistory', {
+    .state('search', {
       cache: false,
-      url: '/myhistory',
-      templateUrl: 'templates/activity/myhistory.html',
-      controller: "myhistoryController"
-    })*/
+      url: '/search',
+      templateUrl: 'templates/search/search.html',
+      controller: "searchController"
+    })
 
   .state('landingPage', {
       cache: false,
@@ -151,8 +146,8 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     })
 
     .state('listTransport', {
-      cache: false,
-      url: '/listTransport',
+      //cache: false,
+      url: '/listTransport/:transportIds',
       templateUrl: 'templates/list/listTransport.html',
       controller: "listTransportController"
     })

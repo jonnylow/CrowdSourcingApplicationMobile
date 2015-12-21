@@ -12,11 +12,11 @@ angular.module('crowdsourcing')
 
     $scope.toLoad = function()
     {
-      $scope.transportID=[];
-      $scope.transportName=[];
-      $scope.transportDateTimeStart=[];
-      $scope.transportStatus=[];
-      $scope.completedStatus=[]
+      $scope.groups = [];
+
+      $scope.groups.push({name: "Completed", items: []});
+      $scope.groups.push({name: "Pending", items: []});
+      $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
       var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=2";
 
@@ -33,11 +33,7 @@ angular.module('crowdsourcing')
 
                 if(transportDetails[i].approval == "approved" && transportDetails[i].status== "completed")
                 {
-                  $scope.transportStatus.push("Approved");
-                  $scope.completedStatus.push("Completed");
-                  $scope.transportID.push(transportDetails[i].activity_id);
-                  $scope.transportName.push(transportDetails[i].name);
-                  $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                  $scope.groups[0].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Completed"});
                 }
                 else
                 {
@@ -47,27 +43,15 @@ angular.module('crowdsourcing')
                   if(transportDateTime < currentDateTime)
                   {
                     if(transportDetails[i].approval == "withdrawn") {
-                      $scope.transportStatus.push("Withdraw");
-                      $scope.completedStatus.push("Not Applicable");
-                      $scope.transportID.push(transportDetails[i].activity_id);
-                      $scope.transportName.push(transportDetails[i].name);
-                      $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Not Applicable"});
                     }
                     else if(transportDetails[i].approval == "rejected")
                     {
-                      $scope.transportStatus.push("Rejected");
-                      $scope.completedStatus.push("Not Applicable");
-                      $scope.transportID.push(transportDetails[i].activity_id);
-                      $scope.transportName.push(transportDetails[i].name);
-                      $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Not Applicable"});
                     }
                     else if(transportDetails[i].approval == "pending")
                     {
-                      $scope.transportStatus.push("Pending");
-                      $scope.completedStatus.push("Not Applicable");
-                      $scope.transportID.push(transportDetails[i].activity_id);
-                      $scope.transportName.push(transportDetails[i].name);
-                      $scope.transportDateTimeStart.push("Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1]);
+                      $scope.groups[1].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Not Applicable"});
                     }
                   }
                 }
@@ -83,6 +67,17 @@ angular.module('crowdsourcing')
     }
 
     $scope.toLoad();
+
+    $scope.toggleGroup = function(group) {
+      if ($scope.isGroupShown(group)) {
+        $scope.shownGroup = null;
+      } else {
+        $scope.shownGroup = group;
+      }
+    };
+    $scope.isGroupShown = function(group) {
+      return $scope.shownGroup === group;
+    };
 
     // .fromTemplateUrl() method
     if (window.localStorage.getItem("loginUserName") == null) {

@@ -1,28 +1,35 @@
-<link href="css/profile.css" rel="stylesheet">
-<ion-view view-title="Update Account">
+<ion-view view-title="Change Password">
   <ion-content padding="true">
     <div class="spinner" ng-show=loadingshow>
       <ion-spinner icon="android"></ion-spinner>
     </div>
 
+    <ion-nav-bar class="bar bar-header bar-positive">
+    </ion-nav-bar>
+
     <form ng-submit="update(fields)">
-      <div class="list card">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Current Password</span>
-          <input type="password" placeholder="" ng-model="fields.currentpassword">
-        </label>
-
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">New Password</span>
-          <input type="password" placeholder="" ng-model="fields.newpassword">
-        </label>
-
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Confirm Password</span>
-          <input type="password" placeholder="" ng-model="fields.confirmpassword">
+      <div class="list list-inset updatePassword1">
+        <label class="item item-input updatePassword">
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.currentpassword" required>
+          <input type="password" placeholder="Current Password" ng-if="!showPasswordIsChecked" ng-model="fields.currentpassword">
         </label>
       </div>
-      <button class="button button-block button-orange">Update Account</button>
+
+      <div class="list list-inset updatePassword2">
+        <label class="item item-input updatePassword">
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.newpassword" required>
+          <input type="password" placeholder="New Password" ng-if="!showPasswordIsChecked" ng-model="fields.newpassword">
+        </label>
+
+        <label class="item item-input updatePassword">
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.confirmpassword" required>
+          <input type="password" placeholder="Confirm New Password" ng-if="!showPasswordIsChecked" ng-model="fields.confirmpassword">
+        </label>
+      </div>
+
+<ion-checkbox class="maskPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>    
+
+      <button class="button button-block button-calm">Update Account</button>
       <button ui-sref="tab.me" class="button button-block button-stable">Back</button>
     </form>
   </ion-content>

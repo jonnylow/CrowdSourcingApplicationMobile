@@ -20,35 +20,25 @@
     <ion-refresher pulling-text="Pull to refresh" on-refresh="toLoad()"></ion-refresher>
 
     <!--historical activity listing-->
-    <div class="list card">
-      <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
-        <div class="item item-text-wrap">
+    <ion-list>
+      <div ng-repeat="group in groups">
 
-          <h2>{{transportName[$index]}}</h2>
-          <p>{{transportDateTimeStart[$index]}}</p>
+        <ion-item class="item item-button-right item-stacked-label" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          <b>{{group.name}} ({{group.items.length}})</b>
+        </ion-item>
 
-          <div ng-if="transportStatus[$index] == 'Withdraw'">
-              Approval Status: {{transportStatus[$index]}} <br>
-              Transport Status: {{completedStatus[$index]}}
-        </div>
-
-        <div ng-if="transportStatus[$index] == 'Rejected'">
-          Approval Status: {{transportStatus[$index]}} <br>
-          Transport Status: {{completedStatus[$index]}}
-        </div>
-
-        <div ng-if="transportStatus[$index] == 'Approved'">
-          Approval Status: {{transportStatus[$index]}} <br>
-          Transport Status: {{completedStatus[$index]}}
-        </div>
-
-          <div ng-if="transportStatus[$index] == 'Pending'">
-            Approval Status: {{transportStatus[$index]}} <br>
-            Transport Status: {{completedStatus[$index]}}
+        <ion-item class="item item-button-right item-stacked-label" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">
+          <div class="list card">
+            <div class="item item-text-wrap">
+              <h2>{{item.name}}</h2>
+              <p>{{item.dateTime}}</p>
+              Transport Status: {{item.statusDisplay}}
+            </div>
           </div>
-        </div>
-      </ion-item>
-    </div>
-
+        </ion-item>
+      </div>
+    </ion-list>
   </ion-content>
 </ion-view>

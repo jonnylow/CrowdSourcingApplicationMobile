@@ -18,6 +18,7 @@
     <!--Pull to refresh-->
     <ion-refresher pulling-text="Pull to refresh" on-refresh="toLoad()"></ion-refresher>
 
+    <!--current activity listing-->
     <ion-list>
       <div ng-repeat="group in groups">
 
@@ -48,45 +49,5 @@
         </ion-item>
       </div>
     </ion-list>
-
-<!--current activity listing
-    <div class="list card">
-      <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
-        <div class="item item-text-wrap">
-          <h2>{{transportName[$index]}}</h2>
-          <p>{{transportDateTimeStart[$index]}}</p>
-
-          <div ng-if="transportStatus[$index] == 'In-Progress'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Pending'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Approved'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Rejected'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Withdrawn'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <br>
-
-          <div ng-if="transportStatusToDisplay[$index] == 'Pick-Up' || transportStatusToDisplay[$index] == 'At Check-Up' || transportStatusToDisplay[$index] == 'Check-Up Completed' || transportStatusToDisplay[$index] == 'Completed'">
-            <button class="button button-full button-balanced" ng-click="updateStatus(transportID[$index], transportStatusToDisplay[$index])"> Next Update: {{transportStatusToDisplay[$index]}}</button>
-          </div>
-
-          <div ng-if="transportStatusToDisplay[$index] == 'No status to update'">
-            <button class="button button-full button-calm">No status to update</button>
-          </div>
-        </div>
-      </ion-item>
-    </div>-->
   </ion-content>
 </ion-view>

@@ -25,8 +25,14 @@
           <div class="iconcontainer">
             <i class="icon ion-locked dark larger"></i>
           </div>
-          <input class="registration" type="password"  placeholder="Password" ng-model="fields.password">
+          <input class="registration" type="password"  placeholder="Password" ng-if="!showPasswordIsChecked" ng-model="fields.password">
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.password" required>
         </label>
+      </div>
+
+      <ion-checkbox class="registrationShowPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>  
+
+      <div class="list list-inset registration">
         <label class="item item-input registration" >
           <div class="iconcontainer">
             <i class="icon ion-person dark larger" style="font-size:30px;"></i>

@@ -18,9 +18,10 @@
     <!--Pull to refresh-->
     <ion-refresher pulling-text="Pull to refresh" on-refresh="toLoad()"></ion-refresher>
 
+    <!--current activity listing-->
     <ion-list>
       <div ng-repeat="group in groups">
-        
+
         <ion-item class="item item-button-right item-stacked-label" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
           <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
           &nbsp;
@@ -32,26 +33,12 @@
             <div class="item item-text-wrap">
                 <h2>{{item.name}}</h2>
                 <p>{{item.dateTime}}</p>
-                <div ng-if="item.status == 'In-Progress'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Pending'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Approved'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Rejected'">
-                  Approval Status: {{item.status}}
-                </div>
-                <div ng-if="item.status == 'Withdrawn'">
-                  Approval Status: {{item.status}}
-                </div>
+                Current Status: {{item.status}}
 
-                <br>
+                <br><br>
 
                 <div ng-if="item.statusDisplay == 'Pick-Up' || item.statusDisplay == 'At Check-Up' || item.statusDisplay == 'Check-Up Completed' || item.statusDisplay == 'Completed'">
-                  <button class="button button-full button-balanced" ng-click="updateStatus(item.id, item.statusDisplay)"> Next Update: {{item.statusDisplay}}</button>
+                  <button class="button button-full button-balanced" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
                 </div>
 
                 <div ng-if="item.statusDisplay == 'No status to update'">
@@ -62,45 +49,5 @@
         </ion-item>
       </div>
     </ion-list>
-
-<!--current activity listing
-    <div class="list card">
-      <ion-item class="item item-button-right item-stacked-label" ng-repeat="id in transportID track by $index" ng-click="proceed(transportID[$index], transportName[$index])">
-        <div class="item item-text-wrap">
-          <h2>{{transportName[$index]}}</h2>
-          <p>{{transportDateTimeStart[$index]}}</p>
-
-          <div ng-if="transportStatus[$index] == 'In-Progress'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Pending'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Approved'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Rejected'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <div ng-if="transportStatus[$index] == 'Withdrawn'">
-            Approval Status: {{transportStatus[$index]}}
-          </div>
-
-          <br>
-
-          <div ng-if="transportStatusToDisplay[$index] == 'Pick-Up' || transportStatusToDisplay[$index] == 'At Check-Up' || transportStatusToDisplay[$index] == 'Check-Up Completed' || transportStatusToDisplay[$index] == 'Completed'">
-            <button class="button button-full button-balanced" ng-click="updateStatus(transportID[$index], transportStatusToDisplay[$index])"> Next Update: {{transportStatusToDisplay[$index]}}</button>
-          </div>
-
-          <div ng-if="transportStatusToDisplay[$index] == 'No status to update'">
-            <button class="button button-full button-calm">No status to update</button>
-          </div>
-        </div>
-      </ion-item>
-    </div>-->
   </ion-content>
 </ion-view>

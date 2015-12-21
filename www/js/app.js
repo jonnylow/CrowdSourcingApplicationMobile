@@ -43,10 +43,12 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
   // tabs
     .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/commons/tabs.html'
-      })
+      cache: false,
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/commons/tabs.html',
+      controller: "tabsController"
+    })
 
     .state('tab.home', {
       cache: false,

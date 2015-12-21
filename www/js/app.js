@@ -61,12 +61,6 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       }
     })
 
-    .state('search', {
-      cache: false,
-      url: '/search',
-      templateUrl: 'templates/search/search.html'
-    })
-
     .state('tab.me', {
       cache: false,
       url: '/me',
@@ -100,13 +94,12 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       }
     })
 
-/*
-    .state('myhistory', {
+    .state('search', {
       cache: false,
-      url: '/myhistory',
-      templateUrl: 'templates/activity/myhistory.html',
-      controller: "myhistoryController"
-    })*/
+      url: '/search',
+      templateUrl: 'templates/search/search.html',
+      controller: "searchController"
+    })
 
   .state('landingPage', {
       cache: false,

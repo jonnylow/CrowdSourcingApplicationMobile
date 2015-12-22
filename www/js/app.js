@@ -200,6 +200,12 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "manageAccountController"
     })
 
+    .state('filter', {
+      cache: false,
+      url: '/filter/:filter',
+      templateUrl: 'templates/filter/filter.html'
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/landingPage');
 

@@ -1,12 +1,8 @@
 angular.module('crowdsourcing')
 
-    .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
+    .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover) {
       $scope.transportActivity = [];
       $scope.loadingshow = true;
-
-    var rad = function(x) {
-      return x * Math.PI / 180;
-    };
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
       .success(function (data) {
@@ -26,11 +22,31 @@ angular.module('crowdsourcing')
             }
           }
         }
+        $scope.loadingshow = false;
       })
 
-      $scope.loadingshow = false;
+
       $scope.proceed = function(id, name)
       {
         $state.go('activityDetails', {transportId: id, transportActivityName: name});
       }
+
+
+      $ionicPopover.fromTemplateUrl('templates/search/filter_popout.html', {
+        scope: $scope
+      }).then(function (popover) {
+        $scope.popover = popover;
+      });
+
+
+      $scope.openPopover = function($event) {
+        $scope.popover.show($event);
+      };
+      $scope.closePopover = function() {
+        $scope.popover.hide();
+      };
+      //Cleanup the popover when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+      });
     });

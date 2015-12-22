@@ -17,7 +17,7 @@ angular.module('crowdsourcing')
                   text: '<b>Ok</b>',
                   type: 'button-calm',
                   onTap: function(e) {
-                    $state.go('login', {}, {reload: true});
+                    $state.go('landingPage', {}, {reload: true});
                   }
                 },
               ]

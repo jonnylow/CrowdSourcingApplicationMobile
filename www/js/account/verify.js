@@ -19,8 +19,8 @@ angular.module('crowdsourcing')
     var otpCheck;
 
     var myPopup = $ionicPopup.show({
-      title: 'Notice',
-      subTitle: 'The one-time password will be send to you via sms',
+      title: '<b>Notice</b>',
+      subTitle: '<br>The one-time password will be send to you via sms',
       scope: $scope,
       buttons: [
         {
@@ -77,8 +77,15 @@ angular.module('crowdsourcing')
                   if (status != null) {
                     $scope.loadingshow = false;
                     var alertPopup = $ionicPopup.alert({
-                      title: 'Status',
-                      template: status.status[0]
+                      title: '<b>Notice</b>',
+                      subTitle: '<br>Your account was successfully created.',
+                      scope: $scope,
+                      buttons: [
+                        {
+                          text: '<b>Ok</b>',
+                          type: 'button-calm'
+                        },
+                      ]
                     });
 
                     $ionicHistory.clearCache();

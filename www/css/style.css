@@ -593,6 +593,28 @@ p.homep{
   background-color: #AEE1E0;
 }
 
+div.col.myactivitynum{
+  background-color: #7FC3BF;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+}
+
+div.row.myactivity{
+  margin-top: 0px;
+  line-height: 40px;  
+}
+
+.item.myactivity{
+  height: 50px;
+  /*border-color: #A6AAA9;*/
+  padding-right: 0px;
+  background-color: #fff;
+}
+
+.item.myactivity.active{
+  background-color: #CFE3E5;
+}
 
 /*end of myactivity page*/
 

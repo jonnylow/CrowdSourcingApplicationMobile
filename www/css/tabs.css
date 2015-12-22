@@ -8,6 +8,7 @@
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
   border-bottom-color: #666;
   color: #fff;
+  font-weight: bold;
 }
 
 .bar-header.bar-positive{

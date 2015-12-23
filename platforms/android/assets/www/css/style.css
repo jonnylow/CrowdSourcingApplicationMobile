@@ -519,7 +519,7 @@ button.button.button-block.button-light.verify{
 
 h2.home{
   color: #164F86;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -553,7 +553,7 @@ div.col.routecol{
 }
 
 p.homep{
-  font-size: 12px;
+  font-size: 14px;
 }
 /*end of home page*/
 
@@ -580,6 +580,7 @@ p.homep{
   border-color: #65B0AD;
   background-color: #65B0AD;
   color:#fff;
+  font-weight: bold;
 }
 
 .button.button-nonselected{
@@ -594,28 +595,34 @@ p.homep{
 }
 
 div.col.myactivitynum{
-  background-color: #7FC3BF;
+  background-color: #F1F2F4;
   line-height: 40px;
   text-align: center;
-  color: #fff;
+  font-weight: bold;
+  height: 50px;
+  margin-top: 0px;
+  font-size: 1.1em;
 }
 
 div.row.myactivity{
   margin-top: 0px;
-  line-height: 40px;  
+  line-height: 50px;
 }
 
 .item.myactivity{
-  height: 50px;
-  /*border-color: #A6AAA9;*/
+  height: 63px;
   padding-right: 0px;
   background-color: #fff;
 }
 
 .item.myactivity.active{
-  background-color: #CFE3E5;
+  background-color: #D9D9D9;
 }
 
+div.col.myactivity{
+  margin-left: 12px;
+
+}
 /*end of myactivity page*/
 
 /*scan page*/

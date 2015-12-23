@@ -1,0 +1,55 @@
+<ion-view view-title="View Account">
+
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
+
+  <ion-content padding="true" ng-show=!loadingshow>
+  <h2 style="text-align:center;">{{username}}</h2>
+<div class="list profile card">
+  <!--<div class="item">
+      Name: {{username}}
+  </div>
+
+  <div class="item">
+    <font weight="bold">NRIC:</font> {{nric}}
+  </div>-->
+
+    <div class="item">
+      Email: {{email}}
+    </div>
+
+    <div class="item">
+      Contact Number: {{contactnumber}}
+    </div>
+
+    <!--<div class="item">
+      Date Of Birth: {{dob}}
+    </div>
+
+    <div class="item">
+      Gender: {{gender}}
+    </div>
+
+    <div class="item">
+      Occuption: {{occuption}}
+    </div>
+
+    <div class="item">
+      Preference 1: {{preference1}}
+    </div>
+
+    <div class="item">
+      Preference 2: {{preference2}}
+    </div>-->
+
+    <div class="item item-button-right">
+      Password: **** ****
+      <button class="button button-energized me" ui-sref="updateAccount"><font size=3px style="font-weight:bold;">Change</font></button>
+    </div>
+  </div>
+
+      <button class="button button-block button-calm" ng-click="manageAccount()" ui-sref="manageAccount">Manage Account</button>
+    </label>
+  </ion-content>
+</ion-view>

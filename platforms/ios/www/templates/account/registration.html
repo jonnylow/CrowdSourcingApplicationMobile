@@ -1,0 +1,82 @@
+
+<ion-view hide-nav-bar="true">
+<ion-content padding="true">
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
+<!--header-->
+<div class="bar bar-header registration">
+  <a ui-sref="landingPage" class="icon ion-close-round light"></a>
+  <h1 class="title registration">Sign Up</h1>
+</div>
+
+    <!-- Registration form-->
+    <form ng-submit="register(fields)">
+
+      <!--email-->
+      <div class="list list-inset registration">
+        <label class="item item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-email dark larger"></i>
+          </div>
+          <input class="registration" type="text" autocapitalize="off" placeholder="Email address" ng-model="fields.email" >
+        </label>
+        <label class="item item-input registration" >
+          <div class="iconcontainer">
+            <i class="icon ion-locked dark larger"></i>
+          </div>
+          <input class="registration" type="password"  placeholder="Password" ng-if="!showPasswordIsChecked" ng-model="fields.password">
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.password" required>
+        </label>
+      </div>
+
+      <ion-checkbox class="registrationShowPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>  
+
+      <div class="list list-inset registration">
+        <label class="item item-input registration" >
+          <div class="iconcontainer">
+            <i class="icon ion-person dark larger" style="font-size:30px;"></i>
+          </div>
+          <input class="registration" type="text" placeholder="Name" ng-model="fields.name" >
+        </label>
+        <label class="item item-input registration">
+          <div class="iconcontainer">
+          <i class="icon ion-calendar dark larger"></i></div>
+          <span class="input-label dob" >
+          <font size="3px" style="margin-left:8px;">Date of Birth</font></span>
+          <input class="registration" class="date-input dob"type="date" color="#ffffff" ng-model="fields.dob">
+        </label>
+        <label class="item item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-iphone dark larger" style="font-size:35px;"></i>
+          </div>
+          <input class="registration" type="text" placeholder="Contact Number" colour:"#ffffff" ng-model="fields.contactnumber">
+        </label>
+        <label class="item item-input registration">
+          <div class="iconcontainer">
+          <i class="icon ion-card dark larger"></i>
+        </div>
+          <input class="registration" type="text" placeholder="NRIC / FIN" colour:"#ffffff" ng-model="fields.nric">
+        </label>
+        <label class="item item-input registration">
+          <div class="iconcontainer">
+          <i class="icon ion-transgender dark larger"></i>
+        </div>
+          <select class="dropdown" ng-model="fields.gender">
+            <option value="" disabled selected>Gender*</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
+        </label>
+      </div>
+      <div style="text-align: center; ">
+        <img src="img/steps001.png" class = "page-image"/>
+      </div>
+      
+    <button  class="button button-block button-calm registration">Next</button>
+    </form>
+
+    <!--cancel button
+    <button ui-sref="login" class="button button-block button-light">Cancel</button>-->
+  </ion-content>
+</ion-view>

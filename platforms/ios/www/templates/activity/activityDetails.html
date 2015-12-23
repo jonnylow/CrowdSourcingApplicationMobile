@@ -1,0 +1,41 @@
+<ion-view view-title={{transportActivityName}}>
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
+
+  <ion-content ng-show=!loadingshow>
+  <!--activity details-->
+    <div class="list card">
+      <div class="item item-divider header item-button-right">
+        Activity Details
+      </div>
+      <div class="item item-text-wrap">
+        Date: {{date}}
+      </div>
+      <div class="item item-text-wrap">
+        Time: {{time}}
+      </div>
+      <div class="item item-text-wrap">
+        Expected Duration: {{expectedDuration}}
+      </div>
+      <div class="item item-text-wrap">
+        Pick-up: {{locationFrom}}
+      </div>
+      <div class="item item-text-wrap">
+        Drop-off: {{locationTo}}
+      </div>
+      <div class="item item-text-wrap">
+        Additional Information: {{moreInformation}}
+      </div>
+    </div>
+
+    <button class="button button-positive apply" ng-click="apply()">Apply</button>
+  </ion-content>
+</ion-view>

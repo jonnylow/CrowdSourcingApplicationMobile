@@ -2,7 +2,11 @@
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
-      <button class="button ion-chevron-left button-clear button-light" ui-sref="search"></button>
+      <button class="button ion-chevron-left button-clear button-light" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-transparent" ng-click="goFilter()">Filter</button>
     </ion-nav-buttons>
   </ion-nav-bar>
 

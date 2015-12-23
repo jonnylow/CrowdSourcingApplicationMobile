@@ -1,0 +1,77 @@
+
+<ion-view view-title="Nearby Location">
+<!--header bar-->
+
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+    <button class="button button-transparent" ng-click="goList()">View More</button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content scroll='false'>
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="transbox2">
+          Filter By Distance: <select ng-model="fields.filter" ng-change="valueChanged()">
+          <option value="5">100M Radius</option>
+          <option value="10">1KM Radius</option>
+          <option value="20">3KM Radius</option>
+          <option value="30">5KM Radius</option>
+          <option value="all">Show All</option>
+        </select>
+        </div>
+      </div>
+    </div>
+    <div class="parent">
+      <div class="section1">
+        <ui-gmap-google-map center=center options=map.options zoom=zoom events="map.markersEvents" data-tap-disabled="true">
+          <ui-gmap-marker icon= '{url: "img/blue-dot.png" }' coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
+            <ui-gmap-window show="true">
+              <div>{{currentLocationMarker.window.title}}</div>
+            </ui-gmap-window>
+          </ui-gmap-marker>
+
+          <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius=radius
+                          visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
+
+          <ui-gmap-marker ng-repeat="loc in markers track by $index" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title, $index)">
+            <ui-gmap-window show="markersStatus[$index]">
+              <div>{{loc.window.title}}</div>
+            </ui-gmap-window>
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div>
+
+      <ion-item class="item item-input item-stacked-label" ng-show=showTag>
+        <div class="card animated shake">
+          <div class="item item-text-wrap">
+            <h3>Tap on the red markers to view activities</h3>
+          </div>
+        </div>
+      </ion-item>
+
+      <div class="section2">
+        <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
+          <div class="card">
+            <div class="item item-divider scan item-text-wrap">
+              {{$index+1}}.
+              {{transportNameDisplay[$index]}}
+            </div>
+            <div class="item item-text-wrap">
+              {{transportDateStartDisplay[$index]}}<br>
+              {{transportTimeStartDisplay[$index]}}<br>
+              Pickup Location: {{transportFromDistanceDisplay[$index]}}
+            </div>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>

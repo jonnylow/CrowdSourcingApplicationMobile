@@ -96,7 +96,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
     .state('search', {
       cache: false,
-      url: '/search',
+      url: '/search/:filter/:activityIds',
       templateUrl: 'templates/search/search.html',
       controller: "searchController"
     })
@@ -202,7 +202,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
     .state('filter', {
       cache: false,
-      url: '/filter/:filter',
+      url: '/filter/:filter/:activityIds',
       templateUrl: 'templates/filter/filter.html',
       controller: "filterController"
     })

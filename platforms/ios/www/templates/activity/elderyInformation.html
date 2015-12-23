@@ -1,0 +1,30 @@
+<ion-view view-title={{transportActivityName}}>
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+    <div class="spinner" ng-show=loadingshow>
+      <ion-spinner icon="android"></ion-spinner>
+    </div>
+  <!--elderly information-->
+    <div class="list card">
+      <div class="item item-divider">
+        Elderly Information
+      </div>
+      <div class="item item-text-wrap">
+        Name: {{name}}
+      </div>
+      <!--
+      <div class="item item-text-wrap">
+        Branch: {{branchName}}
+      </div>-->
+      <div class="item item-text-wrap">
+        Next-of-Kin: {{kin}}<br>
+        Contact Number: {{contact}}
+      </div>
+  </ion-content>
+</ion-view>

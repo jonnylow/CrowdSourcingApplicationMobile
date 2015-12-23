@@ -1,0 +1,42 @@
+
+<ion-view hide-nav-bar="true">
+<ion-content padding="true">
+  <div class="spinner" ng-show=loadingshow>
+    <ion-spinner icon="android"></ion-spinner>
+  </div>
+ <!--header-->
+  <div class="bar bar-header registration">
+    <a ui-sref="landingPage" class="icon ion-close-round light"></a>
+    <h1 class="title registration">Sign Up</h1>
+  </div>
+
+<h4 class="verify"><b>A One-Time Password has been sent to your contact number: {{tempContactNumber}}</b></h4>
+
+    <form ng-submit="verify(fields)">
+
+
+      <div class="box">
+        <label class="item item-input item-stacked-label">
+          <font color="black">One Time Password</font>
+          <input class="otp" type="password" placeholder="" style="color:#000;" ng-model="fields.otp">
+        </label>
+        <p style="text-align: center;">
+          <a ng-click="resend()" style="color: #000;"><u>Resend One-Time Password</u></a>
+        </p>
+      </div>
+      <br>
+      <div style="text-align: center; ">
+        <img src="img/steps003.png" class = "page-image"/>
+      </div>
+      <div class="row">
+        <div class="col 50">
+          <button ui-sref="moreQuestions" class="button button-block button-light verify">Back</button>
+        </div>
+        <div class="col 50">
+         <button class="button button-block button-calm verify">Sign Up!</button>
+        </div>
+      </div>
+      
+    </form>
+  </ion-content>
+</ion-view>

@@ -2,15 +2,18 @@
 <ion-popover-view>
   <ion-content has-header="false" scroll="false" class="padding">
   <div class="list">
-      <a class="item popout" ui-sref="filter({filter: 'Start Location'})">
+      <a class="item popout" ng-click="goFilter('start')">
       	Start Location
       </a>
-      <a class="item popout" ui-sref="filter({filter: 'End Location'})">
+      <a class="item popout" ng-click="goFilter('end')">
       	End Location
       </a>
-      <a class="item popout" ui-sref="filter({filter: 'Time'})">
+      <a class="item popout" ng-click="goFilter('time')">
       	Time
       </a>
+    <a class="item popout" ui-sref="search({filter: '', activityIds: ''})">
+      Reset Filter
+    </a>
   </div>
   </ion-content>
 </ion-popover-view>

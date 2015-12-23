@@ -7,7 +7,7 @@ angular.module('crowdsourcing')
           $scope.email = window.localStorage.getItem("loginEmail");
         }
         else {
-          $state.go('login', {}, {reload: true});
+          $state.go('landingPage', {}, {reload: true});
         }
 
         $scope.fields= {currentpassword: "",confirmpassword: "", newpassword:""};

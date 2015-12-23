@@ -7,7 +7,7 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
         }
         else {
-          $state.go('login', {}, {reload: true});
+          $state.go('landingPage', {}, {reload: true});
         }
 
     $scope.toLoad = function()

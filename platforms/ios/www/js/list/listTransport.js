@@ -71,7 +71,7 @@ angular.module('crowdsourcing')
         var dd = $scope.searchText.getDate();
         var mm = $scope.searchText.getMonth() + 1;
         var yyyy = $scope.searchText.getFullYear();
-        
+
         if (dd < 10) {
           dd = '0' + dd
         }

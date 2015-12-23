@@ -8,7 +8,7 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
         }
         else {
-          $state.go('login', {}, {reload: true});
+          $state.go('landingPage', {}, {reload: true});
         }
 
     var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;

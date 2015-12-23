@@ -24,19 +24,15 @@ background: linear-gradient(#6991A4, #4E989A);
 /***BUTTONS***/
 /*First default button - Pink*/
 .button.button-calm {
-  border-color: #EF5256;
-  background-color: #EF5256;
+  border-color: #E86472;
+  background-color: #E86472;
   color: #FFFFFF;
-}
-.button.button-calm:hover {
-  color: #FFFFFF;
-  opacity: 0.5;
 }
 
 .button.button-calm.active, .button.button-calm.activated {
-  border-color: #EF5256;
-  background-color: #EF5256;
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-color: #E86472;
+  background-color: #E86472;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
 }
 
 /*Second default button - Green*/
@@ -63,6 +59,11 @@ background: linear-gradient(#6991A4, #4E989A);
   background-color: transparent;
   color: #FFFFFF;
 }
+
+.button.button-dark.active, .button.button-dark.activated {
+      border-color: transparent;
+      background-color: transparent;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0); }
 
 .button.button-full {
   margin-top: 0;
@@ -373,8 +374,8 @@ a.icon.ion-close-round.light{
 }
 
 button.button.button-block.button-calm.registration{
-  background-color: #EF5256;
-  border-color: #EF5256;
+  background-color: #E86472;
+  border-color: #E86472;
   border-radius: 7px;
 }
 
@@ -439,7 +440,7 @@ div.morebox input{
   margin-top:-5px;
   margin-bottom: -10px;
   border:transparent;
-  background-color: #EF5256;
+  background-color: #E86472;
   border-radius: 7px;
 }
 
@@ -486,7 +487,7 @@ div.box input{
 
 button.button.button-block.button-calm.verify{
   border:transparent;
-  background-color: #EF5256;
+  background-color: #E86472;
   border-radius: 7px;
 }
 
@@ -512,13 +513,14 @@ button.button.button-block.button-light.verify{
 }
 
 .homeicon-image{
-  max-width: 18px;
-  max-height: 14px;
+  max-width: 22px;
+  max-height: 17px;
 }
 
 h2.home{
-  color: #557292;
+  color: #164F86;
   font-size: 13px;
+  font-weight: bold;
 }
 
 .item.item-divider.home{
@@ -527,17 +529,31 @@ h2.home{
 }
 
 .item.item-text-wrap.home{
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding-bottom: 3px;
+  padding-top: 3px;
   border-bottom-color: transparent;
   border-right-color: transparent;
   border-left-color: transparent;
   border-top-color: #ddd;
+  
 }
 
 a.home{
   float:right;
   color: #A6AAA9;
+}
+
+div.row.routerow{
+  margin-top: 0px
+}
+
+div.col.routecol{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+p.homep{
+  font-size: 12px;
 }
 /*end of home page*/
 
@@ -577,6 +593,28 @@ a.home{
   background-color: #AEE1E0;
 }
 
+div.col.myactivitynum{
+  background-color: #7FC3BF;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+}
+
+div.row.myactivity{
+  margin-top: 0px;
+  line-height: 40px;  
+}
+
+.item.myactivity{
+  height: 50px;
+  /*border-color: #A6AAA9;*/
+  padding-right: 0px;
+  background-color: #fff;
+}
+
+.item.myactivity.active{
+  background-color: #CFE3E5;
+}
 
 /*end of myactivity page*/
 

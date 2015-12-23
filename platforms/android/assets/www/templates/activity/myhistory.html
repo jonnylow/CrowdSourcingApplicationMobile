@@ -23,18 +23,37 @@
     <ion-list>
       <div ng-repeat="group in groups">
 
-        <ion-item class="item item-button-right item-stacked-label" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
-          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-          &nbsp;
-          <b>{{group.name}} ({{group.items.length}})</b>
+        <ion-item class="item item-stacked-label myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+        <div class="row myactivity">
+          <div class="col">
+            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}} 
+          </div>
+          <div class="col col-20 myactivitynum">
+            {{group.items.length}}
+          </div>
+          </div>
         </ion-item>
 
         <ion-item class="item item-button-right item-stacked-label" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">
           <div class="list card">
             <div class="item item-text-wrap">
-              <h2>{{item.name}}</h2>
-              <p>{{item.dateTime}}</p>
-              Transport Status: {{item.statusDisplay}}
+              <div class="row">
+                <div class="col col-10 col-center imagecol">
+                  <img src="img/car.png" class="homeicon-image">
+                </div>
+                <div class="col routecol"><h2 class="home">{{item.dateTime}}</h2>
+                  <div class="row routerow">
+                    <div class="col col-20 routecol"><p class="homep">From</p></div>
+                    <div class="col routecol"><p class="homep"><b>{{item.name.split("-")[0]}}</b></p></div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-20 routecol"><p class="homep">To</p></div>
+                    <div class="col routecol"><p class="homep"><b>{{item.name.split("-")[1]}}</b></p></div>
+                  </div>
+                </div>
+              </div>              
             </div>
           </div>
         </ion-item>

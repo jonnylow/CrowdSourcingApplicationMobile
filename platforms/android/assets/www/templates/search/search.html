@@ -10,6 +10,13 @@
     <ion-spinner icon="android"></ion-spinner>
   </div>
 
+  <!--filter bar-->
+  <div style="top: 45px;" class="item item-button-right">
+    Filter By:
+    <button class="button button-icon ion-more" ng-click="openPopover($event)">
+    </button>
+  </div>
+
   <!--search bar-->
   <ion-header-bar class="bar-subheader">
     <input type="search" placeholder="Search by activity name" ng-model="searchText.name">

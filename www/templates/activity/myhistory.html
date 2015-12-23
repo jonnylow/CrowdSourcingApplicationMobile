@@ -25,15 +25,18 @@
 
         <ion-item class="item item-stacked-label myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
         <div class="row myactivity">
-          <div class="col">
-            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-            {{group.name}} 
-          </div>
-          <div class="col col-20 myactivitynum">
+          <div class="col col-20 col-center myactivitynum">
             {{group.items.length}}
           </div>
+          <div class="col myactivity">
+            {{group.name}}
           </div>
+          <div class="col col-10">
+            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+          </div>
+          
+         </div>
         </ion-item>
 
         <ion-item class="item item-button-right item-stacked-label" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">

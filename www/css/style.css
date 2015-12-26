@@ -513,8 +513,8 @@ button.button.button-block.button-light.verify{
 }
 
 .homeicon-image{
-  max-width: 22px;
-  max-height: 17px;
+  max-width: 30px;
+  max-height: 25px;
 }
 
 h2.home{
@@ -555,6 +555,12 @@ div.col.routecol{
 p.homep{
   font-size: 14px;
 }
+
+.item.homemain{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+}
 /*end of home page*/
 
 /*activity page*/
@@ -567,9 +573,6 @@ p.homep{
   padding-right: 10px;
 }
 
-.button.myactivity{
-  height: 44px;
-}
 /*end of activity page*/
 
 /*myactivity page*/
@@ -622,6 +625,65 @@ div.row.myactivity{
 div.col.myactivity{
   margin-left: 12px;
 
+}
+
+p.myactivity{
+  color: #53585F;
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+h5.myactivity{
+  font-size: 14px;
+  color: #164F86;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.button.myactivity{
+  height: 44px;
+}
+
+.myactivity-image{
+  max-width: 30px;
+  max-height: 25px;
+}
+
+.list.card.myactivity{
+  margin-top: 0;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  box-shadow: 0 0 0 0;
+}
+
+.list.card.myactivitymain{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.item.myactivitymain{
+  padding-right: 5px;
+  padding-left: 48px;
+}
+
+.icon.myactivity{
+  left: 5px;
+  top: -45px;
+}
+
+.item.myactivitybutton{
+  padding-top: 0;
+  padding-bottom: 0;
+  border-color: #fff;
+}
+
+.item.myactivityoverall{
+  padding-bottom: 15px;
 }
 /*end of myactivity page*/
 

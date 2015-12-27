@@ -90,6 +90,9 @@ angular.module('crowdsourcing')
           $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=time")
             .success(function (data) {
               var results = data;
+              var morning;
+              var afternoon;
+              var evening;
 
               if (results != null) {
                 for (var i = 0; i < results.length; i++){
@@ -99,14 +102,71 @@ angular.module('crowdsourcing')
                       var timeStart = results[i].time;
                       var activityIds = results[i].activity_ids;
 
-                      //if there is existing filter, tick the checkbox. If not leave it all untick.
-                      if($scope.exisitingActivityIds.indexOf(activityIds) != -1) {
-                        $scope.filterListDisplay.push({textShown: timeStart, checked: true, activityIds: activityIds});
+                      //split up time and take the hours only
+                      var timeTemp =timeStart.split(' ');
+                      var hour = parseInt(timeTemp[1]);
+
+                      if(hour >= 8 && hour < 11) //morning
+                      {
+                        if(morning == null) {
+                          morning = activityIds;
+                        }
+                        else {
+                          morning += "," + activityIds;
+                        }
                       }
-                      else {
-                        $scope.filterListDisplay.push({textShown: timeStart, checked: false, activityIds: activityIds});
+                      else if(hour >= 11 && hour <15) //afternoon
+                      {
+                        if(afternoon == null) {
+                          afternoon = activityIds;
+                        }
+                        else {
+                          afternoon += "," + activityIds;
+                        }
+                      }
+                      else if(hour >= 15 && hour <18) //evening
+                      {
+                        if(evening == null) {
+                          evening = activityIds;
+                        }
+                        else {
+                          evening += "," + activityIds;
+                        }
                       }
                     }
+                  }
+                }
+                //console.log(morning);
+                //console.log(afternoon);
+                //console.log(evening);
+
+                //three main categories to push
+                //if there is existing filter, tick the checkbox. If not leave it all untick.
+                if(morning != null)
+                {
+                  if($scope.exisitingActivityIds.indexOf(morning) != -1) {
+                    $scope.filterListDisplay.push({textShown: '8am - 11am', checked: true, activityIds: morning});
+                  }
+                  else {
+                    $scope.filterListDisplay.push({textShown: '8am - 11am', checked: false, activityIds: morning});
+                  }
+                }
+                if(afternoon != null)
+                {
+                  if($scope.exisitingActivityIds.indexOf(afternoon) != -1) {
+                    $scope.filterListDisplay.push({textShown: '11am - 3pm', checked: true, activityIds: afternoon});
+                  }
+                  else {
+                    $scope.filterListDisplay.push({textShown: '11am - 3pm', checked: false, activityIds: afternoon});
+                  }
+                }
+                if(evening != null)
+                {
+                  if($scope.exisitingActivityIds.indexOf(evening) != -1) {
+                    $scope.filterListDisplay.push({textShown: '3pm - 6pm', checked: true, activityIds: evening});
+                  }
+                  else {
+                    $scope.filterListDisplay.push({textShown: '3pm - 6pm', checked: false, activityIds: evening});
                   }
                 }
               }

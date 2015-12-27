@@ -29,8 +29,8 @@ angular.module('crowdsourcing')
       $scope.groups = [];
 
       $scope.groups.push({name: "In-Progress", items: []});
-      $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Approved", items: []});
+      $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
       var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=1";
@@ -49,7 +49,7 @@ angular.module('crowdsourcing')
                 {
                   if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
                   {
-                    $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                    $scope.groups[1].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], status:"Activity not yet started", statusDisplay:"Pick-Up"});
                   }
                   else
                   {
@@ -75,7 +75,7 @@ angular.module('crowdsourcing')
                   if(transportDateTime >= currentDateTime)
                   {
                     if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
-                      $scope.groups[1].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                     else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
                     {

@@ -34,24 +34,24 @@
                 <td></td>
                 <td><p class="myactivity">{{locationTo}}</p></td>
               </tr>
-            </table>  
+            </table>
           </div>
         </div>
       </div>
     </div>
-         
+
     <div class="row" style="text-align: center;">
       <div class="col col-50">
         <div class="list card myactivity">
           <i class="ion-clock" style="font-size: 300%"></i>
-          <p class="myactivity">Expected Duration</p> 
+          <p class="myactivity">Expected Duration</p>
           <h5 class="myactivity">{{expectedDuration}}</h5>
         </div>
       </div>
       <div class="col col-50">
         <div class="list card myactivity">
         <i class="ion-checkmark-circled" style="font-size: 300%"></i>
-        <p class="myactivity">Approval Status</p> 
+        <p class="myactivity">Approval Status</p>
         <h5 class="myactivity">{{approvalStatus}}</h5>
         </div>
       </div>
@@ -60,7 +60,7 @@
       <div class="col col-50">
         <div class="list card myactivity">
         <i class="ion-android-car" style="font-size: 300%"></i>
-        <p class="myactivity">Transport Status</p> 
+        <p class="myactivity">Transport Status</p>
         <h5 class="myactivity">{{transportStatus}}</h5>
                 <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
         </div>
@@ -68,8 +68,9 @@
       <div class="col col-50">
         <div class="list card myactivity" style="height: 104px">
         <i class="ion-person" style="font-size: 300%"></i>
-        <p class="myactivity"></p> 
-        <button class="button button-energized button-small" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
+        <p class="myactivity"><div ng-if="eldery == true"/>Eldery Information</div></p>
+          <h5 class="myactivity" ng-show="eldery">Not available at the moment</h5>
+        <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
         </div>
       </div>
     </div>
@@ -87,7 +88,7 @@
 
     <!--withdraw-->
     <div class ="withdraw">
-	   <button class="button ion-close-round button-light withdraw"  ng-disabled="withdrawShow" ng-click="withdraw()"> Withdraw from activity</button>
+	   <button class="button ion-close-round button-light withdraw"  ng-show="!withdrawShow" ng-click="withdraw()"> Withdraw from activity</button>
     </div>
   </ion-content>
 </ion-view>

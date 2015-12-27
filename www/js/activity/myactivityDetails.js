@@ -26,6 +26,10 @@ angular.module('crowdsourcing')
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationTo = transportDetails[0].location_to;
               $scope.moreInformation = transportDetails[0].more_information;
+              if($scope.moreInformation == "")
+              {
+                $scope.moreInformation = "Nil"
+              }
               $scope.approvalStatus = capitalizeFirstLetter(transportDetails[0].approval);
               var transportStatusToDisplay;
               if(transportDetails[0].status == "new task")

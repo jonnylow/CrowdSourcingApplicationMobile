@@ -10,6 +10,30 @@ angular.module('crowdsourcing')
                 var tempPassword = fields.password;
 
               if (validateEmail(tempNRIC) == true) {
+
+/* to be use to port over to laraval login webservice
+                var loginObject = { email: tempNRIC,password:tempPassword};
+
+                var req =
+                {
+                  method: 'POST',
+                  url: "http://changhuapeng.com/laravel/api/authenticate",
+                  data: Object.toparams(loginObject),
+                  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }
+
+                $http(req).
+                  success(function(data, status, headers, config)
+                  {
+                    console.log(data);
+                  }).
+                  error(function(data, status, headers, config)
+                  {
+                    //error
+                    console.log(status);
+                  });
+*/
+
                 $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+tempNRIC+"&password="+tempPassword)
                   .success(function (data) {
                     var status = data;
@@ -57,8 +81,7 @@ angular.module('crowdsourcing')
                     alert("Error in connection");
                   });
               }
-              else
-              {
+              else {
                 $scope.loadingshow = false;
                 var alertPopup = $ionicPopup.alert({
                   title: 'Error',
@@ -90,4 +113,15 @@ angular.module('crowdsourcing')
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       return re.test(email);
     }
+
+    //for POST parameters
+    Object.toparams = function ObjecttoParams(obj)
+    {
+      var p = [];
+      for (var key in obj)
+      {
+        p.push(key + '=' + encodeURIComponent(obj[key]));
+      }
+      return p.join('&');
+    };
     });

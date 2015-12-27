@@ -256,13 +256,6 @@ angular.module('crowdsourcing')
               $scope.radius = 5000;
               $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
             }
-            if($scope.fields.filter == "all")
-            {
-              $scope.zoom = 10;
-              $scope.radius = 15000;
-              $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
-            }
-
           }
 
           $scope.goList = function()

@@ -17,9 +17,10 @@ angular.module('crowdsourcing')
             if(transportDetails.activity[0].datetime_start != null && transportDetails.activity[0].expected_duration_minutes != null && transportDetails.activity[0].location_from != null
             && transportDetails.activity[0].location_to !=null && transportDetails.activity[0].more_information != null)
               {
-                var temp =transportDetails.activity[0].datetime_start.split(' ');
-                $scope.date = temp[0];
-                $scope.time = temp[1];
+                var t = transportDetails.activity[0].datetime_start.split(/[- :]/);
+                var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+                $scope.dateTime = dateTime;
                 $scope.expectedDuration = transportDetails.activity[0].expected_duration_minutes + " Mins";
                 $scope.locationFrom = transportDetails.activity[0].location_from;
                 $scope.locationTo = transportDetails.activity[0].location_to;
@@ -45,8 +46,7 @@ angular.module('crowdsourcing')
           confirmPopup.then(function(res) {
             if(res) {
               $scope.loadingshow = true;
-              window.localStorage.setItem("tempADate", $scope.date);
-              window.localStorage.setItem("tempATime", $scope.time);
+              window.localStorage.setItem("tempADateTime", $scope.dateTime);
               window.localStorage.setItem("tempAExpectedDuration", $scope.expectedDuration);
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
               window.localStorage.setItem("tempALocationTo", $scope.locationTo);

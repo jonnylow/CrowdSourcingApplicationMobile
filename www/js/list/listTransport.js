@@ -4,6 +4,7 @@ angular.module('crowdsourcing')
       $scope.transportActivity = [];
       $scope.loadingshow = true;
       $scope.transportIds = $stateParams.transportIds;
+      var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var ids = [];
       var number = 0;
 
@@ -19,20 +20,26 @@ angular.module('crowdsourcing')
         if (transportDetails != null) {
           for(var i = 0; i<transportDetails.length; i++)
           {
-            if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start)
+            if(transportDetails[i].activity_id != null && transportDetails[i].name!=null && transportDetails[i].datetime_start!=null)
             {
               if(ids.indexOf(transportDetails[i].activity_id) !== -1) {
                 //format date/time
-                $scope.temp = transportDetails[i].datetime_start.split(' ');
-                var datesTemp = $scope.temp[0].split('-');
+                var t = transportDetails[i].datetime_start.split(/[- :]/);
+                var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+                //format date to be use for searching
+                var dd = dateTime.getDate();
+                var mm = dateTime.getMonth();
+                var yyyy = dateTime.getFullYear();
+                var date = dd + ' ' + monthNames[mm]+ ' ' + yyyy;
 
                 //push to arrays to store all activities in array (also use for displaying)
                 $scope.transportActivity.push({
                   no: ++number,
                   id: transportDetails[i].activity_id,
                   name: transportDetails[i].name,
-                  date: datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0],
-                  time: $scope.temp[1]
+                  date: date,
+                  dateTime:dateTime
                 });
               }
             }
@@ -69,20 +76,14 @@ angular.module('crowdsourcing')
 
       if($scope.searchText != null) {
         var dd = $scope.searchText.getDate();
-        var mm = $scope.searchText.getMonth() + 1;
+        var mm = $scope.searchText.getMonth();
         var yyyy = $scope.searchText.getFullYear();
 
-        if (dd < 10) {
-          dd = '0' + dd
-        }
-        if (mm < 10) {
-          mm = '0' + mm
-        }
-        date = dd + '-' + mm + '-' + yyyy;
+        date = dd + ' ' + monthNames[mm]+ ' ' + yyyy;
       }
 
-        var re = new RegExp(date, 'i');
-        return !date || re.test(obj.date);
+      var re = new RegExp(date, 'i');
+      return !date || re.test(obj.date);
     };
 
     $scope.goBack = function()

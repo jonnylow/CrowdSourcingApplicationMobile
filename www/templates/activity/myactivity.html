@@ -41,7 +41,7 @@
         <div class="list card myactivitymain" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">
           <div class="item item-icon-left item-text-wrap myactivityoverall">
             <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
-            <h2 class="home">{{item.dateTime}}</h2>
+            <h2 class="home">{{ item.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>

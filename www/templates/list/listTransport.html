@@ -25,8 +25,8 @@
           {{activity.name}}<br>
         </div>
         <div class="item item-text-wrap">
-          Date: {{activity.date}} <br><br>
-          Time: {{activity.time}} <br><br>
+          Date: {{ activity.date}} <br><br>
+          Time: {{ activity.dateTime | date : "h:mm a"}} <br><br>
         </div>
       </ion-item>
   </div>

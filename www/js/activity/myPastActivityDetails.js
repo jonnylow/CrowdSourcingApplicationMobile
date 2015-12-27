@@ -18,10 +18,10 @@ angular.module('crowdsourcing')
             if(transportDetails[0].datetime_start != null && transportDetails[0].expected_duration_minutes != null && transportDetails[0].location_from != null
               && transportDetails[0].location_to !=null)
             {
-              var temp =transportDetails[0].datetime_start.split(' ');
-              var datesTemp = temp[0].split('-');
-              $scope.date = datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0];
-              $scope.time = temp[1];
+              var t = transportDetails[0].datetime_start.split(/[- :]/);
+              var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+              $scope.dateTime = dateTime;
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationTo = transportDetails[0].location_to;

@@ -4,16 +4,14 @@ angular.module('crowdsourcing')
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
-      $scope.date = window.localStorage.getItem("tempADate");
-      $scope.time = window.localStorage.getItem("tempATime");
+      $scope.dateTime = new Date(window.localStorage.getItem("tempADateTime"));
       $scope.expectedDuration = window.localStorage.getItem("tempAExpectedDuration");
       $scope.locationFrom= window.localStorage.getItem("tempALocationFrom");
       $scope.locationTo = window.localStorage.getItem("tempALocationTo");
       $scope.moreInformation= window.localStorage.getItem("tempAdditionalInformation");
 
       //remove resource
-      window.localStorage.removeItem("tempADate");
-      window.localStorage.removeItem("tempATime");
+      window.localStorage.removeItem("tempADateTime");
       window.localStorage.removeItem("tempAExpectedDuration");
       window.localStorage.removeItem("tempALocationFrom");
       window.localStorage.removeItem("tempALocationTo");
@@ -22,8 +20,7 @@ angular.module('crowdsourcing')
 
     $scope.back=function()
     {
-      window.localStorage.removeItem("tempADate");
-      window.localStorage.removeItem("tempATime");
+      window.localStorage.removeItem("tempADateTime");
       window.localStorage.removeItem("tempAExpectedDuration");
       window.localStorage.removeItem("tempALocationFrom");
       window.localStorage.removeItem("tempALocationTo");

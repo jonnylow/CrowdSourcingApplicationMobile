@@ -27,8 +27,7 @@ angular.module('crowdsourcing')
         $scope.transportID=[];
         $scope.transportName=[];
         $scope.transportLocationFrom=[];
-        $scope.transportDateStart=[];
-        $scope.transportTimeStart=[];
+        $scope.transportDateTimeStart=[];
         $scope.transportFromDistance=[];
 
         //this array is use to track markers duplication. Is not in sync with the rest of the array above
@@ -41,13 +40,12 @@ angular.module('crowdsourcing')
         //for dynamic displaying
         $scope.transportIDDisplay=[];
         $scope.transportNameDisplay=[];
-        $scope.transportDateStartDisplay=[];
-        $scope.transportTimeStartDisplay=[];
+        $scope.transportDateTimeStartDisplay=[];
         $scope.transportFromDistanceDisplay=[];
         $scope.loadingshow = true;
 
         //plot map
-        if($scope.transportID != null && $scope.transportName != null && $scope.transportDateStart !=null && $scope.transportTimeStart !=null) {
+        if($scope.transportID != null && $scope.transportName != null && $scope.transportDateTimeStart !=null) {
           uiGmapGoogleMapApi.then(function(maps) {
 
             //plot marker for 'mylocation'
@@ -107,8 +105,9 @@ angular.module('crowdsourcing')
                     if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start
                       && transportDetails[i].location_from_lat !=null && transportDetails[i].location_from_long != null) {
 
-                      //calculate distance in M and KM to 2dp & format date/time
-                      $scope.temp = transportDetails[i].datetime_start.split(' ');
+                      //format date/time
+                      var t = transportDetails[i].datetime_start.split(/[- :]/);
+                      var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
                       var from = new google.maps.LatLng($scope.myLocation.lat, $scope.myLocation.lng);
                       var to = new google.maps.LatLng(parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long));
@@ -118,9 +117,7 @@ angular.module('crowdsourcing')
                       $scope.transportID.push(transportDetails[i].activity_id);
                       $scope.transportName.push(transportDetails[i].name);
                       $scope.transportLocationFrom.push(transportDetails[i].location_from);
-                      $scope.transportDateStart.push("Date: " + $scope.temp[0]);
-                      $scope.transportTimeStart.push("Time: " + $scope.temp[1]);
-                      //$scope.transportFromDistance.push(km + " km");
+                      $scope.transportDateTimeStart.push(dateTime);
 
                       //check if marker already exists (by checking with the markers array)
                       //if exists skip this marker, if it is a new position, add this new marker
@@ -203,8 +200,7 @@ angular.module('crowdsourcing')
               //clear display list
               $scope.transportIDDisplay=[];
               $scope.transportNameDisplay=[];
-              $scope.transportDateStartDisplay=[];
-              $scope.transportTimeStartDisplay=[];
+              $scope.transportDateTimeStartDisplay=[];
               $scope.transportFromDistanceDisplay=[];
 
               //loop through the transportLocationFrom (name of pickup), if it is the same, copy to the display list of arrays to show on list
@@ -215,8 +211,7 @@ angular.module('crowdsourcing')
                 {
                   $scope.transportIDDisplay.push($scope.transportID[i]);
                   $scope.transportNameDisplay.push($scope.transportName[i]);
-                  $scope.transportDateStartDisplay.push($scope.transportDateStart[i]);
-                  $scope.transportTimeStartDisplay.push($scope.transportTimeStart[i]);
+                  $scope.transportDateTimeStartDisplay.push($scope.transportDateTimeStart[i]);
                   $scope.transportFromDistanceDisplay.push($scope.transportFromDistance[i]);
                 }
               }

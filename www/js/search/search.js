@@ -19,9 +19,9 @@ angular.module('crowdsourcing')
           {
             if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start)
             {
-              //calculate distance & format date/time
-              $scope.temp = transportDetails[i].datetime_start.split(' ');
-              var datesTemp = $scope.temp[0].split('-');
+              //format date/time
+              var t = transportDetails[i].datetime_start.split(/[- :]/);
+              var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
               //if activityIds is empty, display all results (no filter)
               if($scope.activityIds == null || $scope.activityIds == "") {
@@ -30,8 +30,7 @@ angular.module('crowdsourcing')
                   no: i + 1,
                   id: transportDetails[i].activity_id,
                   name: transportDetails[i].name,
-                  date: datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0],
-                  time: $scope.temp[1]
+                  dateTime: dateTime
                 });
               }
               else //if activityIds not empty, split up results into array and only display those in the array
@@ -44,8 +43,7 @@ angular.module('crowdsourcing')
                     no: i + 1,
                     id: transportDetails[i].activity_id,
                     name: transportDetails[i].name,
-                    date: datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0],
-                    time: $scope.temp[1]
+                    dateTime: dateTime
                   });
                 }
               }

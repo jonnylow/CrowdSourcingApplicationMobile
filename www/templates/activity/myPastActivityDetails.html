@@ -16,7 +16,7 @@
       <div class="item item-icon-left item-text-wrap myactivitymain">
         <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
         <div class="row">
-          <div class="col routecol"><h2 class="home">{{date + ", " + time}}</h2>
+          <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>
@@ -34,7 +34,7 @@
                 <td></td>
                 <td><p class="myactivity">{{locationTo}}</p></td>
               </tr>
-            </table>  
+            </table>
           </div>
         </div>
       </div>
@@ -44,14 +44,14 @@
       <div class="col col-50">
         <div class="list card myactivity">
           <i class="ion-clock" style="font-size: 300%"></i>
-          <p class="myactivity">Expected Duration</p> 
+          <p class="myactivity">Expected Duration</p>
           <h5 class="myactivity">{{expectedDuration}}</h5>
         </div>
       </div>
       <div class="col col-50">
         <div class="list card myactivity">
         <i class="ion-checkmark-circled" style="font-size: 300%"></i>
-        <p class="myactivity">Approval Status</p> 
+        <p class="myactivity">Approval Status</p>
         <h5 class="myactivity">{{approvalStatus}}</h5>
         </div>
       </div>
@@ -60,7 +60,7 @@
       <div class="col col-50">
         <div class="list card myactivity">
         <i class="ion-android-car" style="font-size: 300%"></i>
-        <p class="myactivity">Transport Status</p> 
+        <p class="myactivity">Transport Status</p>
         <h5 class="myactivity">{{transportStatus}}</h5>
                 <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
         </div>
@@ -68,7 +68,7 @@
       <div class="col col-50">
         <div class="list card myactivity" style="height: 104px">
         <i class="ion-person" style="font-size: 300%"></i>
-        <p class="myactivity"></p> 
+        <p class="myactivity"></p>
         <button class="button button-energized button-small" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
         </div>
       </div>
@@ -83,6 +83,6 @@
           </div>
         </div>
       </div>
-    </div>       
+    </div>
   </ion-content>
 </ion-view>

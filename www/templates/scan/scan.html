@@ -63,8 +63,8 @@
               {{transportNameDisplay[$index]}}
             </div>
             <div class="item item-text-wrap">
-              {{transportDateStartDisplay[$index]}}<br>
-              {{transportTimeStartDisplay[$index]}}<br>
+              Date: {{ transportDateTimeStartDisplay[$index] | date : "d MMM yyyy"}}<br>
+              Time: {{ transportDateTimeStartDisplay[$index] | date : "h:mm a"}}<br>
               Pickup Location: {{transportFromDistanceDisplay[$index]}}
             </div>
           </div>

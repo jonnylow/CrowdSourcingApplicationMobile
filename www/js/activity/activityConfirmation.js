@@ -9,8 +9,15 @@ angular.module('crowdsourcing')
       $scope.expectedDuration = window.localStorage.getItem("tempAExpectedDuration");
       $scope.locationFrom= window.localStorage.getItem("tempALocationFrom");
       $scope.locationTo = window.localStorage.getItem("tempALocationTo");
+      $scope.moreInformation= window.localStorage.getItem("tempAdditionalInformation");
 
-
+      //remove resource
+      window.localStorage.removeItem("tempADate");
+      window.localStorage.removeItem("tempATime");
+      window.localStorage.removeItem("tempAExpectedDuration");
+      window.localStorage.removeItem("tempALocationFrom");
+      window.localStorage.removeItem("tempALocationTo");
+      window.localStorage.removeItem("tempAdditionalInformation");
     }
 
     $scope.back=function()
@@ -20,6 +27,7 @@ angular.module('crowdsourcing')
       window.localStorage.removeItem("tempAExpectedDuration");
       window.localStorage.removeItem("tempALocationFrom");
       window.localStorage.removeItem("tempALocationTo");
+      window.localStorage.removeItem("tempAdditionalInformation");
       $state.go('tab.home');
     }
   });

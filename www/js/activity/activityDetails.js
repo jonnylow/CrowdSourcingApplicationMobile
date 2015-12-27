@@ -7,28 +7,31 @@ angular.module('crowdsourcing')
     }
     $scope.loadingshow = true;
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivityDetails.php?transportId=" + $scope.transportId)
+    $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivityDetails?transportId=" + $scope.transportId)
       .success(function (data) {
         var transportDetails = data;
 
         if (transportDetails != null) {
-          if(transportDetails[0] != null)
+          if(transportDetails.activity[0] != null)
           {
-            if(transportDetails[0].datetime_start != null && transportDetails[0].expected_duration_minutes != null && transportDetails[0].location_from != null
-            && transportDetails[0].location_to !=null && transportDetails[0].more_information != null)
+            if(transportDetails.activity[0].datetime_start != null && transportDetails.activity[0].expected_duration_minutes != null && transportDetails.activity[0].location_from != null
+            && transportDetails.activity[0].location_to !=null && transportDetails.activity[0].more_information != null)
               {
-                var temp =transportDetails[0].datetime_start.split(' ');
+                var temp =transportDetails.activity[0].datetime_start.split(' ');
                 $scope.date = temp[0];
                 $scope.time = temp[1];
-                $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
-                $scope.locationFrom = transportDetails[0].location_from;
-                $scope.locationTo = transportDetails[0].location_to;
-                $scope.moreInformation = transportDetails[0].more_information;
+                $scope.expectedDuration = transportDetails.activity[0].expected_duration_minutes + " Mins";
+                $scope.locationFrom = transportDetails.activity[0].location_from;
+                $scope.locationTo = transportDetails.activity[0].location_to;
+                $scope.moreInformation = transportDetails.activity[0].more_information;
+                if($scope.moreInformation == "")
+                {
+                  $scope.moreInformation = "No Additional Information"
+                }
                 $scope.loadingshow = false;
               }
           }
         }
-
       })
 
       $scope.apply=function()
@@ -47,6 +50,7 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempAExpectedDuration", $scope.expectedDuration);
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
               window.localStorage.setItem("tempALocationTo", $scope.locationTo);
+              window.localStorage.setItem("tempAdditionalInformation", $scope.moreInformation);
 
               var checkUrlString = "http://www.changhuapeng.com/volunteer/php/CheckActivityApplication.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
               $http.get(checkUrlString)

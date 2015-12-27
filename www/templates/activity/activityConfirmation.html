@@ -27,22 +27,28 @@
                 <td></td>
                 <td><p class="myactivity">{{locationTo}}</p></td>
               </tr>
-            </table>  
+            </table>
           </div>
         </div>
       </div>
       <div class="item item-icon-left activitymain">
         <i class="icon ion-android-calendar"></i>
-        <p class="activity">Pick-Up Time</p> 
+        <p class="activity">Pick-Up Time</p>
         <h5 class="myactivity">{{date + ", " + time}}</h5>
       </div>
 
       <div class="item item-icon-left activitymain">
         <i class="icon ion-clock"></i>
-        <p class="activity">Expected Duration</p> 
+        <p class="activity">Expected Duration</p>
         <h5 class="myactivity">{{expectedDuration}}</h5>
       </div>
-    </div>
+
+        <div class="item item-icon-left activitymain">
+          <i class="icon ion-information-circled"></i>
+          <p class="myactivity">Additional Information</p>
+          <h5 class="myactivity">{{moreInformation}}</h5>
+        </div>
+      </div>
     <button class="button paddedbutton button-calm" ng-click="back()">Back to Home</button>
   </ion-content>
 </ion-view>

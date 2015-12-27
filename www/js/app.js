@@ -187,13 +187,6 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "elderyInformationController"
     })
 
-    .state('myactivityStatus', {
-      cache: false,
-      url: '/myactivityStatus/:transportId/:transportActivityName/:status',
-      templateUrl: 'templates/activity/myactivityStatus.html',
-      controller: "myactivityStatusController"
-    })
-
     .state('manageAccount', {
       url: '/manageAccount/:id',
       templateUrl: 'templates/account/manageAccount.html',

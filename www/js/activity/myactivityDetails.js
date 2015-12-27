@@ -28,7 +28,7 @@ angular.module('crowdsourcing')
               $scope.moreInformation = transportDetails[0].more_information;
               if($scope.moreInformation == "")
               {
-                $scope.moreInformation = "Nil"
+                $scope.moreInformation = "No Additional Information"
               }
               $scope.approvalStatus = capitalizeFirstLetter(transportDetails[0].approval);
               var transportStatusToDisplay;

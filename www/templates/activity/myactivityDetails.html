@@ -50,7 +50,9 @@
       </div>
       <div class="col col-50">
         <div class="list card myactivity">
-        <i class="ion-checkmark-circled" style="font-size: 300%"></i>
+        <i class="ion-checkmark-circled" style="font-size: 300%" ng-if="approvalStatus == 'Approved'"></i>
+        <i class="ion-minus-circled" style="font-size: 300%" ng-if="approvalStatus == 'Pending'"></i>
+        <i class="ion-close-circled" style="font-size: 300%" ng-if="approvalStatus == 'Rejected' || approvalStatus == 'Withdrawn'"></i>
         <p class="myactivity">Approval Status</p>
         <h5 class="myactivity">{{approvalStatus}}</h5>
         </div>
@@ -68,8 +70,8 @@
       <div class="col col-50">
         <div class="list card myactivity" style="height: 104px">
         <i class="ion-person" style="font-size: 300%"></i>
-        <p class="myactivity"><div ng-if="eldery == true"/>Eldery Information</div></p>
-          <h5 class="myactivity" ng-show="eldery">Not available at the moment</h5>
+        <p class="myactivity" ng-if="eldery == true">Eldery Information</p>
+          <h5 class="myactivity" ng-show="eldery">Not available</h5>
         <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
         </div>
       </div>
@@ -87,8 +89,6 @@
     </div>
 
     <!--withdraw-->
-    <div class ="withdraw">
-	   <button class="button ion-close-round button-light withdraw"  ng-show="!withdrawShow" ng-click="withdraw()"> Withdraw from activity</button>
-    </div>
+	   <button class="button ion-close-round button-light paddedbutton" style="background-color:#C82506;color:#fff" ng-show="!withdrawShow" ng-click="withdraw()"> Withdraw from activity</button>
   </ion-content>
 </ion-view>

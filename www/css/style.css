@@ -101,12 +101,11 @@ button.home{
   font-size: 20px;
 }
 
-.button.button-light.withdraw{
-  color:#fff;
-  width:60%;
-  padding-left: 15px;
-  margin-left:17%;
-  background-color:#FF2B2B;
+.button.paddedbutton{
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 95%;
+  border-radius: 5px;
 }
 
 /***BAR***/
@@ -573,6 +572,29 @@ p.homep{
   padding-right: 10px;
 }
 
+
+.list.card.activity{
+  padding-top: 0;
+  margin-top: 0;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 0 0;
+}
+
+.item.activitymain{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+p.activity{
+  color: #53585F;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
+
+
 /*end of activity page*/
 
 /*myactivity page*/
@@ -672,7 +694,6 @@ h5.myactivity{
 }
 
 .icon.myactivity{
-  left: 5px;
   top: -45px;
 }
 

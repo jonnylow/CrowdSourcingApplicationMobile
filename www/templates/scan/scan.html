@@ -12,19 +12,6 @@
   </ion-nav-bar>
 
   <ion-content scroll='false'>
-    <div class="list card myactivitymain">
-      <label class="item item-input item-select">
-        <div class="input-label">
-          <p>Show activities {{fields.filter}}KM from my location</p>
-        </div>
-        <select ng-model="fields.filter" ng-change="valueChanged()" class="search">
-              <option value="5">100M Radius</option>
-              <option value="10">1KM Radius</option>
-              <option value="20">3KM Radius</option>
-              <option value="30">5KM Radius</option>
-        </select>
-      </label>
-    </div>
     <!--Old filter dropdown
     <div class="row">
       <div class="col">
@@ -60,29 +47,51 @@
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
-
-      <ion-item class="item item-input item-stacked-label" ng-show=showTag>
-        <div class="card animated shake">
+    <div class="list card myactivitymain">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          <!--TODO: change numbers. fields.filter does not correspond to user's filter option-->
+          <p>Showing activities {{fields.filter}}KM from my location</p>
+        </div>
+        <select ng-model="fields.filter" ng-change="valueChanged()" class="search">
+              <option value="5">100M Radius</option>
+              <option value="10">1KM Radius</option>
+              <option value="20">3KM Radius</option>
+              <option value="30">5KM Radius</option>
+        </select>
+      </label>
+    </div>
+      
+        <div class="card animated shake"  ng-show=showTag>
           <div class="item item-text-wrap">
             <h3>Tap on the red markers to view activities</h3>
           </div>
         </div>
-      </ion-item>
-
+      
       <div class="section2">
-        <ion-item class="item item-input item-stacked-label" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
-          <div class="card">
-            <div class="item item-divider scan item-text-wrap">
-              {{$index+1}}.
-              {{transportNameDisplay[$index]}}
-            </div>
-            <div class="item item-text-wrap">
-              Date: {{ transportDateTimeStartDisplay[$index] | date : "d MMM yyyy"}}<br>
-              Time: {{ transportDateTimeStartDisplay[$index] | date : "h:mm a"}}<br>
-              Pickup Location: {{transportFromDistanceDisplay[$index]}}
-            </div>
+          <div class="list card myactivitymain" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
+            <table>
+              <tr>
+                <td class="search">
+                {{$index+1}}
+                </td>
+              <td>
+              <div class="item item-text-wrap">
+                <h2 class="home"> {{ transportDateTimeStartDisplay[$index] | date : "d MMM yyyy" }}, {{ transportDateTimeStartDisplay[$index] | date : "h:mm a"}}</h2>
+                <table>
+                  <tr>
+                    <td><p class="myactivity">From</p></td>
+                    <td><p class="myactivity"><b>{{transportNameDisplay[$index].split("-")[0]}}</b></p></td>
+                  </tr>
+                  <tr>
+                    <td><p class="myactivity">To</p></td>
+                    <td><p class="myactivity"><b>{{transportNameDisplay[$index].split("-")[1]}}</b></p></td>
+                  </tr>
+                </table>
+            <p class="myactivity">Pickup Location: {{transportFromDistanceDisplay[$index]}}</p>
+            
           </div>
-        </ion-item>
+        </div>
       </div>
     </div>
   </ion-content>

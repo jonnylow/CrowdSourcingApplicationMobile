@@ -6,25 +6,41 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <!--search bar-->
-  <ion-header-bar class="bar-subheader">
-    <input type="date" placeholder="Search by activity date" ng-model="searchText">
-  </ion-header-bar>
+  
+
 
   <ion-content ng-show=!loadingshow>
-
-    <div class="list card">
-      <ion-item ng-repeat="activity in transportActivity | filter:searchFilter" ng-click="proceed(activity.id, activity.name)">
-
-        <div class="item item-divider scan item-text-wrap">
-          {{activity.no}}.
-          {{activity.name}}<br>
-        </div>
+<!--search bar-->
+    <div class="list card myactivitymain">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        <!--TODO: if no dates selected, show "All"-->
+        Showing activities from 
+      </div>
+      <input type="date" placeholder="Search by activity date" ng-model="searchText">
+    </label>
+  </div>
+  
+    <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchFilter" ng-click="proceed(activity.id, activity.name)">
+      <table>
+        <tr>
+          <td class="search">
+          {{activity.no}}
+          </td>
+        <td>
         <div class="item item-text-wrap">
-          Date: {{ activity.date}} <br><br>
-          Time: {{ activity.dateTime | date : "h:mm a"}} <br><br>
-        </div>
-      </ion-item>
+          <h2 class="home"> {{ activity.date | date : "d MMM yyyy" }}, {{ activity.dateTime | date : "h:mm a"}}</h2>
+          <table>
+            <tr>
+              <td><p class="myactivity">From</p></td>
+              <td><p class="myactivity"><b>{{activity.name.split("-")[0]}}</b></p></td>
+            </tr>
+            <tr>
+              <td><p class="myactivity">To</p></td>
+              <td><p class="myactivity"><b>{{activity.name.split("-")[1]}}</b></p></td>
+            </tr>
+          </table>
+
   </div>
 
   </ion-content>

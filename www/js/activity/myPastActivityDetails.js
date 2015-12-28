@@ -1,11 +1,12 @@
 angular.module('crowdsourcing')
 
-    .controller('myPastActivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('myPastActivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
       $scope.id = window.localStorage.getItem("loginId");
       $scope.loadingshow = true;
+      $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId+"&id="+$scope.id)
@@ -57,6 +58,7 @@ angular.module('crowdsourcing')
           }
         }
         $scope.loadingshow = false;
+        $ionicLoading.hide();
       })
 
     function capitalizeFirstLetter(string) {

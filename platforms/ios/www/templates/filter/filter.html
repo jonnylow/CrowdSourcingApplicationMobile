@@ -10,11 +10,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <div class="spinner" ng-show=loadingshow>
-    <ion-spinner icon="android"></ion-spinner>
-  </div>
-
-  <ion-content>
+  <ion-content ng-show=!loadingshow>
     <div class="list card">
       <ion-checkbox ng-repeat="item in filterListDisplay" ng-model="item.checked" ng-checked="item.checked">
         {{ item.textShown }}

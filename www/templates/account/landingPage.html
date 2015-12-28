@@ -1,16 +1,12 @@
 <ion-view hide-nav-bar="true">
   <ion-content class="main" padding="true">
-    <div class="spinner" ng-show=loadingshow>
-      <ion-spinner icon="android"></ion-spinner>
-    </div>
-
     <div style="text-align: center;">
      <img src="img/careridemainwhite.png" class = "mainimage"/>
     </div>
     <br>
-    <button ui-sref="login" class="button button-block button-energized">Log In</button>
-    <button ui-sref="registration" class="button button-block button-calm">Sign Up</button>
-    <button ui-sref="tab.home" class="button button-block button-dark">Proceed Without Logging In</button>  
+    <button class="button button-block button-energized" ng-click="login()">Log In</button>
+    <button class="button button-block button-calm" ng-click="registration()">Sign Up</button>
+    <button ui-sref="tab.home" class="button button-block button-dark">Proceed Without Logging In</button>
 
   </ion-content>
 </ion-view>

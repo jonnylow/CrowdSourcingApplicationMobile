@@ -1,11 +1,12 @@
 angular.module('crowdsourcing')
 
-    .controller('activityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('activityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
     }
     $scope.loadingshow = true;
+    $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
     $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivityDetails?transportId=" + $scope.transportId)
       .success(function (data) {
@@ -30,6 +31,7 @@ angular.module('crowdsourcing')
                   $scope.moreInformation = "No Additional Information"
                 }
                 $scope.loadingshow = false;
+                $ionicLoading.hide();
               }
           }
         }
@@ -46,6 +48,8 @@ angular.module('crowdsourcing')
           confirmPopup.then(function(res) {
             if(res) {
               $scope.loadingshow = true;
+              $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
               window.localStorage.setItem("tempADateTime", $scope.dateTime);
               window.localStorage.setItem("tempAExpectedDuration", $scope.expectedDuration);
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
@@ -62,6 +66,7 @@ angular.module('crowdsourcing')
                     $http.get(urlString)
                       .success(function (data) {
                         $scope.loadingshow = false;
+                        $ionicLoading.hide();
 
                         var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
                         $http.get(sendEmail)
@@ -83,6 +88,8 @@ angular.module('crowdsourcing')
                   else
                   {
                     $scope.loadingshow = false;
+                    $ionicLoading.hide();
+
                     var myPopup = $ionicPopup.show({
                       title: 'Notice',
                       subTitle: 'You have already applied for this activity. Please wait for centre to approve your application',

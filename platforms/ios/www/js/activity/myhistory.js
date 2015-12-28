@@ -1,10 +1,11 @@
 angular.module('crowdsourcing')
 
-    .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicHistory, $ionicPopover) {
+    .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicHistory, $ionicPopover, $ionicLoading) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         }
         else {
           $state.go('landingPage', {}, {reload: true});
@@ -28,30 +29,28 @@ angular.module('crowdsourcing')
             for(var i = 0; i<transportDetails.length; i++){
 
               if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
-                var temp =transportDetails[i].datetime_start.split(' ');
-                var datesTemp = temp[0].split('-');
+                var t = transportDetails[i].datetime_start.split(/[- :]/);
+                var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
                 if(transportDetails[i].approval == "approved" && transportDetails[i].status== "completed")
                 {
-                  $scope.groups[0].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Completed"});
+                  $scope.groups[0].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, statusDisplay:"Completed"});
                 }
                 else
                 {
-                  var date_temp = temp[0] + " " + temp[1];
-                  var transportDateTime = new Date(date_temp.replace(/-/g,"/"));
                   var currentDateTime = new Date();
-                  if(transportDateTime < currentDateTime)
+                  if(dateTime < currentDateTime)
                   {
                     if(transportDetails[i].approval == "withdrawn") {
-                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Not Applicable"});
+                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
                     else if(transportDetails[i].approval == "rejected")
                     {
-                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Not Applicable"});
+                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
                     else if(transportDetails[i].approval == "pending")
                     {
-                      $scope.groups[1].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:"Date/Time: " + datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0] + " | " + temp[1], statusDisplay:"Not Applicable"});
+                      $scope.groups[1].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
                   }
                 }
@@ -59,6 +58,7 @@ angular.module('crowdsourcing')
             }
           }
           $scope.loadingshow = false;
+          $ionicLoading.hide();
         })
         .finally(function() {
           // Stop the ion-refresher from spinning

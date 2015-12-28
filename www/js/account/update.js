@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('updateAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
+    .controller('updateAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -14,6 +14,8 @@ angular.module('crowdsourcing')
         $scope.update = function(fields)
         {
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
           if(fields != null) {
             if (fields.currentpassword != null && fields.currentpassword.trim() != "" && fields.newpassword != null && fields.newpassword.trim() != ""
               && fields.confirmpassword!= null && fields.confirmpassword.trim() != "")
@@ -45,6 +47,7 @@ angular.module('crowdsourcing')
                                       var status = data;
                                       if (status != null) {
                                         $scope.loadingshow = false;
+                                        $ionicLoading.hide();
 
                                         var alertPopup = $ionicPopup.alert({
                                           title: 'Status',
@@ -63,12 +66,14 @@ angular.module('crowdsourcing')
                                 else
                                 {
                                   $scope.loadingshow = false;
+                                  $ionicLoading.hide();
                                   alert("Old & New Password are the same. Please change a new password. ");
                                 }
                               }
                               else
                               {
                                 $scope.loadingshow = false;
+                                $ionicLoading.hide();
                                 alert("Passwords do not match. Please try again.");
                               }
                           }
@@ -80,6 +85,7 @@ angular.module('crowdsourcing')
                     }
                     else {
                       $scope.loadingshow = false;
+                      $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
                         title: 'Error',
                         template: 'Incorrect Current Password.'
@@ -91,6 +97,7 @@ angular.module('crowdsourcing')
             else
             {
               $scope.loadingshow = false;
+              $ionicLoading.hide();
               alert("Please fill in all fields.");
             }
 
@@ -98,6 +105,7 @@ angular.module('crowdsourcing')
           else
           {
             $scope.loadingshow = false;
+            $ionicLoading.hide();
             alert("Please fill in all fields.");
           }
         }

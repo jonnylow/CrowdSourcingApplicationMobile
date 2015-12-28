@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams) {
+    .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading) {
       $scope.transportActivity = [];
       $scope.activityIds= $stateParams.activityIds;
       $scope.filter= $stateParams.filter;
@@ -9,6 +9,7 @@ angular.module('crowdsourcing')
         $scope.filter="None";
       }
       $scope.loadingshow = true;
+      $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
       .success(function (data) {
@@ -51,6 +52,7 @@ angular.module('crowdsourcing')
           }
         }
         $scope.loadingshow = false;
+        $ionicLoading.hide();
       })
 
       $scope.proceed = function(id, name)

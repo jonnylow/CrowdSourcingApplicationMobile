@@ -13,6 +13,19 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+
+    if(window.plugins != null) {
+      // then override any default you want
+      window.plugins.nativepagetransitions.globalOptions.duration = 500;
+      window.plugins.nativepagetransitions.globalOptions.iosdelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.androiddelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.winphonedelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 3;
+      // these are used for slide left/right only currently
+      window.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = 0;
+      window.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = 0;
+    }
+
   });
 })
 
@@ -104,7 +117,8 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
   .state('landingPage', {
       cache: false,
       url: '/landingPage',
-      templateUrl: 'templates/account/landingPage.html'
+      templateUrl: 'templates/account/landingPage.html',
+      controller: "landingPageController"
   })
 
     .state('login', {

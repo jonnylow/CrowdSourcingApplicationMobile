@@ -1,4 +1,4 @@
-<ion-view view-title={{transportActivityName}}>
+<ion-view view-title="Activity Details">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
@@ -6,36 +6,51 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <div class="spinner" ng-show=loadingshow>
-    <ion-spinner icon="android"></ion-spinner>
-  </div>
-
   <ion-content ng-show=!loadingshow>
   <!--activity details-->
-    <div class="list card">
-      <div class="item item-divider header item-button-right">
-        Activity Details
+    <div class="list card myactivitymain">
+      <div class="item item-icon-left item-text-wrap activitymain">
+        <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
+        <div class="row">
+          <div class="col routecol">
+            <table>
+              <tr>
+                <td><p class="myactivity">From</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[0]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationFrom}}</p></td>
+              </tr>
+              <tr>
+                <td><p class="myactivity">To</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[1]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationTo}}</p></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="item item-text-wrap">
-        Date: {{date}}
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-android-calendar"></i>
+        <p class="activity">Pick-Up Time</p>
+        <h5 class="myactivity">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h5>
       </div>
-      <div class="item item-text-wrap">
-        Time: {{time}}
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-clock"></i>
+        <p class="myactivity">Expected Duration</p>
+        <h5 class="myactivity">{{expectedDuration}}</h5>
       </div>
-      <div class="item item-text-wrap">
-        Expected Duration: {{expectedDuration}}
-      </div>
-      <div class="item item-text-wrap">
-        Pick-up: {{locationFrom}}
-      </div>
-      <div class="item item-text-wrap">
-        Drop-off: {{locationTo}}
-      </div>
-      <div class="item item-text-wrap">
-        Additional Information: {{moreInformation}}
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-information-circled"></i>
+        <p class="myactivity">Additional Information</p>
+        <h5 class="myactivity">{{moreInformation}}</h5>
       </div>
     </div>
 
-    <button class="button button-positive apply" ng-click="apply()">Apply</button>
+    <button class="button paddedbutton button-energized" ng-click="apply()">Apply</button>
   </ion-content>
 </ion-view>

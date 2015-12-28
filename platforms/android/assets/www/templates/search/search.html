@@ -6,10 +6,6 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <div class="spinner" ng-show=loadingshow>
-    <ion-spinner icon="android"></ion-spinner>
-  </div>
-
   <!--filter bar-->
   <div style="top: 45px;" class="item item-button-right">
     Filter By: {{filter}}
@@ -32,8 +28,8 @@
           {{activity.name}}<br>
         </div>
         <div class="item item-text-wrap">
-          Date: {{activity.date}} <br><br>
-          Time: {{activity.time}} <br><br>
+          Date: {{ activity.dateTime | date : "d MMM yyyy"}} <br><br>
+          Time: {{ activity.dateTime | date : "h:mm a"}} <br><br>
         </div>
       </ion-item>
   </div>

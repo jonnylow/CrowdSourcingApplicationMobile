@@ -84,6 +84,13 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "file": "plugins/com.telerik.plugins.nativepagetransitions/www/NativePageTransitions.js",
+        "id": "com.telerik.plugins.nativepagetransitions.NativePageTransitions",
+        "clobbers": [
+            "window.plugins.nativepagetransitions"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -96,7 +103,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.0.0",
     "cordova-plugin-camera": "1.2.0",
     "cordova.plugins.diagnostic": "2.2.3",
-    "cordova-plugin-network-information": "1.0.1"
+    "cordova-plugin-network-information": "1.0.1",
+    "com.telerik.plugins.nativepagetransitions": "0.5.6"
 }
 // BOTTOM OF METADATA
 });

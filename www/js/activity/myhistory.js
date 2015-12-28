@@ -1,10 +1,11 @@
 angular.module('crowdsourcing')
 
-    .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicHistory, $ionicPopover) {
+    .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicHistory, $ionicPopover, $ionicLoading) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         }
         else {
           $state.go('landingPage', {}, {reload: true});
@@ -57,6 +58,7 @@ angular.module('crowdsourcing')
             }
           }
           $scope.loadingshow = false;
+          $ionicLoading.hide();
         })
         .finally(function() {
           // Stop the ion-refresher from spinning

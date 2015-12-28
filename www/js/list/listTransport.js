@@ -1,8 +1,9 @@
 angular.module('crowdsourcing')
 
-    .controller('listTransportController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('listTransportController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
       $scope.transportActivity = [];
       $scope.loadingshow = true;
+      $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       $scope.transportIds = $stateParams.transportIds;
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var ids = [];
@@ -46,6 +47,7 @@ angular.module('crowdsourcing')
           }
         }
         $scope.loadingshow = false;
+        $ionicLoading.hide();
       })
 
       $scope.proceed = function(id, name)

@@ -5,20 +5,50 @@
   </ion-nav-bar>
 
   <ion-content>
-    <div class="list card">
-        
-        <div class="item details item-text-wrap" >
-          <b>Date:</b> {{date}}<br><br>
-          <b>Time:</b> {{time}}<br><br>
-          <b>Expected Duration:</b> {{expectedDuration}}<br><br>
-          <b>Pick Up Location:</b> {{locationFrom}}<br><br>
-          <b>Drop Off Location:</b> {{locationTo}}<br><br><br>
-
-            <b>Your Application is in process. <br>
-            Please wait for the SMS Confirmation from <br>
-            the centre.</b>
+      <div class="list card myactivitymain">
+      <div class="item item-icon-left item-text-wrap activitymain">
+        <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
+        <div class="row">
+          <div class="col routecol">
+            <table>
+              <tr>
+                <td><p class="myactivity">From</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[0]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationFrom}}</p></td>
+              </tr>
+              <tr>
+                <td><p class="myactivity">To</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[1]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationTo}}</p></td>
+              </tr>
+            </table>
+          </div>
         </div>
-    </div>
-    <button class="button home button-calm" ng-click="back()">Back to Home</button>
+      </div>
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-android-calendar"></i>
+        <p class="activity">Pick-Up Time</p>
+        <h5 class="myactivity">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h5>
+      </div>
+
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-clock"></i>
+        <p class="activity">Expected Duration</p>
+        <h5 class="myactivity">{{expectedDuration}}</h5>
+      </div>
+
+        <div class="item item-icon-left activitymain">
+          <i class="icon ion-information-circled"></i>
+          <p class="myactivity">Additional Information</p>
+          <h5 class="myactivity">{{moreInformation}}</h5>
+        </div>
+      </div>
+    <button class="button paddedbutton button-calm" ng-click="back()">Back to Home</button>
   </ion-content>
 </ion-view>

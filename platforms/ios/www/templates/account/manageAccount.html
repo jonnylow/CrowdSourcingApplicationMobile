@@ -10,10 +10,6 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <div class="spinner" ng-show=loadingshow>
-    <ion-spinner icon="android"></ion-spinner>
-  </div>
-
   <ion-content ng-show=!loadingshow>
 
     <!-- manage account form-->
@@ -21,7 +17,7 @@
     <h3 class="me">Account details</h3>
     <div class="list list-inset update">
       <label class="item item-input update">
-        <div class="updateinfo">       
+        <div class="updateinfo">
           <i class="icon ion-card dark larger"></i>
           <font color="black"><b>NRIC</b></font>
         </div>
@@ -30,7 +26,7 @@
         </span>
       </label>
       <label class="item item-input update">
-        <div class="updateinfo"> 
+        <div class="updateinfo">
           <i class="icon ion-email dark larger"></i>
         <font color="black"><b>Email</b></font>
         </div>
@@ -43,7 +39,7 @@
     <h3 class="me">Personal details</h3>
     <div class="list list-inset update">
       <label class="item item-input update">
-        <div class="updateinfo">      
+        <div class="updateinfo">
           <i class="icon ion-person larger"></i>
             <b>Name:</b>
         </div>
@@ -63,7 +59,7 @@
       </label>
 
       <label class="item item-input update occupation">
-        <div class="updateinfo">      
+        <div class="updateinfo">
           <i class="icon ion-briefcase larger"></i>
           <b>Occupation:</b>
         </div>
@@ -73,7 +69,7 @@
       </label>
 
       <label class="item item-input item-stacked-label update" >
-        <div class="updateinfo">     
+        <div class="updateinfo">
           <b><i class="icon ion-heart larger"></i>Area of Preference 1:</b>
         </div>
         <select class="aop" ng-model="fields.preferences_1">
@@ -89,8 +85,8 @@
           <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
         </select>
       </label>
-      
-      <label class="item item-input item-stacked-label" >      
+
+      <label class="item item-input item-stacked-label" >
         <div class="updateinfo">
           <b><i class="icon ion-heart larger"></i>Area of Preference 2:</b>
         </div>

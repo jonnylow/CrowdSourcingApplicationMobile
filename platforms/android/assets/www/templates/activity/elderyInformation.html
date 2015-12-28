@@ -1,4 +1,4 @@
-<ion-view view-title={{transportActivityName}}>
+<ion-view view-title="Elderly Information">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
@@ -7,24 +7,53 @@
   </ion-nav-bar>
 
   <ion-content>
-    <div class="spinner" ng-show=loadingshow>
-      <ion-spinner icon="android"></ion-spinner>
-    </div>
   <!--elderly information-->
-    <div class="list card">
-      <div class="item item-divider">
-        Elderly Information
+    <div class="list card myactivitymain">
+      <div class="item item-icon-left item-divider activitymain">
+        <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
+        <div class="row">
+          <div class="col routecol">
+            <table>
+              <tr>
+                <td><p class="myactivity">From</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[0]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationFrom}}</p></td>
+              </tr>
+              <tr>
+                <td><p class="myactivity">To</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[1]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationTo}}</p></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="item item-text-wrap">
-        Name: {{name}}
+    </div>
+      <div class="list card myactivitymain">
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-person"></i>
+        <p class="activity">Elderly Information</p>
+        <h5 class="myactivity">{{name}}</h5>
       </div>
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-ios-telephone"></i>
+        <p class="activity">Next-of-Kin Information</p>
+        <h5 class="myactivity">{{kin}}</h5>
+        <h5 class="myactivity">{{contact}}</h5>
+      </div>
+
+      </div>
+
       <!--
       <div class="item item-text-wrap">
         Branch: {{branchName}}
       </div>-->
-      <div class="item item-text-wrap">
-        Next-of-Kin: {{kin}}<br>
-        Contact Number: {{contact}}
-      </div>
+
   </ion-content>
 </ion-view>

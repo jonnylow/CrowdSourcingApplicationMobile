@@ -1,12 +1,8 @@
 <ion-view hide-nav-bar="true">
 
 <ion-content padding="true">
-  <div class="spinner" ng-show=loadingshow>
-    <ion-spinner icon="android"></ion-spinner>
-  </div>
-
   <div class="bar bar-header registration">
-  <a ui-sref="landingPage" class="icon ion-close-round light"></a>
+  <a class="icon ion-close-round light" ng-click="landingPage()"></a>
   <h2 class="title main" style="color: #FFF; z-index:-1;">Log In</h2>
 </div>
 <br><br>
@@ -20,7 +16,7 @@
 
   <div class="list list-inset login">
     <label class="item item-input login">
-      <input type="text" placeholder="Email address" ng-model="fields.email">
+      <input type="text" autocapitalize="off" placeholder="Email address" ng-model="fields.email">
     </label>
     <label class="item item-input login1">
       <input type="password" ng-if="!showPasswordIsChecked" placeholder="Password" ng-model="fields.password">

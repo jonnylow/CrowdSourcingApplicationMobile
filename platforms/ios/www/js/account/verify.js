@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory) {
+    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading) {
     $scope.tempName = window.localStorage.getItem("tempName");
     $scope.tempEmail = window.localStorage.getItem("tempEmail");
     $scope.tempPassword = window.localStorage.getItem("tempPassword");
@@ -37,17 +37,20 @@ angular.module('crowdsourcing')
      otpCheck = Math.floor(Math.random()*90000) + 10000;
      var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
     $scope.loadingshow = true;
+     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     $http.get(sendURL)
       .success(function (data) {
         //message sent
         var status = data;
         $scope.loadingshow = false;
+        $ionicLoading.hide();
       })*/
      //=========comment this few lines if do not want to use OTP=========//
 
       $scope.verify = function(fields)
       {
         $scope.loadingshow = true;
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         if(fields != null) {
           if (fields.otp!= null && fields.otp.trim() != "")
           {
@@ -76,6 +79,7 @@ angular.module('crowdsourcing')
                   var status = data;
                   if (status != null) {
                     $scope.loadingshow = false;
+                    $ionicLoading.hide();
                     var alertPopup = $ionicPopup.alert({
                       title: '<b>Notice</b>',
                       subTitle: '<br>Your account was successfully created.',
@@ -102,6 +106,7 @@ angular.module('crowdsourcing')
             else
             {
               $scope.loadingshow = false;
+              $ionicLoading.hide();
               alert("Wrong One Time Password. Please try again.");
               $scope.fields= {otp: ""};
             }
@@ -109,6 +114,7 @@ angular.module('crowdsourcing')
           else
           {
             $scope.loadingshow = false;
+            $ionicLoading.hide();
             alert("Please fill in all fields.");
           }
 
@@ -116,6 +122,7 @@ angular.module('crowdsourcing')
         else
         {
           $scope.loadingshow = false;
+          $ionicLoading.hide();
           alert("Please fill in all fields.");
         }
       }

@@ -12,9 +12,6 @@
   </ion-nav-bar>
 
   <ion-content scroll='false'>
-    <div class="spinner" ng-show=loadingshow>
-      <ion-spinner icon="android"></ion-spinner>
-    </div>
     <div class="row">
       <div class="col">
         <div class="transbox2">
@@ -23,7 +20,6 @@
           <option value="10">1KM Radius</option>
           <option value="20">3KM Radius</option>
           <option value="30">5KM Radius</option>
-          <option value="all">Show All</option>
         </select>
         </div>
       </div>
@@ -64,8 +60,8 @@
               {{transportNameDisplay[$index]}}
             </div>
             <div class="item item-text-wrap">
-              {{transportDateStartDisplay[$index]}}<br>
-              {{transportTimeStartDisplay[$index]}}<br>
+              Date: {{ transportDateTimeStartDisplay[$index] | date : "d MMM yyyy"}}<br>
+              Time: {{ transportDateTimeStartDisplay[$index] | date : "h:mm a"}}<br>
               Pickup Location: {{transportFromDistanceDisplay[$index]}}
             </div>
           </div>

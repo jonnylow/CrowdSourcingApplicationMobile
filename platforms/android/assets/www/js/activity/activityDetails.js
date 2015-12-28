@@ -1,34 +1,40 @@
 angular.module('crowdsourcing')
 
-    .controller('activityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('activityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
     }
     $scope.loadingshow = true;
+    $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivityDetails.php?transportId=" + $scope.transportId)
+    $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivityDetails?transportId=" + $scope.transportId)
       .success(function (data) {
         var transportDetails = data;
 
         if (transportDetails != null) {
-          if(transportDetails[0] != null)
+          if(transportDetails.activity[0] != null)
           {
-            if(transportDetails[0].datetime_start != null && transportDetails[0].expected_duration_minutes != null && transportDetails[0].location_from != null
-            && transportDetails[0].location_to !=null && transportDetails[0].more_information != null)
+            if(transportDetails.activity[0].datetime_start != null && transportDetails.activity[0].expected_duration_minutes != null && transportDetails.activity[0].location_from != null
+            && transportDetails.activity[0].location_to !=null && transportDetails.activity[0].more_information != null)
               {
-                var temp =transportDetails[0].datetime_start.split(' ');
-                $scope.date = temp[0];
-                $scope.time = temp[1];
-                $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
-                $scope.locationFrom = transportDetails[0].location_from;
-                $scope.locationTo = transportDetails[0].location_to;
-                $scope.moreInformation = transportDetails[0].more_information;
+                var t = transportDetails.activity[0].datetime_start.split(/[- :]/);
+                var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+                $scope.dateTime = dateTime;
+                $scope.expectedDuration = transportDetails.activity[0].expected_duration_minutes + " Mins";
+                $scope.locationFrom = transportDetails.activity[0].location_from;
+                $scope.locationTo = transportDetails.activity[0].location_to;
+                $scope.moreInformation = transportDetails.activity[0].more_information;
+                if($scope.moreInformation == "")
+                {
+                  $scope.moreInformation = "No Additional Information"
+                }
                 $scope.loadingshow = false;
+                $ionicLoading.hide();
               }
           }
         }
-
       })
 
       $scope.apply=function()
@@ -42,11 +48,13 @@ angular.module('crowdsourcing')
           confirmPopup.then(function(res) {
             if(res) {
               $scope.loadingshow = true;
-              window.localStorage.setItem("tempADate", $scope.date);
-              window.localStorage.setItem("tempATime", $scope.time);
+              $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
+              window.localStorage.setItem("tempADateTime", $scope.dateTime);
               window.localStorage.setItem("tempAExpectedDuration", $scope.expectedDuration);
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
               window.localStorage.setItem("tempALocationTo", $scope.locationTo);
+              window.localStorage.setItem("tempAdditionalInformation", $scope.moreInformation);
 
               var checkUrlString = "http://www.changhuapeng.com/volunteer/php/CheckActivityApplication.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
               $http.get(checkUrlString)
@@ -58,6 +66,7 @@ angular.module('crowdsourcing')
                     $http.get(urlString)
                       .success(function (data) {
                         $scope.loadingshow = false;
+                        $ionicLoading.hide();
 
                         var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
                         $http.get(sendEmail)
@@ -79,6 +88,8 @@ angular.module('crowdsourcing')
                   else
                   {
                     $scope.loadingshow = false;
+                    $ionicLoading.hide();
+
                     var myPopup = $ionicPopup.show({
                       title: 'Notice',
                       subTitle: 'You have already applied for this activity. Please wait for centre to approve your application',

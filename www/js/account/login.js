@@ -1,8 +1,11 @@
 angular.module('crowdsourcing')
 
-    .controller('loginController', function ($scope, $ionicPopup, $state, $http) {
+    .controller('loginController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory) {
       $scope.login = function(fields){
           $scope.loadingshow = true;
+        //ionic loading screen
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
           if(fields != null) {
             if (fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != "")
             {
@@ -48,6 +51,7 @@ angular.module('crowdsourcing')
                             if (loginDetails != null) {
                               if(loginDetails[0].is_approved != 'f') {
                                 $scope.loadingshow = false;
+                                $ionicLoading.hide();
                                 window.localStorage.setItem("loginId", loginDetails[0].volunteer_id);
                                 window.localStorage.setItem("loginUserName", loginDetails[0].name);
                                 window.localStorage.setItem("loginEmail", loginDetails[0].email);
@@ -55,6 +59,7 @@ angular.module('crowdsourcing')
                               }
                               else {
                                 $scope.loadingshow = false;
+                                $ionicLoading.hide();
                                 var alertPopup = $ionicPopup.alert({
                                   title: 'Sorry',
                                   template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
@@ -69,6 +74,7 @@ angular.module('crowdsourcing')
                       }
                       else {
                         $scope.loadingshow = false;
+                        $ionicLoading.hide();
                         var alertPopup = $ionicPopup.alert({
                           title: 'Error',
                           template: 'Incorrect Email or Password.'
@@ -83,6 +89,7 @@ angular.module('crowdsourcing')
               }
               else {
                 $scope.loadingshow = false;
+                $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                   title: 'Error',
                   template: 'Invalid email address. Please try again.'
@@ -91,6 +98,7 @@ angular.module('crowdsourcing')
             }
             else
             {
+              $ionicLoading.hide();
               var alertPopup = $ionicPopup.alert({
                 title: 'Error',
                 template: 'Please fill in all fields.'
@@ -101,6 +109,7 @@ angular.module('crowdsourcing')
           }
           else
           {
+            $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
               title: 'Error',
               template: 'Please fill in all fields.'
@@ -112,6 +121,18 @@ angular.module('crowdsourcing')
     function validateEmail(email) {
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       return re.test(email);
+    }
+
+    $scope.landingPage = function () {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+      $state.go('landingPage', {}, {reload: true});
+      if (window.plugins != null) {
+        window.plugins.nativepagetransitions.slide(
+          {"direction": "down"}
+        );
+      }
     }
 
     //for POST parameters

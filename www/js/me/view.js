@@ -1,10 +1,11 @@
 angular.module('crowdsourcing')
 
-    .controller('viewAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $ionicHistory, $timeout) {
+    .controller('viewAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $ionicHistory, $timeout, $ionicLoading) {
       if(window.localStorage.getItem("loginUserName") != null) {
         $scope.name = window.localStorage.getItem("loginUserName");
         $scope.id = window.localStorage.getItem("loginId");
         $scope.loadingshow = true;
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       }
       else {
         var myPopup = $ionicPopup.show({
@@ -39,6 +40,7 @@ angular.module('crowdsourcing')
           $scope.preference1=userDetails[0].area_of_preference_1;
           $scope.preference2=userDetails[0].area_of_preference_2;
           $scope.loadingshow = false;
+          $ionicLoading.hide();
         }
       })
 

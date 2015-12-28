@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout) {
+    .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout, $ionicLoading) {
       if(typeof cordova != 'undefined'){
         cordova.plugins.diagnostic.isLocationEnabled(function(enabled){
           if(!enabled)
@@ -25,6 +25,9 @@ angular.module('crowdsourcing')
           alert("The following error occurred: "+error);
         });
       }
+
+      //ionic loading screen
+      $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
       $scope.transportActivity = [];
       $scope.loadingshow = true;
@@ -72,6 +75,7 @@ angular.module('crowdsourcing')
           //to check that application also got user location
           if(getLocation == true) {
             $scope.loadingshow = false;
+            $ionicLoading.hide();
           }
         })
 

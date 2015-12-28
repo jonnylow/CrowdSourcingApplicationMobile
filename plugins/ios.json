@@ -39,6 +39,10 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NativePageTransitions\"><param name=\"ios-package\" value=\"NativePageTransitions\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -136,6 +140,9 @@
             "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
+        },
+        "com.telerik.plugins.nativepagetransitions": {
             "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
         }
     },

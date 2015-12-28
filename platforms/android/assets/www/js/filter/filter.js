@@ -1,11 +1,12 @@
 angular.module('crowdsourcing')
 
-    .controller('filterController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicHistory) {
+    .controller('filterController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicHistory, $ionicLoading) {
       if ($stateParams.filter != null) {
         $scope.id = window.localStorage.getItem("loginId");
         $scope.filter = $stateParams.filter; //get current filter user select
         $scope.exisitingActivityIds = $stateParams.activityIds; //get any existing filter being applied already
         $scope.loadingshow = true;
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       }
 
       if($scope.filter != null)
@@ -47,6 +48,7 @@ angular.module('crowdsourcing')
                 }
               }
               $scope.loadingshow = false;
+              $ionicLoading.hide();
             })
         }
         else if($scope.filter == 'End Location')
@@ -83,6 +85,7 @@ angular.module('crowdsourcing')
                 }
               }
               $scope.loadingshow = false;
+              $ionicLoading.hide();
             })
         }
         else if($scope.filter == 'Time')
@@ -171,6 +174,7 @@ angular.module('crowdsourcing')
                 }
               }
               $scope.loadingshow = false;
+              $ionicLoading.hide();
             })
         }
       }

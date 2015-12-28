@@ -1,11 +1,12 @@
 angular.module('crowdsourcing')
 
-    .controller('manageAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('manageAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.fields= {nric: "",email: "", name:"", contactnumber:"", occupation:"", preferences_1:"", preferences_2:""};
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = $stateParams.id;
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         }
         else {
           $state.go('landingPage', {}, {reload: true});
@@ -25,6 +26,7 @@ angular.module('crowdsourcing')
           $scope.fields.preferences_1=userDetails[0].area_of_preference_1;
           $scope.fields.preferences_2=userDetails[0].area_of_preference_2;
           $scope.loadingshow = false;
+          $ionicLoading.hide();
         }
       })
 
@@ -35,6 +37,7 @@ angular.module('crowdsourcing')
       $scope.update=function(fields)
       {
         $scope.loadingshow = true;
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         if(fields != null) {
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
               && fields.occupation != null && fields.occupation.trim() != ""
@@ -54,6 +57,7 @@ angular.module('crowdsourcing')
                     var status = data;
                     if (status != null) {
                       $scope.loadingshow = false;
+                      $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
                         title: 'Status',
                         template: status.status[0]
@@ -69,24 +73,28 @@ angular.module('crowdsourcing')
               else
               {
                 $scope.loadingshow = false;
+                $ionicLoading.hide();
                 alert("Invalid phone number. Please try again.");
               }
             }
             else
             {
               $scope.loadingshow = false;
+              $ionicLoading.hide();
               alert("Name should consists of alphabetical letters only.");
             }
           }
           else
           {
             $scope.loadingshow = false;
+            $ionicLoading.hide();
             alert("Please do not leave any fields empty.");
           }
         }
         else
         {
           $scope.loadingshow = false;
+          $ionicLoading.hide();
           alert("Please do not leave any fields empty.");
         }
       }

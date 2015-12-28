@@ -1,11 +1,12 @@
 angular.module('crowdsourcing')
 
-    .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover) {
+    .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover, $ionicLoading) {
 
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         }
         else {
             var myPopup = $ionicPopup.show({
@@ -90,6 +91,7 @@ angular.module('crowdsourcing')
             }
           }
           $scope.loadingshow = false;
+          $ionicLoading.hide();
         })
         .finally(function() {
           // Stop the ion-refresher from spinning
@@ -217,6 +219,8 @@ angular.module('crowdsourcing')
           }
 
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
           urlString = "http://www.changhuapeng.com/volunteer/php/updateActivityStatus.php?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
 
           $http.get(urlString)
@@ -224,6 +228,8 @@ angular.module('crowdsourcing')
               var status = data;
               if (status != null) {
                 $scope.loadingshow = false;
+                $ionicLoading.hide();
+
                 var alertPopup = $ionicPopup.alert({
                   title: 'Status',
                   template: status.status[0]

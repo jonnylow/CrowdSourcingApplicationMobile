@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop, uiGmapGoogleMapApi) {
+    .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop, uiGmapGoogleMapApi, $ionicLoading) {
 
         //user location, get from global var or have to reacquire if null
         $scope.myLocation = {lng : '', lat: ''};
@@ -43,6 +43,7 @@ angular.module('crowdsourcing')
         $scope.transportDateTimeStartDisplay=[];
         $scope.transportFromDistanceDisplay=[];
         $scope.loadingshow = true;
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
         //plot map
         if($scope.transportID != null && $scope.transportName != null && $scope.transportDateTimeStart !=null) {
@@ -140,6 +141,7 @@ angular.module('crowdsourcing')
                     }
                   }
                   $scope.loadingshow = false;
+                  $ionicLoading.hide();
                 }
               })
           });
@@ -188,6 +190,8 @@ angular.module('crowdsourcing')
           $scope.displayItems = function(locationFrom, markerIndex)
           {
             $scope.loadingshow = true;
+            $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
             $scope.showTag = false;
             for(var j = 0; j<$scope.markersStatus.length; j++)
             {
@@ -217,6 +221,7 @@ angular.module('crowdsourcing')
               }
             }
             $scope.loadingshow = false;
+            $ionicLoading.hide();
           }
 
           //proceed to activity details page

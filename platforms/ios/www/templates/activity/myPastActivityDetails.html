@@ -1,4 +1,4 @@
-<ion-view view-title={{transportActivityName}}>
+<ion-view view-title="My Activity Details">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
@@ -6,47 +6,79 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <div class="spinner" ng-show=loadingshow>
-    <ion-spinner icon="android"></ion-spinner>
-  </div>
-
  <ion-content ng-show=!loadingshow>
    <!--current activity listing-->
-   <div class="list card">
-     <div class="item item-divider">
-       <b>My Activity Details</b>
-     </div>
-     <div class="item item-text-wrap">
-       <b>Date:</b> {{date}}
-     </div>
-     <div class="item item-text-wrap">
-       <b>Time:</b> {{time}}
-     </div>
-     <div class="item item-text-wrap">
-       <b>Expected Duration:</b> {{expectedDuration}}
-     </div>
-     <div class="item item-text-wrap">
-       <b>Pick-up:</b> {{locationFrom}}
-     </div>
-     <div class="item item-text-wrap">
-       <b>Drop-off:</b> {{locationTo}}
-     </div>
-     <div class="item item-text-wrap">
-       <b>Approval Status:</b> {{approvalStatus}}
-     </div>
-     <div class="item item-button-right">
+   <div class="list card myactivitymain">
+      <div class="item item-icon-left item-text-wrap myactivitymain">
+        <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
+        <div class="row">
+          <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+            <table>
+              <tr>
+                <td><p class="myactivity">From</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[0]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationFrom}}</p></td>
+              </tr>
+              <tr>
+                <td><p class="myactivity">To</p></td>
+                <td><p class="myactivity"><b>{{transportActivityName.split("-")[1]}}</b></p></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><p class="myactivity">{{locationTo}}</p></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-       <b>Transport Status:</b> {{transportStatus}}
-
-       <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
-     </div>
-     <div class="item item-text-wrap">
-       <b>Additional Information:</b> {{moreInformation}}
-     </div>
-     <div class="item item-button-right">
-       <b>Elderly Information</b>
-       <button class="button button-energized" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">More</button>
-     </div>
-   </div>
+    <div class="row" style="text-align: center;">
+      <div class="col col-50">
+        <div class="list card myactivity">
+          <i class="ion-clock" style="font-size: 300%"></i>
+          <p class="myactivity">Expected Duration</p>
+          <h5 class="myactivity">{{expectedDuration}}</h5>
+        </div>
+      </div>
+      <div class="col col-50">
+        <div class="list card myactivity">
+        <i class="ion-checkmark-circled" style="font-size: 300%"></i>
+        <p class="myactivity">Approval Status</p>
+        <h5 class="myactivity">{{approvalStatus}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="text-align: center;">
+      <div class="col col-50">
+        <div class="list card myactivity">
+        <i class="ion-android-car" style="font-size: 300%"></i>
+        <p class="myactivity">Transport Status</p>
+        <h5 class="myactivity">{{transportStatus}}</h5>
+                <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
+        </div>
+      </div>
+      <div class="col col-50">
+        <div class="list card myactivity" style="height: 104px">
+        <i class="ion-person" style="font-size: 300%"></i>
+        <p class="myactivity"></p>
+        <button class="button button-energized button-small" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="list card myactivity">
+          <div class="item item-icon-left">
+            <i class="icon ion-information-circled"></i>
+            <p class="myactivity">Additional Information</p>
+            <h5 class="myactivity">{{moreInformation}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

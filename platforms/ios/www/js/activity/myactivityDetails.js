@@ -1,11 +1,12 @@
 angular.module('crowdsourcing')
 
-    .controller('myactivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory) {
+    .controller('myactivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
       $scope.id = window.localStorage.getItem("loginId");
       $scope.loadingshow = true;
+      $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId +"&id="+$scope.id)
@@ -18,15 +19,20 @@ angular.module('crowdsourcing')
             if(transportDetails[0].datetime_start != null && transportDetails[0].expected_duration_minutes != null && transportDetails[0].location_from != null
               && transportDetails[0].location_to !=null && transportDetails[0].more_information != null)
             {
-              var temp =transportDetails[0].datetime_start.split(' ');
-              var datesTemp = temp[0].split('-');
-              $scope.date = datesTemp[2] + "-" + datesTemp[1] + "-" + datesTemp[0];
-              $scope.time = temp[1];
+              var t = transportDetails[0].datetime_start.split(/[- :]/);
+              var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+              $scope.dateTime = dateTime;
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationTo = transportDetails[0].location_to;
               $scope.moreInformation = transportDetails[0].more_information;
+              if($scope.moreInformation == "")
+              {
+                $scope.moreInformation = "No Additional Information"
+              }
               $scope.approvalStatus = capitalizeFirstLetter(transportDetails[0].approval);
+
               var transportStatusToDisplay;
               if(transportDetails[0].status == "new task")
               {
@@ -36,26 +42,14 @@ angular.module('crowdsourcing')
               {
                 transportStatusToDisplay = transportDetails[0].status;
               }
+
               $scope.transportStatus = capitalizeFirstLetter(transportStatusToDisplay);
 
-              var date_test = $scope.date + " " + $scope.time;
-              var transportDateTime = new Date(date_test.replace(/-/g,"/"));
-              var currentDateTime = new Date();
-              transportDateTime.setMinutes(transportDateTime.getMinutes() - 30);
 
-              //console.log($scope.id);
-              //console.log(transportDetails[0].status);
-              //console.log(transportDetails[0].approval);
               if(transportDetails[0].status != "completed" && transportDetails[0].approval=="approved")
               {
-                $scope.eldery = false;
-                //if(currentDateTime >=transportDateTime) {
-                  //$scope.updateStatus = false;
-               // }
-                //else
-                //{
+                  $scope.eldery = false;
                   $scope.updateStatus = false;
-               // }
               }
               else
               {
@@ -79,6 +73,7 @@ angular.module('crowdsourcing')
           }
         }
         $scope.loadingshow = false;
+        $ionicLoading.hide();
       })
 
     function capitalizeFirstLetter(string) {
@@ -110,6 +105,8 @@ angular.module('crowdsourcing')
       confirmPopup.then(function(res) {
         if(res) {
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
           urlString = "http://www.changhuapeng.com/volunteer/php/Withdraw.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
 
           $http.get(urlString)
@@ -127,6 +124,7 @@ angular.module('crowdsourcing')
               var status = data;
               if (status != null) {
                 $scope.loadingshow = false;
+                $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                   title: 'Status',
                   template: status.status[0]

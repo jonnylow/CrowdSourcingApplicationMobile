@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop) {
+    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory) {
     var myPopup = $ionicPopup.show({
       title: '<b>Notice</b>',
       subTitle: 'Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration',
@@ -9,7 +9,15 @@ angular.module('crowdsourcing')
         {
           text: 'Cancel',
           onTap: function(e) {
+            $ionicHistory.nextViewOptions({
+              disableAnimate: true
+            });
             $state.go('landingPage', {}, {reload: true});
+            if (window.plugins != null) {
+              window.plugins.nativepagetransitions.slide(
+                {"direction": "down"}
+              );
+            }
           }},
         {
           text: '<b>Ok</b>',
@@ -23,6 +31,7 @@ angular.module('crowdsourcing')
       {
         if(fields != null) {
           $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
             &&  fields.dob!= null && fields.nric!= null
@@ -79,11 +88,13 @@ angular.module('crowdsourcing')
                                     window.localStorage.setItem("tempGender", tempGender);
 
                                     $scope.loadingshow = false;
+                                    $ionicLoading.hide();
                                     $state.go('moreQuestions', {}, {reload: true});
                                   }
                                   else
                                   {
                                     $scope.loadingshow = false;
+                                    $ionicLoading.hide();
                                     alert("NRIC has already been registered. Please try again.");
                                   }
                                 })
@@ -96,44 +107,52 @@ angular.module('crowdsourcing')
                           else
                           {
                             $scope.loadingshow = false;
+                            $ionicLoading.hide();
                             alert("Email address has already been registered. Please try again.");
                           }
                         })
                     }
                     else {
                       $scope.loadingshow = false;
+                      $ionicLoading.hide();
                       alert("Invalid email address. Please try again.");
                     }
                   }
                   else {
                     $scope.loadingshow = false;
+                    $ionicLoading.hide();
                     alert("Invalid phone number. Please try again.");
                   }
                 /*}
                 else {
                   $scope.loadingshow = false;
+                 $ionicLoading.hide();
                   alert("Passwords do not match. Please try again.");
                 }*/
               }
               else {
                 $scope.loadingshow = false;
+                $ionicLoading.hide();
                 alert("Name should consists of alphabetical letters only.");
               }
             }
             else {
               $scope.loadingshow = false;
+              $ionicLoading.hide();
               alert("Date of Birth cannot larger than current date.");
             }
           }
           else
           {
             $scope.loadingshow = false;
+            $ionicLoading.hide();
             alert("Please fill in all fields.");
           }
         }
         else
         {
           $scope.loadingshow = false;
+          $ionicLoading.hide();
           alert("Please fill in all fields.");
         }
       }
@@ -181,6 +200,18 @@ angular.module('crowdsourcing')
       {
         //not valid
         return false;
+      }
+    }
+
+    $scope.landingPage = function () {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+      $state.go('landingPage', {}, {reload: true});
+      if (window.plugins != null) {
+        window.plugins.nativepagetransitions.slide(
+          {"direction": "down"}
+        );
       }
     }
   });

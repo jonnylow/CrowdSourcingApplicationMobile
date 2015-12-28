@@ -5,6 +5,7 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       $scope.transportIds = $stateParams.transportIds;
+      $scope.distance = $stateParams.distance;
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var ids = [];
       var number = 0;
@@ -40,7 +41,8 @@ angular.module('crowdsourcing')
                   id: transportDetails[i].activity_id,
                   name: transportDetails[i].name,
                   date: date,
-                  dateTime:dateTime
+                  dateTime:dateTime,
+                  distance: $scope.distance
                 });
               }
             }

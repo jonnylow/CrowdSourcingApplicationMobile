@@ -261,7 +261,7 @@ angular.module('crowdsourcing')
           $scope.goList = function()
           {
             if($scope.transportIDDisplay.length != 0) {
-              $state.go('listTransport', {transportIds: $scope.transportIDDisplay});
+              $state.go('listTransport', {transportIds: $scope.transportIDDisplay, distance:$scope.transportFromDistanceDisplay[0]});
             }
             else
             {

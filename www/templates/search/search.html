@@ -6,33 +6,40 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
+
+  <ion-content ng-show=!loadingshow>
   <!--filter bar-->
-  <div style="top: 45px;" class="item item-button-right">
+  <div class="item item-button-right">
     Filter By: {{filter}}
-    <button class="button button-icon ion-more" ng-click="openPopover($event)">
+    <button class="button button-icon ion-arrow-down-b" ng-click="openPopover($event)">
     </button>
   </div>
 
-  <!--search bar-->
-  <ion-header-bar class="bar-subheader">
-    <input type="search" placeholder="Search by activity name" ng-model="searchText.name">
-  </ion-header-bar>
+    
+      <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
+        <table>
+          <tr>
+            <td class="search">
+            {{activity.no}}
+          </td>
+          <td>
 
-  <ion-content ng-show=!loadingshow>
-
-    <div class="list card">
-      <ion-item ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
-
-        <div class="item item-divider scan item-text-wrap">
-          {{activity.no}}.
-          {{activity.name}}<br>
-        </div>
-        <div class="item item-text-wrap">
-          Date: {{ activity.dateTime | date : "d MMM yyyy"}} <br><br>
-          Time: {{ activity.dateTime | date : "h:mm a"}} <br><br>
-        </div>
-      </ion-item>
-  </div>
-
+          <div class="item item-icon-left item-text-wrap myactivitymain">
+            <i class="icon search"><img src="img/car.png" class="homeicon-image"></i>
+            <h2 class="home"> {{ activity.dateTime | date : "d MMM yyyy" }}, {{ activity.dateTime | date : "h:mm a"}}</h2>
+            <table>
+              <tr>
+                <td><p class="myactivity">From</p></td>
+                <td><p class="myactivity"><b>{{activity.name.split("-")[0]}}</b></p></td>
+              </tr>
+              <tr>
+                <td><p class="myactivity">To</p></td>
+                <td><p class="myactivity"><b>{{activity.name.split("-")[1]}}</b></p></td>
+              </tr>
+            </table>
+          </div>
+      </td>
+    </tr>
+  </table>
   </ion-content>
 </ion-view>

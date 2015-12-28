@@ -913,3 +913,16 @@ label.item.item-input.item-stacked-label{
   margin-top: -10px;
 }
 /*end of change password page*/
+
+/*Search pages*/
+td.search{
+  background-color: #A6AAA9;
+  width: 10%;
+  text-align: center;
+  color: #fff;
+}
+
+.icon.search{
+  left:3px;
+}
+/*end of search pages*/

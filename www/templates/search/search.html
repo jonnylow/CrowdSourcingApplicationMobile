@@ -12,7 +12,6 @@
 
   <ion-content ng-show=!loadingshow>
   <!--filter bar-->
-  <!--JON: Dropdown is here-->
   <div class="list card myactivitymain">
     <label class="item item-input item-select">
 
@@ -20,23 +19,15 @@
         <i class="ion-funnel"></i>
         Filter by {{filter}}
       </div>
-      <select ng-click="goFilter('start')" class="search">
-        <option value="" disabled selected></option>
-        <option value="start">Start Location</option>
-        <option value="end">End Location</option>
-        <option value="time">Time</option>
+
+      <select class="search"
+              ng-model="filterSelected"
+              ng-options="filter.value as filter.label for filter in filterOptions"
+              ng-change="goFilter(filterSelected)">
       </select>
     </label>
   </div>
 
- <!--Start: Remove this only when above is done
-  <div class="item item-button-right">
-    Filter By: {{filter}}
-    <button class="button button-icon ion-arrow-down-b" ng-click="openPopover($event)">
-    </button>
-  </div>
-  End: Remove this only when above is done-->
-    
       <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
         <table>
           <tr>
@@ -46,7 +37,7 @@
           <td>
 
           <div class="item item-text-wrap">
-            
+
             <h2 class="home"> {{ activity.dateTime | date : "d MMM yyyy" }}, {{ activity.dateTime | date : "h:mm a"}}</h2>
             <table>
               <tr>

@@ -32,6 +32,7 @@ angular.module('crowdsourcing')
       $scope.transportActivity = [];
       $scope.loadingshow = true;
       var getLocation = false;
+      var loadData = false;
 
       //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
     if(window.localStorage.getItem("userLat") == null) {
@@ -39,10 +40,22 @@ angular.module('crowdsourcing')
         window.localStorage.setItem("userLat", pos.coords.latitude);
         window.localStorage.setItem("userLong", pos.coords.longitude);
         getLocation = true;
+
+        //to check that application also got user location && data finish loading
+        if(getLocation == true && loadData == true) {
+          $scope.loadingshow = false;
+          $ionicLoading.hide();
+        }
       });
     }
     else {
       getLocation = true;
+
+      //to check that application also got user location && data finish loading
+      if(getLocation == true && loadData == true) {
+        $scope.loadingshow = false;
+        $ionicLoading.hide();
+      }
     }
 
       $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveRecommendedTransportActivity.php?limit=2")
@@ -71,11 +84,13 @@ angular.module('crowdsourcing')
               }
             }
           }
+          loadData = true;
 
-          //to check that application also got user location
-          if(getLocation == true) {
+          //to check that application also got user location && data finish loading
+          if(getLocation == true && loadData == true) {
             $scope.loadingshow = false;
             $ionicLoading.hide();
+
           }
         })
 

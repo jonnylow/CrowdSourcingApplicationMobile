@@ -8,7 +8,19 @@ angular.module('crowdsourcing')
       {
         $scope.filter="None";
       }
-      $scope.loadingshow = true;
+
+      $scope.filterOptions = [{
+        value: 'start',
+        label: 'Start Location'
+      }, {
+        value: 'end',
+        label: 'End Location'
+      }, {
+        value: 'time',
+        label: 'Time'
+      }];
+
+    $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
     $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
@@ -59,25 +71,6 @@ angular.module('crowdsourcing')
       {
         $state.go('activityDetails', {transportId: id, transportActivityName: name});
       }
-
-
-      $ionicPopover.fromTemplateUrl('templates/search/filter_popout.html', {
-        scope: $scope
-      }).then(function (popover) {
-        $scope.popover = popover;
-      });
-
-
-      $scope.openPopover = function($event) {
-        $scope.popover.show($event);
-      };
-      $scope.closePopover = function() {
-        $scope.popover.hide();
-      };
-      //Cleanup the popover when we're done with it!
-      $scope.$on('$destroy', function() {
-        $scope.popover.remove();
-      });
 
       //go to the filter page depending on which filter user select (start/end/time)
       $scope.goFilter= function(filter) {

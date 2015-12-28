@@ -1,38 +1,57 @@
 <ion-view view-title="Search">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
-    <ion-nav-buttons side="left">
+    <ion-nav-buttons>
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-transparent" ui-sref="search({filter: '', activityIds: ''})">Reset Filter</button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <!--filter bar-->
-  <div style="top: 45px;" class="item item-button-right">
-    Filter By: {{filter}}
-    <button class="button button-icon ion-more" ng-click="openPopover($event)">
-    </button>
-  </div>
-
-  <!--search bar-->
-  <ion-header-bar class="bar-subheader">
-    <input type="search" placeholder="Search by activity name" ng-model="searchText.name">
-  </ion-header-bar>
 
   <ion-content ng-show=!loadingshow>
+  <!--filter bar-->
+  <div class="list card myactivitymain">
+    <label class="item item-input item-select">
 
-    <div class="list card">
-      <ion-item ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
+      <div class="input-label">
+        <i class="ion-funnel"></i>
+        Filter by {{filter}}
+      </div>
 
-        <div class="item item-divider scan item-text-wrap">
-          {{activity.no}}.
-          {{activity.name}}<br>
-        </div>
-        <div class="item item-text-wrap">
-          Date: {{ activity.dateTime | date : "d MMM yyyy"}} <br><br>
-          Time: {{ activity.dateTime | date : "h:mm a"}} <br><br>
-        </div>
-      </ion-item>
+      <select class="search"
+              ng-model="filterSelected"
+              ng-options="filter.value as filter.label for filter in filterOptions"
+              ng-change="goFilter(filterSelected)">
+      </select>
+    </label>
   </div>
 
+      <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
+        <table>
+          <tr>
+            <td class="search">
+            {{activity.no}}
+          </td>
+          <td>
+
+          <div class="item item-text-wrap">
+
+            <h2 class="home"> {{ activity.dateTime | date : "d MMM yyyy" }}, {{ activity.dateTime | date : "h:mm a"}}</h2>
+            <table>
+              <tr>
+                <td><p class="myactivity">From</p></td>
+                <td><p class="myactivity"><b>{{activity.name.split("-")[0]}}</b></p></td>
+              </tr>
+              <tr>
+                <td><p class="myactivity">To</p></td>
+                <td><p class="myactivity"><b>{{activity.name.split("-")[1]}}</b></p></td>
+              </tr>
+            </table>
+          </div>
+      </td>
+    </tr>
+  </table>
   </ion-content>
 </ion-view>

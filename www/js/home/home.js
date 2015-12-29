@@ -1,30 +1,93 @@
 angular.module('crowdsourcing')
 
     .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout, $ionicLoading) {
-      if(typeof cordova != 'undefined'){
-        cordova.plugins.diagnostic.isLocationEnabled(function(enabled){
-          if(!enabled)
-          {
-            $state.go('login', {}, {reload: true});
+
+    if(window.localStorage.getItem("userLat") == null || window.localStorage.getItem("userLong") == null) {
+      if (typeof cordova != 'undefined') {
+        //check location whether is it enabled
+        cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
+          if (!enabled) {
+            $ionicLoading.hide();
             var myPopup = $ionicPopup.show({
               title: '<b>Notice</b>',
-              subTitle: 'No location services detected. Please enable before using iCare.',
+              subTitle: 'No location services detected. Please enable before using CareRide.',
               scope: $scope,
               buttons: [
                 {
                   text: 'Proceed to Location Services',
                   type: 'button-calm',
-                  onTap: function(e) {
+                  onTap: function (e) {
+                    $state.go('landingPage', {}, {reload: true});
                     cordova.plugins.diagnostic.switchToLocationSettings();
                   }
+                },
+                {
+                  text: 'Proceed without Location Services',
+                  type: 'button-calm',
+                  onTap: function (e) {
+                    //use default location
+                    window.localStorage.setItem("userLat", "1.297507");
+                    window.localStorage.setItem("userLong", "103.850436");
+
+                    getLocation = true;
+                    //to check that application also got user location && data finish loading
+                    if (getLocation == true && loadData == true) {
+                      $scope.loadingshow = false;
+                      $ionicLoading.hide();
+                    }
+                  }
+
                 },
               ]
             });
           }
-        }, function(error){
-          alert("The following error occurred: "+error);
+          else {
+            //check whether settings is set to high accuracy
+            cordova.plugins.diagnostic.getLocationMode(function (mode) {
+              if (mode != "high_accuracy") {
+                $ionicLoading.hide();
+
+                var myPopup = $ionicPopup.show({
+                  title: '<b>Notice</b>',
+                  subTitle: 'Please switch location service mode to High Accuracy.',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: 'Proceed to Location Services',
+                      type: 'button-calm',
+                      onTap: function (e) {
+                        $state.go('landingPage', {}, {reload: true});
+                        cordova.plugins.diagnostic.switchToLocationSettings();
+                      }
+                    },
+                    {
+                      text: 'Proceed without Location Services',
+                      type: 'button-calm',
+                      onTap: function (e) {
+                        //use default location
+                        window.localStorage.setItem("userLat", "1.297507");
+                        window.localStorage.setItem("userLong", "103.850436");
+
+                        getLocation = true;
+                        //to check that application also got user location && data finish loading
+                        if (getLocation == true && loadData == true) {
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
+                        }
+                      }
+                    },
+                  ]
+                });
+              }
+            }, function (error) {
+              console.error("The following error occurred: " + error);
+            });
+          }
+        }, function (error) {
+          alert("The following error occurred: " + error);
         });
       }
+    }
 
       //ionic loading screen
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
@@ -35,10 +98,15 @@ angular.module('crowdsourcing')
       var loadData = false;
 
       //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
+      //NOTE BACKEND DEVELOPERS: set timeout to only fire error once
     if(window.localStorage.getItem("userLat") == null) {
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        window.localStorage.setItem("userLat", pos.coords.latitude);
-        window.localStorage.setItem("userLong", pos.coords.longitude);
+      var onSuccess = function(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+
+        window.localStorage.setItem("userLat", lat);
+        window.localStorage.setItem("userLong", lng);
+
         getLocation = true;
 
         //to check that application also got user location && data finish loading
@@ -46,7 +114,15 @@ angular.module('crowdsourcing')
           $scope.loadingshow = false;
           $ionicLoading.hide();
         }
-      });
+      };
+
+      function onError(err) {
+        //$ionicLoading.hide();
+        //$state.go('landingPage', {}, {reload: true});
+      }
+
+      //get location with 10 secs timeout
+      navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, enableHighAccuracy: true });
     }
     else {
       getLocation = true;

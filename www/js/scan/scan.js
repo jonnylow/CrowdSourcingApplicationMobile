@@ -9,13 +9,6 @@ angular.module('crowdsourcing')
           $scope.myLocation.lng = window.localStorage.getItem("userLong");
           $scope.myLocation.lat = window.localStorage.getItem("userLat");
         }
-        else
-        {
-          navigator.geolocation.getCurrentPosition(function(pos) {
-            $scope.myLocation.lng = pos.coords.longitude;
-            $scope.myLocation.lat = pos.coords.latitude;
-          });
-        }
 
         $scope.showTag = false;
         $scope.radius = 2800;

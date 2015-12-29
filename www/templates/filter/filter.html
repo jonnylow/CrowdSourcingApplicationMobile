@@ -1,20 +1,28 @@
-<ion-view view-title='Filter by {{filter}}'>
+<ion-view view-title='Set Filter'>
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ng-click="goBack()"></button>
     </ion-nav-buttons>
-
+    <!--can we have a clear button?-->
     <ion-nav-buttons side="right">
-      <button class="button button-transparent" ng-click="goFilter()">Filter</button>
+      <button class="button button-transparent">Clear</button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content ng-show=!loadingshow>
-    <div class="list card">
+  <div class="list card filterheader">
+    <div class="item item-icon-left">
+      <i class="icon ion-funnel" style="font-size:100%;"></i>
+        <h2 style="text-transform: uppercase">FILTER BY <b>{{filter}}</b></h2>
+      </div>
+  </div>
+    <div class="list card filtermain">
+      
       <ion-checkbox ng-repeat="item in filterListDisplay" ng-model="item.checked" ng-checked="item.checked">
         {{ item.textShown }}
       </ion-checkbox>
     </div>
+    <button class="button paddedbutton button-calm" ng-click="goFilter()">Set</button>
   </ion-content>
 </ion-view>

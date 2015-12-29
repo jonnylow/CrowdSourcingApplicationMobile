@@ -119,13 +119,13 @@ button.home{
   color: #fff;
 }
 
-.bar-subheader{
+.bar-subheader.myactivity{
   top:92px;
   padding:0;
 
 }
 
-.has-subheader{
+.has-subheader.myactivity{
   top: 136px;
 }
 /***IMAGES***/
@@ -751,6 +751,29 @@ button.button.button-transparent.active{
 
 /*end of scan page*/
 
+/*list transport page*/
+.bar-subheader.listtransport{
+  background-color: transparent;
+  border-color: transparent;
+  background-image: none;
+}
+
+.list.card.listtransport{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.item.listtransport{
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/*end of list transport page*/
 /*profile page*/
 
 div.list.profile{
@@ -884,7 +907,7 @@ label.item.item-input.item-stacked-label{
 /*change password page*/
 
 .list.updatePassword1{
-  margin-top: 50px;
+  
   background-color: #fff;
 }
 
@@ -934,3 +957,24 @@ select.search{
   padding:0;
 }
 /*end of search pages*/
+
+/*Filter pages*/
+.list.card.filterheader{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: transparent;
+}
+
+.item.filterheader{
+  padding-top: 0;
+}
+.list.card.filtermain{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 16px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

@@ -6,20 +6,23 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-
-  <!--leejia, search bar must be outside of ion-content for the search to work-->
+<ion-header-bar class="bar bar-subheader listtransport">
+    <!--leejia, search bar must be outside of ion-content for the search to work-->
   <!--search bar-->
-  <div class="list card myactivitymain">
-    <label class="item item-input item-select">
+  <div class="list card listtransport">
+    <label class="item item-input item-select listtransport">
       <div class="input-label">
         <!--TODO: if no dates selected, show "All"-->
         Showing activities from
       </div>
-      <input type="date" placeholder="Search by activity date" ng-model="searchText">
+      <b><input type="date" placeholder="Search by activity date" ng-model="searchText"></b>
     </label>
   </div>
+</ion-header-bar>
 
-  <ion-content ng-show=!loadingshow>
+
+
+  <ion-content has-subheader="true" class="listtransport" ng-show=!loadingshow>
     <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchFilter" ng-click="proceed(activity.id, activity.name)">
       <table>
         <tr>

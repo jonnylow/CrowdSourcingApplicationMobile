@@ -4,88 +4,91 @@ angular.module('crowdsourcing')
 
     if(window.localStorage.getItem("userLat") == null || window.localStorage.getItem("userLong") == null) {
       if (typeof cordova != 'undefined') {
-        //check location whether is it enabled
-        cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
-          if (!enabled) {
-            $ionicLoading.hide();
-            var myPopup = $ionicPopup.show({
-              title: '<b>Notice</b>',
-              subTitle: 'No location services detected. Please enable before using CareRide.',
-              scope: $scope,
-              buttons: [
-                {
-                  text: 'Proceed to Location Services',
-                  type: 'button-calm',
-                  onTap: function (e) {
-                    $state.go('landingPage', {}, {reload: true});
-                    cordova.plugins.diagnostic.switchToLocationSettings();
-                  }
-                },
-                {
-                  text: 'Proceed without Location Services',
-                  type: 'button-calm',
-                  onTap: function (e) {
-                    //use default location
-                    window.localStorage.setItem("userLat", "1.297507");
-                    window.localStorage.setItem("userLong", "103.850436");
+        if(ionic.Platform.isAndroid() == true) {
 
-                    getLocation = true;
-                    //to check that application also got user location && data finish loading
-                    if (getLocation == true && loadData == true) {
-                      $scope.loadingshow = false;
-                      $ionicLoading.hide();
+          //check location whether is it enabled
+          cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
+            if (!enabled) {
+              $ionicLoading.hide();
+              var myPopup = $ionicPopup.show({
+                title: '<b>Notice</b>',
+                subTitle: 'No location services detected. Please enable before using CareRide.',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: 'Proceed to Location Services',
+                    type: 'button-calm',
+                    onTap: function (e) {
+                      $state.go('landingPage', {}, {reload: true});
+                      cordova.plugins.diagnostic.switchToLocationSettings();
                     }
-                  }
+                  },
+                  {
+                    text: 'Proceed without Location Services',
+                    type: 'button-calm',
+                    onTap: function (e) {
+                      //use default location
+                      window.localStorage.setItem("userLat", "1.297507");
+                      window.localStorage.setItem("userLong", "103.850436");
 
-                },
-              ]
-            });
-          }
-          else {
-            //check whether settings is set to high accuracy
-            cordova.plugins.diagnostic.getLocationMode(function (mode) {
-              if (mode != "high_accuracy") {
-                $ionicLoading.hide();
-
-                var myPopup = $ionicPopup.show({
-                  title: '<b>Notice</b>',
-                  subTitle: 'Please switch location service mode to High Accuracy.',
-                  scope: $scope,
-                  buttons: [
-                    {
-                      text: 'Proceed to Location Services',
-                      type: 'button-calm',
-                      onTap: function (e) {
-                        $state.go('landingPage', {}, {reload: true});
-                        cordova.plugins.diagnostic.switchToLocationSettings();
+                      getLocation = true;
+                      //to check that application also got user location && data finish loading
+                      if (getLocation == true && loadData == true) {
+                        $scope.loadingshow = false;
+                        $ionicLoading.hide();
                       }
-                    },
-                    {
-                      text: 'Proceed without Location Services',
-                      type: 'button-calm',
-                      onTap: function (e) {
-                        //use default location
-                        window.localStorage.setItem("userLat", "1.297507");
-                        window.localStorage.setItem("userLong", "103.850436");
+                    }
 
-                        getLocation = true;
-                        //to check that application also got user location && data finish loading
-                        if (getLocation == true && loadData == true) {
-                          $scope.loadingshow = false;
-                          $ionicLoading.hide();
+                  },
+                ]
+              });
+            }
+            else {
+              //check whether settings is set to high accuracy
+              cordova.plugins.diagnostic.getLocationMode(function (mode) {
+                if (mode != "high_accuracy") {
+                  $ionicLoading.hide();
+
+                  var myPopup = $ionicPopup.show({
+                    title: '<b>Notice</b>',
+                    subTitle: 'Please switch location service mode to High Accuracy.',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: 'Proceed to Location Services',
+                        type: 'button-calm',
+                        onTap: function (e) {
+                          $state.go('landingPage', {}, {reload: true});
+                          cordova.plugins.diagnostic.switchToLocationSettings();
                         }
-                      }
-                    },
-                  ]
-                });
-              }
-            }, function (error) {
-              console.error("The following error occurred: " + error);
-            });
-          }
-        }, function (error) {
-          alert("The following error occurred: " + error);
-        });
+                      },
+                      {
+                        text: 'Proceed without Location Services',
+                        type: 'button-calm',
+                        onTap: function (e) {
+                          //use default location
+                          window.localStorage.setItem("userLat", "1.297507");
+                          window.localStorage.setItem("userLong", "103.850436");
+
+                          getLocation = true;
+                          //to check that application also got user location && data finish loading
+                          if (getLocation == true && loadData == true) {
+                            $scope.loadingshow = false;
+                            $ionicLoading.hide();
+                          }
+                        }
+                      },
+                    ]
+                  });
+                }
+              }, function (error) {
+                console.error("The following error occurred: " + error);
+              });
+            }
+          }, function (error) {
+            alert("The following error occurred: " + error);
+          });
+        }
       }
     }
 

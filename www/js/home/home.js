@@ -35,8 +35,9 @@ angular.module('crowdsourcing')
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
                     }
-                  }
 
+                    alert("CareRide will use the default location. Please restart the application with location services switch on to get your current location.")
+                  }
                 },
               ]
             });
@@ -74,6 +75,8 @@ angular.module('crowdsourcing')
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
                         }
+
+                        alert("CareRide will use the default location. Please restart the application with location services switch on to get your current location.")
                       }
                     },
                   ]

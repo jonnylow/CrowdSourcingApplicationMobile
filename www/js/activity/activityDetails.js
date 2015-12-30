@@ -8,24 +8,25 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivityDetails?transportId=" + $scope.transportId)
+    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivityDetails.php?transportId=" + $scope.transportId)
       .success(function (data) {
         var transportDetails = data;
 
         if (transportDetails != null) {
-          if(transportDetails.activity[0] != null)
+          if(transportDetails[0] != null)
           {
-            if(transportDetails.activity[0].datetime_start != null && transportDetails.activity[0].expected_duration_minutes != null && transportDetails.activity[0].location_from != null
-            && transportDetails.activity[0].location_to !=null && transportDetails.activity[0].more_information != null)
+            if(transportDetails[0].datetime_start != null)
               {
-                var t = transportDetails.activity[0].datetime_start.split(/[- :]/);
+                var t = transportDetails[0].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
                 $scope.dateTime = dateTime;
-                $scope.expectedDuration = transportDetails.activity[0].expected_duration_minutes + " Mins";
-                $scope.locationFrom = transportDetails.activity[0].location_from;
-                $scope.locationTo = transportDetails.activity[0].location_to;
-                $scope.moreInformation = transportDetails.activity[0].more_information;
+                $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
+                $scope.locationFrom = transportDetails[0].location_from;
+                $scope.locationFromAddress = transportDetails[0].location_from_address;
+                $scope.locationTo = transportDetails[0].location_to;
+                $scope.locationToAddress = transportDetails[0].location_to_address;
+                $scope.moreInformation = transportDetails[0].more_information;
                 if($scope.moreInformation == "")
                 {
                   $scope.moreInformation = "No Additional Information"
@@ -53,7 +54,9 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempADateTime", $scope.dateTime);
               window.localStorage.setItem("tempAExpectedDuration", $scope.expectedDuration);
               window.localStorage.setItem("tempALocationFrom", $scope.locationFrom);
+              window.localStorage.setItem("tempALocationFromAddress", $scope.locationFromAddress);
               window.localStorage.setItem("tempALocationTo", $scope.locationTo);
+              window.localStorage.setItem("tempALocationToAddress", $scope.locationToAddress);
               window.localStorage.setItem("tempAdditionalInformation", $scope.moreInformation);
 
               var checkUrlString = "http://www.changhuapeng.com/volunteer/php/CheckActivityApplication.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;

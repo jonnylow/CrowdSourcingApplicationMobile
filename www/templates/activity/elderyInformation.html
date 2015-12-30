@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content>
+  <ion-content ng-show=!loadingshow>
   <!--elderly information-->
     <div class="list card myactivitymain">
       <div class="item item-icon-left item-divider activitymain">
@@ -40,6 +40,15 @@
         <i class="icon ion-person"></i>
         <p class="activity">Elderly Information</p>
         <h5 class="myactivity">{{name}}</h5>
+
+        <p class="activity">Gender</p>
+        <h5 class="myactivity">{{gender}}</h5>
+
+        <p class="activity">Languages Spoken</p>
+        <h5 class="myactivity">{{languages}}</h5>
+
+        <p class="activity">Medical Information</p>
+        <h5 class="myactivity">{{medical}}</h5>
       </div>
       <div class="item item-icon-left activitymain">
         <i class="icon ion-ios-telephone"></i>

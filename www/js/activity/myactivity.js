@@ -43,7 +43,7 @@ angular.module('crowdsourcing')
           if (transportDetails != null){
             for(var i = 0; i<transportDetails.length; i++){
 
-              if(transportDetails[i].activity_id != null && transportDetails[i].name != null && transportDetails[i].datetime_start !=null){
+              if(transportDetails[i].activity_id != null){
                 var t = transportDetails[i].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
@@ -51,21 +51,21 @@ angular.module('crowdsourcing')
                 {
                   if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
                   {
-                    $scope.groups[1].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                    $scope.groups[1].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
                   }
                   else
                   {
                     if(transportDetails[i].status == "pick-up")
                     {
-                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
+                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
                     }
                     else if(transportDetails[i].status == "at check-up")
                     {
-                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
+                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
                     }
                     else if(transportDetails[i].status == "check-up completed")
                     {
-                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
+                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
                     }
                   }
                 }
@@ -75,15 +75,15 @@ angular.module('crowdsourcing')
                   if(dateTime >= currentDateTime)
                   {
                     if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
-                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                     else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
                     {
-                      $scope.groups[3].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[3].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                     else if(transportDetails[i].approval == "withdrawn" && transportDetails[i].status == "new task")
                     {
-                      $scope.groups[3].items.push({id:transportDetails[i].activity_id, name:transportDetails[i].name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[3].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                   }
                 }

@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading) {
+    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading, $ionicHistory) {
     $scope.tempName = window.localStorage.getItem("tempName");
     $scope.tempEmail = window.localStorage.getItem("tempEmail");
     $scope.tempPassword = window.localStorage.getItem("tempPassword");
@@ -67,12 +67,14 @@ angular.module('crowdsourcing')
               window.localStorage.removeItem("tempOccupation");
               window.localStorage.removeItem("tempPreferences1");
               window.localStorage.removeItem("tempPreferences2");
+              window.localStorage.removeItem("front");
+              window.localStorage.removeItem("back");
 
               var urlString = "http://www.changhuapeng.com/volunteer/php/AddUserAccount.php?phone="+$scope.tempContactNumber+"&name="+$scope.tempName+"&email="+$scope.tempEmail+"&password="+$scope.tempPassword+"&dob="+$scope.tempDOB
                 +"&nric="+$scope.tempNRIC+"&gender="+$scope.tempGender+"&frontIC="+$scope.tempFrontIC + "&backIC="+$scope.tempBackIC+"&haveCar="+$scope.tempHaveCar+"&preferences1="+$scope.tempPreferences1
                 +"&preferences2="+$scope.tempPreferences2+"&occupation="+$scope.tempOccupation;
 
-
+              console.log(urlString);
               $http.get(urlString)
                 .success(function (data) {
 
@@ -87,15 +89,16 @@ angular.module('crowdsourcing')
                       buttons: [
                         {
                           text: '<b>Ok</b>',
-                          type: 'button-calm'
+                          type: 'button-calm',
+                          onTap: function (e) {
+                            $ionicHistory.clearCache();
+                            $ionicHistory.clearHistory();
+                            $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
+                            $state.go('login', {}, {reload: true});
+                          }
                         },
                       ]
                     });
-
-                    $ionicHistory.clearCache();
-                    $ionicHistory.clearHistory();
-                    $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
-                    $state.go('login', {}, {reload: true});
                   }
                 })
 
@@ -140,4 +143,34 @@ angular.module('crowdsourcing')
           ]
         });
       }
+
+    $scope.landingPage = function () {
+      window.localStorage.removeItem("tempName");
+      window.localStorage.removeItem("tempEmail");
+      window.localStorage.removeItem("tempPassword");
+      window.localStorage.removeItem("tempContactnumber");
+      window.localStorage.removeItem("tempDOB");
+      window.localStorage.removeItem("tempNRIC");
+      window.localStorage.removeItem("tempGender");
+      window.localStorage.removeItem("tempHaveCar");
+      window.localStorage.removeItem("tempOccupation");
+      window.localStorage.removeItem("tempPreferences1");
+      window.localStorage.removeItem("tempPreferences2");
+      window.localStorage.removeItem("front");
+      window.localStorage.removeItem("back");
+
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
+
+      $state.go('landingPage', {}, {reload: true});
+      if (window.plugins != null) {
+        window.plugins.nativepagetransitions.slide(
+          {"direction": "down"}
+        );
+      }
+    }
     });

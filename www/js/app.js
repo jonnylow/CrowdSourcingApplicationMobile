@@ -129,18 +129,21 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
   })
 
     .state('registration', {
+      cache: false,
       url: '/register',
       templateUrl: 'templates/account/registration.html',
       controller: "registrationController"
     })
 
     .state('verify', {
+      cache: false,
       url: '/verify',
       templateUrl: 'templates/account/verify.html',
       controller: "verifyController"
     })
 
     .state('moreQuestions', {
+      cache: false,
       url: '/moreQuestions',
       templateUrl: 'templates/account/moreQuestions.html',
       controller: "moreQuestionsController"

@@ -144,21 +144,20 @@ angular.module('crowdsourcing')
           if (transportDetails != null) {
             for(var i = 0; i<transportDetails.length; i++)
             {
-              if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start)
+              if(transportDetails[i].activity_id != null)
               {
                 //calculate distance & format date/time
                 var t = transportDetails[i].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                var name = transportDetails[i].name.split('-');
 
                  //push to arrays to store all activities in array (also use for displaying)
                 $scope.transportActivity.push({
                   no: i + 1,
                   id: transportDetails[i].activity_id,
-                  start:name[0].trim(),
-                  end:name[1].trim(),
+                  start:transportDetails[i].location_from,
+                  end:transportDetails[i].location_to,
                   dateTime: dateTime,
-                  name: transportDetails[i].name
+                  name:transportDetails[i].location_from + " - " + transportDetails[i].location_to
                 });
               }
             }

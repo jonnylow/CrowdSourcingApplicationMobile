@@ -30,7 +30,7 @@ angular.module('crowdsourcing')
         if (transportDetails != null) {
           for(var i = 0; i<transportDetails.length; i++)
           {
-            if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start)
+            if(transportDetails[i].activity_id != null)
             {
               //format date/time
               var t = transportDetails[i].datetime_start.split(/[- :]/);
@@ -42,7 +42,9 @@ angular.module('crowdsourcing')
                 $scope.transportActivity.push({
                   no: i + 1,
                   id: transportDetails[i].activity_id,
-                  name: transportDetails[i].name,
+                  from:transportDetails[i].location_from,
+                  to:transportDetails[i].location_to,
+                  name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
                   dateTime: dateTime
                 });
               }
@@ -55,7 +57,9 @@ angular.module('crowdsourcing')
                   $scope.transportActivity.push({
                     no: i + 1,
                     id: transportDetails[i].activity_id,
-                    name: transportDetails[i].name,
+                    from:transportDetails[i].location_from,
+                    to:transportDetails[i].location_to,
+                    name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
                     dateTime: dateTime
                   });
                 }

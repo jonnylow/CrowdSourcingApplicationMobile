@@ -1,7 +1,7 @@
 <ion-view>
   <!--body-->
   <!--history to current tab-->
-  <ion-header-bar class="bar-subheader">
+  <ion-header-bar class="bar-subheader myactivity">
     <div class="button-bar">
       <button class="button button-selected myactivity">Current</button>
       <button class="button button-nonselected myactivity" ng-click="goHistory()">History</button>
@@ -41,11 +41,11 @@
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>
-                <td><p class="myactivity"><b>{{item.name.split("-")[0]}}</b></p></td>
+                <td><p class="myactivity"><b>{{item.from}}</b></p></td>
               </tr>
               <tr>
                 <td><p class="myactivity">To</p></td>
-                <td><p class="myactivity"><b>{{item.name.split("-")[1]}}</b></p></td>
+                <td><p class="myactivity"><b>{{item.to}}</b></p></td>
               </tr>
             </table>
             <div ng-if="item.status != 'Not Applicable'">

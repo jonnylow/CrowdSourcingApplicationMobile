@@ -27,6 +27,20 @@ angular.module('crowdsourcing')
       ]
     });
 
+    if(window.localStorage.getItem("tempName") != null && window.localStorage.getItem("tempEmail") != null &&
+      window.localStorage.getItem("tempPassword")!= null && window.localStorage.getItem("tempContactnumber")!= null &&
+      window.localStorage.getItem("tempDOB")!= null && window.localStorage.getItem("tempNRIC")!= null &&
+      window.localStorage.getItem("tempGender")!= null && window.localStorage.getItem("tempHaveCar")!= null &&
+      window.localStorage.getItem("tempOccupation")!= null)
+    {
+      if (window.localStorage.getItem("tempHaveCar") == 1) {
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:null,nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:true};
+      }
+      else {
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:null,nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:false};
+      }
+    }
+
       $scope.register = function(fields)
       {
         if(fields != null) {
@@ -35,7 +49,7 @@ angular.module('crowdsourcing')
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
             &&  fields.dob!= null && fields.nric!= null
-            && fields.nric.trim() != "" && fields.gender!= null && fields.gender.trim() != "") {
+            && fields.nric.trim() != "" && fields.gender!= null && fields.gender.trim() != "" && fields.occupation!= null && fields.occupation.trim() != "") {
             var tempName = fields.name;
             var tempEmail = fields.email;
             var tempPassword = fields.password;
@@ -44,6 +58,7 @@ angular.module('crowdsourcing')
             var tempDOB = fields.dob;
             var tempNRIC = fields.nric;
             var tempGender = fields.gender;
+            var occupation = fields.occupation;
 
             if (validateDOB(tempDOB) == true) {
               var dd = tempDOB.getDate();
@@ -79,6 +94,13 @@ angular.module('crowdsourcing')
                                   var status = data;
                                   if(status.status[0] != "exist")
                                   {
+                                    if (fields.carChecked == true) {
+                                      $scope.tempCarChecked = 1;
+                                    }
+                                    else {
+                                      $scope.tempCarChecked = 0;
+                                    }
+
                                     window.localStorage.setItem("tempName", tempName);
                                     window.localStorage.setItem("tempEmail", tempEmail);
                                     window.localStorage.setItem("tempPassword", tempPassword);
@@ -86,6 +108,8 @@ angular.module('crowdsourcing')
                                     window.localStorage.setItem("tempDOB", tempDOB);
                                     window.localStorage.setItem("tempNRIC", tempNRIC);
                                     window.localStorage.setItem("tempGender", tempGender);
+                                    window.localStorage.setItem("tempOccupation", occupation);
+                                    window.localStorage.setItem("tempHaveCar", $scope.tempCarChecked);
 
                                     $scope.loadingshow = false;
                                     $ionicLoading.hide();
@@ -204,9 +228,27 @@ angular.module('crowdsourcing')
     }
 
     $scope.landingPage = function () {
+      window.localStorage.removeItem("tempName");
+      window.localStorage.removeItem("tempEmail");
+      window.localStorage.removeItem("tempPassword");
+      window.localStorage.removeItem("tempContactnumber");
+      window.localStorage.removeItem("tempDOB");
+      window.localStorage.removeItem("tempNRIC");
+      window.localStorage.removeItem("tempGender");
+      window.localStorage.removeItem("tempHaveCar");
+      window.localStorage.removeItem("tempOccupation");
+      window.localStorage.removeItem("tempPreferences1");
+      window.localStorage.removeItem("tempPreferences2");
+      window.localStorage.removeItem("front");
+      window.localStorage.removeItem("back");
+
       $ionicHistory.nextViewOptions({
         disableAnimate: true
       });
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
+
       $state.go('landingPage', {}, {reload: true});
       if (window.plugins != null) {
         window.plugins.nativepagetransitions.slide(

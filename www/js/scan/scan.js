@@ -20,6 +20,7 @@ angular.module('crowdsourcing')
         $scope.transportID=[];
         $scope.transportName=[];
         $scope.transportLocationFrom=[];
+        $scope.transportLocationTo=[];
         $scope.transportDateTimeStart=[];
         $scope.transportFromDistance=[];
 
@@ -33,6 +34,8 @@ angular.module('crowdsourcing')
         //for dynamic displaying
         $scope.transportIDDisplay=[];
         $scope.transportNameDisplay=[];
+        $scope.transportFromDisplay=[];
+        $scope.transportToDisplay=[];
         $scope.transportDateTimeStartDisplay=[];
         $scope.transportFromDistanceDisplay=[];
         $scope.loadingshow = true;
@@ -96,8 +99,7 @@ angular.module('crowdsourcing')
                 if (transportDetails != null) {
                   for(var i = 0; i<transportDetails.length; i++)
                   {
-                    if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start
-                      && transportDetails[i].location_from_lat !=null && transportDetails[i].location_from_long != null) {
+                    if(transportDetails[i].activity_id != null && transportDetails[i].location_from_lat !=null && transportDetails[i].location_from_long != null) {
 
                       //format date/time
                       var t = transportDetails[i].datetime_start.split(/[- :]/);
@@ -109,8 +111,9 @@ angular.module('crowdsourcing')
 
                       //push each activities into the main arrays that store all activities
                       $scope.transportID.push(transportDetails[i].activity_id);
-                      $scope.transportName.push(transportDetails[i].name);
                       $scope.transportLocationFrom.push(transportDetails[i].location_from);
+                      $scope.transportLocationTo.push(transportDetails[i].location_to);
+                      $scope.transportName.push(transportDetails[i].location_from + " - " + transportDetails[i].location_to);
                       $scope.transportDateTimeStart.push(dateTime);
 
                       //check if marker already exists (by checking with the markers array)
@@ -208,6 +211,8 @@ angular.module('crowdsourcing')
                 {
                   $scope.transportIDDisplay.push($scope.transportID[i]);
                   $scope.transportNameDisplay.push($scope.transportName[i]);
+                  $scope.transportFromDisplay.push($scope.transportLocationFrom[i]);
+                  $scope.transportToDisplay.push($scope.transportLocationTo[i]);
                   $scope.transportDateTimeStartDisplay.push($scope.transportDateTimeStart[i]);
                   $scope.transportFromDistanceDisplay.push($scope.transportFromDistance[i]);
                 }

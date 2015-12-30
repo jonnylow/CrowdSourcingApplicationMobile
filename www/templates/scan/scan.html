@@ -45,13 +45,13 @@
         </select>
       </label>
     </div>
-      
+
         <div class="card animated shake"  ng-show=showTag>
           <div class="item item-text-wrap">
             <h3>Tap on the red markers to view activities</h3>
           </div>
         </div>
-      
+
       <div class="section2">
           <div class="list card myactivitymain" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
             <table>
@@ -65,15 +65,15 @@
                 <table>
                   <tr>
                     <td><p class="myactivity">From</p></td>
-                    <td><p class="myactivity"><b>{{transportNameDisplay[$index].split("-")[0]}}</b></p></td>
+                    <td><p class="myactivity"><b>{{transportFromDisplay[$index]}}</b></p></td>
                   </tr>
                   <tr>
                     <td><p class="myactivity">To</p></td>
-                    <td><p class="myactivity"><b>{{transportNameDisplay[$index].split("-")[1]}}</b></p></td>
+                    <td><p class="myactivity"><b>{{transportToDisplay[$index]}}</b></p></td>
                   </tr>
                 </table>
             <p class="myactivity">Pickup Location: {{transportFromDistanceDisplay[$index]}}</p>
-            
+
           </div>
         </div>
       </div>

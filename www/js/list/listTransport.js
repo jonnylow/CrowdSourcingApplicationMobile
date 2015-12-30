@@ -22,7 +22,7 @@ angular.module('crowdsourcing')
         if (transportDetails != null) {
           for(var i = 0; i<transportDetails.length; i++)
           {
-            if(transportDetails[i].activity_id != null && transportDetails[i].name!=null && transportDetails[i].datetime_start!=null)
+            if(transportDetails[i].activity_id != null)
             {
               if(ids.indexOf(transportDetails[i].activity_id) !== -1) {
                 //format date/time
@@ -39,7 +39,9 @@ angular.module('crowdsourcing')
                 $scope.transportActivity.push({
                   no: ++number,
                   id: transportDetails[i].activity_id,
-                  name: transportDetails[i].name,
+                  from:transportDetails[i].location_from,
+                    to:transportDetails[i].location_to,
+                  name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
                   date: date,
                   dateTime:dateTime,
                   distance: $scope.distance

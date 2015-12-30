@@ -18,7 +18,7 @@ angular.module('crowdsourcing')
     $scope.fields= {otp: ""};
     var otpCheck;
 
-    var myPopup = $ionicPopup.show({
+    /*var myPopup = $ionicPopup.show({
       title: '<b>Notice</b>',
       subTitle: '<br>The one-time password will be send to you via sms',
       scope: $scope,
@@ -28,7 +28,7 @@ angular.module('crowdsourcing')
           type: 'button-calm'
         },
       ]
-    });
+    });*/
 
     //=========uncomment bottom line if do not want to use OTP========//
     otpCheck = "123";
@@ -130,8 +130,7 @@ angular.module('crowdsourcing')
       $scope.resend = function()
       {
         var myPopup = $ionicPopup.show({
-          title: 'Notice',
-          subTitle: 'The one-time password will be send to you via sms',
+          title: '<h4 class="verify1">The one-time password has been resent to you via sms</h4>',
           scope: $scope,
           buttons: [
             {

@@ -7,24 +7,13 @@
   </div>
 
     <form ng-submit="verify(fields)">
-      <!--Have a car checkbox-->
-      <div class="HaveCar">
-        <ion-checkbox ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
-      </div>
-
-      <!--Occupation-->
-      <div class="morebox" >
-        <label class="item item-input morequestions">
-          <i class="icon ion-briefcase dark larger"></i>
-          <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
-        </label>
-       </div><br>
+      
 
         <!--Area of Preferences 1-->
-      <label class="item item-input item-stacked-label" >
-        <font color="black" >Area of Preferences 1</font><br>
-        <select class="dropdown" ng-model="fields.preferences_1">
-          <option value="" disabled selected>Preference*</option>
+      <label class="item item-input item-stacked-label registration1" >
+        <!--<font color="black" >Area of Preferences 1</font><br>-->
+        <select class="dropdown morequestions" ng-model="fields.preferences_1">
+          <option value="" disabled selected>Area of Preferences 1*</option>
           <option value="Befriend-senior-citizens">Befriend senior citizens</option>
           <option value="Organise-fund-raising-activities">Organise fund raising activities</option>
           <option value="Organize-social-activities">Organize social activities</option>
@@ -38,10 +27,10 @@
       </label>
 
       <!--Area of Preferences 2-->
-      <label class="item item-input item-stacked-label">
-        <font color="black">Area of Preferences 2</font><br>
-        <select class="dropdown" ng-model="fields.preferences_2">
-          <option value="" disabled selected>Preference*</option>
+      <label class="item item-input item-stacked-label registration">
+        <!--<font color="black">Area of Preferences 2</font><br>-->
+        <select class="dropdown morequestions" ng-model="fields.preferences_2">
+          <option value="" disabled selected>Area of Preferences 2*</option>
           <option value="Befriend-senior-citizens">Befriend senior citizens  </option>
           <option value="Organise-fund-raising-activities">Organise fund raising activities</option>
           <option value="Organize-social-activities">Organize social activities</option>
@@ -57,19 +46,27 @@
       <!--front nric-->
 
       <div class="row" style="text-align:center;">
-      <div class="item range range-positive" style="color:#ffffff; border:none;margin-top:1px;"/>
-        <label class="ic front">IC Photo (Front)<br>
-          <img id="frontic" src="" height="100" width="100" ><br>
-          <button class="button button-light button-small NRICbutton" type="button" ng-click="getPhotoFront()" ng-show=showFront>Add</button>
-          <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoFront()" ng-show=!showFront>Delete</button>
+      <div class="item range range-positive morequestions" />
+        <label class="ic front">
+          <div class="NRICbox">
+            <img class="frontic" id="frontic" src="" ng-show=!showFront height="120" width="140"><br>
+            <i class="icon ion-camera light morequestions"></i>
+            <h3 class="morequestions">Front IC</h3>
+          </div>
+          <button class="button button-light button-small NRICbutton1" type="button" ng-click="getPhotoFront()" ng-show=showFront>Add</button>
+          <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoFront()" ng-show=!showFront >Delete</button>
         </label>
 
       </div>
       <br>
       <!--back nric-->
-     <div class="item range range-positive"style="color:#ffffff; border:none;"/>
-      <label class="ic back">IC Photo (Back)<br />
-        <img id="backic" src="" height="100" width="100" ><br>
+     <div class="item range range-positive morequestions"style="color:#ffffff; border:none;"/>
+      <label class="ic back"><!--IC Photo (Back)<br />-->
+        <div class="NRICbox1">
+          <img id="backic" src="" ng-show=!showBack height="120" width="140" ><br>
+          <i class="icon ion-camera light morequestions"></i>
+            <h3 class="morequestions">Back IC</h3>
+        </div>
         <button class="button button-light button-small NRICbutton" type="button" ng-click="getPhotoBack()" ng-show=showBack>Add</button>
         <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoBack()" ng-show=!showBack>Delete</button>
       </label>

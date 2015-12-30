@@ -13,64 +13,76 @@
 
       <!--email-->
       <div class="list list-inset registration">
-        <label class="item item-input registration">
+        <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
-            <i class="icon ion-email dark larger"></i>
+            <i class="icon ion-email dark "></i>
           </div>
           <input class="registration" type="text" autocapitalize="off" placeholder="Email address" ng-model="fields.email" >
         </label>
-        <label class="item item-input registration" >
+        <label class="item item-icon-left item-input registration" >
           <div class="iconcontainer">
-            <i class="icon ion-locked dark larger"></i>
+            <i class="icon ion-locked dark "></i>
           </div>
-          <input class="registration" type="password"  placeholder="Password" ng-if="!showPasswordIsChecked" ng-model="fields.password">
-          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.password" required>
+          <input class="registration" type="password" placeholder="Password" ng-model="fields.password">
         </label>
-      </div>
-
-      <ion-checkbox class="registrationShowPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>
-
-      <div class="list list-inset registration">
-        <label class="item item-input registration" >
+        <label class="item item-icon-left item-input registration" >
           <div class="iconcontainer">
-            <i class="icon ion-person dark larger" style="font-size:30px;"></i>
+            <i class="icon ion-person dark " style="font-size:30px;"></i>
           </div>
           <input class="registration" type="text" placeholder="Name" ng-model="fields.name" >
         </label>
-        <label class="item item-input registration">
+        <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
-          <i class="icon ion-calendar dark larger"></i></div>
+          <i class="icon ion-calendar dark "></i></div>
           <span class="input-label dob" >
           <font size="3px" style="margin-left:8px;">Date of Birth</font></span>
           <input class="registration" class="date-input dob"type="date" color="#ffffff" ng-model="fields.dob">
         </label>
-        <label class="item item-input registration">
+        <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
-            <i class="icon ion-iphone dark larger" style="font-size:35px;"></i>
+            <i class="icon ion-ios-telephone dark" style="font-size:35px;"></i>
           </div>
           <input class="registration" type="text" placeholder="Contact Number" colour:"#ffffff" ng-model="fields.contactnumber">
         </label>
-        <label class="item item-input registration">
+        <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
-          <i class="icon ion-card dark larger"></i>
+          <i class="icon ion-card dark "></i>
         </div>
           <input class="registration" type="text" placeholder="NRIC / FIN" colour:"#ffffff" ng-model="fields.nric">
         </label>
-        <label class="item item-input registration">
+        <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
-          <i class="icon ion-transgender dark larger"></i>
-        </div>
-          <select class="dropdown" ng-model="fields.gender">
-            <option value="" disabled selected>Gender*</option>
+            <i class="icon ion-transgender dark "></i>
+          </div>
+          <select class="dropdown register" ng-model="fields.gender">
+            <option value="" disabled selected >Gender*</option>
             <option value="M">M</option>
             <option value="F">F</option>
           </select>
         </label>
+        <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-briefcase dark "></i>
+          </div>
+          <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
+        </label>      
+      <!--Have a car checkbox-->
+      <label class="item item-icon-left item-input registration">
+        <div class="iconcontainer car">
+          <i class="icon ion-android-car dark "></i>
+        </div>
+        <ion-checkbox class="checkbox registration"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
+      </label>
       </div>
       <div style="text-align: center; ">
         <img src="img/steps001.png" class = "page-image"/>
       </div>
 
+      
+
+      <!--Occupation-->
+
+        
     <button  class="button button-block button-calm registration">Next</button>
     </form>
 

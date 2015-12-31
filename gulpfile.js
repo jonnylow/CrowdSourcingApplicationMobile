@@ -6,6 +6,8 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var gulpNgConfig = require('gulp-ng-config');
+
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -49,4 +51,10 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+gulp.task('careride', function () {
+  gulp.src('CareRideAPI.json')
+  .pipe(gulpNgConfig('CareRideAPI.config'))
+  .pipe(gulp.dest('./www/js/'))
 });

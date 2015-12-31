@@ -217,6 +217,13 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "filterController"
     })
 
+    .state('recommended', {
+      cache: false,
+      url: '/recommended',
+      templateUrl: 'templates/recommended/recommended.html',
+      controller: "recommendedController"
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/landingPage');
 

@@ -132,6 +132,21 @@ angular.module('crowdsourcing')
 
       $scope.resend = function()
       {
+        /*
+        //=========comment this few lines if do not want to use OTP========//
+        otpCheck = Math.floor(Math.random()*90000) + 10000;
+        var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
+        $scope.loadingshow = true;
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+        $http.get(sendURL)
+          .success(function (data) {
+            //message sent
+            var status = data;
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          })*/
+        //=========comment this few lines if do not want to use OTP=========//
+
         var myPopup = $ionicPopup.show({
           title: '<h4 class="verify1">The one-time password has been resent to you via sms</h4>',
           scope: $scope,

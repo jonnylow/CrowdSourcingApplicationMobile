@@ -1,0 +1,37 @@
+<ion-view view-title="Recommended Listing">
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+
+  <ion-content ng-show=!loadingshow>
+      <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
+        <table>
+          <tr>
+            <td class="search">
+            {{activity.no}}
+          </td>
+          <td>
+
+          <div class="item item-text-wrap">
+
+            <h2 class="home"> {{ activity.dateTime | date : "d MMM yyyy" }}, {{ activity.dateTime | date : "h:mm a"}}</h2>
+            <table>
+              <tr>
+                <td><p class="myactivity">From</p></td>
+                <td><p class="myactivity"><b>{{activity.from}}</b></p></td>
+              </tr>
+              <tr>
+                <td><p class="myactivity">To</p></td>
+                <td><p class="myactivity"><b>{{activity.to}}</b></p></td>
+              </tr>
+            </table>
+          </div>
+      </td>
+    </tr>
+  </table>
+  </ion-content>
+</ion-view>

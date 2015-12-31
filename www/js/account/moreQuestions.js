@@ -58,7 +58,8 @@ angular.module('crowdsourcing')
           });
         }
         else {
-          alert("No Camera Detected");
+          image.src = "base64";
+          alert("No Camera Detected, hardcoded front ic.");
         }
       }
       else
@@ -99,7 +100,8 @@ angular.module('crowdsourcing')
           });
         }
         else {
-          alert("No Camera Detected");
+          image.src = "base64";
+          alert("No Camera Detected, hardcoded backic");
         }
       }
       else

@@ -179,6 +179,22 @@ a:link {
     text-decoration: none;
 }
 
+/*for all popups*/
+
+h3.popups{
+  font-size: 16px;
+  font-style: normal;
+  margin-top: 0px;
+  margin-bottom: -5px;
+}
+
+h3.popups.home{
+  font-size: 16px;
+  font-style: normal;
+  margin-top: 0px;
+}
+
+
 /***BOX SIZES***/
 div.row{
  width: 100%;
@@ -667,6 +683,16 @@ p.homep{
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 5px;
+}
+
+.popup-vertical-buttons button
+{
+    min-width: 100%;
+    margin-bottom: 5px;
+}
+.popup-vertical-buttons .popup-buttons
+{
+    display: block;
 }
 /*end of home page*/
 

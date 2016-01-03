@@ -12,20 +12,21 @@ angular.module('crowdsourcing')
               $ionicLoading.hide();
               var myPopup = $ionicPopup.show({
                 title: '<b>Notice</b>',
-                subTitle: 'No location services detected. Please enable before using CareRide.',
+                subTitle: '<h5 class="popups home">No location services detected. Please enable before using CareRide.</h5>',
                 scope: $scope,
+                cssClass: "popup-vertical-buttons",
                 buttons: [
                   {
-                    text: 'Proceed to Location Services',
-                    type: 'button-calm',
+                    text: '<h5 class="popups"><font color="white">Proceed to Location Services</font></h5>',
+                    type: 'button button-energized',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
                       cordova.plugins.diagnostic.switchToLocationSettings();
                     }
                   },
                   {
-                    text: 'Proceed without Location Services',
-                    type: 'button-calm',
+                    text: '<h5 class="popups"><font color="white">Proceed without Location Services</font></h5>',
+                    type: 'button button-energized',
                     onTap: function (e) {
                       //use default location
                       window.localStorage.setItem("userLat", "1.297507");

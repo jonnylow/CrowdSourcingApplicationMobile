@@ -8,25 +8,24 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivityDetails.php?transportId=" + $scope.transportId)
+    $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivityDetails?transportId=" + $scope.transportId)
       .success(function (data) {
         var transportDetails = data;
-
         if (transportDetails != null) {
-          if(transportDetails[0] != null)
+          if(transportDetails.activity != null)
           {
-            if(transportDetails[0].datetime_start != null)
+            if(transportDetails.activity.datetime_start != null)
               {
-                var t = transportDetails[0].datetime_start.split(/[- :]/);
+                var t = transportDetails.activity.datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
                 $scope.dateTime = dateTime;
-                $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
-                $scope.locationFrom = transportDetails[0].location_from;
-                $scope.locationFromAddress = transportDetails[0].location_from_address;
-                $scope.locationTo = transportDetails[0].location_to;
-                $scope.locationToAddress = transportDetails[0].location_to_address;
-                $scope.moreInformation = transportDetails[0].more_information;
+                $scope.expectedDuration = transportDetails.activity.expected_duration_minutes + " Mins";
+                $scope.locationFrom = transportDetails.activity.departure_centre.name;
+                $scope.locationFromAddress = transportDetails.activity.departure_centre.address;
+                $scope.locationTo = transportDetails.activity.arrival_centre.name;
+                $scope.locationToAddress = transportDetails.activity.arrival_centre.address;
+                $scope.moreInformation = transportDetails.activity.more_information;
                 if($scope.moreInformation == "")
                 {
                   $scope.moreInformation = "No Additional Information"

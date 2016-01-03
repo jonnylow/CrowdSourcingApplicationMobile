@@ -7,7 +7,7 @@
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
       <ion-nav-buttons side="right">
-    <button class="button button-transparent" ng-click="goList()">View More</button>
+    <button class="button button-dark" ng-click="goList()">View More</button>
   </ion-nav-buttons>
   </ion-nav-bar>
 
@@ -31,11 +31,11 @@
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
-    <div class="list card myactivitymain">
-      <label class="item item-input item-select">
-        <div class="input-label">
+    <div class="list card scan">
+      <label class="item item-input item-select scan">
+        <div class="input-label scan">
           <!--TODO: change numbers. fields.filter does not correspond to user's filter option-->
-          <p>Showing activities <b>{{fields.filter}}KM</b> from my location</p>
+          <p>Activities <b>{{fields.filter}}KM</b> from my location</p>
         </div>
         <select ng-model="fields.filter" ng-change="valueChanged()" class="search">
               <option value="5">100M Radius</option>
@@ -46,7 +46,7 @@
       </label>
     </div>
 
-        <div class="card animated shake"  ng-show=showTag>
+        <div class="card animated shake scan"  ng-show=showTag>
           <div class="item item-text-wrap">
             <h3>Tap on the red markers to view activities</h3>
           </div>
@@ -71,10 +71,11 @@
                     <td><p class="myactivity">To</p></td>
                     <td><p class="myactivity"><b>{{transportToDisplay[$index]}}</b></p></td>
                   </tr>
-                </table>
-            <p class="myactivity">Pickup Location: {{transportFromDistanceDisplay[$index]}}</p>
+                </table><p class="myactivity"></p>
+            <p class="myactivity">Pickup Location: {{transportFromDistanceDisplay[$index].split('|')[0]}}</p>
+            <p class="myactivity">{{transportFromDistanceDisplay[$index].split('|')[1]}}
 
-          </div>
+          </div>  
         </div>
       </div>
     </div>

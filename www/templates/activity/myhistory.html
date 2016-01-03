@@ -16,22 +16,24 @@
 
     <!--historical activity listing-->
     <ion-list>
-      <div ng-repeat="group in groups">
+      <div class="list myactivity">
+        <div ng-repeat="group in groups">
 
-        <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
-        <div class="row myactivity">
-          <div class="col col-20 col-center myactivitynum">
-            {{group.items.length}}
-          </div>
-          <div class="col myactivity">
-            {{group.name}}
-          </div>
-          <div class="col col-10">
-            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-          </div>
+          <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+          <div class="row myactivity">
+            <div class="col col-20 col-center myactivitynum">
+              {{group.items.length}}
+            </div>
+            <div class="col myactivity">
+              {{group.name}}
+            </div>
+            <div class="col col-10">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              &nbsp;
+            </div>
 
-         </div>
+           </div>
+
         </ion-item>
 
         <div class="list card myactivitymain" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">

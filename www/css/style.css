@@ -765,6 +765,15 @@ p.myactivity{
   width:130%;
 }
 
+p.myactivitydetails{
+  color: #53585F;
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: -20px;
+  width:130%;
+}
+
 h5.myactivity{
   font-size: 14px;
   color: #164F86;
@@ -805,7 +814,12 @@ h5.myactivity{
 }
 
 .icon.myactivity{
-  top: -45px;
+  top: -31px;
+}
+
+.icon.myactivitydetails{
+  top: -40px;
+  margin-left: -6px;
 }
 
 .item.myactivitybutton{
@@ -816,6 +830,17 @@ h5.myactivity{
 
 .item.myactivityoverall{
   padding-bottom: 15px;
+}
+
+h3.myactivity{
+  font-size: 16px;
+  margin-top: 0px;
+  font-style: bold;
+  margin-bottom: -5px;
+}
+
+.list.myactivity{
+  margin-top: 42px;
 }
 /*end of myactivity page*/
 
@@ -848,16 +873,30 @@ ion-item.item{
   padding:5px;
 }
 
-button.button.button-transparent{
+button.button.button-transparent.scan{
   background-color: transparent;
   border:none;
 }
 
-button.button.button-transparent.active{
+button.button.button-transparent.scan:active{
   background-color: transparent;
   border:none;
 }
 
+.card.animated.shake.scan{
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.list.card.scan{
+  box-shadow: 3 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+h3.scan{
+  font-size: 16px;
+  font-style: normal;
+  margin-top: 0px;
+  margin-bottom: -5px;
+}
 /*end of scan page*/
 
 /*list transport page*/
@@ -894,6 +933,11 @@ div.list.profile{
   border-color: #94A66D;
   background-color: #94A66D;
   color: #FFFFFF;
+}
+
+.button.button-block.button-calm.me{
+  margin-left: 11px;
+  width:94%;
 }
 /*end of profile page*/
 
@@ -1051,7 +1095,8 @@ label.item.item-input.item-stacked-label{
 }
 
 .maskPassword{
-  margin-top: -10px;
+  margin-top: -13px;
+  margin-bottom: 5px;
 }
 /*end of change password page*/
 
@@ -1094,3 +1139,17 @@ select.search{
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+/*****Elderly information page*****/
+.icon.elderly{
+  margin-left: -5px;
+}
+
+h6.elderly{
+  font-size: 17px;
+  margin-left: 10px;
+  color:#8B3737;
+  font-weight: bold;
+}
+
+/*****End of Elderly information page*****/

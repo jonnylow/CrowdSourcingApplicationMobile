@@ -226,4 +226,17 @@ angular.module('crowdsourcing')
         }
       }
 
+    //clear checkboxed
+    $scope.clear = function()
+    {
+      for(var i =0; i<$scope.filterListDisplay.length; i++)
+      {
+        //check which checkbox is tick and concat all activity ids into the final filter list
+        if($scope.filterListDisplay[i].checked == true)
+        {
+          $scope.filterListDisplay[i].checked =false;
+        }
+      }
+    }
+
     });

@@ -41,8 +41,9 @@
               <td><p class="myactivity">To</p></td>
               <td><p class="myactivity"><b>{{activity.to}}</b></p></td>
             </tr>
-          </table>
-          <p class="myactivity">Pickup Location: {{activity.distance}}</p>
+          </table><p class="myactivity"/>
+          <p class="myactivity">Pickup Location: {{activity.distance.split('|')[0]}}</p>
+          <p class="myactivity">{{activity.distance.split('|')[1]}}</p>
         </div>
         </td>
         </tr>

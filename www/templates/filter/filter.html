@@ -6,7 +6,7 @@
     </ion-nav-buttons>
     <!--can we have a clear button?-->
     <ion-nav-buttons side="right">
-      <button class="button button-transparent">Clear</button>
+      <button class="button button-transparent" ng-click="clear()">Clear</button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
@@ -18,7 +18,7 @@
       </div>
   </div>
     <div class="list card filtermain">
-      
+
       <ion-checkbox ng-repeat="item in filterListDisplay" ng-model="item.checked" ng-checked="item.checked">
         {{ item.textShown }}
       </ion-checkbox>

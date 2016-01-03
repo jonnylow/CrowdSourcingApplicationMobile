@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicHistory, $ionicPopover, $ionicLoading) {
+    .controller('myhistoryController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicHistory, $ionicPopover, $ionicLoading, apiUrl) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -19,7 +19,7 @@ angular.module('crowdsourcing')
       $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
-      var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=2";
+      var urlString = apiUrl+"RetrieveTransportByUser.php?id="+$scope.id+"&type=2";
 
       $http.get(urlString)
         .success(function (data) {

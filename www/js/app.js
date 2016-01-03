@@ -150,6 +150,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     })
 
     .state('updateAccount', {
+      cache: false,
       url: '/updateAccount',
       templateUrl: 'templates/account/update.html',
       controller: "updateAccountController"

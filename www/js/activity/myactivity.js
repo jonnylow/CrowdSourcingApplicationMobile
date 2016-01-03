@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover, $ionicLoading) {
+    .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover, $ionicLoading, apiUrl) {
 
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
@@ -34,7 +34,7 @@ angular.module('crowdsourcing')
       $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
-      var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveTransportByUser.php?id="+$scope.id+"&type=1";
+      var urlString = apiUrl+"RetrieveTransportByUser.php?id="+$scope.id+"&type=1";
 
       $http.get(urlString)
         .success(function (data) {
@@ -221,7 +221,7 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-          urlString = "http://www.changhuapeng.com/volunteer/php/updateActivityStatus.php?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
+          urlString = apiUrl+"updateActivityStatus.php?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
 
           $http.get(urlString)
             .success(function (data) {

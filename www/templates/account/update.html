@@ -9,25 +9,41 @@
   <ion-content>
     <form ng-submit="update(fields)">
       <div class="list list-inset updatePassword1">
-        <label class="item item-input updatePassword">
+        <label class="item item-input item-icon-right">
+
+          <i class="icon ion-eye-disabled" on-touch="showPasswordCurrent = !showPasswordCurrent" ng-show="showPasswordCurrent"></i>
+          <i class="icon ion-eye" on-touch="showPasswordCurrent = !showPasswordCurrent" ng-show="!showPasswordCurrent"></i>
+          <input type="password" placeholder="Current Password" ng-model="fields.currentpassword" ng-hide="showPasswordCurrent">
+          <input type="text" placeholder="Current Password" ng-model="fields.currentpassword" ng-show="showPasswordCurrent">
+<!--
           <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.currentpassword" required>
-          <input type="password" placeholder="Current Password" ng-if="!showPasswordIsChecked" ng-model="fields.currentpassword">
+          <input type="password" placeholder="Current Password" ng-if="!showPasswordIsChecked" ng-model="fields.currentpassword">-->
         </label>
       </div>
 
       <div class="list list-inset updatePassword2">
-        <label class="item item-input updatePassword">
+        <label class="item item-input item-icon-right">
+          <i class="icon ion-eye-disabled" on-touch="showPasswordNew = !showPasswordNew" ng-show="showPasswordNew"></i>
+          <i class="icon ion-eye" on-touch="showPasswordNew = !showPasswordNew" ng-show="!showPasswordNew"></i>
+          <input type="password" placeholder="New Password" ng-model="fields.newpassword" ng-hide="showPasswordNew">
+          <input type="text" placeholder="New Password" ng-model="fields.newpassword" ng-show="showPasswordNew">
+<!--
           <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.newpassword" required>
-          <input type="password" placeholder="New Password" ng-if="!showPasswordIsChecked" ng-model="fields.newpassword">
+          <input type="password" placeholder="New Password" ng-if="!showPasswordIsChecked" ng-model="fields.newpassword">-->
         </label>
 
-        <label class="item item-input updatePassword">
+        <label class="item item-input item-icon-right">
+          <i class="icon ion-eye-disabled" on-touch="showPasswordCfm = !showPasswordCfm" ng-show="showPasswordCfm"></i>
+          <i class="icon ion-eye" on-touch="showPasswordCfm = !showPasswordCfm" ng-show="!showPasswordCfm"></i>
+          <input type="password" placeholder="Confirm New Password" ng-model="fields.confirmpassword" ng-hide="showPasswordCfm">
+          <input type="text" placeholder="Confirm New Password" ng-model="fields.confirmpassword" ng-show="showPasswordCfm">
+<!--
           <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.confirmpassword" required>
-          <input type="password" placeholder="Confirm New Password" ng-if="!showPasswordIsChecked" ng-model="fields.confirmpassword">
+          <input type="password" placeholder="Confirm New Password" ng-if="!showPasswordIsChecked" ng-model="fields.confirmpassword">-->
         </label>
       </div>
 
-      <ion-checkbox class="maskPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>
+      <ion-checkbox class="maskPassword" ng-model="showPasswordCfm">Show password</ion-checkbox>
 
       <button class="button paddedbutton button-calm">Change Password</button>
     </form>

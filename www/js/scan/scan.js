@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop, uiGmapGoogleMapApi, $ionicLoading) {
+    .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop, uiGmapGoogleMapApi, $ionicLoading,apiUrl) {
 
         //user location, get from global var or have to reacquire if null
         $scope.myLocation = {lng : '', lat: ''};
@@ -93,7 +93,7 @@ angular.module('crowdsourcing')
             $scope.showTag = true;
 
             //retrieve from DB
-            $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
+            $http.get(apiUrl+"RetrieveTransportActivity.php")
               .success(function (data) {
                 var transportDetails = data;
                 if (transportDetails != null) {

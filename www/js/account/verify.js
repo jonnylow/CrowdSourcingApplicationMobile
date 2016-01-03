@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading, $ionicHistory) {
+    .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading, $ionicHistory,apiUrl) {
     $scope.tempName = window.localStorage.getItem("tempName");
     $scope.tempEmail = window.localStorage.getItem("tempEmail");
     $scope.tempPassword = window.localStorage.getItem("tempPassword");
@@ -70,11 +70,10 @@ angular.module('crowdsourcing')
               window.localStorage.removeItem("front");
               window.localStorage.removeItem("back");
 
-              var urlString = "http://www.changhuapeng.com/volunteer/php/AddUserAccount.php?phone="+$scope.tempContactNumber+"&name="+$scope.tempName+"&email="+$scope.tempEmail+"&password="+$scope.tempPassword+"&dob="+$scope.tempDOB
+              var urlString = apiUrl+"AddUserAccount.php?phone="+$scope.tempContactNumber+"&name="+$scope.tempName+"&email="+$scope.tempEmail+"&password="+$scope.tempPassword+"&dob="+$scope.tempDOB
                 +"&nric="+$scope.tempNRIC+"&gender="+$scope.tempGender+"&frontIC="+$scope.tempFrontIC + "&backIC="+$scope.tempBackIC+"&haveCar="+$scope.tempHaveCar+"&preferences1="+$scope.tempPreferences1
                 +"&preferences2="+$scope.tempPreferences2+"&occupation="+$scope.tempOccupation;
 
-              console.log(urlString);
               $http.get(urlString)
                 .success(function (data) {
 

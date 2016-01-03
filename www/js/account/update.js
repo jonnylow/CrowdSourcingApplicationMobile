@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('updateAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading) {
+    .controller('updateAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, apiUrl) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -24,14 +24,14 @@ angular.module('crowdsourcing')
               var tempNewPassword = fields.newpassword;
               var tempConfirmpassword = fields.confirmpassword;
 
-              $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+ $scope.email+"&password="+tempCurrentPassword)
+              $http.get(apiUrl+"CheckLogin.php?email="+ $scope.email+"&password="+tempCurrentPassword)
                 .success(function (data) {
                   var status = data;
 
                   if (status != null) {
                     if(status.status[0] == "true")
                     {
-                      var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;
+                      var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
 
                       $http.get(urlString)
                         .success(function (data) {
@@ -40,7 +40,7 @@ angular.module('crowdsourcing')
                               if(tempConfirmpassword == tempNewPassword)
                               {
                                 if(tempCurrentPassword != tempNewPassword) {
-                                  urlString = "http://www.changhuapeng.com/volunteer/php/UpdateUserAccount.php?id=" + $scope.id + "&password=" + tempNewPassword;
+                                  urlString = apiUrl+"UpdateUserAccount.php?id=" + $scope.id + "&password=" + tempNewPassword;
 
                                   $http.get(urlString)
                                     .success(function (data) {
@@ -57,13 +57,15 @@ angular.module('crowdsourcing')
                                             {
                                               text: '<b>Ok</b>',
                                               type: 'button button-energized',
-                                              
+                                              onTap: function (e) {
+                                                window.localStorage.setItem("loginUserPassword", tempNewPassword);
+                                                $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
+                                                $state.go('tab.me', {}, {reload: true});
+                                              }
                                             },
                                           ]
                                         });
-                                        window.localStorage.setItem("loginUserPassword", tempNewPassword);
-                                        $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
-                                        $state.go('tab.me', {}, {reload: true});
+
                                       }
                                     })
 
@@ -102,7 +104,7 @@ angular.module('crowdsourcing')
                                     {
                                       text: '<b>Ok</b>',
                                       type: 'button button-energized',
-                                      
+
                                     },
                                   ]
                       });

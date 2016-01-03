@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory) {
+    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory, apiUrl) {
     var myPopup = $ionicPopup.show({
       title: '<b>Notice</b>',
       subTitle: 'Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration',
@@ -76,7 +76,7 @@ angular.module('crowdsourcing')
                 //if (tempPassword == tempConfirmpassword) {
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
-                      var urlString = "http://www.changhuapeng.com/volunteer/php/CheckEmail.php?email="+tempEmail;
+                      var urlString = apiUrl+"CheckEmail.php?email="+tempEmail;
 
                       $http.get(urlString)
                         .success(function (data) {
@@ -86,7 +86,7 @@ angular.module('crowdsourcing')
                           {
                             //if(validateNRIC(tempNRIC) == true)
                             //{
-                              var urlStringNRIC = "http://www.changhuapeng.com/volunteer/php/CheckNRIC.php?nric="+tempNRIC;
+                              var urlStringNRIC = apiUrl+"CheckNRIC.php?nric="+tempNRIC;
 
                               $http.get(urlStringNRIC)
                                 .success(function (data) {

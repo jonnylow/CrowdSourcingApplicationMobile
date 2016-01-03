@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('activityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('activityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -58,19 +58,19 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempALocationToAddress", $scope.locationToAddress);
               window.localStorage.setItem("tempAdditionalInformation", $scope.moreInformation);
 
-              var checkUrlString = "http://www.changhuapeng.com/volunteer/php/CheckActivityApplication.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+              var checkUrlString = apiUrl+"CheckActivityApplication.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
               $http.get(checkUrlString)
                 .success(function (data) {
                   if(data.status[0]=="do not exist")
                   {
-                    var urlString = "http://www.changhuapeng.com/volunteer/php/AddNewActivity.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+                    var urlString = apiUrl+"AddNewActivity.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
                     $http.get(urlString)
                       .success(function (data) {
                         $scope.loadingshow = false;
                         $ionicLoading.hide();
 
-                        var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
+                        var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
                         $http.get(sendEmail)
                           .success(function (data) {
                           //email send

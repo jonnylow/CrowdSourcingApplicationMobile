@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('manageAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('manageAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.fields= {nric: "",email: "", name:"", contactnumber:"", occupation:"", preferences_1:"", preferences_2:""};
           $scope.name = window.localStorage.getItem("loginUserName");
@@ -12,7 +12,7 @@ angular.module('crowdsourcing')
           $state.go('landingPage', {}, {reload: true});
         }
 
-    var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;
+    var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
 
     $http.get(urlString)
       .success(function (data) {
@@ -50,7 +50,7 @@ angular.module('crowdsourcing')
 
             if (validateName(name) == true) {
               if (contact.length == 8 && !isNaN(contact) && validateContact(contact) == true) {
-                urlStringUpdate = "http://www.changhuapeng.com/volunteer/php/UpdateUserDetails.php?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
+                urlStringUpdate = apiUrl+"UpdateUserDetails.php?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
 
                 $http.get(urlStringUpdate)
                   .success(function (data) {
@@ -66,7 +66,7 @@ angular.module('crowdsourcing')
                                     {
                                       text: '<b>Ok</b>',
                                       type: 'button button-energized',
-                                      
+
                                     },
                                   ]
                       });

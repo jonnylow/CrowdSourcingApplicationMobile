@@ -1,11 +1,11 @@
 angular.module('crowdsourcing')
 
-    .controller('recommendedController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading) {
+    .controller('recommendedController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl) {
       $scope.transportActivity = [];
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveRecommendedTransportActivity.php?limit=5")
+    $http.get(apiUrl+"RetrieveRecommendedTransportActivity.php?limit=5")
       .success(function (data) {
         var transportDetails = data;
 

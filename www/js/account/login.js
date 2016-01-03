@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('loginController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory) {
+    .controller('loginController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory, apiUrl) {
       $scope.login = function(fields){
           $scope.loadingshow = true;
         //ionic loading screen
@@ -37,14 +37,14 @@ angular.module('crowdsourcing')
                   });
 */
 
-                $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+tempNRIC+"&password="+tempPassword)
+                $http.get(apiUrl+"CheckLogin.php?email="+tempNRIC+"&password="+tempPassword)
                   .success(function (data) {
                     var status = data;
 
                     if (status != null) {
                       if(status.status[0] == "true")
                       {
-                        $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveUserAccounts.php?email="+tempNRIC)
+                        $http.get(apiUrl+"RetrieveUserAccounts.php?email="+tempNRIC)
                           .success(function (data) {
                             var loginDetails = data;
 
@@ -68,7 +68,7 @@ angular.module('crowdsourcing')
                                     {
                                       text: '<b>Ok</b>',
                                       type: 'button button-energized',
-                                      
+
                                     },
                                   ]
                                 });
@@ -91,7 +91,7 @@ angular.module('crowdsourcing')
                                     {
                                       text: '<b>Ok</b>',
                                       type: 'button button-energized',
-                                      
+
                                     },
                                   ]
                         });
@@ -114,7 +114,7 @@ angular.module('crowdsourcing')
                                     {
                                       text: '<b>Ok</b>',
                                       type: 'button button-energized',
-                                      
+
                                     },
                                   ]
                 });
@@ -131,7 +131,7 @@ angular.module('crowdsourcing')
                                     {
                                       text: '<b>Ok</b>',
                                       type: 'button button-energized',
-                                      
+
                                     },
                                   ]
               });
@@ -150,7 +150,7 @@ angular.module('crowdsourcing')
                                     {
                                       text: '<b>Ok</b>',
                                       type: 'button button-energized',
-                                      
+
                                     },
                                   ]
             });

@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('viewAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $ionicHistory, $timeout, $ionicLoading) {
+    .controller('viewAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $ionicHistory, $timeout, $ionicLoading, apiUrl) {
       if(window.localStorage.getItem("loginUserName") != null) {
         $scope.name = window.localStorage.getItem("loginUserName");
         $scope.id = window.localStorage.getItem("loginId");
@@ -24,7 +24,7 @@ angular.module('crowdsourcing')
         });
       }
 
-    var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;
+    var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
 
     $http.get(urlString)
       .success(function (data) {

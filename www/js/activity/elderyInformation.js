@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('elderyInformationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('elderyInformationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -9,7 +9,7 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveElderyInformation.php?transportId=" + $scope.transportId)
+    $http.get(apiUrl+"RetrieveElderyInformation.php?transportId=" + $scope.transportId)
       .success(function (data) {
         var elderyInformation = data;
         if (elderyInformation != null) {

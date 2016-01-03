@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('listTransportController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('listTransportController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
       $scope.transportActivity = [];
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
@@ -15,7 +15,7 @@ angular.module('crowdsourcing')
         ids = $scope.transportIds.split(',');
       }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
+    $http.get(apiUrl+"RetrieveTransportActivity.php")
       .success(function (data) {
         var transportDetails = data;
 

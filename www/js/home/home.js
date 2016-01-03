@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout, $ionicLoading) {
+    .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout, $ionicLoading, apiUrl) {
 
     if(window.localStorage.getItem("userLat") == null || window.localStorage.getItem("userLong") == null) {
       if (typeof cordova != 'undefined') {
@@ -137,7 +137,7 @@ angular.module('crowdsourcing')
       }
     }
 
-      $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveRecommendedTransportActivity.php?limit=2")
+      $http.get(apiUrl+"RetrieveRecommendedTransportActivity.php?limit=2")
         .success(function (data) {
           var transportDetails = data;
 

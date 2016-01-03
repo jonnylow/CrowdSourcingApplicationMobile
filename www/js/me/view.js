@@ -9,8 +9,8 @@ angular.module('crowdsourcing')
       }
       else {
         var myPopup = $ionicPopup.show({
-          title: '<b>Notice</b>',
-          subTitle: '<br><h3 class="scan">You must login first</h3>',
+          title: '<h6 class="popups title">Notice</h6>',
+          subTitle: '<br><h6 class="popups">You must login first</h6>',
           scope: $scope,
           buttons: [
             {

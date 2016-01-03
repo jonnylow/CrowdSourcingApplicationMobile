@@ -10,8 +10,8 @@ angular.module('crowdsourcing')
         }
         else {
             var myPopup = $ionicPopup.show({
-              title: '<b>Notice</b>',
-              subTitle: '<br><h3 class="myactivity">You must login first</h3>',
+              title: '<h6 class="popups title">Notice</h6>',
+              subTitle: '<br><h6 class="popups">You must login first</h6>',
               scope: $scope,
               buttons: [
                 {
@@ -195,8 +195,10 @@ angular.module('crowdsourcing')
     $scope.updateStatus=function(id, status)
     {
       var confirmPopup = $ionicPopup.confirm({
-        title: 'Update Status?',
-        template: "Are you sure you want to update status for this activity to '" + status + "' ?"
+        title: '<h6 class="popups title">Update Status?</h6>',
+        subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + status + "' ?</h6>",
+        cancelType: 'button button-light',
+        okType:'button button-energized'
       });
 
       confirmPopup.then(function(res) {
@@ -231,8 +233,16 @@ angular.module('crowdsourcing')
                 $ionicLoading.hide();
 
                 var alertPopup = $ionicPopup.alert({
-                  title: 'Status',
-                  template: status.status[0]
+                  //title: 'Status',
+                  title: "<h6 class='popups'>"+status.status[0]+"</h6>",
+                  scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-energized',
+
+                      },
+                    ]
                 });
                 //window.location.reload(true);
                 $state.go('tab.activity', {}, {reload: true});

@@ -100,8 +100,10 @@ angular.module('crowdsourcing')
     $scope.withdraw=function()
     {
       var confirmPopup = $ionicPopup.confirm({
-        title: 'Withdraw?',
-        template: 'Are you sure you want to withdraw your application?'
+        title: "<h6 class='popups title error'>Withdraw?</h6>",
+        subTitle: "<h6 class='popups'>Are you sure you want to withdraw your application?</h6>",
+        cancelType: 'button button-light',
+        okType:'button button-energized'
       });
 
       confirmPopup.then(function(res) {
@@ -128,8 +130,9 @@ angular.module('crowdsourcing')
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
-                  title: 'Status',
-                  template: status.status[0]
+                  //title: 'Status',
+                  title: "<h6 class='popups'>"+status.status[0]+"</h6>",
+                  okType:'button button-energized'
                 });
                 //window.location.reload(true);
                 $state.go('tab.activity', {}, {reload: true});

@@ -61,8 +61,8 @@ angular.module('crowdsourcing')
                                 $scope.loadingshow = false;
                                 $ionicLoading.hide();
                                 var alertPopup = $ionicPopup.alert({
-                                  title: 'Sorry',
-                                  subTitle: 'Your account has not been approve by Centre for Seniors yet. Please try another time. ',
+                                  title: '<h6 class="popups title">Sorry</h6>',
+                                  subTitle: '<br><h6 class="popups">Your account has not been approve by Centre for Seniors yet. Please try another time.</h6> ',
                                   scope: $scope,
                                   buttons: [
                                     {
@@ -84,8 +84,8 @@ angular.module('crowdsourcing')
                         $scope.loadingshow = false;
                         $ionicLoading.hide();
                         var alertPopup = $ionicPopup.alert({
-                          title: '<b>Error</b>',
-                          subTitle: '<br><h3 class="popups">Incorrect Email or Password.</h3>',
+                          title: '<h6 class="popups title error">Error</h6>',
+                          subTitle: '<br><h6 class="popups">Incorrect Email or Password.</h6>',
                           scope: $scope,
                                   buttons: [
                                     {
@@ -107,16 +107,16 @@ angular.module('crowdsourcing')
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
-                  title: '<b>Error</b>',
-                  subTitle: '<br><h3 class="popups">Invalid email address. Please try again.</h3>',
+                  title: '<h6 class="popups title error">Error</h6>',
+                  subTitle: '<br><h6 class="popups">Invalid email address. Please try again.</h6>',
                   scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: '<b>Ok</b>',
-                                      type: 'button button-energized',
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-energized',
 
-                                    },
-                                  ]
+                      },
+                    ]
                 });
               }
             }
@@ -124,8 +124,8 @@ angular.module('crowdsourcing')
             {
               $ionicLoading.hide();
               var alertPopup = $ionicPopup.alert({
-                title: '<b>Error</b>',
-                subTitle: '<br><h3 class="popups">Please fill in all fields.</h3>',
+                title: '<h6 class="popups title error">Error</h6>',
+                subTitle: '<br><h6 class="popups">Please fill in all fields.</h6>',
                 scope: $scope,
                                   buttons: [
                                     {
@@ -143,8 +143,8 @@ angular.module('crowdsourcing')
           {
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
-              title: '<b>Error</b>',
-              subTitle: '<br><h3 class="popups">Please fill in all fields.</h3>',
+              title: '<h6 class="popups title error">Error</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6>',
               scope: $scope,
                                   buttons: [
                                     {

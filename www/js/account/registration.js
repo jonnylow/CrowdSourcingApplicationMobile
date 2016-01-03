@@ -2,8 +2,8 @@ angular.module('crowdsourcing')
 
     .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory, apiUrl) {
     var myPopup = $ionicPopup.show({
-      title: '<b>Notice</b>',
-      subTitle: 'Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration',
+      title: '<h6 class="popups title">Notice</h6>',
+      subTitle: ' <br><h6 class="popups registration">Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration</h6>',
       scope: $scope,
       buttons: [
         {

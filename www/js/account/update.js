@@ -50,8 +50,8 @@ angular.module('crowdsourcing')
                                         $ionicLoading.hide();
 
                                         var alertPopup = $ionicPopup.alert({
-                                          title: '<b>Status</b>',
-                                          subTitle: status.status[0],
+                                          //title: '<b>Status</b>',
+                                          subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
                                           scope: $scope,
                                           buttons: [
                                             {
@@ -97,8 +97,8 @@ angular.module('crowdsourcing')
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
-                        title: '<b>Error</b>',
-                        subTitle: '<br><h3 class="popups">Incorrect Current Password.</h3>',
+                        title: '<h6 class="popups title error">Error</h6>',
+                        subTitle: '<br><h6 class="popups">Incorrect Current Password.</h6>',
                         scope: $scope,
                                   buttons: [
                                     {

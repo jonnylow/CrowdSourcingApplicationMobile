@@ -181,11 +181,28 @@ a:link {
 
 /*for all popups*/
 
-h3.popups{
+h6.popups{
   font-size: 16px;
   font-style: normal;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h6.popups.title.error{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
   margin-top: 0px;
-  margin-bottom: -5px;
+  margin-bottom: 5px;
+  color:red;
+}
+
+h6.popups.title{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
 
 h3.popups.home{
@@ -193,7 +210,6 @@ h3.popups.home{
   font-style: normal;
   margin-top: 0px;
 }
-
 
 /***BOX SIZES***/
 div.row{
@@ -917,12 +933,7 @@ button.button.button-transparent.scan:active{
   box-shadow: 3 0px 0px rgba(0, 0, 0, 0.3);
 }
 
-h3.scan{
-  font-size: 16px;
-  font-style: normal;
-  margin-top: 0px;
-  margin-bottom: -5px;
-}
+
 /*end of scan page*/
 
 /*list transport page*/

@@ -41,8 +41,10 @@ angular.module('crowdsourcing')
       {
         if(window.localStorage.getItem("loginUserName") != null) {
           var confirmPopup = $ionicPopup.confirm({
-            title: 'Apply?',
-            template: 'Are you sure you want to apply for this transport activity?'
+            title: '<h6 class="popups title">Apply?</h6>',
+            subTitle: '<h6 class="popups">Are you sure you want to apply for this transport activity?</h6>' ,
+            cancelType: 'button button-light',
+            okType:'button button-energized'
           });
 
           confirmPopup.then(function(res) {
@@ -93,13 +95,13 @@ angular.module('crowdsourcing')
                     $ionicLoading.hide();
 
                     var myPopup = $ionicPopup.show({
-                      title: 'Notice',
-                      subTitle: 'You have already applied for this activity. Please wait for centre to approve your application',
+                      title: '<h6 class="popups title">Notice</h6>',
+                      subTitle: '<br><h6 class="popups">You have already applied for this activity. Please wait for centre to approve your application</h3>',
                       scope: $scope,
                       buttons: [
                         {
                           text: '<b>Ok</b>',
-                          type: 'button-calm',
+                          type: 'button button-energized',
                           onTap: function(e) {
                             $state.go('scan', {}, {reload: true});
                           }
@@ -117,13 +119,13 @@ angular.module('crowdsourcing')
         }
         else {
           var myPopup = $ionicPopup.show({
-            title: 'Notice',
-            subTitle: 'You must login first',
+            title: '<h6 class="popups title">Notice</h6>',
+            subTitle: '<br><h6 class="popups">You must login first</h6>',
             scope: $scope,
             buttons: [
               {
                 text: '<b>Ok</b>',
-                type: 'button-calm',
+                type: 'button button-energized',
                 onTap: function(e) {
                   $state.go('landingPage', {}, {reload: true});
                 }

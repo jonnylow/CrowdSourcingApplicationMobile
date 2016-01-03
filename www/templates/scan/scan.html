@@ -8,7 +8,7 @@
     </ion-nav-buttons>
       <ion-nav-buttons side="right">
     <button class="button button-dark" ng-click="goList()">View More</button>
-  </ion-nav-buttons>
+    </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content scroll='false'>
@@ -31,10 +31,13 @@
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
+
+      {{distanceDisplay}}<button class="ion-arrow-right-c" ng-click="focusNearbyIncrease()"></button>
+
+      <!--
     <div class="list card scan">
       <label class="item item-input item-select scan">
         <div class="input-label scan">
-          <!--TODO: change numbers. fields.filter does not correspond to user's filter option-->
           <p>Activities <b>{{fields.filter}}KM</b> from my location</p>
         </div>
         <select ng-model="fields.filter" ng-change="valueChanged()" class="search">
@@ -44,7 +47,7 @@
               <option value="30">5KM Radius</option>
         </select>
       </label>
-    </div>
+    </div>-->
 
         <div class="card animated shake scan"  ng-show=showTag>
           <div class="item item-text-wrap">
@@ -75,7 +78,7 @@
             <p class="myactivity">Pickup Location: {{transportFromDistanceDisplay[$index].split('|')[0]}}</p>
             <p class="myactivity">{{transportFromDistanceDisplay[$index].split('|')[1]}}
 
-          </div>  
+          </div>
         </div>
       </div>
     </div>

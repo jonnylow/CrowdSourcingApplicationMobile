@@ -26,6 +26,7 @@ angular.module('crowdsourcing')
 
         //this array is use to track markers duplication. Is not in sync with the rest of the array above
         $scope.transportLocationFromLatLng=[];
+        $scope.transportDistanceFromLatLng=[];
 
         //store all markers for transport activities
         $scope.markers = [];
@@ -120,6 +121,7 @@ angular.module('crowdsourcing')
                       //if exists skip this marker, if it is a new position, add this new marker
                       if ($scope.markerExist([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)]) == false) {
                         $scope.transportLocationFromLatLng.push([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)])
+                        getDistanceMarker(from, to);
 
                         var tempMarker = {
                           id: i + 1,
@@ -144,10 +146,8 @@ angular.module('crowdsourcing')
 
           /**********************************TRY TO USE MAP TO STORE DISTANCE TIME************************/
           var directionsService = new google.maps.DirectionsService();
-          var directionsDisplay = new google.maps.DirectionsRenderer();
-          //var storeDistanceTimeGMap = new Map();
 
-          //function to get driving distance and time from google map service
+          //function to get driving distance and time from google map service (activity)
           function getDistanceTime(from, to) {
             var request = {
               origin:from,
@@ -165,6 +165,29 @@ angular.module('crowdsourcing')
               {
                 setTimeout(function() {
                   getDistanceTime(from,to);
+                }, 100);
+              }
+            });
+          }
+
+          //function to get driving distance and time from google map service (marker)
+          function getDistanceMarker(from, to) {
+            var request = {
+              origin:from,
+              destination:to,
+              travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                var distance = (response.routes[0].legs[0].distance.value / 1000).toFixed(2);
+                var time = (response.routes[0].legs[0].duration.value / 60).toFixed(0);
+                $scope.transportDistanceFromLatLng.push(distance);
+              }
+              else if (status === google.maps.DirectionsStatus.OVER_QUERY_LIMIT)
+              {
+                setTimeout(function() {
+                  getDistanceMarker(from,to);
                 }, 100);
               }
             });
@@ -202,6 +225,8 @@ angular.module('crowdsourcing')
               $scope.transportNameDisplay=[];
               $scope.transportDateTimeStartDisplay=[];
               $scope.transportFromDistanceDisplay=[];
+              $scope.transportFromDisplay=[];
+              $scope.transportToDisplay=[];
 
               //loop through the transportLocationFrom (name of pickup), if it is the same, copy to the display list of arrays to show on list
               for(var i =0; i<$scope.transportLocationFrom.length; i++)
@@ -273,6 +298,57 @@ angular.module('crowdsourcing')
                     type: 'button button-energized'
                   }]
               });
+            }
+          }
+
+          var sorted = false;
+          var current = 0;
+          var tempArray = [];
+          $scope.distanceDisplay = "Distance from you: No marker selected ";
+          $scope.focusNearbyIncrease = function()
+          {
+            //does the sorting of distance
+            if(sorted ==false) {
+              for (var i = 0; i < $scope.transportLocationFromLatLng.length; i++) {
+                tempArray.push({
+                  distance: $scope.transportDistanceFromLatLng[i],
+                  location: $scope.transportLocationFromLatLng[i],
+                  marker: $scope.markers[i]
+                });
+              }
+
+              tempArray.sort(function (a, b) {
+                return ((a.distance < b.distance) ? -1 : ((a.distance == b.distance) ? 0 : 1));
+              });
+              sorted = true;
+            }
+
+            //handle marker windows
+            for(var j = 0; j<$scope.markersStatus.length; j++)
+            {
+              $scope.markersStatus[j] = false;
+            }
+
+            for(var a = 0; a<$scope.markers.length; a++)
+            {
+              if($scope.markers[a].id == tempArray[current].marker.id)
+              {
+                $scope.markersStatus[a] = true;
+                //$scope.displayItems($scope.markers[a].window.title, a);
+              }
+            }
+
+            //center marker
+            $scope.center = {latitude: tempArray[current].location[0],longitude: tempArray[current].location[1]};
+            $scope.distanceDisplay = "Distance from you: " + tempArray[current].distance + " km ";
+
+            //increment current counter
+            if(current != tempArray.length-1) {
+              current++;
+            }
+            else
+            {
+              current = 0;
             }
           }
         }

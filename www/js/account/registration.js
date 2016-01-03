@@ -21,7 +21,7 @@ angular.module('crowdsourcing')
           }},
         {
           text: '<b>Ok</b>',
-          type: 'button-calm'
+          type: 'button button-energized'
 
         },
       ]

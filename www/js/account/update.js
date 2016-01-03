@@ -50,8 +50,16 @@ angular.module('crowdsourcing')
                                         $ionicLoading.hide();
 
                                         var alertPopup = $ionicPopup.alert({
-                                          title: 'Status',
-                                          template: status.status[0]
+                                          title: '<b>Status</b>',
+                                          subTitle: status.status[0],
+                                          scope: $scope,
+                                          buttons: [
+                                            {
+                                              text: '<b>Ok</b>',
+                                              type: 'button button-energized',
+                                              
+                                            },
+                                          ]
                                         });
                                         window.localStorage.setItem("loginUserPassword", tempNewPassword);
                                         $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
@@ -87,8 +95,16 @@ angular.module('crowdsourcing')
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'Incorrect Current Password.'
+                        title: '<b>Error</b>',
+                        subTitle: '<br><h3 class="popups">Incorrect Current Password.</h3>',
+                        scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+                                      
+                                    },
+                                  ]
                       });
                     }
                   }

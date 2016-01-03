@@ -84,12 +84,12 @@ angular.module('crowdsourcing')
                     $ionicLoading.hide();
                     var alertPopup = $ionicPopup.alert({
                       title: '<b>Notice</b>',
-                      subTitle: '<br>Your account was successfully created.',
+                      subTitle: '<br><h3 class="popups">Your account was successfully created.',
                       scope: $scope,
                       buttons: [
                         {
                           text: '<b>Ok</b>',
-                          type: 'button-calm',
+                          type: 'button button-energized',
                           onTap: function (e) {
                             $ionicHistory.clearCache();
                             $ionicHistory.clearHistory();
@@ -148,12 +148,12 @@ angular.module('crowdsourcing')
         //=========comment this few lines if do not want to use OTP=========//
 
         var myPopup = $ionicPopup.show({
-          title: '<h4 class="verify1">The one-time password has been resent to you via sms</h4>',
+          title: '<h3 class="popups">The one-time password has been resent to you via sms</h3>',
           scope: $scope,
           buttons: [
             {
               text: '<b>Ok</b>',
-              type: 'button-calm'
+              type: 'button button-energized'
             },
           ]
         });

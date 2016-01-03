@@ -62,7 +62,15 @@ angular.module('crowdsourcing')
                                 $ionicLoading.hide();
                                 var alertPopup = $ionicPopup.alert({
                                   title: 'Sorry',
-                                  template: 'Your account has not been approve by Centre for Seniors yet. Please try another time. '
+                                  subTitle: 'Your account has not been approve by Centre for Seniors yet. Please try another time. ',
+                                  scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+                                      
+                                    },
+                                  ]
                                 });
                               }
                             }
@@ -76,8 +84,16 @@ angular.module('crowdsourcing')
                         $scope.loadingshow = false;
                         $ionicLoading.hide();
                         var alertPopup = $ionicPopup.alert({
-                          title: 'Error',
-                          template: 'Incorrect Email or Password.'
+                          title: '<b>Error</b>',
+                          subTitle: '<br><h3 class="popups">Incorrect Email or Password.</h3>',
+                          scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+                                      
+                                    },
+                                  ]
                         });
                       }
                     }
@@ -91,8 +107,16 @@ angular.module('crowdsourcing')
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
-                  title: 'Error',
-                  template: 'Invalid email address. Please try again.'
+                  title: '<b>Error</b>',
+                  subTitle: '<br><h3 class="popups">Invalid email address. Please try again.</h3>',
+                  scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+                                      
+                                    },
+                                  ]
                 });
               }
             }
@@ -100,8 +124,16 @@ angular.module('crowdsourcing')
             {
               $ionicLoading.hide();
               var alertPopup = $ionicPopup.alert({
-                title: 'Error',
-                template: 'Please fill in all fields.'
+                title: '<b>Error</b>',
+                subTitle: '<br><h3 class="popups">Please fill in all fields.</h3>',
+                scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+                                      
+                                    },
+                                  ]
               });
               $scope.loadingshow = false;
             }
@@ -111,8 +143,16 @@ angular.module('crowdsourcing')
           {
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
-              title: 'Error',
-              template: 'Please fill in all fields.'
+              title: '<b>Error</b>',
+              subTitle: '<br><h3 class="popups">Please fill in all fields.</h3>',
+              scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+                                      
+                                    },
+                                  ]
             });
             $scope.loadingshow = false;
           }

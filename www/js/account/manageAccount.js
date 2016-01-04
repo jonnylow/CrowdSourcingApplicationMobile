@@ -82,28 +82,72 @@ angular.module('crowdsourcing')
               {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
-                alert("Invalid phone number. Please try again.");
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Sorry</h6>',
+                  subTitle: '<br><h6 class="popups">Invalid phone number. Please try again.</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: '<b>Ok</b>',
+                      type: 'button button-energized',
+
+                    },
+                  ]
+                });
               }
             }
             else
             {
               $scope.loadingshow = false;
               $ionicLoading.hide();
-              alert("Name should consists of alphabetical letters only.");
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Sorry</h6>',
+                subTitle: '<br><h6 class="popups">Name should consists of alphabetical letters only.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized',
+
+                  },
+                ]
+              });
             }
           }
           else
           {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-            alert("Please do not leave any fields empty.");
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Sorry</h6>',
+              subTitle: '<br><h6 class="popups">Please do not leave any fields empty.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button button-energized',
+
+                },
+              ]
+            });
           }
         }
         else
         {
           $scope.loadingshow = false;
           $ionicLoading.hide();
-          alert("Please do not leave any fields empty.");
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Sorry</h6>',
+            subTitle: '<br><h6 class="popups">Please do not leave any fields empty.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: '<b>Ok</b>',
+                type: 'button button-energized',
+
+              },
+            ]
+          });
         }
       }
 

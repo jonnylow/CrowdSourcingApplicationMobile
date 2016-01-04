@@ -103,7 +103,7 @@ angular.module('crowdsourcing')
                           text: '<b>Ok</b>',
                           type: 'button button-energized',
                           onTap: function(e) {
-                            $state.go('scan', {}, {reload: true});
+                            $state.go('tab.home', {}, {reload: true});
                           }
                         },
                       ]

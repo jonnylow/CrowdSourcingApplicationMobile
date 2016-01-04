@@ -71,29 +71,25 @@ angular.module('crowdsourcing')
                 mm = '0' + mm
               }
               tempDOB = yyyy + '-' + mm + '-' + dd;
-
-              if (validateName(tempName) == true) {
-                //if (tempPassword == tempConfirmpassword) {
+              if (validateOccupation(occupation) == true) {
+                if (validateName(tempName) == true) {
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
-                      var urlString = apiUrl+"CheckEmail.php?email="+tempEmail;
+                      var urlString = apiUrl + "CheckEmail.php?email=" + tempEmail;
 
                       $http.get(urlString)
                         .success(function (data) {
 
                           var status = data;
-                          if(status.status[0] != "exist")
-                          {
-                            //if(validateNRIC(tempNRIC) == true)
-                            //{
-                              var urlStringNRIC = apiUrl+"CheckNRIC.php?nric="+tempNRIC;
+                          if (status.status[0] != "exist") {
+                            if (validateNRIC(tempNRIC) == true) {
+                              var urlStringNRIC = apiUrl + "CheckNRIC.php?nric=" + tempNRIC;
 
                               $http.get(urlStringNRIC)
                                 .success(function (data) {
 
                                   var status = data;
-                                  if(status.status[0] != "exist")
-                                  {
+                                  if (status.status[0] != "exist") {
                                     if (fields.carChecked == true) {
                                       $scope.tempCarChecked = 1;
                                     }
@@ -115,71 +111,194 @@ angular.module('crowdsourcing')
                                     $ionicLoading.hide();
                                     $state.go('moreQuestions', {}, {reload: true});
                                   }
-                                  else
-                                  {
+                                  else {
                                     $scope.loadingshow = false;
                                     $ionicLoading.hide();
-                                    alert("NRIC has already been registered. Please try again.");
+
+                                    var alertPopup = $ionicPopup.alert({
+                                      title: '<h6 class="popups title">Sorry</h6>',
+                                      subTitle: '<br><h6 class="popups">NRIC has already been registered. Please try again.</h6> ',
+                                      scope: $scope,
+                                      buttons: [
+                                        {
+                                          text: '<b>Ok</b>',
+                                          type: 'button button-energized',
+
+                                        },
+                                      ]
+                                    });
                                   }
                                 })
-                            //}
-                            //else
-                            //{
-                            //  alert("Invalid NRIC. Please try again.");
-                            //}
+                            }
+                            else {
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+
+                              var alertPopup = $ionicPopup.alert({
+                                title: '<h6 class="popups title">Sorry</h6>',
+                                subTitle: '<br><h6 class="popups">Invalid NRIC/FIN. Please try again.</h6> ',
+                                scope: $scope,
+                                buttons: [
+                                  {
+                                    text: '<b>Ok</b>',
+                                    type: 'button button-energized',
+
+                                  },
+                                ]
+                              });
+                            }
                           }
-                          else
-                          {
+                          else {
                             $scope.loadingshow = false;
                             $ionicLoading.hide();
-                            alert("Email address has already been registered. Please try again.");
+
+                            var alertPopup = $ionicPopup.alert({
+                              title: '<h6 class="popups title">Sorry</h6>',
+                              subTitle: '<br><h6 class="popups">Email address has already been registered. Please try again.</h6> ',
+                              scope: $scope,
+                              buttons: [
+                                {
+                                  text: '<b>Ok</b>',
+                                  type: 'button button-energized',
+
+                                },
+                              ]
+                            });
                           }
                         })
                     }
                     else {
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
-                      alert("Invalid email address. Please try again.");
+
+                      var alertPopup = $ionicPopup.alert({
+                        title: '<h6 class="popups title">Sorry</h6>',
+                        subTitle: '<br><h6 class="popups">Invalid email address. Please try again.</h6> ',
+                        scope: $scope,
+                        buttons: [
+                          {
+                            text: '<b>Ok</b>',
+                            type: 'button button-energized',
+
+                          },
+                        ]
+                      });
                     }
                   }
                   else {
                     $scope.loadingshow = false;
                     $ionicLoading.hide();
-                    alert("Invalid phone number. Please try again.");
+
+                    var alertPopup = $ionicPopup.alert({
+                      title: '<h6 class="popups title">Sorry</h6>',
+                      subTitle: '<br><h6 class="popups">Invalid phone number. Please try again.</h6> ',
+                      scope: $scope,
+                      buttons: [
+                        {
+                          text: '<b>Ok</b>',
+                          type: 'button button-energized',
+
+                        },
+                      ]
+                    });
                   }
-                /*}
+                }
                 else {
                   $scope.loadingshow = false;
-                 $ionicLoading.hide();
-                  alert("Passwords do not match. Please try again.");
-                }*/
+                  $ionicLoading.hide();
+
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Sorry</h6>',
+                    subTitle: '<br><h6 class="popups">Name should consists of alphabetical letters only.</h6> ',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-energized',
+
+                      },
+                    ]
+                  });
+                }
               }
               else {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
-                alert("Name should consists of alphabetical letters only.");
+
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Sorry</h6>',
+                  subTitle: '<br><h6 class="popups">Invalid Occupation. Please try again.</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: '<b>Ok</b>',
+                      type: 'button button-energized',
+
+                    },
+                  ]
+                });
               }
             }
             else {
               $scope.loadingshow = false;
               $ionicLoading.hide();
-              alert("Date of Birth cannot larger than current date.");
+
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Sorry</h6>',
+                subTitle: '<br><h6 class="popups">Date of Birth cannot larger than current date.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized',
+
+                  },
+                ]
+              });
             }
           }
           else
           {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-            alert("Please fill in all fields.");
+
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Sorry</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button button-energized',
+
+                },
+              ]
+            });
           }
         }
         else
         {
           $scope.loadingshow = false;
           $ionicLoading.hide();
-          alert("Please fill in all fields.");
+
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Sorry</h6>',
+            subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: '<b>Ok</b>',
+                type: 'button button-energized',
+
+              },
+            ]
+          });
         }
       }
+
+    function validateOccupation(occupation) {
+      return /^[a-zA-Z\s]+$/.test(occupation);
+    }
 
     function validateNRIC(nric) {
       if(nric.length == 9 && nric.charAt(0).toLowerCase() == "s" && /^[a-zA-Z]+$/.test(nric.charAt(8)) == true)

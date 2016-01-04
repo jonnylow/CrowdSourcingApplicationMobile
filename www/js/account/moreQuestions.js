@@ -25,26 +25,63 @@ angular.module('crowdsourcing')
       $scope.verify = function(fields)
       {
         if(fields != null && fields.preferences_1 != null && fields.preferences_2 != null) {
+            if(fields.preferences_1 != fields.preferences_2) {
+              var image = document.getElementById('frontic');
+              var image1 = document.getElementById('backic');
+              if (image.src.indexOf("base64") != -1 && image1.src.indexOf("base64") != -1) {
 
-            var image = document.getElementById('frontic');
-            var image1 = document.getElementById('backic');
-            if(image.src.indexOf("base64") != -1 && image1.src.indexOf("base64") != -1) {
+                window.localStorage.setItem("tempPreferences1", fields.preferences_1);
+                window.localStorage.setItem("tempPreferences2", fields.preferences_2);
+                window.localStorage.setItem("front", image.src);
+                window.localStorage.setItem("back", image1.src);
 
-              window.localStorage.setItem("tempPreferences1", fields.preferences_1);
-              window.localStorage.setItem("tempPreferences2", fields.preferences_2);
-              window.localStorage.setItem("front", image.src);
-              window.localStorage.setItem("back", image1.src);
+                $state.go('verify', {}, {reload: true});
+              }
+              else {
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Sorry</h6>',
+                  subTitle: '<br><h6 class="popups">Please take front & back IC photos before proceeding.</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: '<b>Ok</b>',
+                      type: 'button button-energized',
 
-              $state.go('verify', {}, {reload: true});
+                    },
+                  ]
+                });
+              }
             }
             else
             {
-              alert("Please take front & back IC photos before proceeding.");
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Sorry</h6>',
+                subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized',
+
+                  },
+                ]
+              });
             }
         }
         else
         {
-          alert("Please fill in all required fields.");
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Sorry</h6>',
+            subTitle: '<br><h6 class="popups">Please fill in all required fields.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: '<b>Ok</b>',
+                type: 'button button-energized',
+
+              },
+            ]
+          });
         }
       }
 

@@ -77,14 +77,36 @@ angular.module('crowdsourcing')
                                 {
                                   $scope.loadingshow = false;
                                   $ionicLoading.hide();
-                                  alert("Old & New Password are the same. Please change a new password. ");
+                                  var alertPopup = $ionicPopup.alert({
+                                    title: '<h6 class="popups title">Sorry</h6>',
+                                    subTitle: '<br><h6 class="popups">Old & New Password are the same. Please change a new password.</h6> ',
+                                    scope: $scope,
+                                    buttons: [
+                                      {
+                                        text: '<b>Ok</b>',
+                                        type: 'button button-energized',
+
+                                      },
+                                    ]
+                                  });
                                 }
                               }
                               else
                               {
                                 $scope.loadingshow = false;
                                 $ionicLoading.hide();
-                                alert("Passwords do not match. Please try again.");
+                                var alertPopup = $ionicPopup.alert({
+                                  title: '<h6 class="popups title">Sorry</h6>',
+                                  subTitle: '<br><h6 class="popups">Passwords do not match. Please try again.</h6> ',
+                                  scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+
+                                    },
+                                  ]
+                                });
                               }
                           }
                         })
@@ -116,15 +138,36 @@ angular.module('crowdsourcing')
             {
               $scope.loadingshow = false;
               $ionicLoading.hide();
-              alert("Please fill in all fields.");
-            }
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Sorry</h6>',
+                subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized',
 
+                  },
+                ]
+              });
+            }
           }
           else
           {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-            alert("Please fill in all fields.");
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Sorry</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button button-energized',
+
+                },
+              ]
+            });
           }
         }
     });

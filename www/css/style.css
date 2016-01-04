@@ -964,14 +964,11 @@ b.scan{
   color:#000;
 }
 
-.link.scan{
-  background-color: transparent;
-  color:#164F86;
-  border: none;
-  padding:0px;
+.button.button-blue{
+  background-color: #164F86;
+  color:#fff;
   width:80%;
-  margin-top: -15px;
-  font-size: 15px;
+  margin-top: -8px;
 }
 
 .card.scan.header{

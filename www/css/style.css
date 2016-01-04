@@ -450,6 +450,12 @@ select.dropdown.register{
   color:#8D8D8D;
 }
 
+p.dobinput{
+  font-size: 14px;
+  color: #aaa;
+  margin-left: 8px;
+}
+
 /*end of login and registration page*/
 
 /**********************MORE QUESTIONS**********************/
@@ -938,14 +944,67 @@ button.button.button-transparent.scan:active{
 }
 
 .card.animated.shake.scan{
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0px 0px rgba(0.4, 0.2, 0.1, 0.3);
+  margin-bottom: 0px;
+  margin-top: 10px;
 }
 
 .list.card.scan{
   box-shadow: 3 0px 0px rgba(0, 0, 0, 0.3);
 }
 
+h6.scan{
+  margin-left: 11px;
+  font-size: 15px;
+  color:#666;
+}
 
+b.scan{
+  font-size: 18px;
+  color:#000;
+}
+
+.link.scan{
+  background-color: transparent;
+  color:#164F86;
+  border: none;
+  padding:0px;
+  width:80%;
+  margin-top: -15px;
+  font-size: 15px;
+}
+
+.card.scan.header{
+  background-color: #fff;
+  margin: 10px;
+  margin-right: 5px;
+  padding-bottom: 10px;
+  padding-top: 0px;
+  box-shadow: 0 0px 0px rgba(0,0,0, 0.3);
+  height:90px;
+  width:90%;
+}
+
+.item.item-icon-left.scan{
+  border:none;
+}
+
+.icon.ion-map{
+  font-size: 30px;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+.icon.ion-android-car{
+  font-size: 33px;
+  margin-top: -3px;
+  margin-left: -5px;
+}
+
+.row.scan{
+  margin-top: 0px;
+  margin-left: 2px;
+}
 /*end of scan page*/
 
 /*list transport page*/

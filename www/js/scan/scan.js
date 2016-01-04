@@ -43,8 +43,8 @@ angular.module('crowdsourcing')
         var sorted = false;
         var current = 0;
         var tempArray = [];
-        $scope.distanceDisplay = "Distance from you: No marker selected ";
-        $scope.timeDisplay = "Estimated Driving Distance: No marker selected ";
+        $scope.distanceDisplay = "Distance from Current Location: - ";
+        $scope.timeDisplay = "Estimated Driving Distance: - ";
 
         var directionsService = new google.maps.DirectionsService();
 
@@ -343,7 +343,7 @@ angular.module('crowdsourcing')
 
             //center marker
             $scope.center = {latitude: tempArray[current].location[0],longitude: tempArray[current].location[1]};
-            $scope.distanceDisplay = "Distance from you: " + tempArray[current].distance + " km ";
+            $scope.distanceDisplay = "Distance from Current Location: " + tempArray[current].distance + " km ";
             $scope.timeDisplay = "Estimated Driving Distance: " + tempArray[current].time + " mins ";
 
             //increment current counter

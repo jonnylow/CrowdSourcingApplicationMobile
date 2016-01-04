@@ -19,8 +19,8 @@
     </label>
 
     <label class="item item-input item-icon-right">
-      <i class="icon ion-eye-disabled" on-touch="showPassword = !showPassword" ng-show="showPassword"></i>
-      <i class="icon ion-eye" on-touch="showPassword = !showPassword" ng-show="!showPassword"></i>
+      <i class="icon ion-eye-disabled login" on-touch="showPassword = !showPassword" ng-show="showPassword"></i>
+      <i class="icon ion-eye login" on-touch="showPassword = !showPassword" ng-show="!showPassword"></i>
       <input type="password" placeholder="Password" ng-model="fields.password" ng-hide="showPassword">
       <input class="showPassword" type="text" placeholder="Password" ng-model="fields.password" ng-show="showPassword">
     </label>

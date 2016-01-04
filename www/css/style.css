@@ -442,6 +442,14 @@ select.dropdown.register{
   padding-left: 12px;
 }
 
+.icon.ion-eye-disabled.login{
+  color:#8D8D8D;
+}
+
+.icon.ion-eye.login{
+  color:#8D8D8D;
+}
+
 /*end of login and registration page*/
 
 /**********************MORE QUESTIONS**********************/
@@ -516,6 +524,11 @@ label.item.item-input.item-stacked-label.registration1{
   background-color: transparent;
   border:none;
   margin-top: 50px;
+}
+
+label.item.item-input.item-stacked-label.registration{
+  background-color: transparent;
+  border:none;
 }
 
 select.dropdown.morequestions{

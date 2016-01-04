@@ -21,7 +21,7 @@
             </ui-gmap-window>
           </ui-gmap-marker>
 
-          <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius=radius
+          <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill"
                           visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
 
           <ui-gmap-marker ng-repeat="loc in markers track by $index" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title, $index)">
@@ -32,22 +32,7 @@
         </ui-gmap-google-map>
       </div>
 
-      {{distanceDisplay}}<button class="ion-arrow-right-c" ng-click="focusNearbyIncrease()"></button>
-
-      <!--
-    <div class="list card scan">
-      <label class="item item-input item-select scan">
-        <div class="input-label scan">
-          <p>Activities <b>{{fields.filter}}KM</b> from my location</p>
-        </div>
-        <select ng-model="fields.filter" ng-change="valueChanged()" class="search">
-              <option value="5">100M Radius</option>
-              <option value="10">1KM Radius</option>
-              <option value="20">3KM Radius</option>
-              <option value="30">5KM Radius</option>
-        </select>
-      </label>
-    </div>-->
+      {{distanceDisplay}}<br>{{timeDisplay}}<button class="ion-arrow-right-c" ng-click="focusNearbyIncrease()"></button>
 
         <div class="card animated shake scan"  ng-show=showTag>
           <div class="item item-text-wrap">
@@ -75,8 +60,6 @@
                     <td><p class="myactivity"><b>{{transportToDisplay[$index]}}</b></p></td>
                   </tr>
                 </table><p class="myactivity"></p>
-            <p class="myactivity">Pickup Location: {{transportFromDistanceDisplay[$index].split('|')[0]}}</p>
-            <p class="myactivity">{{transportFromDistanceDisplay[$index].split('|')[1]}}
 
           </div>
         </div>

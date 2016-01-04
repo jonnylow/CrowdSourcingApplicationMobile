@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('manageAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('manageAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.fields= {nric: "",email: "", name:"", contactnumber:"", occupation:"", preferences_1:"", preferences_2:""};
           $scope.name = window.localStorage.getItem("loginUserName");
@@ -12,7 +12,7 @@ angular.module('crowdsourcing')
           $state.go('landingPage', {}, {reload: true});
         }
 
-    var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;
+    var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
 
     $http.get(urlString)
       .success(function (data) {
@@ -50,7 +50,7 @@ angular.module('crowdsourcing')
 
             if (validateName(name) == true) {
               if (contact.length == 8 && !isNaN(contact) && validateContact(contact) == true) {
-                urlStringUpdate = "http://www.changhuapeng.com/volunteer/php/UpdateUserDetails.php?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
+                urlStringUpdate = apiUrl+"UpdateUserDetails.php?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
 
                 $http.get(urlStringUpdate)
                   .success(function (data) {
@@ -59,8 +59,16 @@ angular.module('crowdsourcing')
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
-                        title: 'Status',
-                        template: status.status[0]
+                        //title: '<b><h6 class="popups title">Status</h6></b>',
+                        title: '<br><h6 class="popups"> '+status.status[0]+"</h6>",
+                        scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+
+                                    },
+                                  ]
                       });
                       $state.go('tab.me', {}, {reload: true});
                     }
@@ -74,28 +82,72 @@ angular.module('crowdsourcing')
               {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
-                alert("Invalid phone number. Please try again.");
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Sorry</h6>',
+                  subTitle: '<br><h6 class="popups">Invalid phone number. Please try again.</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: '<b>Ok</b>',
+                      type: 'button button-energized',
+
+                    },
+                  ]
+                });
               }
             }
             else
             {
               $scope.loadingshow = false;
               $ionicLoading.hide();
-              alert("Name should consists of alphabetical letters only.");
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Sorry</h6>',
+                subTitle: '<br><h6 class="popups">Name should consists of alphabetical letters only.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized',
+
+                  },
+                ]
+              });
             }
           }
           else
           {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-            alert("Please do not leave any fields empty.");
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Sorry</h6>',
+              subTitle: '<br><h6 class="popups">Please do not leave any fields empty.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button button-energized',
+
+                },
+              ]
+            });
           }
         }
         else
         {
           $scope.loadingshow = false;
           $ionicLoading.hide();
-          alert("Please do not leave any fields empty.");
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Sorry</h6>',
+            subTitle: '<br><h6 class="popups">Please do not leave any fields empty.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: '<b>Ok</b>',
+                type: 'button button-energized',
+
+              },
+            ]
+          });
         }
       }
 

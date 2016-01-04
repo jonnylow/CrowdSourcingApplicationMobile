@@ -1,8 +1,12 @@
 <ion-view view-title="Change Password">
-  <ion-content padding="true">
+
     <ion-nav-bar class="bar bar-header bar-positive">
+      <ion-nav-buttons side="left">
+        <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.me"></button>
+      </ion-nav-buttons>
     </ion-nav-bar>
 
+  <ion-content>
     <form ng-submit="update(fields)">
       <div class="list list-inset updatePassword1">
         <label class="item item-input updatePassword">
@@ -23,10 +27,9 @@
         </label>
       </div>
 
-<ion-checkbox class="maskPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>
+      <ion-checkbox class="maskPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>
 
-      <button class="button button-block button-calm">Update Account</button>
-      <button ui-sref="tab.me" class="button button-block button-stable">Back</button>
+      <button class="button paddedbutton button-calm">Change Password</button>
     </form>
   </ion-content>
 </ion-view>

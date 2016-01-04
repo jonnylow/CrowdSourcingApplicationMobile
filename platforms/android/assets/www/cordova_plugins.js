@@ -96,6 +96,14 @@ module.exports = [
         "clobbers": [
             "window.plugins.nativepagetransitions"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -109,7 +117,8 @@ module.exports.metadata =
     "cordova-plugin-camera": "1.2.0",
     "cordova.plugins.diagnostic": "2.2.3",
     "cordova-plugin-network-information": "1.0.1",
-    "com.telerik.plugins.nativepagetransitions": "0.5.6"
+    "com.telerik.plugins.nativepagetransitions": "0.5.6",
+    "cordova-plugin-inappbrowser": "1.1.2-dev"
 }
 // BOTTOM OF METADATA
 });

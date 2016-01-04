@@ -1,4 +1,4 @@
-<ion-view view-title="Update Acount">
+<ion-view view-title="Update Account">
   <!--<ion-nav-bar class="bar-stable">
   <ion-nav-buttons side="left">
     <button class="button" ng-click="back()">Back</button>
@@ -14,98 +14,102 @@
 
     <!-- manage account form-->
     <form ng-submit="update(fields)">
-    <h3 class="me">Account details</h3>
-    <div class="list list-inset update">
-      <label class="item item-input update">
-        <div class="updateinfo">
-          <i class="icon ion-card dark larger"></i>
-          <font color="black"><b>NRIC</b></font>
+    <h3 class="me">ACCOUNT DETAILS</h3>
+    <div class="list list-inset registration">
+      <label class="item item-icon-left item-input registration">
+        <div class="iconcontainer update">
+          <i class="icon ion-card dark update"></i>
         </div>
+        <b class="account">NRIC</b>
         <span class="item-note">
           <input class="readonly me" readonly=true type="text" placeholder="NRIC" ng-model="fields.nric">
         </span>
       </label>
-      <label class="item item-input update">
-        <div class="updateinfo">
-          <i class="icon ion-email dark larger"></i>
-        <font color="black"><b>Email</b></font>
+      <label class="item item-icon-left item-input registration">
+        <div class="iconcontainer update">
+          <i class="icon ion-email dark update"></i>
         </div>
+        <b class="account">Email</b>
         <span class="item-note">
           <input class="readonly me" readonly=true type="text" placeholder="Email" ng-model="fields.email" >
         </span>
       </label>
     </div>
 
-    <h3 class="me">Personal details</h3>
-    <div class="list list-inset update">
-      <label class="item item-input update">
-        <div class="updateinfo">
-          <i class="icon ion-person larger"></i>
-            <b>Name:</b>
+    <h3 class="me">PERSONAL DETAILS</h3>
+    <div class="list list-inset registration">    
+      <label class="item item-icon-left item-input registration">  <div class="iconcontainer update">          
+          <i class="icon ion-person larger update" style="color:#8D8D8D;"></i>
         </div>
-          <label class="item item-input">
-              <input class="edit" type="text" placeholder="Name" ng-model="fields.name" >
-          </label>
+        <b class="account">Name</b>      
+        <span class="item-note">          
+          <input class="edit" type="text" placeholder="Name" ng-model="fields.name" >
+        </span>
       </label>
-
-      <label class="item item-input update">
-          <div class="updateinfo">
-            <i class="icon ion-iphone larger"></i>
-            <b>Contact Number:</b>
-          </div>
-          <label class="item item-input">
-            <input class="edit contact" type="text" colour:"#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
-          </label>
-      </label>
-
-      <label class="item item-input update occupation">
-        <div class="updateinfo">
-          <i class="icon ion-briefcase larger"></i>
-          <b>Occupation:</b>
+    
+      <label class="item item-icon-left item-input registration">
+        <div class="iconcontainer update"> 
+          <i class="icon ion-ios-telephone larger update" style="color:#8D8D8D;"></i>
         </div>
-        <label class="item item-input">
-          <input class="edit occupation" type="text" colour:"#ffffff" placeholder="Occupation" ng-model="fields.occupation">
-        </label>
+        <b class="account">Contact Number</b>
+        <span class="item-note">
+          <input class="update contact" type="text" colour:"#ffffff" placeholder="Contact Number" ng-model="fields.contactnumber">
+        </span>
       </label>
 
-      <label class="item item-input item-stacked-label update" >
+      <label class="item item-icon-left item-input registration">
+        <div class="iconcontainer update"> 
+          <i class="icon ion-briefcase update"style="color:#8D8D8D;"></i>
+        </div>
+        <b class="account">Occupation</b>
+        <span class="item-note">
+          <input class="update occupation" type="text" colour:"#ffffff" placeholder="Occupation" ng-model="fields.occupation">
+        </span>
+      </label>
+
+      <label class="item item-input item-stacked-label update">
         <div class="updateinfo">
-          <b><i class="icon ion-heart larger"></i>Area of Preference 1:</b>
+          
+          <div class="iconcontainer update"> 
+            <i class="icon ion-heart larger update" style="color:#8D8D8D;"></i>
+          </div><b class="account aop">Area of Preferences 1</b>
         </div>
         <select class="aop" ng-model="fields.preferences_1">
           <option value="" disabled selected>Preference*</option>
-          <option value="Befriend-senior-citizens">Befriend senior citizens</option>
-          <option value="Organise-fund-raising-activities">Organise fund raising activities</option>
-          <option value="Organize-social-activities">Organize social activities</option>
-          <option value="Design/Maintain-Webpage">Design/Maintain Webpage</option>
-          <option value="Organise-publicity-events">Organise publicity events</option>
-          <option value="Written-translation-for-brochures">Written translation for brochures</option>
-          <option value="Prepare-publicity-materials">Prepare publicity materials</option>
-          <option value="Lead-games/exercises">Lead games/exercises</option>
-          <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
+          <option value="Befriend senior citizens">Befriend senior citizens</option>
+          <option value="Organise fund raising activities">Organise fund raising activities</option>
+          <option value="Organize social activities">Organize social activities</option>
+          <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
+          <option value="Organise publicity events">Organise publicity events</option>
+          <option value="Written translation for brochures">Written translation for brochures</option>
+          <option value="Prepare publicity materials">Prepare publicity materials</option>
+          <option value="Lead games/exercises">Lead games/exercises</option>
+          <option value="Prepare tea/snacks">Prepare tea/snacks</option>
         </select>
       </label>
 
-      <label class="item item-input item-stacked-label" >
+     <label class="item item-input item-stacked-label update2" >
         <div class="updateinfo">
-          <b><i class="icon ion-heart larger"></i>Area of Preference 2:</b>
+          <div class="iconcontainer update"> 
+            <i class="icon ion-heart larger update" style="color:#8D8D8D;"></i>
+          </div><b class="account aop">Area of Preferences 2</b>
         </div>
         <select class="aop" ng-model="fields.preferences_2">
           <option value="" disabled selected>Preference*</option>
-          <option value="Befriend-senior-citizens">Befriend senior citizens</option>
-          <option value="Organise-fund-raising-activities">Organise fund raising activities</option>
-          <option value="Organize-social-activities">Organize social activities</option>
-          <option value="Design/Maintain-Webpage">Design/Maintain Webpage</option>
-          <option value="Organise-publicity-events">Organise publicity events</option>
-          <option value="Written-translation-for-brochures">Written translation for brochures</option>
-          <option value="Prepare-publicity-materials">Prepare publicity materials</option>
-          <option value="Lead-games/exercises">Lead games/exercises</option>
-          <option value="Prepare-tea/snacks">Prepare tea/snacks</option>
+          <option value="Befriend senior citizens">Befriend senior citizens</option>
+          <option value="Organise fund raising activities">Organise fund raising activities</option>
+          <option value="Organize social activities">Organize social activities</option>
+          <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
+          <option value="Organise publicity events">Organise publicity events</option>
+          <option value="Written translation for brochures">Written translation for brochures</option>
+          <option value="Prepare publicity materials">Prepare publicity materials</option>
+          <option value="Lead games/exercises">Lead games/exercises</option>
+          <option value="Prepare tea/snacks">Prepare tea/snacks</option>
         </select>
       </label>
     </div>
 
-    <button  class="button button-block button-calm">Update</button>
+    <button  class="button button-block button-calm update">Update</button>
   </form>
   </ion-content>
 </ion-view>

@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('myactivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('myactivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -9,7 +9,7 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId +"&id="+$scope.id)
+    $http.get(apiUrl+"RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId +"&id="+$scope.id)
       .success(function (data) {
         var transportDetails = data;
 
@@ -25,7 +25,9 @@ angular.module('crowdsourcing')
               $scope.dateTime = dateTime;
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
+              $scope.locationFromAddress = transportDetails[0].location_from_address;
               $scope.locationTo = transportDetails[0].location_to;
+              $scope.locationToAddress = transportDetails[0].location_to_address;
               $scope.moreInformation = transportDetails[0].more_information;
               if($scope.moreInformation == "")
               {
@@ -98,8 +100,10 @@ angular.module('crowdsourcing')
     $scope.withdraw=function()
     {
       var confirmPopup = $ionicPopup.confirm({
-        title: 'Withdraw?',
-        template: 'Are you sure you want to withdraw your application?'
+        title: "<h6 class='popups title error'>Withdraw?</h6>",
+        subTitle: "<h6 class='popups'>Are you sure you want to withdraw your application?</h6>",
+        cancelType: 'button button-light',
+        okType:'button button-energized'
       });
 
       confirmPopup.then(function(res) {
@@ -107,11 +111,11 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-          urlString = "http://www.changhuapeng.com/volunteer/php/Withdraw.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
+          urlString = apiUrl+"Withdraw.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
 
           $http.get(urlString)
             .success(function (data) {
-              var sendEmail = "http://changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
+              var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
               $http.get(sendEmail)
                 .success(function (data) {
 
@@ -126,8 +130,9 @@ angular.module('crowdsourcing')
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
-                  title: 'Status',
-                  template: status.status[0]
+                  //title: 'Status',
+                  title: "<h6 class='popups'>"+status.status[0]+"</h6>",
+                  okType:'button button-energized'
                 });
                 //window.location.reload(true);
                 $state.go('tab.activity', {}, {reload: true});

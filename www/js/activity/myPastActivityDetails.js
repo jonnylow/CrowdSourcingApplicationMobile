@@ -26,8 +26,12 @@ angular.module('crowdsourcing')
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
               $scope.locationFromAddress = transportDetails[0].location_from_address;
+              $scope.locationFromAddressLat = transportDetails[0].location_from_lat;
+              $scope.locationFromAddressLng = transportDetails[0].location_from_long;
               $scope.locationTo = transportDetails[0].location_to;
               $scope.locationToAddress = transportDetails[0].location_to_address;
+              $scope.locationToAddressLat = transportDetails[0].location_to_lat;
+              $scope.locationToAddressLng = transportDetails[0].location_to_long;
               if(transportDetails[0].more_information == null) {
                 $scope.moreInformation = transportDetails[0].more_information;
               }
@@ -79,4 +83,10 @@ angular.module('crowdsourcing')
       });
       $state.go('tab.myhistory');
     }
+
+    $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){
+      var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
+      window.open(url,'_system','location=yes');
+      return false;
+    };
 });

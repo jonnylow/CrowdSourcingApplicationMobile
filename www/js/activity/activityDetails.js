@@ -5,6 +5,9 @@ angular.module('crowdsourcing')
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
     }
+
+    $scope.myLocation = {lng : '', lat: ''};
+
     $scope.loadingshow = true;
     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
@@ -23,8 +26,12 @@ angular.module('crowdsourcing')
                 $scope.expectedDuration = transportDetails.activity.expected_duration_minutes + " Mins";
                 $scope.locationFrom = transportDetails.activity.departure_centre.name;
                 $scope.locationFromAddress = transportDetails.activity.departure_centre.address;
+                $scope.locationFromAddressLat = transportDetails.activity.departure_centre.lat;
+                $scope.locationFromAddressLng = transportDetails.activity.departure_centre.lng;
                 $scope.locationTo = transportDetails.activity.arrival_centre.name;
                 $scope.locationToAddress = transportDetails.activity.arrival_centre.address;
+                $scope.locationToAddressLat = transportDetails.activity.arrival_centre.lat;
+                $scope.locationToAddressLng = transportDetails.activity.arrival_centre.lng;
                 $scope.moreInformation = transportDetails.activity.more_information;
                 if($scope.moreInformation == "")
                 {
@@ -139,4 +146,10 @@ angular.module('crowdsourcing')
       {
         $ionicHistory.goBack();
       }
+
+      $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){
+        var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
+        window.open(url,'_system','location=yes');
+        return false;
+      };
   });

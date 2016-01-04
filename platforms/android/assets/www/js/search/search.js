@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading) {
+    .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl) {
       $scope.transportActivity = [];
       $scope.activityIds= $stateParams.activityIds;
       $scope.filter= $stateParams.filter;
@@ -23,14 +23,14 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
+    $http.get(apiUrl+"RetrieveTransportActivity.php")
       .success(function (data) {
         var transportDetails = data;
 
         if (transportDetails != null) {
           for(var i = 0; i<transportDetails.length; i++)
           {
-            if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start)
+            if(transportDetails[i].activity_id != null)
             {
               //format date/time
               var t = transportDetails[i].datetime_start.split(/[- :]/);
@@ -42,7 +42,9 @@ angular.module('crowdsourcing')
                 $scope.transportActivity.push({
                   no: i + 1,
                   id: transportDetails[i].activity_id,
-                  name: transportDetails[i].name,
+                  from:transportDetails[i].location_from,
+                  to:transportDetails[i].location_to,
+                  name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
                   dateTime: dateTime
                 });
               }
@@ -55,7 +57,9 @@ angular.module('crowdsourcing')
                   $scope.transportActivity.push({
                     no: i + 1,
                     id: transportDetails[i].activity_id,
-                    name: transportDetails[i].name,
+                    from:transportDetails[i].location_from,
+                    to:transportDetails[i].location_to,
+                    name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
                     dateTime: dateTime
                   });
                 }

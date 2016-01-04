@@ -1,10 +1,11 @@
 angular.module('crowdsourcing')
 
-    .controller('listTransportController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('listTransportController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
       $scope.transportActivity = [];
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       $scope.transportIds = $stateParams.transportIds;
+      $scope.distance = $stateParams.distance;
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var ids = [];
       var number = 0;
@@ -14,14 +15,14 @@ angular.module('crowdsourcing')
         ids = $scope.transportIds.split(',');
       }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
+    $http.get(apiUrl+"RetrieveTransportActivity.php")
       .success(function (data) {
         var transportDetails = data;
 
         if (transportDetails != null) {
           for(var i = 0; i<transportDetails.length; i++)
           {
-            if(transportDetails[i].activity_id != null && transportDetails[i].name!=null && transportDetails[i].datetime_start!=null)
+            if(transportDetails[i].activity_id != null)
             {
               if(ids.indexOf(transportDetails[i].activity_id) !== -1) {
                 //format date/time
@@ -38,9 +39,12 @@ angular.module('crowdsourcing')
                 $scope.transportActivity.push({
                   no: ++number,
                   id: transportDetails[i].activity_id,
-                  name: transportDetails[i].name,
+                  from:transportDetails[i].location_from,
+                    to:transportDetails[i].location_to,
+                  name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
                   date: date,
-                  dateTime:dateTime
+                  dateTime:dateTime,
+                  distance: $scope.distance
                 });
               }
             }

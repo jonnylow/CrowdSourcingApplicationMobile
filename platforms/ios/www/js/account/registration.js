@@ -1,31 +1,48 @@
 angular.module('crowdsourcing')
 
-    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory) {
-    var myPopup = $ionicPopup.show({
-      title: '<b>Notice</b>',
-      subTitle: 'Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration',
-      scope: $scope,
-      buttons: [
-        {
-          text: 'Cancel',
-          onTap: function(e) {
-            $ionicHistory.nextViewOptions({
-              disableAnimate: true
-            });
-            $state.go('landingPage', {}, {reload: true});
-            if (window.plugins != null) {
-              window.plugins.nativepagetransitions.slide(
-                {"direction": "down"}
-              );
-            }
-          }},
-        {
-          text: '<b>Ok</b>',
-          type: 'button-calm'
+    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory, apiUrl) {
+    if(window.localStorage.getItem("tempName") != null && window.localStorage.getItem("tempEmail") != null &&
+      window.localStorage.getItem("tempPassword")!= null && window.localStorage.getItem("tempContactnumber")!= null &&
+      window.localStorage.getItem("tempDOB")!= null && window.localStorage.getItem("tempNRIC")!= null &&
+      window.localStorage.getItem("tempGender")!= null && window.localStorage.getItem("tempHaveCar")!= null &&
+      window.localStorage.getItem("tempOccupation")!= null)
+    {
+      if (window.localStorage.getItem("tempHaveCar") == 1) {
+        console.log(window.localStorage.getItem("tempDOB"));
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")),nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:true};
+      }
+      else {
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")),nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:false};
+      }
+    }
+    else
+    {
+      var myPopup = $ionicPopup.show({
+        title: '<h6 class="popups title">Notice</h6>',
+        subTitle: ' <br><h6 class="popups registration">Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration</h6>',
+        scope: $scope,
+        buttons: [
+          {
+            text: 'Cancel',
+            onTap: function(e) {
+              $ionicHistory.nextViewOptions({
+                disableAnimate: true
+              });
+              $state.go('landingPage', {}, {reload: true});
+              if (window.plugins != null) {
+                window.plugins.nativepagetransitions.slide(
+                  {"direction": "down"}
+                );
+              }
+            }},
+          {
+            text: '<b>Ok</b>',
+            type: 'button button-energized'
 
-        },
-      ]
-    });
+          },
+        ]
+      });
+    }
 
       $scope.register = function(fields)
       {
@@ -35,15 +52,15 @@ angular.module('crowdsourcing')
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
             &&  fields.dob!= null && fields.nric!= null
-            && fields.nric.trim() != "" && fields.gender!= null && fields.gender.trim() != "") {
+            && fields.nric.trim() != "" && fields.gender!= null && fields.gender.trim() != "" && fields.occupation!= null && fields.occupation.trim() != "") {
             var tempName = fields.name;
             var tempEmail = fields.email;
             var tempPassword = fields.password;
-            //var tempConfirmpassword = fields.confirmpassword;
             var tempContactnumber = fields.contactnumber;
             var tempDOB = fields.dob;
             var tempNRIC = fields.nric;
             var tempGender = fields.gender;
+            var occupation = fields.occupation;
 
             if (validateDOB(tempDOB) == true) {
               var dd = tempDOB.getDate();
@@ -56,29 +73,32 @@ angular.module('crowdsourcing')
                 mm = '0' + mm
               }
               tempDOB = yyyy + '-' + mm + '-' + dd;
-
-              if (validateName(tempName) == true) {
-                //if (tempPassword == tempConfirmpassword) {
+              if (validateOccupation(occupation) == true) {
+                if (validateName(tempName) == true) {
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
-                      var urlString = "http://www.changhuapeng.com/volunteer/php/CheckEmail.php?email="+tempEmail;
+                      var urlString = apiUrl + "CheckEmail.php?email=" + tempEmail;
 
                       $http.get(urlString)
                         .success(function (data) {
 
                           var status = data;
-                          if(status.status[0] != "exist")
-                          {
-                            //if(validateNRIC(tempNRIC) == true)
-                            //{
-                              var urlStringNRIC = "http://www.changhuapeng.com/volunteer/php/CheckNRIC.php?nric="+tempNRIC;
+                          if (status.status[0] != "exist") {
+                            if (validateNRIC(tempNRIC) == true) {
+                              var urlStringNRIC = apiUrl + "CheckNRIC.php?nric=" + tempNRIC;
 
                               $http.get(urlStringNRIC)
                                 .success(function (data) {
 
                                   var status = data;
-                                  if(status.status[0] != "exist")
-                                  {
+                                  if (status.status[0] != "exist") {
+                                    if (fields.carChecked == true) {
+                                      $scope.tempCarChecked = 1;
+                                    }
+                                    else {
+                                      $scope.tempCarChecked = 0;
+                                    }
+
                                     window.localStorage.setItem("tempName", tempName);
                                     window.localStorage.setItem("tempEmail", tempEmail);
                                     window.localStorage.setItem("tempPassword", tempPassword);
@@ -86,76 +106,201 @@ angular.module('crowdsourcing')
                                     window.localStorage.setItem("tempDOB", tempDOB);
                                     window.localStorage.setItem("tempNRIC", tempNRIC);
                                     window.localStorage.setItem("tempGender", tempGender);
+                                    window.localStorage.setItem("tempOccupation", occupation);
+                                    window.localStorage.setItem("tempHaveCar", $scope.tempCarChecked);
 
                                     $scope.loadingshow = false;
                                     $ionicLoading.hide();
                                     $state.go('moreQuestions', {}, {reload: true});
                                   }
-                                  else
-                                  {
+                                  else {
                                     $scope.loadingshow = false;
                                     $ionicLoading.hide();
-                                    alert("NRIC has already been registered. Please try again.");
+
+                                    var alertPopup = $ionicPopup.alert({
+                                      title: '<h6 class="popups title">Sorry</h6>',
+                                      subTitle: '<br><h6 class="popups">NRIC has already been registered. Please try again.</h6> ',
+                                      scope: $scope,
+                                      buttons: [
+                                        {
+                                          text: '<b>Ok</b>',
+                                          type: 'button button-energized',
+
+                                        },
+                                      ]
+                                    });
                                   }
                                 })
-                            //}
-                            //else
-                            //{
-                            //  alert("Invalid NRIC. Please try again.");
-                            //}
+                            }
+                            else {
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+
+                              var alertPopup = $ionicPopup.alert({
+                                title: '<h6 class="popups title">Sorry</h6>',
+                                subTitle: '<br><h6 class="popups">Invalid NRIC/FIN. Please try again.</h6> ',
+                                scope: $scope,
+                                buttons: [
+                                  {
+                                    text: '<b>Ok</b>',
+                                    type: 'button button-energized',
+
+                                  },
+                                ]
+                              });
+                            }
                           }
-                          else
-                          {
+                          else {
                             $scope.loadingshow = false;
                             $ionicLoading.hide();
-                            alert("Email address has already been registered. Please try again.");
+
+                            var alertPopup = $ionicPopup.alert({
+                              title: '<h6 class="popups title">Sorry</h6>',
+                              subTitle: '<br><h6 class="popups">Email address has already been registered. Please try again.</h6> ',
+                              scope: $scope,
+                              buttons: [
+                                {
+                                  text: '<b>Ok</b>',
+                                  type: 'button button-energized',
+
+                                },
+                              ]
+                            });
                           }
                         })
                     }
                     else {
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
-                      alert("Invalid email address. Please try again.");
+
+                      var alertPopup = $ionicPopup.alert({
+                        title: '<h6 class="popups title">Sorry</h6>',
+                        subTitle: '<br><h6 class="popups">Invalid email address. Please try again.</h6> ',
+                        scope: $scope,
+                        buttons: [
+                          {
+                            text: '<b>Ok</b>',
+                            type: 'button button-energized',
+
+                          },
+                        ]
+                      });
                     }
                   }
                   else {
                     $scope.loadingshow = false;
                     $ionicLoading.hide();
-                    alert("Invalid phone number. Please try again.");
+
+                    var alertPopup = $ionicPopup.alert({
+                      title: '<h6 class="popups title">Sorry</h6>',
+                      subTitle: '<br><h6 class="popups">Invalid phone number. Please try again.</h6> ',
+                      scope: $scope,
+                      buttons: [
+                        {
+                          text: '<b>Ok</b>',
+                          type: 'button button-energized',
+
+                        },
+                      ]
+                    });
                   }
-                /*}
+                }
                 else {
                   $scope.loadingshow = false;
-                 $ionicLoading.hide();
-                  alert("Passwords do not match. Please try again.");
-                }*/
+                  $ionicLoading.hide();
+
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Sorry</h6>',
+                    subTitle: '<br><h6 class="popups">Name should consists of alphabetical letters only.</h6> ',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-energized',
+
+                      },
+                    ]
+                  });
+                }
               }
               else {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
-                alert("Name should consists of alphabetical letters only.");
+
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Sorry</h6>',
+                  subTitle: '<br><h6 class="popups">Invalid Occupation. Please try again.</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: '<b>Ok</b>',
+                      type: 'button button-energized',
+
+                    },
+                  ]
+                });
               }
             }
             else {
               $scope.loadingshow = false;
               $ionicLoading.hide();
-              alert("Date of Birth cannot larger than current date.");
+
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Sorry</h6>',
+                subTitle: '<br><h6 class="popups">Date of Birth cannot larger than current date.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized',
+
+                  },
+                ]
+              });
             }
           }
           else
           {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-            alert("Please fill in all fields.");
+
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Sorry</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button button-energized',
+
+                },
+              ]
+            });
           }
         }
         else
         {
           $scope.loadingshow = false;
           $ionicLoading.hide();
-          alert("Please fill in all fields.");
+
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Sorry</h6>',
+            subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: '<b>Ok</b>',
+                type: 'button button-energized',
+
+              },
+            ]
+          });
         }
       }
+
+    function validateOccupation(occupation) {
+      return /^[a-zA-Z\s]+$/.test(occupation);
+    }
 
     function validateNRIC(nric) {
       if(nric.length == 9 && nric.charAt(0).toLowerCase() == "s" && /^[a-zA-Z]+$/.test(nric.charAt(8)) == true)
@@ -204,9 +349,27 @@ angular.module('crowdsourcing')
     }
 
     $scope.landingPage = function () {
+      window.localStorage.removeItem("tempName");
+      window.localStorage.removeItem("tempEmail");
+      window.localStorage.removeItem("tempPassword");
+      window.localStorage.removeItem("tempContactnumber");
+      window.localStorage.removeItem("tempDOB");
+      window.localStorage.removeItem("tempNRIC");
+      window.localStorage.removeItem("tempGender");
+      window.localStorage.removeItem("tempHaveCar");
+      window.localStorage.removeItem("tempOccupation");
+      window.localStorage.removeItem("tempPreferences1");
+      window.localStorage.removeItem("tempPreferences2");
+      window.localStorage.removeItem("front");
+      window.localStorage.removeItem("back");
+
       $ionicHistory.nextViewOptions({
         disableAnimate: true
       });
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
+
       $state.go('landingPage', {}, {reload: true});
       if (window.plugins != null) {
         window.plugins.nativepagetransitions.slide(

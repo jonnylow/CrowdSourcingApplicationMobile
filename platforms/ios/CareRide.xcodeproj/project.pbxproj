@@ -59,6 +59,7 @@
 		8B7CD4BB13C648DAA4B2CCB9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B30142F6B149F4A4424BE2 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		16FAF4F46C9F449AB7201635 /* NativePageTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C8085269794EB59B154CE4 /* NativePageTransitions.m */; };
 		766EC8AA22DA4B0B8D2F6050 /* AppDelegate+nativepagetransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BB3587C8D435DB2413CB2 /* AppDelegate+nativepagetransitions.m */; };
+		975A0FC1256B4A21ACF7F39A /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = D34E8BEBE3334126BBD9F9EA /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,8 @@
 		3F2BB3587C8D435DB2413CB2 /* AppDelegate+nativepagetransitions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+nativepagetransitions.m"; path = "com.telerik.plugins.nativepagetransitions/AppDelegate+nativepagetransitions.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		87541A839A2B45FB9D27C7F2 /* NativePageTransitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NativePageTransitions.h"; path = "com.telerik.plugins.nativepagetransitions/NativePageTransitions.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		8476825DA53B436BB822A8D9 /* AppDelegate+nativepagetransitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+nativepagetransitions.h"; path = "com.telerik.plugins.nativepagetransitions/AppDelegate+nativepagetransitions.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		D34E8BEBE3334126BBD9F9EA /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		C7AD5261E0AB469A824AF1E1 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +301,8 @@
 				3F2BB3587C8D435DB2413CB2 /* AppDelegate+nativepagetransitions.m */,
 				87541A839A2B45FB9D27C7F2 /* NativePageTransitions.h */,
 				8476825DA53B436BB822A8D9 /* AppDelegate+nativepagetransitions.h */,
+				D34E8BEBE3334126BBD9F9EA /* CDVInAppBrowser.m */,
+				C7AD5261E0AB469A824AF1E1 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "CareRide/Plugins";
@@ -496,6 +501,7 @@
 				4D1AF5BFBF664075B4EABC91 /* CDVReachability.m in Sources */,
 				16FAF4F46C9F449AB7201635 /* NativePageTransitions.m in Sources */,
 				766EC8AA22DA4B0B8D2F6050 /* AppDelegate+nativepagetransitions.m in Sources */,
+				975A0FC1256B4A21ACF7F39A /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -119,13 +119,13 @@ button.home{
   color: #fff;
 }
 
-.bar-subheader{
+.bar-subheader.myactivity{
   top:92px;
   padding:0;
 
 }
 
-.has-subheader{
+.has-subheader.myactivity{
   top: 136px;
 }
 /***IMAGES***/
@@ -179,6 +179,37 @@ a:link {
     text-decoration: none;
 }
 
+/*for all popups*/
+
+h6.popups{
+  font-size: 16px;
+  font-style: normal;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h6.popups.title.error{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+h6.popups.title{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+h3.popups.home{
+  font-size: 16px;
+  font-style: normal;
+  margin-top: 0px;
+}
+
 /***BOX SIZES***/
 div.row{
  width: 100%;
@@ -197,11 +228,10 @@ div.col{
 
 select.dropdown {
   background-color:#fff;
-  border: transparent;
+  border: none;
   color:#000000;
   width:100%;
   height: 30px;
-
 }
 
 .item.item-divider{
@@ -222,7 +252,8 @@ select.dropdown {
 /***ICONS***/
 i.icon.ion-calendar{
   padding:5px;
-  padding-left:14px;
+  padding-left:5px;
+  font-size: 25px;
 }
 
 i.icon{
@@ -234,6 +265,11 @@ i.icon.ion-heart.larger{
   margin-left: 15px;
   margin-top: -10px;
   margin-bottom: -5px;
+}
+
+.item-checkbox{
+  padding-top:6px;
+  padding-bottom: 6px;
 }
 /*end of everything that we overwrite from ionic*/
 
@@ -276,7 +312,7 @@ div.transbox1 {
 
 div.iconcontainer{
   margin-bottom: 0;
-  width: 15%;
+  width: 17%;
   float:left;
   background-color: #fff;
   opacity: 0.6;
@@ -284,6 +320,19 @@ div.iconcontainer{
   padding-top: 0% ;
   padding-left: 1% ;
   padding-bottom: 2% ;
+}
+
+div.iconcontainer.car{
+  margin-bottom: 0;
+  width: 17%;
+  float:left;
+  background-color: #fff;
+  opacity: 0.6;
+  text-align: center;
+  padding-top: 0% ;
+  padding-left: 1% ;
+  padding-bottom: 2% ;
+  margin-right: -10px;
 }
 
 div.transbox1 input{
@@ -332,7 +381,7 @@ div.item{
 
 .list.list-inset.registration{
   margin-top: 7px;
-  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.26);
+  /*box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.26);*/
   margin-top: 40px;
 }
 
@@ -348,7 +397,8 @@ label.item.item-input.registration{
 
 
 span.input-label.dob{
-  color:#A4A4A4;
+  color:#B0B0B0;
+  padding-left: 16px;
 }
 
 input.registration{
@@ -387,6 +437,19 @@ button.button.button-block.button-calm.registration{
   margin-bottom: -40px;
 }
 
+select.dropdown.register{
+  color:#B0B0B0;
+  padding-left: 12px;
+}
+
+.icon.ion-eye-disabled.login{
+  color:#8D8D8D;
+}
+
+.icon.ion-eye.login{
+  color:#8D8D8D;
+}
+
 /*end of login and registration page*/
 
 /**********************MORE QUESTIONS**********************/
@@ -395,7 +458,8 @@ label.item.item-input.morequestions{
   color:#000;
   margin-left: 15px;
   width: 120%;
-  height: 50px;
+  height: 40px;
+  border-color: transparent;
 }
 
 input.morequestions{
@@ -425,10 +489,6 @@ div.morebox input{
   opacity:0.8;
 }
 
-.HaveCar{
-  margin-top: 35px;
-}
-
 .button.button-block.button-light.morequestions{
   margin-top:-5px;
   margin-bottom: -10px;
@@ -443,11 +503,83 @@ div.morebox input{
   border-radius: 7px;
 }
 
+button.button.button-light.button-small.NRICbutton1{
+  background-color: #fff;
+  border-color: #A4A4A4;
+  border-radius: 5px;
+  font-size: 15px;
+  width:70px;
+  margin-left: -15px;
+}
+
 button.button.button-light.button-small.NRICbutton{
   background-color: #fff;
   border-color: #A4A4A4;
   border-radius: 5px;
   font-size: 15px;
+  width:70px;
+}
+
+label.item.item-input.item-stacked-label.registration1{
+  background-color: transparent;
+  border:none;
+  margin-top: 50px;
+}
+
+label.item.item-input.item-stacked-label.registration{
+  background-color: transparent;
+  border:none;
+}
+
+select.dropdown.morequestions{
+  padding:10px;
+  height:40px;
+}
+
+.item.range.range-positive.morequestions{
+  border:none;
+  padding-left: 0px;
+}
+
+.NRICbox{
+  height:120px;
+  width:140px;
+  border-style: thin;
+  border-color:#000;
+  padding:0px;
+  background-color: #164F86;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: -20px;
+}
+
+.NRICbox1{
+  height:120px;
+  width:140px;
+  border-style: thin;
+  border-color:#000;
+  padding:0px;
+  background-color: #164F86;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: -5px;
+}
+
+h3.morequestions{
+  font-size: 15px;
+  padding:5px;
+  height:40px;
+  font-weight: bold;
+  color:#fff;
+}
+
+.icon.ion-camera.light.morequestions{
+  font-size: 45px;
+  padding-top: 0px;
+  margin-top: -10px;
+  margin-bottom: -5px;
 }
 
 
@@ -463,25 +595,41 @@ h4.verify{
   margin-top: 50px;
 }
 
+h4.verify1{
+  color:#000;
+  margin:10px;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
 input.otp{
-  width:100;
+  max-width:150%;
   margin: -5;
   opacity: 0.6;
   text-align: left;
-  box-shadow: 3px 1px 1px 1px #A4A4A4;
+  padding:0px;
 }
 
 div.box{
   background-color:transparent;
   margin:5%;
-  width:80%;
+  margin-left: -2px;
+  margin-right: -2px;
+  width:102%;
 }
 
 div.box input{
   background-color: #fff;
   text-align: center;
-  color:#000
+  color:#000;
   opacity:0.6;
+  padding:0px;
+}
+
+span.input-label.verify{
+  margin-bottom: 5px;
+  margin-left: 100px;
 }
 
 button.button.button-block.button-calm.verify{
@@ -494,6 +642,10 @@ button.button.button-block.button-light.verify{
   border-radius: 7px;
 }
 
+.button.button-block.button-transparent.verify{
+  padding:0px;
+  margin: 0px;
+}
 /*end of verify page*/
 
 /*home page*/
@@ -559,6 +711,16 @@ p.homep{
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 5px;
+}
+
+.popup-vertical-buttons button
+{
+    min-width: 100%;
+    margin-bottom: 5px;
+}
+.popup-vertical-buttons .popup-buttons
+{
+    display: block;
 }
 /*end of home page*/
 
@@ -654,6 +816,16 @@ p.myactivity{
   font-size: 14px;
   margin-bottom: 5px;
   margin-right: 10px;
+  width:100%;
+}
+
+p.myactivitydetails{
+  color: #53585F;
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: -20px;
+  width:130%;
 }
 
 h5.myactivity{
@@ -696,7 +868,12 @@ h5.myactivity{
 }
 
 .icon.myactivity{
-  top: -45px;
+  top: -31px;
+}
+
+.icon.myactivitydetails{
+  top: -40px;
+  margin-left: -6px;
 }
 
 .item.myactivitybutton{
@@ -707,6 +884,17 @@ h5.myactivity{
 
 .item.myactivityoverall{
   padding-bottom: 15px;
+}
+
+h3.myactivity{
+  font-size: 16px;
+  margin-top: 0px;
+  font-style: bold;
+  margin-bottom: -5px;
+}
+
+.list.myactivity{
+  margin-top: 42px;
 }
 /*end of myactivity page*/
 
@@ -739,18 +927,50 @@ ion-item.item{
   padding:5px;
 }
 
-button.button.button-transparent{
+button.button.button-transparent.scan{
   background-color: transparent;
   border:none;
 }
 
-button.button.button-transparent.active{
+button.button.button-transparent.scan:active{
   background-color: transparent;
   border:none;
 }
+
+.card.animated.shake.scan{
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.list.card.scan{
+  box-shadow: 3 0px 0px rgba(0, 0, 0, 0.3);
+}
+
 
 /*end of scan page*/
 
+/*list transport page*/
+.bar-subheader.listtransport{
+  background-color: transparent;
+  border-color: transparent;
+  background-image: none;
+}
+
+.list.card.listtransport{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.item.listtransport{
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/*end of list transport page*/
 /*profile page*/
 
 div.list.profile{
@@ -762,6 +982,11 @@ div.list.profile{
   border-color: #94A66D;
   background-color: #94A66D;
   color: #FFFFFF;
+}
+
+.button.button-block.button-calm.me{
+  margin-left: 11px;
+  width:94%;
 }
 /*end of profile page*/
 
@@ -787,29 +1012,33 @@ div.list.profile{
 
 input.readonly.me{
   padding: 10px;
+  margin-top:-1px;
   text-align: left;
   width: 100%;
   font-size: 17px;
-  background-color: #E6E6E6;
+  background-color: transparent;
+  color:#8D8D8D;
 }
 
-/*input.edit{
+b.account{
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -20px;
+  margin-right: 5px;
   font-size: 17px;
-  background-color: transparent;
-  padding-right: 0px;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
-input.edit.contact{
-  margin-left: 130px;
+b.account.aop{
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -16px;
+  margin-right: 5px;
   font-size: 17px;
-  background-color: transparent;
+  color:#8D8D8D;
+  font-weight: normal;
 }
-
-input.edit.occupation{
-  margin-left: 80px;
-  font-size: 17px;
-  background-color: transparent;
-}*/
 
 label.item.item-input.update{
   background-color: transparent;
@@ -821,9 +1050,9 @@ label.item.item-input.update input{
 }
 
 select.aop{
-  margin-top: 3px;
-  margin-left: 5px;
-  width:300px;
+  margin-top: 10px;
+  margin-left: -50px;
+  width:318px;
   font-size: 17px;
   padding:5px;
   background-color: transparent;
@@ -831,60 +1060,139 @@ select.aop{
 
 }
 
-.update.icon{
-  margin-top: -23px;
-  background-color: transparent;
-  margin-left: -10px;
-}
-
 h3.me{
-  font-size: 23px;
+  font-size: 16px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 14px;
+  margin-left: 20px;
+  margin-bottom: -30px;
+  color: #666;
+}
+
+.button.button-block.button-calm.update{
+  width:95%;
+  border-radius: 7px;
   margin-left: 10px;
-  margin-bottom: -10px;
+  margin-top: -10px;
 }
 
-.updateinfo{
-  margin-right: 10px;
-  background-color: transparent;
+input.edit{
+  text-align: center;
+  background-color: #E4E4E4;
+  margin-left: 95px;
+  font-size: 17px;
+  width: 140px;
 }
 
-label.item.item-input.update{
-  background-color: #fff;
-  border-color:#E6E6E6;
+.list.list-inset.registration input{
+  padding-right: 5px;
+}
+
+input.update.contact{
+  text-align: center;
+  padding-right: 1px;
+  margin-left: 15px;
+  font-size: 17px;
+  background-color: #E4E4E4;
+  width:140px;
+}
+
+input.update.occupation{
+  text-align: center;
+  padding-right: 1px;
+  margin-left: 54px;
+  font-size: 17px;
+  background-color: #E4E4E4;
+  width:140px;
+}
+
+b.update{
+  margin-left: 10px;
+  font-size: 15px;  
+  color:#8D8D8D;
+  font-weight: normal;
+}
+
+b.update.occupation{
+  margin-left: 10px;
+  font-size: 15px;  
+  color:#8D8D8D;
+  font-weight: normal;
+}
+
+.item.item-input.item-stacked-label.update{
   border-style:solid;
   border-width: thin;
   border-right:none;
   border-left:none;
   border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
+  margin-bottom: 5px;
 }
 
-label.item.item-input.update.occupation{
-  background-color: transparent;
-  border-color:#E6E6E6;
+.item.item-input.item-stacked-label.update2{
   border-style:solid;
   border-width: thin;
   border-right:none;
   border-left:none;
-
+  border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
 }
 
-label.item.item-input.item-stacked-label{
+.icon.ion-card.dark.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.icon.ion-email.dark.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.item.item-icon-left.update{
+  padding:30px;
+}
+
+div.iconcontainer.update{
+  width: 17%;
+  float:left;
   background-color: transparent;
-  border-color:#E6E6E6;
-  border-style:solid;
-  border-width: thin;
-  border-right:none;
-  border-left:none;
-  border-top:none;
+  opacity: 0.6;
+  text-align: center;
 }
+
+.icon.ion-person.larger.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.icon.ion-ios-telephone.larger.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.icon.ion-briefcase.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.icon.ion-heart.larger.update{
+  margin-left:-15px;
+  font-size: 30px;
+  color:#8D8D8D;
+}
+
+
 /*end of manage account page*/
 
 /*change password page*/
 
 .list.updatePassword1{
-  margin-top: 50px;
+  
   background-color: #fff;
 }
 
@@ -912,7 +1220,8 @@ label.item.item-input.item-stacked-label{
 }
 
 .maskPassword{
-  margin-top: -10px;
+  margin-top: -13px;
+  margin-bottom: 5px;
 }
 /*end of change password page*/
 
@@ -934,3 +1243,38 @@ select.search{
   padding:0;
 }
 /*end of search pages*/
+
+/*Filter pages*/
+.list.card.filterheader{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: transparent;
+}
+
+.item.filterheader{
+  padding-top: 0;
+}
+.list.card.filtermain{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 16px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/*****Elderly information page*****/
+.icon.elderly{
+  margin-left: -5px;
+}
+
+h6.elderly{
+  font-size: 17px;
+  margin-left: 10px;
+  color:#8B3737;
+  font-weight: bold;
+}
+
+/*****End of Elderly information page*****/

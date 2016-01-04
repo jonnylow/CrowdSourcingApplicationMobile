@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop, uiGmapGoogleMapApi, $ionicLoading) {
+    .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop, uiGmapGoogleMapApi, $ionicLoading,apiUrl) {
 
         //user location, get from global var or have to reacquire if null
         $scope.myLocation = {lng : '', lat: ''};
@@ -9,29 +9,22 @@ angular.module('crowdsourcing')
           $scope.myLocation.lng = window.localStorage.getItem("userLong");
           $scope.myLocation.lat = window.localStorage.getItem("userLat");
         }
-        else
-        {
-          navigator.geolocation.getCurrentPosition(function(pos) {
-            $scope.myLocation.lng = pos.coords.longitude;
-            $scope.myLocation.lat = pos.coords.latitude;
-          });
-        }
 
         $scope.showTag = false;
-        $scope.radius = 2800;
         $scope.zoom = 12;
         $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
-        $scope.fields = {filter:"20"};
 
         //store all activities data
         $scope.transportID=[];
         $scope.transportName=[];
         $scope.transportLocationFrom=[];
+        $scope.transportLocationTo=[];
         $scope.transportDateTimeStart=[];
-        $scope.transportFromDistance=[];
 
         //this array is use to track markers duplication. Is not in sync with the rest of the array above
         $scope.transportLocationFromLatLng=[];
+        $scope.transportDistanceFromLatLng=[];
+        $scope.transportTimeFromLatLng = [];
 
         //store all markers for transport activities
         $scope.markers = [];
@@ -40,10 +33,20 @@ angular.module('crowdsourcing')
         //for dynamic displaying
         $scope.transportIDDisplay=[];
         $scope.transportNameDisplay=[];
+        $scope.transportFromDisplay=[];
+        $scope.transportToDisplay=[];
         $scope.transportDateTimeStartDisplay=[];
-        $scope.transportFromDistanceDisplay=[];
         $scope.loadingshow = true;
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
+        //variables for the sort nearby button
+        var sorted = false;
+        var current = 0;
+        var tempArray = [];
+        $scope.distanceDisplay = "Distance from you: No marker selected ";
+        $scope.timeDisplay = "Estimated Driving Distance: No marker selected ";
+
+        var directionsService = new google.maps.DirectionsService();
 
         //plot map
         if($scope.transportID != null && $scope.transportName != null && $scope.transportDateTimeStart !=null) {
@@ -97,14 +100,13 @@ angular.module('crowdsourcing')
             $scope.showTag = true;
 
             //retrieve from DB
-            $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveTransportActivity.php")
+            $http.get(apiUrl+"RetrieveTransportActivity.php")
               .success(function (data) {
                 var transportDetails = data;
                 if (transportDetails != null) {
                   for(var i = 0; i<transportDetails.length; i++)
                   {
-                    if(transportDetails[i].activity_id != null && transportDetails[i].name && transportDetails[i].datetime_start
-                      && transportDetails[i].location_from_lat !=null && transportDetails[i].location_from_long != null) {
+                    if(transportDetails[i].activity_id != null && transportDetails[i].location_from_lat !=null && transportDetails[i].location_from_long != null) {
 
                       //format date/time
                       var t = transportDetails[i].datetime_start.split(/[- :]/);
@@ -112,18 +114,19 @@ angular.module('crowdsourcing')
 
                       var from = new google.maps.LatLng($scope.myLocation.lat, $scope.myLocation.lng);
                       var to = new google.maps.LatLng(parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long));
-                      getDistanceTime(from,to);
 
                       //push each activities into the main arrays that store all activities
                       $scope.transportID.push(transportDetails[i].activity_id);
-                      $scope.transportName.push(transportDetails[i].name);
                       $scope.transportLocationFrom.push(transportDetails[i].location_from);
+                      $scope.transportLocationTo.push(transportDetails[i].location_to);
+                      $scope.transportName.push(transportDetails[i].location_from + " - " + transportDetails[i].location_to);
                       $scope.transportDateTimeStart.push(dateTime);
 
                       //check if marker already exists (by checking with the markers array)
                       //if exists skip this marker, if it is a new position, add this new marker
                       if ($scope.markerExist([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)]) == false) {
                         $scope.transportLocationFromLatLng.push([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)])
+                        getDistanceMarker(from, to);
 
                         var tempMarker = {
                           id: i + 1,
@@ -146,13 +149,9 @@ angular.module('crowdsourcing')
               })
           });
 
-          /**********************************TRY TO USE MAP TO STORE DISTANCE TIME************************/
-          var directionsService = new google.maps.DirectionsService();
-          var directionsDisplay = new google.maps.DirectionsRenderer();
-          //var storeDistanceTimeGMap = new Map();
 
-          //function to get driving distance and time from google map service
-          function getDistanceTime(from, to) {
+          //function to get driving distance and time from google map service (marker)
+          function getDistanceMarker(from, to) {
             var request = {
               origin:from,
               destination:to,
@@ -163,17 +162,17 @@ angular.module('crowdsourcing')
               if (status == google.maps.DirectionsStatus.OK) {
                 var distance = (response.routes[0].legs[0].distance.value / 1000).toFixed(2);
                 var time = (response.routes[0].legs[0].duration.value / 60).toFixed(0);
-                $scope.transportFromDistance.push(distance + "km away | Estimated driving time: " + time + " mins");
+                $scope.transportDistanceFromLatLng.push(distance);
+                $scope.transportTimeFromLatLng.push(time);
               }
               else if (status === google.maps.DirectionsStatus.OVER_QUERY_LIMIT)
               {
                 setTimeout(function() {
-                  getDistanceTime(from,to);
+                  getDistanceMarker(from,to);
                 }, 100);
               }
             });
           }
-          /**********************************TRY TO USE MAP TO STORE DISTANCE TIME************************/
 
           //check if marker already exist in the marker array
           $scope.markerExist = function(search)
@@ -192,20 +191,44 @@ angular.module('crowdsourcing')
             $scope.loadingshow = true;
             $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-            $scope.showTag = false;
-            for(var j = 0; j<$scope.markersStatus.length; j++)
-            {
-              $scope.markersStatus[j] = false;
+            //check for sort
+            if(sorted ==false) {
+              for (var i = 0; i < $scope.transportLocationFromLatLng.length; i++) {
+                tempArray.push({
+                  distance: $scope.transportDistanceFromLatLng[i],
+                  time: $scope.transportTimeFromLatLng[i],
+                  location: $scope.transportLocationFromLatLng[i],
+                  marker: $scope.markers[i]
+                });
+              }
+
+              tempArray.sort(function (a, b) {
+                return ((a.distance < b.distance) ? -1 : ((a.distance == b.distance) ? 0 : 1));
+              });
+              sorted = true;
             }
-            $scope.markersStatus[markerIndex] = true;
+
+            //update the markers
+            if(tempArray.length!=0) {
+              for (var g = 0; g < tempArray.length; g++) {
+                if(tempArray[g].marker.window.title==locationFrom)
+                {
+                  current = g;
+                  $scope.focusNearbyIncrease();
+                }
+              }
+            }
 
             if(locationFrom != null)
             {
+              $scope.showTag = false;
+
               //clear display list
               $scope.transportIDDisplay=[];
               $scope.transportNameDisplay=[];
               $scope.transportDateTimeStartDisplay=[];
-              $scope.transportFromDistanceDisplay=[];
+              $scope.transportFromDisplay=[];
+              $scope.transportToDisplay=[];
 
               //loop through the transportLocationFrom (name of pickup), if it is the same, copy to the display list of arrays to show on list
               for(var i =0; i<$scope.transportLocationFrom.length; i++)
@@ -215,8 +238,9 @@ angular.module('crowdsourcing')
                 {
                   $scope.transportIDDisplay.push($scope.transportID[i]);
                   $scope.transportNameDisplay.push($scope.transportName[i]);
+                  $scope.transportFromDisplay.push($scope.transportLocationFrom[i]);
+                  $scope.transportToDisplay.push($scope.transportLocationTo[i]);
                   $scope.transportDateTimeStartDisplay.push($scope.transportDateTimeStart[i]);
-                  $scope.transportFromDistanceDisplay.push($scope.transportFromDistance[i]);
                 }
               }
             }
@@ -230,45 +254,105 @@ angular.module('crowdsourcing')
             $state.go('activityDetails', {transportId: id, transportActivityName: name});
           }
 
-          $scope.valueChanged = function()
-          {
-            if($scope.fields.filter == "5")
-            {
-              $scope.zoom = 14;
-              $scope.radius = 1000;
-              $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
-            }
-            if($scope.fields.filter == "10")
-            {
-              $scope.zoom = 13;
-              $scope.radius = 1800;
-              $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
-            }
-            if($scope.fields.filter == "20")
-            {
-              $scope.zoom = 12;
-              $scope.radius = 2800;
-              $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
-            }
-            if($scope.fields.filter == "30")
-            {
-              $scope.zoom = 11;
-              $scope.radius = 5000;
-              $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
-            }
-          }
-
           $scope.goList = function()
           {
             if($scope.transportIDDisplay.length != 0) {
-              $state.go('listTransport', {transportIds: $scope.transportIDDisplay});
+              for (var g = 0; g < tempArray.length; g++) {
+                if(tempArray[g].marker.window.title==$scope.transportFromDisplay[0])
+                {
+                  var tempDistanceTime = tempArray[g].distance + "km away | Estimated driving time: " + tempArray[g].time + " mins";
+                  $state.go('listTransport', {transportIds: $scope.transportIDDisplay, distance:tempDistanceTime});
+                }
+              }
             }
             else
             {
               var alertPopup = $ionicPopup.alert({
-                title: 'Error',
-                template: 'Please select a red marker first.'
+                title: '<h6 class="popups title">Error</h6>',
+                subTitle: '<br><h6 class="popups">Please select a red marker first.</h6>',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized'
+                  }]
               });
+            }
+          }
+
+          $scope.focusNearbyIncrease = function()
+          {
+            //does the sorting of distance
+            if(sorted ==false) {
+              for (var i = 0; i < $scope.transportLocationFromLatLng.length; i++) {
+                tempArray.push({
+                  distance: $scope.transportDistanceFromLatLng[i],
+                  time: $scope.transportTimeFromLatLng[i],
+                  location: $scope.transportLocationFromLatLng[i],
+                  marker: $scope.markers[i]
+                });
+              }
+
+              tempArray.sort(function (a, b) {
+                return ((a.distance < b.distance) ? -1 : ((a.distance == b.distance) ? 0 : 1));
+              });
+              sorted = true;
+            }
+
+            //handle marker windows
+            for(var j = 0; j<$scope.markersStatus.length; j++)
+            {
+              $scope.markersStatus[j] = false;
+            }
+
+            for(var a = 0; a<$scope.markers.length; a++)
+            {
+              if($scope.markers[a].id == tempArray[current].marker.id)
+              {
+                //marker windows display
+                $scope.markersStatus[a] = true;
+
+                //handle dynamic display
+                if(tempArray[current].marker.window.title!= null)
+                {
+                  $scope.showTag = false;
+
+                  //clear display list
+                  $scope.transportIDDisplay=[];
+                  $scope.transportNameDisplay=[];
+                  $scope.transportDateTimeStartDisplay=[];
+                  $scope.transportFromDisplay=[];
+                  $scope.transportToDisplay=[];
+
+                  //loop through the transportLocationFrom (name of pickup), if it is the same, copy to the display list of arrays to show on list
+                  for(var i =0; i<$scope.transportLocationFrom.length; i++)
+                  {
+                    var tempLocFrom = $scope.transportLocationFrom[i];
+                    if(tempLocFrom == tempArray[current].marker.window.title)
+                    {
+                      $scope.transportIDDisplay.push($scope.transportID[i]);
+                      $scope.transportNameDisplay.push($scope.transportName[i]);
+                      $scope.transportFromDisplay.push($scope.transportLocationFrom[i]);
+                      $scope.transportToDisplay.push($scope.transportLocationTo[i]);
+                      $scope.transportDateTimeStartDisplay.push($scope.transportDateTimeStart[i]);
+                    }
+                  }
+                }
+              }
+            }
+
+            //center marker
+            $scope.center = {latitude: tempArray[current].location[0],longitude: tempArray[current].location[1]};
+            $scope.distanceDisplay = "Distance from you: " + tempArray[current].distance + " km ";
+            $scope.timeDisplay = "Estimated Driving Distance: " + tempArray[current].time + " mins ";
+
+            //increment current counter
+            if(current != tempArray.length-1) {
+              current++;
+            }
+            else
+            {
+              current = 0;
             }
           }
         }

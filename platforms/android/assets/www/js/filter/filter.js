@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('filterController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('filterController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
       if ($stateParams.filter != null) {
         $scope.id = window.localStorage.getItem("loginId");
         $scope.filter = $stateParams.filter; //get current filter user select
@@ -16,7 +16,7 @@ angular.module('crowdsourcing')
         //depends what filter user select (start/end/time)
         if($scope.filter == 'Start Location')
         {
-          $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
+          $http.get(apiUrl+"RetrieveFilter.php?filter=start")
             .success(function (data) {
               var results = data;
 
@@ -53,7 +53,7 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'End Location')
         {
-          $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=end")
+          $http.get(apiUrl+"RetrieveFilter.php?filter=end")
             .success(function (data) {
               var results = data;
 
@@ -90,7 +90,7 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'Time')
         {
-          $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=time")
+          $http.get(apiUrl+"RetrieveFilter.php?filter=time")
             .success(function (data) {
               var results = data;
               var morning;
@@ -213,17 +213,30 @@ angular.module('crowdsourcing')
         else
         {
           var alertPopup = $ionicPopup.alert({
-            title: '<b>Error</b>',
-            subTitle: '<br>Please select a filter before continuing',
+            title: "<h6 class='popups title error'>Error</h6>",
+            subTitle: '<br><h6 class="popups">Please select a filter before continuing</h6>',
             scope: $scope,
             buttons: [
               {
                 text: '<b>Ok</b>',
-                type: 'button-calm'
+                type: 'button button-energized'
               },
             ]
           });
         }
       }
+
+    //clear checkboxed
+    $scope.clear = function()
+    {
+      for(var i =0; i<$scope.filterListDisplay.length; i++)
+      {
+        //check which checkbox is tick and concat all activity ids into the final filter list
+        if($scope.filterListDisplay[i].checked == true)
+        {
+          $scope.filterListDisplay[i].checked =false;
+        }
+      }
+    }
 
     });

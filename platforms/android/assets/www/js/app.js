@@ -1,4 +1,4 @@
-angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgoogle-maps', 'jrCrop'])
+angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgoogle-maps', 'jrCrop', 'CareRideAPI.config'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -129,24 +129,28 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
   })
 
     .state('registration', {
+      cache: false,
       url: '/register',
       templateUrl: 'templates/account/registration.html',
       controller: "registrationController"
     })
 
     .state('verify', {
+      cache: false,
       url: '/verify',
       templateUrl: 'templates/account/verify.html',
       controller: "verifyController"
     })
 
     .state('moreQuestions', {
+      cache: false,
       url: '/moreQuestions',
       templateUrl: 'templates/account/moreQuestions.html',
       controller: "moreQuestionsController"
     })
 
     .state('updateAccount', {
+      cache: false,
       url: '/updateAccount',
       templateUrl: 'templates/account/update.html',
       controller: "updateAccountController"
@@ -161,7 +165,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
     .state('listTransport', {
       //cache: false,
-      url: '/listTransport/:transportIds',
+      url: '/listTransport/:transportIds/:distance',
       templateUrl: 'templates/list/listTransport.html',
       controller: "listTransportController"
     })
@@ -212,6 +216,13 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       url: '/filter/:filter/:activityIds',
       templateUrl: 'templates/filter/filter.html',
       controller: "filterController"
+    })
+
+    .state('recommended', {
+      cache: false,
+      url: '/recommended',
+      templateUrl: 'templates/recommended/recommended.html',
+      controller: "recommendedController"
     })
 
   // if none of the above states are matched, use this as the fallback

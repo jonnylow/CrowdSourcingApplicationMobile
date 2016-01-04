@@ -10,25 +10,25 @@
     <!--current activity listing-->
     <div class="list card myactivitymain">
       <div class="item item-icon-left item-text-wrap myactivitymain">
-        <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
+        <i class="icon myactivitydetails"><img src="img/car.png" class="homeicon-image"></i>
         <div class="row">
           <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>
-                <td><p class="myactivity"><b>{{transportActivityName.split("-")[0]}}</b></p></td>
+                <td><p class="myactivity"><b>{{locationFrom}}</b></p></td>
               </tr>
               <tr>
                 <td></td>
-                <td><p class="myactivity">{{locationFrom}}</p></td>
+                <td><p class="myactivity">{{locationFromAddress}}</p></td>
               </tr>
               <tr>
                 <td><p class="myactivity">To</p></td>
-                <td><p class="myactivity"><b>{{transportActivityName.split("-")[1]}}</b></p></td>
+                <td><p class="myactivity"><b>{{locationTo}}</b></p></td>
               </tr>
               <tr>
                 <td></td>
-                <td><p class="myactivity">{{locationTo}}</p></td>
+                <td><p class="myactivity">{{locationToAddress}}</p></td>
               </tr>
             </table>
           </div>
@@ -40,7 +40,7 @@
       <div class="col col-50">
         <div class="list card myactivity">
           <i class="ion-clock" style="font-size: 300%"></i>
-          <p class="myactivity">Expected Duration</p>
+          <p class="myactivitydetails">Expected Duration</p>
           <h5 class="myactivity">{{expectedDuration}}</h5>
         </div>
       </div>
@@ -49,7 +49,7 @@
         <i class="ion-checkmark-circled" style="font-size: 300%" ng-if="approvalStatus == 'Approved'"></i>
         <i class="ion-minus-circled" style="font-size: 300%" ng-if="approvalStatus == 'Pending'"></i>
         <i class="ion-close-circled" style="font-size: 300%" ng-if="approvalStatus == 'Rejected' || approvalStatus == 'Withdrawn'"></i>
-        <p class="myactivity">Approval Status</p>
+        <p class="myactivitydetails">Approval Status</p>
         <h5 class="myactivity">{{approvalStatus}}</h5>
         </div>
       </div>
@@ -58,7 +58,7 @@
       <div class="col col-50">
         <div class="list card myactivity">
         <i class="ion-android-car" style="font-size: 300%"></i>
-        <p class="myactivity">Transport Status</p>
+        <p class="myactivitydetails">Transport Status</p>
         <h5 class="myactivity">{{transportStatus}}</h5>
                 <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
         </div>
@@ -66,8 +66,9 @@
       <div class="col col-50">
         <div class="list card myactivity" style="height: 104px">
         <i class="ion-person" style="font-size: 300%"></i>
-        <p class="myactivity" ng-if="eldery == true">Eldery Information</p>
-          <h5 class="myactivity" ng-show="eldery">Not available</h5>
+        <p class="myactivitydetails" ng-if="eldery == true">Eldery Information</p>
+        <br>
+        <h5 class="myactivity" ng-show="eldery">Not available</h5>
         <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
         </div>
       </div>

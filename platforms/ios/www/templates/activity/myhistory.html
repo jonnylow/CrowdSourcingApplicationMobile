@@ -1,6 +1,6 @@
 <ion-view view-title="My Activity">
   <!--history to current tab-->
-  <ion-header-bar class="bar-subheader">
+  <ion-header-bar class="bar-subheader myactivity">
     <div class="button-bar">
       <button class="button button-nonselected myactivity" ng-click="goCurrent()">Current</button>
       <button class="button button-selected myactivity">History</button>
@@ -16,22 +16,24 @@
 
     <!--historical activity listing-->
     <ion-list>
-      <div ng-repeat="group in groups">
+      <div class="list myactivity">
+        <div ng-repeat="group in groups">
 
-        <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
-        <div class="row myactivity">
-          <div class="col col-20 col-center myactivitynum">
-            {{group.items.length}}
-          </div>
-          <div class="col myactivity">
-            {{group.name}}
-          </div>
-          <div class="col col-10">
-            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-          </div>
+          <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+          <div class="row myactivity">
+            <div class="col col-20 col-center myactivitynum">
+              {{group.items.length}}
+            </div>
+            <div class="col myactivity">
+              {{group.name}}
+            </div>
+            <div class="col col-10">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              &nbsp;
+            </div>
 
-         </div>
+           </div>
+
         </ion-item>
 
         <div class="list card myactivitymain" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">
@@ -41,16 +43,17 @@
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>
-                <td><p class="myactivity"><b>{{item.name.split("-")[0]}}</b></p></td>
+                <td><p class="myactivity"><b>{{item.from}}</b></p></td>
               </tr>
               <tr>
                 <td><p class="myactivity">To</p></td>
-                <td><p class="myactivity"><b>{{item.name.split("-")[1]}}</b></p></td>
+                <td><p class="myactivity"><b>{{item.to}}</b></p></td>
               </tr>
             </table>
           </div>
         </div>
       </div>
+    </div>
     </ion-list>
   </ion-content>
 </ion-view>

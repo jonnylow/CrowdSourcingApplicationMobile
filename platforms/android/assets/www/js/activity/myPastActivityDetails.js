@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('myPastActivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('myPastActivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -9,7 +9,7 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId+"&id="+$scope.id)
+    $http.get(apiUrl+"RetrieveMyTransportActivityDetails.php?transportId=" + $scope.transportId+"&id="+$scope.id)
       .success(function (data) {
         var transportDetails = data;
         if (transportDetails != null) {
@@ -25,7 +25,9 @@ angular.module('crowdsourcing')
               $scope.dateTime = dateTime;
               $scope.expectedDuration = transportDetails[0].expected_duration_minutes + " Mins";
               $scope.locationFrom = transportDetails[0].location_from;
+              $scope.locationFromAddress = transportDetails[0].location_from_address;
               $scope.locationTo = transportDetails[0].location_to;
+              $scope.locationToAddress = transportDetails[0].location_to_address;
               if(transportDetails[0].more_information == null) {
                 $scope.moreInformation = transportDetails[0].more_information;
               }

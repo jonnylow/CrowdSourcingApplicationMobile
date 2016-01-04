@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('updateAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading) {
+    .controller('updateAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, apiUrl) {
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -24,14 +24,14 @@ angular.module('crowdsourcing')
               var tempNewPassword = fields.newpassword;
               var tempConfirmpassword = fields.confirmpassword;
 
-              $http.get("http://www.changhuapeng.com/volunteer/php/CheckLogin.php?email="+ $scope.email+"&password="+tempCurrentPassword)
+              $http.get(apiUrl+"CheckLogin.php?email="+ $scope.email+"&password="+tempCurrentPassword)
                 .success(function (data) {
                   var status = data;
 
                   if (status != null) {
                     if(status.status[0] == "true")
                     {
-                      var urlString = "http://www.changhuapeng.com/volunteer/php/RetrieveUserDetails.php?id="+$scope.id;
+                      var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
 
                       $http.get(urlString)
                         .success(function (data) {
@@ -40,7 +40,7 @@ angular.module('crowdsourcing')
                               if(tempConfirmpassword == tempNewPassword)
                               {
                                 if(tempCurrentPassword != tempNewPassword) {
-                                  urlString = "http://www.changhuapeng.com/volunteer/php/UpdateUserAccount.php?id=" + $scope.id + "&password=" + tempNewPassword;
+                                  urlString = apiUrl+"UpdateUserAccount.php?id=" + $scope.id + "&password=" + tempNewPassword;
 
                                   $http.get(urlString)
                                     .success(function (data) {
@@ -50,12 +50,22 @@ angular.module('crowdsourcing')
                                         $ionicLoading.hide();
 
                                         var alertPopup = $ionicPopup.alert({
-                                          title: 'Status',
-                                          template: status.status[0]
+                                          //title: '<b>Status</b>',
+                                          subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
+                                          scope: $scope,
+                                          buttons: [
+                                            {
+                                              text: '<b>Ok</b>',
+                                              type: 'button button-energized',
+                                              onTap: function (e) {
+                                                window.localStorage.setItem("loginUserPassword", tempNewPassword);
+                                                $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
+                                                $state.go('tab.me', {}, {reload: true});
+                                              }
+                                            },
+                                          ]
                                         });
-                                        window.localStorage.setItem("loginUserPassword", tempNewPassword);
-                                        $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
-                                        $state.go('tab.me', {}, {reload: true});
+
                                       }
                                     })
 
@@ -67,14 +77,36 @@ angular.module('crowdsourcing')
                                 {
                                   $scope.loadingshow = false;
                                   $ionicLoading.hide();
-                                  alert("Old & New Password are the same. Please change a new password. ");
+                                  var alertPopup = $ionicPopup.alert({
+                                    title: '<h6 class="popups title">Sorry</h6>',
+                                    subTitle: '<br><h6 class="popups">Old & New Password are the same. Please change a new password.</h6> ',
+                                    scope: $scope,
+                                    buttons: [
+                                      {
+                                        text: '<b>Ok</b>',
+                                        type: 'button button-energized',
+
+                                      },
+                                    ]
+                                  });
                                 }
                               }
                               else
                               {
                                 $scope.loadingshow = false;
                                 $ionicLoading.hide();
-                                alert("Passwords do not match. Please try again.");
+                                var alertPopup = $ionicPopup.alert({
+                                  title: '<h6 class="popups title">Sorry</h6>',
+                                  subTitle: '<br><h6 class="popups">Passwords do not match. Please try again.</h6> ',
+                                  scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+
+                                    },
+                                  ]
+                                });
                               }
                           }
                         })
@@ -87,8 +119,16 @@ angular.module('crowdsourcing')
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
-                        title: 'Error',
-                        template: 'Incorrect Current Password.'
+                        title: '<h6 class="popups title error">Error</h6>',
+                        subTitle: '<br><h6 class="popups">Incorrect Current Password.</h6>',
+                        scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: '<b>Ok</b>',
+                                      type: 'button button-energized',
+
+                                    },
+                                  ]
                       });
                     }
                   }
@@ -98,15 +138,36 @@ angular.module('crowdsourcing')
             {
               $scope.loadingshow = false;
               $ionicLoading.hide();
-              alert("Please fill in all fields.");
-            }
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Sorry</h6>',
+                subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-energized',
 
+                  },
+                ]
+              });
+            }
           }
           else
           {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-            alert("Please fill in all fields.");
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Sorry</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button button-energized',
+
+                },
+              ]
+            });
           }
         }
     });

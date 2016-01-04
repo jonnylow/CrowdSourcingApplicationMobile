@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('elderyInformationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+    .controller('elderyInformationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -9,17 +9,27 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get("http://www.changhuapeng.com/volunteer/php/RetrieveElderyInformation.php?transportId=" + $scope.transportId +"&id="+$scope.id)
+    $http.get(apiUrl+"RetrieveElderyInformation.php?transportId=" + $scope.transportId)
       .success(function (data) {
         var elderyInformation = data;
         if (elderyInformation != null) {
           if(elderyInformation[0] != null)
           {
-            if(elderyInformation[0].elderly_name != null && elderyInformation[0].next_of_kin_name != null
+            if(elderyInformation[0].name != null && elderyInformation[0].next_of_kin_name != null
               && elderyInformation[0].next_of_kin_contact !=null )
             {
-                $scope.name= elderyInformation[0].elderly_name;
-                //$scope.branchName=elderyInformation[0].senior_centre_name;
+                $scope.name= elderyInformation[0].name;
+                $scope.gender=elderyInformation[0].gender;
+                $scope.medical=elderyInformation[0].medical_condition;
+                if($scope.medical == "")
+                {
+                  $scope.medical = "No Medical Information";
+                }
+                $scope.languages=elderyInformation[0].languages;
+                if($scope.languages == "")
+                {
+                  $scope.languages = "No Language Information";
+                }
                 $scope.kin=elderyInformation[0].next_of_kin_name;
                 $scope.contact=elderyInformation[0].next_of_kin_contact;
               $scope.loadingshow = false;

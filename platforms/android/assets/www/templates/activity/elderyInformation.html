@@ -6,11 +6,11 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content>
+  <ion-content ng-show=!loadingshow>
   <!--elderly information-->
     <div class="list card myactivitymain">
       <div class="item item-icon-left item-divider activitymain">
-        <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
+        <i class="icon elderly"><img src="img/car.png" class="homeicon-image"></i>
         <div class="row">
           <div class="col routecol">
             <table>
@@ -35,17 +35,42 @@
         </div>
       </div>
     </div>
+    <h6 class="elderly">Elderly information</h6>
       <div class="list card myactivitymain">
-      <div class="item item-icon-left activitymain">
-        <i class="icon ion-person"></i>
-        <p class="activity">Elderly Information</p>
-        <h5 class="myactivity">{{name}}</h5>
+        <div class="item item-icon-left activitymain">
+          <i class="icon ion-person"></i>
+          <p class="activity">Name</p>
+          <h5 class="myactivity">{{name}}</h5>
+        </div>
+        <div class="item item-icon-left activitymain">
+          <i class="icon ion-transgender"></i>
+          <p class="activity">Gender</p>
+          <h5 class="myactivity">{{gender}}</h5>
+        </div>
+        <div class="item item-icon-left activitymain">
+          <i class="icon ion-chatbubble-working"></i>
+          <p class="activity">Languages Spoken</p>
+          <h5 class="myactivity">{{languages}}</h5>
+        </div>
+        <div class="item item-icon-left activitymain">
+          <i class="icon ion-medkit"></i>
+          <p class="activity">Medical Information</p>
+          <h5 class="myactivity">{{medical}}</h5>
+        </div>
       </div>
-      <div class="item item-icon-left activitymain">
-        <i class="icon ion-ios-telephone"></i>
-        <p class="activity">Next-of-Kin Information</p>
-        <h5 class="myactivity">{{kin}}</h5>
-        <h5 class="myactivity">{{contact}}</h5>
+        <h6 class="elderly">Next-of-Kin Information</h6>
+        <div class="list card myactivitymain">
+          <div class="item item-icon-left activitymain">
+            <i class="icon ion-person"></i>
+            <p class="activity">Name</p>
+            <h5 class="myactivity">{{kin}}</h5>
+          </div>
+          <div class="item item-icon-left activitymain">
+            <p class="activity">Contact Number</p>
+            <i class="icon ion-ios-telephone"></i>
+            <h5 class="myactivity">{{contact}}</h5>
+          </div>
+          </div>
       </div>
 
       </div>

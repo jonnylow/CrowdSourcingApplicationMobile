@@ -1,32 +1,6 @@
 angular.module('crowdsourcing')
 
     .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory, apiUrl) {
-    var myPopup = $ionicPopup.show({
-      title: '<h6 class="popups title">Notice</h6>',
-      subTitle: ' <br><h6 class="popups registration">Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration</h6>',
-      scope: $scope,
-      buttons: [
-        {
-          text: 'Cancel',
-          onTap: function(e) {
-            $ionicHistory.nextViewOptions({
-              disableAnimate: true
-            });
-            $state.go('landingPage', {}, {reload: true});
-            if (window.plugins != null) {
-              window.plugins.nativepagetransitions.slide(
-                {"direction": "down"}
-              );
-            }
-          }},
-        {
-          text: '<b>Ok</b>',
-          type: 'button button-energized'
-
-        },
-      ]
-    });
-
     if(window.localStorage.getItem("tempName") != null && window.localStorage.getItem("tempEmail") != null &&
       window.localStorage.getItem("tempPassword")!= null && window.localStorage.getItem("tempContactnumber")!= null &&
       window.localStorage.getItem("tempDOB")!= null && window.localStorage.getItem("tempNRIC")!= null &&
@@ -34,11 +8,40 @@ angular.module('crowdsourcing')
       window.localStorage.getItem("tempOccupation")!= null)
     {
       if (window.localStorage.getItem("tempHaveCar") == 1) {
-        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:null,nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:true};
+        console.log(window.localStorage.getItem("tempDOB"));
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")),nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:true};
       }
       else {
-        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:null,nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:false};
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")),nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:false};
       }
+    }
+    else
+    {
+      var myPopup = $ionicPopup.show({
+        title: '<h6 class="popups title">Notice</h6>',
+        subTitle: ' <br><h6 class="popups registration">Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration</h6>',
+        scope: $scope,
+        buttons: [
+          {
+            text: 'Cancel',
+            onTap: function(e) {
+              $ionicHistory.nextViewOptions({
+                disableAnimate: true
+              });
+              $state.go('landingPage', {}, {reload: true});
+              if (window.plugins != null) {
+                window.plugins.nativepagetransitions.slide(
+                  {"direction": "down"}
+                );
+              }
+            }},
+          {
+            text: '<b>Ok</b>',
+            type: 'button button-energized'
+
+          },
+        ]
+      });
     }
 
       $scope.register = function(fields)
@@ -53,7 +56,6 @@ angular.module('crowdsourcing')
             var tempName = fields.name;
             var tempEmail = fields.email;
             var tempPassword = fields.password;
-            //var tempConfirmpassword = fields.confirmpassword;
             var tempContactnumber = fields.contactnumber;
             var tempDOB = fields.dob;
             var tempNRIC = fields.nric;

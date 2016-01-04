@@ -194,7 +194,6 @@ h6.popups.title.error{
   font-weight: bold;
   margin-top: 0px;
   margin-bottom: 5px;
-  color:red;
 }
 
 h6.popups.title{
@@ -1000,29 +999,33 @@ div.list.profile{
 
 input.readonly.me{
   padding: 10px;
+  margin-top:-1px;
   text-align: left;
   width: 100%;
   font-size: 17px;
-  background-color: #E6E6E6;
+  background-color: transparent;
+  color:#8D8D8D;
 }
 
-/*input.edit{
+b.account{
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -20px;
+  margin-right: 5px;
   font-size: 17px;
-  background-color: transparent;
-  padding-right: 0px;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
-input.edit.contact{
-  margin-left: 130px;
+b.account.aop{
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -16px;
+  margin-right: 5px;
   font-size: 17px;
-  background-color: transparent;
+  color:#8D8D8D;
+  font-weight: normal;
 }
-
-input.edit.occupation{
-  margin-left: 80px;
-  font-size: 17px;
-  background-color: transparent;
-}*/
 
 label.item.item-input.update{
   background-color: transparent;
@@ -1034,9 +1037,9 @@ label.item.item-input.update input{
 }
 
 select.aop{
-  margin-top: 3px;
-  margin-left: 5px;
-  width:300px;
+  margin-top: 10px;
+  margin-left: -50px;
+  width:318px;
   font-size: 17px;
   padding:5px;
   background-color: transparent;
@@ -1044,61 +1047,133 @@ select.aop{
 
 }
 
-.update.icon{
-  margin-top: -23px;
-  background-color: transparent;
-  margin-left: -10px;
-}
-
 h3.me{
-  font-size: 23px;
+  font-size: 16px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 14px;
+  margin-left: 20px;
+  margin-bottom: -30px;
+  color: #666;
+}
+
+.button.button-block.button-calm.update{
+  width:95%;
+  border-radius: 7px;
   margin-left: 10px;
-  margin-bottom: -10px;
+  margin-top: -10px;
 }
 
-.updateinfo{
-  margin-right: 10px;
-  background-color: transparent;
+input.edit{
+  text-align: center;
+  background-color: #E4E4E4;
+  margin-left: 95px;
+  font-size: 17px;
+  width: 140px;
 }
 
-label.item.item-input.update{
-  background-color: #fff;
-  border-color:#E6E6E6;
+.list.list-inset.registration input{
+  padding-right: 5px;
+}
+
+input.update.contact{
+  text-align: center;
+  padding-right: 1px;
+  margin-left: 15px;
+  font-size: 17px;
+  background-color: #E4E4E4;
+  width:140px;
+}
+
+input.update.occupation{
+  text-align: center;
+  padding-right: 1px;
+  margin-left: 54px;
+  font-size: 17px;
+  background-color: #E4E4E4;
+  width:140px;
+}
+
+b.update{
+  margin-left: 10px;
+  font-size: 15px;  
+  color:#8D8D8D;
+  font-weight: normal;
+}
+
+b.update.occupation{
+  margin-left: 10px;
+  font-size: 15px;  
+  color:#8D8D8D;
+  font-weight: normal;
+}
+
+.item.item-input.item-stacked-label.update{
   border-style:solid;
   border-width: thin;
   border-right:none;
   border-left:none;
   border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
+  margin-bottom: 5px;
 }
 
-label.item.item-input.update.occupation{
-  background-color: transparent;
-  border-color:#E6E6E6;
+.item.item-input.item-stacked-label.update2{
   border-style:solid;
   border-width: thin;
   border-right:none;
   border-left:none;
-
+  border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
 }
 
-label.item.item-input.item-stacked-label{
+.icon.ion-card.dark.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.icon.ion-email.dark.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.item.item-icon-left.update{
+  padding:30px;
+}
+
+div.iconcontainer.update{
+  width: 17%;
+  float:left;
   background-color: transparent;
-  border-color:transparent;
-  border-style:solid;
-  border-width: thin;
-  border-right:none;
-  border-left:none;
-  border-top:none;
+  opacity: 0.6;
+  text-align: center;
 }
 
-.button.button-block.button-calm.myaccount{
-  width:90%;
-  margin:0px;
-  margin-left:15px;
-  border-radius: 7px;
+.icon.ion-person.larger.update{
+  margin-left:-5px;
+  color:#8D8D8D;
 }
+
+.icon.ion-ios-telephone.larger.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.icon.ion-briefcase.update{
+  margin-left:-5px;
+  color:#8D8D8D;
+}
+
+.icon.ion-heart.larger.update{
+  margin-left:-15px;
+  font-size: 30px;
+  color:#8D8D8D;
+}
+
+
 /*end of manage account page*/
 
 /*change password page*/

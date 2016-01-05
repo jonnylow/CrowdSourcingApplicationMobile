@@ -16,7 +16,7 @@ background: linear-gradient(#6991A4, #4E989A);
 
 /****************Google Map**********************/
 .angular-google-map-container {
-  height: 300px;
+  height: 410px;
 }
 
 
@@ -926,18 +926,6 @@ h3.myactivity{
 /*end of myactivity page*/
 
 /*scan page*/
-.parent{
-  height:100%;
-}
-
-.section2{
-  height:40%;
-  overflow-x: scroll;
-}
-
-.section1{
-  max-height:60%;
-}
 
 ion-item.item{
   padding-right:5px;
@@ -976,31 +964,48 @@ button.button.button-transparent.scan:active{
 
 h6.scan{
   margin-left: 11px;
-  font-size: 15px;
+  font-size: 13px;
   color:#666;
 }
 
 b.scan{
-  font-size: 18px;
+  font-size: 16px;
   color:#000;
 }
 
-.button.button-blue{
+.button.button-blue.scan{
   background-color: #164F86;
   color:#fff;
-  width:80%;
+  max-width:5%;
+  width:5%;
+  max-height:100%;
+  height:100%;
   margin-top: -8px;
+  padding: 0px;
 }
 
 .card.scan.header{
   background-color: #fff;
-  margin: 10px;
+  margin: 0px;
   margin-right: 5px;
-  padding-bottom: 10px;
+  margin-left: 10px;
   padding-top: 0px;
-  box-shadow: 0 0px 0px rgba(0,0,0, 0.3);
+  padding-right: 5px;
+  box-shadow: 0 0px 0px rgba(0,0,0, 0);
   height:90px;
-  width:90%;
+  width:91%;
+}
+
+.card.scan.header2{
+  background-color: #fff;
+  margin: 0px;
+  margin-right: 5px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 5px;
+  box-shadow: 0 0px 0px rgba(0,0,0, 0);
+  height:90px;
+  width:95%;
 }
 
 .item.item-icon-left.scan{
@@ -1018,11 +1023,28 @@ b.scan{
   margin-top: -3px;
   margin-left: -5px;
 }
+/*.row.scan{
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #fff;
+  width:100%;
+}*/
 
-.row.scan{
-  margin-top: 0px;
-  margin-left: 2px;
+.icon.ion-chevron-right{
+  padding:0px;
 }
+
+td.next{
+  padding-right: -5px;
+  padding-left: 
+}
+
+table.section1{
+  background-color: #fff;
+  width:94%;
+  margin-top: -8px;
+}
+
 /*end of scan page*/
 
 /*list transport page*/

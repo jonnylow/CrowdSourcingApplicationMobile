@@ -108,6 +108,14 @@ button.home{
   border-radius: 5px;
 }
 
+.button.button-stable{
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  height: 30px;
+}
+
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
@@ -181,25 +189,37 @@ a:link {
 
 /*for all popups*/
 
+.popup-container .popup{
+  border-radius: 5px;
+  width: 300px;
+}
+
+.popup-head{
+  padding-bottom: 10px;
+  border-bottom: 1px solid #C4C8CB
+}
+
+.popup-buttons {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  min-height: 50px;
+}
+
 h6.popups{
-  font-size: 16px;
-  font-style: normal;
+  font-size: 14px;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
 h6.popups.title.error{
-  font-size: 20px;
-  font-style: normal;
-  font-weight: bold;
+  font-size: 18px;
   margin-top: 0px;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 h6.popups.title{
   font-size: 20px;
-  font-style: normal;
-  font-weight: bold;
   margin-top: 0px;
   margin-bottom: 5px;
 }
@@ -209,6 +229,7 @@ h3.popups.home{
   font-style: normal;
   margin-top: 0px;
 }
+
 
 /***BOX SIZES***/
 div.row{

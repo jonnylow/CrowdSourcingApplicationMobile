@@ -10,13 +10,13 @@ angular.module('crowdsourcing')
         }
         else {
             var myPopup = $ionicPopup.show({
-              title: '<h6 class="popups title">Notice</h6>',
-              subTitle: '<br><h6 class="popups">You must login first</h6>',
+              title: '<h6 class="popups title">Who are you?</h6>',
+              subTitle: '<br><h6 class="popups">Login to access this content</h6>',
               scope: $scope,
               buttons: [
                 {
                   text: '<b>Ok</b>',
-                  type: 'button button-energized',
+                  type: 'button button-stable',
                   onTap: function(e) {
                     $state.go('landingPage', {}, {reload: true});
                   }

@@ -102,13 +102,13 @@ angular.module('crowdsourcing')
                     $ionicLoading.hide();
 
                     var myPopup = $ionicPopup.show({
-                      title: '<h6 class="popups title">Notice</h6>',
-                      subTitle: '<br><h6 class="popups">You have already applied for this activity. Please wait for centre to approve your application</h3>',
+                      title: '<h6 class="popups title">Hold on...</h6>',
+                      subTitle: '<br><h6 class="popups">You have already applied for this activity. Please wait for the approval of your application</h3>',
                       scope: $scope,
                       buttons: [
                         {
                           text: '<b>Ok</b>',
-                          type: 'button button-energized',
+                          type: 'button button-stable',
                           onTap: function(e) {
                             $state.go('tab.home', {}, {reload: true});
                           }
@@ -126,13 +126,13 @@ angular.module('crowdsourcing')
         }
         else {
           var myPopup = $ionicPopup.show({
-            title: '<h6 class="popups title">Notice</h6>',
-            subTitle: '<br><h6 class="popups">You must login first</h6>',
+            title: '<h6 class="popups title">Who are you?</h6>',
+            subTitle: '<br><h6 class="popups">Login to access this content</h6>',
             scope: $scope,
             buttons: [
               {
                 text: '<b>Ok</b>',
-                type: 'button button-energized',
+                type: 'button button-stable',
                 onTap: function(e) {
                   $state.go('landingPage', {}, {reload: true});
                 }

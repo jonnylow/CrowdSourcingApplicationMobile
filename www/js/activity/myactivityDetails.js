@@ -136,7 +136,7 @@ angular.module('crowdsourcing')
                 var alertPopup = $ionicPopup.alert({
                   //title: 'Status',
                   title: "<h6 class='popups'>"+status.status[0]+"</h6>",
-                  okType:'button button-energized'
+                  okType:'button button-stable'
                 });
                 //window.location.reload(true);
                 $state.go('tab.activity', {}, {reload: true});

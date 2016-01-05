@@ -268,13 +268,13 @@ angular.module('crowdsourcing')
             else
             {
               var alertPopup = $ionicPopup.alert({
-                title: '<h6 class="popups title">Error</h6>',
-                subTitle: '<br><h6 class="popups">Please select a red marker first.</h6>',
+                title: '<h6 class="popups title">Whoops!</h6>',
+                subTitle: '<br><h6 class="popups">You have to select a red marker</h6>',
                 scope: $scope,
                 buttons: [
                   {
                     text: '<b>Ok</b>',
-                    type: 'button button-energized'
+                    type: 'button button-stable'
                   }]
               });
             }

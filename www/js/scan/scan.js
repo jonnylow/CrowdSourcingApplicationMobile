@@ -11,7 +11,7 @@ angular.module('crowdsourcing')
         }
 
         $scope.showTag = false;
-        $scope.zoom = 12;
+        $scope.zoom = 11;
         $scope.center = {latitude: $scope.myLocation.lat,longitude: $scope.myLocation.lng};
 
         //store all activities data

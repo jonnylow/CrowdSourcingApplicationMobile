@@ -34,10 +34,12 @@ angular.module('crowdsourcing')
                   {"direction": "down"}
                 );
               }
-            }},
+            },
+            type: 'button button-stable registration'
+          },
           {
             text: '<b>Ok</b>',
-            type: 'button button-energized'
+            type: 'button button-stable'
 
           },
         ]

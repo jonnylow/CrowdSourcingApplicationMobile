@@ -116,6 +116,15 @@ button.home{
   height: 30px;
 }
 
+.button.button-stable.registration{
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  height: 30px;
+  border-right: 1px solid #C4C8CB;
+  ;
+}
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
@@ -193,16 +202,13 @@ a:link {
   border-radius: 5px;
   width: 300px;
 }
-
 .popup-head{
-  padding-bottom: 10px;
   border-bottom: 1px solid #C4C8CB
 }
 
 .popup-buttons {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  min-height: 50px;
+  padding: 0px;
+  min-height: 45px;
 }
 
 h6.popups{

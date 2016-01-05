@@ -89,13 +89,13 @@ angular.module('crowdsourcing')
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
                           var alertPopup = $ionicPopup.alert({
-                            title: '<h6 class="popups title">Notice</h6>',
-                            subTitle: '<br><h6 class="popups">Your account was successfully created.</h6>',
+                            title: '<h6 class="popups title">Whoops!</h6>',
+                            subTitle: '<br><h6 class="popups">Your particulars is sent for approval to Centre for Seniors. We will shortly get back to you</h6>',
                             scope: $scope,
                             buttons: [
                               {
                                 text: '<b>Ok</b>',
-                                type: 'button button-energized',
+                                type: 'button button-stable',
                                 onTap: function (e) {
                                   $ionicHistory.clearCache();
                                   $ionicHistory.clearHistory();
@@ -118,13 +118,13 @@ angular.module('crowdsourcing')
                     $scope.fields = {otp: ""};
 
                     var alertPopup = $ionicPopup.alert({
-                      title: '<h6 class="popups title">Sorry</h6>',
-                      subTitle: '<br><h6 class="popups">Wrong One Time Password. Please try again.</h6> ',
+                      title: '<h6 class="popups title">Whoops!</h6>',
+                      subTitle: '<br><h6 class="popups">One-Time Password is incorrect</h6> ',
                       scope: $scope,
                       buttons: [
                         {
                           text: '<b>Ok</b>',
-                          type: 'button button-energized',
+                          type: 'button button-stable',
 
                         },
                       ]
@@ -137,13 +137,13 @@ angular.module('crowdsourcing')
                   $ionicLoading.hide();
 
                   var alertPopup = $ionicPopup.alert({
-                    title: '<h6 class="popups title">Sorry</h6>',
-                    subTitle: '<br><h6 class="popups">Email address has already been registered. Please try again.</h6> ',
+                    title: '<h6 class="popups title">Whoops!</h6>',
+                    subTitle: '<br><h6 class="popups">Email address has been registered</h6> ',
                     scope: $scope,
                     buttons: [
                       {
                         text: '<b>Ok</b>',
-                        type: 'button button-energized',
+                        type: 'button button-stable',
 
                       },
                     ]
@@ -157,13 +157,13 @@ angular.module('crowdsourcing')
             $ionicLoading.hide();
 
             var alertPopup = $ionicPopup.alert({
-              title: '<h6 class="popups title">Sorry</h6>',
-              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+              title: '<h6 class="popups title">Whoops!</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields</h6> ',
               scope: $scope,
               buttons: [
                 {
                   text: '<b>Ok</b>',
-                  type: 'button button-energized',
+                  type: 'button button-stable',
 
                 },
               ]
@@ -176,8 +176,8 @@ angular.module('crowdsourcing')
           $scope.loadingshow = false;
           $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
-            title: '<h6 class="popups title">Sorry</h6>',
-            subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Please fill in all fields</h6> ',
             scope: $scope,
             buttons: [
               {
@@ -208,7 +208,7 @@ angular.module('crowdsourcing')
         //=========comment this few lines if do not want to use OTP=========//
 
         var myPopup = $ionicPopup.show({
-          title: '<h6 class="popups">The one-time password has been resent to you via sms</h6>',
+          title: '<h6 class="popups">The one-time password has been resent to you via SMS</h6>',
           scope: $scope,
           buttons: [
             {

@@ -78,13 +78,13 @@ angular.module('crowdsourcing')
                                   $scope.loadingshow = false;
                                   $ionicLoading.hide();
                                   var alertPopup = $ionicPopup.alert({
-                                    title: '<h6 class="popups title">Sorry</h6>',
-                                    subTitle: '<br><h6 class="popups">Old & New Password are the same. Please change a new password.</h6> ',
+                                    title: '<h6 class="popups title">Whoops!</h6>',
+                                    subTitle: '<br><h6 class="popups">Old password & new password are the same</h6> ',
                                     scope: $scope,
                                     buttons: [
                                       {
                                         text: '<b>Ok</b>',
-                                        type: 'button button-energized',
+                                        type: 'button button-stable',
 
                                       },
                                     ]
@@ -96,13 +96,13 @@ angular.module('crowdsourcing')
                                 $scope.loadingshow = false;
                                 $ionicLoading.hide();
                                 var alertPopup = $ionicPopup.alert({
-                                  title: '<h6 class="popups title">Sorry</h6>',
-                                  subTitle: '<br><h6 class="popups">Passwords do not match. Please try again.</h6> ',
+                                  title: '<h6 class="popups title">Whoops!</h6>',
+                                  subTitle: '<br><h6 class="popups">New password & confirm password do not match</h6> ',
                                   scope: $scope,
                                   buttons: [
                                     {
                                       text: '<b>Ok</b>',
-                                      type: 'button button-energized',
+                                      type: 'button button-stable',
 
                                     },
                                   ]
@@ -119,13 +119,13 @@ angular.module('crowdsourcing')
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
-                        title: '<h6 class="popups title error">Error</h6>',
-                        subTitle: '<br><h6 class="popups">Incorrect Current Password.</h6>',
+                        title: '<h6 class="popups title error">Whoops!</h6>',
+                        subTitle: '<br><h6 class="popups">Current Password is not correct</h6>',
                         scope: $scope,
                                   buttons: [
                                     {
                                       text: '<b>Ok</b>',
-                                      type: 'button button-energized',
+                                      type: 'button button-stable',
 
                                     },
                                   ]
@@ -139,13 +139,13 @@ angular.module('crowdsourcing')
               $scope.loadingshow = false;
               $ionicLoading.hide();
               var alertPopup = $ionicPopup.alert({
-                title: '<h6 class="popups title">Sorry</h6>',
-                subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+                title: '<h6 class="popups title">Whoops!</h6>',
+                subTitle: '<br><h6 class="popups">Please fill in all fields</h6> ',
                 scope: $scope,
                 buttons: [
                   {
                     text: '<b>Ok</b>',
-                    type: 'button button-energized',
+                    type: 'button button-stable',
 
                   },
                 ]
@@ -157,13 +157,13 @@ angular.module('crowdsourcing')
             $scope.loadingshow = false;
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
-              title: '<h6 class="popups title">Sorry</h6>',
-              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+              title: '<h6 class="popups title">Whoops!</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields</h6> ',
               scope: $scope,
               buttons: [
                 {
                   text: '<b>Ok</b>',
-                  type: 'button button-energized',
+                  type: 'button button-stable',
 
                 },
               ]

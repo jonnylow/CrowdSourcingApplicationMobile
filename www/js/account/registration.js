@@ -19,7 +19,7 @@ angular.module('crowdsourcing')
     {
       var myPopup = $ionicPopup.show({
         title: '<h6 class="popups title">Notice</h6>',
-        subTitle: ' <br><h6 class="popups registration">Registered volunteers are required to have a one-off orientation session with the Centre for Seniors (CFS). CFS will contact you after registration</h6>',
+        subTitle: ' <br><h6 class="popups registration">Approved volunteers will have an orientation session with the Centre for Seniors (CFS). CFS will contact you shortly after registration</h6>',
         scope: $scope,
         buttons: [
           {
@@ -118,13 +118,13 @@ angular.module('crowdsourcing')
                                     $ionicLoading.hide();
 
                                     var alertPopup = $ionicPopup.alert({
-                                      title: '<h6 class="popups title">Sorry</h6>',
-                                      subTitle: '<br><h6 class="popups">NRIC has already been registered. Please try again.</h6> ',
+                                      title: '<h6 class="popups title">Whoops!</h6>',
+                                      subTitle: '<br><h6 class="popups">NRIC/FIN has been registered</h6> ',
                                       scope: $scope,
                                       buttons: [
                                         {
                                           text: '<b>Ok</b>',
-                                          type: 'button button-energized',
+                                          type: 'button button-stable',
 
                                         },
                                       ]
@@ -137,13 +137,13 @@ angular.module('crowdsourcing')
                               $ionicLoading.hide();
 
                               var alertPopup = $ionicPopup.alert({
-                                title: '<h6 class="popups title">Sorry</h6>',
-                                subTitle: '<br><h6 class="popups">Invalid NRIC/FIN. Please try again.</h6> ',
+                                title: '<h6 class="popups title">Whoops!</h6>',
+                                subTitle: '<br><h6 class="popups">NRIC/FIN should start with S, contains 7 numbers and end with an alphabet</h6> ',
                                 scope: $scope,
                                 buttons: [
                                   {
                                     text: '<b>Ok</b>',
-                                    type: 'button button-energized',
+                                    type: 'button button-stable',
 
                                   },
                                 ]
@@ -155,13 +155,13 @@ angular.module('crowdsourcing')
                             $ionicLoading.hide();
 
                             var alertPopup = $ionicPopup.alert({
-                              title: '<h6 class="popups title">Sorry</h6>',
-                              subTitle: '<br><h6 class="popups">Email address has already been registered. Please try again.</h6> ',
+                              title: '<h6 class="popups title">Whoops!</h6>',
+                              subTitle: '<br><h6 class="popups">Email address has been registered</h6> ',
                               scope: $scope,
                               buttons: [
                                 {
                                   text: '<b>Ok</b>',
-                                  type: 'button button-energized',
+                                  type: 'button button-stable',
 
                                 },
                               ]
@@ -174,13 +174,13 @@ angular.module('crowdsourcing')
                       $ionicLoading.hide();
 
                       var alertPopup = $ionicPopup.alert({
-                        title: '<h6 class="popups title">Sorry</h6>',
-                        subTitle: '<br><h6 class="popups">Invalid email address. Please try again.</h6> ',
+                        title: '<h6 class="popups title">Whoops!</h6>',
+                        subTitle: '<br><h6 class="popups">Invalid email address</h6> ',
                         scope: $scope,
                         buttons: [
                           {
                             text: '<b>Ok</b>',
-                            type: 'button button-energized',
+                            type: 'button button-stable',
 
                           },
                         ]
@@ -192,13 +192,13 @@ angular.module('crowdsourcing')
                     $ionicLoading.hide();
 
                     var alertPopup = $ionicPopup.alert({
-                      title: '<h6 class="popups title">Sorry</h6>',
-                      subTitle: '<br><h6 class="popups">Invalid phone number. Please try again.</h6> ',
+                      title: '<h6 class="popups title">Whoops!</h6>',
+                      subTitle: '<br><h6 class="popups">Contact number should start with 6/8/9 and contains 8 numbers</h6> ',
                       scope: $scope,
                       buttons: [
                         {
                           text: '<b>Ok</b>',
-                          type: 'button button-energized',
+                          type: 'button button-stable',
 
                         },
                       ]
@@ -210,13 +210,13 @@ angular.module('crowdsourcing')
                   $ionicLoading.hide();
 
                   var alertPopup = $ionicPopup.alert({
-                    title: '<h6 class="popups title">Sorry</h6>',
-                    subTitle: '<br><h6 class="popups">Name should consists of alphabetical letters only.</h6> ',
+                    title: '<h6 class="popups title">Whoops!</h6>',
+                    subTitle: '<br><h6 class="popups">Name should consist of alphabetical letters only</h6> ',
                     scope: $scope,
                     buttons: [
                       {
                         text: '<b>Ok</b>',
-                        type: 'button button-energized',
+                        type: 'button button-stable',
 
                       },
                     ]
@@ -228,13 +228,13 @@ angular.module('crowdsourcing')
                 $ionicLoading.hide();
 
                 var alertPopup = $ionicPopup.alert({
-                  title: '<h6 class="popups title">Sorry</h6>',
-                  subTitle: '<br><h6 class="popups">Invalid Occupation. Please try again.</h6> ',
+                  title: '<h6 class="popups title">Whoops!</h6>',
+                  subTitle: '<br><h6 class="popups">Occupation should consist of alphabetical letters only</h6> ',
                   scope: $scope,
                   buttons: [
                     {
                       text: '<b>Ok</b>',
-                      type: 'button button-energized',
+                      type: 'button button-stable',
 
                     },
                   ]
@@ -246,13 +246,13 @@ angular.module('crowdsourcing')
               $ionicLoading.hide();
 
               var alertPopup = $ionicPopup.alert({
-                title: '<h6 class="popups title">Sorry</h6>',
-                subTitle: '<br><h6 class="popups">Date of Birth cannot larger than current date.</h6> ',
+                title: '<h6 class="popups title">Whoops!</h6>',
+                subTitle: '<br><h6 class="popups">Date of Birth cannot be larger than the current date.</h6> ',
                 scope: $scope,
                 buttons: [
                   {
                     text: '<b>Ok</b>',
-                    type: 'button button-energized',
+                    type: 'button button-stable',
 
                   },
                 ]
@@ -265,13 +265,13 @@ angular.module('crowdsourcing')
             $ionicLoading.hide();
 
             var alertPopup = $ionicPopup.alert({
-              title: '<h6 class="popups title">Sorry</h6>',
-              subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+              title: '<h6 class="popups title">Whoops!</h6>',
+              subTitle: '<br><h6 class="popups">Please fill in all fields</h6> ',
               scope: $scope,
               buttons: [
                 {
                   text: '<b>Ok</b>',
-                  type: 'button button-energized',
+                  type: 'button button-stable',
 
                 },
               ]
@@ -284,13 +284,13 @@ angular.module('crowdsourcing')
           $ionicLoading.hide();
 
           var alertPopup = $ionicPopup.alert({
-            title: '<h6 class="popups title">Sorry</h6>',
-            subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Please fill in all fields</h6> ',
             scope: $scope,
             buttons: [
               {
                 text: '<b>Ok</b>',
-                type: 'button button-energized',
+                type: 'button button-stable',
 
               },
             ]

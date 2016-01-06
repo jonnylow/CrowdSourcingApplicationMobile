@@ -16,7 +16,7 @@ background: linear-gradient(#6991A4, #4E989A);
 
 /****************Google Map**********************/
 .angular-google-map-container {
-  height: 410px;
+  height: 360px;
 }
 
 
@@ -995,6 +995,15 @@ b.scan{
   padding: 0px;
 }
 
+.button.button-blue{
+  background-color: #164F86;
+  color:#fff;
+  max-width:100%;
+  width:100%;
+  margin-top: -10px;
+  padding: 0px;
+}
+
 .card.scan.header{
   background-color: #fff;
   margin: 0px;
@@ -1054,6 +1063,7 @@ table.section1{
   background-color: #fff;
   width:94%;
   margin-top: -8px;
+  margin-bottom: 15px;
 }
 
 /*end of scan page*/

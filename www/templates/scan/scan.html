@@ -6,9 +6,7 @@
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-    <button class="button button-dark" ng-click="goList()">View More</button>
-    </ion-nav-buttons>
+      
   </ion-nav-bar>
 
   <ion-content scroll='false'>
@@ -62,6 +60,9 @@
       </td>
     </table></center>
 
+    <center>
+      <button class="button button-blue" ng-click="goList()" ng-show=!showTag><i class="icon ion-ios-list-outline"></i> View All Activities</button>
+    </center>
 
 
 

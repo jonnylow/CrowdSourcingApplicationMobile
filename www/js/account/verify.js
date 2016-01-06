@@ -79,7 +79,7 @@ angular.module('crowdsourcing')
 
                     var urlString = apiUrl + "AddUserAccount.php?phone=" + $scope.tempContactNumber + "&name=" + $scope.tempName + "&email=" + $scope.tempEmail + "&password=" + $scope.tempPassword + "&dob=" + $scope.tempDOB
                       + "&nric=" + $scope.tempNRIC + "&gender=" + $scope.tempGender + "&frontIC=" + $scope.tempFrontIC + "&backIC=" + $scope.tempBackIC + "&haveCar=" + $scope.tempHaveCar + "&preferences1=" + $scope.tempPreferences1
-                      + "&preferences2=" + $scope.tempPreferences2 + "&occupation=" + $scope.tempOccupation;
+                      + "&preferences2=" + $scope.tempPreferences2 + "&occupation=" + $scope.tempOccupation + "&rank=4";
 
                     $http.get(urlString)
                       .success(function (data) {

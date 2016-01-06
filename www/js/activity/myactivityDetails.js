@@ -105,9 +105,9 @@ angular.module('crowdsourcing')
     {
       var confirmPopup = $ionicPopup.confirm({
         title: "<h6 class='popups title error'>Withdraw?</h6>",
-        subTitle: "<h6 class='popups'>Are you sure you want to withdraw your application?</h6>",
-        cancelType: 'button button-light',
-        okType:'button button-energized'
+        subTitle: "<h6 class='popups'>Are you sure you want to withdraw from this activity?</h6>",
+        cancelType: 'button button-stable registration',
+        okType:'button button-stable'
       });
 
       confirmPopup.then(function(res) {

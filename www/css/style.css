@@ -929,6 +929,11 @@ h3.myactivity{
 .list.myactivity{
   margin-top: 42px;
 }
+
+i.myactivity{
+  margin-right: 25px;
+  margin-left: 10px;
+}
 /*end of myactivity page*/
 
 /*scan page*/

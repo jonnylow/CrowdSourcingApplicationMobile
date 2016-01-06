@@ -197,8 +197,8 @@ angular.module('crowdsourcing')
       var confirmPopup = $ionicPopup.confirm({
         title: '<h6 class="popups title">Update Status?</h6>',
         subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + status + "' ?</h6>",
-        okType:"button button-energized",
-        cancelType:"button button-light"
+        okType:"button button-stable",
+        cancelType:"button button-stable registration"
       });
 
       confirmPopup.then(function(res) {
@@ -235,7 +235,7 @@ angular.module('crowdsourcing')
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title">Status</h6>',
                   subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
-                  okType:"button button-energized"
+                  okType:"button button-stable"
                 });
                 //window.location.reload(true);
                 $state.go('tab.activity', {}, {reload: true});

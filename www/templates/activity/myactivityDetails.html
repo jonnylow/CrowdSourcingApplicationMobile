@@ -69,11 +69,12 @@
       </div>
       <div class="col col-50">
         <div class="list card myactivity" style="height: 104px">
-        <i class="ion-person" style="font-size: 300%"></i>
+        <i class="ion-person myactivity" style="font-size: 300%"></i>
         <p class="myactivitydetails" ng-if="eldery == true">Elderly Information</p>
-        <br>
-        <h5 class="myactivity" ng-show="eldery">Not available</h5>
+
         <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
+        <h5 class="myactivity" ng-show="eldery">Not available</h5>
+        
         </div>
       </div>
     </div>

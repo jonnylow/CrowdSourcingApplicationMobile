@@ -5,13 +5,18 @@
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <button class="button button-dark" ui-sref="search({filter: '', activityIds: ''})">Reset Filter</button>
+      <button class="button button-icon ion-funnel" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
-
   <ion-content ng-show=!loadingshow>
-  <!--filter bar-->
+
+    <div class="list card myactivitymain">
+        <div class="input-label">
+          <b><input type="text" placeholder="Search" ng-model="searchText"></b>
+        </div>
+    </div>
+  <!--filter bar
   <div class="list card myactivitymain">
     <label class="item item-input item-select">
 
@@ -26,7 +31,7 @@
               ng-change="goFilter(filterSelected)">
       </select>
     </label>
-  </div>
+  </div>-->
 
       <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
         <table>
@@ -38,7 +43,7 @@
 
           <div class="item item-text-wrap">
 
-            <h2 class="home"> {{ activity.dateTime | date : "d MMM yyyy" }}, {{ activity.dateTime | date : "h:mm a"}}</h2>
+            <h2 class="home"> {{ activity.date}}, {{ activity.time}}</h2>
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>

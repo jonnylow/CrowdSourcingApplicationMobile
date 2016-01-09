@@ -6,7 +6,7 @@
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
-      
+
   </ion-nav-bar>
 
   <ion-content scroll='false'>
@@ -21,7 +21,6 @@
 
           <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill"
                           visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
-
           <ui-gmap-marker ng-repeat="loc in markers track by $index" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title, $index)">
             <ui-gmap-window show="markersStatus[$index]">
               <div>{{loc.window.title}}</div>
@@ -29,14 +28,21 @@
           </ui-gmap-marker>
         </ui-gmap-google-map>
 
+    <div class="item item-text-wrap" ng-show="!showTag" ng-click="goList()">
+      <center><h3>{{toDisplayLocationFrom}}<br><br>Number of Activities: {{transportActivity.length}}</h3></center>
 
-      <div class="card animated shake scan"  ng-show=showTag>
-        <div class="item item-text-wrap">
-          <h3>Tap on the red markers to view activities</h3>
-        </div>
+    </div>
+
+    <div class="card animated shake scan" ng-show="showTag">
+      <div class="item item-text-wrap">
+        <h3>Tap on the red markers to view activities</h3>
       </div>
+    </div>
+    <br>
+      <button class="button button-blue" ng-click="focusNearbyIncrease()"></i> Next Nearby</button>
       <br>
       <!--<div class="section2">-->
+    <!--
       <center>
       <table class="section1" ng-show=!showTag>
             <tr>
@@ -54,42 +60,12 @@
           <i class="icon ion-android-car scan"></i>
           <center><b class="scan">{{timeDisplay.split(":")[1]}}</b></center></h6>
         </div></td>
-
-        <td class="next"><button class="button button-blue scan" ng-click="focusNearbyIncrease()"><i class="icon ion-chevron-right"></i></button>
-
       </td>
-    </table></center>
-
+    </table></center>-->
+<!--
     <center>
       <button class="button button-blue" ng-click="goList()" ng-show=!showTag><i class="icon ion-ios-list-outline"></i> View All Activities</button>
-    </center>
-
-
-
-        <!--
-          <div class="list card myactivitymain" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
-            <table>
-              <tr>
-                <td class="search">
-                {{$index+1}}
-                </td>
-              <td>
-              <div class="item item-text-wrap">
-                <h2 class="home"> {{ transportDateTimeStartDisplay[$index] | date : "d MMM yyyy" }}, {{ transportDateTimeStartDisplay[$index] | date : "h:mm a"}}</h2>
-                <table>
-                  <tr>
-                    <td><p class="myactivity">From</p></td>
-                    <td><p class="myactivity"><b>{{transportFromDisplay[$index]}}</b></p></td>
-                  </tr>
-                  <tr>
-                    <td><p class="myactivity">To</p></td>
-                    <td><p class="myactivity"><b>{{transportToDisplay[$index]}}</b></p></td>
-                  </tr>
-                </table><p class="myactivity"></p>
-
-          </div>
-        </div>
-      </div>-->
+    </center>-->
     </div>
   </ion-content>
 

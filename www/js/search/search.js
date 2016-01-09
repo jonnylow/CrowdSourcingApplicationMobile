@@ -1,6 +1,9 @@
 angular.module('crowdsourcing')
 
     .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl) {
+      //use for conversion of dates
+      var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
       $scope.transportActivity = [];
       $scope.activityIds= $stateParams.activityIds;
       $scope.filter= $stateParams.filter;
@@ -8,7 +11,7 @@ angular.module('crowdsourcing')
       {
         $scope.filter="None";
       }
-
+/*
       $scope.filterOptions = [{
         value: 'start',
         label: 'Start Location'
@@ -18,7 +21,7 @@ angular.module('crowdsourcing')
       }, {
         value: 'time',
         label: 'Time'
-      }];
+      }];*/
 
     $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
@@ -36,6 +39,12 @@ angular.module('crowdsourcing')
               var t = transportDetails[i].datetime_start.split(/[- :]/);
               var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
+              //format date to be use for searching
+              var dd = dateTime.getDate();
+              var mm = dateTime.getMonth();
+              var yyyy = dateTime.getFullYear();
+              var date = dd + ' ' + monthNames[mm]+ ' ' + yyyy;
+
               //if activityIds is empty, display all results (no filter)
               if($scope.activityIds == null || $scope.activityIds == "") {
                 //push to arrays to store all activities in array (also use for displaying)
@@ -45,6 +54,8 @@ angular.module('crowdsourcing')
                   from:transportDetails[i].location_from,
                   to:transportDetails[i].location_to,
                   name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
+                  date:date,
+                  time:formatAMPM(dateTime),
                   dateTime: dateTime
                 });
               }
@@ -60,6 +71,8 @@ angular.module('crowdsourcing')
                     from:transportDetails[i].location_from,
                     to:transportDetails[i].location_to,
                     name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
+                    date:date,
+                    time:formatAMPM(dateTime),
                     dateTime: dateTime
                   });
                 }
@@ -111,4 +124,34 @@ angular.module('crowdsourcing')
           $state.go('filter', {filter: 'Time', activityIds: $scope.activityIds});
         }
       };
+
+    $ionicPopover.fromTemplateUrl('templates/search/filter_popout.html', {
+      scope: $scope
+    }).then(function (popover) {
+      $scope.popover = popover;
     });
+
+
+    $scope.openPopover = function($event) {
+      $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+      $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.popover.remove();
+    });
+
+    function formatAMPM(date) {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+    }
+
+  });

@@ -409,7 +409,7 @@ div.item{
 .list.list-inset.registration{
   margin-top: 7px;
   /*box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.26);*/
-  margin-top: 40px;
+  
 }
 
 label.item.item-input.registration{
@@ -482,6 +482,57 @@ p.dobinput{
   color: #aaa;
   margin-left: 8px;
 }
+
+.button.button-select.main,.button.button-select.main:active{
+  background-color: #97ADBC;
+  color:#fff;
+  width:45%;
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.button.button-light.main,.button.button-light.main:active{
+  width:45%;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.button.button-select.register,.button.button-select.register:active{
+  background-color: #97ADBC;
+  color:#fff;
+  width:45%;
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin-top: 40px;
+  margin-left: 0px;
+}
+
+.button.button-light.register,.button.button-light.register:active{
+  width:45%;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  margin-top: 40px;
+}
+
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:hover:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
 
 /*end of login and registration page*/
 

@@ -185,4 +185,12 @@ angular.module('crowdsourcing')
       }
       return p.join('&');
     };
+
+    $scope.goRegistration = function()
+    {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+      $state.go('tab.registration');
+    }
     });

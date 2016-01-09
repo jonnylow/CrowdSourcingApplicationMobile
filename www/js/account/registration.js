@@ -379,4 +379,11 @@ angular.module('crowdsourcing')
         );
       }
     }
+    $scope.goLogin = function()
+    {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+      $state.go('tab.login');
+    }
   });

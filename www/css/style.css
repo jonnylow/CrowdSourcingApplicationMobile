@@ -909,6 +909,25 @@ p.activity{
   margin-right: 10px;
 }
 
+.list.card.activityconfirmation{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+p.activityconfirmation{
+  color: green;
+  font-size: 15px;
+}
+
+.item.activityconfirmation{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.button.button-clear.activitydetails{
+  font-size: 200%;
+}
 
 /*end of activity page*/
 
@@ -935,7 +954,7 @@ p.activity{
 }
 
 div.col.myactivitynum{
-  background-color: #F1F2F4;
+  background-color: #DDE9EE;
   line-height: 40px;
   text-align: center;
   font-weight: bold;
@@ -1023,6 +1042,7 @@ h5.myactivity{
 
 .icon.myactivity{
   top: -31px;
+  left: 3px;
 }
 
 .icon.myactivitydetails{

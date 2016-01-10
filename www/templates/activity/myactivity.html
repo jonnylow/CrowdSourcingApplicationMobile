@@ -22,7 +22,12 @@
           <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
             <div class="row myactivity">
               <div class="col col-20 col-center myactivitynum">
-                {{group.items.length}}
+                <div ng-if="group.items.length>0" style="color:#000">
+                  {{group.items.length}}
+                </div>
+                <div ng-if="group.items.length==0" style="color:#666">
+                  {{group.items.length}}
+                </div>
               </div>
               <div class="col myactivity">
                 {{group.name}}
@@ -32,10 +37,10 @@
                 &nbsp;
               </div>
             </div>
-        
-        </ion-item>
+          </ion-item>
 
-        <div class="list card myactivitymain" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">
+        <div class="list card myactivitymain" ng-repeat="item in group.items" ng-show="isGroupShown(group)" >
+          <div ng-click="proceed(item.id, item.name)">
           <div class="item item-icon-left item-text-wrap myactivityoverall">
             <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
             <h2 class="home">{{ item.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
@@ -52,15 +57,16 @@
             <div ng-if="item.status != 'Not Applicable'">
             <p class="homep">Current Status: {{item.status}}</p>
           </div>
+        </div>
           </div>
           <div class="item myactivitybutton">
             <div ng-if="item.statusDisplay == 'Pick-Up' || item.statusDisplay == 'At Check-Up' || item.statusDisplay == 'Check-Up Completed' || item.statusDisplay == 'Completed'">
               <button class="button button-full button-energized" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
             </div>
           </div>
-        </div>
       </div>
     </div>
+  </div>
     </ion-list>
   </ion-content>
 </ion-view>

@@ -12,7 +12,7 @@
       <div class="item item-icon-left item-text-wrap myactivitymain">
         <i class="icon myactivitydetails"><img src="img/car.png" class="homeicon-image"></i>
         <div class="row">
-          <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+          <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}<i ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><img src="img/googlemap_icon.png" class="homeicon-image"></i></h2>
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>
@@ -29,10 +29,6 @@
               <tr>
                 <td></td>
                 <td><p class="myactivity">{{locationToAddress}}</p></td>
-              </tr>
-              <tr>
-                <td><p class="myactivity"></p></td>
-                <td><p class="myactivity"><a href="#" ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><p class="myactivity"><u>View directions in Google Maps</u></p></a></p></td>
               </tr>
             </table>
           </div>

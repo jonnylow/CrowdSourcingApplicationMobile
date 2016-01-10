@@ -22,7 +22,12 @@
           <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
           <div class="row myactivity">
             <div class="col col-20 col-center myactivitynum">
-              {{group.items.length}}
+                <div ng-if="group.items.length>0" style="color:#000">
+                  {{group.items.length}}
+                </div>
+                <div ng-if="group.items.length==0" style="color:#666">
+                  {{group.items.length}}
+                </div>
             </div>
             <div class="col myactivity">
               {{group.name}}

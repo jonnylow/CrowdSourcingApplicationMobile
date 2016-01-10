@@ -5,6 +5,7 @@ angular.module('crowdsourcing')
         $scope.id = window.localStorage.getItem("loginId");
         $scope.filter = $stateParams.filter; //get current filter user select
         $scope.exisitingActivityIds = $stateParams.activityIds; //get any existing filter being applied already
+        $scope.backView = $ionicHistory.backView();
         $scope.loadingshow = true;
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       }
@@ -181,7 +182,15 @@ angular.module('crowdsourcing')
 
       $scope.goBack = function()
       {
-        $ionicHistory.goBack();
+        if($scope.backView != null)
+        {
+          $scope.backView.go();
+        }
+        else
+        {
+          $state.go('search', {}, {reload: true});
+        }
+        //$ionicHistory.goBack();
       }
 
       //when user click on filter to go back to the filtered list

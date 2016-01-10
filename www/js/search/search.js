@@ -7,9 +7,29 @@ angular.module('crowdsourcing')
       $scope.transportActivity = [];
       $scope.activityIds= $stateParams.activityIds;
       $scope.filter= $stateParams.filter;
+
+      //check icon
+      $scope.startCheck = false;
+      $scope.endCheck = false;
+      $scope.timeCheck = false;
       if($scope.filter == "")
       {
         $scope.filter="None";
+        $scope.startCheck = false;
+        $scope.endCheck = false;
+        $scope.timeCheck = false;
+      }
+      else if($scope.filter == "Start Location")
+      {
+        $scope.startCheck = true;
+      }
+      else if($scope.filter == "End Location")
+      {
+        $scope.endCheck = true;
+      }
+      else if($scope.filter == "Time")
+      {
+        $scope.timeCheck = true;
       }
 /*
       $scope.filterOptions = [{

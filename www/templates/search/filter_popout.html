@@ -2,13 +2,13 @@
   <ion-content has-header="false" scroll="false" class="padding">
   <div class="list">
       <a class="item popout" ng-click="goFilter('start')">
-      Start Location
+      Start Location <i class="ion-checkmark" ng-show="startCheck"></i>
       </a>
     <a class="item popout" ng-click="goFilter('end')">
-      	End Location
+      	End Location <i class="ion-checkmark" ng-show="endCheck"></i>
       </a>
     <a class="item popout" ng-click="goFilter('time')">
-      	Time
+      	Time <i class="ion-checkmark" ng-show="timeCheck"></i>
     </a>
     <a class="item popout" ui-sref="search({filter: '', activityIds: ''})">
       Reset Filter

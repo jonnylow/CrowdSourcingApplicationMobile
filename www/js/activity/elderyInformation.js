@@ -8,30 +8,29 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
-
-    $http.get(apiUrl+"RetrieveElderyInformation.php?transportId=" + $scope.transportId)
+    $http.get("http://changhuapeng.com/laravel/api/retrieveElderyInformation?transportId=" + $scope.transportId)
       .success(function (data) {
         var elderyInformation = data;
         if (elderyInformation != null) {
-          if(elderyInformation[0] != null)
+          if(elderyInformation != null)
           {
-            if(elderyInformation[0].name != null && elderyInformation[0].next_of_kin_name != null
-              && elderyInformation[0].next_of_kin_contact !=null )
+            if(elderyInformation.elderly.name != null && elderyInformation.elderly.next_of_kin_name != null
+              && elderyInformation.elderly.next_of_kin_contact !=null )
             {
-                $scope.name= elderyInformation[0].name;
-                $scope.gender=elderyInformation[0].gender;
-                $scope.medical=elderyInformation[0].medical_condition;
+                $scope.name= elderyInformation.elderly.name;
+                $scope.gender=elderyInformation.elderly.gender;
+                $scope.medical=elderyInformation.elderly.medical_condition;
                 if($scope.medical == "")
                 {
                   $scope.medical = "No Medical Information";
                 }
-                $scope.languages=elderyInformation[0].languages;
+                $scope.languages=elderyInformation.elderly.languages;
                 if($scope.languages == "")
                 {
                   $scope.languages = "No Language Information";
                 }
-                $scope.kin=elderyInformation[0].next_of_kin_name;
-                $scope.contact=elderyInformation[0].next_of_kin_contact;
+                $scope.kin=elderyInformation.elderly.next_of_kin_name;
+                $scope.contact=elderyInformation.elderly.next_of_kin_contact;
               $scope.loadingshow = false;
               $ionicLoading.hide();
             }

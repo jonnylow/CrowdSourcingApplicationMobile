@@ -8,7 +8,7 @@
   <h2 class="title main" style="color: #FFF; z-index:-1;">Join Us Today!</h2>
 </div>
 <ion-content padding="true">
-<center><button class="button button-light register" ui-sref="login" ng-click="goLogin()">Login</button><button class="button button-select register" ui-sref="registration">Sign Up</button></center>
+<center><button class="button button-small button-light register" ui-sref="login" ng-click="goLogin()">Login</button><button class="button button-small button-select register" ui-sref="registration">Sign Up</button></center>
 
     <!-- Registration form-->
     <form ng-submit="register(fields)">
@@ -33,11 +33,10 @@
           </div>
           <input class="registration" type="text" placeholder="Name" ng-model="fields.name" >
         </label>
-        <label class="item item-icon-left item-input registration">
+        <label class="item item-icon-left item-input registration dob">
           <div class="iconcontainer">
           <i class="icon ion-calendar dark "></i></div>
-          <span class="input-label dob" >
-          <p class="dobinput">Date of Birth</p></span>
+          <span class="label-text" ng-show="fields.dob == null || fields.dob == ''"><font color="#B0B0B0">Date of Birth</font></span>
           <input class="registration" class="date-input dob" type="date" color="#ffffff" ng-model="fields.dob">
         </label>
         <label class="item item-icon-left item-input registration">

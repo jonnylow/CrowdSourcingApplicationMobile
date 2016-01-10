@@ -5,9 +5,14 @@
   </div>
 
   <ion-content has-header="true">
-    <br><br><br>
+    <div class="list card search scan">
+      <label class="item item-input listtransport">
+        <b><input type="text" placeholder="Search" ng-model="modal.searchText"></b>
+      </label>
+    </div>
+
     <center>
-      <table class="section1" ng-show=!showTag>
+      <table class="section2" ng-show=!showTag>
           <td><div class="card scan header">
             <h6 class="scan">{{distanceDisplay.split(":")[0]}} :
               <br>
@@ -25,11 +30,7 @@
           </td>
       </table></center>
 
-    <div class="list card listtransport">
-      <label class="item item-input listtransport">
-        <b><input type="text" placeholder="Search" ng-model="modal.searchText"></b>
-      </label>
-    </div>
+    
 
     <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:modal.searchText" ng-click="proceed(activity.id, activity.name)">
       <table>

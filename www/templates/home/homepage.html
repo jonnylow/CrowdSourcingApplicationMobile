@@ -1,8 +1,27 @@
 <ion-view>
   <!--body-->
   <ion-content ng-show=!loadingshow>
-  <!-- Recommendation -->
-  <div class="list card myactivitymain">
+  <center><img src="img/elderly.png" class="elderly-image"></center>
+  <h6 class="home-page"> Accompany an elderly today!
+  <!-- Scan button -->
+  <div style="text-align: center;">
+    <button class="button button-float animated shake" ui-sref="scan">
+      <h4 class="home">FIND ACTIVITIES NEAR ME</h4>
+    </button>
+      </div>
+  <!--<div style="text-align: center;">
+    <button class="button button-float animated shake" ui-sref="scan">
+      <h1 class="ion-map" style="color: white;"></h1>
+      <h3 style="color: white">Press to</h3>
+      <h1 style="color: white">Scan</h1>
+    </button>
+  </div>-->
+
+  </ion-content>
+</ion-view>
+
+<!-- Recommendation -->
+  <div class="list card myactivitymain recommendation">
     <div class="item item-divider home">
       RECOMMENDED
       <a class="home" ui-sref="recommended">See all</a>
@@ -26,14 +45,3 @@
       </div>
     </ion-item>
   </div>
-
-  <!-- Scan button -->
-  <div style="text-align: center;">
-    <button class="button button-float animated shake" ui-sref="scan">
-      <h1 class="ion-map" style="color: white;"></h1>
-      <h3 style="color: white">Press to</h3>
-      <h1 style="color: white">Scan</h1>
-    </button>
-  </div>
-  </ion-content>
-</ion-view>

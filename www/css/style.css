@@ -16,9 +16,12 @@ background: linear-gradient(#6991A4, #4E989A);
 
 /****************Google Map**********************/
 .angular-google-map-container {
-  height: 360px;
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
 }
-
 
 /****************Ionic overwrites**********************/
 /***BUTTONS***/
@@ -69,7 +72,7 @@ background: linear-gradient(#6991A4, #4E989A);
   margin-top: 0;
 }
 
-.button-float{
+/*.button-float{
   background-color: #29A29C !important;
   z-index: 12 !important;
   position: relative !important;
@@ -86,6 +89,11 @@ background: linear-gradient(#6991A4, #4E989A);
   box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
   background-color: #FF9800;
   opacity: 50% !important;
+}*/
+.button.button-float.animated.shake{
+  background-color: #29A29C;
+  border-radius: 7px;
+  margin-top: 10px;
 }
 
 button.button-positive.apply{
@@ -307,6 +315,10 @@ i.icon.ion-heart.larger{
   margin-top:5%;
 }
 
+.landing-buttons{
+  margin-top: 80px;
+}
+
 /**********************LOGIN & REGISTRATION**********************/
 .list-inset.login{
   opacity:0.9;
@@ -422,10 +434,53 @@ label.item.item-input.registration{
   border-bottom:none;
 }
 
+label.item.item-input.registration.dob{
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  padding-left: 75px;
+  padding-bottom: 0px;
+}
+
+label.item.item-input.registration.dob,
+  label.item.item-input.registration.dob > input:focus,
+  label.item.item-input.registration.dob > .entered {
+    background: #fff;
+  }
+
+  label.item.item-input.registration.dob > input {
+    padding-left: 11px;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2px 4px;
+    border: none;
+    margin: 0;
+    background: none;
+    font: inherit;
+  }
+
+  label.item.item-input.registration.dob > input:focus {
+    outline: none;
+    border-color: #ccf;
+  }
+
+  .label-text {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 3px 5px;
+    color: #ccc;
+    overflow:hidden;
+    text-overflow: ellipsis;
+  }
 
 span.input-label.dob{
   color:#B0B0B0;
   padding-left: 16px;
+  padding-top-top: 5px;
 }
 
 input.registration{
@@ -477,62 +532,48 @@ select.dropdown.register{
   color:#8D8D8D;
 }
 
-p.dobinput{
-  font-size: 14px;
-  color: #aaa;
-  margin-left: 8px;
-}
-
-.button.button-select.main,.button.button-select.main:active{
+.button.button-small.button-select.main,.button.button-small.button-select.main:active{
   background-color: #97ADBC;
   color:#fff;
-  width:45%;
+  width:35%;
   border: none;
   margin-left: 10px;
-  border-radius: 5px;
-  border-bottom-left-radius: 7px;
-  border-top-left-radius: 7px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
+  height:20%;
+  max-height: 20%;
 }
 
-.button.button-light.main,.button.button-light.main:active{
-  width:45%;
+.button.button-small.button-light.main,.button.button-small.button-light.main:active{
+  width:35%;
   border-bottom-right-radius: 7px;
   border-top-right-radius: 7px;
 }
 
-.button.button-select.register,.button.button-select.register:active{
+.button.button-small.button-select.register,.button.button-small.button-select.register:active{
   background-color: #97ADBC;
   color:#fff;
-  width:45%;
+  width:35%;
   border: none;
   margin-left: 10px;
-  border-radius: 5px;
-  border-bottom-right-radius: 7px;
-  border-top-right-radius: 7px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
   margin-top: 40px;
   margin-left: 0px;
 }
 
-.button.button-light.register,.button.button-light.register:active{
-  width:45%;
-  border-bottom-left-radius: 7px;
-  border-top-left-radius: 7px;
+.button.button-small.button-light.register,.button.button-small.button-light.register:active{
+  width:35%;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   margin-top: 40px;
 }
 
-input[type="date"]:before {
-    content: attr(placeholder) !important;
-    color: #aaa;
-    margin-right: 0.5em;
-  }
-  input[type="date"]:hover:before,
-  input[type="date"]:valid:before {
-    content: "";
-  }
+
 
 /*end of login and registration page*/
 
@@ -670,6 +711,10 @@ h3.morequestions{
 /*end of more questions page*/
 
 /**********************VERIFY**********************/
+
+.button.button-dark.otp{
+  width:100%;
+}
 h4.verify{
   color:#000;
   margin:10px;
@@ -756,11 +801,15 @@ h2.home{
   color: #164F86;
   font-size: 15px;
   font-weight: bold;
+  text-align: left;
 }
 
 .item.item-divider.home{
   padding-bottom: 8px;
   border: transparent;
+  background-color: #fff;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .item.item-text-wrap.home{
@@ -805,6 +854,26 @@ p.homep{
 .popup-vertical-buttons .popup-buttons
 {
     display: block;
+}
+
+.list.card.myactivitymain.recommendation{
+  bottom: 0px;
+  position:absolute;
+  width:95%;
+}
+
+.elderly-image{
+  height:130px;
+  margin-top: 40px;
+}
+
+h4.home{
+  margin-top: -10px;
+}
+
+h6.home-page{
+  font-size: 23px;
+  text-align: center;
 }
 /*end of home page*/
 
@@ -901,6 +970,7 @@ p.myactivity{
   margin-bottom: 5px;
   margin-right: 10px;
   width:100%;
+  text-align: left;
 }
 
 p.myactivitydetails{
@@ -1038,12 +1108,12 @@ b.scan{
 .button.button-blue.scan{
   background-color: #164F86;
   color:#fff;
-  max-width:5%;
-  width:5%;
-  max-height:100%;
-  height:100%;
-  margin-top: -8px;
+  max-height:107%;
+  height:107%;
+  margin-top: -13px;
   padding: 0px;
+  margin-right: -25px;
+  right:0px;
 }
 
 .button.button-blue{
@@ -1051,72 +1121,93 @@ b.scan{
   color:#fff;
   max-width:100%;
   width:100%;
-  margin-top: -10px;
-  padding: 0px;
 }
 
 .card.scan.header{
   background-color: #fff;
   margin: 0px;
-  margin-right: 5px;
+  margin-right: 0px;
   margin-left: 10px;
   padding-top: 0px;
   padding-right: 5px;
   box-shadow: 0 0px 0px rgba(0,0,0, 0);
   height:90px;
   width:91%;
+  border:solid;
+  border-color: #B0B0B0;
+  border-top-left-radius:7px;
+  border-bottom-left-radius: 7px; 
+  border-right:none;
 }
 
 .card.scan.header2{
   background-color: #fff;
   margin: 0px;
-  margin-right: 5px;
-  margin-left: 0px;
+  margin-left: -10px;
   padding-top: 0px;
-  padding-right: 5px;
   box-shadow: 0 0px 0px rgba(0,0,0, 0);
   height:90px;
-  width:95%;
+  width:100%;
+  border:solid;
+  border-color: #B0B0B0;
+  border-top-right-radius:7px;
+  border-bottom-right-radius: 7px;
+  border-left: none;
 }
 
 .item.item-icon-left.scan{
   border:none;
 }
 
-.icon.ion-map{
+.icon.ion-map.scan{
   font-size: 30px;
   margin-top: -5px;
   margin-left: -5px;
 }
 
-.icon.ion-android-car{
+.icon.ion-android-car.scan{
   font-size: 33px;
   margin-top: -3px;
   margin-left: -5px;
 }
-/*.row.scan{
-  margin-top: 10px;
-  margin-left: 10px;
-  background-color: #fff;
-  width:100%;
-}*/
 
 .icon.ion-chevron-right{
   padding:0px;
 }
 
-td.next{
-  padding-right: -5px;
-  padding-left: 
-}
-
 table.section1{
   background-color: #fff;
-  width:94%;
-  margin-top: -8px;
-  margin-bottom: 15px;
+  width:100%; 
+  margin-bottom: -12px;
+  margin-top: 10px;
+}
+.map-container {
+position:relative;
+height: 75%;
+width: 100%;
 }
 
+h3.scan{
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+table.section2{
+  background-color: #fff;
+  width:100%; 
+}
+
+.list.card.search.scan{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 10px;
+  width:95%;
+  margin-top: 50px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 /*end of scan page*/
 
 /*list transport page*/

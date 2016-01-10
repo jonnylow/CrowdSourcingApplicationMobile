@@ -79,17 +79,13 @@ angular.module('crowdsourcing')
                 if (validateName(tempName) == true) {
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
-                      var urlString = apiUrl + "CheckEmail.php?email=" + tempEmail;
-
-                      $http.get(urlString)
-                        .success(function (data) {
+                      $http.get("http://changhuapeng.com/laravel/api/checkEmail?email=" + tempEmail)
+                      .success(function (data) {
 
                           var status = data;
                           if (status.status[0] != "exist") {
                             if (validateNRIC(tempNRIC) == true) {
-                              var urlStringNRIC = apiUrl + "CheckNRIC.php?nric=" + tempNRIC;
-
-                              $http.get(urlStringNRIC)
+                              $http.get("http://changhuapeng.com/laravel/api/checkNRIC?nric=" + tempNRIC)
                                 .success(function (data) {
 
                                   var status = data;

@@ -124,7 +124,7 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-          urlString = apiUrl+"Withdraw.php?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
+          urlString = "http://changhuapeng.com/laravel/api/withdraw?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
 
           $http.get(urlString)
             .success(function (data) {

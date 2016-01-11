@@ -138,27 +138,27 @@ angular.module('crowdsourcing')
       }
     }
 
-      $http.get(apiUrl+"RetrieveRecommendedTransportActivity.php?limit=2")
+      $http.get("http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=2")
         .success(function (data) {
           var transportDetails = data;
 
           if (transportDetails != null) {
-            for(var i = 0; i<transportDetails.length; i++)
+            for(var i = 0; i<transportDetails.activities.length; i++)
             {
-              if(transportDetails[i].activity_id != null)
+              if(transportDetails.activities[i].activity_id != null)
               {
                 //calculate distance & format date/time
-                var t = transportDetails[i].datetime_start.split(/[- :]/);
+                var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
                  //push to arrays to store all activities in array (also use for displaying)
                 $scope.transportActivity.push({
                   no: i + 1,
-                  id: transportDetails[i].activity_id,
-                  start:transportDetails[i].location_from,
-                  end:transportDetails[i].location_to,
+                  id: transportDetails.activities[i].activity_id,
+                  start:transportDetails.activities[i].departure_centre.name,
+                  end:transportDetails.activities[i].arrival_centre.name,
                   dateTime: dateTime,
-                  name:transportDetails[i].location_from + " - " + transportDetails[i].location_to
+                  name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name
                 });
               }
             }

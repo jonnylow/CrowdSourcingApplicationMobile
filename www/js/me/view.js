@@ -24,21 +24,20 @@ angular.module('crowdsourcing')
         });
       }
 
-    var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
 
-    $http.get(urlString)
+    $http.get("http://changhuapeng.com/laravel/api/retrieveUserDetails?id="+$scope.id)
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null && userDetails.length!=0 ) {
-          $scope.username = userDetails[0].name;
-          $scope.nric=userDetails[0].nric;
-          $scope.email =userDetails[0].email;
-          $scope.gender=userDetails[0].gender;
-          $scope.dob=userDetails[0].date_of_birth;
-          $scope.contactnumber=userDetails[0].contact_no;
-          $scope.occuption=userDetails[0].occupation;
-          $scope.preference1=userDetails[0].area_of_preference_1;
-          $scope.preference2=userDetails[0].area_of_preference_2;
+          $scope.username = userDetails.volunteer.name;
+          $scope.nric=userDetails.volunteer.nric;
+          $scope.email =userDetails.volunteer.email;
+          $scope.gender=userDetails.volunteer.gender;
+          $scope.dob=userDetails.volunteer.date_of_birth;
+          $scope.contactnumber=userDetails.volunteer.contact_no;
+          $scope.occuption=userDetails.volunteer.occupation;
+          $scope.preference1=userDetails.volunteer.area_of_preference_1;
+          $scope.preference2=userDetails.volunteer.area_of_preference_2;
           $scope.loadingshow = false;
           $ionicLoading.hide();
         }

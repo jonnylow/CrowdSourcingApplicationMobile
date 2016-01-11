@@ -101,41 +101,42 @@ angular.module('crowdsourcing')
             $scope.showTag = true;
 
             //retrieve from DB
-            $http.get(apiUrl + "RetrieveTransportActivity.php")
+            $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivity")
               .success(function (data) {
                 var transportDetails = data;
+
                 if (transportDetails != null) {
-                  for (var i = 0; i < transportDetails.length; i++) {
-                    if (transportDetails[i].activity_id != null && transportDetails[i].location_from_lat != null && transportDetails[i].location_from_long != null) {
+                  for (var i = 0; i < transportDetails.activities.length; i++) {
+                    if (transportDetails.activities[i].activity_id != null) {
 
                       //format date/time
-                      var t = transportDetails[i].datetime_start.split(/[- :]/);
+                      var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
                       var dateTime = new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
 
                       var from = new google.maps.LatLng($scope.myLocation.lat, $scope.myLocation.lng);
-                      var to = new google.maps.LatLng(parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long));
+                      var to = new google.maps.LatLng(parseFloat(transportDetails.activities[i].departure_centre.lat), parseFloat(transportDetails.activities[i].departure_centre.lng));
 
                       //push each activities into the main arrays that store all activities
-                      $scope.transportID.push(transportDetails[i].activity_id);
-                      $scope.transportLocationFrom.push(transportDetails[i].location_from);
-                      $scope.transportLocationTo.push(transportDetails[i].location_to);
-                      $scope.transportName.push(transportDetails[i].location_from + " - " + transportDetails[i].location_to);
+                      $scope.transportID.push(transportDetails.activities[i].activity_id);
+                      $scope.transportLocationFrom.push(transportDetails.activities[i].departure_centre.name);
+                      $scope.transportLocationTo.push(transportDetails.activities[i].arrival_centre.name);
+                      $scope.transportName.push(transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name);
                       $scope.transportDateTimeStart.push(dateTime);
 
                       //check if marker already exists (by checking with the markers array)
                       //if exists skip this marker, if it is a new position, add this new marker
-                      if ($scope.markerExist([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)]) == false) {
-                        $scope.transportLocationFromLatLng.push([parseFloat(transportDetails[i].location_from_lat), parseFloat(transportDetails[i].location_from_long)])
+                      if ($scope.markerExist([parseFloat(transportDetails.activities[i].departure_centre.lat), parseFloat(transportDetails.activities[i].departure_centre.lng)]) == false) {
+                        $scope.transportLocationFromLatLng.push([parseFloat(transportDetails.activities[i].departure_centre.lat), parseFloat(transportDetails.activities[i].departure_centre.lng)])
                         getDistanceMarker(from, to);
 
                         var tempMarker = {
                           id: i + 1,
                           coords: {
-                            latitude: parseFloat(transportDetails[i].location_from_lat),
-                            longitude: parseFloat(transportDetails[i].location_from_long)
+                            latitude: parseFloat(transportDetails.activities[i].departure_centre.lat),
+                            longitude: parseFloat(transportDetails.activities[i].departure_centre.lng)
                           },
                           "window": {
-                            "title": transportDetails[i].location_from
+                            "title": transportDetails.activities[i].departure_centre.name
                           }
                         };
                         $scope.markers.push(tempMarker);

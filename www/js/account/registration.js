@@ -8,7 +8,6 @@ angular.module('crowdsourcing')
       window.localStorage.getItem("tempOccupation")!= null)
     {
       if (window.localStorage.getItem("tempHaveCar") == 1) {
-        console.log(window.localStorage.getItem("tempDOB"));
         $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")),nric:window.localStorage.getItem("tempNRIC"), gender:window.localStorage.getItem("tempGender"), occupation:window.localStorage.getItem("tempOccupation"), carChecked:true};
       }
       else {

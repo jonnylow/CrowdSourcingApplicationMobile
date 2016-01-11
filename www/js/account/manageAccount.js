@@ -12,19 +12,19 @@ angular.module('crowdsourcing')
           $state.go('landingPage', {}, {reload: true});
         }
 
-    var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
+    var urlString = "http://changhuapeng.com/laravel/api/retrieveUserDetails?id="+$scope.id;
 
     $http.get(urlString)
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null) {
-          $scope.fields.nric=userDetails[0].nric;
-          $scope.fields.email =userDetails[0].email;
-          $scope.fields.name = userDetails[0].name;
-          $scope.fields.contactnumber=userDetails[0].contact_no;
-          $scope.fields.occupation=userDetails[0].occupation;
-          $scope.fields.preferences_1=userDetails[0].area_of_preference_1;
-          $scope.fields.preferences_2=userDetails[0].area_of_preference_2;
+          $scope.fields.nric=userDetails.volunteer.nric;
+          $scope.fields.email =userDetails.volunteer.email;
+          $scope.fields.name = userDetails.volunteer.name;
+          $scope.fields.contactnumber=userDetails.volunteer.contact_no;
+          $scope.fields.occupation=userDetails.volunteer.occupation;
+          $scope.fields.preferences_1=userDetails.volunteer.area_of_preference_1;
+          $scope.fields.preferences_2=userDetails.volunteer.area_of_preference_2;
           $scope.loadingshow = false;
           $ionicLoading.hide();
         }

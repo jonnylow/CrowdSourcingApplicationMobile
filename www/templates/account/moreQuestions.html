@@ -4,18 +4,16 @@
   <div class="bar bar-header registration">
     <a class="icon ion-close-round light" ng-click="landingPage()"></a>
     <h1 class="title registration">Sign Up</h1>
-  </div>
-
-    <form ng-submit="verify(fields)">
-
-
+  </div><br><br>
+    <div class="list card moreQuestions">
+      What kind of voluntary activities interest you?
+    </div>
+    <form ng-submit="verify(fields)">      
         <!--Area of Preferences 1-->
       <label class="item item-input item-stacked-label registration1" >
         <!--<font color="black" >Area of Preferences 1</font><br>-->
-
-
         <select class="dropdown morequestions" ng-model="fields.preferences_1">
-          <option value="" disabled selected>What interests you? 1*</option>
+          <option value="" disabled selected>Option 1*</option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
           <option value="Organise fund-raising activities">Organise fund raising activities</option>
           <option value="Organize social activities">Organize social activities</option>
@@ -32,7 +30,7 @@
       <label class="item item-input item-stacked-label registration">
         <!--<font color="black">Area of Preferences 2</font><br>-->
         <select class="dropdown morequestions" ng-model="fields.preferences_2">
-          <option value="" disabled selected>What interests you? 2*</option>
+          <option value="" disabled selected>Option 2*</option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
           <option value="Organise fund-raising activities">Organise fund raising activities</option>
           <option value="Organize social activities">Organize social activities</option>
@@ -82,10 +80,10 @@
 
     <div class="row">
       <div class="col 50">
-         <button ui-sref="registration" class="button button-block button-light morequestions">Back</button>
+         <button ui-sref="registration" class="button button-light paddedbutton">Back</button>
       </div>
       <div class="col 50">
-      <button class="button button-block button-calm morequestions">Next</button>
+      <button class="button button-energized paddedbutton">Next</button>
       </div>
     </div>
 

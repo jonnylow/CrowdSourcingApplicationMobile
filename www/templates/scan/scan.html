@@ -27,10 +27,9 @@
             </ui-gmap-window>
           </ui-gmap-marker>
         </ui-gmap-google-map>
-      </div>
     <table class="section1">
     <tr><td>
-    <div class="item item-text-wrap" ng-show="!showTag" >
+    <div class="item item-text-wrap scan" ng-show="!showTag" >
       <center><h3 class='scan'>{{toDisplayLocationFrom}}</h3><h3>Number of Activities: <b>{{transportActivity.length}}</b></h3></center></td>
     </div>
     <td><button class="button button-blue scan" ng-show="!showTag" ng-click="goList()"><i class="icon ion-chevron-right"></td></tr>
@@ -40,8 +39,10 @@
         <h3>Tap on the red markers to view activities</h3>
       </div>
     </div>
+      </div>
+
     <br>
-      <button class="button button-blue" ng-click="focusNearbyIncrease()"></i> <i class="icon ion-map scan"></i>Next Nearby</button>
+      <button class="button button-blue nextnearby" ng-click="focusNearbyIncrease()"></i> <i class="icon ion-map scan"></i>Next Nearby</button>
       <br>
       <!--<div class="section2">-->
     <!--

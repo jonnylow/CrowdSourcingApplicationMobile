@@ -2,13 +2,14 @@
   <!--body-->
   <ion-content ng-show=!loadingshow>
   <center><img src="img/elderly.png" class="elderly-image"></center>
-  <h6 class="home-page"> Accompany an elderly today!
+  <h6 class="home-page"> Accompany an elderly today!</h6>
+  
   <!-- Scan button -->
   <div style="text-align: center;">
     <button class="button button-float animated shake" ui-sref="scan">
       <h4 class="home">FIND ACTIVITIES NEAR ME</h4>
     </button>
-      </div>
+  </div>
   <!--<div style="text-align: center;">
     <button class="button button-float animated shake" ui-sref="scan">
       <h1 class="ion-map" style="color: white;"></h1>
@@ -16,10 +17,7 @@
       <h1 style="color: white">Scan</h1>
     </button>
   </div>-->
-
-  </ion-content>
-</ion-view>
-
+</ion-content>
 <!-- Recommendation -->
   <div class="list card myactivitymain recommendation">
     <div class="item item-divider home">
@@ -27,7 +25,7 @@
       <a class="home" ui-sref="recommended">See all</a>
     </div>
 
-    <ion-item class="item item-icon-left item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
+    <div class="item item-icon-left item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
       <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
       <div class="row">
         <div class="col routecol"><h2 class="home">{{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
@@ -43,5 +41,8 @@
           </table>
         </div>
       </div>
-    </ion-item>
+    </div>
   </div>
+
+
+</ion-view>

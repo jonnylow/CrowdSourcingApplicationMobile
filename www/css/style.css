@@ -1043,6 +1043,7 @@ h5.myactivity{
   margin-top: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
+  background-color: #fff;
 }
 
 .item.myactivitymain{
@@ -1118,7 +1119,10 @@ button.button.button-transparent.scan:active{
   box-shadow: 0 0px 0px rgba(0.4, 0.2, 0.1, 0.3);
   margin-bottom: 10px;
   margin-top: 0px;
+  top:10px;
+  position:absolute;
   z-index: 7;
+  width:93%;
 }
 
 .list.card.scan{
@@ -1137,14 +1141,15 @@ b.scan{
 }
 
 .button.button-blue.scan{
-  background-color: #94A66D;
-  color:#fff;
-  max-height:107%;
-  height:107%;
+  background-color: transparent;
+  color:#000;
+  max-height:110%;
+  height:110%;
   margin-top: -13px;
   padding: 0px;
   margin-right: -30px;
   right:0px;
+  border:none;
 }
 
 .button.button-blue.nextnearby{
@@ -1155,6 +1160,11 @@ b.scan{
   position: absolute;
   bottom: 0;
   border-color: #E87984;
+  z-index: 1;
+}
+
+.icon.ion-chevron-right.scan{
+  margin-left: -10px;
 }
 
 .card.scan.header{
@@ -1214,7 +1224,7 @@ table.section1{
   width:100%; 
   margin-bottom: -12px;
   z-index: 1;
-  top:86%;
+  top:87%;
   position: absolute;
   opacity: 0.9;
 }
@@ -1249,6 +1259,10 @@ table.section2{
 
 div.item.scan{
   background-color: #fff;
+  width:100%;
+  margin-right: 0px;
+  box-shadow: 0 0 0 0;
+  border:none;
 }
 /*end of scan page*/
 

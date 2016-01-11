@@ -317,9 +317,10 @@ i.icon.ion-heart.larger{
 }
 
 .landing-buttons{
-  bottom:-30%;
+  bottom:10%;
   position:absolute;
-  width:95%;
+  width: 95%;
+  margin-left: 10px;
 }
 
 .button.button-block.button-dark.main{

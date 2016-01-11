@@ -74,7 +74,7 @@ angular.module('crowdsourcing')
                 .success(function (data) {
                   if(data.status[0]=="do not exist")
                   {
-                    var urlString = apiUrl+"AddNewActivity.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+                    var urlString = "http://changhuapeng.com/laravel/api/addNewActivity?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
                     $http.get(urlString)
                       .success(function (data) {

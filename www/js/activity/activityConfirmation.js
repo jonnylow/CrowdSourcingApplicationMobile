@@ -20,6 +20,10 @@ angular.module('crowdsourcing')
       window.localStorage.removeItem("tempALocationFrom");
       window.localStorage.removeItem("tempALocationTo");
       window.localStorage.removeItem("tempAdditionalInformation");
+
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
     }
 
     $scope.back=function()
@@ -31,6 +35,9 @@ angular.module('crowdsourcing')
       window.localStorage.removeItem("tempALocationFromAddress");
       window.localStorage.removeItem("tempALocationToAddress");
       window.localStorage.removeItem("tempAdditionalInformation");
+      $ionicHistory.clearCache();
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
       $state.go('tab.home');
     }
   });

@@ -5,6 +5,7 @@ angular.module('crowdsourcing')
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
       $scope.id = window.localStorage.getItem("loginId");
+      $scope.backView = $ionicHistory.backView();
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
@@ -40,7 +41,15 @@ angular.module('crowdsourcing')
 
     $scope.back=function()
     {
-      $ionicHistory.goBack();
+      if($scope.backView != null)
+      {
+        $scope.backView.go();
+      }
+      else
+      {
+        $state.go('tab.home', {}, {reload: true});
+      }
+      //$ionicHistory.goBack();
     }
 
 });

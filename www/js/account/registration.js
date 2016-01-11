@@ -305,6 +305,10 @@ angular.module('crowdsourcing')
       {
         return true;
       }
+      else if(nric.length == 9 && nric.charAt(0).toLowerCase() == "g" && /^[a-zA-Z]+$/.test(nric.charAt(8)) == true)
+      {
+        return true;
+      }
       else
       {
         return false;

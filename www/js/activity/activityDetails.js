@@ -4,6 +4,7 @@ angular.module('crowdsourcing')
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
+      $scope.backView = $ionicHistory.backView();
     }
 
     $scope.myLocation = {lng : '', lat: ''};
@@ -144,7 +145,15 @@ angular.module('crowdsourcing')
 
       $scope.back=function()
       {
-        $ionicHistory.goBack();
+        if($scope.backView != null)
+        {
+          $scope.backView.go();
+        }
+        else
+        {
+          $state.go('tab.home', {}, {reload: true});
+        }
+        //$ionicHistory.goBack();
       }
 
       $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){

@@ -1141,7 +1141,7 @@ b.scan{
 }
 
 .button.button-blue.scan{
-  background-color: transparent;
+  background-color: #fff;
   color:#000;
   max-height:110%;
   height:110%;
@@ -1149,10 +1149,8 @@ b.scan{
   padding: 0px;
   margin-right: -30px;
   right:0px;
-  border-left-color: #FAFAFA;
-  border-top: none;
-  border-right:none;
-  border-bottom:none;
+  border-left-width: thin;
+  border-left-color:#F1F3F5;
 }
 
 .button.button-blue.nextnearby{

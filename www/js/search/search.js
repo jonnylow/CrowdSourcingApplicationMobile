@@ -46,17 +46,18 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get(apiUrl+"RetrieveTransportActivity.php")
+    $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivity")
       .success(function (data) {
         var transportDetails = data;
 
         if (transportDetails != null) {
-          for(var i = 0; i<transportDetails.length; i++)
+
+          for(var i = 0; i<transportDetails.activities.length; i++)
           {
-            if(transportDetails[i].activity_id != null)
+            if(transportDetails.activities[i].activity_id != null)
             {
               //format date/time
-              var t = transportDetails[i].datetime_start.split(/[- :]/);
+              var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
               var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
               //format date to be use for searching
@@ -70,10 +71,10 @@ angular.module('crowdsourcing')
                 //push to arrays to store all activities in array (also use for displaying)
                 $scope.transportActivity.push({
                   no: i + 1,
-                  id: transportDetails[i].activity_id,
-                  from:transportDetails[i].location_from,
-                  to:transportDetails[i].location_to,
-                  name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
+                  id: transportDetails.activities[i].activity_id,
+                  from:transportDetails.activities[i].departure_centre.name,
+                  to:transportDetails.activities[i].arrival_centre.name,
+                  name: transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name,
                   date:date,
                   time:formatAMPM(dateTime),
                   dateTime: dateTime
@@ -82,15 +83,16 @@ angular.module('crowdsourcing')
               else //if activityIds not empty, split up results into array and only display those in the array
               {
                 var activity_ids = $scope.activityIds.split(",");
-                if(activity_ids.indexOf(transportDetails[i].activity_id) != -1)
+
+                if(activity_ids.indexOf(transportDetails.activities[i].activity_id+"") != -1)
                 {
                   //push to arrays to store all activities in array (also use for displaying)
                   $scope.transportActivity.push({
                     no: i + 1,
-                    id: transportDetails[i].activity_id,
-                    from:transportDetails[i].location_from,
-                    to:transportDetails[i].location_to,
-                    name: transportDetails[i].location_from + " - " + transportDetails[i].location_to,
+                    id: transportDetails.activities[i].activity_id,
+                    from:transportDetails.activities[i].departure_centre.name,
+                    to:transportDetails.activities[i].arrival_centre.name,
+                    name: transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name,
                     date:date,
                     time:formatAMPM(dateTime),
                     dateTime: dateTime

@@ -68,7 +68,8 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempALocationToAddress", $scope.locationToAddress);
               window.localStorage.setItem("tempAdditionalInformation", $scope.moreInformation);
 
-              var checkUrlString = apiUrl+"CheckActivityApplication.php?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+              var checkUrlString = "http://changhuapeng.com/laravel/api/checkActivityApplication?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+
               $http.get(checkUrlString)
                 .success(function (data) {
                   if(data.status[0]=="do not exist")

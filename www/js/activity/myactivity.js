@@ -223,8 +223,8 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-          urlString = apiUrl+"updateActivityStatus.php?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
-
+          urlString = "http://changhuapeng.com/laravel/api/updateActivityStatus?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
+          console.log(urlString);
           $http.get(urlString)
             .success(function (data) {
               var status = data;

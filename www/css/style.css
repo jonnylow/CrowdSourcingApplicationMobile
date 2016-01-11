@@ -94,6 +94,7 @@ left: 0;
   background-color: #29A29C;
   border-radius: 7px;
   margin-top: -1%;
+  border:none;
 }
 
 button.button-positive.apply{
@@ -316,7 +317,9 @@ i.icon.ion-heart.larger{
 }
 
 .landing-buttons{
-  margin-top: 10%;
+  bottom:-30%;
+  position:absolute;
+  width:95%;
 }
 
 .button.button-block.button-dark.main{
@@ -1166,10 +1169,9 @@ b.scan{
   height:110%;
   margin-top: -13px;
   padding: 0px;
-  margin-right: -30px;
-  right:0px;
-  border-left-width: thin;
-  border-left-color:#F1F3F5;
+  margin-right: -33px;
+  border:none;
+  border-top-right-radius: 0px;
 }
 
 .button.button-blue.nextnearby{
@@ -1280,12 +1282,14 @@ table.section2{
   margin-right: 10px;
 }
 
-div.item.scan{
+.item.item-text-wrap.item-icon-right.scan{
   background-color: #fff;
-  width:100%;
-  margin-right: 0px;
-  box-shadow: 0 0 0 0;
-  border:none;
+  width:100%; 
+  margin-bottom: -12px;
+  z-index: 1;
+  bottom:2%;
+  position: absolute;
+  opacity: 0.9;
 }
 /*end of scan page*/
 
@@ -1332,6 +1336,10 @@ div.list.profile{
 /*end of profile page*/
 
 /*manage account page*/
+
+.list.list-inset.update{
+  margin-top: 40px;
+}
 
 .col.icon{
   margin-left: -10px;
@@ -1425,7 +1433,7 @@ input.edit{
   width: 140px;
 }
 
-.list.list-inset.registration input{
+.list.list-inset.update input{
   padding-right: 5px;
 }
 

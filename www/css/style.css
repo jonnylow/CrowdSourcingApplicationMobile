@@ -939,6 +939,26 @@ p.activityconfirmation{
   font-size: 200%;
 }
 
+.item.activitydetails{
+  padding-bottom: 0;
+  border: none;
+}
+
+.item.activitydetails2{
+  padding-top: 0;
+  border: none;
+}
+
+.icon.car{
+  left: 11px;
+  top: 13px;
+}
+
+.icon.map{
+  left: 13px;
+  top: -35px;
+}
+
 /*end of activity page*/
 
 /*myactivity page*/
@@ -1048,7 +1068,6 @@ h5.myactivity{
 
 .item.myactivitymain{
   padding-right: 5px;
-  padding-left: 48px;
 }
 
 .icon.myactivity{
@@ -1585,6 +1604,15 @@ select.search{
   margin-top: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+
+.ion-funnel.filter{
+  font-size: 12px;
+}
+
+.button.button-clear.filtericon{
+  font-size: 170%;
 }
 
 /*****Elderly information page*****/

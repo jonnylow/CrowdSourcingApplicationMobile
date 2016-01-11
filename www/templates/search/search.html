@@ -5,17 +5,19 @@
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <button class="button button-icon ion-funnel" ng-click="openPopover($event)"></button>
+      <button class="button ion-funnel button-clear filtericon" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content ng-show=!loadingshow>
 
-    <div class="item item-input listtransport">
-        <div class="input-label">
-          <b><input type="text" placeholder="Search" ng-model="searchText"></b>
-        </div>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="searchText">
+      </label>
     </div>
+
   <!--filter bar
   <div class="list card myactivitymain">
     <label class="item item-input item-select">

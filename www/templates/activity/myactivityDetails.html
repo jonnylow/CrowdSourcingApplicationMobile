@@ -9,10 +9,17 @@
  <ion-content ng-show=!loadingshow>
     <!--current activity listing-->
     <div class="list card myactivitymain">
-      <div class="item item-icon-left item-text-wrap myactivitymain">
-        <i class="icon myactivitydetails"><img src="img/car.png" class="homeicon-image"></i>
+      <div class="item item-icon-left item-text-wrap myactivitymain activitydetails">
+        <i class="icon car"><img src="img/car.png" class="homeicon-image"></i>
         <div class="row">
-          <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}<i ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><img src="img/googlemap_icon.png" class="homeicon-image"></i></h2>
+          <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+            </div>
+        </div>
+      </div>
+      <div class="item item-icon-left item-text-wrap myactivitymain activitydetails2">
+        <i class="icon map" ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><img src="img/googlemap_icon.png" class="homeicon-image"></i>
+        <div class="row">
+          <div class="col routecol">
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>

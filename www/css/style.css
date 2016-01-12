@@ -309,6 +309,13 @@ i.icon.ion-heart.larger{
 }
 /*end of everything that we overwrite from ionic*/
 
+/*Tab*/
+.button.ion-trophy.tab{
+  font-size: 27px;
+  margin-top: -6px;
+}
+/*end of tab*/
+
 /**********************LANDING PAGE**********************/
 .mainimage{
   max-width: 60%;

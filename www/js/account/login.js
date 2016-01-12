@@ -32,41 +32,30 @@ angular.module('crowdsourcing')
                     if(status != null){
                       if(status.token != null && status.error == null)
                       {
-                        $http.get(apiUrl+"RetrieveUserAccounts.php?email="+tempNRIC)
-                          .success(function (data) {
-                            var loginDetails = data;
+                        if(status.user.is_approved != false) {
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
+                          window.localStorage.setItem("loginId", status.user.volunteer_id);
+                          window.localStorage.setItem("loginUserName", status.user.name);
+                          window.localStorage.setItem("loginEmail", status.user.email);
+                          $state.go('tab.home', {}, {reload: true});
+                        }
+                        else {
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
+                          var alertPopup = $ionicPopup.alert({
+                            title: '<h6 class="popups title">Hello Newcomer!</h6>',
+                            subTitle: '<br><h6 class="popups">Your account is currently under approval by Centre for Seniors. Please come back in 2 to 5 working days</h6> ',
+                            scope: $scope,
+                            buttons: [
+                              {
+                                text: '<b>Ok</b>',
+                                type: 'button button-stable',
 
-                            if (loginDetails != null) {
-                              if(loginDetails[0].is_approved != 'f') {
-                                $scope.loadingshow = false;
-                                $ionicLoading.hide();
-                                window.localStorage.setItem("loginId", loginDetails[0].volunteer_id);
-                                window.localStorage.setItem("loginUserName", loginDetails[0].name);
-                                window.localStorage.setItem("loginEmail", loginDetails[0].email);
-                                $state.go('tab.home', {}, {reload: true});
-                              }
-                              else {
-                                $scope.loadingshow = false;
-                                $ionicLoading.hide();
-                                var alertPopup = $ionicPopup.alert({
-                                  title: '<h6 class="popups title">Hello Newcomer!</h6>',
-                                  subTitle: '<br><h6 class="popups">Your account is currently under approval by Centre for Seniors. Please come back in 2 to 5 working days</h6> ',
-                                  scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: '<b>Ok</b>',
-                                      type: 'button button-stable',
-
-                                    },
-                                  ]
-                                });
-                              }
-                            }
-                          })
-
-                          .error(function (data) {
-                            alert("Error in connection");
+                              },
+                            ]
                           });
+                        }
                       }
                       else
                       {

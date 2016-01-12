@@ -24,96 +24,95 @@ angular.module('crowdsourcing')
               var tempNewPassword = fields.newpassword;
               var tempConfirmpassword = fields.confirmpassword;
 
-              $http.get(apiUrl+"CheckLogin.php?email="+ $scope.email+"&password="+tempCurrentPassword)
-                .success(function (data) {
+              // to be use to port over to laraval login webservice
+              var checkLoginObject = { email: $scope.email,password:tempCurrentPassword};
+
+              var req =
+              {
+                method: 'POST',
+                url: "http://changhuapeng.com/laravel/api/authenticate",
+                data: Object.toparams(checkLoginObject),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+              }
+
+              $http(req).
+                success(function(data, status, headers, config)
+                {
                   var status = data;
-
-                  if (status != null) {
-                    if(status.status[0] == "true")
+                  if(status != null){
+                    if(status.token != null && status.error == null)
                     {
-                      var urlString = "http://changhuapeng.com/laravel/api/retrieveUserDetails?id="+$scope.id;
+                      if(tempConfirmpassword == tempNewPassword)
+                      {
+                        if(tempCurrentPassword != tempNewPassword)
+                        {
+                          var urlString = "http://changhuapeng.com/laravel/api/updateUserAccount?id=" + $scope.id + "&password=" + tempNewPassword;
 
-                      $http.get(urlString)
-                        .success(function (data) {
-                          var userDetails = data;
-                          if (userDetails != null) {
-                              if(tempConfirmpassword == tempNewPassword)
-                              {
-                                if(tempCurrentPassword != tempNewPassword) {
-                                  urlString = apiUrl+"UpdateUserAccount.php?id=" + $scope.id + "&password=" + tempNewPassword;
-
-                                  $http.get(urlString)
-                                    .success(function (data) {
-                                      var status = data;
-                                      if (status != null) {
-                                        $scope.loadingshow = false;
-                                        $ionicLoading.hide();
-
-                                        var alertPopup = $ionicPopup.alert({
-                                          //title: '<b>Status</b>',
-                                          subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
-                                          scope: $scope,
-                                          buttons: [
-                                            {
-                                              text: '<b>Ok</b>',
-                                              type: 'button button-energized',
-                                              onTap: function (e) {
-                                                window.localStorage.setItem("loginUserPassword", tempNewPassword);
-                                                $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
-                                                $state.go('tab.me', {}, {reload: true});
-                                              }
-                                            },
-                                          ]
-                                        });
-
-                                      }
-                                    })
-
-                                    .error(function (data) {
-                                      alert("Error in connection");
-                                    });
-                                }
-                                else
-                                {
-                                  $scope.loadingshow = false;
-                                  $ionicLoading.hide();
-                                  var alertPopup = $ionicPopup.alert({
-                                    title: '<h6 class="popups title">Whoops!</h6>',
-                                    subTitle: '<br><h6 class="popups">Old password & new password are the same</h6> ',
-                                    scope: $scope,
-                                    buttons: [
-                                      {
-                                        text: '<b>Ok</b>',
-                                        type: 'button button-stable',
-
-                                      },
-                                    ]
-                                  });
-                                }
-                              }
-                              else
-                              {
+                          $http.get(urlString)
+                            .success(function (data) {
+                              var status = data;
+                              if (status != null) {
                                 $scope.loadingshow = false;
                                 $ionicLoading.hide();
+
                                 var alertPopup = $ionicPopup.alert({
-                                  title: '<h6 class="popups title">Whoops!</h6>',
-                                  subTitle: '<br><h6 class="popups">New password & confirm password do not match</h6> ',
+                                  //title: '<b>Status</b>',
+                                  subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
                                   scope: $scope,
                                   buttons: [
                                     {
                                       text: '<b>Ok</b>',
-                                      type: 'button button-stable',
-
+                                      type: 'button button-energized',
+                                      onTap: function (e) {
+                                        $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
+                                        $state.go('tab.me', {}, {reload: true});
+                                      }
                                     },
                                   ]
                                 });
-                              }
-                          }
-                        })
 
-                        .error(function (data) {
-                          alert("Error in connection");
+                              }
+                            })
+
+                            .error(function (data) {
+                              alert("Error in connection");
+                            });
+                        }
+                        else
+                        {
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
+                          var alertPopup = $ionicPopup.alert({
+                            title: '<h6 class="popups title">Whoops!</h6>',
+                            subTitle: '<br><h6 class="popups">Old password & new password are the same</h6> ',
+                            scope: $scope,
+                            buttons: [
+                              {
+                                text: '<b>Ok</b>',
+                                type: 'button button-stable',
+
+                              },
+                            ]
+                          });
+                        }
+                      }
+                      else
+                      {
+                        $scope.loadingshow = false;
+                        $ionicLoading.hide();
+                        var alertPopup = $ionicPopup.alert({
+                          title: '<h6 class="popups title">Whoops!</h6>',
+                          subTitle: '<br><h6 class="popups">New password & confirm password do not match</h6> ',
+                          scope: $scope,
+                          buttons: [
+                            {
+                              text: '<b>Ok</b>',
+                              type: 'button button-stable',
+
+                            },
+                          ]
                         });
+                      }
                     }
                     else {
                       $scope.loadingshow = false;
@@ -122,17 +121,22 @@ angular.module('crowdsourcing')
                         title: '<h6 class="popups title error">Whoops!</h6>',
                         subTitle: '<br><h6 class="popups">Current Password is not correct</h6>',
                         scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: '<b>Ok</b>',
-                                      type: 'button button-stable',
+                        buttons: [
+                          {
+                            text: '<b>Ok</b>',
+                            type: 'button button-stable',
 
-                                    },
-                                  ]
+                          },
+                        ]
                       });
                     }
                   }
-                })
+                }).
+                error(function(data, status, headers, config)
+                {
+                  //error
+                  console.log("error: " + status);
+                });
             }
             else
             {
@@ -170,4 +174,15 @@ angular.module('crowdsourcing')
             });
           }
         }
+
+        //for POST parameters
+        Object.toparams = function ObjecttoParams(obj)
+        {
+          var p = [];
+          for (var key in obj)
+          {
+            p.push(key + '=' + encodeURIComponent(obj[key]));
+          }
+          return p.join('&');
+        };
     });

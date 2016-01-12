@@ -1625,10 +1625,12 @@ select.search{
 
 .ion-funnel.filter{
   font-size: 12px;
+
 }
 
 .button.button-clear.filtericon{
   font-size: 170%;
+  padding-right: 8px;
 }
 
 /*****Elderly information page*****/
@@ -1639,7 +1641,7 @@ select.search{
 h6.elderly{
   font-size: 17px;
   margin-left: 10px;
-  color:#8B3737;
+  color:#666;
   font-weight: bold;
 }
 

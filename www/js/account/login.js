@@ -14,7 +14,7 @@ angular.module('crowdsourcing')
 
               if (validateEmail(tempNRIC) == true) {
 
-/* to be use to port over to laraval login webservice
+                // to be use to port over to laraval login webservice
                 var loginObject = { email: tempNRIC,password:tempPassword};
 
                 var req =
@@ -28,21 +28,9 @@ angular.module('crowdsourcing')
                 $http(req).
                   success(function(data, status, headers, config)
                   {
-                    console.log(data);
-                  }).
-                  error(function(data, status, headers, config)
-                  {
-                    //error
-                    console.log(status);
-                  });
-*/
-
-                $http.get(apiUrl+"CheckLogin.php?email="+tempNRIC+"&password="+tempPassword)
-                  .success(function (data) {
                     var status = data;
-
-                    if (status != null) {
-                      if(status.status[0] == "true")
+                    if(status != null){
+                      if(status.token != null && status.error == null)
                       {
                         $http.get(apiUrl+"RetrieveUserAccounts.php?email="+tempNRIC)
                           .success(function (data) {
@@ -80,27 +68,29 @@ angular.module('crowdsourcing')
                             alert("Error in connection");
                           });
                       }
-                      else {
+                      else
+                      {
                         $scope.loadingshow = false;
                         $ionicLoading.hide();
                         var alertPopup = $ionicPopup.alert({
                           title: '<h6 class="popups title error">Whoops!</h6>',
                           subTitle: '<br><h6 class="popups">Email and password do not match</h6>',
                           scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: '<b>Ok</b>',
-                                      type: 'button button-stable',
+                          buttons: [
+                            {
+                              text: '<b>Ok</b>',
+                              type: 'button button-stable',
 
-                                    },
-                                  ]
+                            },
+                          ]
                         });
                       }
                     }
-                  })
-
-                  .error(function (data) {
-                    alert("Error in connection");
+                  }).
+                  error(function(data, status, headers, config)
+                  {
+                    //error
+                    console.log("error: " + status);
                   });
               }
               else {

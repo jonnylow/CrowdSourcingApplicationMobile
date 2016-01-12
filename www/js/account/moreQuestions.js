@@ -39,13 +39,13 @@ angular.module('crowdsourcing')
               }
               else {
                 var alertPopup = $ionicPopup.alert({
-                  title: '<h6 class="popups title">Sorry</h6>',
+                  title: '<h6 class="popups title">Whoops!</h6>',
                   subTitle: '<br><h6 class="popups">Please take front & back IC photos before proceeding.</h6> ',
                   scope: $scope,
                   buttons: [
                     {
                       text: '<b>Ok</b>',
-                      type: 'button button-energized',
+                      type: 'button button-stable',
 
                     },
                   ]
@@ -55,13 +55,13 @@ angular.module('crowdsourcing')
             else
             {
               var alertPopup = $ionicPopup.alert({
-                title: '<h6 class="popups title">Sorry</h6>',
+                title: '<h6 class="popups title">Whoops!</h6>',
                 subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
                 scope: $scope,
                 buttons: [
                   {
                     text: '<b>Ok</b>',
-                    type: 'button button-energized',
+                    type: 'button button-stable',
 
                   },
                 ]
@@ -71,13 +71,13 @@ angular.module('crowdsourcing')
         else
         {
           var alertPopup = $ionicPopup.alert({
-            title: '<h6 class="popups title">Sorry</h6>',
+            title: '<h6 class="popups title">Whoops!</h6>',
             subTitle: '<br><h6 class="popups">Please fill in all required fields.</h6> ',
             scope: $scope,
             buttons: [
               {
                 text: '<b>Ok</b>',
-                type: 'button button-energized',
+                type: 'button button-stable',
 
               },
             ]

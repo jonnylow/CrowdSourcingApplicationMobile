@@ -201,7 +201,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
     .state('elderyInformation', {
       cache: false,
-      url: '/elderyInformation/:transportId/:transportActivityName',
+      url: '/elderyInformation/:transportId/:transportActivityName/:transportActivityDate',
       templateUrl: 'templates/activity/elderyInformation.html',
       controller: "elderyInformationController"
     })

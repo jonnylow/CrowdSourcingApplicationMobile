@@ -4,6 +4,7 @@ angular.module('crowdsourcing')
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
+      $scope.transportActivityDate = new Date($stateParams.transportActivityDate);
       $scope.id = window.localStorage.getItem("loginId");
       $scope.backView = $ionicHistory.backView();
       $scope.loadingshow = true;

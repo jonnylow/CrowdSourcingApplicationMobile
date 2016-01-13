@@ -182,7 +182,7 @@ angular.module('crowdsourcing')
             buttons: [
               {
                 text: '<b>Ok</b>',
-                type: 'button button-energized',
+                type: 'button button-stable',
 
               },
             ]
@@ -213,7 +213,7 @@ angular.module('crowdsourcing')
           buttons: [
             {
               text: '<b>Ok</b>',
-              type: 'button button-energized'
+              type: 'button button-stable'
             },
           ]
         });

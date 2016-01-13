@@ -17,7 +17,7 @@ angular.module('crowdsourcing')
                 cssClass: "popup-vertical-buttons",
                 buttons: [
                   {
-                    text: '<h5 class="popups">Proceed to Location Services</h5>',
+                    text: '<h5 class="popups"><font color="#29A29C">Proceed to Location Services</font></h5>',
                     type: 'button button-stable',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
@@ -25,7 +25,7 @@ angular.module('crowdsourcing')
                     }
                   },
                   {
-                    text: '<h5 class="popups">Proceed without Location Services</h5>',
+                    text: '<h5 class="popups"><font color="#29A29C">Proceed without Location Services</font></h5>',
                     type: 'button button-stable',
                     onTap: function (e) {
                       //use default location

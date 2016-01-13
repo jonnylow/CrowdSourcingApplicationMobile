@@ -16,6 +16,14 @@
 .platform-ios.platform-cordova:not(.fullscreen) .bar-subheader{
   top: 112px;
 }
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-subheader{
+  top: 113px;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header{
+  top: 74px;
+}
 /*Background image/gradient color for main page*/
 .scroll-content.main{
 background: linear-gradient(#6991A4, #4E989A);
@@ -931,10 +939,17 @@ p.activity{
   margin-right: 10px;
 }
 
-.list.card.activityconfirmation{
+.platform-android .list.card.activityconfirmation{
   background-color: transparent;
   box-shadow: 0 0 0 0;
   margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.platform-ios .list.card.activityconfirmation{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-top: 15px;
   margin-bottom: 5px;
 }
 
@@ -977,18 +992,32 @@ p.activityconfirmation{
 .item-button-right{
   padding-right: 0;
 }
-.button.button-selected{
+.platform-android .button.button-selected{
   border-color: #65B0AD;
   background-color: #65B0AD;
   color:#fff;
   font-weight: bold;
 }
 
-.button.button-nonselected{
+.platform-android .button.button-nonselected{
   border-color: #49817E;
   background-color: #49817E;
   color: #B5B5B5;
 }
+
+.platform-ios .button.button-selected{
+  border-color: #ccc;
+  background-color: #FFF;
+  color:#000;
+  font-weight: bold;
+}
+
+.platform-ios .button.button-nonselected{
+  border-color: #ccc;
+  background-color: #F5F5F5;
+  color: #000;
+}
+
 
 .item-divider {
   min-height: 40px;
@@ -1271,9 +1300,8 @@ width: 100%;
 
 .platform-ios .map-container {
 position:relative;
-height: 92%;
+height: 93%;
 width: 100%;
-top: 10px;
 }
 
 h3.scan{
@@ -1287,11 +1315,22 @@ table.section2{
   width:101%;
 }
 
-.list.card.search.scan{
+.platform-android .list.card.search.scan{
   box-shadow: 0 0 0 0;
   margin-bottom: 10px;
   width:95%;
   margin-top: 50px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.platform-ios .list.card.search.scan{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 10px;
+  width:95%;
+  margin-top: 75px;
   padding-top: 0px;
   padding-bottom: 0px;
   margin-left: 10px;
@@ -1348,6 +1387,11 @@ div.list.profile{
 .button.button-block.button-calm.me{
   margin-left: 11px;
   width:94%;
+}
+
+h2.me{
+  text-align: center;
+  margin-top: 15px;
 }
 /*end of profile page*/
 
@@ -1644,13 +1688,6 @@ select.search{
 /*****Elderly information page*****/
 .icon.elderly{
   margin-left: -5px;
-}
-
-h6.elderly{
-  font-size: 17px;
-  margin-left: 10px;
-  color:#666;
-  font-weight: bold;
 }
 
 /*****End of Elderly information page*****/

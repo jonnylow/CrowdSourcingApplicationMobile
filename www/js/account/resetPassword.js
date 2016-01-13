@@ -11,7 +11,7 @@ angular.module('crowdsourcing')
             {
                 var tempNRIC = fields.email;
                 var tempphone = fields.phone;
-                $http.get("http://www.chanhuapeng.com/laravel/api/verifyUserEmailandPassword?email=" + tempNRIC + "&phone=" + tempphone)
+                $http.get("http://www.changhuapeng.com/laravel/api/verifyUserEmailandPassword?email=" + tempNRIC + "&phone=" + tempphone)
                 .success(function (data) {
                   var verfiy = data;
                   if (verfiy != null) {
@@ -20,7 +20,7 @@ angular.module('crowdsourcing')
                       var status = verfiy.status;
                           if (status == "success"){
                             $scope.loadingshow = false;
-                            $ionicLoading.hide(); 
+                            $ionicLoading.hide();
                             var myPopup = $ionicPopup.show({
                               title: '<h6 class="popups title">Successful!</h6>',
                               subTitle: ' <br><h6 class="popups registration">Your password is sent to your email address</h6>',
@@ -32,15 +32,15 @@ angular.module('crowdsourcing')
                                     $ionicHistory.nextViewOptions({
                                       disableAnimate: true
                                     });
-                                    $state.go('landingPage', {}, {reload: true});
+                                    $state.go('login', {}, {reload: true});
                                   }
-                                }  
+                                }
                               ]
                             });
                           }
                          else {
                           $scope.loadingshow = false;
-                          $ionicLoading.hide(); 
+                          $ionicLoading.hide();
                            var myPopup = $ionicPopup.show({
                               title: '<h6 class="popups title">Whoops!</h6>',
                               subTitle: ' <br><h6 class="popups registration">Your particulars are incorrect</h6>',
@@ -49,19 +49,15 @@ angular.module('crowdsourcing')
                                 {
                                   text: 'Ok',
                                   onTap: function(e) {
-                                    $ionicHistory.nextViewOptions({
-                                      disableAnimate: true
-                                    });
-                                    $state.go('landingPage', {}, {reload: true});
                                   }
-                                }  
+                                }
                               ]
                             });
-                         } 
+                         }
                     }
                   }
                 })
-          
+
 
               }
           else
@@ -83,6 +79,19 @@ angular.module('crowdsourcing')
           }
         }
       }
+
+    $scope.landingPage = function () {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+
+      if (window.plugins != null) {
+        window.plugins.nativepagetransitions.slide(
+          {"direction": "down"}
+        );
+      }
+
+      $state.go('login', {}, {reload: true});
+    }
     });
 
-    

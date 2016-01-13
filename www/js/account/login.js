@@ -146,12 +146,14 @@ angular.module('crowdsourcing')
       $ionicHistory.nextViewOptions({
         disableAnimate: true
       });
-      $state.go('landingPage', {}, {reload: true});
+
       if (window.plugins != null) {
         window.plugins.nativepagetransitions.slide(
           {"direction": "down"}
         );
       }
+
+      $state.go('landingPage', {}, {reload: true});
     }
 
     //for POST parameters
@@ -171,5 +173,19 @@ angular.module('crowdsourcing')
         disableAnimate: true
       });
       $state.go('tab.registration');
+    }
+
+    $scope.goReset = function () {
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true
+      });
+
+      if (window.plugins != null) {
+        window.plugins.nativepagetransitions.slide(
+          {"direction": "up"}
+        );
+      }
+
+      $state.go('resetPassword', {}, {reload: true});
     }
     });

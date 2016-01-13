@@ -9,23 +9,25 @@ angular.module('crowdsourcing')
         $ionicHistory.nextViewOptions({
           disableAnimate: true
         });
-        $state.go('login', {}, {reload: true});
+
         if (window.plugins != null) {
           window.plugins.nativepagetransitions.slide(
             {"direction": "up"}
           );
         }
+        $state.go('login', {}, {reload: true});
       }
 
       $scope.registration = function () {
         $ionicHistory.nextViewOptions({
           disableAnimate: true
         });
-        $state.go('registration', {}, {reload: true});
+
         if (window.plugins != null) {
           window.plugins.nativepagetransitions.slide(
             {"direction": "up"}
           );
         }
+        $state.go('registration', {}, {reload: true});
       }
     });

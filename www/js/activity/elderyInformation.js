@@ -25,11 +25,28 @@ angular.module('crowdsourcing')
                 {
                   $scope.medical = "No Medical Information";
                 }
+
                 $scope.languages=elderyInformation.elderly.languages;
+                var languages = "";
                 if($scope.languages == "")
                 {
                   $scope.languages = "No Language Information";
                 }
+                else
+                {
+                  for(var w = 0; w<$scope.languages.length; w++)
+                  {
+                    if(w == 0)
+                    {
+                      languages = $scope.languages[w].language;
+                    }
+                    else {
+                      languages += ", " + $scope.languages[w].language;
+                    }
+                  }
+                  $scope.languages = languages;
+                }
+
                 $scope.kin=elderyInformation.elderly.next_of_kin_name;
                 $scope.contact=elderyInformation.elderly.next_of_kin_contact;
               $scope.loadingshow = false;

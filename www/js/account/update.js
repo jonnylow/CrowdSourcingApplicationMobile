@@ -57,12 +57,12 @@ angular.module('crowdsourcing')
 
                                 var alertPopup = $ionicPopup.alert({
                                   //title: '<b>Status</b>',
-                                  subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
+                                  subTitle: "<h6 class='popups'>Your password has been successfully changed.</h6>",
                                   scope: $scope,
                                   buttons: [
                                     {
                                       text: '<b>Ok</b>',
-                                      type: 'button button-energized',
+                                      type: 'button button-stable',
                                       onTap: function (e) {
                                         $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
                                         $state.go('tab.me', {}, {reload: true});

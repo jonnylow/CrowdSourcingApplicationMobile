@@ -9,6 +9,13 @@
     background-size: cover;
 }
 
+/**ios changes**/
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 13px;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-subheader{
+  top: 112px;
+}
 /*Background image/gradient color for main page*/
 .scroll-content.main{
 background: linear-gradient(#6991A4, #4E989A);
@@ -125,15 +132,6 @@ button.home{
   height: 30px;
 }
 
-.button.button-stable.registration{
-  color: #29A29C;
-  font-size: 18px;
-  border: transparent;
-  background-color: transparent;
-  height: 30px;
-  border-right: 1px solid #C4C8CB;
-  ;
-}
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
@@ -564,6 +562,7 @@ select.dropdown.register{
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
   margin-top: 20px;
+
 }
 
 .button.button-small.button-light.main,.button.button-small.button-light.main:active{
@@ -571,6 +570,7 @@ select.dropdown.register{
   border-bottom-right-radius: 7px;
   border-top-right-radius: 7px;
   margin-top: 20px;
+  right: 5px;
 }
 
 .button.button-small.button-select.register,.button.button-small.button-select.register:active{
@@ -582,15 +582,16 @@ select.dropdown.register{
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
-  margin-top: 60px;
+  margin-top: 20px;
   margin-left: 0px;
+  right: 5px;
 }
 
 .button.button-small.button-light.register,.button.button-small.button-light.register:active{
   width:35%;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 
@@ -1262,10 +1263,17 @@ table.section1{
   opacity: 0.9;
 }
 
-.map-container {
+.platform-android .map-container {
 position:relative;
 height: 92%;
 width: 100%;
+}
+
+.platform-ios .map-container {
+position:relative;
+height: 92%;
+width: 100%;
+top: 10px;
 }
 
 h3.scan{

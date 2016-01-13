@@ -1,13 +1,18 @@
-<ion-view hide-nav-bar="true">
+<ion-view view-title="Join Us Today!">
 
-<ion-content padding="false">
-  <div class="bar bar-header registration">
-  <a class="icon ion-close-round light" ng-click="landingPage()"></a>
-  <h2 class="title main" style="color: #FFF; z-index:-1;">Join Us Today!</h2>
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  
+<ion-content>
 
-</div>
-<br><br>
-<center><button class="button button-small button-select main" ui-sref="login">Login</button><button class="button button-small button-light main" ui-sref="registration" ng-click="goRegistration()">Sign Up</button></center>
+<center>
+  <button class="button button-small button-select main" ui-sref="login">Login</button>
+  <button class="button button-small button-light main" ui-sref="registration" ng-click="goRegistration()">Sign Up</button>
+</center>
+
 <div style="text-align: center;">
  <img src="img/icare.png" class = "fullscreen-image"/>
 </div>

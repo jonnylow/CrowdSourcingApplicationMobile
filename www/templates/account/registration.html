@@ -1,14 +1,17 @@
+<ion-view view-title="Join Us Today!">
 
-<ion-view hide-nav-bar="true">
-
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
 <!--header-->
-<div class="bar bar-header registration">
-  <a class="icon ion-close-round light" ng-click="landingPage()"></a>
-  <h2 class="title main" style="color: #FFF; z-index:-1;">Join Us Today!</h2>
-</div>
 <ion-content padding="false">
-<center><button class="button button-small button-light register" ui-sref="login" ng-click="goLogin()">Login</button><button class="button button-small button-select register" ui-sref="registration">Sign Up</button></center>
+<center>
+  <button class="button button-small button-light register" ui-sref="login" ng-click="goLogin()">Login</button>
+  <button class="button button-small button-select register" ui-sref="registration">Sign Up</button>
+</center>
 
     <!-- Registration form-->
     <form ng-submit="register(fields)">

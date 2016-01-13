@@ -1372,7 +1372,7 @@ input.readonly.me{
   margin-top:-1px;
   text-align: left;
   width: 100%;
-  font-size: 17px;
+  font-size: 16px;
   background-color: transparent;
   color:#8D8D8D;
 }
@@ -1382,7 +1382,7 @@ b.account{
   margin-top: 0px;
   margin-left: -20px;
   margin-right: 5px;
-  font-size: 17px;
+  font-size: 16px;
   color:#8D8D8D;
   font-weight: normal;
 }
@@ -1392,7 +1392,7 @@ b.account.aop{
   margin-top: 0px;
   margin-left: -16px;
   margin-right: 5px;
-  font-size: 17px;
+  font-size: 16px;
   color:#8D8D8D;
   font-weight: normal;
 }
@@ -1410,7 +1410,7 @@ select.aop{
   margin-top: 10px;
   margin-left: -50px;
   width:318px;
-  font-size: 17px;
+  font-size: 16px;
   padding:5px;
   background-color: transparent;
   height: 40px;
@@ -1437,7 +1437,7 @@ input.edit{
   text-align: center;
   background-color: #E4E4E4;
   margin-left: 95px;
-  font-size: 17px;
+  font-size: 16px;
   width: 140px;
 }
 
@@ -1448,8 +1448,8 @@ input.edit{
 input.update.contact{
   text-align: center;
   padding-right: 1px;
-  margin-left: 15px;
-  font-size: 17px;
+  margin-left: 19px;
+  font-size: 16px;
   background-color: #E4E4E4;
   width:140px;
 }
@@ -1457,22 +1457,22 @@ input.update.contact{
 input.update.occupation{
   text-align: center;
   padding-right: 1px;
-  margin-left: 54px;
-  font-size: 17px;
+  margin-left: 55px;
+  font-size: 16px;
   background-color: #E4E4E4;
   width:140px;
 }
 
 b.update{
   margin-left: 10px;
-  font-size: 15px;
+  font-size: 16px;
   color:#8D8D8D;
   font-weight: normal;
 }
 
 b.update.occupation{
   margin-left: 10px;
-  font-size: 15px;
+  font-size: 16px;
   color:#8D8D8D;
   font-weight: normal;
 }

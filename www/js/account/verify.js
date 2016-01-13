@@ -90,7 +90,7 @@ angular.module('crowdsourcing')
                           $ionicLoading.hide();
                           var alertPopup = $ionicPopup.alert({
                             title: '<h6 class="popups title">Completed!</h6>',
-                            subTitle: '<br><h6 class="popups">Your particulars is sent for approval to Centre for Seniors. We will shortly get back to you</h6>',
+                            subTitle: '<br><h6 class="popups">Your particulars are sent for approval to Centre for Seniors. We will shortly get back to you</h6>',
                             scope: $scope,
                             buttons: [
                               {

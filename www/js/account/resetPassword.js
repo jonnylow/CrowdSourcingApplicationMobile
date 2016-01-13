@@ -28,6 +28,7 @@ angular.module('crowdsourcing')
                               buttons: [
                                 {
                                   text: 'Ok',
+                                  type: 'button button-stable',
                                   onTap: function(e) {
                                     $ionicHistory.nextViewOptions({
                                       disableAnimate: true
@@ -48,6 +49,7 @@ angular.module('crowdsourcing')
                               buttons: [
                                 {
                                   text: 'Ok',
+                                  type: 'button button-stable',
                                   onTap: function(e) {
                                   }
                                 }
@@ -70,7 +72,7 @@ angular.module('crowdsourcing')
                                   buttons: [
                                     {
                                       text: '<b>Ok</b>',
-                                      type: 'button button-energized',
+                                      type: 'button button-stable',
 
                                     },
                                   ]

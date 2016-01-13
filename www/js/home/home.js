@@ -17,16 +17,16 @@ angular.module('crowdsourcing')
                 cssClass: "popup-vertical-buttons",
                 buttons: [
                   {
-                    text: '<h5 class="popups"><font color="white">Proceed to Location Services</font></h5>',
-                    type: 'button button-energized',
+                    text: '<h5 class="popups">Proceed to Location Services</h5>',
+                    type: 'button button-stable',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
                       cordova.plugins.diagnostic.switchToLocationSettings();
                     }
                   },
                   {
-                    text: '<h5 class="popups"><font color="white">Proceed without Location Services</font></h5>',
-                    type: 'button button-energized',
+                    text: '<h5 class="popups">Proceed without Location Services</h5>',
+                    type: 'button button-stable',
                     onTap: function (e) {
                       //use default location
                       window.localStorage.setItem("userLat", "1.297507");
@@ -57,7 +57,7 @@ angular.module('crowdsourcing')
                     buttons: [
                       {
                         text: 'Proceed to Location Services',
-                        type: 'button-calm',
+                        type: 'button button-stable',
                         onTap: function (e) {
                           $state.go('landingPage', {}, {reload: true});
                           cordova.plugins.diagnostic.switchToLocationSettings();
@@ -65,7 +65,7 @@ angular.module('crowdsourcing')
                       },
                       {
                         text: 'Proceed without Location Services',
-                        type: 'button-calm',
+                        type: 'button button-stable',
                         onTap: function (e) {
                           //use default location
                           window.localStorage.setItem("userLat", "1.297507");

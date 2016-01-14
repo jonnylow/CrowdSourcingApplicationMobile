@@ -1240,6 +1240,7 @@ b.scan{
   bottom: 0;
   border-color: #E87984;
   z-index: 1;
+  height: 9%;
 }
 
 .icon.ion-chevron-right.scan{
@@ -1319,7 +1320,7 @@ width: 100%;
 
 .platform-ios .map-container {
 position:relative;
-height: 93%;
+height: 91%;
 width: 100%;
 }
 
@@ -1365,6 +1366,8 @@ table.section2{
   position: absolute;
   opacity: 0.9;
 }
+
+
 /*end of scan page*/
 
 /*list transport page*/

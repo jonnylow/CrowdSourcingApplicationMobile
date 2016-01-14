@@ -144,6 +144,15 @@ button.home{
   height: 30px;
 }
 
+.button.button-stable.registration{
+  color: #29A29C;
+  font-size: 18px;
+  border-right: solid 1px;
+  border-right-color: #ccc;
+  background-color: transparent;
+  height: 30px;
+}
+
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
@@ -358,6 +367,10 @@ i.icon.ion-heart.larger{
   opacity:0.9;
 }
 
+.list-inset.login.retrieve{
+  margin-top: 5px;
+}
+
 .item-input.login{
   font-style: bold;
   border:solid;
@@ -506,7 +519,7 @@ label.item.item-input.registration.dob,
     border-color: #ccf;
   }
 
-  .label-text {
+  .platform-android .label-text {
     position: absolute;
     display: block;
     box-sizing: border-box;
@@ -515,6 +528,20 @@ label.item.item-input.registration.dob,
     color: #ccc;
     overflow:hidden;
     text-overflow: ellipsis;
+  }
+
+  .platform-ios .label-text {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 3px 5px;
+    color: #ccc;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    margin-left: -6px;
+    margin-top: 2px;
+    font-size: 0.9em;
   }
 
 span.input-label.dob{
@@ -579,7 +606,7 @@ select.dropdown.register{
 }
 
 .button.button-small.button-select.main,.button.button-small.button-select.main:active{
-  background-color: #97ADBC;
+  background-color: #ABABAB;
   color:#fff;
   width:35%;
   border: none;
@@ -589,6 +616,7 @@ select.dropdown.register{
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
   margin-top: 20px;
+  border: solid 1px #ABABAB;
 
 }
 
@@ -598,10 +626,13 @@ select.dropdown.register{
   border-top-right-radius: 7px;
   margin-top: 20px;
   right: 5px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
 }
 
 .button.button-small.button-select.register,.button.button-small.button-select.register:active{
-  background-color: #97ADBC;
+  background-color: #ABABAB;
   color:#fff;
   width:35%;
   border: none;
@@ -612,6 +643,7 @@ select.dropdown.register{
   margin-top: 20px;
   margin-left: 0px;
   right: 5px;
+  border: solid 1px #ABABAB;
 }
 
 .button.button-small.button-light.register,.button.button-small.button-light.register:active{
@@ -619,6 +651,9 @@ select.dropdown.register{
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   margin-top: 20px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
 }
 
 
@@ -1025,16 +1060,25 @@ p.activityconfirmation{
 }
 
 .platform-ios .button.button-selected{
-  border-color: #ccc;
+  border-color: #999;
   background-color: #FFF;
   color:#000;
   font-weight: bold;
+  border-right: none;
+  border-left: none;
+  width: 90%;
+  min-width: 90%;
+  font-size: 15px;
 }
 
 .platform-ios .button.button-nonselected{
-  border-color: #ccc;
-  background-color: #F5F5F5;
+  border-color: #999;
+  background-color: #ccc;
   color: #000;
+  border-right: none;
+  border-left: none;
+  width: 10%;
+
 }
 
 

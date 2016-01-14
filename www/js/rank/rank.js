@@ -21,12 +21,12 @@ angular.module('crowdsourcing')
       }
     }
 
-    $http.get(apiUrl+"RetrieveRankingDetails.php?id="+$scope.id)
+    $http.get("http://changhuapeng.com/laravel/api/retrieveRankingDetails?id="+$scope.id)
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null ) {
-          $scope.completed = userDetails[0].completed;
-          $scope.withdrawn = userDetails[0].withdrawn;
+          $scope.completed = userDetails.completed;
+          $scope.withdrawn = userDetails.withdrawn;
           $ionicLoading.hide();
           $scope.loadingshow = false;
         }

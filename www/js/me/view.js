@@ -47,4 +47,9 @@ angular.module('crowdsourcing')
       {
         $state.go('manageAccount', {id: $scope.id});
       }
+
+      $scope.goRank = function()
+      {
+        $state.go('viewRanking', {id: $scope.id});
+      }
     });

@@ -1,0 +1,30 @@
+<ion-view view-title="Ranking">
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.me"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content ng-show=!loadingshow>
+    <h2 class="me">Current Rank: Bronze</h2>
+    <div class="list card myactivitymain">
+
+      <div class="item">
+        Points:
+      </div>
+
+      <div class="item">
+        Hours Completed:
+      </div>
+
+      <div class="item">
+        Completed Activities: {{completed}}
+      </div>
+
+      <div class="item">
+        Withdrawn Activities: {{withdrawn}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

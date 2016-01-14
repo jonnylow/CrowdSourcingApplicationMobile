@@ -228,7 +228,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
     .state('viewRanking', {
       cache: false,
-      url: '/ranking/:id',
+      url: '/ranking/:id/:currentRank/:hoursCompleted/:minsCompleted/:nextRank/:nextRankMin',
       templateUrl: 'templates/rank/rank.html',
       controller: "rankController"
     })

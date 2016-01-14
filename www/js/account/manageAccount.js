@@ -18,13 +18,13 @@ angular.module('crowdsourcing')
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null) {
-          $scope.fields.nric=userDetails.volunteer.nric;
-          $scope.fields.email =userDetails.volunteer.email;
-          $scope.fields.name = userDetails.volunteer.name;
-          $scope.fields.contactnumber=userDetails.volunteer.contact_no;
-          $scope.fields.occupation=userDetails.volunteer.occupation;
-          $scope.fields.preferences_1=userDetails.volunteer.area_of_preference_1;
-          $scope.fields.preferences_2=userDetails.volunteer.area_of_preference_2;
+          $scope.fields.nric=userDetails.volunteer[0].nric;
+          $scope.fields.email =userDetails.volunteer[0].email;
+          $scope.fields.name = userDetails.volunteer[0].name;
+          $scope.fields.contactnumber=userDetails.volunteer[0].contact_no;
+          $scope.fields.occupation=userDetails.volunteer[0].occupation;
+          $scope.fields.preferences_1=userDetails.volunteer[0].area_of_preference_1;
+          $scope.fields.preferences_2=userDetails.volunteer[0].area_of_preference_2;
           $scope.loadingshow = false;
           $ionicLoading.hide();
         }

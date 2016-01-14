@@ -7,15 +7,17 @@
   </ion-nav-bar>
 
   <ion-content ng-show=!loadingshow>
-    <h2 class="me">Current Rank: Bronze</h2>
+    <h2 class="me">Current Rank: {{rank}}</h2>
+    <h2 class="me">{{toDisplayInformation}}</h2>
+
     <div class="list card myactivitymain">
 
       <div class="item">
-        Points:
+        Points: {{hoursCompleted}}
       </div>
 
       <div class="item">
-        Hours Completed:
+        Hours Completed: {{hoursCompleted}} Hours {{minsCompleted}} Mins
       </div>
 
       <div class="item">

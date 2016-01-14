@@ -29,15 +29,28 @@ angular.module('crowdsourcing')
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null && userDetails.length!=0 ) {
-          $scope.username = userDetails.volunteer.name;
-          $scope.nric=userDetails.volunteer.nric;
-          $scope.email =userDetails.volunteer.email;
-          $scope.gender=userDetails.volunteer.gender;
-          $scope.dob=userDetails.volunteer.date_of_birth;
-          $scope.contactnumber=userDetails.volunteer.contact_no;
-          $scope.occuption=userDetails.volunteer.occupation;
-          $scope.preference1=userDetails.volunteer.area_of_preference_1;
-          $scope.preference2=userDetails.volunteer.area_of_preference_2;
+          $scope.username = userDetails.volunteer[0].name;
+          $scope.nric=userDetails.volunteer[0].nric;
+          $scope.email =userDetails.volunteer[0].email;
+          $scope.gender=userDetails.volunteer[0].gender;
+          $scope.dob=userDetails.volunteer[0].date_of_birth;
+          $scope.contactnumber=userDetails.volunteer[0].contact_no;
+          $scope.hoursCompletedTemp=userDetails.volunteer[0].minutes_volunteered.split(" ");
+          $scope.hoursCompleted=$scope.hoursCompletedTemp[0].trim();
+          $scope.minsCompleted = $scope.hoursCompletedTemp[2].trim()
+          $scope.occuption=userDetails.volunteer[0].occupation;
+          $scope.preference1=userDetails.volunteer[0].area_of_preference_1;
+          $scope.preference2=userDetails.volunteer[0].area_of_preference_2;
+          $scope.rank=userDetails.volunteer[0].rank.name;
+          if(userDetails.nextRank != "") {
+            $scope.nextRank = userDetails.nextRank.name;
+            $scope.nextRankMin = userDetails.nextRank.min;
+          }
+          else
+          {
+            $scope.nextRank = "NA";
+            $scope.nextRankMin = "NA";
+          }
           $scope.loadingshow = false;
           $ionicLoading.hide();
         }
@@ -50,6 +63,6 @@ angular.module('crowdsourcing')
 
       $scope.goRank = function()
       {
-        $state.go('viewRanking', {id: $scope.id});
+        $state.go('viewRanking', {id: $scope.id, currentRank:$scope.rank, hoursCompleted:$scope.hoursCompleted, minsCompleted:$scope.minsCompleted, nextRank:$scope.nextRank, nextRankMin:$scope.nextRankMin});
       }
     });

@@ -18,7 +18,8 @@
 }
 
 .platform-ios .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
-  border-bottom-color: #29A29C;
+  border-bottom-color: #fff;
+  border-bottom: solid 2px;
   color: #fff;
   font-weight: bold;
 }

@@ -144,6 +144,15 @@ button.home{
   height: 30px;
 }
 
+.button.button-stable.registration{
+  color: #29A29C;
+  font-size: 18px;
+  border-right: solid 1px;
+  border-right-color: #ccc;
+  background-color: transparent;
+  height: 30px;
+}
+
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
@@ -356,6 +365,10 @@ i.icon.ion-heart.larger{
 /**********************LOGIN & REGISTRATION**********************/
 .list-inset.login{
   opacity:0.9;
+}
+
+.list-inset.login.retrieve{
+  margin-top: 5px;
 }
 
 .item-input.login{

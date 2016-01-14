@@ -24,6 +24,10 @@
 .platform-ios.platform-cordova:not(.fullscreen) .has-header{
   top: 74px;
 }
+
+.platform-ios .button.button-light.button-clear{
+  padding-left: 5px;
+}
 /*Background image/gradient color for main page*/
 .scroll-content.main{
 background: linear-gradient(#6991A4, #4E989A);
@@ -161,13 +165,22 @@ button.home{
   top: 136px;
 }
 /***IMAGES***/
-.iconsize-image {
- max-width: 100%;
- max-height: 100%;
+.platform-android .iconsize-image {
+ max-width: 115px;
+ max-height: 34px;
  bottom: 0;
  margin-left: 2%;
  right: 0;
  top: 0;
+}
+
+.platform-ios .iconsize-image {
+ max-width: 115px;
+ max-height: 44px;
+ bottom: 0;
+ margin-left: 2%;
+ right: 0;
+ padding-top: 10px;
 }
 
 /***SPINNER***/
@@ -516,19 +529,25 @@ input.registration{
 
 h1.title.registration{
   font-weight: bold;
-  background-color: #52989C;
+  background-color: #29A29C;
   color:#fff;
   z-index: -1;
 }
 
 .bar.bar-header.registration{
-  background-color: #52989C;
+  background-color: #29A29C;
 }
 
-a.icon.ion-close-round.light{
+.platform-android a.icon.ion-close-round.light{
   font-size: 20px;
   margin-left: 10px;
   margin-top: 5px;
+}
+
+.platform-ios a.icon.ion-close-round.light{
+  font-size: 20px;
+  margin-left: 10px;
+  padding-top: 5px;
 }
 
 button.button.button-block.button-calm.registration{

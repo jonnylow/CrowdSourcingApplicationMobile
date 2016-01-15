@@ -519,6 +519,8 @@ label.item.item-input.registration.dob,
     border-color: #ccf;
   }
 
+
+
   .platform-android .label-text {
     position: absolute;
     display: block;
@@ -529,7 +531,9 @@ label.item.item-input.registration.dob,
     overflow:hidden;
     text-overflow: ellipsis;
   }
-
+  
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
   .platform-ios .label-text {
     position: absolute;
     display: block;
@@ -539,10 +543,28 @@ label.item.item-input.registration.dob,
     color: #ccc;
     overflow:hidden;
     text-overflow: ellipsis;
-    margin-left: -6px;
+    margin-left: -2%;
     margin-top: 2px;
     font-size: 0.9em;
   }
+}
+
+/*iphone 6 plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .label-text {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 3px 5px;
+    color: #ccc;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    margin-left: 2%;
+    margin-top: 2px;
+    font-size: 0.9em;
+  }
+}
 
 span.input-label.dob{
   color:#B0B0B0;

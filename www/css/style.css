@@ -156,7 +156,6 @@ button.home{
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
-  z-index: -1;
   border-bottom-width: 0;
 }
 
@@ -1543,8 +1542,9 @@ div.list.profile{
 
 h2.me{
   text-align: center;
-  margin-top: 15px;
+  margin-top: 0px;
   margin-bottom: 0px;
+  margin-left: 15%;
 }
 
 h5.me{
@@ -1552,7 +1552,12 @@ h5.me{
   font-size: 15px;
   margin-top: 0px;
   margin-right: 10px;
-  color: #999;
+  margin-bottom: 0px;
+  color: #666;
+}
+
+div.col.me{
+  margin-left: 15px;
 }
 /*end of profile page*/
 
@@ -1855,7 +1860,7 @@ select.search{
 /*****Ranking page*****/
 h2.rank{
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
   margin-top: 10px;
   text-transform: uppercase;
 }
@@ -1863,7 +1868,7 @@ h2.rank{
 h5.rank{
   text-align: center;
   color: #999;
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 
@@ -1876,7 +1881,7 @@ p.rank{
 }
 
 .item.rankbody{
-  background-color: #E9E9E9;
+  background-color: #E0E0E0;
   height: 60px;
   padding: 5px;
 }

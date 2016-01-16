@@ -1544,13 +1544,22 @@ div.list.profile{
 h2.me{
   text-align: center;
   margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+h5.me{
+  text-align: center;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-right: 10px;
+  color: #999;
 }
 /*end of profile page*/
 
 /*manage account page*/
 
 .list.list-inset.update{
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .col.icon{
@@ -1626,7 +1635,6 @@ h3.me{
   font-weight: bold;
   margin-top: 14px;
   margin-left: 20px;
-  margin-bottom: -30px;
   color: #666;
 }
 
@@ -1843,3 +1851,47 @@ select.search{
 }
 
 /*****End of Elderly information page*****/
+
+/*****Ranking page*****/
+h2.rank{
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+h5.rank{
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+p.rank{
+  font-size: 15px;
+  margin-left: 10px;
+}
+.item.rankheader{
+  padding:10px;
+}
+
+.item.rankbody{
+  background-color: #E9E9E9;
+  height: 60px;
+  padding: 5px;
+}
+
+
+h2.rankbody{
+  font-size: 20px;
+}
+
+div.col.rankfirst{
+  border-right: solid 1px #ccc;
+  text-align: center;
+}
+
+div.col.ranksecond{
+  margin-left: 10px;
+  text-align: center;
+}

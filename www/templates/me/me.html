@@ -1,7 +1,17 @@
 <ion-view view-title="View Account">
   <ion-content padding="false" ng-show=!loadingshow>
 
+<div class="list card activityconfirmation">
   <h2 class="me">{{username}}</h2>
+  <h5 class="me" ng-click="goRank()">
+    <i class="ion-ribbon-a" ng-if="rank=='Bronze'" style="color: #B77B53; font-size: 150%"></i> 
+    <i class="ion-ribbon-a" ng-if="rank=='Silver'" style="color: #817872; font-size: 150%"></i> 
+    <i class="ion-ribbon-a" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 150%"></i> 
+    <i class="ion-ribbon-a" ng-if="rank=='Platinum'" style="color: #7A7982; font-size: 150%"></i> 
+    {{rank}} Volunteer
+  </h5>
+</div>
+
 <div class="list card myactivitymain">
   <!--<div class="item">
       Name: {{username}}
@@ -43,10 +53,6 @@
       Password: **** ****
       <button class="button button-calm" ui-sref="updateAccount"><font size=3px style="font-weight:bold;">Change</font></button>
     </div>
-
-      <div class="item">
-        Rank: <a ng-click="goRank()"><u>{{rank}}</u></a>
-      </div>
   </div>
 
       <button class="button paddedbutton button-energized" ng-click="manageAccount()" ui-sref="manageAccount">Manage Account</button>

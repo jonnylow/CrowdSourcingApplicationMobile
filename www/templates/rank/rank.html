@@ -7,26 +7,47 @@
   </ion-nav-bar>
 
   <ion-content ng-show=!loadingshow>
-    <h2 class="me">Current Rank: {{rank}}</h2>
-    <h2 class="me">{{toDisplayInformation}}</h2>
+
+    <h2 class="rank">
+      <i class="ion-ribbon-a" ng-if="rank=='Bronze'" style="color: #B77B53; font-size: 150%"></i> 
+      <i class="ion-ribbon-a" ng-if="rank=='Silver'" style="color: #817872; font-size: 150%"></i> 
+      <i class="ion-ribbon-a" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 150%"></i> 
+      <i class="ion-ribbon-a" ng-if="rank=='Platinum'" style="color: #7A7982; font-size: 150%"></i> 
+      {{rank}}
+    </h2>
+    <h5 class="rank">Next Rank: {{toDisplayInformation}}</h3>
 
     <div class="list card myactivitymain">
-
-      <div class="item">
-        Points: {{hoursCompleted}}
+      <div class="item rankheader">
+        <p class="rank">Total Accumulation</p>
       </div>
-
-      <div class="item">
-        Hours Completed: {{hoursCompleted}} Hours {{minsCompleted}} Mins
-      </div>
-
-      <div class="item">
-        Completed Activities: {{completed}}
-      </div>
-
-      <div class="item">
-        Withdrawn Activities: {{withdrawn}}
-      </div>
+      <div class="item rankbody">
+        <div class="row">
+          <div class="col col-50 rankfirst">
+            <h2 class="rankbody"><b>{{hoursCompleted}}</b> points</h2>
+          </div>
+          <div class="col col-50 ranksecond">
+            <h2 class="rankbody"><b>{{hoursCompleted}}</b> Hours <b>{{minsCompleted}}</b>  Mins</h2>
+          </div>
+        </div>
     </div>
+  </div>
+
+    <div class="list card myactivitymain">
+      <div class="item rankheader">
+        <p class="rank">Activities Record</p>
+      </div>
+      <div class="item rankbody">
+        <div class="row">
+          <div class="col col-50 rankfirst">
+            <h2 class="rankbody"><b>{{completed}}</b> Completed</h2>
+          </div>
+          <div class="col col-50 ranksecond">
+            <h2 class="rankbody"><b>{{withdrawn}}</b> Withdrawn</h2>
+          </div>
+        </div>
+    </div>
+  </div>
+
   </ion-content>
 </ion-view>

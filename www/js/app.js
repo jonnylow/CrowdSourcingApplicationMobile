@@ -233,6 +233,13 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "rankController"
     })
 
+    .state('help', {
+      cache: false,
+      url: '/help',
+      templateUrl: 'templates/help/help.html',
+      controller: "helpController"
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/landingPage');
 

@@ -1,6 +1,36 @@
-<ion-view view-title="help">
-
+<ion-view view-title="Help">
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
   <ion-content>
-     HELP! 
+
+    <!--current activity listing-->
+    <ion-list>
+      <h2 class="rank">FAQs</h2>
+      <h5 class="rank">Common questions asked</h5>
+      <div class="list myactivity">
+        <div ng-repeat="group in groups">
+          <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+            <div class="row myactivity">
+              <div class="col myactivity">
+                <p>{{group.name}}</p>
+              </div>
+              <div class="col col-10">
+                <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                &nbsp;
+              </div>
+            </div>
+          </ion-item>
+
+          <div class="list" ng-show="isGroupShown(group)">
+            <a class="item-text-wrap" >
+              <p>{{group.answer}}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </ion-list>
   </ion-content>
 </ion-view>

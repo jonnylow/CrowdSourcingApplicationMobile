@@ -1065,14 +1065,13 @@ p.activityconfirmation{
 /*end of activity page*/
 
 /*myactivity page*/
-.item-button-right{
-  padding-right: 0;
-}
+
 .platform-android .button.button-selected{
   border-color: #65B0AD;
   background-color: #65B0AD;
   color:#fff;
   font-weight: bold;
+  height: 44px;
 }
 
 .platform-android .button.button-nonselected{
@@ -1081,26 +1080,54 @@ p.activityconfirmation{
   color: #B5B5B5;
 }
 
-.platform-ios .button.button-selected{
-  border-color: #999;
-  background-color: #FFF;
-  color:#000;
-  font-weight: bold;
-  border-right: none;
-  border-left: none;
-  width: 90%;
-  min-width: 90%;
-  font-size: 15px;
+.platform-ios .button.button-selected.myactivity{
+  background-color: #ABABAB;
+  color:#fff;
+  width:35%;
+  border: none;
+  margin-left: 10px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-top: 10px;
+  border: solid 1px #ABABAB;
 }
 
-.platform-ios .button.button-nonselected{
-  border-color: #999;
-  background-color: #ccc;
-  color: #000;
-  border-right: none;
-  border-left: none;
-  width: 10%;
+.platform-ios .button.button-nonselected.myactivity{
+  width:35%;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+  margin-top: 10px;
+  right: 5px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
+}
 
+.platform-ios .button.button-selected.myhistory{
+  background-color: #ABABAB;
+  color:#fff;
+  width:35%;
+  border: none;
+  margin-right: 10px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin-top: 10px;
+  border: solid 1px #ABABAB;
+}
+
+.platform-ios .button.button-nonselected.myhistory{
+  width:35%;
+  margin-left: 10px;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  margin-top: 10px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
 }
 
 
@@ -1169,6 +1196,10 @@ h5.myactivity{
   height: 44px;
 }
 
+.button.myhistory{
+  height: 44px;
+}
+
 .myactivity-image{
   max-width: 30px;
   max-height: 25px;
@@ -1223,13 +1254,21 @@ h3.myactivity{
   margin-bottom: -5px;
 }
 
-.list.myactivity{
+.platform-android .list.myactivity{
   margin-top: 42px;
+}
+
+.platform-ios .list.myactivity{
+  margin-top: 60px;
 }
 
 i.myactivity{
   margin-right: 25px;
   margin-left: 10px;
+}
+
+.platform-ios .bar-subheader{
+  background-color: transparent;
 }
 /*end of myactivity page*/
 

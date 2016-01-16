@@ -1130,25 +1130,36 @@ p.activityconfirmation{
   color: #ABABAB;
 }
 
+.marker-image{
+  max-width: 30px;
+  max-height: 40px;
+  z-index: -1;
+}
 
 .item-divider {
   min-height: 40px;
   background-color: #AEE1E0;
 }
 
+p.myactivitymarker{
+  position: absolute;
+  top: 0px;
+  right: 49%;
+}
 div.col.myactivitynum{
-  background-color: #DDE9EE;
+  background-color: transparent;
   line-height: 40px;
   text-align: center;
   font-weight: bold;
-  height: 50px;
+  height: 100%;
   margin-top: 0px;
   font-size: 1.1em;
+  position: relative;
 }
 
 div.row.myactivity{
   margin-top: 0px;
-  line-height: 50px;
+  line-height: 300%;
 }
 
 .item.myactivity{
@@ -1214,6 +1225,15 @@ h5.myactivity{
   box-shadow: 0 0 0 0;
 }
 
+.list.card.myactivitydetails{
+  margin-top: 0;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  box-shadow: 0 0 0 0;
+}
+
 .list.card.myactivitymain{
   box-shadow: 0 0 0 0;
   margin-bottom: 10px;
@@ -1268,7 +1288,8 @@ i.myactivity{
 }
 
 .platform-ios .bar-subheader{
-  background-color: transparent;
+  background-color: #F1F3F5;
+  height: 44px;
 }
 /*end of myactivity page*/
 

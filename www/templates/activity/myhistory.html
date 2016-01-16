@@ -2,8 +2,8 @@
   <!--history to current tab-->
   <ion-header-bar class="bar-subheader myactivity">
     <div class="button-bar">
-      <button class="button button-nonselected myhistory" ng-click="goCurrent()"><i class="ion-ios-heart" style="font-size: 200%; padding-right: 5px"></i>Current</button>
-      <button class="button button-selected myhistory"><i class="ion-ios-timer-outline" style="font-size: 200%; padding-right: 5px"></i>History</button>
+      <button class="button button-nonselected myhistory" ng-click="goCurrent()">Current</button>
+      <button class="button button-selected myhistory">History</button>
     </div>
   </ion-header-bar>
   <!--history to current tab-->
@@ -22,12 +22,13 @@
           <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
           <div class="row myactivity">
             <div class="col col-20 col-center myactivitynum">
-                <div ng-if="group.items.length>0" style="color:#000">
+              <img src="img/marker.png" class="marker-image"/>
+                <p class="myactivitymarker" ng-if="group.items.length>0" style="color:#333">
                   {{group.items.length}}
-                </div>
-                <div ng-if="group.items.length==0" style="color:#666">
+                </p>
+                <p class="myactivitymarker" ng-if="group.items.length==0" style="color:#999">
                   {{group.items.length}}
-                </div>
+                </p>
             </div>
             <div class="col myactivity">
               {{group.name}}

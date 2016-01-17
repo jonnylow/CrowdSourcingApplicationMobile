@@ -240,6 +240,13 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "helpController"
     })
 
+    .state('feedback', {
+      cache: false,
+      url: '/feedback',
+      templateUrl: 'templates/feedback/feedback.html',
+      controller: "feedbackController"
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/landingPage');
 

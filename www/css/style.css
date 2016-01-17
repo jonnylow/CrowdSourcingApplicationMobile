@@ -172,6 +172,11 @@ button.home{
 .has-subheader.myactivity{
   top: 136px;
 }
+
+.title.title-left.header-item{
+  text-align: center;
+  margin-left: 0%;
+}
 /***IMAGES***/
 .platform-android .iconsize-image {
  max-width: 115px;
@@ -333,6 +338,10 @@ i.icon.ion-heart.larger{
 .item-checkbox{
   padding-top:6px;
   padding-bottom: 6px;
+}
+
+.button.ion-chevron-left.button-clear{
+  font-size: 6vmin;
 }
 /*end of everything that we overwrite from ionic*/
 
@@ -589,7 +598,7 @@ h1.title.registration{
 .platform-android a.icon.ion-close-round.light{
   font-size: 20px;
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 2%;
 }
 
 .platform-ios a.icon.ion-close-round.light{
@@ -1496,7 +1505,15 @@ table.section2{
   opacity: 0.9;
 }
 
+h6.title.listmodal{
+  color: #fff;
+  z-index: -1;
+}
 
+.bar-header.listmodal{
+  background-color: #29A29C;
+  height:8%;
+}
 /*end of scan page*/
 
 /*list transport page*/
@@ -1849,6 +1866,7 @@ select.search{
   font-size: 170%;
   padding-right: 8px;
 }
+/*end of filter page*/
 
 /*****Elderly information page*****/
 .icon.elderly{
@@ -1858,22 +1876,25 @@ select.search{
 /*****End of Elderly information page*****/
 
 /*****Ranking page*****/
+
 h2.rank{
-  text-align: center;
-  font-size: 30px;
-  margin-top: 10px;
+  text-align: left;
+  font-size: 8vmin;
+  margin-top: 3%;
   text-transform: uppercase;
+  margin-left: 2%;
 }
 
 h5.rank{
-  text-align: center;
+  margin-left:2%;
+  text-align: left;
   color: #999;
-  font-size: 14px;
+  font-size: 4vmin;
   margin-bottom: 20px;
 }
 
 p.rank{
-  font-size: 15px;
+  font-size: 4.2vmin;
   margin-left: 10px;
 }
 .item.rankheader{
@@ -1888,7 +1909,7 @@ p.rank{
 
 
 h2.rankbody{
-  font-size: 20px;
+  font-size: 6vmin;
 }
 
 div.col.rankfirst{
@@ -1900,3 +1921,27 @@ div.col.ranksecond{
   margin-left: 10px;
   text-align: center;
 }
+/*end of rank page*/
+
+/***** Help page*****/
+
+.list.myactivity.help{
+  margin-top: 0%;
+}
+
+.item.help{
+  background-color:#F6F6F7;
+}
+
+h2.help{
+  text-align: left;
+  font-size: 8vmin;
+  margin-top: 3%;
+  text-transform: uppercase;
+  margin-left: 2%;
+}
+
+p.help{
+  font-size: 4vmin;
+}
+/* end of help page*/

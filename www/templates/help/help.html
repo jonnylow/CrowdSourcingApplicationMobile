@@ -8,14 +8,14 @@
 
     <!--current activity listing-->
     <ion-list>
-      <h2 class="rank">FAQs</h2>
-      <h5 class="rank">Common questions asked</h5>
-      <div class="list myactivity">
+      <h2 class="help">FAQs</h2>
+      <h5 class="rank">Frequently Asked Questions</h5>
+      <div class="list myactivity help">
         <div ng-repeat="group in groups">
           <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
             <div class="row myactivity">
               <div class="col myactivity">
-                <p>{{group.name}}</p>
+                <p class="help">{{group.name}}</p>
               </div>
               <div class="col col-10">
                 <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
@@ -26,7 +26,9 @@
 
           <div class="list" ng-show="isGroupShown(group)">
             <a class="item-text-wrap" >
-              <p>{{group.answer}}</p>
+              <div class="item help">
+                <p class="help">{{group.answer}}</p>
+              </div>              
             </a>
           </div>
         </div>

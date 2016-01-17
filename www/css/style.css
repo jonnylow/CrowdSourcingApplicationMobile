@@ -604,7 +604,7 @@ h1.title.registration{
 .platform-ios a.icon.ion-close-round.light{
   font-size: 20px;
   margin-left: 10px;
-  padding-top: 5px;
+  padding-top: 5%;
 }
 
 button.button.button-block.button-calm.registration{
@@ -1477,7 +1477,7 @@ table.section2{
   box-shadow: 0 0 0 0;
   margin-bottom: 10px;
   width:95%;
-  margin-top: 50px;
+  margin-top: 55px;
   padding-top: 0px;
   padding-bottom: 0px;
   margin-left: 10px;
@@ -1488,7 +1488,7 @@ table.section2{
   box-shadow: 0 0 0 0;
   margin-bottom: 10px;
   width:95%;
-  margin-top: 75px;
+  margin-top: 23%;
   padding-top: 0px;
   padding-bottom: 0px;
   margin-left: 10px;
@@ -1505,14 +1505,25 @@ table.section2{
   opacity: 0.9;
 }
 
-h6.title.listmodal{
+.platform-android .title.listmodal{
   color: #fff;
   z-index: -1;
 }
 
-.bar-header.listmodal{
-  background-color: #29A29C;
+.platform-ios .title.listmodal{
+  color: #fff;
+  z-index: -1;
+  padding-top: 3%;
+}
+
+.platform-android .bar-header.listmodal{
+  background-color: #29a29c;
   height:8%;
+}
+
+.platform-ios .bar-header.listmodal{
+  background-color: #29a29c;
+  min-height:10.5%;
 }
 /*end of scan page*/
 

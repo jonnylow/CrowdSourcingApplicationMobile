@@ -741,10 +741,10 @@ button.button.button-light.button-small.NRICbutton1{
   background-color: #fff;
   border-color: #A4A4A4;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 3.5vmin;
   width:70px;
-  bottom:27%;
-  left:13%;
+  bottom:-32%;
+  left:27%;
   position: absolute;
 }
 
@@ -752,10 +752,10 @@ button.button.button-light.button-small.NRICbutton{
   background-color: #fff;
   border-color: #A4A4A4;
   border-radius: 5px;
-  font-size: 15px;
-  right:13%;
+  font-size: 3.5vmin;
+  right:24%;
   width:70px;
-  bottom:27%;
+  bottom:-32%;
   position: absolute;
 }
 
@@ -1382,10 +1382,10 @@ b.scan{
   margin-right: 0px;
   margin-left: 10px;
   padding-top: 0px;
-  padding-right: 5px;
+  padding-right: 0px;
   box-shadow: 0 0px 0px rgba(0,0,0, 0);
   height:90px;
-  width:91%;
+  width:90%;
   border:solid;
   border-color: #B0B0B0;
   border-top-left-radius:7px;
@@ -1396,11 +1396,11 @@ b.scan{
 .card.scan.header2{
   background-color: #F1F3F5;
   margin: 0px;
-  margin-left: -10px;
+  margin-left: -19px;
   padding-top: 0px;
   box-shadow: 0 0px 0px rgba(0,0,0, 0);
   height:90px;
-  width:100%;
+  width:103%;
   border:solid;
   border-color: #B0B0B0;
   border-top-right-radius:7px;
@@ -1450,7 +1450,7 @@ width: 100%;
 .platform-ios .map-container {
 position:relative;
 height: 91%;
-width: 100%;
+width: 101%;
 }
 
 h3.scan{

@@ -52,26 +52,26 @@
       
         <label class="ic front">
           <div class="NRICbox">
-            <img class="frontic" id="frontic" src="" ng-show=!showFront height="120" width="140"><br>
-            <i class="icon ion-camera light morequestions"></i>
-            <h3 class="morequestions">Front IC</h3>
-          </div>
+            <img class="frontic" id="frontic" src="" ng-show=!showFront height="100%" width="100%"><br>
+            <i class="icon ion-camera light morequestions" ng-show=showFront></i>
+            <h3 class="morequestions" ng-show=showFront>Front IC</h3>
+          
           <button class="button button-light button-small NRICbutton1" type="button" ng-click="getPhotoFront()" ng-show=showFront>Add</button>
-          <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoFront()" ng-show=!showFront >Delete</button>
+          <button class="button button-light button-small NRICbutton1" type="button" ng-click="deletePhotoFront()" ng-show=!showFront >Delete</button>
+        </div>
         </label>
-
       
-      <br>
       <!--back nric-->
      
       <label class="ic back"><!--IC Photo (Back)<br />-->
         <div class="NRICbox1">
-          <img id="backic" src="" ng-show=!showBack height="120" width="140" ><br>
-          <i class="icon ion-camera light morequestions"></i>
-            <h3 class="morequestions">Back IC</h3>
-        </div>
+          <img id="backic" src="" ng-show=!showBack height="100%" width="100%" ><br>
+          <i class="icon ion-camera light morequestions" ng-show=showBack></i>
+            <h3 class="morequestions" ng-show=showBack>Back IC</h3>
+        
         <button class="button button-light button-small NRICbutton" type="button" ng-click="getPhotoBack()" ng-show=showBack>Add</button>
         <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoBack()" ng-show=!showBack>Delete</button>
+      </div>
       </label>
 
       </div>

@@ -1975,6 +1975,12 @@ h2.help{
   margin-left: 2%;
 }
 
+h5.help{
+  text-align: left;
+  margin-left: 2%;
+  color:#999;
+}
+
 p.help{
   font-size: 4vmin;
 }

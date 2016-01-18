@@ -4,13 +4,18 @@
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
+
   <ion-content>
     <form ng-submit="submit(fields)">
-          <h5 class="rank">We will get in touch with you as soon as possible.</h5>
-          <label class="item item-input">
-            <textarea placeholder="Send us your feedback" rows="15" ng-model="fields.feedback"></textarea>
-          </label>
-        <br>
+      <div class="list card activityconfirmation">
+        <div class="item item-text-wrap feedback">
+          <h5 class="rank">We will get in touch with you as soon as possible</h5>
+        </div>
+        <div class="item item-input feedback">
+          <textarea placeholder="Send us your feedback" rows="15" ng-model="fields.feedback"></textarea>
+        </div>
+      </div>
+
         <button class="button paddedbutton button-energized">Submit</button>
       </form>
   </ion-content>

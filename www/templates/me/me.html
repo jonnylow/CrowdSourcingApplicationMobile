@@ -1,20 +1,12 @@
 <ion-view view-title="View Account">
   <ion-content padding="false" ng-show=!loadingshow>
 
-<div class="list card activityconfirmation" ng-click="goRank()">
+
+<div class="list card me activityconfirmation" ng-click="goRank()">
+
   <h2 class="me">
     <div class="row">
-      <div class="col col-20">
-        <div class="row">
-          <button class="button me">
-            <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #B77B53; font-size: 150%"></i> 
-            <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #817872; font-size: 250%"></i> 
-            <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 150%"></i> 
-            <i class="ion-ribbon-a me" ng-if="rank=='Platinum'" style="color: #7A7982; font-size: 300%"></i>
-          </button>
-        </div>
-      </div>
-      <div class="col col-80 me">
+      <div class="col col-66 me">
         <div class="row">
          {{username}} 
         </div>
@@ -24,6 +16,16 @@
           </h5>
         </div>
       </div>
+      <div class="col col-33 me">
+        <div class="row me">
+          <button class="button me">
+            <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 250%"></i> 
+            <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 250%"></i> 
+            <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 250%"></i> 
+            <i class="ion-ribbon-a me" ng-if="rank=='Platinum'" style="color: #A6AAA9; font-size: 250%"></i>
+          </button>
+        </div>
+      </div>      
     </div>
   </h2>
 </div>

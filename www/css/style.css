@@ -803,6 +803,14 @@ label.ic.back{
   color:#000;
 }
 
+img.frontic{
+z-index:1;
+}
+
+img.backic{
+z-index: 1;
+}
+
 h3.morequestions{
   font-size: 5vmin;
   padding:5px;
@@ -1572,245 +1580,396 @@ h2.me{
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
-  margin-left: 15%;
+  font-size: 8vw;
 }
 
 h5.me{
+  font-size: 4.5vw;
   text-align: center;
-  font-size: 15px;
-  margin-top: 0px;
+  margin-top: 5px;
   margin-right: 10px;
   margin-bottom: 0px;
   color: #666;
 }
 
-div.col.me{
+div.col.col-66.me{
   margin-left: 10px;
 }
 
 .button.me{
-  background-color: #FFFDF4 !important;
+  background-color: #164F86 !important;
   z-index: 12 !important;
   position: relative !important;
   display: inline-block;
   margin: 2px;
-  min-width: 15vw;
-  min-height: 15vw;
+  min-width: 18vw;
+  min-height: 18vw;
   border-radius: 50% !important;
-  border-color: #FFFDF4;
-  box-shadow: 0 1.5px 2px 0 rgba(0, 0, 0, 0.26) !important;
+  border-color: #164F86;
+  box-shadow:  0 2px 2px 0 rgba(0, 0, 0, 0.4)
 }
 
 .button.me:active{
-  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
-  background-color: #FF9800;
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2) !important;
+  background-color: #164F86;
   opacity: 50% !important;
 }
 
 .ion-ribbon-a.me{
   vertical-align: middle;
 }
+
+div.row.me{
+  margin-top: 0px;
+  padding-left: 30%;
+}
+
+.list.card.activityconfirmation.me{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 /*end of profile page*/
 
-/*manage account page*/
+SMU Princess Champion Butt:
+  😱
+  
+Yong Lee Jia:
+  Hahahahaha
+  Emulator HAHAHAHA
+  I cannot
+  Got location services?
+SMU Princess Champion Butt:
+  got
+  HAHA
+  customised location
+  then i wanna change
+  they ask me to enter longitude and latitude
+  i cannot even...
+  can i google for my longitude and latitude?
+  HAHHA
+Yong Lee Jia:
+  HAHA YES
+  Google map
+SMU Princess Champion Butt:
+  omg serious
+  ok i’ll do that
+  HHAHA
+  i realised.... scan page nothing much to change...
+  why i tot like a lot of things to change sia
+Yong Lee Jia:
+  Yaaaaa I told you a
+  Scan page I done already
+SMU Princess Champion Butt:
+  huh serious
+  i tot you told me me page
+Yong Lee Jia:
+  Hahahaha I mean last time
+  The first thing I change is scan page
+  Hahahahaha
+SMU Princess Champion Butt:
+  anyways, all i did was to increase the bar below only... haha...
+  cuz it wasn’t taking the full screen
+  so i put 101%
+  AHAHHA
+Yong Lee Jia:
+  Which one?
+  The scan page?
+SMU Princess Champion Butt:
+  the one above the next nearby
+Yong Lee Jia:
+  Oh that one um you
+SMU Princess Champion Butt:
+  there is like this annoying small gap at the right
+Yong Lee Jia:
+  Go to the cas
+  Change the %
+  Cause
+  It might be working for iphone5
+  But not working for 6+
+SMU Princess Champion Butt:
+  huh...
+  i change the % to 101% lor
+  works for both ar
+Yong Lee Jia:
+  Yeah so cannot change like that leh
+  Ok you do bah
+SMU Princess Champion Butt:
+  ok change what %?
+Yong Lee Jia:
+  Haha
+SMU Princess Champion Butt:
+  got another one?
+Yong Lee Jia:
+  Um got 
+  Platform iOS map container
+  And
+  The button-blue
+  One is 91%, one is 9%
+  I think
+SMU Princess Champion Butt:
+  thats... the height...
+  haha
+  i change map container
+  can liao
+Yong Lee Jia:
+  You try iPhone 6+
+  I damn scared of that one 
+  It kept work on one
+  The other one cannot
+  HAHAHAHA
+  SIAO ONE I TELL TOU
+SMU Princess Champion Butt:
+  haha
+  ke yi ke yi
+  don’t worry
+  anyways, i found my coordinates!
+  HAHAH
+Yong Lee Jia:
+  Hahahaha
+  But what white line you saying ah?
+  It was working well
+  For my phone and the iPhone 5
+  Omg
+SMU Princess Champion Butt:
+  line?
+Yong Lee Jia:
+  Means different phone
+  Also cannot?
+SMU Princess Champion Butt:
+  oh!
+  wait ar
+  i ss send you
+  File Transfer: IMG_2548.PNG
+  See this annoying gap? 
+Yong Lee Jia:
+  Oh the width 
+SMU Princess Champion Butt:
+  YUP
+  Haha 
+  Changing the width of the bar or the map container works 
+Yong Lee Jia:
+  We see it
+  I mean I see it
+  HAHAHAHA
+SMU Princess Champion Butt:
+  HAHAHHAHAA
+  img.frontic{
+z-index:1;
+}
+
+img.backic{
+z-index: 1;
+}
+Yong Lee Jia:
+  ionic platform remove iOS
+  SORREH
+  ionic platform remove iOS
+  NOOOO
+  STOP SENDING
+  ionic platform remove ios
+ionic platform add ios
+ionic build ios
+SMU Princess Champion Butt:
+  /*manage account page*/
 
 .list.list-inset.update{
-  margin-top: 10px;
-}
-
-.col.icon{
-  margin-left: -10px;
-}
-
-.col.label{
-  margin-top: 9px;
-  margin-left: 50px;
-  background-color: transparent;
-}
-
-.col.field{
-  margin-left: -180px;
-}
-
-.item.update.item-icon-left{
-  padding:5px;
+  margin-top: 10px;
 }
 
 input.readonly.me{
-  padding: 10px;
-  margin-top:-1px;
-  text-align: left;
-  width: 100%;
-  font-size: 16px;
-  background-color: transparent;
-  color:#8D8D8D;
+  padding: 5%;
+  margin-top:-1%;
+  text-align: left;
+  width: 100%;
+  font-size: 4.5vmin;
+  background-color: transparent;
+  color:#8D8D8D;
 }
 
 b.account{
-  margin-bottom:0px;
-  margin-top: 0px;
-  margin-left: -20px;
-  margin-right: 5px;
-  font-size: 16px;
-  color:#8D8D8D;
-  font-weight: normal;
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -20px;
+  margin-right: 5px;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 b.account.aop{
-  margin-bottom:0px;
-  margin-top: 0px;
-  margin-left: -16px;
-  margin-right: 5px;
-  font-size: 16px;
-  color:#8D8D8D;
-  font-weight: normal;
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -16px;
+  margin-right: 5px;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 label.item.item-input.update{
-  background-color: transparent;
-  padding-right: 0px;
+  background-color: transparent;
+  padding-right: 0px;
 }
 
 label.item.item-input.update input{
-  padding-right:0px;
+  padding-right:0px;
 }
 
 select.aop{
-  margin-top: 10px;
-  margin-left: -50px;
-  width:318px;
-  font-size: 16px;
-  padding:5px;
-  background-color: transparent;
-  height: 40px;
+  margin-top: 10px;
+  margin-left: -50px;
+  width:318px;
+  font-size: 4.5vmin;
+  padding:5px;
+  background-color: transparent;
+  height: 40px;
 
 }
 
 h3.me{
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 14px;
-  margin-left: 20px;
-  color: #666;
+  font-size: 4.5vmin;
+  font-weight: bold;
+  margin-top: 14px;
+  margin-left: 20px;
+  color: #666;
 }
 
 .button.button-block.button-calm.update{
-  width:95%;
-  border-radius: 7px;
-  margin-left: 10px;
-  margin-top: -10px;
+  width:95%;
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-top: -10px;
 }
 
 input.edit{
-  text-align: center;
-  background-color: #E4E4E4;
-  margin-left: 95px;
-  font-size: 16px;
-  width: 140px;
+  text-align: center;
+  background-color: #E4E4E4;
+  font-size: 4.5vmin;
+  width: 140px;
 }
 
 .list.list-inset.update input{
-  padding-right: 5px;
+  padding-right: 5px;
 }
 
 input.update.contact{
-  text-align: center;
-  padding-right: 1px;
-  margin-left: 19px;
-  font-size: 16px;
-  background-color: #E4E4E4;
-  width:140px;
+  text-align: center;
+  font-size: 4.5vmin;
+  background-color: #E4E4E4;
+  width:140px;
+  float:right;
 }
 
 input.update.occupation{
-  text-align: center;
-  padding-right: 1px;
-  margin-left: 55px;
-  font-size: 16px;
-  background-color: #E4E4E4;
-  width:140px;
+  text-align: center;
+  font-size: 4.5vmin;
+  background-color: #E4E4E4;
+  width:140px;
 }
 
 b.update{
-  margin-left: 10px;
-  font-size: 16px;
-  color:#8D8D8D;
-  font-weight: normal;
+  margin-left: 10px;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 b.update.occupation{
-  margin-left: 10px;
-  font-size: 16px;
-  color:#8D8D8D;
-  font-weight: normal;
+  margin-left: 10px;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 .item.item-input.item-stacked-label.update{
-  border-style:solid;
-  border-width: thin;
-  border-right:none;
-  border-left:none;
-  border-bottom:none;
-  border-color: #E4E4E4;
-  padding-right: 0px;
-  width:110%;
-  margin-bottom: 5px;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
+  margin-bottom: 5px;
 }
 
 .item.item-input.item-stacked-label.update2{
-  border-style:solid;
-  border-width: thin;
-  border-right:none;
-  border-left:none;
-  border-bottom:none;
-  border-color: #E4E4E4;
-  padding-right: 0px;
-  width:110%;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
 }
 
 .icon.ion-card.dark.update{
-  margin-left:-5px;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-email.dark.update{
-  margin-left:-5px;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .item.item-icon-left.update{
-  padding:30px;
+  padding:30px;
 }
 
 div.iconcontainer.update{
-  width: 17%;
-  float:left;
-  background-color: transparent;
-  opacity: 0.6;
-  text-align: center;
+  width: 17%;
+  float:left;
+  background-color: transparent;
+  opacity: 0.6;
+  text-align: center;
 }
 
 .icon.ion-person.larger.update{
-  margin-left:-5px;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-ios-telephone.larger.update{
-  margin-left:-5px;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-briefcase.update{
-  margin-left:-5px;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-heart.larger.update{
-  margin-left:-15px;
-  font-size: 30px;
-  color:#8D8D8D;
+  margin-left:-30%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
+.container{
+  position:absolute;
+  margin-bottom: 1%;
+  right:2%;
+  bottom:15%;
+}
+
+label.item.item-input.registration2{
+  background-color: #fff;
+  color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+  padding:4%;
+  padding-bottom:6%;
+}
 
 /*end of manage account page*/
 
@@ -1958,7 +2117,6 @@ div.col.ranksecond{
 /*end of rank page*/
 
 /***** Help page*****/
-
 .list.myactivity.help{
   margin-top: 0%;
 }
@@ -1985,3 +2143,17 @@ p.help{
   font-size: 4vmin;
 }
 /* end of help page*/
+
+/*Feedback*/
+.item.feedback{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 10px;
+  border: transparent;
+}
+
+.item.item-input.feedback{
+  font-size: 20px;
+}
+/* end of feedback page*/

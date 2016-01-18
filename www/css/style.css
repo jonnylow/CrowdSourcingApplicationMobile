@@ -1630,203 +1630,199 @@ div.row.me{
 /*end of profile page*/
 
 /*manage account page*/
+
 .list.list-inset.update{
-  margin-top: 10px;
+  margin-top: 10px;
 }
 
 input.readonly.me{
-  padding: 5%;
-  margin-top:-1%;
-  text-align: left;
-  width: 100%;
-  font-size: 4.5vmin;
-  background-color: transparent;
-  color:#8D8D8D;
+  padding: 5%;
+  margin-top:-1%;
+  text-align: left;
+  width: 100%;
+  font-size: 4.5vmin;
+  background-color: transparent;
+  color:#8D8D8D;
 }
 
 b.account{
-  margin-bottom:0px;
-  margin-top: 0px;
-  margin-left: -20px;
-  margin-right: 5px;
-  font-size: 4.5vmin;
-  color:#8D8D8D;
-  font-weight: normal;
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -5%;
+  margin-right: 2%;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 b.account.aop{
-  margin-bottom:0px;
-  margin-top: 0px;
-  margin-left: -16px;
-  margin-right: 5px;
-  font-size: 4.5vmin;
-  color:#8D8D8D;
-  font-weight: normal;
+  margin-bottom:0px;
+  margin-top: 0px;
+  margin-left: -5%;
+  margin-right: 2%;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 label.item.item-input.update{
-  background-color: transparent;
-  padding-right: 0px;
+  background-color: transparent;
+  padding-right: 0px;
 }
 
 label.item.item-input.update input{
-  padding-right:0px;
+  padding-right:0px;
 }
 
 select.aop{
-  margin-top: 10px;
-  margin-left: -50px;
-  width:318px;
-  font-size: 4.5vmin;
-  padding:5px;
-  background-color: transparent;
-  height: 40px;
+  margin-top: 3%;
+  margin-left: -15%;
+  width:89%;
+  font-size: 4.5vmin;
+  padding:2%;
+  background-color: transparent;
+  height: 40px;
 
 }
 
 h3.me{
-  font-size: 4.5vmin;
-  font-weight: bold;
-  margin-top: 14px;
-  margin-left: 20px;
-  color: #666;
-}
-
-.button.button-block.button-calm.update{
-  width:95%;
-  border-radius: 7px;
-  margin-left: 10px;
-  margin-top: -10px;
+  font-size: 4.5vmin;
+  font-weight: bold;
+  margin-top: 6%;
+  margin-left: 6%;
+  color: #666;
 }
 
 input.edit{
-  text-align: center;
-  background-color: #E4E4E4;
-  font-size: 4.5vmin;
-  width: 140px;
+  text-align: center;
+  background-color: #E4E4E4;
+  font-size: 4.5vmin;
+  width: 140px;
 }
 
 .list.list-inset.update input{
-  padding-right: 5px;
+  padding-right: 3%;
 }
 
 input.update.contact{
-  text-align: center;
-  font-size: 4.5vmin;
-  background-color: #E4E4E4;
-  width:140px;
-  float:right;
+  text-align: center;
+  font-size: 4.5vmin;
+  background-color: #E4E4E4;
+  width:140px;
+  float:right;
 }
 
 input.update.occupation{
-  text-align: center;
-  font-size: 4.5vmin;
-  background-color: #E4E4E4;
-  width:140px;
+  text-align: center;
+  font-size: 4.5vmin;
+  background-color: #E4E4E4;
+  width:140px;
 }
 
 b.update{
-  margin-left: 10px;
-  font-size: 4.5vmin;
-  color:#8D8D8D;
-  font-weight: normal;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 b.update.occupation{
-  margin-left: 10px;
-  font-size: 4.5vmin;
-  color:#8D8D8D;
-  font-weight: normal;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
 }
 
 .item.item-input.item-stacked-label.update{
-  border-style:solid;
-  border-width: thin;
-  border-right:none;
-  border-left:none;
-  border-bottom:none;
-  border-color: #E4E4E4;
-  padding-right: 0px;
-  width:110%;
-  margin-bottom: 5px;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
+  margin-bottom: 1%;
 }
 
 .item.item-input.item-stacked-label.update2{
-  border-style:solid;
-  border-width: thin;
-  border-right:none;
-  border-left:none;
-  border-bottom:none;
-  border-color: #E4E4E4;
-  padding-right: 0px;
-  width:110%;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+  border-color: #E4E4E4;
+  padding-right: 0px;
+  width:110%;
 }
 
 .icon.ion-card.dark.update{
-  margin-left:-2%;
-  font-size: 8vmin;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-email.dark.update{
-  margin-left:-2%;
-  font-size: 8vmin;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .item.item-icon-left.update{
-  padding:30px;
+  padding:30px;
 }
 
 div.iconcontainer.update{
-  width: 17%;
-  float:left;
-  background-color: transparent;
-  opacity: 0.6;
-  text-align: center;
+  width: 17%;
+  float:left;
+  background-color: transparent;
+  opacity: 0.6;
+  text-align: center;
 }
 
 .icon.ion-person.larger.update{
-  margin-left:-2%;
-  font-size: 8vmin;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-ios-telephone.larger.update{
-  margin-left:-2%;
-  font-size: 8vmin;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-briefcase.update{
-  margin-left:-2%;
-  font-size: 8vmin;
-  color:#8D8D8D;
+  margin-left:-2%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .icon.ion-heart.larger.update{
-  margin-left:-30%;
-  font-size: 8vmin;
-  color:#8D8D8D;
+  margin-left:-30%;
+  font-size: 8vmin;
+  color:#8D8D8D;
 }
 
 .container{
-  position:absolute;
-  margin-bottom: 1%;
-  right:2%;
-  bottom:15%;
+  position:absolute;
+  margin-bottom: 1%;
+  right:2%;
+  bottom:15%;
 }
 
 label.item.item-input.registration2{
-  background-color: #fff;
-  color:#E6E6E6;
-  border-style:solid;
-  border-width: thin;
-  border-right:none;
-  border-left:none;
-  border-bottom:none;
-  padding:4%;
-  padding-bottom:6%;
+  background-color: #fff;
+  color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+  padding:4%;
+  padding-bottom:6%;
+}
+
+.button-energized.update{
+  width:94%;
 }
 
 /*end of manage account page*/

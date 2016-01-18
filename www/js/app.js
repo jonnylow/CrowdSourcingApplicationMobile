@@ -17,7 +17,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     if(window.plugins != null) {
       // then override any default you want
       window.plugins.nativepagetransitions.globalOptions.duration = 500;
-      window.plugins.nativepagetransitions.globalOptions.iosdelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.iosdelay = 0;
       window.plugins.nativepagetransitions.globalOptions.androiddelay = 250;
       window.plugins.nativepagetransitions.globalOptions.winphonedelay = 250;
       window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 3;

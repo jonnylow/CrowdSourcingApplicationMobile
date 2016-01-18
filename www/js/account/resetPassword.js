@@ -89,11 +89,17 @@ angular.module('crowdsourcing')
 
       if (window.plugins != null) {
         window.plugins.nativepagetransitions.slide(
-          {"direction": "down"}
+          {
+            'href': '#/login',
+            'direction': "down",
+            'duration': 500,
+            'iosdelay': 0 // the new property
+          }
         );
       }
-
-      $state.go('login', {}, {reload: true});
+      else {
+        $state.go('login', {}, {reload: true});
+      }
     }
     });
 

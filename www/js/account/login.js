@@ -149,11 +149,17 @@ angular.module('crowdsourcing')
 
       if (window.plugins != null) {
         window.plugins.nativepagetransitions.slide(
-          {"direction": "down"}
+          {
+            'href': '#/landingPage',
+            'direction': "down",
+            'duration': 500,
+            'iosdelay': 0 // the new property
+          }
         );
       }
-
-      $state.go('landingPage', {}, {reload: true});
+      else {
+        $state.go('landingPage', {}, {reload: true});
+      }
     }
 
     //for POST parameters
@@ -182,10 +188,16 @@ angular.module('crowdsourcing')
 
       if (window.plugins != null) {
         window.plugins.nativepagetransitions.slide(
-          {"direction": "up"}
+          {
+            'href': '#/reset',
+            'direction': "up",
+            'duration': 500,
+            'iosdelay': 0 // the new property
+          }
         );
       }
-
-      $state.go('resetPassword', {}, {reload: true});
+      else {
+        $state.go('resetPassword', {}, {reload: true});
+      }
     }
     });

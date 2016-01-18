@@ -1,17 +1,26 @@
-<ion-view view-title="Activity Details">
+<ion-view view-title="Activity Details" can-swipe-back="false">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
     </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button ion-home button-clear activitydetails button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content ng-show=!loadingshow>
   <!--activity details-->
-    <a href="#" ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)">Launch external url</a>
     <div class="list card myactivitymain">
-      <div class="item item-icon-left item-text-wrap activitymain">
-        <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
+      <div class="item item-icon-left item-text-wrap myactivitymain activitydetails">
+        <i class="icon car"><img src="img/car.png" class="homeicon-image"></i>
+        <div class="row">
+          <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+            </div>
+        </div>
+      </div>
+      <div class="item item-icon-left item-text-wrap myactivitymain activitydetails2">
+        <i class="icon map" ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><img src="img/googlemap_icon.png" class="homeicon-image"></i>
         <div class="row">
           <div class="col routecol">
             <table>

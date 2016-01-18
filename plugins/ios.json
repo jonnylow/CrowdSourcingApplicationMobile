@@ -1,6 +1,12 @@
 {
     "prepare_queue": {
-        "installed": [],
+        "installed": [
+            {
+                "plugin": "cordova-plugin-geolocation",
+                "vars": {},
+                "topLevel": true
+            }
+        ],
         "uninstalled": []
     },
     "config_munge": {

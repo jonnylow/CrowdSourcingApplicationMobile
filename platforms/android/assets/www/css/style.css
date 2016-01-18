@@ -9,6 +9,25 @@
     background-size: cover;
 }
 
+/**ios changes**/
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 13px;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-subheader{
+  top: 112px;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-subheader{
+  top: 113px;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header{
+  top: 74px;
+}
+
+.platform-ios .button.button-light.button-clear{
+  padding-left: 5px;
+}
 /*Background image/gradient color for main page*/
 .scroll-content.main{
 background: linear-gradient(#6991A4, #4E989A);
@@ -16,9 +35,12 @@ background: linear-gradient(#6991A4, #4E989A);
 
 /****************Google Map**********************/
 .angular-google-map-container {
-  height: 300px;
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
 }
-
 
 /****************Ionic overwrites**********************/
 /***BUTTONS***/
@@ -32,7 +54,7 @@ background: linear-gradient(#6991A4, #4E989A);
 .button.button-calm.active, .button.button-calm.activated {
   border-color: #E86472;
   background-color: #E86472;
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 /*Second default button - Green*/
@@ -69,7 +91,7 @@ background: linear-gradient(#6991A4, #4E989A);
   margin-top: 0;
 }
 
-.button-float{
+/*.button-float{
   background-color: #29A29C !important;
   z-index: 12 !important;
   position: relative !important;
@@ -86,6 +108,12 @@ background: linear-gradient(#6991A4, #4E989A);
   box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
   background-color: #FF9800;
   opacity: 50% !important;
+}*/
+.button.button-float.animated.shake{
+  background-color: #29A29C;
+  border-radius: 7px;
+  margin-top: -1%;
+  border:none;
 }
 
 button.button-positive.apply{
@@ -108,10 +136,26 @@ button.home{
   border-radius: 5px;
 }
 
+.button.button-stable{
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  height: 30px;
+}
+
+.button.button-stable.registration{
+  color: #29A29C;
+  font-size: 18px;
+  border-right: solid 1px;
+  border-right-color: #ccc;
+  background-color: transparent;
+  height: 30px;
+}
+
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
-  z-index: -1;
   border-bottom-width: 0;
 }
 
@@ -128,14 +172,28 @@ button.home{
 .has-subheader.myactivity{
   top: 136px;
 }
+
+.title.title-left.header-item{
+  text-align: center;
+  margin-left: 0%;
+}
 /***IMAGES***/
-.iconsize-image {
- max-width: 100%;
- max-height: 100%;
+.platform-android .iconsize-image {
+ max-width: 115px;
+ max-height: 34px;
  bottom: 0;
  margin-left: 2%;
  right: 0;
  top: 0;
+}
+
+.platform-ios .iconsize-image {
+ max-width: 115px;
+ max-height: 44px;
+ bottom: 0;
+ margin-left: 2%;
+ right: 0;
+ padding-top: 10px;
 }
 
 /***SPINNER***/
@@ -181,25 +239,34 @@ a:link {
 
 /*for all popups*/
 
+.popup-container .popup{
+  border-radius: 5px;
+  width: 300px;
+}
+.popup-head{
+  border-bottom: 1px solid #C4C8CB
+}
+
+.popup-buttons {
+  padding: 0px;
+  min-height: 45px;
+}
+
 h6.popups{
-  font-size: 16px;
-  font-style: normal;
+  font-size: 14px;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
 h6.popups.title.error{
-  font-size: 20px;
-  font-style: normal;
-  font-weight: bold;
+  font-size: 18px;
   margin-top: 0px;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 h6.popups.title{
   font-size: 20px;
-  font-style: normal;
-  font-weight: bold;
   margin-top: 0px;
   margin-bottom: 5px;
 }
@@ -209,6 +276,7 @@ h3.popups.home{
   font-style: normal;
   margin-top: 0px;
 }
+
 
 /***BOX SIZES***/
 div.row{
@@ -271,13 +339,35 @@ i.icon.ion-heart.larger{
   padding-top:6px;
   padding-bottom: 6px;
 }
+
+.button.ion-chevron-left.button-clear{
+  font-size: 6vmin;
+}
 /*end of everything that we overwrite from ionic*/
+
+/*Tab*/
+.button.ion-trophy.tab{
+  font-size: 27px;
+  margin-top: -6px;
+}
+/*end of tab*/
 
 /**********************LANDING PAGE**********************/
 .mainimage{
   max-width: 60%;
   max-height: 60%;
-  margin-top:5%;
+  margin-top:20%;
+}
+
+.landing-buttons{
+  bottom:5%;
+  position:absolute;
+  width: 95%;
+  margin-left: 10px;
+}
+
+.button.button-block.button-dark.main{
+  font-size: 13px;
 }
 
 /**********************LOGIN & REGISTRATION**********************/
@@ -285,8 +375,18 @@ i.icon.ion-heart.larger{
   opacity:0.9;
 }
 
+.list-inset.login.retrieve{
+  margin-top: 5px;
+}
+
 .item-input.login{
   font-style: bold;
+  border:solid;
+  border-top: none;
+  border-left:none;
+  border-right:none;
+  border-bottom-color: #DDD;
+  border-width: thin;
 }
 
 .item-input.login1{
@@ -382,7 +482,7 @@ div.item{
 .list.list-inset.registration{
   margin-top: 7px;
   /*box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.26);*/
-  margin-top: 40px;
+
 }
 
 label.item.item-input.registration{
@@ -395,10 +495,89 @@ label.item.item-input.registration{
   border-bottom:none;
 }
 
+label.item.item-input.registration.dob{
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  padding-left: 75px;
+  padding-bottom: 0px;
+}
+
+label.item.item-input.registration.dob,
+  label.item.item-input.registration.dob > input:focus,
+  label.item.item-input.registration.dob > .entered {
+    background: #fff;
+  }
+
+  label.item.item-input.registration.dob > input {
+    padding-left: 11px;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2px 4px;
+    border: none;
+    margin: 0;
+    background: none;
+    font: inherit;
+  }
+
+  label.item.item-input.registration.dob > input:focus {
+    outline: none;
+    border-color: #ccf;
+  }
+
+
+
+  .platform-android .label-text {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 3px 5px;
+    color: #ccc;
+    overflow:hidden;
+    text-overflow: ellipsis;
+  }
+  
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .label-text {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 3px 5px;
+    color: #ccc;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    margin-left: -2%;
+    margin-top: 2px;
+    font-size: 0.9em;
+  }
+}
+
+/*iphone 6 plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .label-text {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 3px 5px;
+    color: #ccc;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    margin-left: 2%;
+    margin-top: 2px;
+    font-size: 0.9em;
+  }
+}
 
 span.input-label.dob{
   color:#B0B0B0;
   padding-left: 16px;
+  padding-top-top: 5px;
 }
 
 input.registration{
@@ -407,19 +586,25 @@ input.registration{
 
 h1.title.registration{
   font-weight: bold;
-  background-color: #52989C;
+  background-color: #29A29C;
   color:#fff;
   z-index: -1;
 }
 
 .bar.bar-header.registration{
-  background-color: #52989C;
+  background-color: #29A29C;
 }
 
-a.icon.ion-close-round.light{
+.platform-android a.icon.ion-close-round.light{
   font-size: 20px;
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 2%;
+}
+
+.platform-ios a.icon.ion-close-round.light{
+  font-size: 20px;
+  margin-left: 10px;
+  padding-top: 5%;
 }
 
 button.button.button-block.button-calm.registration{
@@ -450,6 +635,59 @@ select.dropdown.register{
   color:#8D8D8D;
 }
 
+.button.button-small.button-select.main,.button.button-small.button-select.main:active{
+  background-color: #ABABAB;
+  color:#fff;
+  width:35%;
+  border: none;
+  margin-left: 10px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-top: 20px;
+  border: solid 1px #ABABAB;
+
+}
+
+.button.button-small.button-light.main,.button.button-small.button-light.main:active{
+  width:35%;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+  margin-top: 20px;
+  right: 5px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
+}
+
+.button.button-small.button-select.register,.button.button-small.button-select.register:active{
+  background-color: #ABABAB;
+  color:#fff;
+  width:35%;
+  border: none;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin-top: 20px;
+  margin-left: 0px;
+  right: 5px;
+  border: solid 1px #ABABAB;
+}
+
+.button.button-small.button-light.register,.button.button-small.button-light.register:active{
+  width:35%;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  margin-top: 20px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
+}
+
+
+
 /*end of login and registration page*/
 
 /**********************MORE QUESTIONS**********************/
@@ -464,16 +702,6 @@ label.item.item-input.morequestions{
 
 input.morequestions{
   margin-left: 10px;
-}
-
-label.ic.front{
-  margin-left: 30px;
-  color:#000;
-}
-
-label.ic.back{
-  margin-left: 40px;
-  color:#000;
 }
 
 div.morebox{
@@ -495,35 +723,17 @@ div.morebox input{
   border-radius: 7px;
 }
 
-.button.button-block.button-calm.morequestions{
+.button.button-block.button-energized.morequestions{
   margin-top:-5px;
   margin-bottom: -10px;
   border:transparent;
-  background-color: #E86472;
+  background-color: #94A66D;
   border-radius: 7px;
-}
-
-button.button.button-light.button-small.NRICbutton1{
-  background-color: #fff;
-  border-color: #A4A4A4;
-  border-radius: 5px;
-  font-size: 15px;
-  width:70px;
-  margin-left: -15px;
-}
-
-button.button.button-light.button-small.NRICbutton{
-  background-color: #fff;
-  border-color: #A4A4A4;
-  border-radius: 5px;
-  font-size: 15px;
-  width:70px;
 }
 
 label.item.item-input.item-stacked-label.registration1{
   background-color: transparent;
   border:none;
-  margin-top: 50px;
 }
 
 label.item.item-input.item-stacked-label.registration{
@@ -536,56 +746,106 @@ select.dropdown.morequestions{
   height:40px;
 }
 
-.item.range.range-positive.morequestions{
-  border:none;
-  padding-left: 0px;
+button.button.button-light.button-small.NRICbutton1{
+  background-color: #fff;
+  border-color: #A4A4A4;
+  border-radius: 5px;
+  font-size: 3.5vmin;
+  width:70px;
+  bottom:-32%;
+  left:27%;
+  position: absolute;
+}
+
+button.button.button-light.button-small.NRICbutton{
+  background-color: #fff;
+  border-color: #A4A4A4;
+  border-radius: 5px;
+  font-size: 3.5vmin;
+  right:24%;
+  width:70px;
+  bottom:-32%;
+  position: absolute;
 }
 
 .NRICbox{
-  height:120px;
-  width:140px;
+  top:40%;
+  width:40%;
+  height:25%;
+  position:absolute;
   border-style: thin;
   border-color:#000;
   padding:0px;
   background-color: #164F86;
   border-radius: 15px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: -20px;
+  left:5%;
 }
 
 .NRICbox1{
-  height:120px;
-  width:140px;
+  top:40%;
+  width:40%;
+  height:25%;
+  position:absolute;
   border-style: thin;
   border-color:#000;
   padding:0px;
   background-color: #164F86;
   border-radius: 15px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: -5px;
+  right:5%;
+}
+
+label.ic.front{
+  margin-bottom: 150px;
+  color:#000;
+}
+
+label.ic.back{
+  color:#000;
+}
+
+img.frontic{
+z-index:1;
+}
+
+img.backic{
+z-index: 1;
 }
 
 h3.morequestions{
-  font-size: 15px;
+  font-size: 5vmin;
   padding:5px;
   height:40px;
   font-weight: bold;
   color:#fff;
+  position: absolute;
+  top:45%;
+  left:25%;
 }
 
 .icon.ion-camera.light.morequestions{
-  font-size: 45px;
+  font-size: 13vmin;
   padding-top: 0px;
-  margin-top: -10px;
-  margin-bottom: -5px;
+  position: absolute;
+  left:33%;
+  top:5%;
+}
+
+.list.card.moreQuestions{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-left: 8px;
+  font-size: 16px;
+  margin-bottom: 0px;
 }
 
 
 /*end of more questions page*/
 
 /**********************VERIFY**********************/
+
+.button.button-dark.otp{
+  width:100%;
+}
 h4.verify{
   color:#000;
   margin:10px;
@@ -632,12 +892,6 @@ span.input-label.verify{
   margin-left: 100px;
 }
 
-button.button.button-block.button-calm.verify{
-  border:transparent;
-  background-color: #E86472;
-  border-radius: 7px;
-}
-
 button.button.button-block.button-light.verify{
   border-radius: 7px;
 }
@@ -660,7 +914,7 @@ button.button.button-block.button-light.verify{
 }
 
 .item.popout:active {
-  background-color: #29A29C;
+  background-color: #F2F2F2;
 }
 
 .homeicon-image{
@@ -670,13 +924,17 @@ button.button.button-block.button-light.verify{
 
 h2.home{
   color: #164F86;
-  font-size: 15px;
+  font-size: 0.95em;
   font-weight: bold;
+  text-align: left;
 }
 
 .item.item-divider.home{
   padding-bottom: 8px;
   border: transparent;
+  background-color: #fff;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .item.item-text-wrap.home{
@@ -686,7 +944,7 @@ h2.home{
   border-right-color: transparent;
   border-left-color: transparent;
   border-top-color: #ddd;
-  
+
 }
 
 a.home{
@@ -722,6 +980,27 @@ p.homep{
 {
     display: block;
 }
+
+.list.card.myactivitymain.recommendation{
+  bottom: 0%;
+  position:absolute;
+  width:95%;
+}
+
+.elderly-image{
+  height:20%;
+  width:20%;
+  margin-top: 35px;
+}
+
+h4.home{
+  margin-top: -10px;
+}
+
+h6.home-page{
+  font-size: 1.5em;
+  text-align: center;
+}
 /*end of home page*/
 
 /*activity page*/
@@ -756,24 +1035,125 @@ p.activity{
   margin-right: 10px;
 }
 
+.platform-android .list.card.activityconfirmation{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.platform-ios .list.card.activityconfirmation{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+p.activityconfirmation{
+  color: green;
+  font-size: 15px;
+}
+
+.item.activityconfirmation{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.button.button-clear.activitydetails{
+  font-size: 200%;
+}
+
+.item.activitydetails{
+  padding-bottom: 0;
+  border: none;
+}
+
+.item.activitydetails2{
+  padding-top: 0;
+  border: none;
+}
+
+.icon.car{
+  left: 11px;
+  top: 13px;
+}
+
+.icon.map{
+  left: 13px;
+  top: -35px;
+}
 
 /*end of activity page*/
 
 /*myactivity page*/
-.item-button-right{
-  padding-right: 0;
-}
-.button.button-selected{
+
+.platform-android .button.button-selected{
   border-color: #65B0AD;
   background-color: #65B0AD;
   color:#fff;
   font-weight: bold;
+  height: 44px;
 }
 
-.button.button-nonselected{
+.platform-android .button.button-nonselected{
   border-color: #49817E;
   background-color: #49817E;
   color: #B5B5B5;
+}
+
+.platform-ios .button.button-selected.myactivity{
+  background-color: #ABABAB;
+  color:#fff;
+  width:35%;
+  border: none;
+  margin-left: 10px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-top: 10px;
+  border: solid 1px #ABABAB;
+}
+
+.platform-ios .button.button-nonselected.myactivity{
+  width:35%;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+  margin-top: 10px;
+  right: 5px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
+}
+
+.platform-ios .button.button-selected.myhistory{
+  background-color: #ABABAB;
+  color:#fff;
+  width:35%;
+  border: none;
+  margin-right: 10px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin-top: 10px;
+  border: solid 1px #ABABAB;
+}
+
+.platform-ios .button.button-nonselected.myhistory{
+  width:35%;
+  margin-left: 10px;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  margin-top: 10px;
+  background-color: transparent;
+  border: solid 1px #ABABAB;
+  color: #ABABAB;
+}
+
+.marker-image{
+  max-width: 30px;
+  max-height: 40px;
+  z-index: -1;
 }
 
 .item-divider {
@@ -781,19 +1161,25 @@ p.activity{
   background-color: #AEE1E0;
 }
 
+p.myactivitymarker{
+  position: absolute;
+  top: 0px;
+  right: 49%;
+}
 div.col.myactivitynum{
-  background-color: #F1F2F4;
+  background-color: transparent;
   line-height: 40px;
   text-align: center;
   font-weight: bold;
-  height: 50px;
+  height: 100%;
   margin-top: 0px;
   font-size: 1.1em;
+  position: relative;
 }
 
 div.row.myactivity{
   margin-top: 0px;
-  line-height: 50px;
+  line-height: 300%;
 }
 
 .item.myactivity{
@@ -817,6 +1203,7 @@ p.myactivity{
   margin-bottom: 5px;
   margin-right: 10px;
   width:100%;
+  text-align: left;
 }
 
 p.myactivitydetails{
@@ -840,6 +1227,10 @@ h5.myactivity{
   height: 44px;
 }
 
+.button.myhistory{
+  height: 44px;
+}
+
 .myactivity-image{
   max-width: 30px;
   max-height: 25px;
@@ -854,21 +1245,31 @@ h5.myactivity{
   box-shadow: 0 0 0 0;
 }
 
+.list.card.myactivitydetails{
+  margin-top: 0;
+  margin-right: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  box-shadow: 0 0 0 0;
+}
+
 .list.card.myactivitymain{
   box-shadow: 0 0 0 0;
   margin-bottom: 10px;
   margin-top: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
+  background-color: #fff;
 }
 
 .item.myactivitymain{
   padding-right: 5px;
-  padding-left: 48px;
 }
 
 .icon.myactivity{
   top: -31px;
+  left: 3px;
 }
 
 .icon.myactivitydetails{
@@ -893,24 +1294,26 @@ h3.myactivity{
   margin-bottom: -5px;
 }
 
-.list.myactivity{
+.platform-android .list.myactivity{
   margin-top: 42px;
+}
+
+.platform-ios .list.myactivity{
+  margin-top: 60px;
+}
+
+i.myactivity{
+  margin-right: 25px;
+  margin-left: 10px;
+}
+
+.platform-ios .bar-subheader{
+  background-color: #F1F3F5;
+  height: 44px;
 }
 /*end of myactivity page*/
 
 /*scan page*/
-.parent{
-  height:100%;
-}
-
-.section2{
-  height:40%;
-  overflow-x: scroll;
-}
-
-.section1{
-  max-height:60%;
-}
 
 ion-item.item{
   padding-right:5px;
@@ -937,15 +1340,199 @@ button.button.button-transparent.scan:active{
   border:none;
 }
 
-.card.animated.shake.scan{
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+.card.instructions{
+  box-shadow: 0 0px 0px rgba(0.4, 0.2, 0.1, 0.3);
+  margin-bottom: 10px;
+  margin-top: 0px;
+  top:10px;
+  position:absolute;
+  z-index: 7;
+  width:93%;
 }
 
 .list.card.scan{
   box-shadow: 3 0px 0px rgba(0, 0, 0, 0.3);
 }
 
+h6.scan{
+  margin-left: 11px;
+  font-size: 13px;
+  color:#666;
+}
 
+b.scan{
+  font-size: 16px;
+  color:#000;
+}
+
+.button.button-blue.scan{
+  background-color: #fff;
+  color:#000;
+  max-height:110%;
+  height:110%;
+  margin-top: -13px;
+  padding: 0px;
+  margin-right: -33px;
+  border:none;
+  border-top-right-radius: 0px;
+}
+
+.button.button-blue.nextnearby{
+  background-color: #E87984;
+  color:#fff;
+  max-width:100%;
+  width:100%;
+  position: absolute;
+  bottom: 0;
+  border-color: #E87984;
+  z-index: 1;
+  height: 9%;
+}
+
+.icon.ion-chevron-right.scan{
+  margin-left: -10px;
+}
+
+.card.scan.header{
+  background-color: #F1F3F5;
+  margin: 0px;
+  margin-right: 0px;
+  margin-left: 10px;
+  padding-top: 0px;
+  padding-right: 0px;
+  box-shadow: 0 0px 0px rgba(0,0,0, 0);
+  height:90px;
+  width:90%;
+  border:solid;
+  border-color: #B0B0B0;
+  border-top-left-radius:7px;
+  border-bottom-left-radius: 7px;
+  border-right:none;
+}
+
+.card.scan.header2{
+  background-color: #F1F3F5;
+  margin: 0px;
+  margin-left: -10%;
+  padding-top: 0px;
+  box-shadow: 0 0px 0px rgba(0,0,0, 0);
+  height:90px;
+  width:103%;
+  border:solid;
+  border-color: #B0B0B0;
+  border-top-right-radius:7px;
+  border-bottom-right-radius: 7px;
+  border-left: none;
+  margin-right: 0px;
+}
+
+.item.item-icon-left.scan{
+  border:none;
+  border-right:none;
+  background-color: #F1F3F5;
+}
+
+.icon.ion-map.scan{
+  font-size: 30px;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+.icon.ion-android-car.scan{
+  font-size: 33px;
+  margin-top: -3px;
+  margin-left: -5px;
+}
+
+.icon.ion-chevron-right{
+  padding:0px;
+}
+
+table.section1{
+  background-color: #fff;
+  width:100%;
+  margin-bottom: -12px;
+  z-index: 1;
+  bottom:2%;
+  position: absolute;
+  opacity: 0.9;
+}
+
+.platform-android .map-container {
+position:relative;
+height: 92%;
+width: 100%;
+}
+
+.platform-ios .map-container {
+position:relative;
+height: 91%;
+width: 101%;
+}
+
+h3.scan{
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+table.section2{
+  background-color: #F1F3F5;
+  width:101%;
+}
+
+.platform-android .list.card.search.scan{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 10px;
+  width:95%;
+  margin-top: 55px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.platform-ios .list.card.search.scan{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 10px;
+  width:95%;
+  margin-top: 23%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.item.item-text-wrap.item-icon-right.scan{
+  background-color: #fff;
+  width:100%;
+  margin-bottom: -12px;
+  z-index: 1;
+  bottom:2%;
+  position: absolute;
+  opacity: 0.9;
+}
+
+.platform-android .title.listmodal{
+  color: #fff;
+  z-index: -1;
+}
+
+.platform-ios .title.listmodal{
+  color: #fff;
+  z-index: -1;
+  padding-top: 3%;
+}
+
+.platform-android .bar-header.listmodal{
+  background-color: #29a29c;
+  height:8%;
+}
+
+.platform-ios .bar-header.listmodal{
+  background-color: #29a29c;
+  min-height:10.5%;
+}
 /*end of scan page*/
 
 /*list transport page*/
@@ -969,10 +1556,9 @@ button.button.button-transparent.scan:active{
   padding-top: 3px;
   padding-bottom: 3px;
 }
-
 /*end of list transport page*/
-/*profile page*/
 
+/*profile page*/
 div.list.profile{
   opacity:0.7;
   margin: 11px;
@@ -988,34 +1574,73 @@ div.list.profile{
   margin-left: 11px;
   width:94%;
 }
+
+h2.me{
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 8vw;
+}
+
+h5.me{
+  font-size: 4.5vw;
+  text-align: center;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  color: #666;
+}
+
+div.col.col-66.me{
+  margin-left: 10px;
+}
+
+.button.me{
+  background-color: #164F86 !important;
+  z-index: 12 !important;
+  position: relative !important;
+  display: inline-block;
+  margin: 2px;
+  min-width: 18vw;
+  min-height: 18vw;
+  border-radius: 50% !important;
+  border-color: #164F86;
+  box-shadow:  0 2px 2px 0 rgba(0, 0, 0, 0.4)
+}
+
+.button.me:active{
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2) !important;
+  background-color: #164F86;
+  opacity: 50% !important;
+}
+
+.ion-ribbon-a.me{
+  vertical-align: middle;
+}
+
+div.row.me{
+  margin-top: 0px;
+  padding-left: 30%;
+}
+
+.list.card.activityconfirmation.me{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 /*end of profile page*/
 
 /*manage account page*/
 
-.col.icon{
-  margin-left: -10px;
-}
-
-.col.label{
-  margin-top: 9px;
-  margin-left: 50px;
-  background-color: transparent;
-}
-
-.col.field{
-  margin-left: -180px;
-}
-
-.item.update.item-icon-left{
-  padding:5px;
+.list.list-inset.update{
+  margin-top: 10px;
 }
 
 input.readonly.me{
-  padding: 10px;
-  margin-top:-1px;
+  padding: 5%;
+  margin-top:-1%;
   text-align: left;
   width: 100%;
-  font-size: 17px;
+  font-size: 4.5vmin;
   background-color: transparent;
   color:#8D8D8D;
 }
@@ -1023,9 +1648,9 @@ input.readonly.me{
 b.account{
   margin-bottom:0px;
   margin-top: 0px;
-  margin-left: -20px;
-  margin-right: 5px;
-  font-size: 17px;
+  margin-left: -5%;
+  margin-right: 2%;
+  font-size: 4.5vmin;
   color:#8D8D8D;
   font-weight: normal;
 }
@@ -1033,9 +1658,9 @@ b.account{
 b.account.aop{
   margin-bottom:0px;
   margin-top: 0px;
-  margin-left: -16px;
-  margin-right: 5px;
-  font-size: 17px;
+  margin-left: -5%;
+  margin-right: 2%;
+  font-size: 4.5vmin;
   color:#8D8D8D;
   font-weight: normal;
 }
@@ -1050,72 +1675,58 @@ label.item.item-input.update input{
 }
 
 select.aop{
-  margin-top: 10px;
-  margin-left: -50px;
-  width:318px;
-  font-size: 17px;
-  padding:5px;
+  margin-top: 3%;
+  margin-left: -15%;
+  width:89%;
+  font-size: 4.5vmin;
+  padding:2%;
   background-color: transparent;
-  height: 40px;
+  line-height: 200%;
 
 }
 
 h3.me{
-  font-size: 16px;
+  font-size: 4.5vmin;
   font-weight: bold;
-  margin-top: 14px;
-  margin-left: 20px;
-  margin-bottom: -30px;
+  margin-top: 6%;
+  margin-left: 6%;
   color: #666;
-}
-
-.button.button-block.button-calm.update{
-  width:95%;
-  border-radius: 7px;
-  margin-left: 10px;
-  margin-top: -10px;
 }
 
 input.edit{
   text-align: center;
   background-color: #E4E4E4;
-  margin-left: 95px;
-  font-size: 17px;
+  font-size: 4.5vmin;
   width: 140px;
 }
 
-.list.list-inset.registration input{
-  padding-right: 5px;
+.list.list-inset.update input{
+  padding-right: 3%;
 }
 
 input.update.contact{
   text-align: center;
-  padding-right: 1px;
-  margin-left: 15px;
-  font-size: 17px;
+  font-size: 4.5vmin;
   background-color: #E4E4E4;
   width:140px;
+  float:right;
 }
 
 input.update.occupation{
   text-align: center;
-  padding-right: 1px;
-  margin-left: 54px;
-  font-size: 17px;
+  font-size: 4.5vmin;
   background-color: #E4E4E4;
   width:140px;
 }
 
 b.update{
-  margin-left: 10px;
-  font-size: 15px;  
+  font-size: 4.5vmin;
   color:#8D8D8D;
   font-weight: normal;
 }
 
 b.update.occupation{
-  margin-left: 10px;
-  font-size: 15px;  
+  font-size: 4.5vmin;
   color:#8D8D8D;
   font-weight: normal;
 }
@@ -1129,7 +1740,7 @@ b.update.occupation{
   border-color: #E4E4E4;
   padding-right: 0px;
   width:110%;
-  margin-bottom: 5px;
+  margin-bottom: 1%;
 }
 
 .item.item-input.item-stacked-label.update2{
@@ -1144,12 +1755,14 @@ b.update.occupation{
 }
 
 .icon.ion-card.dark.update{
-  margin-left:-5px;
+  margin-left:-2%;
+  font-size: 8vmin;
   color:#8D8D8D;
 }
 
 .icon.ion-email.dark.update{
-  margin-left:-5px;
+  margin-left:-2%;
+  font-size: 8vmin;
   color:#8D8D8D;
 }
 
@@ -1166,33 +1779,58 @@ div.iconcontainer.update{
 }
 
 .icon.ion-person.larger.update{
-  margin-left:-5px;
+  margin-left:-2%;
+  font-size: 8vmin;
   color:#8D8D8D;
 }
 
 .icon.ion-ios-telephone.larger.update{
-  margin-left:-5px;
+  margin-left:-2%;
+  font-size: 8vmin;
   color:#8D8D8D;
 }
 
 .icon.ion-briefcase.update{
-  margin-left:-5px;
+  margin-left:-2%;
+  font-size: 8vmin;
   color:#8D8D8D;
 }
 
 .icon.ion-heart.larger.update{
-  margin-left:-15px;
-  font-size: 30px;
+  margin-left:-30%;
+  font-size: 8vmin;
   color:#8D8D8D;
 }
 
+.container{
+  position:absolute;
+  margin-bottom: 1%;
+  right:2%;
+  bottom:15%;
+}
+
+label.item.item-input.registration2{
+  background-color: #fff;
+  color:#E6E6E6;
+  border-style:solid;
+  border-width: thin;
+  border-right:none;
+  border-left:none;
+  border-bottom:none;
+  padding:4%;
+  padding-bottom:6%;
+}
+
+.button-energized.update{
+  width:94%;
+}
 
 /*end of manage account page*/
 
 /*change password page*/
 
 .list.updatePassword1{
-  
+
   background-color: #fff;
 }
 
@@ -1265,16 +1903,117 @@ select.search{
   padding-bottom: 0px;
 }
 
+
+.ion-funnel.filter{
+  font-size: 12px;
+
+}
+
+.button.button-clear.filtericon{
+  font-size: 170%;
+  padding-right: 8px;
+}
+/*end of filter page*/
+
 /*****Elderly information page*****/
 .icon.elderly{
   margin-left: -5px;
 }
 
-h6.elderly{
-  font-size: 17px;
-  margin-left: 10px;
-  color:#8B3737;
-  font-weight: bold;
+/*****End of Elderly information page*****/
+
+/*****Ranking page*****/
+
+h2.rank{
+  text-align: center;
+  font-size: 8vmin;
+  margin-top: 3%;
+  text-transform: uppercase;
+  margin-left: 2%;
 }
 
-/*****End of Elderly information page*****/
+h5.rank{
+  margin-left:2%;
+  text-align: center;
+  color: #999;
+  font-size: 4vmin;
+  margin-bottom: 20px;
+}
+
+p.rank{
+  font-size: 4.2vmin;
+  margin-left: 10px;
+}
+.item.rankheader{
+  padding:10px;
+}
+
+.item.rankbody{
+  background-color: #E0E0E0;
+  height: 60px;
+  padding: 5px;
+}
+
+
+h2.rankbody{
+  font-size: 5vmin;
+}
+
+div.col.rankfirst{
+  border-right: solid 1px #ccc;
+  text-align: center;
+}
+
+div.col.ranksecond{
+  margin-left: 10px;
+  text-align: center;
+}
+/*end of rank page*/
+
+/***** Help page*****/
+.list.myactivity.help{
+  margin-top: 0%;
+}
+
+.item.help{
+  background-color:#F6F6F7;
+}
+
+h2.help{
+  text-align: left;
+  font-size: 8vmin;
+  margin-top: 1%;
+  text-transform: uppercase;
+  margin-left: 2%;
+}
+
+h5.help{
+  text-align: left;
+  margin-left: 2%;
+  color:#999;
+}
+
+p.help{
+  font-size: 4vmin;
+}
+/* end of help page*/
+
+/*Feedback*/
+.item.feedback{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  border: transparent;
+  padding-bottom: 2%;
+}
+
+.item.item-input.feedback{
+  font-size: 20px;
+}
+
+textarea.feedback{
+  font-size: 15px;
+  padding-top: 5%;
+  padding-left: 4%;
+}
+/* end of feedback page*/

@@ -19,38 +19,38 @@ angular.module('crowdsourcing')
       $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
-      var urlString = apiUrl+"RetrieveTransportByUser.php?id="+$scope.id+"&type=2";
+      var urlString = "http://changhuapeng.com/laravel/api/retrieveTransportByUser?id=" +$scope.id+"&type=2";
 
       $http.get(urlString)
         .success(function (data) {
           var transportDetails = data;
 
           if (transportDetails != null){
-            for(var i = 0; i<transportDetails.length; i++){
+            for(var i = 0; i<transportDetails.activities.length; i++){
 
-              if(transportDetails[i].activity_id != null){
-                var t = transportDetails[i].datetime_start.split(/[- :]/);
+              if(transportDetails.activities[i].activity_id != null){
+                var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
-                if(transportDetails[i].approval == "approved" && transportDetails[i].status== "completed")
+                if(transportDetails.task[i].approval == "approved" && transportDetails.task[i].status== "completed")
                 {
-                  $scope.groups[0].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, statusDisplay:"Completed"});
+                  $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Completed"});
                 }
                 else
                 {
                   var currentDateTime = new Date();
                   if(dateTime < currentDateTime)
                   {
-                    if(transportDetails[i].approval == "withdrawn") {
-                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, statusDisplay:"Not Applicable"});
+                    if(transportDetails.task[i].approval == "withdrawn") {
+                      $scope.groups[2].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
-                    else if(transportDetails[i].approval == "rejected")
+                    else if(transportDetails.task[i].approval == "rejected")
                     {
-                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, statusDisplay:"Not Applicable"});
+                      $scope.groups[2].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
-                    else if(transportDetails[i].approval == "pending")
+                    else if(transportDetails.task[i].approval == "pending")
                     {
-                      $scope.groups[1].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, statusDisplay:"Not Applicable"});
+                      $scope.groups[1].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
                   }
                 }

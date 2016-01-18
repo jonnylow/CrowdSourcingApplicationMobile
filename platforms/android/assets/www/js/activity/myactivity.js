@@ -10,13 +10,13 @@ angular.module('crowdsourcing')
         }
         else {
             var myPopup = $ionicPopup.show({
-              title: '<h6 class="popups title">Notice</h6>',
-              subTitle: '<br><h6 class="popups">You must login first</h6>',
+              title: '<h6 class="popups title">Who are you?</h6>',
+              subTitle: '<br><h6 class="popups">Login to access this content</h6>',
               scope: $scope,
               buttons: [
                 {
                   text: '<b>Ok</b>',
-                  type: 'button button-energized',
+                  type: 'button button-stable',
                   onTap: function(e) {
                     $state.go('landingPage', {}, {reload: true});
                   }
@@ -34,38 +34,38 @@ angular.module('crowdsourcing')
       $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
-      var urlString = apiUrl+"RetrieveTransportByUser.php?id="+$scope.id+"&type=1";
+      var urlString = "http://changhuapeng.com/laravel/api/retrieveTransportByUser?id=" +$scope.id+"&type=1";
 
       $http.get(urlString)
         .success(function (data) {
           var transportDetails = data;
 
           if (transportDetails != null){
-            for(var i = 0; i<transportDetails.length; i++){
+            for(var i = 0; i<transportDetails.activities.length; i++){
 
-              if(transportDetails[i].activity_id != null){
-                var t = transportDetails[i].datetime_start.split(/[- :]/);
+              if(transportDetails.activities[i].activity_id != null){
+                var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
-                if(transportDetails[i].approval == "approved")
+                if(transportDetails.task[i].approval == "approved")
                 {
-                  if(transportDetails[i].approval == "approved" && transportDetails[i].status == "new task")
+                  if(transportDetails.task[i].approval == "approved" && transportDetails.task[i].status == "new task")
                   {
-                    $scope.groups[1].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                    $scope.groups[1].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
                   }
                   else
                   {
-                    if(transportDetails[i].status == "pick-up")
+                    if(transportDetails.task[i].status == "pick-up")
                     {
-                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
+                      $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
                     }
-                    else if(transportDetails[i].status == "at check-up")
+                    else if(transportDetails.task[i].status == "at check-up")
                     {
-                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
+                      $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
                     }
-                    else if(transportDetails[i].status == "check-up completed")
+                    else if(transportDetails.task[i].status == "check-up completed")
                     {
-                      $scope.groups[0].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
+                      $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
                     }
                   }
                 }
@@ -74,16 +74,16 @@ angular.module('crowdsourcing')
                   var currentDateTime = new Date();
                   if(dateTime >= currentDateTime)
                   {
-                    if(transportDetails[i].approval == "pending" && transportDetails[i].status == "new task") {
-                      $scope.groups[2].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                    if(transportDetails.task[i].approval == "pending" && transportDetails.task[i].status == "new task") {
+                      $scope.groups[2].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
-                    else if(transportDetails[i].approval == "rejected" && transportDetails[i].status == "new task")
+                    else if(transportDetails.task[i].approval == "rejected" && transportDetails.task[i].status == "new task")
                     {
-                      $scope.groups[3].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[3].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
-                    else if(transportDetails[i].approval == "withdrawn" && transportDetails[i].status == "new task")
+                    else if(transportDetails.task[i].approval == "withdrawn" && transportDetails.task[i].status == "new task")
                     {
-                      $scope.groups[3].items.push({id:transportDetails[i].activity_id, from:transportDetails[i].location_from, to:transportDetails[i].location_to, name:transportDetails[i].location_from + " - " + transportDetails[i].location_to, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[3].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                   }
                 }
@@ -197,8 +197,8 @@ angular.module('crowdsourcing')
       var confirmPopup = $ionicPopup.confirm({
         title: '<h6 class="popups title">Update Status?</h6>',
         subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + status + "' ?</h6>",
-        okType:"button button-energized",
-        cancelType:"button button-light"
+        okType:"button button-stable",
+        cancelType:"button button-stable registration"
       });
 
       confirmPopup.then(function(res) {
@@ -223,8 +223,8 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-          urlString = apiUrl+"updateActivityStatus.php?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
-
+          urlString = "http://changhuapeng.com/laravel/api/updateActivityStatus?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
+          console.log(urlString);
           $http.get(urlString)
             .success(function (data) {
               var status = data;
@@ -235,7 +235,7 @@ angular.module('crowdsourcing')
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title">Status</h6>',
                   subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
-                  okType:"button button-energized"
+                  okType:"button button-stable"
                 });
                 //window.location.reload(true);
                 $state.go('tab.activity', {}, {reload: true});

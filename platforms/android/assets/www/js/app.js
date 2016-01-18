@@ -5,7 +5,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
@@ -17,7 +17,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     if(window.plugins != null) {
       // then override any default you want
       window.plugins.nativepagetransitions.globalOptions.duration = 500;
-      window.plugins.nativepagetransitions.globalOptions.iosdelay = 250;
+      window.plugins.nativepagetransitions.globalOptions.iosdelay = 0;
       window.plugins.nativepagetransitions.globalOptions.androiddelay = 250;
       window.plugins.nativepagetransitions.globalOptions.winphonedelay = 250;
       window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 3;
@@ -114,6 +114,14 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "searchController"
     })
 
+
+    .state('resetPassword', {
+      cache: false,
+      url: '/reset',
+      templateUrl: 'templates/account/resetPassword.html',
+      controller: "resetPasswordController"
+    })
+
   .state('landingPage', {
       cache: false,
       url: '/landingPage',
@@ -163,13 +171,6 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "scanController"
     })
 
-    .state('listTransport', {
-      //cache: false,
-      url: '/listTransport/:transportIds/:distance',
-      templateUrl: 'templates/list/listTransport.html',
-      controller: "listTransportController"
-    })
-
     .state('activityDetails', {
       cache: false,
       url: '/activityDetails/:transportId/:transportActivityName',
@@ -200,7 +201,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
     .state('elderyInformation', {
       cache: false,
-      url: '/elderyInformation/:transportId/:transportActivityName',
+      url: '/elderyInformation/:transportId/:transportActivityName/:transportActivityDate',
       templateUrl: 'templates/activity/elderyInformation.html',
       controller: "elderyInformationController"
     })
@@ -223,6 +224,27 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       url: '/recommended',
       templateUrl: 'templates/recommended/recommended.html',
       controller: "recommendedController"
+    })
+
+    .state('viewRanking', {
+      cache: false,
+      url: '/ranking/:id/:currentRank/:hoursCompleted/:minsCompleted/:nextRank/:nextRankMin',
+      templateUrl: 'templates/rank/rank.html',
+      controller: "rankController"
+    })
+
+    .state('help', {
+      cache: false,
+      url: '/help',
+      templateUrl: 'templates/help/help.html',
+      controller: "helpController"
+    })
+
+    .state('feedback', {
+      cache: false,
+      url: '/feedback',
+      templateUrl: 'templates/feedback/feedback.html',
+      controller: "feedbackController"
     })
 
   // if none of the above states are matched, use this as the fallback

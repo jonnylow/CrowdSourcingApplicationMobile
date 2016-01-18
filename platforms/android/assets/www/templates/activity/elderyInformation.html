@@ -15,6 +15,10 @@
           <div class="col routecol">
             <table>
               <tr>
+                <div class="col routecol"><h2 class="home">{{ transportActivityDate | date : "d MMM yyyy, h:mm a"}}</h2>
+                </div>
+              </tr>
+              <tr>
                 <td><p class="myactivity">From</p></td>
                 <td><p class="myactivity"><b>{{transportActivityName.split("-")[0]}}</b></p></td>
               </tr>
@@ -35,7 +39,7 @@
         </div>
       </div>
     </div>
-    <h6 class="elderly">Elderly information</h6>
+    <h3 class="me">ELDERLY INFORMATION</h3>
       <div class="list card myactivitymain">
         <div class="item item-icon-left activitymain">
           <i class="icon ion-person"></i>
@@ -58,7 +62,7 @@
           <h5 class="myactivity">{{medical}}</h5>
         </div>
       </div>
-        <h6 class="elderly">Next-of-Kin Information</h6>
+        <h3 class="me">NEXT-OF-KIN INFORMATION</h3>
         <div class="list card myactivitymain">
           <div class="item item-icon-left activitymain">
             <i class="icon ion-person"></i>

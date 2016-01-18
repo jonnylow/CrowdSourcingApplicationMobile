@@ -118,7 +118,8 @@ module.exports.metadata =
     "cordova.plugins.diagnostic": "2.2.3",
     "cordova-plugin-network-information": "1.0.1",
     "com.telerik.plugins.nativepagetransitions": "0.5.6",
-    "cordova-plugin-inappbrowser": "1.1.2-dev"
+    "cordova-plugin-inappbrowser": "1.1.2-dev",
+    "cordova-plugin-geolocation": "1.0.1"
 }
 // BOTTOM OF METADATA
 });

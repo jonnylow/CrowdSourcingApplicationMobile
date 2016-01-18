@@ -4,34 +4,52 @@ angular.module('crowdsourcing')
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
+      $scope.transportActivityDate = new Date($stateParams.transportActivityDate);
       $scope.id = window.localStorage.getItem("loginId");
+      $scope.backView = $ionicHistory.backView();
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
-
-    $http.get(apiUrl+"RetrieveElderyInformation.php?transportId=" + $scope.transportId)
+    $http.get("http://changhuapeng.com/laravel/api/retrieveElderyInformation?transportId=" + $scope.transportId)
       .success(function (data) {
         var elderyInformation = data;
         if (elderyInformation != null) {
-          if(elderyInformation[0] != null)
+          if(elderyInformation != null)
           {
-            if(elderyInformation[0].name != null && elderyInformation[0].next_of_kin_name != null
-              && elderyInformation[0].next_of_kin_contact !=null )
+            if(elderyInformation.elderly.name != null && elderyInformation.elderly.next_of_kin_name != null
+              && elderyInformation.elderly.next_of_kin_contact !=null )
             {
-                $scope.name= elderyInformation[0].name;
-                $scope.gender=elderyInformation[0].gender;
-                $scope.medical=elderyInformation[0].medical_condition;
+                $scope.name= elderyInformation.elderly.name;
+                $scope.gender=elderyInformation.elderly.gender;
+                $scope.medical=elderyInformation.elderly.medical_condition;
                 if($scope.medical == "")
                 {
                   $scope.medical = "No Medical Information";
                 }
-                $scope.languages=elderyInformation[0].languages;
+
+                $scope.languages=elderyInformation.elderly.languages;
+                var languages = "";
                 if($scope.languages == "")
                 {
                   $scope.languages = "No Language Information";
                 }
-                $scope.kin=elderyInformation[0].next_of_kin_name;
-                $scope.contact=elderyInformation[0].next_of_kin_contact;
+                else
+                {
+                  for(var w = 0; w<$scope.languages.length; w++)
+                  {
+                    if(w == 0)
+                    {
+                      languages = $scope.languages[w].language;
+                    }
+                    else {
+                      languages += ", " + $scope.languages[w].language;
+                    }
+                  }
+                  $scope.languages = languages;
+                }
+
+                $scope.kin=elderyInformation.elderly.next_of_kin_name;
+                $scope.contact=elderyInformation.elderly.next_of_kin_contact;
               $scope.loadingshow = false;
               $ionicLoading.hide();
             }
@@ -41,7 +59,15 @@ angular.module('crowdsourcing')
 
     $scope.back=function()
     {
-      $ionicHistory.goBack();
+      if($scope.backView != null)
+      {
+        $scope.backView.go();
+      }
+      else
+      {
+        $state.go('tab.home', {}, {reload: true});
+      }
+      //$ionicHistory.goBack();
     }
 
 });

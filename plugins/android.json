@@ -53,6 +53,14 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -99,6 +107,9 @@
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.crowdsourcing454583"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.CareGuide"
         }
     },
     "dependent_plugins": {}

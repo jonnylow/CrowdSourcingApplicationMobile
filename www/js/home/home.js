@@ -32,12 +32,8 @@ angular.module('crowdsourcing')
                       window.localStorage.setItem("userLat", "1.297507");
                       window.localStorage.setItem("userLong", "103.850436");
 
-                      getLocation = true;
-                      //to check that application also got user location && data finish loading
-                      if (getLocation == true && loadData == true) {
-                        $scope.loadingshow = false;
-                        $ionicLoading.hide();
-                      }
+                      $scope.loadingshow = false;
+                      $ionicLoading.hide();
                     }
 
                   },
@@ -71,12 +67,8 @@ angular.module('crowdsourcing')
                           window.localStorage.setItem("userLat", "1.297507");
                           window.localStorage.setItem("userLong", "103.850436");
 
-                          getLocation = true;
-                          //to check that application also got user location && data finish loading
-                          if (getLocation == true && loadData == true) {
-                            $scope.loadingshow = false;
-                            $ionicLoading.hide();
-                          }
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
                         }
                       },
                     ]
@@ -98,45 +90,6 @@ angular.module('crowdsourcing')
 
       $scope.transportActivity = [];
       $scope.loadingshow = true;
-      var getLocation = false;
-      var loadData = false;
-
-      //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
-      //NOTE BACKEND DEVELOPERS: set timeout to only fire error once
-    if(window.localStorage.getItem("userLat") == null) {
-      var onSuccess = function(position) {
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-
-        window.localStorage.setItem("userLat", lat);
-        window.localStorage.setItem("userLong", lng);
-
-        getLocation = true;
-
-        //to check that application also got user location && data finish loading
-        if(getLocation == true && loadData == true) {
-          $scope.loadingshow = false;
-          $ionicLoading.hide();
-        }
-      };
-
-      function onError(err) {
-        //$ionicLoading.hide();
-        //$state.go('landingPage', {}, {reload: true});
-      }
-
-      //get location with 10 secs timeout
-      navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, enableHighAccuracy: true });
-    }
-    else {
-      getLocation = true;
-
-      //to check that application also got user location && data finish loading
-      if(getLocation == true && loadData == true) {
-        $scope.loadingshow = false;
-        $ionicLoading.hide();
-      }
-    }
 
       $http.get("http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=2")
         .success(function (data) {
@@ -163,18 +116,48 @@ angular.module('crowdsourcing')
               }
             }
           }
-          loadData = true;
 
           //to check that application also got user location && data finish loading
-          if(getLocation == true && loadData == true) {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-
-          }
         })
 
       $scope.scan = function () {
-        $state.go('scan', {}, {reload: true});
+        //ionic loading screen
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Getting your location...'})
+
+        //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
+        //NOTE BACKEND DEVELOPERS: set timeout to only fire error once
+        if(window.localStorage.getItem("userLat") == null) {
+          var onSuccess = function(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            console.log(lat);
+            window.localStorage.setItem("userLat", lat);
+            window.localStorage.setItem("userLong", lng);
+
+            $state.go('scan', {}, {reload: true});
+
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          };
+
+          function onError(err) {
+            //$ionicLoading.hide();
+            //$state.go('landingPage', {}, {reload: true});
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          }
+
+          //get location with 10 secs timeout
+          navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, enableHighAccuracy: true });
+        }
+        else
+        {
+          $scope.loadingshow = false;
+          $ionicLoading.hide();
+          $state.go('scan', {}, {reload: true});
+        }
       }
 
       $scope.proceed = function(id, name)

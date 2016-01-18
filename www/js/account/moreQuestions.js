@@ -28,12 +28,17 @@ angular.module('crowdsourcing')
             if(fields.preferences_1 != fields.preferences_2) {
               var image = document.getElementById('frontic');
               var image1 = document.getElementById('backic');
+              
+              
+
               if (image.src.indexOf("base64") != -1 && image1.src.indexOf("base64") != -1) {
 
                 window.localStorage.setItem("tempPreferences1", fields.preferences_1);
                 window.localStorage.setItem("tempPreferences2", fields.preferences_2);
-                window.localStorage.setItem("front", image.src);
-                window.localStorage.setItem("back", image1.src);
+
+                //to store send image to verify.js
+                //window.localStorage.setItem("front", image.src);
+                //window.localStorage.setItem("back", image1.src);
 
                 $state.go('verify', {}, {reload: true});
               }

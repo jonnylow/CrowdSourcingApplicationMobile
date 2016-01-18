@@ -1982,7 +1982,7 @@ div.col.ranksecond{
 h2.help{
   text-align: left;
   font-size: 8vmin;
-  margin-top: 3%;
+  margin-top: 1%;
   text-transform: uppercase;
   margin-left: 2%;
 }
@@ -2002,12 +2002,18 @@ p.help{
 .item.feedback{
   padding-left: 0;
   padding-right: 0;
-  padding-top: 0;
-  padding-bottom: 10px;
+  padding-top: 10px;
   border: transparent;
+  padding-bottom: 2%;
 }
 
 .item.item-input.feedback{
   font-size: 20px;
+}
+
+textarea.feedback{
+  font-size: 15px;
+  padding-top: 5%;
+  padding-left: 4%;
 }
 /* end of feedback page*/

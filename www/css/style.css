@@ -1556,10 +1556,9 @@ table.section2{
   padding-top: 3px;
   padding-bottom: 3px;
 }
-
 /*end of list transport page*/
-/*profile page*/
 
+/*profile page*/
 div.list.profile{
   opacity:0.7;
   margin: 11px;
@@ -1630,148 +1629,7 @@ div.row.me{
 }
 /*end of profile page*/
 
-SMU Princess Champion Butt:
-  😱
-  
-Yong Lee Jia:
-  Hahahahaha
-  Emulator HAHAHAHA
-  I cannot
-  Got location services?
-SMU Princess Champion Butt:
-  got
-  HAHA
-  customised location
-  then i wanna change
-  they ask me to enter longitude and latitude
-  i cannot even...
-  can i google for my longitude and latitude?
-  HAHHA
-Yong Lee Jia:
-  HAHA YES
-  Google map
-SMU Princess Champion Butt:
-  omg serious
-  ok i’ll do that
-  HHAHA
-  i realised.... scan page nothing much to change...
-  why i tot like a lot of things to change sia
-Yong Lee Jia:
-  Yaaaaa I told you a
-  Scan page I done already
-SMU Princess Champion Butt:
-  huh serious
-  i tot you told me me page
-Yong Lee Jia:
-  Hahahaha I mean last time
-  The first thing I change is scan page
-  Hahahahaha
-SMU Princess Champion Butt:
-  anyways, all i did was to increase the bar below only... haha...
-  cuz it wasn’t taking the full screen
-  so i put 101%
-  AHAHHA
-Yong Lee Jia:
-  Which one?
-  The scan page?
-SMU Princess Champion Butt:
-  the one above the next nearby
-Yong Lee Jia:
-  Oh that one um you
-SMU Princess Champion Butt:
-  there is like this annoying small gap at the right
-Yong Lee Jia:
-  Go to the cas
-  Change the %
-  Cause
-  It might be working for iphone5
-  But not working for 6+
-SMU Princess Champion Butt:
-  huh...
-  i change the % to 101% lor
-  works for both ar
-Yong Lee Jia:
-  Yeah so cannot change like that leh
-  Ok you do bah
-SMU Princess Champion Butt:
-  ok change what %?
-Yong Lee Jia:
-  Haha
-SMU Princess Champion Butt:
-  got another one?
-Yong Lee Jia:
-  Um got 
-  Platform iOS map container
-  And
-  The button-blue
-  One is 91%, one is 9%
-  I think
-SMU Princess Champion Butt:
-  thats... the height...
-  haha
-  i change map container
-  can liao
-Yong Lee Jia:
-  You try iPhone 6+
-  I damn scared of that one 
-  It kept work on one
-  The other one cannot
-  HAHAHAHA
-  SIAO ONE I TELL TOU
-SMU Princess Champion Butt:
-  haha
-  ke yi ke yi
-  don’t worry
-  anyways, i found my coordinates!
-  HAHAH
-Yong Lee Jia:
-  Hahahaha
-  But what white line you saying ah?
-  It was working well
-  For my phone and the iPhone 5
-  Omg
-SMU Princess Champion Butt:
-  line?
-Yong Lee Jia:
-  Means different phone
-  Also cannot?
-SMU Princess Champion Butt:
-  oh!
-  wait ar
-  i ss send you
-  File Transfer: IMG_2548.PNG
-  See this annoying gap? 
-Yong Lee Jia:
-  Oh the width 
-SMU Princess Champion Butt:
-  YUP
-  Haha 
-  Changing the width of the bar or the map container works 
-Yong Lee Jia:
-  We see it
-  I mean I see it
-  HAHAHAHA
-SMU Princess Champion Butt:
-  HAHAHHAHAA
-  img.frontic{
-z-index:1;
-}
-
-img.backic{
-z-index: 1;
-}
-Yong Lee Jia:
-  ionic platform remove iOS
-  SORREH
-  ionic platform remove iOS
-  NOOOO
-  STOP SENDING
-  ionic platform remove ios
-ionic platform add ios
-ionic build ios
-SMU Princess Champion Butt:
-  /*manage account page*/
-
+/*manage account page*/
 .list.list-inset.update{
   margin-top: 10px;
 }

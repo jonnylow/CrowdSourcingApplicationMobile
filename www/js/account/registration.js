@@ -302,16 +302,29 @@ angular.module('crowdsourcing')
     function validateNRIC(nric) {
       if(nric.length == 9 && nric.charAt(0).toLowerCase() == "s" && /^[a-zA-Z]+$/.test(nric.charAt(8)) == true)
       {
-        return true;
+        var tempS = nric.substring(1, 7);
+        if (tempS.match(/^[0-9]+$/) != null)
+        {
+          return true;
+        }
       }
       else if(nric.length == 9 && nric.charAt(0).toLowerCase() == "g" && /^[a-zA-Z]+$/.test(nric.charAt(8)) == true)
       {
-        return true;
+        var tempS = nric.substring(1, 7);
+        if (tempS.match(/^[0-9]+$/) != null)
+        {
+          return true;
+        }
       }
-      else
+      else if(nric.length == 9 && nric.charAt(0).toLowerCase() == "t" && /^[a-zA-Z]+$/.test(nric.charAt(8)) == true)
       {
-        return false;
+        var tempS = nric.substring(1, 7);
+        if (tempS.match(/^[0-9]+$/) != null)
+        {
+          return true;
+        }
       }
+      return false;
     }
 
     function validateEmail(email) {
@@ -320,7 +333,7 @@ angular.module('crowdsourcing')
     }
 
     function validateName(name) {
-      return /^[a-zA-Z\s]+$/.test(name);
+      return /^[a-zA-Z\s\,\-\/]+$/.test(name);
     }
 
     function validateDOB(tempDOB){

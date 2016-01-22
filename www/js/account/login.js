@@ -87,7 +87,7 @@ angular.module('crowdsourcing')
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title error">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups">Email is not recognised. Please sign up first</h6>',
+                  subTitle: '<br><h6 class="popups">Email is not recognised. Please enter a valid email</h6>',
                   scope: $scope,
                     buttons: [
                       {

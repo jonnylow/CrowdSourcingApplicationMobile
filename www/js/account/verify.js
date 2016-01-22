@@ -100,7 +100,7 @@ angular.module('crowdsourcing')
                                   $ionicHistory.clearCache();
                                   $ionicHistory.clearHistory();
                                   $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
-                                  $state.go('login', {}, {reload: true});
+                                  $state.go('landingPage', {}, {reload: true});
                                 }
                               },
                             ]

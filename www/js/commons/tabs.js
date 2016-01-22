@@ -34,6 +34,7 @@ angular.module('crowdsourcing')
       window.localStorage.removeItem("loginId");
       window.localStorage.removeItem("userLat");
       window.localStorage.removeItem("userLong");
+      window.localStorage.removeItem("token");
       window.localStorage.clear();
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();

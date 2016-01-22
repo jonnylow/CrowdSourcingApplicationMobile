@@ -35,6 +35,7 @@ angular.module('crowdsourcing')
                         if(status.user.is_approved != false) {
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
+                          window.localStorage.setItem("token", status.token);
                           window.localStorage.setItem("loginId", status.user.volunteer_id);
                           window.localStorage.setItem("loginUserName", status.user.name);
                           window.localStorage.setItem("loginEmail", status.user.email);

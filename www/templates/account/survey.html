@@ -1,0 +1,42 @@
+<ion-modal-view style="top: 10% !important; right: 10% !important; bottom: 20% !important; left: 10% !important; overflow: visible !important; min-height: 240px !important; width: 80% !important;">
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">CareGuide Survey</h1>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <form ng-submit="submit(fields)">
+
+      <div class="item item-text-wrap feedback">
+        <h5 class="rank">Where is your preferred area you will like to volunteer?</h5>
+      </div>
+
+      <select class="dropdown register" ng-model="fields.survey">
+        <option value="" disabled selected >Select a option*</option>
+        <option value="Ang Mo Kio">Ang Mo Kio</option>
+        <option value="Bedok">Bedok</option>
+        <option value="Bishan">Bishan</option>
+        <option value="Bukit Batok">Bukit Batok</option>
+        <option value="Bukit Merah">Bukit Merah</option>
+        <option value="Bukit Panjang">Bukit Panjang</option>
+        <option value="Choa Chu Kang">Choa Chu Kang</option>
+        <option value="Clementi">Clementi</option>
+        <option value="Geylang">Geylang</option>
+        <option value="Hougang">Hougang</option>
+        <option value="Jurong East">Jurong East</option>
+        <option value="Jurong West">Jurong West</option>
+        <option value="Kallang/Whampoa">Kallang/Whampoa</option>
+        <option value="Pasir Ris">Pasir Ris</option>
+        <option value="Punggol">Punggol</option>
+        <option value="Queenstown">Queenstown</option>
+        <option value="Sembawang">Sembawang</option>
+        <option value="Sengkang">Sengkang</option>
+        <option value="Serangoon">Serangoon</option>
+        <option value="Tampines">Tampines</option>
+        <option value="Toa Payoh">Toa Payoh</option>
+        <option value="Woodlands">Woodlands</option>
+        <option value="Yishun">Yishun</option>
+      </select>
+
+      <button class="button paddedbutton button-energized">Submit</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

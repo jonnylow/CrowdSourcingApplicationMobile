@@ -1,6 +1,6 @@
 angular.module('crowdsourcing')
 
-    .controller('landingPageController', function ($scope, $ionicPopup, $state, $http, $ionicHistory, $ionicLoading) {
+    .controller('landingPageController', function ($scope, $ionicPopup, $state, $http, $ionicHistory, $ionicLoading, $ionicModal, apiUrl) {
       //reset userLat and userlng
       window.localStorage.removeItem("userLat");
       window.localStorage.removeItem("userLong");
@@ -24,4 +24,63 @@ angular.module('crowdsourcing')
           $state.go('login', {}, {reload: true});
         }
       }
+
+      //FOR USER STUDY
+      //if(window.localStorage.getItem("survey") == null)
+      {
+        $ionicModal.fromTemplateUrl('templates/account/survey.html', function ($ionicModal) {
+          $scope.modal = $ionicModal;
+          $scope.modal.show();
+        }, {
+          // Use our scope for the scope of the modal to keep it simple
+          scope: $scope,
+          // The animation we want to use for the modal entrance
+          animation: 'slide-in-up'
+        });
+      }
+
+      $scope.submit = function(fields)
+      {
+        if(fields!= null && fields.survey != null && fields.survey != "")
+        {
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+          var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=survey:"+fields.survey;
+          $http.get(sendEmail)
+            .success(function (data) {
+              $ionicLoading.hide();
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Submitted!</h6>',
+                subTitle: '<br><h6 class="popups">Thank you for your response!</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-stable',
+                    onTap: function (e) {
+                      window.localStorage.setItem("survey", "done");
+                      $scope.modal.hide();
+                    }
+                  },
+                ]
+              });
+            })
+        }
+        else
+        {
+          $ionicLoading.hide();
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Please select an option before submitting</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: '<b>Ok</b>',
+                type: 'button button-stable',
+
+              },
+            ]
+          });
+        }
+      }
+
     });

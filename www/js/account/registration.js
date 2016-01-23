@@ -135,7 +135,7 @@ angular.module('crowdsourcing')
 
                               var alertPopup = $ionicPopup.alert({
                                 title: '<h6 class="popups title">Whoops!</h6>',
-                                subTitle: '<br><h6 class="popups">NRIC/FIN should start with S, contains 7 numbers and end with an alphabet</h6> ',
+                                subTitle: '<br><h6 class="popups">NRIC/FIN should start with S/G/T, contains 7 numbers and end with an alphabet</h6> ',
                                 scope: $scope,
                                 buttons: [
                                   {

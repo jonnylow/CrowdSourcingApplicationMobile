@@ -623,7 +623,6 @@ button.button.button-block.button-calm.registration{
 }
 
 select.dropdown.register{
-  color:#B0B0B0;
   padding-left: 12px;
 }
 
@@ -2017,3 +2016,21 @@ textarea.feedback{
   padding-left: 4%;
 }
 /* end of feedback page*/
+
+/**survey page REMOVE AFTER SURVEY**/
+.bar.bar-stable{
+  background-color: #003366;
+}
+
+.bar.bar-stable .title{
+  color: #fff;
+}
+
+.button.survey{
+  margin-top: 10%;
+  background-color: #003366;
+}
+
+select.dropdown.survey{
+    border: 1px solid rgb(166, 166, 166);
+}

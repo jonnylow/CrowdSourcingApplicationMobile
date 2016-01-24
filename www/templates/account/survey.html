@@ -1,16 +1,16 @@
 <ion-modal-view style="top: 10% !important; right: 10% !important; bottom: 20% !important; left: 10% !important; overflow: visible !important; min-height: 240px !important; width: 80% !important;">
-  <ion-header-bar class="bar bar-header bar-positive">
+  <ion-header-bar class="bar bar-header bar-stable">
     <h1 class="title">CareGuide Survey</h1>
   </ion-header-bar>
   <ion-content class="padding">
     <form ng-submit="submit(fields)">
 
       <div class="item item-text-wrap feedback">
-        <h5 class="rank">Where is your preferred area you will like to volunteer?</h5>
+        <h5 class="rank">What is the area you prefer to volunteer at?</h5>
       </div>
-
-      <select class="dropdown register" ng-model="fields.survey">
-        <option value="" disabled selected >Select a option*</option>
+      <br>
+      <select class="dropdown survey" ng-model="fields.survey">
+        <option value="" disabled selected >Select an option*</option>
         <option value="Ang Mo Kio">Ang Mo Kio</option>
         <option value="Bedok">Bedok</option>
         <option value="Bishan">Bishan</option>
@@ -35,8 +35,7 @@
         <option value="Woodlands">Woodlands</option>
         <option value="Yishun">Yishun</option>
       </select>
-
-      <button class="button paddedbutton button-energized">Submit</button>
+      <button class="button button-block button-dark survey">Submit</button>
     </form>
   </ion-content>
 </ion-modal-view>

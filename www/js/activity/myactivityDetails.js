@@ -133,7 +133,7 @@ angular.module('crowdsourcing')
 
             $http.get(urlString)
               .success(function (data) {
-                var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
+                var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
                 $http.get(sendEmail)
                   .success(function (data) {
 

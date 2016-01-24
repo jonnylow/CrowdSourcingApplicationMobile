@@ -28,8 +28,8 @@ angular.module('crowdsourcing')
             if(fields.preferences_1 != fields.preferences_2) {
               //var image = document.getElementById('frontic');
               //var image1 = document.getElementById('backic');
-              
-              
+
+
               //if (image.src.indexOf("base64") != -1 && image1.src.indexOf("base64") != -1) {
 
                 window.localStorage.setItem("tempPreferences1", fields.preferences_1);
@@ -77,7 +77,7 @@ angular.module('crowdsourcing')
         {
           var alertPopup = $ionicPopup.alert({
             title: '<h6 class="popups title">Whoops!</h6>',
-            subTitle: '<br><h6 class="popups">Please fill in all required fields.</h6> ',
+            subTitle: '<br><h6 class="popups">Please fill in all fields.</h6> ',
             scope: $scope,
             buttons: [
               {

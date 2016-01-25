@@ -47,34 +47,53 @@ angular.module('crowdsourcing')
         }
 
         $scope.submit = function (fields) {
-          if (fields != null && fields.survey != null && fields.survey != "") {
-            $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
-            var sendEmail = apiUrl + "email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&title=[CareRide Alert] Survey for CareRide&message=Survey Choice: " + fields.survey;
-            $http.get(sendEmail)
-              .success(function (data) {
-                $ionicLoading.hide();
-                var alertPopup = $ionicPopup.alert({
-                  title: '<h6 class="popups title">Submitted!</h6>',
-                  subTitle: '<br><h6 class="popups">Thank you for your response!</h6> ',
-                  scope: $scope,
-                  buttons: [
-                    {
-                      text: '<b>Ok</b>',
-                      type: 'button button-stable',
-                      onTap: function (e) {
-                        window.localStorage.setItem("survey", "done");
-                        $scope.modal.hide();
-                      }
-                    },
-                  ]
-                });
-              })
+          if (fields != null && fields.survey != null && fields.survey != "" && fields.willing != null && fields.willing != "" && fields.day != null && fields.day != "" && fields.email != null && fields.email != "") {
+            if (validateEmail(fields.email) == true) {
+              $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+              var sendEmail = apiUrl + "email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&title=[CareRide Alert] Survey for CareRide&message=Willing: " + fields.willing + ", Area volunteer: " + fields.survey + ", Day of week: " + fields.day + ", Contact email: " + fields.email;
+              $http.get(sendEmail)
+                .success(function (data) {
+                  $ionicLoading.hide();
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Submitted!</h6>',
+                    subTitle: '<br><h6 class="popups">Thank you for your response!</h6> ',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-stable',
+                        onTap: function (e) {
+                          window.localStorage.setItem("survey", "done");
+                          $scope.modal.hide();
+                        }
+                      },
+                    ]
+                  });
+                })
+            }
+            else
+            {
+              $ionicLoading.hide();
+
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Whoops!</h6>',
+                subTitle: '<br><h6 class="popups">Invalid email address</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: '<b>Ok</b>',
+                    type: 'button button-stable',
+
+                  },
+                ]
+              });
+            }
           }
           else {
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
               title: '<h6 class="popups title">Whoops!</h6>',
-              subTitle: '<br><h6 class="popups">Please select an option before submitting</h6> ',
+              subTitle: '<br><h6 class="popups">Please fill in all fields before submitting</h6> ',
               scope: $scope,
               buttons: [
                 {
@@ -85,6 +104,11 @@ angular.module('crowdsourcing')
               ]
             });
           }
+        }
+
+        function validateEmail(email) {
+          var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+          return re.test(email);
         }
       }
     });

@@ -6,9 +6,17 @@
     <form ng-submit="submit(fields)">
 
       <div class="item item-text-wrap feedback">
-        <h5 class="rank">What is the area you prefer to volunteer at?</h5>
+        <h5 class="rank">Are you willing to be a volunteer?</h5>
       </div>
-      <br>
+      <select class="dropdown survey" ng-model="fields.willing">
+        <option value="" disabled selected >Select an option*</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <div class="item item-text-wrap feedback">
+        <h5 class="rank">Area you prefer to volunteer at?</h5>
+      </div>
       <select class="dropdown survey" ng-model="fields.survey">
         <option value="" disabled selected >Select an option*</option>
         <option value="Ang Mo Kio">Ang Mo Kio</option>
@@ -35,6 +43,28 @@
         <option value="Woodlands">Woodlands</option>
         <option value="Yishun">Yishun</option>
       </select>
+
+      <div class="item item-text-wrap feedback">
+        <h5 class="rank">Day of the week you prefer?</h5>
+      </div>
+      <select class="dropdown survey" ng-model="fields.day">
+        <option value="" disabled selected >Select an option*</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+        <option value="No preference">No preference</option>
+      </select>
+
+      <div class="item item-text-wrap feedback">
+        <h5 class="rank">Kindly leave your email address.</h5>
+      </div>
+      <label class="item item-icon-left item-input registration">
+        <input type="text" autocapitalize="off" placeholder="Email address" ng-model="fields.email" >
+      </label>
       <button class="button button-block button-dark survey">Submit</button>
     </form>
   </ion-content>

@@ -2044,3 +2044,8 @@ select.dropdown.survey{
 .active .modal-backdrop-bg {
   opacity: 0.6;
 }
+
+h5.survey{
+  font-size: 16px;
+  color: #666;
+}

@@ -32,7 +32,8 @@ angular.module('crowdsourcing')
                     if(status != null){
                       if(status.token != null && status.error == null)
                       {
-                        if(status.user.is_approved != false) {
+                        console.log(status.user.is_approved);
+                        if(status.user.is_approved == "approved") {
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
                           window.localStorage.setItem("token", status.token);
@@ -41,11 +42,27 @@ angular.module('crowdsourcing')
                           window.localStorage.setItem("loginEmail", status.user.email);
                           $state.go('tab.home', {}, {reload: true});
                         }
-                        else {
+                        else if(status.user.is_approved == "pending"){
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
                           var alertPopup = $ionicPopup.alert({
-                            title: '<h6 class="popups title">Hello Newcomer!</h6>',
+                            title: '<h6 class="popups title">Sorry!</h6>',
+                            subTitle: '<br><h6 class="popups">Your account has been rejected. Please contact Henderson Home.</h6> ',
+                            scope: $scope,
+                            buttons: [
+                              {
+                                text: '<b>Ok</b>',
+                                type: 'button button-stable',
+
+                              },
+                            ]
+                          });
+                        }
+                        else if(status.user.is_approved == "rejected"){
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
+                          var alertPopup = $ionicPopup.alert({
+                            title: '<h6 class="popups title">Hello Newcomer rejected!</h6>',
                             subTitle: '<br><h6 class="popups">Your account is currently under approval by Centre for Seniors. Please come back in 2 to 5 working days</h6> ',
                             scope: $scope,
                             buttons: [

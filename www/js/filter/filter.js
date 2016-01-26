@@ -17,7 +17,7 @@ angular.module('crowdsourcing')
         //depends what filter user select (start/end/time)
         if($scope.filter == 'Start Location')
         {
-          $http.get(apiUrl+"RetrieveFilter.php?filter=start")
+          $http.get(apiUrl+"RetrieveFilter.php?filter=start&id="+$scope.id)
             .success(function (data) {
               var results = data;
 
@@ -54,7 +54,7 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'End Location')
         {
-          $http.get(apiUrl+"RetrieveFilter.php?filter=end")
+          $http.get(apiUrl+"RetrieveFilter.php?filter=end&id="+$scope.id)
             .success(function (data) {
               var results = data;
 
@@ -91,7 +91,7 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'Time')
         {
-          $http.get(apiUrl+"RetrieveFilter.php?filter=time")
+          $http.get(apiUrl+"RetrieveFilter.php?filter=time&id="+$scope.id)
             .success(function (data) {
               var results = data;
               var morning;

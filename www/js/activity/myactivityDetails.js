@@ -75,6 +75,11 @@ angular.module('crowdsourcing')
               {
                 $scope.withdrawShow = true;
               }
+
+              if(transportDetails.task[0].approval == "rejected")
+              {
+                $scope.rejection = transportDetails.task[0].comment;
+              }
             }
           }
         }
@@ -133,7 +138,7 @@ angular.module('crowdsourcing')
 
             $http.get(urlString)
               .success(function (data) {
-                var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
+                var sendEmail = apiUrl+"email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
                 $http.get(sendEmail)
                   .success(function (data) {
 

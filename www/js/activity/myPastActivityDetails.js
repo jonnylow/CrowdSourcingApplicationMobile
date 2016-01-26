@@ -15,7 +15,6 @@ angular.module('crowdsourcing')
         if (transportDetails != null) {
           if(transportDetails.activities[0] != null)
           {
-
             if(transportDetails.activities[0].datetime_start != null && transportDetails.activities[0].expected_duration_minutes != null)
             {
               var t = transportDetails.activities[0].datetime_start.split(/[- :]/);
@@ -55,6 +54,11 @@ angular.module('crowdsourcing')
               else
               {
                 $scope.eldery = true;
+              }
+
+              if(transportDetails.task[0].approval == "rejected")
+              {
+                $scope.rejection = transportDetails.task[0].comment;
               }
             }
           }

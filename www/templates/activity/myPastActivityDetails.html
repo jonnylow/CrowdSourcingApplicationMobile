@@ -77,17 +77,20 @@
           <h5 class="myactivity" ng-show="eldery">Not available</h5>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="list card myactivitydetails">
-          <div class="item item-icon-left">
-            <i class="icon ion-information-circled"></i>
-            <p class="myactivity">Additional Information</p>
-            <h5 class="myactivity">{{moreInformation}}</h5>
+      </div>
+   </div>
+
+      <div class="row" ng-show="rejection != null">
+        <div class="col">
+          <div class="list card myactivitydetails">
+            <div class="item item-icon-left">
+              <i class="icon ion-android-cancel"></i>
+              <p class="myactivity">Rejection Reason</p>
+              <h5 class="myactivity">{{rejection}}</h5>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
   </ion-content>
 </ion-view>

@@ -31,7 +31,7 @@ angular.module('crowdsourcing')
         }
 
         //FOR USER STUDY
-        if(window.localStorage.getItem("survey") == null)
+          if(window.localStorage.getItem("survey") == null)
         {
           $ionicModal.fromTemplateUrl('templates/account/survey.html', function ($ionicModal) {
             $scope.modal = $ionicModal;
@@ -50,7 +50,7 @@ angular.module('crowdsourcing')
           if (fields != null && fields.survey != null && fields.survey != "" && fields.willing != null && fields.willing != "" && fields.day != null && fields.day != "" && fields.email != null && fields.email != "") {
             if (validateEmail(fields.email) == true) {
               $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
-              var sendEmail = apiUrl + "email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&title=[CareRide Alert] Survey for CareRide&message=Willing: " + fields.willing + ", Area volunteer: " + fields.survey + ", Day of week: " + fields.day + ", Contact email: " + fields.email;
+              var sendEmail = apiUrl + "email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] Survey for CareRide&message=Willing: " + fields.willing + ", Area volunteer: " + fields.survey + ", Day of week: " + fields.day + ", Contact email: " + fields.email;
               $http.get(sendEmail)
                 .success(function (data) {
                   $ionicLoading.hide();

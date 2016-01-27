@@ -25,7 +25,7 @@ angular.module('crowdsourcing')
       buttons: [
         {
           text: '<b>Ok</b>',
-          type: 'button-calm',
+          type: 'button button-stable',
           onTap: function(e) {
             //=========uncomment bottom line if do not want to use OTP========//
             //otpCheck = "123";

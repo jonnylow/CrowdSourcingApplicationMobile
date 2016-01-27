@@ -6,7 +6,9 @@
     <form ng-submit="submit(fields)">
 
       <div class="item item-text-wrap feedback">
-        <h5 class="survey">Are you willing to be a volunteer?</h5>
+        <div class="list card myactivitymain" style="border:none; font-size:15px">
+          The CareGuide volunteers serves to bring and accompany the elderly through their medical appointments.</div>
+        <h5 class="survey"> Are you willing to be a CareGuide volunteer? </h5>
       </div>
       <select class="dropdown survey" ng-model="fields.willing">
         <option value="" disabled selected >Select an option*</option>
@@ -15,7 +17,7 @@
       </select>
 
       <div class="item item-text-wrap feedback">
-        <h5 class="survey">Area you prefer to volunteer at?</h5>
+        <h5 class="survey">What is your preferred volunteering area?</h5>
       </div>
       <select class="dropdown survey" ng-model="fields.survey">
         <option value="" disabled selected >Select an option*</option>
@@ -45,7 +47,7 @@
       </select>
 
       <div class="item item-text-wrap feedback">
-        <h5 class="survey">Day of the week you prefer?</h5>
+        <h5 class="survey">What day of the week do you prefer to volunteer?</h5>
       </div>
       <select class="dropdown survey" ng-model="fields.day">
         <option value="" disabled selected >Select an option*</option>
@@ -60,7 +62,7 @@
       </select>
 
       <div class="item item-text-wrap feedback">
-        <h5 class="survey">Kindly leave your email address.</h5>
+        <h5 class="survey">Kindly leave us your email address</h5>
       </div>
       <label class="item item-input registration">
         <input type="text" autocapitalize="off" placeholder="Email address" ng-model="fields.email" >

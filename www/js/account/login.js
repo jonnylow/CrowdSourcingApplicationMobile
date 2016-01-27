@@ -32,7 +32,6 @@ angular.module('crowdsourcing')
                     if(status != null){
                       if(status.token != null && status.error == null)
                       {
-                        console.log(status.user.is_approved);
                         if(status.user.is_approved == "approved") {
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
@@ -42,7 +41,7 @@ angular.module('crowdsourcing')
                           window.localStorage.setItem("loginEmail", status.user.email);
                           $state.go('tab.home', {}, {reload: true});
                         }
-                        else if(status.user.is_approved == "pending"){
+                        else if(status.user.is_approved == "rejected"){
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
                           var alertPopup = $ionicPopup.alert({
@@ -58,11 +57,11 @@ angular.module('crowdsourcing')
                             ]
                           });
                         }
-                        else if(status.user.is_approved == "rejected"){
+                        else if(status.user.is_approved == "pending"){
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
                           var alertPopup = $ionicPopup.alert({
-                            title: '<h6 class="popups title">Hello Newcomer rejected!</h6>',
+                            title: '<h6 class="popups title">Hello Newcomer!</h6>',
                             subTitle: '<br><h6 class="popups">Your account is currently under approval by Centre for Seniors. Please come back in 2 to 5 working days</h6> ',
                             scope: $scope,
                             buttons: [

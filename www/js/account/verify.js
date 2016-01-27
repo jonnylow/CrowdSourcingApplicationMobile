@@ -107,10 +107,6 @@ angular.module('crowdsourcing')
                           });
                         }
                       })
-
-                      .error(function (data) {
-                        alert("Error in connection");
-                      });
                   }
                   else {
                     $scope.loadingshow = false;

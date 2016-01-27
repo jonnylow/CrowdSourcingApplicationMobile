@@ -31,8 +31,23 @@ angular.module('crowdsourcing')
         }
 
         //FOR USER STUDY
-          if(window.localStorage.getItem("survey") == null)
+        if(window.localStorage.getItem("survey") == null)
         {
+          $ionicModal.fromTemplateUrl('templates/account/surveyIntro.html', function ($ionicModal) {
+            $scope.modal = $ionicModal;
+            $scope.modal.show();
+          }, {
+            // Use our scope for the scope of the modal to keep it simple
+            scope: $scope,
+            // The animation we want to use for the modal entrance
+            animation: 'slide-in-up',
+            backdropClickToClose: false,
+            hardwareBackButtonClose: false
+          });
+        }
+
+        $scope.surveyNext = function () {
+          $scope.modal.hide();
           $ionicModal.fromTemplateUrl('templates/account/survey.html', function ($ionicModal) {
             $scope.modal = $ionicModal;
             $scope.modal.show();

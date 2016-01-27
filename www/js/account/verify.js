@@ -25,32 +25,33 @@ angular.module('crowdsourcing')
       buttons: [
         {
           text: '<b>Ok</b>',
-          type: 'button-calm'
+          type: 'button-calm',
+          onTap: function(e) {
+            //=========uncomment bottom line if do not want to use OTP========//
+            //otpCheck = "123";
+
+            //=========comment this few lines if do not want to use OTP========//
+            otpCheck = Math.floor(Math.random()*90000) + 10000;
+            var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
+            $scope.loadingshow = true;
+            $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
+            $http.get(sendURL)
+              .success(function (data) {
+                //message sent
+                var status = data;
+                $scope.loadingshow = false;
+                $ionicLoading.hide();
+              })
+            //=========comment this few lines if do not want to use OTP=========//
+          }
         },
       ]
     });
 
-    //=========uncomment bottom line if do not want to use OTP========//
-    //otpCheck = "123";
-
-     //=========comment this few lines if do not want to use OTP========//
-     otpCheck = Math.floor(Math.random()*90000) + 10000;
-     var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
-    $scope.loadingshow = true;
-     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
-    $http.get(sendURL)
-      .success(function (data) {
-        //message sent
-        var status = data;
-        $scope.loadingshow = false;
-        $ionicLoading.hide();
-      })
-     //=========comment this few lines if do not want to use OTP=========//
-
       $scope.verify = function(fields)
       {
         $scope.loadingshow = true;
-        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Verifying OTP...'})
         if(fields != null) {
 
 
@@ -188,28 +189,28 @@ angular.module('crowdsourcing')
 
       $scope.resend = function()
       {
-
-        //=========comment this few lines if do not want to use OTP========//
-        otpCheck = Math.floor(Math.random()*90000) + 10000;
-        var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
-        $scope.loadingshow = true;
-        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
-        $http.get(sendURL)
-          .success(function (data) {
-            //message sent
-            var status = data;
-            $scope.loadingshow = false;
-            $ionicLoading.hide();
-          })
-        //=========comment this few lines if do not want to use OTP=========//
-
         var myPopup = $ionicPopup.show({
-          title: '<h6 class="popups">The one-time password has been resent to you via SMS</h6>',
+          title: '<h6 class="popups">The one-time password will be resent to you via SMS</h6>',
           scope: $scope,
           buttons: [
             {
               text: '<b>Ok</b>',
-              type: 'button button-stable'
+              type: 'button button-stable',
+              onTap: function(e) {
+                //=========comment this few lines if do not want to use OTP========//
+                otpCheck = Math.floor(Math.random()*90000) + 10000;
+                var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
+                $scope.loadingshow = true;
+                $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
+                $http.get(sendURL)
+                  .success(function (data) {
+                    //message sent
+                    var status = data;
+                    $scope.loadingshow = false;
+                    $ionicLoading.hide();
+                  })
+                //=========comment this few lines if do not want to use OTP=========//
+              }
             },
           ]
         });

@@ -1307,7 +1307,11 @@ i.myactivity{
 
 .platform-ios .bar-subheader{
   background-color: #F1F3F5;
-  height: 44px;
+  height: 55px;
+}
+
+.scroll-refresher{
+  top: 0px;
 }
 /*end of myactivity page*/
 
@@ -1574,7 +1578,7 @@ div.list.profile{
 }
 
 h2.me{
-  text-align: center;
+  text-align: left;
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 8vw;

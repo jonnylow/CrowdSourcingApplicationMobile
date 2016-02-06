@@ -63,11 +63,12 @@ angular.module('crowdsourcing')
                           {
                             text: '<b>Ok</b>',
                             type: 'button button-stable',
-
+                            onTap: function (e) {
+                              $state.go('tab.me', {}, {reload: true});
+                            }
                           },
                         ]
                       });
-                      $state.go('tab.me', {}, {reload: true});
                     }
                   })
 

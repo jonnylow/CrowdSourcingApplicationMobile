@@ -81,7 +81,7 @@ angular.module('crowdsourcing')
                         $scope.loadingshow = false;
                         $ionicLoading.hide();
 
-                        var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
+                        var sendEmail = apiUrl+"email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New Applicant on CareRide&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
                         $http.get(sendEmail)
                           .success(function (data) {
                           //email send

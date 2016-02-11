@@ -101,7 +101,17 @@ angular.module('crowdsourcing')
             $scope.showTag = true;
 
             //retrieve from DB
-            $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivity")
+            var urlToRun = "";
+            if(window.localStorage.getItem("token") != null)
+            {
+              urlToRun = "http://changhuapeng.com/laravel/api/retrieveTransportActivity?token="+window.localStorage.getItem("token");
+            }
+            else
+            {
+              urlToRun = "http://changhuapeng.com/laravel/api/retrieveTransportActivity";
+            }
+
+            $http.get(urlToRun)
               .success(function (data) {
                 var transportDetails = data;
 

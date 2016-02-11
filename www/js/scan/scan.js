@@ -104,11 +104,11 @@ angular.module('crowdsourcing')
             var urlToRun = "";
             if(window.localStorage.getItem("token") != null)
             {
-              urlToRun = "http://changhuapeng.com/laravel/api/retrieveTransportActivity?token="+window.localStorage.getItem("token");
+              urlToRun = apiUrl+"retrieveTransportActivity?token="+window.localStorage.getItem("token");
             }
             else
             {
-              urlToRun = "http://changhuapeng.com/laravel/api/retrieveTransportActivity";
+              urlToRun = apiUrl+"retrieveTransportActivity";
             }
 
             $http.get(urlToRun)

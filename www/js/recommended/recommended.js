@@ -8,11 +8,11 @@ angular.module('crowdsourcing')
     var url = "";
     if(window.localStorage.getItem("token") != null)
     {
-      url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=5&token="+window.localStorage.getItem("token");
+      url = apiUrl+"retrieveRecommendedTransportActivity?limit=5&token="+window.localStorage.getItem("token");
     }
     else
     {
-      url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=5";
+      url = apiUrl+"retrieveRecommendedTransportActivity?limit=5";
     }
 
     $http.get(url)

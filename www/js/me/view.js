@@ -25,7 +25,7 @@ angular.module('crowdsourcing')
       }
 
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveUserDetails?id="+$scope.id)
+    $http.get(apiUrl+"retrieveUserDetails?id="+$scope.id)
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null && userDetails.length!=0 ) {

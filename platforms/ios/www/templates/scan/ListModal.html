@@ -1,7 +1,8 @@
 <div class="modal">
-  <div class="bar bar-header registration">
+  
+  <div class="bar bar-header listmodal">
     <a class="icon ion-close-round light" ng-click="modal.hide()"></a>
-    <h1 class="title registration">Nearby Location</h1>
+    <h6 class="title listmodal">Nearby Location</h1>
   </div>
 
   <ion-content style="background-color:#F1F3F5;" has-header="true">
@@ -15,14 +16,14 @@
     <center>
       <table class="section2" ng-show=!showTag>
           <td><div class="card scan header">
-            <h6 class="scan">{{distanceDisplay.split(":")[0]}} :
+            <h6 class="scan">Distance from Current<br>Location :
               <br>
               <div class="item item-icon-left scan">
                 <i class="icon ion-map scan"></i>
                 <center><b class="scan">{{distanceDisplay.split(":")[1]}}</b></center></h6>
           </div></td>
           <td><div class="card scan header2">
-            <h6 class="scan">{{timeDisplay.split(":")[0]}} :
+            <h6 class="scan">Estimated Driving<br>Distance:
               <br>
               <div class="item item-icon-left scan">
                 <i class="icon ion-android-car scan"></i>

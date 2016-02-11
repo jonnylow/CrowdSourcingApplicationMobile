@@ -207,6 +207,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
     })
 
     .state('manageAccount', {
+      cache: false,
       url: '/manageAccount/:id',
       templateUrl: 'templates/account/manageAccount.html',
       controller: "manageAccountController"

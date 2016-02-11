@@ -5,7 +5,17 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=5")
+    var url = "";
+    if(window.localStorage.getItem("token") != null)
+    {
+      url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=5&token="+window.localStorage.getItem("token");
+    }
+    else
+    {
+      url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=5";
+    }
+
+    $http.get(url)
       .success(function (data) {
         var transportDetails = data;
 

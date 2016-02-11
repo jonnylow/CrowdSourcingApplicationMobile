@@ -32,15 +32,32 @@ angular.module('crowdsourcing')
                     if(status != null){
                       if(status.token != null && status.error == null)
                       {
-                        if(status.user.is_approved != false) {
+                        if(status.user.is_approved == "approved") {
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
+                          window.localStorage.setItem("token", status.token);
                           window.localStorage.setItem("loginId", status.user.volunteer_id);
                           window.localStorage.setItem("loginUserName", status.user.name);
                           window.localStorage.setItem("loginEmail", status.user.email);
                           $state.go('tab.home', {}, {reload: true});
                         }
-                        else {
+                        else if(status.user.is_approved == "rejected"){
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
+                          var alertPopup = $ionicPopup.alert({
+                            title: '<h6 class="popups title">Sorry!</h6>',
+                            subTitle: '<br><h6 class="popups">Your account has been rejected. Please contact Henderson Home.</h6> ',
+                            scope: $scope,
+                            buttons: [
+                              {
+                                text: '<b>Ok</b>',
+                                type: 'button button-stable',
+
+                              },
+                            ]
+                          });
+                        }
+                        else if(status.user.is_approved == "pending"){
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
                           var alertPopup = $ionicPopup.alert({
@@ -87,7 +104,7 @@ angular.module('crowdsourcing')
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title error">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups">Email is not recognised. Please sign up first</h6>',
+                  subTitle: '<br><h6 class="popups">Email and password do not match</h6>',
                   scope: $scope,
                     buttons: [
                       {

@@ -12,7 +12,7 @@ angular.module('crowdsourcing')
           $state.go('landingPage', {}, {reload: true});
         }
 
-    var urlString = "http://changhuapeng.com/laravel/api/retrieveUserDetails?id="+$scope.id;
+    var urlString = apiUrl+"retrieveUserDetails?id="+$scope.id;
 
     $http.get(urlString)
       .success(function (data) {
@@ -47,7 +47,7 @@ angular.module('crowdsourcing')
             if (validateName(name) == true) {
               if (contact.length == 8 && !isNaN(contact) && validateContact(contact) == true) {
                 if(p1 != p2){
-                urlStringUpdate = "http://changhuapeng.com/laravel/api/updateUserDetails?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
+                urlStringUpdate = apiUrl+"updateUserDetails?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
 
                 $http.get(urlStringUpdate)
                   .success(function (data) {

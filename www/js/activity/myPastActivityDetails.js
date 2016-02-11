@@ -9,7 +9,7 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveMyTransportActivityDetails?transportId=" + $scope.transportId+"&id="+$scope.id)
+    $http.get(apiUrl+"retrieveMyTransportActivityDetails?transportId=" + $scope.transportId+"&id="+$scope.id)
       .success(function (data) {
         var transportDetails = data;
         if (transportDetails != null) {

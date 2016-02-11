@@ -224,7 +224,7 @@ angular.module('crowdsourcing')
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
           urlString = "http://changhuapeng.com/laravel/api/updateActivityStatus?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
-          console.log(urlString);
+
           $http.get(urlString)
             .success(function (data) {
               var status = data;
@@ -234,7 +234,7 @@ angular.module('crowdsourcing')
 
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title">Status</h6>',
-                  subTitle: "<h6 class='popups'>"+status.status[0]+"</h6>",
+                  subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
                   okType:"button button-stable"
                 });
                 //window.location.reload(true);

@@ -75,6 +75,11 @@ angular.module('crowdsourcing')
               {
                 $scope.withdrawShow = true;
               }
+
+              if(transportDetails.task[0].approval == "rejected")
+              {
+                $scope.rejection = transportDetails.task[0].comment;
+              }
             }
           }
         }
@@ -111,51 +116,73 @@ angular.module('crowdsourcing')
 
     $scope.withdraw=function()
     {
-      var confirmPopup = $ionicPopup.confirm({
-        title: "<h6 class='popups title error'>Withdraw?</h6>",
-        subTitle: "<h6 class='popups'>Are you sure you want to withdraw from this activity?</h6>",
-        cancelType: 'button button-stable registration',
-        okType:'button button-stable'
-      });
+      var currentDate = new Date();
+      currentDate.setHours(0,0,0,0);
+      currentDate.setDate(currentDate.getDate() + 1);
 
-      confirmPopup.then(function(res) {
-        if(res) {
-          $scope.loadingshow = true;
-          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+      if($scope.dateTime > currentDate)
+      {
+        var confirmPopup = $ionicPopup.confirm({
+          title: "<h6 class='popups title error'>Withdraw?</h6>",
+          subTitle: "<h6 class='popups'>Are you sure you want to withdraw from this activity?</h6>",
+          cancelType: 'button button-stable registration',
+          okType:'button button-stable'
+        });
 
-          urlString = "http://changhuapeng.com/laravel/api/withdraw?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
+        confirmPopup.then(function(res) {
+          if(res) {
+            $scope.loadingshow = true;
+            $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-          $http.get(urlString)
-            .success(function (data) {
-              var sendEmail = apiUrl+"email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
-              $http.get(sendEmail)
-                .success(function (data) {
+            urlString = "http://changhuapeng.com/laravel/api/withdraw?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
 
-                })
+            $http.get(urlString)
+              .success(function (data) {
+                var sendEmail = apiUrl+"email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
+                $http.get(sendEmail)
+                  .success(function (data) {
 
-                .error(function (data) {
-                  alert("Error in connection");
-                });
+                  })
 
-              var status = data;
-              if (status != null) {
-                $scope.loadingshow = false;
-                $ionicLoading.hide();
-                var alertPopup = $ionicPopup.alert({
-                  //title: 'Status',
-                  title: "<h6 class='popups'>"+status.status[0]+"</h6>",
-                  okType:'button button-stable'
-                });
-                //window.location.reload(true);
-                $state.go('tab.activity', {}, {reload: true});
-              }
-            })
+                  .error(function (data) {
+                    alert("Error in connection");
+                  });
 
-            .error(function (data) {
-              alert("Error in connection");
-            });
-        }
-      });
+                var status = data;
+                if (status != null) {
+                  $scope.loadingshow = false;
+                  $ionicLoading.hide();
+                  var alertPopup = $ionicPopup.alert({
+                    //title: 'Status',
+                    title: "<h6 class='popups'>"+status.status[0]+"</h6>",
+                    okType:'button button-stable'
+                  });
+                  //window.location.reload(true);
+                  $state.go('tab.activity', {}, {reload: true});
+                }
+              })
+
+              .error(function (data) {
+                alert("Error in connection");
+              });
+          }
+        });
+      }
+      else
+      {
+        var alertPopup = $ionicPopup.alert({
+          title: '<h6 class="popups title">Whoops!</h6>',
+          subTitle: '<br><h6 class="popups">You are not allow to withdraw from the activity on the actual date. Please call the centre if you cannot make it.</h6> ',
+          scope: $scope,
+          buttons: [
+            {
+              text: '<b>Ok</b>',
+              type: 'button button-stable',
+
+            },
+          ]
+        });
+      }
     }
 
     $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){

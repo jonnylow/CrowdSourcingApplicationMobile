@@ -17,27 +17,23 @@ angular.module('crowdsourcing')
                 cssClass: "popup-vertical-buttons",
                 buttons: [
                   {
-                    text: '<h5 class="popups"><font color="white">Proceed to Location Services</font></h5>',
-                    type: 'button button-energized',
+                    text: '<h5 class="popups"><font color="#29A29C">Proceed to Location Services</font></h5>',
+                    type: 'button button-stable',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
                       cordova.plugins.diagnostic.switchToLocationSettings();
                     }
                   },
                   {
-                    text: '<h5 class="popups"><font color="white">Proceed without Location Services</font></h5>',
-                    type: 'button button-energized',
+                    text: '<h5 class="popups"><font color="#29A29C">Proceed without Location Services</font></h5>',
+                    type: 'button button-stable',
                     onTap: function (e) {
                       //use default location
                       window.localStorage.setItem("userLat", "1.297507");
                       window.localStorage.setItem("userLong", "103.850436");
 
-                      getLocation = true;
-                      //to check that application also got user location && data finish loading
-                      if (getLocation == true && loadData == true) {
-                        $scope.loadingshow = false;
-                        $ionicLoading.hide();
-                      }
+                      $scope.loadingshow = false;
+                      $ionicLoading.hide();
                     }
 
                   },
@@ -57,7 +53,7 @@ angular.module('crowdsourcing')
                     buttons: [
                       {
                         text: 'Proceed to Location Services',
-                        type: 'button-calm',
+                        type: 'button button-stable',
                         onTap: function (e) {
                           $state.go('landingPage', {}, {reload: true});
                           cordova.plugins.diagnostic.switchToLocationSettings();
@@ -65,18 +61,14 @@ angular.module('crowdsourcing')
                       },
                       {
                         text: 'Proceed without Location Services',
-                        type: 'button-calm',
+                        type: 'button button-stable',
                         onTap: function (e) {
                           //use default location
                           window.localStorage.setItem("userLat", "1.297507");
                           window.localStorage.setItem("userLong", "103.850436");
 
-                          getLocation = true;
-                          //to check that application also got user location && data finish loading
-                          if (getLocation == true && loadData == true) {
-                            $scope.loadingshow = false;
-                            $ionicLoading.hide();
-                          }
+                          $scope.loadingshow = false;
+                          $ionicLoading.hide();
                         }
                       },
                     ]
@@ -98,83 +90,83 @@ angular.module('crowdsourcing')
 
       $scope.transportActivity = [];
       $scope.loadingshow = true;
-      var getLocation = false;
-      var loadData = false;
 
-      //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
-      //NOTE BACKEND DEVELOPERS: set timeout to only fire error once
-    if(window.localStorage.getItem("userLat") == null) {
-      var onSuccess = function(position) {
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-
-        window.localStorage.setItem("userLat", lat);
-        window.localStorage.setItem("userLong", lng);
-
-        getLocation = true;
-
-        //to check that application also got user location && data finish loading
-        if(getLocation == true && loadData == true) {
-          $scope.loadingshow = false;
-          $ionicLoading.hide();
-        }
-      };
-
-      function onError(err) {
-        //$ionicLoading.hide();
-        //$state.go('landingPage', {}, {reload: true});
+      var url = "";
+      if(window.localStorage.getItem("token") != null)
+      {
+        url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=2&token="+window.localStorage.getItem("token");
       }
-
-      //get location with 10 secs timeout
-      navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, enableHighAccuracy: true });
-    }
-    else {
-      getLocation = true;
-
-      //to check that application also got user location && data finish loading
-      if(getLocation == true && loadData == true) {
-        $scope.loadingshow = false;
-        $ionicLoading.hide();
+      else
+      {
+        url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=2";
       }
-    }
-
-      $http.get(apiUrl+"RetrieveRecommendedTransportActivity.php?limit=2")
+      $http.get(url)
         .success(function (data) {
           var transportDetails = data;
 
           if (transportDetails != null) {
-            for(var i = 0; i<transportDetails.length; i++)
+            for(var i = 0; i<transportDetails.activities.length; i++)
             {
-              if(transportDetails[i].activity_id != null)
+              if(transportDetails.activities[i].activity_id != null)
               {
                 //calculate distance & format date/time
-                var t = transportDetails[i].datetime_start.split(/[- :]/);
+                var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
                  //push to arrays to store all activities in array (also use for displaying)
                 $scope.transportActivity.push({
                   no: i + 1,
-                  id: transportDetails[i].activity_id,
-                  start:transportDetails[i].location_from,
-                  end:transportDetails[i].location_to,
+                  id: transportDetails.activities[i].activity_id,
+                  start:transportDetails.activities[i].departure_centre.name,
+                  end:transportDetails.activities[i].arrival_centre.name,
                   dateTime: dateTime,
-                  name:transportDetails[i].location_from + " - " + transportDetails[i].location_to
+                  name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name
                 });
               }
             }
           }
-          loadData = true;
 
           //to check that application also got user location && data finish loading
-          if(getLocation == true && loadData == true) {
             $scope.loadingshow = false;
             $ionicLoading.hide();
-
-          }
         })
 
       $scope.scan = function () {
-        $state.go('scan', {}, {reload: true});
+        //ionic loading screen
+        $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Getting your location...'})
+
+        //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
+        //NOTE BACKEND DEVELOPERS: set timeout to only fire error once
+        if(window.localStorage.getItem("userLat") == null) {
+          var onSuccess = function(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            console.log(lat);
+            window.localStorage.setItem("userLat", lat);
+            window.localStorage.setItem("userLong", lng);
+
+            $state.go('scan', {}, {reload: true});
+
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          };
+
+          function onError(err) {
+            //$ionicLoading.hide();
+            //$state.go('landingPage', {}, {reload: true});
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          }
+
+          //get location with 10 secs timeout
+          navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, enableHighAccuracy: true });
+        }
+        else
+        {
+          $scope.loadingshow = false;
+          $ionicLoading.hide();
+          $state.go('scan', {}, {reload: true});
+        }
       }
 
       $scope.proceed = function(id, name)

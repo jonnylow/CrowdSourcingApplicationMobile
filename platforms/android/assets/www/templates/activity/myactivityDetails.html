@@ -83,7 +83,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <div class="list card myactivitydetails">
+        <div class="list card myactivitydetails item-text-wrap">
           <div class="item item-icon-left">
             <i class="icon ion-information-circled"></i>
             <p class="myactivity">Additional Information</p>
@@ -92,6 +92,18 @@
         </div>
       </div>
     </div>
+
+   <div class="row" ng-show="rejection != null">
+     <div class="col">
+       <div class="list card myactivitydetails">
+         <div class="item item-icon-left">
+           <i class="icon ion-android-cancel"></i>
+           <p class="myactivity">Rejection Reason</p>
+           <h5 class="myactivity">{{rejection}}</h5>
+         </div>
+       </div>
+     </div>
+   </div>
 
     <!--withdraw-->
 	   <button class="button ion-close-round button-light paddedbutton" style="background-color:#C82506;color:#fff" ng-show="!withdrawShow" ng-click="withdraw()"> Withdraw from activity</button>

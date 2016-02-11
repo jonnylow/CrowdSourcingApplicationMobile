@@ -12,7 +12,7 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveTransportActivityDetails?transportId=" + $scope.transportId)
+    $http.get(apiUrl+"retrieveTransportActivityDetails?transportId=" + $scope.transportId)
       .success(function (data) {
         var transportDetails = data;
         if (transportDetails != null) {
@@ -68,20 +68,20 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempALocationToAddress", $scope.locationToAddress);
               window.localStorage.setItem("tempAdditionalInformation", $scope.moreInformation);
 
-              var checkUrlString = "http://changhuapeng.com/laravel/api/checkActivityApplication?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+              var checkUrlString = apiUrl+"checkActivityApplication?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
               $http.get(checkUrlString)
                 .success(function (data) {
                   if(data.status[0]=="do not exist")
                   {
-                    var urlString = "http://changhuapeng.com/laravel/api/addNewActivity?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
+                    var urlString = apiUrl+"addNewActivity?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
                     $http.get(urlString)
                       .success(function (data) {
                         $scope.loadingshow = false;
                         $ionicLoading.hide();
 
-                        var sendEmail = apiUrl+"email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New Applicant on CareRide&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
+                        var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New Applicant on CareRide&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
                         $http.get(sendEmail)
                           .success(function (data) {
                           //email send

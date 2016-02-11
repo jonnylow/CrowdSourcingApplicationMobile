@@ -35,9 +35,17 @@ angular.module('crowdsourcing')
           $scope.gender=userDetails.volunteer[0].gender;
           $scope.dob=userDetails.volunteer[0].date_of_birth;
           $scope.contactnumber=userDetails.volunteer[0].contact_no;
-          $scope.hoursCompletedTemp=userDetails.volunteer[0].minutes_volunteered.split(" ");
-          $scope.hoursCompleted=$scope.hoursCompletedTemp[0].trim();
-          $scope.minsCompleted = $scope.hoursCompletedTemp[2].trim()
+
+          $scope.hoursCompletedTemp=userDetails.volunteerHours.split(",");
+
+          //hours completed
+          var hoursCompletedT=$scope.hoursCompletedTemp[0].trim().split(" ");
+          $scope.hoursCompleted=hoursCompletedT[0].trim();
+
+          //mins completed
+          var minsCompletedT=$scope.hoursCompletedTemp[1].trim().split(" ");
+          $scope.minsCompleted = minsCompletedT[0].trim();
+
           $scope.occuption=userDetails.volunteer[0].occupation;
           $scope.preference1=userDetails.volunteer[0].area_of_preference_1;
           $scope.preference2=userDetails.volunteer[0].area_of_preference_2;

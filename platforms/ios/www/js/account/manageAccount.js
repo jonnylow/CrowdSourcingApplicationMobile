@@ -12,27 +12,23 @@ angular.module('crowdsourcing')
           $state.go('landingPage', {}, {reload: true});
         }
 
-    var urlString = apiUrl+"RetrieveUserDetails.php?id="+$scope.id;
+    var urlString = "http://changhuapeng.com/laravel/api/retrieveUserDetails?id="+$scope.id;
 
     $http.get(urlString)
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null) {
-          $scope.fields.nric=userDetails[0].nric;
-          $scope.fields.email =userDetails[0].email;
-          $scope.fields.name = userDetails[0].name;
-          $scope.fields.contactnumber=userDetails[0].contact_no;
-          $scope.fields.occupation=userDetails[0].occupation;
-          $scope.fields.preferences_1=userDetails[0].area_of_preference_1;
-          $scope.fields.preferences_2=userDetails[0].area_of_preference_2;
+          $scope.fields.nric=userDetails.volunteer[0].nric;
+          $scope.fields.email =userDetails.volunteer[0].email;
+          $scope.fields.name = userDetails.volunteer[0].name;
+          $scope.fields.contactnumber=userDetails.volunteer[0].contact_no;
+          $scope.fields.occupation=userDetails.volunteer[0].occupation;
+          $scope.fields.preferences_1=userDetails.volunteer[0].area_of_preference_1;
+          $scope.fields.preferences_2=userDetails.volunteer[0].area_of_preference_2;
           $scope.loadingshow = false;
           $ionicLoading.hide();
         }
       })
-
-      .error(function (data) {
-        alert("Error in connection");
-      });
 
       $scope.update=function(fields)
       {
@@ -50,7 +46,8 @@ angular.module('crowdsourcing')
 
             if (validateName(name) == true) {
               if (contact.length == 8 && !isNaN(contact) && validateContact(contact) == true) {
-                urlStringUpdate = apiUrl+"UpdateUserDetails.php?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
+                if(p1 != p2){
+                urlStringUpdate = "http://changhuapeng.com/laravel/api/updateUserDetails?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
 
                 $http.get(urlStringUpdate)
                   .success(function (data) {
@@ -60,36 +57,55 @@ angular.module('crowdsourcing')
                       $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
                         //title: '<b><h6 class="popups title">Status</h6></b>',
-                        title: '<br><h6 class="popups"> '+status.status[0]+"</h6>",
+                        title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
                         scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: '<b>Ok</b>',
-                                      type: 'button button-energized',
-
-                                    },
-                                  ]
+                        buttons: [
+                          {
+                            text: '<b>Ok</b>',
+                            type: 'button button-stable',
+                            onTap: function (e) {
+                              $state.go('tab.me', {}, {reload: true});
+                            }
+                          },
+                        ]
                       });
-                      $state.go('tab.me', {}, {reload: true});
                     }
                   })
 
                   .error(function (data) {
                     alert("Error in connection");
                   });
+                }
+                else {
+                  $scope.loadingshow = false;
+                  $ionicLoading.hide();
+
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Whoops!</h6>',
+                    subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-stable',
+
+                      },
+                    ]
+                  });
+                }
               }
               else
               {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
-                  title: '<h6 class="popups title">Sorry</h6>',
-                  subTitle: '<br><h6 class="popups">Invalid phone number. Please try again.</h6> ',
+                  title: '<h6 class="popups title">Whoops!</h6>',
+                  subTitle: '<br><h6 class="popups">Contact number should start with 6/8/9 and contains 8 numbers</h6> ',
                   scope: $scope,
                   buttons: [
                     {
                       text: '<b>Ok</b>',
-                      type: 'button button-energized',
+                      type: 'button button-stable',
 
                     },
                   ]
@@ -101,13 +117,13 @@ angular.module('crowdsourcing')
               $scope.loadingshow = false;
               $ionicLoading.hide();
               var alertPopup = $ionicPopup.alert({
-                title: '<h6 class="popups title">Sorry</h6>',
-                subTitle: '<br><h6 class="popups">Name should consists of alphabetical letters only.</h6> ',
+                title: '<h6 class="popups title">Whoops!</h6>',
+                subTitle: '<br><h6 class="popups">Name should consist of alphabetical letters only</h6> ',
                 scope: $scope,
                 buttons: [
                   {
                     text: '<b>Ok</b>',
-                    type: 'button button-energized',
+                    type: 'button button-stable',
 
                   },
                 ]
@@ -119,13 +135,13 @@ angular.module('crowdsourcing')
             $scope.loadingshow = false;
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
-              title: '<h6 class="popups title">Sorry</h6>',
-              subTitle: '<br><h6 class="popups">Please do not leave any fields empty.</h6> ',
+              title: '<h6 class="popups title">Whoops!</h6>',
+              subTitle: '<br><h6 class="popups">Please do not leave any fields empty</h6> ',
               scope: $scope,
               buttons: [
                 {
                   text: '<b>Ok</b>',
-                  type: 'button button-energized',
+                  type: 'button button-stable',
 
                 },
               ]
@@ -137,13 +153,13 @@ angular.module('crowdsourcing')
           $scope.loadingshow = false;
           $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
-            title: '<h6 class="popups title">Sorry</h6>',
-            subTitle: '<br><h6 class="popups">Please do not leave any fields empty.</h6> ',
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Please do not leave any fields empty</h6> ',
             scope: $scope,
             buttons: [
               {
                 text: '<b>Ok</b>',
-                type: 'button button-energized',
+                type: 'button button-stable',
 
               },
             ]

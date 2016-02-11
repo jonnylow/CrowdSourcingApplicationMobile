@@ -1,7 +1,36 @@
 <ion-view view-title="View Account">
-  <ion-content padding="true" ng-show=!loadingshow>
-  <h2 style="text-align:center;">{{username}}</h2>
-<div class="list profile card">
+  <ion-content padding="false" ng-show=!loadingshow>
+
+
+<div class="list card me activityconfirmation" ng-click="goRank()">
+
+  <h2 class="me">
+    <div class="row">
+      <div class="col col-66 me">
+        <div class="row">
+         {{username}} 
+        </div>
+        <div class="row">
+          <h5 class="me" ng-click="goRank()">
+          {{rank}} Volunteer
+          </h5>
+        </div>
+      </div>
+      <div class="col col-33 me">
+        <div class="row me">
+          <button class="button me">
+            <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 250%"></i> 
+            <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 250%"></i> 
+            <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 250%"></i> 
+            <i class="ion-ribbon-a me" ng-if="rank=='Platinum'" style="color: #A6AAA9; font-size: 250%"></i>
+          </button>
+        </div>
+      </div>      
+    </div>
+  </h2>
+</div>
+
+<div class="list card myactivitymain">
   <!--<div class="item">
       Name: {{username}}
   </div>
@@ -40,11 +69,11 @@
 
     <div class="item item-button-right">
       Password: **** ****
-      <button class="button button-energized me" ui-sref="updateAccount"><font size=3px style="font-weight:bold;">Change</font></button>
+      <button class="button button-calm" ui-sref="updateAccount"><font size=3px style="font-weight:bold;">Change</font></button>
     </div>
   </div>
 
-      <button class="button button-block button-calm me" ng-click="manageAccount()" ui-sref="manageAccount">Manage Account</button>
+      <button class="button paddedbutton button-energized" ng-click="manageAccount()" ui-sref="manageAccount">Manage Account</button>
     </label>
   </ion-content>
 </ion-view>

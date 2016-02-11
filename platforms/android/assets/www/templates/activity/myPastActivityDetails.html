@@ -71,21 +71,26 @@
       <div class="col col-50">
         <div class="list card myactivitydetails" style="height: 104px">
         <i class="ion-person" style="font-size: 300%"></i>
+          <p class="myactivitydetails" ng-if="eldery == true">Elderly Information</p>
         <p class="myactivity"></p>
-        <button class="button button-energized button-small" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName, dateTime)">View Elderly Information</button>
+        <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName, dateTime)">View Elderly Information</button>
+          <h5 class="myactivity" ng-show="eldery">Not available</h5>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="list card myactivitydetails">
-          <div class="item item-icon-left">
-            <i class="icon ion-information-circled"></i>
-            <p class="myactivity">Additional Information</p>
-            <h5 class="myactivity">{{moreInformation}}</h5>
+      </div>
+   </div>
+
+      <div class="row" ng-show="rejection != null">
+        <div class="col">
+          <div class="list card myactivitydetails">
+            <div class="item item-icon-left">
+              <i class="icon ion-android-cancel"></i>
+              <p class="myactivity">Rejection Reason</p>
+              <h5 class="myactivity">{{rejection}}</h5>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
   </ion-content>
 </ion-view>

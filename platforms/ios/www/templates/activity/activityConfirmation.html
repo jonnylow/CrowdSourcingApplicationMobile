@@ -1,10 +1,18 @@
-<!--<ion-view view-title={{transportActivityName}}>-->
-<ion-view view-title="Confirmation of Activity Application">
+<ion-view view-title="Confirmation of Application">
   <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-close-round button-clear button-light" ng-click="back()"></button>
+    </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content>
+    <div class="list card activityconfirmation">
+      <div class="item item-icon-left item-text-wrap activityconfirmation">
+      <i class="icon ion-checkmark-circled" style="font-size: 200%; color: green"></i>
+      <p class="activityconfirmation">You have successfully applied for this activity</p>
+    </div>
+  </div>
       <div class="list card myactivitymain">
       <div class="item item-icon-left item-text-wrap activitymain">
         <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
@@ -42,13 +50,21 @@
         <p class="activity">Expected Duration</p>
         <h5 class="myactivity">{{expectedDuration}}</h5>
       </div>
-
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-minus-circled"></i>
+        <p class="activity">Approval Status</p>
+        <h5 class="myactivity">Pending</h5>
+      </div>
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-android-car"></i>
+        <p class="activity">Transport Status</p>
+        <h5 class="myactivity">Not Started Yet</h5>
+      </div>
         <div class="item item-icon-left activitymain">
           <i class="icon ion-information-circled"></i>
           <p class="myactivity">Additional Information</p>
           <h5 class="myactivity">{{moreInformation}}</h5>
         </div>
       </div>
-    <button class="button paddedbutton button-calm" ng-click="back()">Back to Home</button>
   </ion-content>
 </ion-view>

@@ -42,6 +42,7 @@ angular.module('crowdsourcing')
                   if(status != null){
                     if(status.token != null && status.error == null)
                     {
+                      window.localStorage.setItem("token", status.token);
                       if(tempConfirmpassword == tempNewPassword)
                       {
                         if(tempCurrentPassword != tempNewPassword)

@@ -1,11 +1,13 @@
+<ion-view view-title="Join Us Today!" can-swipe-back="false">
 
-<ion-view hide-nav-bar="true">
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+<!--header-->
 <ion-content padding="true">
- <!--header-->
-  <div class="bar bar-header registration">
-    <a class="icon ion-close-round light" ng-click="landingPage()"></a>
-    <h1 class="title registration">Sign Up</h1>
-  </div>
 
 <h4 class="verify"><b>A One-Time Password has been sent to your contact number: {{tempContactNumber}}</b></h4>
 
@@ -18,7 +20,7 @@
           <input class="otp" type="password" placeholder="" style="color:#000;" ng-model="fields.otp">
         </label>
         <p style="text-align: center;">
-          <a class="button button-dark" ng-click="resend()" style="color: #000;"><u>Resend One-Time Password
+          <a class="button button-dark otp" ng-click="resend()" style="color: #000;"><u>Resend One-Time Password
           </u></a>
         </p>
       </div>
@@ -30,7 +32,7 @@
           <button ui-sref="moreQuestions" class="button button-block button-light verify">Back</button>
         </div>
         <div class="col 50">-->
-         <button class="button button-block button-calm verify">Sign Up!</button>
+         <button class="button button-energized paddedbutton">Sign Up!</button>
         <!--</div>-->
       </div>
 

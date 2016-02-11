@@ -1,12 +1,17 @@
+<ion-view view-title="Join Us Today!" can-swipe-back="false">
 
-<ion-view hide-nav-bar="true">
-<ion-content padding="true">
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
 <!--header-->
-<div class="bar bar-header registration">
-  <a class="icon ion-close-round light" ng-click="landingPage()"></a>
-  <h1 class="title registration">Sign Up</h1>
-</div>
+<ion-content padding="false">
+<center>
+  <button class="button button-small button-light register" ui-sref="login" ng-click="goLogin()">Login</button>
+  <button class="button button-small button-select register" ui-sref="registration">Sign Up</button>
+</center>
 
     <!-- Registration form-->
     <form ng-submit="register(fields)">
@@ -31,12 +36,11 @@
           </div>
           <input class="registration" type="text" placeholder="Name" ng-model="fields.name" >
         </label>
-        <label class="item item-icon-left item-input registration">
+        <label class="item item-icon-left item-input registration dob">
           <div class="iconcontainer">
           <i class="icon ion-calendar dark "></i></div>
-          <span class="input-label dob" >
-          <font size="3px" style="margin-left:8px;">Date of Birth</font></span>
-          <input class="registration" class="date-input dob"type="date" color="#ffffff" ng-model="fields.dob">
+          <span class="label-text" ng-show="fields.dob == null || fields.dob == ''"><font color="#B0B0B0">Date of Birth</font></span>
+          <input class="registration" class="date-input dob" type="date" color="#ffffff" ng-model="fields.dob">
         </label>
         <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
@@ -83,7 +87,7 @@
       <!--Occupation-->
 
         
-    <button  class="button button-block button-calm registration">Next</button>
+    <button  class="button button-energized paddedbutton">Next</button>
     </form>
 
     <!--cancel button

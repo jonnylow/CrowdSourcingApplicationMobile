@@ -6,15 +6,13 @@
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-    <button class="button button-dark" ng-click="goList()">View More</button>
-    </ion-nav-buttons>
+
   </ion-nav-bar>
 
   <ion-content scroll='false'>
-    <div class="parent">
-      <div class="section1">
-        <ui-gmap-google-map center=center options=map.options zoom=zoom events="map.markersEvents" data-tap-disabled="true">
+
+    <div class="map-container">
+        <ui-gmap-google-map center=center options='{"zoomControl": false, "mapTypeControl": false,"streetViewControl": false,"draggable": true,"optimized": true,"scrollwheel": false}' zoom=zoom events="map.markersEvents" data-tap-disabled="true">
           <ui-gmap-marker icon= '{url: "img/blue-dot.png" }' coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
             <ui-gmap-window show="true">
               <div>{{currentLocationMarker.window.title}}</div>
@@ -23,47 +21,53 @@
 
           <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill"
                           visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
-
           <ui-gmap-marker ng-repeat="loc in markers track by $index" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title, $index)">
             <ui-gmap-window show="markersStatus[$index]">
               <div>{{loc.window.title}}</div>
             </ui-gmap-window>
           </ui-gmap-marker>
         </ui-gmap-google-map>
+
+    <div class="item item-text-wrap item-icon-right scan"  ng-click="goList()" ng-show="!showTag" >
+      <center><h3 class='scan'>{{toDisplayLocationFrom}}</h3><h3>Number of Activities: <b>{{transportActivity.length}}</b></h3></center>
+      <i class="icon ion-chevron-right scan">
+    </div>
+
+    <div class="card instructions" ng-show="showTag">
+      <div class="item item-text-wrap">
+        <h3>Tap on the red markers to view activities</h3>
+      </div>
+    </div>
       </div>
 
-      {{distanceDisplay}}<br>{{timeDisplay}}<button class="ion-arrow-right-c" ng-click="focusNearbyIncrease()"></button>
-
-        <div class="card animated shake scan"  ng-show=showTag>
-          <div class="item item-text-wrap">
-            <h3>Tap on the red markers to view activities</h3>
-          </div>
-        </div>
-
-      <div class="section2">
-          <div class="list card myactivitymain" ng-repeat="id in transportIDDisplay track by $index" ng-click="proceed(transportIDDisplay[$index], transportNameDisplay[$index])">
-            <table>
-              <tr>
-                <td class="search">
-                {{$index+1}}
-                </td>
-              <td>
-              <div class="item item-text-wrap">
-                <h2 class="home"> {{ transportDateTimeStartDisplay[$index] | date : "d MMM yyyy" }}, {{ transportDateTimeStartDisplay[$index] | date : "h:mm a"}}</h2>
-                <table>
-                  <tr>
-                    <td><p class="myactivity">From</p></td>
-                    <td><p class="myactivity"><b>{{transportFromDisplay[$index]}}</b></p></td>
-                  </tr>
-                  <tr>
-                    <td><p class="myactivity">To</p></td>
-                    <td><p class="myactivity"><b>{{transportToDisplay[$index]}}</b></p></td>
-                  </tr>
-                </table><p class="myactivity"></p>
-
-          </div>
-        </div>
-      </div>
+    <br>
+      <button class="button button-blue nextnearby" ng-click="focusNearbyIncrease()"><i class="icon ion-map scan"></i>Next Nearby</button>
+      <br>
+      <!--<div class="section2">-->
+    <!--
+      <center>
+      <table class="section1" ng-show=!showTag>
+            <tr>
+        <td><div class="card scan header">
+          <h6 class="scan">{{distanceDisplay.split(":")[0]}} :
+            <br>
+            <div class="item item-icon-left scan">
+              <i class="icon ion-map scan"></i>
+              <center><b class="scan">{{distanceDisplay.split(":")[1]}}</b></center></h6>
+            </div></td>
+        <td><div class="card scan header2">
+          <h6 class="scan">{{timeDisplay.split(":")[0]}} :
+          <br>
+          <div class="item item-icon-left scan">
+          <i class="icon ion-android-car scan"></i>
+          <center><b class="scan">{{timeDisplay.split(":")[1]}}</b></center></h6>
+        </div></td>
+      </td>
+    </table></center>-->
+<!--
+    <center>
+      <button class="button button-blue" ng-click="goList()" ng-show=!showTag><i class="icon ion-ios-list-outline"></i> View All Activities</button>
+    </center>-->
     </div>
   </ion-content>
 

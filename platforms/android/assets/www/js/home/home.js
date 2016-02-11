@@ -91,7 +91,16 @@ angular.module('crowdsourcing')
       $scope.transportActivity = [];
       $scope.loadingshow = true;
 
-      $http.get("http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=2")
+      var url = "";
+      if(window.localStorage.getItem("token") != null)
+      {
+        url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=2&token="+window.localStorage.getItem("token");
+      }
+      else
+      {
+        url = "http://changhuapeng.com/laravel/api/retrieveRecommendedTransportActivity?limit=2";
+      }
+      $http.get(url)
         .success(function (data) {
           var transportDetails = data;
 

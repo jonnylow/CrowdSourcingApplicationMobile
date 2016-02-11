@@ -1,28 +1,31 @@
-<ion-view hide-nav-bar="true">
-  <ion-content padding="true" >
-  <!--header-->
-  <div class="bar bar-header registration">
-    <a class="icon ion-close-round light" ng-click="landingPage()"></a>
-    <h1 class="title registration">Sign Up</h1>
-  </div>
+<ion-view view-title="Join Us Today!" can-swipe-back="false">
 
-    <form ng-submit="verify(fields)">
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
-
+<!--header-->
+<ion-content padding="true">
+    <div class="list card moreQuestions">
+      What kind of voluntary activities interest you?
+    </div>
+    <form ng-submit="verify(fields)">      
         <!--Area of Preferences 1-->
       <label class="item item-input item-stacked-label registration1" >
         <!--<font color="black" >Area of Preferences 1</font><br>-->
         <select class="dropdown morequestions" ng-model="fields.preferences_1">
-          <option value="" disabled selected>Area of Preferences 1*</option>
+          <option value="" disabled selected>Option 1*</option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
-          <option value="Organise fund-raising activities">Organise fund raising activities</option>
-          <option value="Organize social activities">Organize social activities</option>
           <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
-          <option value="Organise publicity events">Organise publicity events</option>
-          <option value="Written translation for brochures">Written translation for brochures</option>
-          <option value="Prepare publicity materials">Prepare publicity materials</option>
           <option value="Lead games/exercises">Lead games/exercises</option>
-          <option value="Prepare tea/snacks">Prepare tea/snacks</option>
+          <option value="Organise fund-raising activities">Organise fund raising activities</option>
+          <option value="Organise publicity events">Organise publicity events</option>
+          <option value="Organize social activities">Organize social activities</option>         
+          <option value="Prepare publicity materials">Prepare publicity materials</option>          
+          <option value="Prepare tea/snacks">Prepare tea/snacks</option>          
+          <option value="Written translation for brochures">Written translation for brochures</option>         
         </select>
       </label>
 
@@ -30,60 +33,60 @@
       <label class="item item-input item-stacked-label registration">
         <!--<font color="black">Area of Preferences 2</font><br>-->
         <select class="dropdown morequestions" ng-model="fields.preferences_2">
-          <option value="" disabled selected>Area of Preferences 2*</option>
+          <option value="" disabled selected>Option 2*</option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
-          <option value="Organise fund-raising activities">Organise fund raising activities</option>
-          <option value="Organize social activities">Organize social activities</option>
           <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
-          <option value="Organise publicity events">Organise publicity events</option>
-          <option value="Written translation for brochures">Written translation for brochures</option>
-          <option value="Prepare publicity materials">Prepare publicity materials</option>
           <option value="Lead games/exercises">Lead games/exercises</option>
-          <option value="Prepare tea/snacks">Prepare tea/snacks</option>
+          <option value="Organise fund-raising activities">Organise fund raising activities</option>
+          <option value="Organise publicity events">Organise publicity events</option>
+          <option value="Organize social activities">Organize social activities</option>         
+          <option value="Prepare publicity materials">Prepare publicity materials</option>          
+          <option value="Prepare tea/snacks">Prepare tea/snacks</option>          
+          <option value="Written translation for brochures">Written translation for brochures</option>
         </select>
       </label>
 
-      <!--front nric-->
+      <!--front nric
 
       <div class="row" style="text-align:center;">
-      <div class="item range range-positive morequestions" />
+      
         <label class="ic front">
           <div class="NRICbox">
-            <img class="frontic" id="frontic" src="" ng-show=!showFront height="120" width="140"><br>
-            <i class="icon ion-camera light morequestions"></i>
-            <h3 class="morequestions">Front IC</h3>
-          </div>
+            <img class="frontic" id="frontic" src="" ng-show=!showFront height="100%" width="100%"><br>
+            <i class="icon ion-camera light morequestions" ng-show=showFront></i>
+            <h3 class="morequestions" ng-show=showFront>Front IC</h3>
+          
           <button class="button button-light button-small NRICbutton1" type="button" ng-click="getPhotoFront()" ng-show=showFront>Add</button>
-          <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoFront()" ng-show=!showFront >Delete</button>
-        </label>
-
-      </div>
-      <br>
-      <!--back nric-->
-     <div class="item range range-positive morequestions"style="color:#ffffff; border:none;"/>
-      <label class="ic back"><!--IC Photo (Back)<br />-->
-        <div class="NRICbox1">
-          <img id="backic" src="" ng-show=!showBack height="120" width="140" ><br>
-          <i class="icon ion-camera light morequestions"></i>
-            <h3 class="morequestions">Back IC</h3>
+          <button class="button button-light button-small NRICbutton1" type="button" ng-click="deletePhotoFront()" ng-show=!showFront >Delete</button>
         </div>
+        </label>-->
+      
+      <!--back nric-->
+     
+     <!-- <label class="ic back">
+        <div class="NRICbox1">
+          <img id="backic" src="" ng-show=!showBack height="100%" width="100%" ><br>
+          <i class="icon ion-camera light morequestions" ng-show=showBack></i>
+            <h3 class="morequestions" ng-show=showBack>Back IC</h3>
+        
         <button class="button button-light button-small NRICbutton" type="button" ng-click="getPhotoBack()" ng-show=showBack>Add</button>
         <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoBack()" ng-show=!showBack>Delete</button>
+      </div>
       </label>
 
-      </div>
-    </div>
+      </div>-->
     <br>
+
     <div style="text-align: center; ">
      <img src="img/steps002.png" class = "page-image"/>
     </div>
 
     <div class="row">
       <div class="col 50">
-         <button ui-sref="registration" class="button button-block button-light morequestions">Back</button>
+         <button ui-sref="registration" class="button button-light paddedbutton">Back</button>
       </div>
       <div class="col 50">
-      <button class="button button-block button-calm morequestions">Next</button>
+      <button class="button button-energized paddedbutton">Next</button>
       </div>
     </div>
 

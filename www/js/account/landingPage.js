@@ -13,7 +13,7 @@ angular.module('crowdsourcing')
         window.localStorage.removeItem("userLong");
         window.localStorage.removeItem("token");
         window.localStorage.clear();
-        window.localStorage.setItem("survey", "done");
+        //window.localStorage.setItem("survey", "done");
         $ionicHistory.clearCache();
         $ionicHistory.clearHistory();
         $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
@@ -39,7 +39,9 @@ angular.module('crowdsourcing')
           }
         }
 
+
         //FOR USER STUDY
+        /*
         if(window.localStorage.getItem("survey") == null)
         {
           $ionicModal.fromTemplateUrl('templates/account/surveyIntro.html', function ($ionicModal) {
@@ -53,7 +55,7 @@ angular.module('crowdsourcing')
             backdropClickToClose: false,
             hardwareBackButtonClose: false
           });
-        }
+        }*/
 
         $scope.surveyNext = function () {
           $scope.modal.hide();

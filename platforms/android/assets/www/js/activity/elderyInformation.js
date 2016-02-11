@@ -13,6 +13,7 @@ angular.module('crowdsourcing')
     $http.get("http://changhuapeng.com/laravel/api/retrieveElderyInformation?transportId=" + $scope.transportId)
       .success(function (data) {
         var elderyInformation = data;
+
         if (elderyInformation != null) {
           if(elderyInformation != null)
           {
@@ -22,6 +23,8 @@ angular.module('crowdsourcing')
                 $scope.name= elderyInformation.elderly.name;
                 $scope.gender=elderyInformation.elderly.gender;
                 $scope.medical=elderyInformation.elderly.medical_condition;
+                $scope.age= new Date().getFullYear() - parseInt(elderyInformation.elderly.birth_year);
+
                 if($scope.medical == "")
                 {
                   $scope.medical = "No Medical Information";

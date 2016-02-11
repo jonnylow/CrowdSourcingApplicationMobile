@@ -1,14 +1,20 @@
-<ion-view hide-nav-bar="true">
+<ion-view view-title="Join Us Today!" can-swipe-back="false">
 
-<ion-content padding="true">
-  <div class="bar bar-header registration">
-  <a class="icon ion-close-round light" ng-click="landingPage()"></a>
-  <h2 class="title main" style="color: #FFF; z-index:-1;">Log In</h2>
-</div>
-<br><br>
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons side="left">
+      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  
+<ion-content>
+
+<center>
+  <button class="button button-small button-select main" ui-sref="login">Login</button>
+  <button class="button button-small button-light main" ui-sref="registration" ng-click="goRegistration()">Sign Up</button>
+</center>
 
 <div style="text-align: center;">
- <img src="img/icare.png" class = "fullscreen-image"/>
+ <img src="img/careguidephonegrey.png" class = "fullscreen-image"/>
 </div>
 
 <!-- Login form-->
@@ -29,12 +35,12 @@
   <!-- oldpassword field checkbox
   <br><ion-checkbox class="loginShowPassword" ng-model="showPassword">Show password</ion-checkbox>-->
 
-  <button class="button button-block button-energized">Log In</button>
+  <button class="button button-block button-energized paddedbutton">Log In</button>
 </form>
 
   <!--forget password link!! rmb to do-->
 <p style="text-align: center;">
-  <a href="#" style="color: #53585F;">Forgot your Password?</a>
+  <a ng-click="goReset()" style="color: #53585F;">Forgot your Password?</a>
 </p>
 
 

@@ -57,7 +57,7 @@ angular.module('crowdsourcing')
 
           if (fields.otp!= null && fields.otp.trim() != "")
           {
-            $http.get("http://changhuapeng.com/laravel/api/checkEmail?email=" + $scope.tempEmail)
+            $http.get(apiUrl+"checkEmail?email=" + $scope.tempEmail)
               .success(function (data) {
 
                 var status = data;
@@ -78,7 +78,7 @@ angular.module('crowdsourcing')
                     window.localStorage.removeItem("front");
                     window.localStorage.removeItem("back");
 
-                    var urlString = "http://changhuapeng.com/laravel/api/addUserAccount?phone=" + $scope.tempContactNumber + "&name=" + $scope.tempName + "&email=" + $scope.tempEmail + "&password=" + $scope.tempPassword + "&dob=" + $scope.tempDOB
+                    var urlString = apiUrl+"addUserAccount?phone=" + $scope.tempContactNumber + "&name=" + $scope.tempName + "&email=" + $scope.tempEmail + "&password=" + $scope.tempPassword + "&dob=" + $scope.tempDOB
                       + "&nric=" + $scope.tempNRIC + "&gender=" + $scope.tempGender + "&frontIC=" + $scope.tempFrontIC + "&backIC=" + $scope.tempBackIC + "&haveCar=" + $scope.tempHaveCar + "&preferences1=" + $scope.tempPreferences1
                       + "&preferences2=" + $scope.tempPreferences2 + "&occupation=" + $scope.tempOccupation + "&rank=4";
 

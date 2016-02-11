@@ -46,6 +46,7 @@ angular.module('crowdsourcing')
 
             if (validateName(name) == true) {
               if (contact.length == 8 && !isNaN(contact) && validateContact(contact) == true) {
+                if(p1 != p2){
                 urlStringUpdate = "http://changhuapeng.com/laravel/api/updateUserDetails?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
 
                 $http.get(urlStringUpdate)
@@ -56,23 +57,42 @@ angular.module('crowdsourcing')
                       $ionicLoading.hide();
                       var alertPopup = $ionicPopup.alert({
                         //title: '<b><h6 class="popups title">Status</h6></b>',
-                        title: '<br><h6 class="popups"> '+status.status[0]+"</h6>",
+                        title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
                         scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: '<b>Ok</b>',
-                                      type: 'button button-stable',
-
-                                    },
-                                  ]
+                        buttons: [
+                          {
+                            text: '<b>Ok</b>',
+                            type: 'button button-stable',
+                            onTap: function (e) {
+                              $state.go('tab.me', {}, {reload: true});
+                            }
+                          },
+                        ]
                       });
-                      $state.go('tab.me', {}, {reload: true});
                     }
                   })
 
                   .error(function (data) {
                     alert("Error in connection");
                   });
+                }
+                else {
+                  $scope.loadingshow = false;
+                  $ionicLoading.hide();
+
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Whoops!</h6>',
+                    subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-stable',
+
+                      },
+                    ]
+                  });
+                }
               }
               else
               {

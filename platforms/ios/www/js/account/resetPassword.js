@@ -23,7 +23,7 @@ angular.module('crowdsourcing')
                             $ionicLoading.hide();
                             var myPopup = $ionicPopup.show({
                               title: '<h6 class="popups title">Successful!</h6>',
-                              subTitle: ' <br><h6 class="popups registration">Your password is sent to your email address</h6>',
+                              subTitle: ' <br><h6 class="popups registration">Your temporary password is sent to your email address</h6>',
                               scope: $scope,
                               buttons: [
                                 {
@@ -89,11 +89,17 @@ angular.module('crowdsourcing')
 
       if (window.plugins != null) {
         window.plugins.nativepagetransitions.slide(
-          {"direction": "down"}
+          {
+            'href': '#/login',
+            'direction': "down",
+            'duration': 500,
+            'iosdelay': 0 // the new property
+          }
         );
       }
-
-      $state.go('login', {}, {reload: true});
+      else {
+        $state.go('login', {}, {reload: true});
+      }
     }
     });
 

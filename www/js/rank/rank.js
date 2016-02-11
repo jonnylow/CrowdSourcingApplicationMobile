@@ -21,7 +21,7 @@ angular.module('crowdsourcing')
       }
     }
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveRankingDetails?id="+$scope.id)
+    $http.get(apiUrl+"retrieveRankingDetails?id="+$scope.id)
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null ) {

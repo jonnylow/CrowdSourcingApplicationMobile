@@ -1,4 +1,3 @@
-
 /******************Background*********************/
 /*Background color for everything except main page*/
 .pane {
@@ -539,7 +538,7 @@ label.item.item-input.registration.dob,
     overflow:hidden;
     text-overflow: ellipsis;
   }
-  
+
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
   .platform-ios .label-text {
@@ -623,7 +622,6 @@ button.button.button-block.button-calm.registration{
 }
 
 select.dropdown.register{
-  color:#B0B0B0;
   padding-left: 12px;
 }
 
@@ -1283,6 +1281,9 @@ h5.myactivity{
   border-color: #fff;
 }
 
+.button.myactivity{
+  font-size: 4.5vmin;
+}
 .item.myactivityoverall{
   padding-bottom: 15px;
 }
@@ -1309,7 +1310,11 @@ i.myactivity{
 
 .platform-ios .bar-subheader{
   background-color: #F1F3F5;
-  height: 44px;
+  height: 55px;
+}
+
+.scroll-refresher{
+  top: 0px;
 }
 /*end of myactivity page*/
 
@@ -1576,7 +1581,7 @@ div.list.profile{
 }
 
 h2.me{
-  text-align: center;
+  text-align: left;
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 8vw;
@@ -2017,3 +2022,37 @@ textarea.feedback{
   padding-left: 4%;
 }
 /* end of feedback page*/
+
+/**survey page REMOVE AFTER SURVEY**/
+.bar.bar-stable{
+  background-color: #003366;
+}
+
+.bar.bar-stable .title{
+  color: #fff;
+}
+
+.button.survey{
+  margin-top: 10%;
+  background-color: #003366;
+}
+
+select.dropdown.survey{
+    border: 1px solid rgb(166, 166, 166);
+}
+
+.modal-backdrop-bg {
+  transition: opacity 300ms ease-in-out;
+  -webkit-transition: opacity 300ms ease-in-out;
+  background-color: #000;
+  opacity: 0;
+}
+
+.active .modal-backdrop-bg {
+  opacity: 0.6;
+}
+
+h5.survey{
+  font-size: 14px;
+  color: #666;
+}

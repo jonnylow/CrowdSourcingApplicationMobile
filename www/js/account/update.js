@@ -30,7 +30,7 @@ angular.module('crowdsourcing')
               var req =
               {
                 method: 'POST',
-                url: "http://changhuapeng.com/laravel/api/authenticate",
+                url: apiUrl+"authenticate",
                 data: Object.toparams(checkLoginObject),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
               }
@@ -47,7 +47,7 @@ angular.module('crowdsourcing')
                       {
                         if(tempCurrentPassword != tempNewPassword)
                         {
-                          var urlString = "http://changhuapeng.com/laravel/api/updateUserAccount?id=" + $scope.id + "&password=" + tempNewPassword;
+                          var urlString = apiUrl+"updateUserAccount?id=" + $scope.id + "&password=" + tempNewPassword;
 
                           $http.get(urlString)
                             .success(function (data) {

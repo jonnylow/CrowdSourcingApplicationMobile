@@ -10,19 +10,19 @@
     <form ng-submit="update(fields)">
       <div class="list list-inset updatePassword1">
         <label class="item item-input updatePassword">
-          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.currentpassword" required>
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.currentpassword">
           <input type="password" placeholder="Current Password" ng-if="!showPasswordIsChecked" ng-model="fields.currentpassword">
         </label>
       </div>
 
       <div class="list list-inset updatePassword2">
         <label class="item item-input updatePassword">
-          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.newpassword" required>
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.newpassword">
           <input type="password" placeholder="New Password" ng-if="!showPasswordIsChecked" ng-model="fields.newpassword">
         </label>
 
         <label class="item item-input updatePassword">
-          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.confirmpassword" required>
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.confirmpassword">
           <input type="password" placeholder="Confirm New Password" ng-if="!showPasswordIsChecked" ng-model="fields.confirmpassword">
         </label>
       </div>

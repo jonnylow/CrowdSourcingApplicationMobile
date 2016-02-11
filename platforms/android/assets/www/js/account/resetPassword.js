@@ -23,7 +23,7 @@ angular.module('crowdsourcing')
                             $ionicLoading.hide();
                             var myPopup = $ionicPopup.show({
                               title: '<h6 class="popups title">Successful!</h6>',
-                              subTitle: ' <br><h6 class="popups registration">Your password is sent to your email address</h6>',
+                              subTitle: ' <br><h6 class="popups registration">Your temporary password is sent to your email address</h6>',
                               scope: $scope,
                               buttons: [
                                 {

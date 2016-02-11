@@ -9,10 +9,17 @@
  <ion-content ng-show=!loadingshow>
    <!--current activity listing-->
    <div class="list card myactivitymain">
-      <div class="item item-icon-left item-text-wrap myactivitymain">
-        <i class="icon myactivitydetails"><img src="img/car.png" class="homeicon-image"></i>
+      <div class="item item-icon-left item-text-wrap myactivitymain activitydetails">
+        <i class="icon car"><img src="img/car.png" class="homeicon-image"></i>
         <div class="row">
           <div class="col routecol"><h2 class="home">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="item item-icon-left item-text-wrap myactivitymain activitydetails2">
+        <i class="icon map" ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><img src="img/googlemap_icon.png" class="homeicon-image"></i>
+        <div class="row">
+          <div class="col routecol">
             <table>
               <tr>
                 <td><p class="myactivity">From</p></td>
@@ -38,14 +45,14 @@
 
     <div class="row" style="text-align: center;">
       <div class="col col-50">
-        <div class="list card myactivity">
+        <div class="list card myactivitydetails">
           <i class="ion-clock" style="font-size: 300%"></i>
           <p class="myactivitydetails">Expected Duration</p>
           <h5 class="myactivity">{{expectedDuration}}</h5>
         </div>
       </div>
       <div class="col col-50">
-        <div class="list card myactivity">
+        <div class="list card myactivitydetails">
         <i class="ion-checkmark-circled" style="font-size: 300%"></i>
         <p class="myactivitydetails">Approval Status</p>
         <h5 class="myactivity">{{approvalStatus}}</h5>
@@ -54,7 +61,7 @@
     </div>
     <div class="row" style="text-align: center;">
       <div class="col col-50">
-        <div class="list card myactivity">
+        <div class="list card myactivitydetails">
         <i class="ion-android-car" style="font-size: 300%"></i>
         <p class="myactivitydetails">Transport Status</p>
         <h5 class="myactivity">{{transportStatus}}</h5>
@@ -62,24 +69,28 @@
         </div>
       </div>
       <div class="col col-50">
-        <div class="list card myactivity" style="height: 104px">
+        <div class="list card myactivitydetails" style="height: 104px">
         <i class="ion-person" style="font-size: 300%"></i>
+          <p class="myactivitydetails" ng-if="eldery == true">Elderly Information</p>
         <p class="myactivity"></p>
-        <br>
-        <button class="button button-energized button-small" ng-disabled="eldery" ng-click="proceed(transportId, transportActivityName)">View Elderly Information</button>
+        <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName, dateTime)">View Elderly Information</button>
+          <h5 class="myactivity" ng-show="eldery">Not available</h5>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="list card myactivity">
-          <div class="item item-icon-left">
-            <i class="icon ion-information-circled"></i>
-            <p class="myactivity">Additional Information</p>
-            <h5 class="myactivity">{{moreInformation}}</h5>
+      </div>
+   </div>
+
+      <div class="row" ng-show="rejection != null">
+        <div class="col">
+          <div class="list card myactivitydetails">
+            <div class="item item-icon-left">
+              <i class="icon ion-android-cancel"></i>
+              <p class="myactivity">Rejection Reason</p>
+              <h5 class="myactivity">{{rejection}}</h5>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
   </ion-content>
 </ion-view>

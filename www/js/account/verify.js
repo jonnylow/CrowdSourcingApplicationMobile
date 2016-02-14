@@ -19,8 +19,8 @@ angular.module('crowdsourcing')
     var otpCheck;
 
     var myPopup = $ionicPopup.show({
-      title: '<b>Notice</b>',
-      subTitle: '<br>The one-time password will be send to you via sms',
+      title: '<h6 class="popups title">Notice</h6>',
+      subTitle: '<br><h6 class="popups registration">The one-time password will be sent to you via sms</h6>',
       scope: $scope,
       buttons: [
         {

@@ -11,7 +11,7 @@ angular.module('crowdsourcing')
             {
                 var tempNRIC = fields.email;
                 var tempphone = fields.phone;
-                $http.get("http://www.changhuapeng.com/laravel/api/verifyUserEmailandPassword?email=" + tempNRIC + "&phone=" + tempphone)
+                $http.get(apiUrl+"verifyUserEmailandPassword?email=" + tempNRIC + "&phone=" + tempphone)
                 .success(function (data) {
                   var verfiy = data;
                   if (verfiy != null) {

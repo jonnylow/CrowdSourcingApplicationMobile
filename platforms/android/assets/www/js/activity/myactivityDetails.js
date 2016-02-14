@@ -10,7 +10,7 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveMyTransportActivityDetails?transportId=" + $scope.transportId +"&id="+$scope.id)
+    $http.get(apiUrl+"retrieveMyTransportActivityDetails?transportId=" + $scope.transportId +"&id="+$scope.id)
       .success(function (data) {
         var transportDetails = data;
 
@@ -134,11 +134,11 @@ angular.module('crowdsourcing')
             $scope.loadingshow = true;
             $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-            urlString = "http://changhuapeng.com/laravel/api/withdraw?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
+            urlString = apiUrl+"withdraw?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
 
             $http.get(urlString)
               .success(function (data) {
-                var sendEmail = apiUrl+"email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
+                var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
                 $http.get(sendEmail)
                   .success(function (data) {
 

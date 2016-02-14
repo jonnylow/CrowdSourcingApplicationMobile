@@ -7,18 +7,16 @@ angular.module('crowdsourcing')
 
       if(window.localStorage.getItem("loginId") != null)
       {
-        /*
         window.localStorage.removeItem("loginUserName");
         window.localStorage.removeItem("loginId");
         window.localStorage.removeItem("userLat");
         window.localStorage.removeItem("userLong");
         window.localStorage.removeItem("token");
         window.localStorage.clear();
-        window.localStorage.setItem("survey", "done");
+        //window.localStorage.setItem("survey", "done");
         $ionicHistory.clearCache();
         $ionicHistory.clearHistory();
-        $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});*/
-        $state.go('tab.home', {}, {reload: true});
+        $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
       }
 
         $scope.login = function () {
@@ -41,7 +39,9 @@ angular.module('crowdsourcing')
           }
         }
 
+
         //FOR USER STUDY
+        /*
         if(window.localStorage.getItem("survey") == null)
         {
           $ionicModal.fromTemplateUrl('templates/account/surveyIntro.html', function ($ionicModal) {
@@ -55,7 +55,7 @@ angular.module('crowdsourcing')
             backdropClickToClose: false,
             hardwareBackButtonClose: false
           });
-        }
+        }*/
 
         $scope.surveyNext = function () {
           $scope.modal.hide();

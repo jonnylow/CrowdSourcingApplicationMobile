@@ -105,7 +105,7 @@ angular.module('crowdsourcing')
 
                     var myPopup = $ionicPopup.show({
                       title: '<h6 class="popups title">Hold on...</h6>',
-                      subTitle: '<br><h6 class="popups">You have already applied for this activity. Please wait for the approval of your application</h3>',
+                      subTitle: '<br><h6 class="popups">You already have a activity happening at the same date/time.</h3>',
                       scope: $scope,
                       buttons: [
                         {

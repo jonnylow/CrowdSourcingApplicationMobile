@@ -20,7 +20,7 @@ angular.module('crowdsourcing')
                 var req =
                 {
                   method: 'POST',
-                  url: "http://changhuapeng.com/laravel/api/authenticate",
+                  url: apiUrl+"authenticate",
                   data: Object.toparams(loginObject),
                   headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }

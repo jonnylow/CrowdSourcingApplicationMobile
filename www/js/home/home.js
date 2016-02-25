@@ -92,14 +92,30 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
 
       var url = "";
+      var secondUrl = "";
+
       if(window.localStorage.getItem("token") != null)
       {
-        url = apiUrl+"retrieveRecommendedTransportActivity?limit=2&token="+window.localStorage.getItem("token");
+        url = apiUrl+"retrieveRecommendedTransportActivity?limit=1&token="+window.localStorage.getItem("token");
+        secondUrl = apiUrl+"getAllVolunteerContribution?token="+window.localStorage.getItem("token");
+        $scope.totalVolunteers = "";
+        $scope.totalTaskHours = "";
+
       }
       else
       {
-        url = apiUrl+"retrieveRecommendedTransportActivity?limit=2";
+        url = apiUrl+"retrieveRecommendedTransportActivity?limit=1";
+        secondUrl = apiUrl+"getAllVolunteerContribution";
+        $http.get(secondUrl)
+          .success(function (data) {
+            if(data != null)
+            {
+              $scope.totalVolunteers = data.totalVolunteers;
+              $scope.totalTaskHours = data.totalTaskHours;
+            }
+          })
       }
+
       $http.get(url)
         .success(function (data) {
           var transportDetails = data;
@@ -122,10 +138,11 @@ angular.module('crowdsourcing')
                   dateTime: dateTime,
                   name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name
                 });
+
+
               }
             }
           }
-
           //to check that application also got user location && data finish loading
             $scope.loadingshow = false;
             $ionicLoading.hide();

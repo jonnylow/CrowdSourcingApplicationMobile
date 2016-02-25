@@ -18,10 +18,11 @@ angular.module('crowdsourcing')
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null) {
-          $scope.fields.nric=userDetails.volunteer[0].nric;
+          $scope.fields.dob =new Date(userDetails.volunteer[0].date_of_birth);
+          $scope.fields.gender = userDetails.volunteer[0].gender;
+          $scope.fields.carChecked = userDetails.volunteer[0].has_car;
           $scope.fields.email =userDetails.volunteer[0].email;
           $scope.fields.name = userDetails.volunteer[0].name;
-          $scope.fields.contactnumber=userDetails.volunteer[0].contact_no;
           $scope.fields.occupation=userDetails.volunteer[0].occupation;
           $scope.fields.preferences_1=userDetails.volunteer[0].area_of_preference_1;
           $scope.fields.preferences_2=userDetails.volunteer[0].area_of_preference_2;
@@ -35,19 +36,31 @@ angular.module('crowdsourcing')
         $scope.loadingshow = true;
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         if(fields != null) {
-          if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
-              && fields.occupation != null && fields.occupation.trim() != ""
-            && fields.preferences_1!= null && fields.preferences_1.trim() != "" && fields.preferences_2!= null && fields.preferences_2!= null) {
+          if (fields.name!= null && fields.name.trim() != "" && fields.email != null && fields.email.trim() != ""
+              && fields.dob != null) {
             var name = fields.name;
-            var contact = fields.contactnumber;
-            var occupation = fields.occupation;
             var p1 = fields.preferences_1;
             var p2 = fields.preferences_2;
+            var gender = fields.gender;
+            var tempDOB = fields.dob;
+
+              var dd = tempDOB.getDate();
+              var mm = tempDOB.getMonth() + 1;
+              var yyyy = tempDOB.getFullYear();
+              if (dd < 10) {
+                dd = '0' + dd
+              }
+              if (mm < 10) {
+                mm = '0' + mm
+              }
+            var dob = yyyy + '-' + mm + '-' + dd;
+            var occupation = fields.occupation;
+            var hasCar = fields.carChecked;
+            var email = fields.email;
 
             if (validateName(name) == true) {
-              if (contact.length == 8 && !isNaN(contact) && validateContact(contact) == true) {
                 if(p1 != p2){
-                urlStringUpdate = apiUrl+"updateUserDetails?id=" + $scope.id + "&name=" + name + "&number=" + contact + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2;
+                urlStringUpdate = apiUrl+"updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
                 $http.get(urlStringUpdate)
                   .success(function (data) {
@@ -64,7 +77,7 @@ angular.module('crowdsourcing')
                             text: '<b>Ok</b>',
                             type: 'button button-stable',
                             onTap: function (e) {
-                              $state.go('tab.me', {}, {reload: true});
+                              $state.go('me', {}, {reload: true});
                             }
                           },
                         ]
@@ -93,24 +106,6 @@ angular.module('crowdsourcing')
                     ]
                   });
                 }
-              }
-              else
-              {
-                $scope.loadingshow = false;
-                $ionicLoading.hide();
-                var alertPopup = $ionicPopup.alert({
-                  title: '<h6 class="popups title">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups">Contact number should start with 6/8/9 and contains 8 numbers</h6> ',
-                  scope: $scope,
-                  buttons: [
-                    {
-                      text: '<b>Ok</b>',
-                      type: 'button button-stable',
-
-                    },
-                  ]
-                });
-              }
             }
             else
             {

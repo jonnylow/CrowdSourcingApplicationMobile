@@ -1,9 +1,6 @@
 <ion-view view-title="Activity Listing">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
-    <ion-nav-buttons>
-      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
-    </ion-nav-buttons>
     <ion-nav-buttons side="right">
       <button class="button ion-funnel button-clear filtericon" ng-click="openPopover($event)"></button>
     </ion-nav-buttons>
@@ -17,6 +14,8 @@
         <input type="text" placeholder="Search" ng-model="searchText">
       </label>
     </div>
+
+    <button class="button ion-funnel button-clear filtericon" ng-click="openPopover($event)"></button>
 
   <!--filter bar
   <div class="list card myactivitymain">

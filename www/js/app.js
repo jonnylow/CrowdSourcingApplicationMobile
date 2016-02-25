@@ -74,13 +74,20 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       }
     })
 
-    .state('tab.me', {
+    .state('me', {
       cache: false,
       url: '/me',
+      templateUrl: 'templates/me/me.html',
+      controller: "viewAccountController"
+    })
+
+    .state('tab.search', {
+      cache: false,
+      url: '/search/:filter/:activityIds',
       views: {
-        'tab-me': {
-          templateUrl: 'templates/me/me.html',
-          controller: "viewAccountController"
+        'tab-search': {
+          templateUrl: 'templates/search/search.html',
+          controller: "searchController"
         }
       }
     })
@@ -106,14 +113,6 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
         }
       }
     })
-
-    .state('search', {
-      cache: false,
-      url: '/search/:filter/:activityIds',
-      templateUrl: 'templates/search/search.html',
-      controller: "searchController"
-    })
-
 
     .state('resetPassword', {
       cache: false,

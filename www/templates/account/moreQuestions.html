@@ -11,7 +11,7 @@
     <div class="list card moreQuestions">
       What kind of voluntary activities interest you?
     </div>
-    <form ng-submit="verify(fields)">      
+    <form ng-submit="verify(fields)">
         <!--Area of Preferences 1-->
       <label class="item item-input item-stacked-label registration1" >
         <!--<font color="black" >Area of Preferences 1</font><br>-->
@@ -22,10 +22,10 @@
           <option value="Lead games/exercises">Lead games/exercises</option>
           <option value="Organise fund-raising activities">Organise fund raising activities</option>
           <option value="Organise publicity events">Organise publicity events</option>
-          <option value="Organize social activities">Organize social activities</option>         
-          <option value="Prepare publicity materials">Prepare publicity materials</option>          
-          <option value="Prepare tea/snacks">Prepare tea/snacks</option>          
-          <option value="Written translation for brochures">Written translation for brochures</option>         
+          <option value="Organize social activities">Organize social activities</option>
+          <option value="Prepare publicity materials">Prepare publicity materials</option>
+          <option value="Prepare tea/snacks">Prepare tea/snacks</option>
+          <option value="Written translation for brochures">Written translation for brochures</option>
         </select>
       </label>
 
@@ -39,42 +39,30 @@
           <option value="Lead games/exercises">Lead games/exercises</option>
           <option value="Organise fund-raising activities">Organise fund raising activities</option>
           <option value="Organise publicity events">Organise publicity events</option>
-          <option value="Organize social activities">Organize social activities</option>         
-          <option value="Prepare publicity materials">Prepare publicity materials</option>          
-          <option value="Prepare tea/snacks">Prepare tea/snacks</option>          
+          <option value="Organize social activities">Organize social activities</option>
+          <option value="Prepare publicity materials">Prepare publicity materials</option>
+          <option value="Prepare tea/snacks">Prepare tea/snacks</option>
           <option value="Written translation for brochures">Written translation for brochures</option>
         </select>
       </label>
 
-      <!--front nric
-
-      <div class="row" style="text-align:center;">
-      
-        <label class="ic front">
-          <div class="NRICbox">
-            <img class="frontic" id="frontic" src="" ng-show=!showFront height="100%" width="100%"><br>
-            <i class="icon ion-camera light morequestions" ng-show=showFront></i>
-            <h3 class="morequestions" ng-show=showFront>Front IC</h3>
-          
-          <button class="button button-light button-small NRICbutton1" type="button" ng-click="getPhotoFront()" ng-show=showFront>Add</button>
-          <button class="button button-light button-small NRICbutton1" type="button" ng-click="deletePhotoFront()" ng-show=!showFront >Delete</button>
+      <label class="item item-icon-left item-input registration">
+        <div class="iconcontainer">
+          <i class="icon ion-transgender dark "></i>
         </div>
-        </label>-->
-      
-      <!--back nric-->
-     
-     <!-- <label class="ic back">
-        <div class="NRICbox1">
-          <img id="backic" src="" ng-show=!showBack height="100%" width="100%" ><br>
-          <i class="icon ion-camera light morequestions" ng-show=showBack></i>
-            <h3 class="morequestions" ng-show=showBack>Back IC</h3>
-        
-        <button class="button button-light button-small NRICbutton" type="button" ng-click="getPhotoBack()" ng-show=showBack>Add</button>
-        <button class="button button-light button-small NRICbutton" type="button" ng-click="deletePhotoBack()" ng-show=!showBack>Delete</button>
-      </div>
+        <select class="dropdown register" ng-model="fields.gender">
+          <option value="" disabled selected >Gender*</option>
+          <option value="M">M</option>
+          <option value="F">F</option>
+        </select>
       </label>
 
-      </div>-->
+      <label class="item item-icon-left item-input registration">
+        <div class="iconcontainer">
+          <i class="icon ion-briefcase dark "></i>
+        </div>
+        <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
+      </label>
     <br>
 
     <div style="text-align: center; ">
@@ -89,7 +77,10 @@
       <button class="button button-energized paddedbutton">Next</button>
       </div>
     </div>
-
+      <p style="text-align: center;">
+        <a class="button button-dark otp" ng-click="skip()" style="color: #000;"><u>Skip
+        </u></a>
+      </p>
     </form>
   </ion-content>
 </ion-view>

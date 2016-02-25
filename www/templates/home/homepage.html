@@ -18,31 +18,28 @@
     </button>
   </div>-->
 </ion-content>
-<!-- Recommendation -->
   <div class="list card myactivitymain recommendation">
-    <div class="item item-divider home">
-      UPCOMING
-      <a class="home" ui-sref="recommended">See all</a>
-    </div>
 
-    <div class="item item-icon-left item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
-      <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
-      <div class="row">
-        <div class="col routecol"><h2 class="home">{{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
-          <table>
-            <tr>
-              <td><p class="myactivity">From</p></td>
-              <td><p class="myactivity"><b>{{activity.start}}</b></p></td>
-            </tr>
-            <tr>
-              <td><p class="myactivity">To</p></td>
-              <td><p class="myactivity"><b>{{activity.end}}</b></p></td>
-            </tr>
-          </table>
-        </div>
-      </div>
+
+    <div ng-if="totalVolunteers != ''">
+      <b>{{totalVolunteers}}</b> volunteers have contributed to a total of <b>{{totalTaskHours}}</b> hours!
     </div>
   </div>
 
+<!-- Recommendation
+  <div class="list card myactivitymain recommendation">
 
+
+    <div class="item item-icon-left item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
+      <div class="item item-divider home">
+        Urgent Activities
+        <a class="home" ui-sref="recommended">See all</a>
+      </div>
+
+      <div class="row">
+        <div class="col routecol"><h2 class="home">{{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>-->
 </ion-view>

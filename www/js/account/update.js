@@ -66,7 +66,7 @@ angular.module('crowdsourcing')
                                       type: 'button button-stable',
                                       onTap: function (e) {
                                         $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
-                                        $state.go('tab.me', {}, {reload: true});
+                                        $state.go('me', {}, {reload: true});
                                       }
                                     },
                                   ]

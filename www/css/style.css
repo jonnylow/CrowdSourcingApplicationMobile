@@ -111,8 +111,9 @@ left: 0;
 .button.button-float.animated.shake{
   background-color: #29A29C;
   border-radius: 7px;
-  margin-top: -1%;
   border:none;
+  position:relative;
+  margin-top: 0%;
 }
 
 button.button-positive.apply{
@@ -930,9 +931,18 @@ h2.home{
 .item.item-divider.home{
   padding-bottom: 8px;
   border: transparent;
-  background-color: #fff;
+  background-color: transparent;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+}
+
+h6.home.urgent{
+  font-size: 4.7vmin;
+  position:absolute;
+  left:-15%;
+  top:10%;
+  font-weight: bold;
+  color:#585858;
 }
 
 .item.item-text-wrap.home{
@@ -948,6 +958,10 @@ h2.home{
 a.home{
   float:right;
   color: #A6AAA9;
+  position: relative;
+  margin-top: -1%;
+  margin-right: -2%;
+  font-size: 4.7vmin;
 }
 
 div.row.routerow{
@@ -969,6 +983,12 @@ p.homep{
   padding-right: 5px;
 }
 
+h2.home.date{
+  position: absolute;
+  left:4%;
+  top:60%;
+}
+
 .popup-vertical-buttons button
 {
     min-width: 100%;
@@ -980,15 +1000,25 @@ p.homep{
 }
 
 .list.card.myactivitymain.recommendation{
-  bottom: 0%;
+  top:15%;
   position:absolute;
   width:95%;
+  height:10%;
+  background-color: #D8D8D8;
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+.list.card.myactivitymain.stat{
+  position:absolute;
+  bottom:0%;
 }
 
 .elderly-image{
   height:20%;
   width:20%;
-  margin-top: 35px;
+  position:relative;
+  margin-top: 30%;
 }
 
 h4.home{
@@ -998,6 +1028,7 @@ h4.home{
 h6.home-page{
   font-size: 1.5em;
   text-align: center;
+  position: relative;
 }
 /*end of home page*/
 

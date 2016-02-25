@@ -1,4 +1,4 @@
-angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgoogle-maps', 'jrCrop', 'CareRideAPI.config'])
+angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgoogle-maps', 'jrCrop', 'CareRideAPI.config', 'chart.js'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

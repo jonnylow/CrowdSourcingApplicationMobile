@@ -1,6 +1,20 @@
 angular.module('crowdsourcing')
 
     .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout, $ionicLoading, apiUrl) {
+    //define month array to use
+    var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
 
     if(window.localStorage.getItem("userLat") == null || window.localStorage.getItem("userLong") == null) {
       if (typeof cordova != 'undefined') {
@@ -97,10 +111,40 @@ angular.module('crowdsourcing')
       if(window.localStorage.getItem("token") != null)
       {
         url = apiUrl+"retrieveRecommendedTransportActivity?limit=1&token="+window.localStorage.getItem("token");
-        secondUrl = apiUrl+"getAllVolunteerContribution?token="+window.localStorage.getItem("token");
+        secondUrl = apiUrl+"graphInformation?token="+window.localStorage.getItem("token");
         $scope.totalVolunteers = "";
         $scope.totalTaskHours = "";
+        $http.get(secondUrl)
+          .success(function (data) {
+            if(data != null)
+            {
+              $scope.rank = data.rank;
+              $scope.totalhours = data.totalHours;
+              var d1 = new Date();
+              var d2 = new Date();
+              d2.setMonth(d2.getMonth()-1);
+              var d3 = new Date();
+              d3.setMonth(d3.getMonth()-2);
+              var d4 = new Date();
+              d4.setMonth(d4.getMonth()-3);
 
+              $scope.colours=[{fillColor:["#0000FF", "#00FF00", "#FF8000", "#FF0000"]}];
+              $scope.labels = [month[d4.getMonth()], month[d3 .getMonth()], month[d2.getMonth()], month[d1.getMonth()]];
+              $scope.data = [[data.fourMonthsAgo, data.threeMonthsAgo, data.twoMonthsAgo, data.oneMonthAgo]];
+              $scope.chartOptions = {
+                responsive : true,
+                tooltipTemplate: "<%= value %>",
+                tooltipFillColor: "rgba(0,0,0,0)",
+                tooltipFontColor: "#444",
+                tooltipEvents: [],
+                tooltipCaretSize: 0,
+                onAnimationComplete: function()
+                {
+                  this.showTooltip(this.datasets[0].bars, true);
+                }
+              };
+            }
+          })
       }
       else
       {

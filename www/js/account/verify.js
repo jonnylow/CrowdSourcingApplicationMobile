@@ -2,7 +2,6 @@ angular.module('crowdsourcing')
 
     .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading, $ionicHistory,apiUrl) {
     $scope.tempName = window.localStorage.getItem("tempName");
-    $scope.tempUsername = window.localStorage.getItem("tempUsername");
     $scope.tempEmail = window.localStorage.getItem("tempEmail");
     $scope.tempPassword = window.localStorage.getItem("tempPassword");
     $scope.tempContactNumber = window.localStorage.getItem("tempContactnumber");
@@ -68,7 +67,6 @@ angular.module('crowdsourcing')
                     window.localStorage.removeItem("tempPassword");
                     window.localStorage.removeItem("tempContactnumber");
                     window.localStorage.removeItem("tempDOB");
-                    window.localStorage.removeItem("tempUsername");
                     window.localStorage.removeItem("tempGender");
                     window.localStorage.removeItem("tempHaveCar");
                     window.localStorage.removeItem("tempOccupation");
@@ -77,7 +75,7 @@ angular.module('crowdsourcing')
 
 
                     var urlString = apiUrl+"addUserAccount?phone=" + $scope.tempContactNumber + "&name=" + $scope.tempName + "&email=" + $scope.tempEmail + "&password=" + $scope.tempPassword + "&dob=" + $scope.tempDOB
-                      + "&username=" + $scope.tempUsername + "&gender=" + $scope.tempGender + "&haveCar=" + $scope.tempHaveCar + "&preferences1=" + $scope.tempPreferences1
+                      + "&gender=" + $scope.tempGender + "&haveCar=" + $scope.tempHaveCar + "&preferences1=" + $scope.tempPreferences1
                       + "&preferences2=" + $scope.tempPreferences2 + "&occupation=" + $scope.tempOccupation + "&rank=4";
 
                     $http.get(urlString)
@@ -220,7 +218,6 @@ angular.module('crowdsourcing')
       window.localStorage.removeItem("tempPassword");
       window.localStorage.removeItem("tempContactnumber");
       window.localStorage.removeItem("tempDOB");
-      window.localStorage.removeItem("tempUsername");
       window.localStorage.removeItem("tempGender");
       window.localStorage.removeItem("tempHaveCar");
       window.localStorage.removeItem("tempOccupation");

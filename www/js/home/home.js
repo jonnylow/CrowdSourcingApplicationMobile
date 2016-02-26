@@ -111,6 +111,7 @@ angular.module('crowdsourcing')
       if(window.localStorage.getItem("token") != null)
       {
         url = apiUrl+"retrieveRecommendedTransportActivity?limit=1&token="+window.localStorage.getItem("token");
+        console.log(window.localStorage.getItem("token"));
         secondUrl = apiUrl+"graphInformation?token="+window.localStorage.getItem("token");
         $scope.totalVolunteers = "";
         $scope.totalTaskHours = "";
@@ -143,6 +144,42 @@ angular.module('crowdsourcing')
                   this.showTooltip(this.datasets[0].bars, true);
                 }
               };
+            }
+          })
+
+        var thirdUrl = apiUrl+"retrieveTransportByUser?id=" +window.localStorage.getItem("loginId")+"&type=1";
+
+        $http.get(thirdUrl)
+          .success(function (data) {
+            console.log(data);
+            var transportDetails = data;
+
+            if (transportDetails != null){
+              for(var i = 0; i<transportDetails.activities.length; i++){
+
+                if(transportDetails.activities[i].activity_id != null){
+                  var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
+                  var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                  var currentDate = new Date();
+
+                  if(currentDate.toDateString() == dateTime.toDateString())
+                  {
+                    // have to clear database task list
+                    console.log(transportDetails.task[i].activity_id);
+                    console.log(transportDetails.activities[i].departure_centre.name);
+                    //console.log(dateTime.toDateString());
+                    //Date equals today's date
+                    if(transportDetails.task[i].approval == "in-progress")
+                    {
+
+                    }
+                    else if(transportDetails.task[i].approval == "approved")
+                    {
+                      console.log(transportDetails.activities[i].departure_centre.name);
+                    }
+                  }
+                }
+              }
             }
           })
       }

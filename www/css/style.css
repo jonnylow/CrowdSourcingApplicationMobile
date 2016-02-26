@@ -328,12 +328,7 @@ i.icon{
   padding:5px;
 }
 
-i.icon.ion-heart.larger{
-  margin-right: 10px;
-  margin-left: 15px;
-  margin-top: -10px;
-  margin-bottom: -5px;
-}
+
 
 .item-checkbox{
   padding-top:6px;
@@ -624,6 +619,15 @@ button.button.button-block.button-calm.registration{
 
 select.dropdown.register{
   padding-left: 12px;
+}
+
+select.dropdown.update{
+  direction:rtl;
+  position: absolute;
+  width: 55%;
+  right:0px;
+  height: 52px;
+  font-size: 15px;
 }
 
 .icon.ion-eye-disabled.login{
@@ -1668,7 +1672,7 @@ div.row.me{
 /*manage account page*/
 
 .list.list-inset.update{
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 input.readonly.me{
@@ -1684,11 +1688,10 @@ input.readonly.me{
 b.account{
   margin-bottom:0px;
   margin-top: 0px;
-  margin-left: -5%;
-  margin-right: 2%;
   font-size: 4.5vmin;
   color:#8D8D8D;
   font-weight: normal;
+  margin-left:10%;
 }
 
 b.account.aop{
@@ -1703,12 +1706,10 @@ b.account.aop{
 
 label.item.item-input.update{
   background-color: transparent;
-  padding-right: 0px;
+  border-bottom: solid 1.5px #F1F3F5;
 }
 
-label.item.item-input.update input{
-  padding-right:0px;
-}
+
 
 select.aop{
   margin-top: 3%;
@@ -1730,10 +1731,14 @@ h3.me{
 }
 
 input.edit{
-  text-align: center;
-  background-color: #E4E4E4;
+  text-align: right;
   font-size: 4.5vmin;
-  width: 140px;
+  width: 100%;
+  max-width: 60%;
+  position:absolute;
+  right: 0px;
+  padding: 7px 10px 7px 0px;
+  height: 52px;
 }
 
 .list.list-inset.update input{
@@ -1861,6 +1866,22 @@ label.item.item-input.registration2{
   width:94%;
 }
 
+input.dobupdate{
+  font-size:inherit;
+  text-align: right;
+  position:absolute;
+  width:60%;
+  right:-50px;
+}
+
+h3.update{
+  font-size: 4.5vmin;
+  font-weight: bold;
+  margin-top: 6%;
+  margin-left: 6%;
+  color: #666;
+}
+
 /*end of manage account page*/
 
 /*change password page*/
@@ -1916,6 +1937,11 @@ select.search{
   width: 0;
   padding:0;
 }
+
+.list-inset.search{
+  margin-right:0px;
+  margin-top: 10px;
+}
 /*end of search pages*/
 
 /*Filter pages*/
@@ -1947,7 +1973,9 @@ select.search{
 
 .button.button-clear.filtericon{
   font-size: 170%;
-  padding-right: 8px;
+  margin: 10px 0px 0px 0px;
+  text-align: left;
+  padding-left:2px;
 }
 /*end of filter page*/
 

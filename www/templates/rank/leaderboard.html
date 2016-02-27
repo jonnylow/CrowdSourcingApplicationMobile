@@ -1,0 +1,28 @@
+<ion-view view-title="LeaderBoard"">
+<!--header bar-->
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content ng-show=!loadingshow>
+
+    <h2 class="rank">
+      <i class="ion-ribbon-a" ng-if="rank=='Bronze'" style="color: #B77B53; font-size: 150%"></i>
+      <i class="ion-ribbon-a" ng-if="rank=='Silver'" style="color: #817872; font-size: 150%"></i>
+      <i class="ion-ribbon-a" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 150%"></i>
+      <i class="ion-ribbon-a" ng-if="rank=='Platinum'" style="color: #7A7982; font-size: 150%"></i>
+      {{rank}}
+    </h2>
+    <h5 class="rank">Rank: {{pos}}</h3>
+    <h5 class="rank">Points: {{totalHours}}</h3>
+
+      <ion-list>
+        <ion-item ng-repeat="item in items">
+          Hello, {{item}}!
+        </ion-item>
+      </ion-list>
+
+  </ion-content>
+</ion-view>

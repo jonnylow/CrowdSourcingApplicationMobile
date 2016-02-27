@@ -131,7 +131,7 @@ angular.module('crowdsourcing')
               var d4 = new Date();
               d4.setMonth(d4.getMonth()-3);
 
-              $scope.colours=[{fillColor:["#0000FF", "#00FF00", "#FF8000", "#FF0000"]}];
+              $scope.colours=[{fillColor:["#99B898", "#4FECEAB", "#FF847C", "#E84A5F"]}];
               $scope.labels = [month[d4.getMonth()], month[d3 .getMonth()], month[d2.getMonth()], month[d1.getMonth()]];
               $scope.data = [[data.fourMonthsAgo, data.threeMonthsAgo, data.twoMonthsAgo, data.oneMonthAgo]];
               $scope.chartOptions = {

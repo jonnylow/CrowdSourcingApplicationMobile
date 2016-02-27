@@ -58,9 +58,77 @@ angular.module('crowdsourcing')
             var hasCar = fields.carChecked;
             var email = fields.email;
 
+            if(p1 == null)
+            {
+              p1 = '';
+            }
+            if(p2 == null)
+            {
+              p2 = '';
+            }
+            if(gender == null)
+            {
+              gender = '';
+            }
+            if(occupation == null)
+            {
+              occupation = '';
+            }
+
             if (validateName(name) == true) {
-                if(p1 != p2){
-                urlStringUpdate = apiUrl+"updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
+              if(p1 != '' || p2 != '')
+              {
+                if (p1 != p2) {
+                  urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
+
+                  $http.get(urlStringUpdate)
+                    .success(function (data) {
+                      var status = data;
+                      if (status != null) {
+                        $scope.loadingshow = false;
+                        $ionicLoading.hide();
+                        var alertPopup = $ionicPopup.alert({
+                          //title: '<b><h6 class="popups title">Status</h6></b>',
+                          title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
+                          scope: $scope,
+                          buttons: [
+                            {
+                              text: '<b>Ok</b>',
+                              type: 'button button-stable',
+                              onTap: function (e) {
+                                $state.go('me', {}, {reload: true});
+                              }
+                            },
+                          ]
+                        });
+                      }
+                    })
+
+                    .error(function (data) {
+                      alert("Error in connection");
+                    });
+                }
+                else {
+                  $scope.loadingshow = false;
+                  $ionicLoading.hide();
+
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Whoops!</h6>',
+                    subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-stable',
+
+                      },
+                    ]
+                  });
+                }
+              }
+              else
+              {
+                urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
                 $http.get(urlStringUpdate)
                   .success(function (data) {
@@ -88,24 +156,7 @@ angular.module('crowdsourcing')
                   .error(function (data) {
                     alert("Error in connection");
                   });
-                }
-                else {
-                  $scope.loadingshow = false;
-                  $ionicLoading.hide();
-
-                  var alertPopup = $ionicPopup.alert({
-                    title: '<h6 class="popups title">Whoops!</h6>',
-                    subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
-                    scope: $scope,
-                    buttons: [
-                      {
-                        text: '<b>Ok</b>',
-                        type: 'button button-stable',
-
-                      },
-                    ]
-                  });
-                }
+              }
             }
             else
             {

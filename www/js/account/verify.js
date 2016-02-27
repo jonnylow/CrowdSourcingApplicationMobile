@@ -53,7 +53,7 @@ angular.module('crowdsourcing')
         if(fields != null) {
 
 
-          if (fields.otp!= null && fields.otp.trim() != "")
+          if (fields.otp!= null)
           {
             $http.get(apiUrl+"checkEmail?email=" + $scope.tempEmail)
               .success(function (data) {

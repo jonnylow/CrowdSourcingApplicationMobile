@@ -233,6 +233,13 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "rankController"
     })
 
+    .state('viewLeaderboard', {
+      cache: false,
+      url: '/ranking',
+      templateUrl: 'templates/rank/leaderboard.html',
+      controller: "leaderboardController"
+    })
+
     .state('help', {
       cache: false,
       url: '/help',

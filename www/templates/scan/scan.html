@@ -14,7 +14,7 @@
     <div class="map-container">
         <ui-gmap-google-map center=center options='{"zoomControl": false, "mapTypeControl": false,"streetViewControl": false,"draggable": true,"optimized": true,"scrollwheel": false}' zoom=zoom events="map.markersEvents" data-tap-disabled="true">
           <ui-gmap-marker icon= '{url: "img/blue-dot.png" }' coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
-            <ui-gmap-window show="true">
+            <ui-gmap-window show="toShowCurrentLocation">
               <div>{{currentLocationMarker.window.title}}</div>
             </ui-gmap-window>
           </ui-gmap-marker>

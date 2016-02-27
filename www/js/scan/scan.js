@@ -24,6 +24,9 @@ angular.module('crowdsourcing')
         $scope.transportDateTimeStart=[];
         $scope.elderlyIntials=[];
 
+        //current location pop up
+        $scope.toShowCurrentLocation = true;
+
         //this array is use to track markers duplication. Is not in sync with the rest of the array above
         $scope.transportLocationFromLatLng=[];
         $scope.transportDistanceFromLatLng=[];
@@ -135,10 +138,6 @@ angular.module('crowdsourcing')
                       $scope.transportDateTimeStart.push(dateTime);
                       if(transportDetails.activities[i].elderly != null) {
                         $scope.elderlyIntials.push(getInitials(transportDetails.activities[i].elderly.name));
-                      }
-                      else
-                      {
-                        $scope.elderlyIntials.push("Not available");
                       }
 
                       //check if marker already exists (by checking with the markers array)
@@ -262,6 +261,7 @@ angular.module('crowdsourcing')
 
       $scope.focusNearbyIncrease = function()
       {
+        $scope.toShowCurrentLocation = false;
         //does the sorting of distance
         if(sorted ==false) {
           for (var i = 0; i < $scope.transportLocationFromLatLng.length; i++) {

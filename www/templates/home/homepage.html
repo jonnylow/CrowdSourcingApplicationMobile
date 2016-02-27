@@ -46,7 +46,7 @@
         <button class="button paddedbutton button-positive updatestatus" ng-click="updateStatus(inProgressId, InProgressStatus)"><p class="home">UPDATE STATUS</p></button>
       </div>
     </div>
-      
+
     </div>
   </div>
 
@@ -76,7 +76,7 @@
       <button class="button button-full button-positive joinus">Join Us Today!</button>
     </div>
 
-  <div class="list card myactivitymain stat" ng-if="totalVolunteers == ''" ng-show=!loadingshow>
+  <div class="list card myactivitymain stat" ng-if="totalVolunteers == '' && showUrgent == true" ng-show=!loadingshow>
     <div class="item item-text-wrap statuser">
       <b>Your Volunteering Hours </b>
 
@@ -88,5 +88,5 @@
     </div>
   </div>
 
-  
+
 </ion-view>

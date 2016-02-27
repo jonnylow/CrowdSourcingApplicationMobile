@@ -119,6 +119,10 @@ left: 0;
   background-color: #FF9800;
   opacity: 50% !important;
 }*/
+.button.joinus{
+  margin-bottom: 0px;
+}
+
 .button.button-float.animated.shake{
   background-color: #29A29C;
   border-radius: 7px;

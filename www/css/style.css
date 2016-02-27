@@ -1032,10 +1032,16 @@ p.homep{
   position:absolute;
   bottom:0%;
   text-align: center;
+  width: 100%;
+  margin:0;
 }
 
 .item.stat{
   font-size: 4.5vmin;
+}
+
+.item.statuser{
+  padding: 5px;
 }
 
 .elderly-image{
@@ -1674,6 +1680,12 @@ div.col.col-66.me{
   opacity: 50% !important;
 }
 
+.button.button-calm.password{
+  line-height: 35px;
+  min-height: 35px;
+  width: 100%;
+  font-size: 2.7vmin;
+}
 .ion-ribbon-a.me{
   vertical-align: middle;
 }
@@ -1687,6 +1699,17 @@ div.row.me{
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+p.me{
+  margin-bottom:0px;
+  margin-top: 0px;
+  font-size: 4.5vmin;
+  color:#8D8D8D;
+  font-weight: normal;
+  margin-left:20px;
+  padding: 5px;
+}
+
 /*end of profile page*/
 
 /*manage account page*/

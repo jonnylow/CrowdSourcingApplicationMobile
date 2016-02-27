@@ -75,9 +75,14 @@
     </div>
 
   <div class="list card myactivitymain stat" ng-if="totalVolunteers == ''" ng-show=!loadingshow>
-    <div class="item item-text-wrap stat">
-      <b>Your Volunteering Hours </b>(Rank: {{rank}})
-      <canvas id="bar" height="110" width="330" class="chart chart-bar" data="data" labels="labels" series="series" options="chartOptions" colours="colours"></canvas>
+    <div class="item item-text-wrap statuser">
+      <b>Your Volunteering Hours </b>
+
+       <p><i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 120%"></i>
+            <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 120%"></i>
+            <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 120%"></i>
+            <i class="ion-ribbon-a me" ng-if="rank=='Platinum'" style="color: #A6AAA9; font-size: 120%"></i>{{rank}} Volunteer</p>
+      <canvas id="bar" height="30%" width="100%" class="chart chart-bar" data="data" labels="labels" series="series" options="chartOptions" colours="colours"></canvas>
     </div>
   </div>
 

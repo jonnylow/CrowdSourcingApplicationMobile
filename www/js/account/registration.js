@@ -1,6 +1,8 @@
 angular.module('crowdsourcing')
 
-    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory, apiUrl) {
+    .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory, apiUrl, $ionicModal) {
+    $scope.orientation= [{}];
+
     if(window.localStorage.getItem("tempName") != null && window.localStorage.getItem("tempEmail") != null &&
       window.localStorage.getItem("tempPassword")!= null && window.localStorage.getItem("tempContactnumber")!= null &&
       window.localStorage.getItem("tempDOB")!= null && window.localStorage.getItem("tempHaveCar")!= null)
@@ -14,6 +16,18 @@ angular.module('crowdsourcing')
     }
     else
     {
+
+      //$scope.modal.show();
+      $ionicModal.fromTemplateUrl('templates/account/OrientationModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        focusFirstInput: true
+      }).then(function(modal) {
+        $scope.modal = modal;
+        $scope.modal.show();
+      });
+
+/*
       var myPopup = $ionicPopup.show({
         title: '<h6 class="popups title">Notice</h6>',
         subTitle: ' <br><h6 class="popups registration">Approved volunteers will have an orientation session with the Centre for Seniors (CFS). CFS will contact you shortly after registration</h6>',
@@ -40,7 +54,7 @@ angular.module('crowdsourcing')
 
           },
         ]
-      });
+      });*/
     }
 
       $scope.register = function(fields)
@@ -331,5 +345,34 @@ angular.module('crowdsourcing')
         disableAnimate: true
       });
       $state.go('tab.login');
+    }
+
+    $scope.hideModal = function()
+    {
+      $scope.modal.hide();
+      $state.go('login', {}, {reload: true});
+    }
+
+    $scope.proceedRegistration = function()
+    {
+      if($scope.orientation.checkBox != true)
+      {
+        var alertPopup = $ionicPopup.alert({
+          title: '<h6 class="popups title">Whoops!</h6>',
+          subTitle: '<br><h6 class="popups">Please read and check the box before proceeding</h6> ',
+          scope: $scope,
+          buttons: [
+            {
+              text: '<b>Ok</b>',
+              type: 'button button-stable',
+
+            },
+          ]
+        });
+      }
+      else
+      {
+        $scope.modal.hide();
+      }
     }
   });

@@ -22,6 +22,7 @@ angular.module('crowdsourcing')
         $scope.transportLocationFrom=[];
         $scope.transportLocationTo=[];
         $scope.transportDateTimeStart=[];
+        $scope.elderlyIntials=[];
 
         //this array is use to track markers duplication. Is not in sync with the rest of the array above
         $scope.transportLocationFromLatLng=[];
@@ -132,6 +133,13 @@ angular.module('crowdsourcing')
                       $scope.transportLocationTo.push(transportDetails.activities[i].arrival_centre.name);
                       $scope.transportName.push(transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name);
                       $scope.transportDateTimeStart.push(dateTime);
+                      if(transportDetails.activities[i].elderly != null) {
+                        $scope.elderlyIntials.push(getInitials(transportDetails.activities[i].elderly.name));
+                      }
+                      else
+                      {
+                        $scope.elderlyIntials.push("Not available");
+                      }
 
                       //check if marker already exists (by checking with the markers array)
                       //if exists skip this marker, if it is a new position, add this new marker
@@ -211,6 +219,7 @@ angular.module('crowdsourcing')
               distance: $scope.transportDistanceFromLatLng[i],
               time: $scope.transportTimeFromLatLng[i],
               location: $scope.transportLocationFromLatLng[i],
+              elderly: $scope.elderlyIntials[i],
               marker: $scope.markers[i]
             });
           }
@@ -260,6 +269,7 @@ angular.module('crowdsourcing')
               distance: $scope.transportDistanceFromLatLng[i],
               time: $scope.transportTimeFromLatLng[i],
               location: $scope.transportLocationFromLatLng[i],
+              elderly: $scope.elderlyIntials[i],
               marker: $scope.markers[i]
             });
           }
@@ -311,6 +321,7 @@ angular.module('crowdsourcing')
                     id: $scope.transportID[i],
                     from:$scope.transportLocationFrom[i],
                     to:$scope.transportLocationTo[i],
+                    elderly: $scope.elderlyIntials[i],
                     name: $scope.transportLocationFrom[i] + " - " + $scope.transportLocationTo[i],
                     date:date,
                     time:formatAMPM($scope.transportDateTimeStart[i]),
@@ -357,4 +368,15 @@ angular.module('crowdsourcing')
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
       }
+
+      function getInitials(string) {
+        var names = string.split(' '),
+          initials = names[0].substring(0, 1).toUpperCase();
+
+        if (names.length > 1) {
+          initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+        }
+        return initials;
+      }
+
     });

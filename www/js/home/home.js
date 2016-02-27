@@ -149,35 +149,39 @@ angular.module('crowdsourcing')
             }
           })
 
-        //check if there is activities happening today
-        $http.get(todayUrl)
+        $http.get(inProgressUrl)
           .success(function (data) {
             if(data != null)
             {
-              if(data.activityToReturn.length != 0)
+              if(data.activityToReturn != null)
               {
-                var t = data.activityToReturn[0].datetime_start.split(/[- :]/);
-                $scope.todayActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                $scope.todayId = data.activityToReturn[0].activity_id;
-                $scope.todayStatus = "New Task";
+                var t = data.activityToReturn.datetime_start.split(/[- :]/);
+                $scope.inProgressId = data.activityToReturn.activity_id;
+                $scope.InProgressActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                $scope.InProgressStatus = data.taskStatus;
                 $scope.showUrgent = false;
-                $scope.inProgress = false;
+                $scope.inProgress = true;
               }
               else
               {
-                //else get those in progress
-                $http.get(inProgressUrl)
+                //check if there is activities happening today
+                $http.get(todayUrl)
                   .success(function (data) {
                     if(data != null)
                     {
                       if(data.activityToReturn.length != 0)
                       {
-                        var t = data.activityToReturn.datetime_start.split(/[- :]/);
-                        $scope.inProgressId = data.activityToReturn.activity_id;
-                        $scope.InProgressActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                        $scope.InProgressStatus = data.taskStatus;
+                        var t = data.activityToReturn[0].datetime_start.split(/[- :]/);
+                        $scope.todayActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                        $scope.todayId = data.activityToReturn[0].activity_id;
+                        $scope.todayStatus = "New Task";
                         $scope.showUrgent = false;
-                        $scope.inProgress = true;
+                        $scope.inProgress = false;
+                      }
+                      else
+                      {
+                        $scope.showUrgent = true;
+                        $scope.inProgress = false;
                       }
                     }
                   })
@@ -281,6 +285,10 @@ angular.module('crowdsourcing')
       if(status == "New Task")
       {
         status = "pick-up";
+      }
+      else if(status == "pick-up")
+      {
+        status = "at check-up";
       }
       else if(status == "at check-up")
       {

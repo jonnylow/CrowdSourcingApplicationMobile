@@ -90,6 +90,17 @@ left: 0;
   margin-top: 0;
 }
 
+.button.button-positive {
+  border-color: #44788E;
+  background-color: #44788E;
+  color: #FFFFFF;
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+  border-color: #44788E;
+  background-color: #44788E;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+}
 /*.button-float{
   background-color: #29A29C !important;
   z-index: 12 !important;
@@ -153,6 +164,20 @@ button.home{
   height: 30px;
 }
 
+p.home{
+  font-size: 3.5vmin;
+  color: #fff;
+  font-weight: bold;
+}
+
+button.updatestatus{
+  line-height: 20px;
+  min-height: 70px;
+}
+
+.row.home{
+  margin-top: 2px;
+}
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
@@ -927,9 +952,10 @@ button.button.button-block.button-light.verify{
 
 h2.home{
   color: #164F86;
-  font-size: 0.95em;
+  font-size: 4vmin;
   font-weight: bold;
   text-align: left;
+  line-height: 20px;
 }
 
 .item.item-divider.home{
@@ -942,8 +968,6 @@ h2.home{
 
 h6.home.urgent{
   font-size: 4.7vmin;
-  position:absolute;
-  left:-15%;
   top:10%;
   font-weight: bold;
   color:#585858;
@@ -960,12 +984,10 @@ h6.home.urgent{
 }
 
 a.home{
-  float:right;
+  text-align: left;
   color: #A6AAA9;
-  position: relative;
-  margin-top: -1%;
-  margin-right: -2%;
   font-size: 4.7vmin;
+
 }
 
 div.row.routerow{
@@ -987,11 +1009,7 @@ p.homep{
   padding-right: 5px;
 }
 
-h2.home.date{
-  position: absolute;
-  left:4%;
-  top:60%;
-}
+
 
 .popup-vertical-buttons button
 {
@@ -1004,10 +1022,7 @@ h2.home.date{
 }
 
 .list.card.myactivitymain.recommendation{
-  top:15%;
-  position:absolute;
   width:95%;
-  height:10%;
   background-color: #D8D8D8;
   border-radius: 7px;
   box-shadow: none;
@@ -1016,13 +1031,18 @@ h2.home.date{
 .list.card.myactivitymain.stat{
   position:absolute;
   bottom:0%;
+  text-align: center;
+}
+
+.item.stat{
+  font-size: 4.5vmin;
 }
 
 .elderly-image{
   height:20%;
   width:20%;
   position:relative;
-  margin-top: 30%;
+  margin-top: 5%;
 }
 
 h4.home{

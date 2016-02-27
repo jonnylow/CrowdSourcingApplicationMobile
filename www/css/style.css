@@ -625,7 +625,7 @@ select.dropdown.update{
   direction:rtl;
   position: absolute;
   width: 55%;
-  right:0px;
+  right:7px;
   height: 52px;
   font-size: 15px;
 }
@@ -1871,7 +1871,6 @@ input.dobupdate{
   text-align: right;
   position:absolute;
   width:60%;
-  right:-50px;
 }
 
 h3.update{
@@ -1976,6 +1975,7 @@ select.search{
   margin: 10px 0px 0px 0px;
   text-align: left;
   padding-left:2px;
+  color:#666;
 }
 /*end of filter page*/
 

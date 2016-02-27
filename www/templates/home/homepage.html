@@ -31,7 +31,7 @@
   </div>
 
   <!--Recommendation-->
-  <div class="list card myactivitymain recommendation" ng-show=!loadingshow>
+  <div class="list card myactivitymain recommendation" ng-show=!loadingshow ng-if="showUrgent == true">
 
     <div class="item item-icon-left item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
       <div class="item item-divider home">
@@ -42,6 +42,36 @@
       <div class="row">
         <div class="col routecol"><h2 class="home date">{{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Today Activity (Approved)-->
+  <div class="list card myactivitymain recommendation" ng-show=!loadingshow ng-if="showUrgent == false && inProgress == false">
+
+    <div class="item item-icon-left item-text-wrap homemain">
+      <div class="item item-divider home">
+        <h6 class = "home urgent">UPCOMING ACTIVITY</h6>
+        <a class="home" ng-click="updateStatus(todayId, todayStatus)">Update Status</a>
+      </div>
+
+      <div class="row">
+        <div class="col routecol"><h2 class="home date">{{ todayActivityDate | date : "d MMM yyyy, h:mm a"}} <br>{{todayStatus}}</h2></div>
+      </div>
+    </div>
+  </div>
+
+  <!--In Progress (Approved)-->
+  <div class="list card myactivitymain recommendation" ng-show=!loadingshow ng-if="showUrgent == false && inProgress == true">
+
+    <div class="item item-icon-left item-text-wrap homemain">
+      <div class="item item-divider home">
+        <h6 class = "home urgent">CURRENT ACTIVITY</h6>
+        <a class="home" ng-click="updateStatus(inProgressId, InProgressStatus)">Update Status</a>
+      </div>
+
+      <div class="row">
+        <div class="col routecol"><h2 class="home date">{{ InProgressActivityDate | date : "d MMM yyyy, h:mm a"}} <br>{{InProgressStatus}}</h2></div>
       </div>
     </div>
   </div>

@@ -111,8 +111,10 @@ angular.module('crowdsourcing')
       if(window.localStorage.getItem("token") != null)
       {
         url = apiUrl+"retrieveRecommendedTransportActivity?limit=1&token="+window.localStorage.getItem("token");
-        console.log(window.localStorage.getItem("token"));
         secondUrl = apiUrl+"graphInformation?token="+window.localStorage.getItem("token");
+        var todayUrl = apiUrl+"todayActivity?token="+window.localStorage.getItem("token");
+        var inProgressUrl = apiUrl+"todayActivityInProgress?token="+window.localStorage.getItem("token");
+
         $scope.totalVolunteers = "";
         $scope.totalTaskHours = "";
         $http.get(secondUrl)
@@ -147,38 +149,38 @@ angular.module('crowdsourcing')
             }
           })
 
-        var thirdUrl = apiUrl+"retrieveTransportByUser?id=" +window.localStorage.getItem("loginId")+"&type=1";
-
-        $http.get(thirdUrl)
+        //check if there is activities happening today
+        $http.get(todayUrl)
           .success(function (data) {
-            console.log(data);
-            var transportDetails = data;
-
-            if (transportDetails != null){
-              for(var i = 0; i<transportDetails.activities.length; i++){
-
-                if(transportDetails.activities[i].activity_id != null){
-                  var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
-                  var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                  var currentDate = new Date();
-
-                  if(currentDate.toDateString() == dateTime.toDateString())
-                  {
-                    // have to clear database task list
-                    console.log(transportDetails.task[i].activity_id);
-                    console.log(transportDetails.activities[i].departure_centre.name);
-                    //console.log(dateTime.toDateString());
-                    //Date equals today's date
-                    if(transportDetails.task[i].approval == "in-progress")
+            if(data != null)
+            {
+              if(data.activityToReturn.length != 0)
+              {
+                var t = data.activityToReturn[0].datetime_start.split(/[- :]/);
+                $scope.todayActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                $scope.todayId = data.activityToReturn[0].activity_id;
+                $scope.todayStatus = "New Task";
+                $scope.showUrgent = false;
+                $scope.inProgress = false;
+              }
+              else
+              {
+                //else get those in progress
+                $http.get(inProgressUrl)
+                  .success(function (data) {
+                    if(data != null)
                     {
-
+                      if(data.activityToReturn.length != 0)
+                      {
+                        var t = data.activityToReturn.datetime_start.split(/[- :]/);
+                        $scope.inProgressId = data.activityToReturn.activity_id;
+                        $scope.InProgressActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                        $scope.InProgressStatus = data.taskStatus;
+                        $scope.showUrgent = false;
+                        $scope.inProgress = true;
+                      }
                     }
-                    else if(transportDetails.task[i].approval == "approved")
-                    {
-                      console.log(transportDetails.activities[i].departure_centre.name);
-                    }
-                  }
-                }
+                  })
               }
             }
           })
@@ -195,6 +197,8 @@ angular.module('crowdsourcing')
               $scope.totalTaskHours = data.totalTaskHours;
             }
           })
+        $scope.showUrgent = true;
+        $scope.inProgress = false;
       }
 
       $http.get(url)
@@ -272,4 +276,60 @@ angular.module('crowdsourcing')
         $state.go('activityDetails', {transportId: id, transportActivityName: name});
       }
 
+    $scope.updateStatus=function(id, status)
+    {
+      if(status == "New Task")
+      {
+        status = "pick-up";
+      }
+      else if(status == "at check-up")
+      {
+        status = "check-up completed";
+      }
+      else if(status == "check-up completed")
+      {
+        status = "completed";
+      }
+
+      var confirmPopup = $ionicPopup.confirm({
+        title: '<h6 class="popups title">Update Status?</h6>',
+        subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + status + "' ?</h6>",
+        okType:"button button-stable",
+        cancelType:"button button-stable registration"
+      });
+
+      confirmPopup.then(function(res) {
+        if(res) {
+          $scope.loadingshow = true;
+          $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
+
+          urlString = apiUrl+"updateActivityStatus?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+id+"&status="+status;
+
+          $http.get(urlString)
+            .success(function (data) {
+              var status = data;
+              if (status != null) {
+                $scope.loadingshow = false;
+                $ionicLoading.hide();
+
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Status</h6>',
+                  subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
+                  okType:"button button-stable"
+                });
+                //window.location.reload(true);
+                $state.go('tab.home', {}, {reload: true});
+              }
+            })
+
+            .error(function (data) {
+              alert("Error in connection");
+            });
+        }
+        else
+        {
+          $state.go('tab.home', {}, {reload: true});
+        }
+      });
+    }
     });

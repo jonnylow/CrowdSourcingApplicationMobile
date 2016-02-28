@@ -1,4 +1,4 @@
-<ion-view view-title="Update Account">
+<ion-view view-title="Edit Profile">
   <!--<ion-nav-bar class="bar-stable">
   <ion-nav-buttons side="left">
     <button class="button" ng-click="back()">Back</button>
@@ -35,7 +35,7 @@
              </span>
            </label>
          </div>-->
-         <h3 class="update">PERSONAL DETAILS</h3>
+         <h3 class="update">ACCOUNT DETAILS</h3>
          <div class="list list-inset update">
           <label class="item item-input update">
             <i class="icon ion-email larger" style="color:#8D8D8D;"></i>
@@ -54,7 +54,16 @@
             </span>
             <input class="edit" type="text" ng-model="fields.name" >
           </label>
-
+          <label class="item item-input update">
+            <span>
+              <b class="account">
+              <i class="icon ion-android-car larger" style="color:#8D8D8D;"></i></b>
+            </span>
+              <ion-checkbox class="checkbox registration"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
+          </label> 
+        </div>
+        <h3 class="update">MORE DETAILS</h3>
+        <div class="list list-inset update">
           <label class="item item-input update">
             <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -84,17 +93,10 @@
               Date Of Birth</b>
             </span>
             <input class="dobupdate" type="date" color="#ffffff" ng-model="fields.dob">
-          </label>   
-          <label class="item item-input update">
-            <span>
-              <b class="account">
-              <i class="icon ion-android-car larger" style="color:#8D8D8D;"></i></b>
-            </span>
-              <ion-checkbox class="checkbox registration"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
-          </label>                        
+          </label>                          
         </div>
 
-        <h3 class="me">MY PREFERRED VOLUNTARY TYPES</h3>
+        <h3 class="update">MY PREFERRED VOLUNTARY TYPES</h3>
          <div class="list list-inset update">
 
           <label class="item item-input update">
@@ -241,7 +243,7 @@
            </label>
          </div>-->
 
-         <button  class="button paddedbutton button-energized update">Update</button>
+         <button  class="button paddedbutton button-energized update">Done</button>
        </form>
        </ion-content>
      </ion-view>

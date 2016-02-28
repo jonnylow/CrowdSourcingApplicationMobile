@@ -656,7 +656,7 @@ select.dropdown.update{
   width: 55%;
   right:7px;
   height: 52px;
-  font-size: 15px;
+  font-size: 3.5vmin;
 }
 
 .icon.ion-eye-disabled.login{
@@ -1645,43 +1645,34 @@ div.list.profile{
   width:94%;
 }
 
-h2.me{
-  text-align: left;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 8vw;
-}
 
-h5.me{
-  font-size: 4.5vw;
-  text-align: center;
-  margin-top: 5px;
-  margin-right: 10px;
-  margin-bottom: 0px;
-  color: #666;
-}
 
 div.col.col-66.me{
   margin-left: 10px;
 }
 
 .button.me{
-  background-color: #164F86 !important;
+  background-color: #fff !important;
   z-index: 12 !important;
   position: relative !important;
   display: inline-block;
   margin: 2px;
-  min-width: 18vw;
-  min-height: 18vw;
+  min-width: 25vw;
+  min-height: 25vw;
   border-radius: 50% !important;
-  border-color: #164F86;
-  box-shadow:  0 2px 2px 0 rgba(0, 0, 0, 0.4)
+  border-color: #fff;
+  box-shadow:  0 2px 2px 0 rgba(0, 0, 0, 0.4);
 }
 
 .button.me:active{
   box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2) !important;
   background-color: #164F86;
   opacity: 50% !important;
+}
+
+.button.password{
+  margin-top: 10px;
+  min-height: 15px;
 }
 
 .button.button-calm.password{
@@ -1699,19 +1690,69 @@ div.row.me{
   padding-left: 30%;
 }
 
-.list.card.activityconfirmation.me{
-  margin-top: 0px;
+.list.card.me{
+  background: linear-gradient(#F6F3EC, #9CCECC);
+  box-shadow: none;
+  line-height:50%;
+  margin:0;
+  margin-bottom: 0%;
+  padding-top: 15%;
+  padding-bottom:12%;
+  text-align: center;
+}
+
+h2.me{
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 8vw;
+  margin-top: 10px;
+}
+
+h5.me{
+  font-size: 5vw;
+  margin-top: 5px;
+  margin-right: 10px;
   margin-bottom: 0px;
+  color: #666;
+  text-align: center
 }
 
 p.me{
   margin-bottom:0px;
   margin-top: 0px;
-  font-size: 4.5vmin;
-  color:#8D8D8D;
-  font-weight: normal;
-  margin-left:20px;
+  font-size: 4vmin;
+  color:#53585F;
   padding: 5px;
+  font-weight: normal;
+}
+
+.item.me{
+  border:none;
+  text-align: center;
+  padding: 0;
+}
+
+.item.update{
+  border:none;
+  text-align: left;
+  padding: 0;
+}
+
+.button.gotoedit{
+  border-color: #E7E9EB;
+  border-width:0.25px;
+  margin-bottom: 0;
+  text-align: left;
+  color: #999;
+}
+
+.button.gotoedit2{
+  border-top:none;
+  border-color: #E7E9EB;
+  border-width:0.25px;
+  margin-bottom: 0;
+  text-align: left;
+  color: #999;
 }
 
 /*end of profile page*/
@@ -1735,7 +1776,7 @@ input.readonly.me{
 b.account{
   margin-bottom:0px;
   margin-top: 0px;
-  font-size: 4.5vmin;
+  font-size: 4vmin;
   color:#8D8D8D;
   font-weight: normal;
   margin-left:10%;
@@ -1749,11 +1790,6 @@ b.account.aop{
   font-size: 4.5vmin;
   color:#8D8D8D;
   font-weight: normal;
-}
-
-label.item.item-input.update{
-  background-color: transparent;
-  border-bottom: solid 1.5px #F1F3F5;
 }
 
 
@@ -1779,7 +1815,7 @@ h3.me{
 
 input.edit{
   text-align: right;
-  font-size: 4.5vmin;
+  font-size: 3.5vmin;
   width: 100%;
   max-width: 60%;
   position:absolute;
@@ -1914,14 +1950,14 @@ label.item.item-input.registration2{
 }
 
 input.dobupdate{
-  font-size:inherit;
+  font-size:3.5vmin;
   text-align: right;
   position:absolute;
   width:60%;
 }
 
 h3.update{
-  font-size: 4.5vmin;
+  font-size: 4vmin;
   font-weight: bold;
   margin-top: 6%;
   margin-left: 6%;

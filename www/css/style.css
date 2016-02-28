@@ -1952,8 +1952,8 @@ label.item.item-input.registration2{
 input.dobupdate{
   font-size:3.5vmin;
   text-align: right;
-  position:absolute;
-  width:60%;
+  width:63%;
+  height:29px;
 }
 
 h3.update{

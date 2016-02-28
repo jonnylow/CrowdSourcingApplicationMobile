@@ -9,7 +9,7 @@
 
 
   <div class="list card me" ng-click="goRank()">
-      <button class="button me"> 
+      <button class="button me">
       <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 350%"></i>
       <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 350%"></i>
       <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 350%"></i>
@@ -17,7 +17,7 @@
     <!--<h5 class="me" ng-click="goRank()">{{rank}} Volunteer
     </h5>-->
     <h2 class="me">{{username}}</h2>
- 
+
   <!--<div class="item">
       Name: {{username}}
   </div>
@@ -95,6 +95,38 @@
       <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit" ng-click="manageAccount()" ui-sref="manageAccount">Edit Profile</button>
 
       <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit2" ui-sref="updateAccount">Change Password</button>
+
+    <div class="list card myactivitymain">
+      <div class="item rankheader">
+        <p class="rank">Total Accumulation</p>
+      </div>
+      <div class="item rankbody">
+        <div class="row">
+          <div class="col col-50 rankfirst">
+            <h2 class="rankbody"><b>{{hoursCompleted}}</b> points</h2>
+          </div>
+          <div class="col col-50 ranksecond">
+            <h2 class="rankbody"><b>{{hoursCompleted}}</b> Hours <b>{{minsCompleted}}</b>  Mins</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list card myactivitymain">
+      <div class="item rankheader">
+        <p class="rank">Activities Record</p>
+      </div>
+      <div class="item rankbody">
+        <div class="row">
+          <div class="col col-50 rankfirst">
+            <h2 class="rankbody"><b>{{completed}}</b> Completed</h2>
+          </div>
+          <div class="col col-50 ranksecond">
+            <h2 class="rankbody"><b>{{withdrawn}}</b> Withdrawn</h2>
+          </div>
+        </div>
+      </div>
+    </div>
 
     </label>
   </ion-content>

@@ -2165,36 +2165,59 @@ textarea.feedback{
 }
 /* end of feedback page*/
 
-/**survey page REMOVE AFTER SURVEY**/
-.bar.bar-stable{
-  background-color: #003366;
+/*leaderboard*/
+
+.list.card.leaderboard{
+  background-color: #44788E;
+  box-shadow: none;
+  margin:0;
+  padding-top:5%;
 }
 
-.bar.bar-stable .title{
+p.leaderboard{
+  color:#fff;
+  font-size:4vmin;
+  text-align: center;
+  font-weight: 200;
+}
+
+p.leaderboardmain{
+  color:#fff;
+  font-size:4.5vmin;
+  text-align: center;
+  font-weight: 200;
+  margin-bottom:7px;
+}
+h5.leaderboard{
+  color:#fff;
+  font-size:6vmin;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2.leaderboard{
   color: #fff;
+  text-align: center;
+  font-size:7vmin;
+  margin-top:0px;
+  font-weight: bold;
 }
 
-.button.survey{
-  margin-top: 10%;
-  background-color: #003366;
+.list.card.leaderboardtop{
+  box-shadow: none;
+  margin:0;
 }
 
-select.dropdown.survey{
-    border: 1px solid rgb(166, 166, 166);
+ion-item.leaderboardtop{
+  height:42px;
 }
 
-.modal-backdrop-bg {
-  transition: opacity 300ms ease-in-out;
-  -webkit-transition: opacity 300ms ease-in-out;
-  background-color: #000;
-  opacity: 0;
+.col.col-20.leaderboard{
+  text-align: right;
 }
 
-.active .modal-backdrop-bg {
-  opacity: 0.6;
+h4.leaderboard{
+  color:#000;
+  margin-bottom: 10px;
 }
-
-h5.survey{
-  font-size: 14px;
-  color: #666;
-}
+/*end of leaderboard page*/

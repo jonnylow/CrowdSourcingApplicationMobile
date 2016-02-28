@@ -8,16 +8,15 @@
   <ion-content style="background-color:#F1F3F5;" has-header="true">
   <center>
     <div class = "list orientation">
-    Approved volunteers will have an orientation session with the Centre for Seniors (CFS). CFS will contact you shortly after registration
+    You will be required to attend an orientation session with Centre for Seniors (CFS) before your account can be approved. CFS will contact you shortly after registration.
     </div></center>
-    
-    <div class = "list checkbox">
-      I Agree
-    </div>
-      <label class="checkbox">
+
+      <!--<label class="checkbox">
         <input class="checkbox" type="checkbox" ng-model="orientation.checkBox" required="required">
-      </label>
-    
+      </label>-->
+      <div class ="orientation checkbox">
+        <ion-checkbox class="checkbox" ng-model="orientation.checkBox" required="required">I Agree</ion-checkbox>
+      </div>
     <button class="button button-block button-energized paddedbutton" ng-click="proceedRegistration()">Proceed</button>
   </ion-content>
 </div>

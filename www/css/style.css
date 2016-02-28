@@ -722,24 +722,10 @@ select.dropdown.update{
   text-align: justify;
 }
 
-.list.checkbox{
-  margin-top: 10%;
-  margin-left: 35%;
-  font-size: 4.5vmin;
-
-}
-
-label.checkbox.orientation{
+.orientation.checkbox{
+  margin-left: 30%;
   margin-top: 5%;
 }
-
-input.checkbox{
-  width:45px;
-  height:45px;
-  position: absolute;
-  top:-100%;
-}
-
 
 /*end of login and registration page*/
 

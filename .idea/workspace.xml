@@ -34,21 +34,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leaderboard.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="leaderboard.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/templates/rank/leaderboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="595">
-              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.57223004" vertical-offset="0" max-vertical-offset="713">
+              <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leaderboard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="leaderboard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/rank/leaderboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.10419486" vertical-offset="247" max-vertical-offset="986">
-              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -107,9 +107,9 @@
         <option value="$PROJECT_DIR$/www/js/activity/myactivity.js" />
         <option value="$PROJECT_DIR$/www/js/home/home.js" />
         <option value="$PROJECT_DIR$/www/templates/home/homepage.html" />
+        <option value="$PROJECT_DIR$/www/js/me/view.js" />
         <option value="$PROJECT_DIR$/www/templates/rank/leaderboard.html" />
         <option value="$PROJECT_DIR$/www/js/rank/leaderboard.js" />
-        <option value="$PROJECT_DIR$/www/js/me/view.js" />
       </list>
     </option>
   </component>
@@ -765,7 +765,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1209,18 +1209,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/rank/leaderboard.html">
+    <entry file="file://$PROJECT_DIR$/www/js/rank/leaderboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="595">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/rank/leaderboard.js">
+    <entry file="file://$PROJECT_DIR$/www/templates/rank/leaderboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10419486" vertical-offset="247" max-vertical-offset="986">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.57223004" vertical-offset="0" max-vertical-offset="713">
+          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
           <folding />
         </state>
       </provider>

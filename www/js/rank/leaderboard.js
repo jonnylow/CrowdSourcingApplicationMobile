@@ -24,7 +24,6 @@ angular.module('crowdsourcing')
         ]
       });
     }
-
     $http.get(apiUrl+"volunteerLeaderboard?token="+window.localStorage.getItem("token"))
       .success(function (data) {
         if(data != null)
@@ -32,15 +31,24 @@ angular.module('crowdsourcing')
           $scope.volunteersArray=[];
           $scope.pos = data.pos;
           $scope.rank = data.rank;
-          $scope.totalHours = data.totalHours;
+          $scope.totalMinutes = Math.floor(data.totalMinutes/60);
 
-          for(var i = 0; i<data.returnArray.length; i++)
+          var toRun = 0;
+          if(data.returnArray.length <=10)
+          {
+            toRun = data.returnArray.length;
+          }
+          else
+          {
+            toRun = 10;
+          }
+          for(var i = 0; i<toRun; i++)
           {
             var info = data.returnArray[i].split(",");
 
             $scope.volunteersArray.push({
-              name: info[0],
-              mins: Math.floor(info[1]/60),
+              name: info[1],
+              mins: Math.floor(info[0]/60),
               pos: info[2]
             });
           }

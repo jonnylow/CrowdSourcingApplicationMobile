@@ -553,16 +553,16 @@ label.item.item-input.registration.dob,
 
 
 
-  .platform-android .label-text {
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
-    max-width: 100%;
-    padding: 3px 5px;
-    color: #ccc;
-    overflow:hidden;
-    text-overflow: ellipsis;
-  }
+.platform-android .label-text {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 2% 2%;
+  color: #ccc;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
 
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
@@ -571,7 +571,7 @@ label.item.item-input.registration.dob,
     display: block;
     box-sizing: border-box;
     max-width: 100%;
-    padding: 3px 5px;
+    padding: 2% 2%;
     color: #ccc;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -588,7 +588,7 @@ label.item.item-input.registration.dob,
     display: block;
     box-sizing: border-box;
     max-width: 100%;
-    padding: 3px 5px;
+    padding: 2% 2%;
     color: #ccc;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -646,9 +646,6 @@ button.button.button-block.button-calm.registration{
   margin-bottom: -40px;
 }
 
-select.dropdown.register{
-  padding-left: 12px;
-}
 
 select.dropdown.update{
   direction:rtl;
@@ -718,6 +715,30 @@ select.dropdown.update{
   color: #ABABAB;
 }
 
+.list.orientation{
+  margin-top: 20%;
+  max-width: 90%;
+  font-size: 4.5vmin;
+  text-align: justify;
+}
+
+.list.checkbox{
+  margin-top: 10%;
+  margin-left: 35%;
+  font-size: 4.5vmin;
+
+}
+
+label.checkbox.orientation{
+  margin-top: 5%;
+}
+
+input.checkbox{
+  width:45px;
+  height:45px;
+  position: absolute;
+  top:-100%;
+}
 
 
 /*end of login and registration page*/
@@ -866,8 +887,33 @@ h3.morequestions{
   background-color: transparent;
   box-shadow: 0 0 0 0;
   margin-left: 8px;
-  font-size: 16px;
+  font-size: 4.5vmin;
   margin-bottom: 0px;
+}
+
+.list.card.moreQuestions1{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-left: 8px;
+  font-size: 4.5vmin;
+  margin-bottom: 0px;
+  margin-top: 3%;
+}
+
+.item.item-input.gender{
+  margin-left: -3%;
+  width:100%;
+}
+
+select.dropdown.register{
+  padding-left: 12px;
+  height:40px;
+}
+
+.item.item-input.occupation{
+  background-color: #fff;
+  width:95%;
+  margin-left: 2%;
 }
 
 
@@ -884,7 +930,6 @@ h4.verify{
   font-size: 17px;
   text-align: center;
   margin-bottom: -10px;
-  margin-top: 50px;
 }
 
 h4.verify1{
@@ -896,11 +941,11 @@ h4.verify1{
 }
 
 input.otp{
-  max-width:150%;
-  margin: -5;
+  max-width:60%;
   opacity: 0.6;
   text-align: left;
   padding:0px;
+  box-shadow: 1px 1px  #888;
 }
 
 div.box{

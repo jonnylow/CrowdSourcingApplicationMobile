@@ -46,10 +46,11 @@
         </select>
       </label>
 
-      <label class="item item-icon-left item-input registration">
-        <div class="iconcontainer">
-          <i class="icon ion-transgender dark "></i>
-        </div>
+      <div class="list card moreQuestions1">
+      Gender
+      </div>
+      <label class="item item-input gender">
+        
         <select class="dropdown register" ng-model="fields.gender">
           <option value="" disabled selected >Gender*</option>
           <option value="M">M</option>
@@ -57,10 +58,11 @@
         </select>
       </label>
 
-      <label class="item item-icon-left item-input registration">
-        <div class="iconcontainer">
-          <i class="icon ion-briefcase dark "></i>
-        </div>
+      <div class="list card moreQuestions1">
+      Occupation
+    </div>
+      <label class="item item-input occupation">
+        
         <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
       </label>
     <br>
@@ -68,7 +70,10 @@
     <div style="text-align: center; ">
      <img src="img/steps002.png" class = "page-image"/>
     </div>
-
+    <p style="text-align: center;">
+        <a class="button button-dark otp" ng-click="skip()" style="color: #000;"><u>Skip
+        </u></a>
+      </p>
     <div class="row">
       <div class="col 50">
          <button ui-sref="registration" class="button button-light paddedbutton">Back</button>
@@ -77,10 +82,7 @@
       <button class="button button-energized paddedbutton">Next</button>
       </div>
     </div>
-      <p style="text-align: center;">
-        <a class="button button-dark otp" ng-click="skip()" style="color: #000;"><u>Skip
-        </u></a>
-      </p>
+      
     </form>
   </ion-content>
 </ion-view>

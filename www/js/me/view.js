@@ -8,6 +8,7 @@ angular.module('crowdsourcing')
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       }
       else {
+        $scope.loadingshow = true;
         var myPopup = $ionicPopup.show({
           title: '<h6 class="popups title">Who are you?</h6>',
           subTitle: '<br><h6 class="popups">Login to access this content</h6>',

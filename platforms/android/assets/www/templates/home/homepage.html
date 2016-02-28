@@ -1,6 +1,55 @@
 <ion-view>
   <!--body-->
   <ion-content ng-show=!loadingshow>
+    <!--Recommendation-->
+  <div class="list card myactivitymain recommendation" ng-show=!loadingshow ng-if="showUrgent == true">
+
+    <div class="item item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
+        <div class="row home">
+          <div class="col col-80">
+            <h6 class = "home urgent">URGENT ACTIVITIES</h6>
+            <h2 class="home">{{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+          </div>
+          <div class="col col-20">
+            <a class="home" ui-sref="recommended">See All</a>
+          </div>
+        </div>
+  </div>
+</div>
+
+    <!--Today Activity (Approved)-->
+  <div class="list card myactivitymain recommendation" ng-show=!loadingshow ng-if="showUrgent == false && inProgress == false">
+
+    <div class="item item-text-wrap homemain">
+        <div class="row home">
+        <div class="col col-66">
+          <h6 class = "home urgent">UPCOMING ACTIVITY</h6>
+          <h2 class="home">{{ todayActivityDate | date : "d MMM yyyy, h:mm a"}} <br>{{todayStatus}}</h2>
+        </div>
+      <div class="col col-33">
+        <button class="button paddedbutton button-positive updatestatus" ng-click="updateStatus(todayId, todayStatus)"><p class="home">UPDATE STATUS</p></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--In Progress (Approved)-->
+  <div class="list card myactivitymain recommendation" ng-show=!loadingshow ng-if="showUrgent == false && inProgress == true">
+
+    <div class="item item-text-wrap homemain">
+      <div class="row home">
+        <div class="col col-66">
+          <h6 class = "home urgent">CURRENT ACTIVITY</h6>
+          <h2 class="home">{{ InProgressActivityDate | date : "d MMM yyyy, h:mm a"}} <br>{{InProgressStatus}}</h2>
+        </div>
+      <div class="col col-33">
+        <button class="button paddedbutton button-positive updatestatus" ng-click="updateStatus(inProgressId, InProgressStatus)"><p class="home">UPDATE STATUS</p></button>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
   <center><img src="img/elderly.png" class="elderly-image"></center>
   <h6 class="home-page"> Accompany an elderly today!</h6>
 
@@ -17,30 +66,25 @@
       <h1 style="color: white">Scan</h1>
     </button>
   </div>-->
-</ion-content>
-<!-- Recommendation -->
-  <div class="list card myactivitymain recommendation">
-    <div class="item item-divider home">
-      UPCOMING
-      <a class="home" ui-sref="recommended">See all</a>
+  </ion-content>
+
+    <div class="list card myactivitymain stat" ng-if="totalVolunteers != ''">
+      <div class="item item-text-wrap stat">
+        <b>{{totalVolunteers}}</b> volunteers have contributed to a total of <b>{{totalTaskHours}}</b> hours!
+
+      </div>
+      <button class="button button-full button-positive joinus">Join Us Today!</button>
     </div>
 
-    <div class="item item-icon-left item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
-      <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
-      <div class="row">
-        <div class="col routecol"><h2 class="home">{{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
-          <table>
-            <tr>
-              <td><p class="myactivity">From</p></td>
-              <td><p class="myactivity"><b>{{activity.start}}</b></p></td>
-            </tr>
-            <tr>
-              <td><p class="myactivity">To</p></td>
-              <td><p class="myactivity"><b>{{activity.end}}</b></p></td>
-            </tr>
-          </table>
-        </div>
-      </div>
+  <div class="list card myactivitymain stat" ng-if="totalVolunteers == '' && showUrgent == true" ng-show=!loadingshow>
+    <div class="item item-text-wrap statuser">
+      <b>Your Volunteering Hours </b>
+
+       <p><i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 120%"></i>
+            <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 120%"></i>
+            <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 120%"></i>
+            <i class="ion-ribbon-a me" ng-if="rank=='Platinum'" style="color: #A6AAA9; font-size: 120%"></i>{{rank}} Volunteer</p>
+      <canvas id="bar" height="30%" width="100%" class="chart chart-bar" data="data" labels="labels" series="series" options="chartOptions" colours="colours"></canvas>
     </div>
   </div>
 

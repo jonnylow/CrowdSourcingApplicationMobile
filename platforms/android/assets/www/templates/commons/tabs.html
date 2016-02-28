@@ -13,8 +13,8 @@ navigation history that also transitions its views in and out.
   <div class="button-bar">
     <a class="button button-icon"></a>
 
-    <button class="button button-icon ion-information-circled" ui-sref="#" style="font-size:50%"></button>
-    <button class="button button-icon ion-search" ui-sref="search"></button>
+    <button class="button button-icon ion-trophy" ui-sref="viewLeaderboard" style="font-size:50%"></button>
+    <button class="button button-icon ion-person" ui-sref="me"></button>
     <button class="button button-icon ion-more" ng-click="openPopover($event)"></button>
     </div>
 </ion-header-bar>
@@ -26,12 +26,15 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-home"></ion-nav-view>
   </ion-tab>
 
+  <ion-tab title="Explore" ui-sref="tab.search">
+    <ion-nav-view name="tab-search"></ion-nav-view>
+  </ion-tab>
+<!--
+  <ion-tab title="Me" ui-sref="tab.me">
+    <ion-nav-view name="tab-me"></ion-nav-view>
+  </ion-tab>-->
+
   <ion-tab title="My Activity" ui-sref="tab.activity">
     <ion-nav-view name="tab-activity"></ion-nav-view>
   </ion-tab>
-
-  <ion-tab title="Me" ui-sref="tab.me">
-    <ion-nav-view name="tab-me"></ion-nav-view>
-  </ion-tab>
-
 </ion-tabs>

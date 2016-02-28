@@ -1,4 +1,10 @@
-<ion-view view-title="View Account">
+<ion-view view-title="My Account Details">
+  <ion-nav-bar class="bar bar-header bar-positive">
+    <ion-nav-buttons>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
   <ion-content padding="false" ng-show=!loadingshow>
 
 
@@ -8,7 +14,7 @@
     <div class="row">
       <div class="col col-66 me">
         <div class="row">
-         {{username}} 
+         {{username}}
         </div>
         <div class="row">
           <h5 class="me" ng-click="goRank()">
@@ -19,13 +25,13 @@
       <div class="col col-33 me">
         <div class="row me">
           <button class="button me">
-            <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 250%"></i> 
-            <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 250%"></i> 
-            <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 250%"></i> 
+            <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 250%"></i>
+            <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 250%"></i>
+            <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 250%"></i>
             <i class="ion-ribbon-a me" ng-if="rank=='Platinum'" style="color: #A6AAA9; font-size: 250%"></i>
           </button>
         </div>
-      </div>      
+      </div>
     </div>
   </h2>
 </div>
@@ -38,14 +44,43 @@
   <div class="item">
     <font weight="bold">NRIC:</font> {{nric}}
   </div>-->
-
-    <div class="item">
-      Email: {{email}}
-    </div>
-
-    <div class="item">
-      Contact Number: {{contactnumber}}
-    </div>
+    <label class="item item-input update">
+      <div class="row">
+        <div class="col col-10">
+          <i class="icon ion-email larger" style="color:#8D8D8D;"></i>
+        </div>
+        <div class="col col-90">
+            <p class="me">
+            {{email}}</p>
+        </div>
+      </div>
+    </label>
+    <label class="item item-input update">
+      <div class="row">
+        <div class="col col-10">
+          <i class="icon ion-ios-telephone larger" style="color:#8D8D8D;"></i>
+        </div>
+        <div class="col col-90">
+            <p class="me">
+            {{contactnumber}}</p>
+        </div>
+      </div>
+    </label>
+    <label class="item item-input update item-button-right">
+      <div class="row">
+        <div class="col col-10">
+          <i class="icon ion-locked larger" style="color:#8D8D8D;"></i>
+        </div>
+        <div class="col">
+            <p class="me">
+            *******</p>
+        </div>
+        <div class="col col-33">
+            <button class="button button-calm password" ui-sref="updateAccount">Change Password</button>
+        </div>   
+      </div>
+    </label>
+  </div>
 
     <!--<div class="item">
       Date Of Birth: {{dob}}
@@ -67,13 +102,8 @@
       Preference 2: {{preference2}}
     </div>-->
 
-    <div class="item item-button-right">
-      Password: **** ****
-      <button class="button button-calm" ui-sref="updateAccount"><font size=3px style="font-weight:bold;">Change</font></button>
-    </div>
-  </div>
 
-      <button class="button paddedbutton button-energized" ng-click="manageAccount()" ui-sref="manageAccount">Manage Account</button>
+      <button class="button paddedbutton button-energized" ng-click="manageAccount()" ui-sref="manageAccount">Edit Account Details</button>
     </label>
   </ion-content>
 </ion-view>

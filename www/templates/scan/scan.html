@@ -12,8 +12,8 @@
   <ion-content scroll='false'>
 
     <div class="map-container">
-        <ui-gmap-google-map center=center options='{"zoomControl": false, "mapTypeControl": false,"streetViewControl": false,"draggable": true,"optimized": true,"scrollwheel": false}' zoom=zoom events="map.markersEvents" data-tap-disabled="true">
-          <ui-gmap-marker icon= '{url: "img/blue-dot.png" }' coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
+        <ui-gmap-google-map center=center options='{"zoomControl": false, "mapTypeControl": true,"streetViewControl": false,"draggable": true,"optimized": true,"scrollwheel": false}' zoom=zoom events="map.markersEvents" data-tap-disabled="true">
+          <ui-gmap-marker coords=currentLocationMarker.coords idkey=currentLocationMarker.id>
             <ui-gmap-window show="toShowCurrentLocation">
               <div>{{currentLocationMarker.window.title}}</div>
             </ui-gmap-window>
@@ -21,7 +21,7 @@
 
           <ui-gmap-circle ng-repeat="c in circles track by c.id" center="c.center" stroke="c.stroke" fill="c.fill"
                           visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
-          <ui-gmap-marker ng-repeat="loc in markers track by $index" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title, $index)">
+          <ui-gmap-marker icon= loc.icon ng-repeat="loc in markers track by $index" coords=loc.coords idkey=loc.id click="displayItems(loc.window.title, $index)">
             <ui-gmap-window show="markersStatus[$index]">
               <div>{{loc.window.title}}</div>
             </ui-gmap-window>

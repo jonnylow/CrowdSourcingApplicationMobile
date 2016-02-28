@@ -1,0 +1,18 @@
+<div class="modal">
+
+  <div class="bar bar-header listmodal">
+    <a class="icon ion-close-round light" ng-click="hideModal()"></a>
+    <h6 class="title listmodal">Orientation Session Notice</h1>
+  </div>
+
+  <ion-content style="background-color:#F1F3F5;" has-header="true">
+    <br><br><br>
+    Approved volunteers will have an orientation session with the Centre for Seniors (CFS). CFS will contact you shortly after registration
+    <br><br>
+    I Agree
+    <label class="checkbox">
+      <input type="checkbox" ng-model="orientation.checkBox" required="required">
+    </label>
+    <button class="button button-block button-energized paddedbutton" ng-click="proceedRegistration()">Proceed</button>
+  </ion-content>
+</div>

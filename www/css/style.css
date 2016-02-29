@@ -517,6 +517,7 @@ label.item.item-input.registration{
   border-right:none;
   border-left:none;
   border-bottom:none;
+  font-size: 4vmin;
 }
 
 label.item.item-input.registration.dob{
@@ -544,6 +545,7 @@ label.item.item-input.registration.dob,
     margin: 0;
     background: none;
     font: inherit;
+    font-size: 4vmin;
   }
 
   label.item.item-input.registration.dob > input:focus {
@@ -551,7 +553,12 @@ label.item.item-input.registration.dob,
     border-color: #ccf;
   }
 
-
+  h6.registration.dob{
+    color:#B0B0B0;
+    font-size: 4vmin;
+    font-weight: normal;
+    margin-top: 3%;
+  }
 
 .platform-android .label-text {
   position: absolute;
@@ -606,6 +613,7 @@ span.input-label.dob{
 
 input.registration{
   margin-left: 10px;
+  font-size: 4vmin;
 }
 
 h1.title.registration{
@@ -715,16 +723,19 @@ select.dropdown.update{
   color: #ABABAB;
 }
 
-.list.orientation{
+.list.card.orientation{
   margin-top: 20%;
   max-width: 90%;
-  font-size: 4.5vmin;
+  background-color: #fff;
+  padding:4%;
   text-align: justify;
+  font-size: 4.3vmin;
+  font-weight: bold;
 }
 
 .orientation.checkbox{
   margin-left: 30%;
-  margin-top: 5%;
+  margin-top: -5%;
 }
 
 /*end of login and registration page*/

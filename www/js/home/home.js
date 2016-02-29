@@ -115,8 +115,8 @@ angular.module('crowdsourcing')
         var todayUrl = apiUrl+"todayActivity?token="+window.localStorage.getItem("token");
         var inProgressUrl = apiUrl+"todayActivityInProgress?token="+window.localStorage.getItem("token");
 
-        $scope.totalVolunteers = "";
-        $scope.totalTaskHours = "";
+        $scope.totalVolunteers = null;
+        $scope.totalTaskHours = null;
         $http.get(secondUrl)
           .success(function (data) {
             if(data != null)
@@ -247,7 +247,7 @@ angular.module('crowdsourcing')
           var onSuccess = function(position) {
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
-            console.log(lat);
+
             window.localStorage.setItem("userLat", lat);
             window.localStorage.setItem("userLong", lng);
 

@@ -19,7 +19,7 @@
   </div>
   <div class="col col-10">
 
-    <button class="button ion-funnel button-clear filtericon" ng-click="openPopover($event)"></button>
+    <button class="button ion-funnel button-clear filtericon" ng-disabled="!(transportActivity.length != 0)" ng-click="openPopover($event)"></button>
   </div>
 </div>
 
@@ -40,7 +40,19 @@
     </label>
   </div>-->
 
-      <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
+    <div class="list card myactivitymain" ng-if="transportActivity.length == 0">
+      <table>
+        <tr>
+            <div class="item item-text-wrap">
+
+              <h2 class="home">Sorry, there are no activities at the moment. Please check back later.</h2>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+      <div class="list card myactivitymain" ng-if="transportActivity.length != 0" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
         <table>
           <tr>
             <td class="search">
@@ -65,5 +77,6 @@
       </td>
     </tr>
   </table>
+        </div>
   </ion-content>
 </ion-view>

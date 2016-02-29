@@ -1,4 +1,4 @@
-<ion-view view-title="LeaderBoard"">
+<ion-view view-title="LeaderBoard">
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons>
@@ -7,23 +7,37 @@
   </ion-nav-bar>
 
   <ion-content ng-show=!loadingshow>
-
-    <h2 class="rank">
-      <i class="ion-ribbon-a" ng-if="rank=='Bronze'" style="color: #B77B53; font-size: 150%"></i>
-      <i class="ion-ribbon-a" ng-if="rank=='Silver'" style="color: #817872; font-size: 150%"></i>
-      <i class="ion-ribbon-a" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 150%"></i>
-      <i class="ion-ribbon-a" ng-if="rank=='Platinum'" style="color: #7A7982; font-size: 150%"></i>
-      {{rank}}
-    </h2>
-    <h5 class="rank">Position: {{pos}}</h3>
-    <h5 class="rank">Points: {{totalHours}}</h3>
-
+    <div class="list card leaderboard">
+      <div class="row">
+        <div class="col col-33">
+          <p class="leaderboard">Position</p>
+          <h5 class="leaderboard">#{{pos}}</h5>
+        </div>
+        <div class="col col-33">
+          <p class="leaderboardmain">Status</p>
+          <h2 class="leaderboard">
+            {{rank}}
+          </h2>
+        </div>
+        <div class="col col-33">
+          <p class="leaderboard">Points</p>
+          <h5 class="leaderboard">{{totalMinutes}}</h5>
+        </div>
+      </div>
+    </div>
       <ion-list>
-        <b>Top 5 Volunteers in CareGuide</b>
-        <ion-item ng-repeat="item in volunteersArray">
-          {{item.pos}}. {{item.name}} {{item.mins}}
-        </ion-item>
+        <h4 class="leaderboard"><i class="icon ion-trophy"></i>Top 10 CareGuide Volunteers</h4>
+        <div class="list card leaderboardtop">
+          <ion-item ng-repeat="item in volunteersArray" class="leaderboardtop">
+          <div class="row">
+            <div class="col col-80">
+              {{item.pos}}. {{item.name}}
+            </div>
+            <div class="col col-20 leaderboard">
+             {{item.mins}}
+           </div>
+          </ion-item>
+          </div>
       </ion-list>
-
   </ion-content>
 </ion-view>

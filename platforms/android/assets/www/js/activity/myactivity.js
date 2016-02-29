@@ -237,8 +237,15 @@ angular.module('crowdsourcing')
                   subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
                   okType:"button button-stable"
                 });
-                //window.location.reload(true);
-                $state.go('tab.activity', {}, {reload: true});
+                if(status == "completed")
+                {
+                  $state.go('tab.myhistory', {}, {reload: true});
+                }
+                else
+                {
+                  //window.location.reload(true);
+                  $state.go('tab.activity', {}, {reload: true});
+                }
               }
             })
 

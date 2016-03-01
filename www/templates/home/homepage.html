@@ -67,16 +67,18 @@
     </button>
   </div>-->
   </ion-content>
-
+  
     <div class="list card myactivitymain stat" ng-if="totalVolunteers != null && showUrgent == true" ng-show=!loadingshow>
       <div class="item item-text-wrap stat">
-        <b>{{totalVolunteers}}</b> volunteers have contributed to a total of <b>{{totalTaskHours}}</b> hours!
-
+        <i class="icon ion-person-stalker dark stats"></i><b class="home stats">{{totalVolunteers}}</b> Volunteer(s) 
+        <br>
+        <i class="icon ion-clock dark stats"></i>
+        <b class="home stats">{{totalTaskHours}}</b> Hour(s) contributed!
       </div>
       <button class="button button-full button-positive joinus" ui-sref="login">Join Us Today!</button>
     </div>
 
-  <div class="list card myactivitymain stat" ng-if="totalVolunteers == null && showUrgent == true" ng-show=!loadingshow>
+  <div class="list card myactivitymain stat2" ng-if="totalVolunteers == null && showUrgent == true" ng-show=!loadingshow>
     <div class="item item-text-wrap statuser">
       <b>Your Volunteering Hours </b>
 

@@ -822,49 +822,6 @@ button.button.button-light.button-small.NRICbutton{
   position: absolute;
 }
 
-.NRICbox{
-  top:40%;
-  width:40%;
-  height:25%;
-  position:absolute;
-  border-style: thin;
-  border-color:#000;
-  padding:0px;
-  background-color: #164F86;
-  border-radius: 15px;
-  left:5%;
-}
-
-.NRICbox1{
-  top:40%;
-  width:40%;
-  height:25%;
-  position:absolute;
-  border-style: thin;
-  border-color:#000;
-  padding:0px;
-  background-color: #164F86;
-  border-radius: 15px;
-  right:5%;
-}
-
-label.ic.front{
-  margin-bottom: 150px;
-  color:#000;
-}
-
-label.ic.back{
-  color:#000;
-}
-
-img.frontic{
-z-index:1;
-}
-
-img.backic{
-z-index: 1;
-}
-
 h3.morequestions{
   font-size: 5vmin;
   padding:5px;
@@ -917,14 +874,24 @@ select.dropdown.register{
   margin-left: 2%;
 }
 
+p.skip{
+  margin-top: -5%;
+}
 
+h4.skip{
+  color:#000;
+  margin-bottom: 5%;
+}
+
+.button.button-dark.skip{
+  width:30%;
+}
 /*end of more questions page*/
 
 /**********************VERIFY**********************/
 
-.button.button-dark.otp{
-  width:100%;
-}
+
+
 h4.verify{
   color:#000;
   margin:10px;
@@ -1081,6 +1048,14 @@ p.homep{
 .list.card.myactivitymain.stat{
   position:absolute;
   bottom:0%;
+  text-align: left;
+  width: 100%;
+  margin:0;
+}
+
+.list.card.myactivitymain.stat2{
+  position:absolute;
+  bottom:0%;
   text-align: center;
   width: 100%;
   margin:0;
@@ -1088,6 +1063,7 @@ p.homep{
 
 .item.stat{
   font-size: 4.5vmin;
+  padding-top: 3%;
 }
 
 .item.statuser{
@@ -1109,6 +1085,24 @@ h6.home-page{
   font-size: 1.5em;
   text-align: center;
   position: relative;
+}
+
+.icon.ion-person-stalker.dark.stats{
+  font-size: 7vmin;
+  color:#b0b0b0;
+  margin-right: 3%;
+  margin-left: 20%;
+}
+
+.icon.ion-clock.dark.stats{
+  font-size: 7vmin;
+  color:#b0b0b0;
+  margin-right: 1%;
+  margin-left: 20%;
+}
+
+b.home.stats{
+  font-size: 7vmin;
 }
 /*end of home page*/
 
@@ -1260,9 +1254,9 @@ p.activityconfirmation{
 }
 
 .marker-image{
-  max-width: 30px;
-  max-height: 40px;
+  max-width: 55%;
   z-index: -1;
+  margin-top: 3%;
 }
 
 .item-divider {
@@ -1272,8 +1266,9 @@ p.activityconfirmation{
 
 p.myactivitymarker{
   position: absolute;
-  top: 0px;
-  right: 49%;
+  top: 15%;
+  right: 46%;
+  font-size: 5.5vmin;
 }
 div.col.myactivitynum{
   background-color: transparent;

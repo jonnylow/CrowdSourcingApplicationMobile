@@ -8,15 +8,17 @@
 
 <!--header-->
 <ion-content padding="true">
-    <div class="list card moreQuestions">
-      What kind of voluntary activities interest you?
-    </div>
+  <div class="list list-inset registration">
+        
     <form ng-submit="verify(fields)">
         <!--Area of Preferences 1-->
-      <label class="item item-input item-stacked-label registration1" >
-        <!--<font color="black" >Area of Preferences 1</font><br>-->
+      <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-heart dark "></i>
+          </div>
         <select class="dropdown morequestions" ng-model="fields.preferences_1">
-          <option value="" disabled selected>Option 1*</option>
+          <option value="" selected>Voluntary Task Preference 1
+        </option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
           <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
           <option value="Lead games/exercises">Lead games/exercises</option>
@@ -30,10 +32,12 @@
       </label>
 
       <!--Area of Preferences 2-->
-      <label class="item item-input item-stacked-label registration">
-        <!--<font color="black">Area of Preferences 2</font><br>-->
+      <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-heart dark "></i>
+          </div>
         <select class="dropdown morequestions" ng-model="fields.preferences_2">
-          <option value="" disabled selected>Option 2*</option>
+          <option value="" disabled selected>Voluntary Task Preference 2</option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
           <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
           <option value="Lead games/exercises">Lead games/exercises</option>
@@ -46,22 +50,26 @@
         </select>
       </label>
 
-      <div class="list card moreQuestions1">
-      Occupation
-    </div>
-      <label class="item item-input occupation">
+      <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-briefcase dark "></i>
+          </div>
         
         <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
       </label>
-    <br>
+  </div>
+
+  <!--skip-->
+
+    <p class="skip" style="text-align: center;">
+        <button class="button button-dark skip" ng-click="skip()" style="color: #000;"><h4 class="skip">Skip</h4>
+        </button>
+      </p>
 
     <div style="text-align: center; ">
      <img src="img/steps002.png" class = "page-image"/>
     </div>
-    <p style="text-align: center;">
-        <a class="button button-dark otp" ng-click="skip()" style="color: #000;"><u>Skip
-        </u></a>
-      </p>
+    
     <div class="row">
       <div class="col 50">
          <button ui-sref="registration" class="button button-light paddedbutton">Back</button>

@@ -723,19 +723,23 @@ select.dropdown.update{
   color: #ABABAB;
 }
 
-.list.card.orientation{
-  margin-top: 20%;
-  max-width: 90%;
-  background-color: #fff;
-  padding:4%;
-  text-align: justify;
-  font-size: 4.3vmin;
-  font-weight: bold;
-}
-
 .orientation.checkbox{
   margin-left: 30%;
-  margin-top: -5%;
+}
+
+.list.card.myactivitymain.orientation{
+  margin-top: 18%;
+  padding:4%;
+  font-size: 4.3vmin;
+  text-align: justify;
+}
+
+h6.orientation{
+  font-size: 4.3vmin;
+}
+
+.item-content{
+  margin-left: -15%;
 }
 
 /*end of login and registration page*/
@@ -1686,8 +1690,6 @@ div.list.profile{
   margin-left: 11px;
   width:94%;
 }
-
-
 
 div.col.col-66.me{
   margin-left: 10px;

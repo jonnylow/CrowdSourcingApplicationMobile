@@ -22,6 +22,10 @@ angular.module('crowdsourcing')
         $scope.transportLocationFrom=[];
         $scope.transportLocationTo=[];
         $scope.transportDateTimeStart=[];
+        $scope.elderlyIntials=[];
+
+        //current location pop up
+        $scope.toShowCurrentLocation = true;
 
         //this array is use to track markers duplication. Is not in sync with the rest of the array above
         $scope.transportLocationFromLatLng=[];
@@ -50,7 +54,7 @@ angular.module('crowdsourcing')
         //plot map
         if($scope.transportID != null && $scope.transportName != null && $scope.transportDateTimeStart !=null) {
           uiGmapGoogleMapApi.then(function (maps) {
-
+            //var myIcon = new google.maps.MarkerImage("img/blue-dot.png", null, null, null, new google.maps.Size(35,35));
             //plot marker for 'mylocation'
             $scope.currentLocationMarker = {
               id: 0,
@@ -104,11 +108,11 @@ angular.module('crowdsourcing')
             var urlToRun = "";
             if(window.localStorage.getItem("token") != null)
             {
-              urlToRun = "http://changhuapeng.com/laravel/api/retrieveTransportActivity?token="+window.localStorage.getItem("token");
+              urlToRun = apiUrl+"retrieveTransportActivity?token="+window.localStorage.getItem("token");
             }
             else
             {
-              urlToRun = "http://changhuapeng.com/laravel/api/retrieveTransportActivity";
+              urlToRun = apiUrl+"retrieveTransportActivity";
             }
 
             $http.get(urlToRun)
@@ -132,12 +136,17 @@ angular.module('crowdsourcing')
                       $scope.transportLocationTo.push(transportDetails.activities[i].arrival_centre.name);
                       $scope.transportName.push(transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name);
                       $scope.transportDateTimeStart.push(dateTime);
+                      if(transportDetails.activities[i].elderly != null) {
+                        $scope.elderlyIntials.push(getInitials(transportDetails.activities[i].elderly.name));
+                      }
 
                       //check if marker already exists (by checking with the markers array)
                       //if exists skip this marker, if it is a new position, add this new marker
                       if ($scope.markerExist([parseFloat(transportDetails.activities[i].departure_centre.lat), parseFloat(transportDetails.activities[i].departure_centre.lng)]) == false) {
                         $scope.transportLocationFromLatLng.push([parseFloat(transportDetails.activities[i].departure_centre.lat), parseFloat(transportDetails.activities[i].departure_centre.lng)])
                         getDistanceMarker(from, to);
+
+                        var myIcon = new google.maps.MarkerImage("img/blue-dot.png", null, null, null, new google.maps.Size(35,35));
 
                         var tempMarker = {
                           id: i + 1,
@@ -147,7 +156,8 @@ angular.module('crowdsourcing')
                           },
                           "window": {
                             "title": transportDetails.activities[i].departure_centre.name
-                          }
+                          },
+                          icon:myIcon
                         };
                         $scope.markers.push(tempMarker);
                         $scope.markersStatus.push(false);
@@ -211,6 +221,7 @@ angular.module('crowdsourcing')
               distance: $scope.transportDistanceFromLatLng[i],
               time: $scope.transportTimeFromLatLng[i],
               location: $scope.transportLocationFromLatLng[i],
+              elderly: $scope.elderlyIntials[i],
               marker: $scope.markers[i]
             });
           }
@@ -253,6 +264,7 @@ angular.module('crowdsourcing')
 
       $scope.focusNearbyIncrease = function()
       {
+        $scope.toShowCurrentLocation = false;
         //does the sorting of distance
         if(sorted ==false) {
           for (var i = 0; i < $scope.transportLocationFromLatLng.length; i++) {
@@ -260,6 +272,7 @@ angular.module('crowdsourcing')
               distance: $scope.transportDistanceFromLatLng[i],
               time: $scope.transportTimeFromLatLng[i],
               location: $scope.transportLocationFromLatLng[i],
+              elderly: $scope.elderlyIntials[i],
               marker: $scope.markers[i]
             });
           }
@@ -311,6 +324,7 @@ angular.module('crowdsourcing')
                     id: $scope.transportID[i],
                     from:$scope.transportLocationFrom[i],
                     to:$scope.transportLocationTo[i],
+                    elderly: $scope.elderlyIntials[i],
                     name: $scope.transportLocationFrom[i] + " - " + $scope.transportLocationTo[i],
                     date:date,
                     time:formatAMPM($scope.transportDateTimeStart[i]),
@@ -357,4 +371,15 @@ angular.module('crowdsourcing')
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
       }
+
+      function getInitials(string) {
+        var names = string.split(' '),
+          initials = names[0].substring(0, 1).toUpperCase();
+
+        if (names.length > 1) {
+          initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+        }
+        return initials;
+      }
+
     });

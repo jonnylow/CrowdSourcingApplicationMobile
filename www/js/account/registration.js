@@ -65,12 +65,13 @@ angular.module('crowdsourcing')
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
-            &&  fields.dob!= null) {
+            &&  fields.dob!= null && fields.gender != null && fields.gender.trim() != "") {
             var tempName = fields.name;
             var tempEmail = fields.email;
             var tempPassword = fields.password;
             var tempContactnumber = fields.contactnumber;
             var tempDOB = fields.dob;
+            var tempGender = fields.gender;
 
             if (validateDOB(tempDOB) == true) {
               var dd = tempDOB.getDate();
@@ -104,6 +105,7 @@ angular.module('crowdsourcing')
                             window.localStorage.setItem("tempContactnumber", tempContactnumber);
                             window.localStorage.setItem("tempDOB", tempDOB);
                             window.localStorage.setItem("tempHaveCar", $scope.tempCarChecked);
+                            window.localStorage.setItem("tempGender", fields.gender);
 
                             $scope.loadingshow = false;
                             $ionicLoading.hide();

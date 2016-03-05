@@ -64,7 +64,7 @@
           </div>
           <div class="item myactivitybutton">
             <div ng-if="item.statusDisplay == 'Pick-Up' || item.statusDisplay == 'At Check-Up' || item.statusDisplay == 'Check-Up Completed' || item.statusDisplay == 'Completed'">
-              <button class="button button-full button-energized myactivity" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
+              <button class="button button-full button-energized myactivity" ng-disabled = "!item.updateStatusEnable" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
             </div>
           </div>
       </div>

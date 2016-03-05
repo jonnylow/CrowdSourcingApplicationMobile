@@ -111,6 +111,7 @@ angular.module('crowdsourcing')
             }
           }
         }
+
         $scope.loadingshow = false;
         $ionicLoading.hide();
       })

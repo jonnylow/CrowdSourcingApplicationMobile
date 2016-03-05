@@ -90,6 +90,17 @@ left: 0;
   margin-top: 0;
 }
 
+.button.button-positive {
+  border-color: #44788E;
+  background-color: #44788E;
+  color: #FFFFFF;
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+  border-color: #44788E;
+  background-color: #44788E;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+}
 /*.button-float{
   background-color: #29A29C !important;
   z-index: 12 !important;
@@ -108,11 +119,16 @@ left: 0;
   background-color: #FF9800;
   opacity: 50% !important;
 }*/
+.button.joinus{
+  margin-bottom: 0px;
+}
+
 .button.button-float.animated.shake{
   background-color: #29A29C;
   border-radius: 7px;
-  margin-top: -1%;
   border:none;
+  position:relative;
+  margin-top: 0%;
 }
 
 button.button-positive.apply{
@@ -152,6 +168,20 @@ button.home{
   height: 30px;
 }
 
+p.home{
+  font-size: 3.5vmin;
+  color: #fff;
+  font-weight: bold;
+}
+
+button.updatestatus{
+  line-height: 20px;
+  min-height: 70px;
+}
+
+.row.home{
+  margin-top: 2px;
+}
 /***BAR***/
 .bar.bar-positive {
   background: #29A29C;
@@ -327,12 +357,7 @@ i.icon{
   padding:5px;
 }
 
-i.icon.ion-heart.larger{
-  margin-right: 10px;
-  margin-left: 15px;
-  margin-top: -10px;
-  margin-bottom: -5px;
-}
+
 
 .item-checkbox{
   padding-top:6px;
@@ -492,6 +517,7 @@ label.item.item-input.registration{
   border-right:none;
   border-left:none;
   border-bottom:none;
+  font-size: 4vmin;
 }
 
 label.item.item-input.registration.dob{
@@ -519,6 +545,7 @@ label.item.item-input.registration.dob,
     margin: 0;
     background: none;
     font: inherit;
+    font-size: 4vmin;
   }
 
   label.item.item-input.registration.dob > input:focus {
@@ -526,18 +553,23 @@ label.item.item-input.registration.dob,
     border-color: #ccf;
   }
 
-
-
-  .platform-android .label-text {
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
-    max-width: 100%;
-    padding: 3px 5px;
-    color: #ccc;
-    overflow:hidden;
-    text-overflow: ellipsis;
+  h6.registration.dob{
+    color:#B0B0B0;
+    font-size: 4vmin;
+    font-weight: normal;
+    margin-top: 3%;
   }
+
+.platform-android .label-text {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 2% 2%;
+  color: #ccc;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
 
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
@@ -546,7 +578,7 @@ label.item.item-input.registration.dob,
     display: block;
     box-sizing: border-box;
     max-width: 100%;
-    padding: 3px 5px;
+    padding: 2% 2%;
     color: #ccc;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -563,7 +595,7 @@ label.item.item-input.registration.dob,
     display: block;
     box-sizing: border-box;
     max-width: 100%;
-    padding: 3px 5px;
+    padding: 2% 2%;
     color: #ccc;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -581,6 +613,7 @@ span.input-label.dob{
 
 input.registration{
   margin-left: 10px;
+  font-size: 4vmin;
 }
 
 h1.title.registration{
@@ -621,8 +654,14 @@ button.button.button-block.button-calm.registration{
   margin-bottom: -40px;
 }
 
-select.dropdown.register{
-  padding-left: 12px;
+
+select.dropdown.update{
+  direction:rtl;
+  position: absolute;
+  width: 55%;
+  right:7px;
+  height: 52px;
+  font-size: 3.5vmin;
 }
 
 .icon.ion-eye-disabled.login{
@@ -684,7 +723,20 @@ select.dropdown.register{
   color: #ABABAB;
 }
 
+.list.card.orientation{
+  margin-top: 20%;
+  max-width: 90%;
+  background-color: #fff;
+  padding:4%;
+  text-align: justify;
+  font-size: 4.3vmin;
+  font-weight: bold;
+}
 
+.orientation.checkbox{
+  margin-left: 30%;
+  margin-top: -5%;
+}
 
 /*end of login and registration page*/
 
@@ -832,8 +884,33 @@ h3.morequestions{
   background-color: transparent;
   box-shadow: 0 0 0 0;
   margin-left: 8px;
-  font-size: 16px;
+  font-size: 4.5vmin;
   margin-bottom: 0px;
+}
+
+.list.card.moreQuestions1{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-left: 8px;
+  font-size: 4.5vmin;
+  margin-bottom: 0px;
+  margin-top: 3%;
+}
+
+.item.item-input.gender{
+  margin-left: -3%;
+  width:100%;
+}
+
+select.dropdown.register{
+  padding-left: 12px;
+  height:40px;
+}
+
+.item.item-input.occupation{
+  background-color: #fff;
+  width:95%;
+  margin-left: 2%;
 }
 
 
@@ -850,7 +927,6 @@ h4.verify{
   font-size: 17px;
   text-align: center;
   margin-bottom: -10px;
-  margin-top: 50px;
 }
 
 h4.verify1{
@@ -862,11 +938,11 @@ h4.verify1{
 }
 
 input.otp{
-  max-width:150%;
-  margin: -5;
+  max-width:60%;
   opacity: 0.6;
   text-align: left;
   padding:0px;
+  box-shadow: 1px 1px  #888;
 }
 
 div.box{
@@ -922,17 +998,25 @@ button.button.button-block.button-light.verify{
 
 h2.home{
   color: #164F86;
-  font-size: 0.95em;
+  font-size: 4vmin;
   font-weight: bold;
   text-align: left;
+  line-height: 20px;
 }
 
 .item.item-divider.home{
   padding-bottom: 8px;
   border: transparent;
-  background-color: #fff;
+  background-color: transparent;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+}
+
+h6.home.urgent{
+  font-size: 4.7vmin;
+  top:10%;
+  font-weight: bold;
+  color:#585858;
 }
 
 .item.item-text-wrap.home{
@@ -946,8 +1030,10 @@ h2.home{
 }
 
 a.home{
-  float:right;
+  text-align: left;
   color: #A6AAA9;
+  font-size: 4.7vmin;
+
 }
 
 div.row.routerow{
@@ -969,6 +1055,8 @@ p.homep{
   padding-right: 5px;
 }
 
+
+
 .popup-vertical-buttons button
 {
     min-width: 100%;
@@ -980,15 +1068,33 @@ p.homep{
 }
 
 .list.card.myactivitymain.recommendation{
-  bottom: 0%;
-  position:absolute;
   width:95%;
+  background-color: #D8D8D8;
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+.list.card.myactivitymain.stat{
+  position:absolute;
+  bottom:0%;
+  text-align: center;
+  width: 100%;
+  margin:0;
+}
+
+.item.stat{
+  font-size: 4.5vmin;
+}
+
+.item.statuser{
+  padding: 5px;
 }
 
 .elderly-image{
   height:20%;
   width:20%;
-  margin-top: 35px;
+  position:relative;
+  margin-top: 5%;
 }
 
 h4.home{
@@ -998,6 +1104,7 @@ h4.home{
 h6.home-page{
   font-size: 1.5em;
   text-align: center;
+  position: relative;
 }
 /*end of home page*/
 
@@ -1281,9 +1388,9 @@ h5.myactivity{
   border-color: #fff;
 }
 
-.button.myactivity{
+/*.button.myactivity{
   font-size: 4.5vmin;
-}
+}*/
 .item.myactivityoverall{
   padding-bottom: 15px;
 }
@@ -1580,37 +1687,23 @@ div.list.profile{
   width:94%;
 }
 
-h2.me{
-  text-align: left;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 8vw;
-}
 
-h5.me{
-  font-size: 4.5vw;
-  text-align: center;
-  margin-top: 5px;
-  margin-right: 10px;
-  margin-bottom: 0px;
-  color: #666;
-}
 
 div.col.col-66.me{
   margin-left: 10px;
 }
 
 .button.me{
-  background-color: #164F86 !important;
+  background-color: #fff !important;
   z-index: 12 !important;
   position: relative !important;
   display: inline-block;
   margin: 2px;
-  min-width: 18vw;
-  min-height: 18vw;
+  min-width: 25vw;
+  min-height: 25vw;
   border-radius: 50% !important;
-  border-color: #164F86;
-  box-shadow:  0 2px 2px 0 rgba(0, 0, 0, 0.4)
+  border-color: #fff;
+  box-shadow:  0 2px 2px 0 rgba(0, 0, 0, 0.4);
 }
 
 .button.me:active{
@@ -1619,6 +1712,17 @@ div.col.col-66.me{
   opacity: 50% !important;
 }
 
+.button.password{
+  margin-top: 10px;
+  min-height: 15px;
+}
+
+.button.button-calm.password{
+  line-height: 35px;
+  min-height: 35px;
+  width: 100%;
+  font-size: 2.7vmin;
+}
 .ion-ribbon-a.me{
   vertical-align: middle;
 }
@@ -1628,16 +1732,82 @@ div.row.me{
   padding-left: 30%;
 }
 
-.list.card.activityconfirmation.me{
-  margin-top: 0px;
+.list.card.me{
+  background: linear-gradient(#F6F3EC, #9CCECC);
+  box-shadow: none;
+  line-height:50%;
+  margin:0;
+  margin-bottom: 0%;
+  padding-top: 15%;
+  padding-bottom:12%;
+  text-align: center;
+}
+
+h2.me{
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 8vw;
+  margin-top: 10px;
+}
+
+h5.me{
+  font-size: 5vw;
+  margin-top: 5px;
+  margin-right: 10px;
   margin-bottom: 0px;
+  color: #666;
+  text-align: center
+}
+
+p.me{
+  margin-bottom:0px;
+  margin-top: 0px;
+  font-size: 4vmin;
+  color:#53585F;
+  padding: 5px;
+  font-weight: normal;
+}
+
+.item.me{
+  border:none;
+  text-align: center;
+  padding: 0;
+}
+
+.item.update{
+  border:none;
+  text-align: left;
+  padding: 0;
+}
+
+.button.gotoedit{
+  border-color: #E7E9EB;
+  border-width:0.25px;
+  margin-bottom: 0;
+  text-align: left;
+  color: #999;
+}
+
+.button.gotoedit2{
+  border-top:none;
+  border-color: #E7E9EB;
+  border-width:0.25px;
+  margin-bottom: 0;
+  text-align: left;
+  color: #999;
+}
+
+.list.mestats{
+  box-shadow: none;
+  margin:0;
+
 }
 /*end of profile page*/
 
 /*manage account page*/
 
 .list.list-inset.update{
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 input.readonly.me{
@@ -1653,11 +1823,10 @@ input.readonly.me{
 b.account{
   margin-bottom:0px;
   margin-top: 0px;
-  margin-left: -5%;
-  margin-right: 2%;
-  font-size: 4.5vmin;
+  font-size: 4vmin;
   color:#8D8D8D;
   font-weight: normal;
+  margin-left:10%;
 }
 
 b.account.aop{
@@ -1670,14 +1839,7 @@ b.account.aop{
   font-weight: normal;
 }
 
-label.item.item-input.update{
-  background-color: transparent;
-  padding-right: 0px;
-}
 
-label.item.item-input.update input{
-  padding-right:0px;
-}
 
 select.aop{
   margin-top: 3%;
@@ -1699,10 +1861,14 @@ h3.me{
 }
 
 input.edit{
-  text-align: center;
-  background-color: #E4E4E4;
-  font-size: 4.5vmin;
-  width: 140px;
+  text-align: right;
+  font-size: 3.5vmin;
+  width: 100%;
+  max-width: 60%;
+  position:absolute;
+  right: 0px;
+  padding: 7px 10px 7px 0px;
+  height: 52px;
 }
 
 .list.list-inset.update input{
@@ -1830,6 +1996,21 @@ label.item.item-input.registration2{
   width:94%;
 }
 
+input.dobupdate{
+  font-size:3.5vmin;
+  text-align: right;
+  width:63%;
+  height:29px;
+}
+
+h3.update{
+  font-size: 4vmin;
+  font-weight: bold;
+  margin-top: 6%;
+  margin-left: 6%;
+  color: #666;
+}
+
 /*end of manage account page*/
 
 /*change password page*/
@@ -1885,6 +2066,11 @@ select.search{
   width: 0;
   padding:0;
 }
+
+.list-inset.search{
+  margin-right:0px;
+  margin-top: 10px;
+}
 /*end of search pages*/
 
 /*Filter pages*/
@@ -1916,7 +2102,10 @@ select.search{
 
 .button.button-clear.filtericon{
   font-size: 170%;
-  padding-right: 8px;
+  margin: 10px 0px 0px 0px;
+  text-align: left;
+  padding-left:2px;
+  color:#666;
 }
 /*end of filter page*/
 
@@ -1946,11 +2135,11 @@ h5.rank{
 }
 
 p.rank{
-  font-size: 4.2vmin;
-  margin-left: 10px;
+  font-size: 3.2vmin;
+  text-align: left;
 }
 .item.rankheader{
-  padding:10px;
+  padding:0px;
 }
 
 .item.rankbody{
@@ -1961,17 +2150,19 @@ p.rank{
 
 
 h2.rankbody{
-  font-size: 5vmin;
+  font-size: 4.5vmin;
+  text-align: left;
 }
 
 div.col.rankfirst{
-  border-right: solid 1px #ccc;
-  text-align: center;
+  border-right: solid 2px #F1F3F5;
+  text-align: left;
+  padding-left: 15px;
 }
 
 div.col.ranksecond{
-  margin-left: 10px;
-  text-align: center;
+  padding-left: 15px;
+  text-align: left;
 }
 /*end of rank page*/
 
@@ -2023,36 +2214,59 @@ textarea.feedback{
 }
 /* end of feedback page*/
 
-/**survey page REMOVE AFTER SURVEY**/
-.bar.bar-stable{
-  background-color: #003366;
+/*leaderboard*/
+
+.list.card.leaderboard{
+  background-color: #44788E;
+  box-shadow: none;
+  margin:0;
+  padding-top:5%;
 }
 
-.bar.bar-stable .title{
+p.leaderboard{
+  color:#fff;
+  font-size:4vmin;
+  text-align: center;
+  font-weight: 200;
+}
+
+p.leaderboardmain{
+  color:#fff;
+  font-size:4.5vmin;
+  text-align: center;
+  font-weight: 200;
+  margin-bottom:7px;
+}
+h5.leaderboard{
+  color:#fff;
+  font-size:6vmin;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2.leaderboard{
   color: #fff;
+  text-align: center;
+  font-size:7vmin;
+  margin-top:0px;
+  font-weight: bold;
 }
 
-.button.survey{
-  margin-top: 10%;
-  background-color: #003366;
+.list.card.leaderboardtop{
+  box-shadow: none;
+  margin:0;
 }
 
-select.dropdown.survey{
-    border: 1px solid rgb(166, 166, 166);
+ion-item.leaderboardtop{
+  height:42px;
 }
 
-.modal-backdrop-bg {
-  transition: opacity 300ms ease-in-out;
-  -webkit-transition: opacity 300ms ease-in-out;
-  background-color: #000;
-  opacity: 0;
+.col.col-20.leaderboard{
+  text-align: right;
 }
 
-.active .modal-backdrop-bg {
-  opacity: 0.6;
+h4.leaderboard{
+  color:#000;
+  margin-bottom: 10px;
 }
-
-h5.survey{
-  font-size: 14px;
-  color: #666;
-}
+/*end of leaderboard page*/

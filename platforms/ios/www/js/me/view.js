@@ -8,6 +8,7 @@ angular.module('crowdsourcing')
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
       }
       else {
+        $scope.loadingshow = true;
         var myPopup = $ionicPopup.show({
           title: '<h6 class="popups title">Who are you?</h6>',
           subTitle: '<br><h6 class="popups">Login to access this content</h6>',
@@ -25,7 +26,7 @@ angular.module('crowdsourcing')
       }
 
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveUserDetails?id="+$scope.id)
+    $http.get(apiUrl+"retrieveUserDetails?id="+$scope.id)
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null && userDetails.length!=0 ) {
@@ -59,8 +60,26 @@ angular.module('crowdsourcing')
             $scope.nextRank = "NA";
             $scope.nextRankMin = "NA";
           }
-          $scope.loadingshow = false;
-          $ionicLoading.hide();
+          $scope.nextPts = parseInt($scope.nextRankMin) - parseInt($scope.hoursCompleted);
+          if($scope.nextRank == "NA" && $scope.nextRankMin == "NA")
+          {
+            $scope.toDisplayInformation = "Platinum is the highest rank available.";
+          }
+          else
+          {
+            $scope.toDisplayInformation = $scope.nextPts +" points to "+$scope.nextRank;
+          }
+
+          $http.get(apiUrl+"retrieveRankingDetails?id="+$scope.id)
+            .success(function (data) {
+              var userDetails = data;
+              if (userDetails != null ) {
+                $scope.completed = userDetails.completed;
+                $scope.withdrawn = userDetails.withdrawn;
+                $ionicLoading.hide();
+                $scope.loadingshow = false;
+              }
+            })
         }
       })
 

@@ -118,7 +118,7 @@ angular.module('crowdsourcing')
     {
       var currentDate = new Date();
       currentDate.setHours(0,0,0,0);
-      currentDate.setDate(currentDate.getDate() + 1);
+      currentDate.setDate(currentDate.getDate() + 2);
 
       if($scope.dateTime > currentDate)
       {
@@ -186,15 +186,8 @@ angular.module('crowdsourcing')
     }
 
     $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){
-      if(ionic.Platform.isAndroid() == true) { //android
         var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
         window.open(url,'_system','location=yes');
         return false;
-      }
-      else { //ios
-        var url = 'http://maps.apple.com/?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
-        window.open(url,'_system','location=yes');
-        return false;
-      }
     };
 });

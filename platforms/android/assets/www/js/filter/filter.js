@@ -17,8 +17,8 @@ angular.module('crowdsourcing')
         //depends what filter user select (start/end/time)
         if($scope.filter == 'Start Location')
         {
-          $http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
-          //$http.get("http://52.76.2.82/php/RetrieveFilter.php?filter=start&id="+$scope.id)
+          //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
+          $http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=start&id="+$scope.id)
             .success(function (data) {
               var results = data;
 
@@ -55,8 +55,8 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'End Location')
         {
-          $http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=end")
-          //$http.get("http://52.76.2.82/php/RetrieveFilter.php?filter=end&id="+$scope.id)
+          //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=end")
+          $http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=end&id="+$scope.id)
             .success(function (data) {
               var results = data;
 
@@ -93,8 +93,8 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'Time')
         {
-          $http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=time")
-          //$http.get("http://52.76.2.82/php/RetrieveFilter.php?filter=time&id="+$scope.id)
+          //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=time")
+          $http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=time&id="+$scope.id)
             .success(function (data) {
               var results = data;
               var morning;

@@ -34,7 +34,7 @@ angular.module('crowdsourcing')
       $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
-      var urlString = "http://changhuapeng.com/laravel/api/retrieveTransportByUser?id=" +$scope.id+"&type=1";
+      var urlString = apiUrl+"retrieveTransportByUser?id=" +$scope.id+"&type=1";
 
       $http.get(urlString)
         .success(function (data) {
@@ -223,7 +223,7 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-          urlString = "http://changhuapeng.com/laravel/api/updateActivityStatus?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
+          urlString = apiUrl+"updateActivityStatus?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
 
           $http.get(urlString)
             .success(function (data) {
@@ -237,8 +237,15 @@ angular.module('crowdsourcing')
                   subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
                   okType:"button button-stable"
                 });
-                //window.location.reload(true);
-                $state.go('tab.activity', {}, {reload: true});
+                if(status == "completed")
+                {
+                  $state.go('tab.myhistory', {}, {reload: true});
+                }
+                else
+                {
+                  //window.location.reload(true);
+                  $state.go('tab.activity', {}, {reload: true});
+                }
               }
             })
 

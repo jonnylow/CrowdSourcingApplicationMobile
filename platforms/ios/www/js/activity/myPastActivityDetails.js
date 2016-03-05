@@ -9,62 +9,69 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get("http://changhuapeng.com/laravel/api/retrieveMyTransportActivityDetails?transportId=" + $scope.transportId+"&id="+$scope.id)
-      .success(function (data) {
-        var transportDetails = data;
-        if (transportDetails != null) {
-          if(transportDetails.activities[0] != null)
-          {
-            if(transportDetails.activities[0].datetime_start != null && transportDetails.activities[0].expected_duration_minutes != null)
-            {
-              var t = transportDetails.activities[0].datetime_start.split(/[- :]/);
-              var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+    $http.get(apiUrl+"retrieveElderyInformation?transportId=" + $scope.transportId)
+      .success(function (elderly) {
+        $http.get(apiUrl+"retrieveMyTransportActivityDetails?transportId=" + $scope.transportId+"&id="+$scope.id)
+          .success(function (data) {
+            var transportDetails = data;
+            if (transportDetails != null) {
+              if(transportDetails.activities[0] != null)
+              {
+                if(transportDetails.activities[0].datetime_start != null && transportDetails.activities[0].expected_duration_minutes != null)
+                {
+                  var t = transportDetails.activities[0].datetime_start.split(/[- :]/);
+                  var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
-              $scope.dateTime = dateTime;
-              $scope.expectedDuration = transportDetails.activities[0].expected_duration_minutes + " Mins";
-              $scope.locationFrom = transportDetails.activities[0].departure_centre.name;
-              $scope.locationFromAddress = transportDetails.activities[0].departure_centre.address;
-              $scope.locationFromAddressLat = transportDetails.activities[0].departure_centre.lat;
-              $scope.locationFromAddressLng = transportDetails.activities[0].departure_centre.lng;
-              $scope.locationTo = transportDetails.activities[0].arrival_centre.name;
-              $scope.locationToAddress = transportDetails.activities[0].arrival_centre.address;
-              $scope.locationToAddressLat = transportDetails.activities[0].arrival_centre.lat;
-              $scope.locationToAddressLng = transportDetails.activities[0].arrival_centre.lng;
-              $scope.moreInformation = transportDetails.activities[0].more_information;
-              if($scope.moreInformation == "" || $scope.moreInformation == "null")
-              {
-                $scope.moreInformation = "No Additional Information"
-              }
-              $scope.approvalStatus = capitalizeFirstLetter(transportDetails.task[0].approval);
-              var transportStatusToDisplay;
-              if(transportDetails.task[0].status == "new task")
-              {
-                transportStatusToDisplay = "Activity not started yet";
-              }
-              else
-              {
-                transportStatusToDisplay = transportDetails.task[0].status;
-              }
-              $scope.transportStatus = capitalizeFirstLetter(transportStatusToDisplay);
+                  $scope.dateTime = dateTime;
+                  $scope.expectedDuration = transportDetails.activities[0].expected_duration_minutes + " Mins";
+                  $scope.locationFrom = transportDetails.activities[0].departure_centre.name;
+                  $scope.locationFromAddress = transportDetails.activities[0].departure_centre.address;
+                  $scope.locationFromAddressLat = transportDetails.activities[0].departure_centre.lat;
+                  $scope.locationFromAddressLng = transportDetails.activities[0].departure_centre.lng;
+                  $scope.locationTo = transportDetails.activities[0].arrival_centre.name;
+                  $scope.locationToAddress = transportDetails.activities[0].arrival_centre.address;
+                  $scope.locationToAddressLat = transportDetails.activities[0].arrival_centre.lat;
+                  $scope.locationToAddressLng = transportDetails.activities[0].arrival_centre.lng;
+                  $scope.moreInformation = transportDetails.activities[0].more_information;
+                  if($scope.moreInformation == "" || $scope.moreInformation == "null")
+                  {
+                    $scope.moreInformation = "No Additional Information"
+                  }
+                  $scope.approvalStatus = capitalizeFirstLetter(transportDetails.task[0].approval);
+                  var transportStatusToDisplay;
+                  if(transportDetails.task[0].status == "new task")
+                  {
+                    transportStatusToDisplay = "Activity not started yet";
+                  }
+                  else
+                  {
+                    transportStatusToDisplay = transportDetails.task[0].status;
+                  }
+                  $scope.transportStatus = capitalizeFirstLetter(transportStatusToDisplay);
 
-              if(transportDetails.task[0].status == "completed" && transportDetails.task[0].approval=="approved")
-              {
-                $scope.eldery = false;
-              }
-              else
-              {
-                $scope.eldery = true;
-              }
+                  if(transportDetails.task[0].status == "completed" && transportDetails.task[0].approval=="approved")
+                  {
+                        if(elderly!=null)
+                        {
+                          $scope.eldery = false;
+                          $scope.elderlyName = elderly.elderly.name;
+                        }
+                  }
+                  else
+                  {
+                    $scope.eldery = true;
+                  }
 
-              if(transportDetails.task[0].approval == "rejected")
-              {
-                $scope.rejection = transportDetails.task[0].comment;
+                  if(transportDetails.task[0].approval == "rejected")
+                  {
+                    $scope.rejection = transportDetails.task[0].comment;
+                  }
+                }
               }
             }
-          }
-        }
-        $scope.loadingshow = false;
-        $ionicLoading.hide();
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          })
       })
 
     function capitalizeFirstLetter(string) {

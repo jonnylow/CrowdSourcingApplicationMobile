@@ -30,12 +30,21 @@ angular.module('crowdsourcing')
       });
 
     $scope.logout = function () {
+      var username = "";
+      var password = "";
       window.localStorage.removeItem("loginUserName");
       window.localStorage.removeItem("loginId");
       window.localStorage.removeItem("userLat");
       window.localStorage.removeItem("userLong");
       window.localStorage.removeItem("token");
+      if(window.localStorage.getItem("loginUsernameToStore") != null && window.localStorage.getItem("loginPasswordToStore") != null)
+      {
+        username = window.localStorage.getItem("loginUsernameToStore");
+        password = window.localStorage.getItem("loginPasswordToStore");
+      }
       window.localStorage.clear();
+      window.localStorage.setItem("loginUsernameToStore", username);
+      window.localStorage.setItem("loginPasswordToStore", password);
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
       $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});

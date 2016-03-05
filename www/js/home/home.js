@@ -241,8 +241,6 @@ angular.module('crowdsourcing')
         //ionic loading screen
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Getting your location...'})
 
-        //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
-        //NOTE BACKEND DEVELOPERS: set timeout to only fire error once
         if(window.localStorage.getItem("userLat") == null) {
           var onSuccess = function(position) {
             var lat = position.coords.latitude;
@@ -265,7 +263,7 @@ angular.module('crowdsourcing')
           }
 
           //get location with 10 secs timeout
-          navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, enableHighAccuracy: true });
+          navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 15000, enableHighAccuracy: true });
         }
         else
         {

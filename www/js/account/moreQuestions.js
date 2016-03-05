@@ -6,6 +6,7 @@ angular.module('crowdsourcing')
       $scope.tempPassword = window.localStorage.getItem("tempPassword");
       $scope.tempContactNumber = window.localStorage.getItem("tempContactnumber");
       $scope.tempDOB = window.localStorage.getItem("tempDOB");
+      $scope.tempGender = window.localStorage.getItem("tempGender");
 
       if(window.localStorage.getItem("tempPreferences1") != null || window.localStorage.getItem("tempPreferences2") != null || window.localStorage.getItem("tempOccupation") != null || window.localStorage.getItem("tempGender") != null)
       {
@@ -14,11 +15,9 @@ angular.module('crowdsourcing')
 
       $scope.verify = function(fields)
       {
-        if(fields != null && fields.preferences_1 != null && fields.preferences_2 != null && fields.occupation != null && fields.gender != null
-          && fields.occupation != "" && fields.gender != "") {
+        if(fields != null && fields.preferences_1 != null && fields.preferences_2 != null && fields.occupation != null && fields.occupation != "") {
             if(fields.preferences_1 != fields.preferences_2) {
 
-                window.localStorage.setItem("tempGender", fields.gender);
                 window.localStorage.setItem("tempOccupation", fields.occupation);
                 window.localStorage.setItem("tempPreferences1", fields.preferences_1);
                 window.localStorage.setItem("tempPreferences2", fields.preferences_2);
@@ -60,7 +59,6 @@ angular.module('crowdsourcing')
 
     $scope.skip = function()
     {
-      window.localStorage.setItem("tempGender", "");
       window.localStorage.setItem("tempOccupation", "");
       window.localStorage.setItem("tempPreferences1", "");
       window.localStorage.setItem("tempPreferences2", "");

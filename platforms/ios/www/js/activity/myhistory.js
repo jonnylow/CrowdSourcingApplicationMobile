@@ -19,7 +19,7 @@ angular.module('crowdsourcing')
       $scope.groups.push({name: "Pending", items: []});
       $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
-      var urlString = "http://changhuapeng.com/laravel/api/retrieveTransportByUser?id=" +$scope.id+"&type=2";
+      var urlString = apiUrl+"retrieveTransportByUser?id=" +$scope.id+"&type=2";
 
       $http.get(urlString)
         .success(function (data) {

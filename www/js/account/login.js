@@ -1,6 +1,16 @@
 angular.module('crowdsourcing')
 
     .controller('loginController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory, apiUrl) {
+      $scope.remember= {checkBox:false};
+      $scope.fields= {email:"", password:""};
+      if(window.localStorage.getItem("loginUsernameToStore") != null && window.localStorage.getItem("loginPasswordToStore") != null
+      && window.localStorage.getItem("loginUsernameToStore").trim() != "" && window.localStorage.getItem("loginPasswordToStore").trim() != "")
+      {
+        $scope.fields.email = window.localStorage.getItem("loginUsernameToStore");
+        $scope.fields.password = window.localStorage.getItem("loginPasswordToStore");
+        $scope.remember.checkBox = true;
+      }
+
       $scope.login = function(fields){
           $scope.loadingshow = true;
         //ionic loading screen
@@ -35,6 +45,17 @@ angular.module('crowdsourcing')
                         if(status.user.is_approved == "approved") {
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
+                          if($scope.remember.checkBox == true)
+                          {
+                            window.localStorage.setItem("loginUsernameToStore", tempNRIC);
+                            window.localStorage.setItem("loginPasswordToStore", tempPassword);
+                          }
+                          else
+                          {
+                            window.localStorage.removeItem("loginUsernameToStore");
+                            window.localStorage.removeItem("loginPasswordToStore");
+                          }
+
                           window.localStorage.setItem("token", status.token);
                           window.localStorage.setItem("loginId", status.user.volunteer_id);
                           window.localStorage.setItem("loginUserName", status.user.name);

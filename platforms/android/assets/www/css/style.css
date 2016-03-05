@@ -1781,17 +1781,15 @@ p.me{
 }
 
 .button.gotoedit{
-  border-color: #E7E9EB;
-  border-width:0.25px;
+  border: solid 1px #E7E9EB;
   margin-bottom: 0;
   text-align: left;
   color: #999;
 }
 
 .button.gotoedit2{
+  border: solid 1px #E7E9EB;
   border-top:none;
-  border-color: #E7E9EB;
-  border-width:0.25px;
   margin-bottom: 0;
   text-align: left;
   color: #999;

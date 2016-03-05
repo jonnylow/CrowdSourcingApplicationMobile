@@ -21,6 +21,7 @@ angular.module('crowdsourcing')
       $ionicModal.fromTemplateUrl('templates/account/OrientationModal.html', {
         scope: $scope,
         animation: 'slide-in-up',
+        backdropClickToClose: false,
         focusFirstInput: true
       }).then(function(modal) {
         $scope.modal = modal;

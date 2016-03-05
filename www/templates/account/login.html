@@ -5,7 +5,7 @@
       <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
-  
+
 <ion-content>
 
 <center>
@@ -31,6 +31,10 @@
       <input class="showPassword" type="text" placeholder="Password" ng-model="fields.password" ng-show="showPassword">
     </label>
   </div>
+  <div class ="orientation checkbox">
+    <ion-checkbox class="checkbox" ng-model="remember.checkBox" ng-checked="remember.checkBox"><h6 class="orientation"> Remember me</h6></ion-checkbox>
+  </div>
+
 
   <!-- oldpassword field checkbox
   <br><ion-checkbox class="loginShowPassword" ng-model="showPassword">Show password</ion-checkbox>-->

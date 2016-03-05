@@ -374,7 +374,39 @@ i.icon{
   margin-top: -6px;
 }
 /*end of tab*/
+/*******************GETTING STARTED PAGE*****************/
+.gettingstarted{
+  width:100%;
+}
 
+.slider-pager{
+  bottom:0px;
+}
+
+.list.card.aboutus{
+  padding:3%;
+}
+
+h6.aboutus{
+  color:#6E6E6E;
+  font-size: 5vmin;
+  font-weight: bold;
+}
+
+h6.aboutus2{
+  color:#6E6E6E;
+  font-size: 5vmin;
+  font-weight: bold;
+  margin-top: 5%;
+}
+
+h6.aboutus.body{
+  font-weight: normal;
+  color:#848484;
+  font-size: 4vmin;
+}
+
+/***************END OG GETTING STARTED PAGE**************/
 /**********************LANDING PAGE**********************/
 .mainimage{
   max-width: 60%;
@@ -726,6 +758,10 @@ select.dropdown.update{
   margin-left: 30%;
 }
 
+.login.checkbox{
+  margin-left: -4%;
+}
+
 .list.card.myactivitymain.orientation{
   margin-top: 18%;
   padding:4%;
@@ -735,6 +771,7 @@ select.dropdown.update{
 
 h6.orientation{
   font-size: 4.3vmin;
+  font-weight: normal;
 }
 
 .item-content{
@@ -2139,7 +2176,7 @@ h2.rank{
 }
 
 h5.rank{
-  margin-left:2%;
+  margin-left: -5%;
   text-align: center;
   color: #999;
   font-size: 4vmin;
@@ -2289,6 +2326,13 @@ textarea.feedback{
   font-size: 15px;
   padding-top: 5%;
   padding-left: 4%;
+}
+
+.item.item-input.feedback.email{
+  margin-top:3%;
+  margin-bottom: 2%;
+  padding:2%;
+  background-color: #fff;
 }
 /* end of feedback page*/
 

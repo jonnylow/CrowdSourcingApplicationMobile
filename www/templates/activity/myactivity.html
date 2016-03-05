@@ -35,7 +35,7 @@
               <div class="col myactivity">
                 {{group.name}}
               </div>
-              <div class="col col-10">
+              <div class="col col-10" ng-if="group.items.length!=0">
                 <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
                 &nbsp;
               </div>

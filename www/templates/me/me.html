@@ -31,34 +31,33 @@
       </p>
     </div>
   </div>
+  <img src="img/rankrec.png" class="rankrec">
 
   <div class="list card mestats">
     <div class="item rankheader">
-      <div class="row">
+      <div class="row rank">
         <div class="col col-33 rankfirst">
-          <h2 class="rankbody"><b>{{hoursCompleted}}</b></h2>
+          <img src="img/careguidePoints.png" class="careguidepoints">
           <p class="rank">CareGuide points</hp>
+          <h2 class="rankbody"><b>{{hoursCompleted}}</b></h2>
         </div>
         <div class="col col-33 rankfirst">
-          <h2 class="rankbody"><b>{{hoursCompleted}}</b> hrs <b>{{minsCompleted}}</b>  min</h2>
-          <p class="rank">Volunteered</p>
+          <i class="icon ion-clock me "></i>
+          <p class="rank2">Volunteered</p>
+          <h2 class="rankbody2"><b>{{hoursCompleted}}</b> hrs <b>{{minsCompleted}}</b>  min</h2>
         </div>
         <div class="col col-33 ranksecond">
-          <h2 class="rankbody"><b>{{completed}}</b></h2>
-          <p class="rank"> Completed</p>
+          <i class="icon ion-clipboard me "></i>
+          <p class="rank3"> Completed</p>
+          <h2 class="rankbody3"><b>{{completed}}</b></h2>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-      <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit" ng-click="manageAccount()" ui-sref="manageAccount">Edit Profile</button>
+  
+  <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit" ng-click="manageAccount()" ui-sref="manageAccount">Edit Profile</button>
 
       <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit2" ui-sref="updateAccount">Change Password</button>
-
-
 
   </ion-content>
 </ion-view>

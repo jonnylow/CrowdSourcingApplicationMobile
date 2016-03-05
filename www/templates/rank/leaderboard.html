@@ -2,7 +2,7 @@
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons>
-      <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
@@ -14,7 +14,7 @@
           <h5 class="leaderboard">#{{pos}}</h5>
         </div>
         <div class="col col-33">
-          <p class="leaderboardmain">Status</p>
+          <img src="img/crown.png" class="crown"/>
           <h2 class="leaderboard">
             {{rank}}
           </h2>
@@ -28,13 +28,14 @@
       <ion-list>
         <h4 class="leaderboard"><i class="icon ion-trophy"></i>Top 10 CareGuide Volunteers</h4>
         <div class="list card leaderboardtop">
-          <ion-item ng-repeat="item in volunteersArray" class="leaderboardtop">
+          <ion-item ng-repeat="item in volunteersArray" class="leaderboardtop" >
           <div class="row">
-            <div class="col col-80">
-              {{item.pos}}. {{item.name}}
+            <div class="col col-80">              
+                <h8 class="leaderboard position">{{item.pos}}. </h8> 
+              {{item.name}}
             </div>
             <div class="col col-20 leaderboard">
-             {{item.mins}}
+             {{item.mins}} hours
            </div>
           </ion-item>
           </div>

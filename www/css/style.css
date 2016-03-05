@@ -358,7 +358,6 @@ i.icon{
 }
 
 
-
 .item-checkbox{
   padding-top:6px;
   padding-bottom: 6px;
@@ -1789,7 +1788,7 @@ p.me{
   border: solid 1px #E7E9EB;
   margin-bottom: 0;
   text-align: left;
-  color: #999;
+  color: #848484;
 }
 
 .button.gotoedit2{
@@ -1797,7 +1796,7 @@ p.me{
   border-top:none;
   margin-bottom: 0;
   text-align: left;
-  color: #999;
+  color: #848484;
 }
 
 .list.mestats{
@@ -2020,6 +2019,10 @@ h3.update{
   color: #666;
 }
 
+.checkbox.manage{
+  margin-left: 45%;
+}
+
 /*end of manage account page*/
 
 /*change password page*/
@@ -2232,6 +2235,13 @@ div.col.ranksecond{
   font-size: 8.5vmin;
   margin-left: 30%;
 }
+
+.crown{
+  max-width: 55%;
+  z-index: -1;
+  margin-left: 25%;
+  margin-top: -14%;
+}
 /*end of rank page*/
 
 /***** Help page*****/
@@ -2285,7 +2295,8 @@ textarea.feedback{
 /*leaderboard*/
 
 .list.card.leaderboard{
-  background-color: #44788E;
+  /*background: linear-gradient(#29A29C, #185C97);*/
+  background-color: #25557E;
   box-shadow: none;
   margin:0;
   padding-top:5%;
@@ -2296,6 +2307,7 @@ p.leaderboard{
   font-size:4vmin;
   text-align: center;
   font-weight: 200;
+  margin-top: 15%;
 }
 
 p.leaderboardmain{
@@ -2305,18 +2317,20 @@ p.leaderboardmain{
   font-weight: 200;
   margin-bottom:7px;
 }
+
 h5.leaderboard{
   color:#fff;
   font-size:6vmin;
   text-align: center;
   font-weight: bold;
+
 }
 
 h2.leaderboard{
   color: #fff;
   text-align: center;
   font-size:7vmin;
-  margin-top:0px;
+  margin-top:6%;
   font-weight: bold;
 }
 
@@ -2336,5 +2350,16 @@ ion-item.leaderboardtop{
 h4.leaderboard{
   color:#000;
   margin-bottom: 10px;
+  font-size: 6vmin;
+}
+
+.ion-ribbon-a.leaderboard{
+  padding: 2%;
+}
+
+h8.leaderboard.position{
+  font-size: 6vmin;
+  font-weight: bold;
+  padding-right: 2%;
 }
 /*end of leaderboard page*/

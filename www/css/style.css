@@ -357,10 +357,15 @@ i.icon{
   padding:5px;
 }
 
+.platform-android .item-checkbox{
+  padding-top:4%;
+  padding-bottom: 4%;
+}
 
-.item-checkbox{
-  padding-top:6px;
-  padding-bottom: 6px;
+.platform-ios .item-checkbox{
+  padding-top:4%;
+  padding-bottom: 6%;
+  margin-left: 3%;
 }
 
 .button.ion-chevron-left.button-clear{
@@ -375,8 +380,13 @@ i.icon{
 }
 /*end of tab*/
 /*******************GETTING STARTED PAGE*****************/
-.gettingstarted{
+.platform-android .gettingstarted{
   width:100%;
+}
+
+.platform-ios .gettingstarted{
+  width:100%;
+  margin-top: 6%;
 }
 
 .slider-pager{
@@ -762,8 +772,15 @@ select.dropdown.update{
   margin-left: -4%;
 }
 
-.list.card.myactivitymain.orientation{
+.platform-android .list.card.myactivitymain.orientation{
   margin-top: 18%;
+  padding:4%;
+  font-size: 4.3vmin;
+  text-align: justify;
+}
+
+.platform-ios .list.card.myactivitymain.orientation{
+  margin-top: 23%;
   padding:4%;
   font-size: 4.3vmin;
   text-align: justify;
@@ -2183,9 +2200,21 @@ h5.rank{
   margin-bottom: 20px;
 }
 
-.careguidepoints{
+.col.col-33.rankfirst{
+  padding-left: 3%;
+}
+
+.platform-android .careguidepoints{
   width:8%;
   height:32%;
+  left:13%;
+  top:25%;
+  position:absolute;
+}
+
+.platform-ios .careguidepoints{
+  width:7.5%;
+  height:25%;
   left:13%;
   top:25%;
   position:absolute;
@@ -2343,6 +2372,7 @@ textarea.feedback{
   padding: 5%;
   font-size: 3.8vmin;
 }
+
 .list.card.leaderboard{
   /*background: linear-gradient(#29A29C, #185C97);*/
   background-color: #25557E;

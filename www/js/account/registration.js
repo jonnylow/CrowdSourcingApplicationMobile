@@ -87,8 +87,9 @@ angular.module('crowdsourcing')
                 if (validateName(tempName) == true) {
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
-                      $http.get(apiUrl+"checkEmail?email=" + tempEmail)
-                      .success(function (data) {
+                      if (validatePassword(tempPassword) == true) {
+                      $http.get(apiUrl + "checkEmail?email=" + tempEmail)
+                        .success(function (data) {
 
                           var status = data;
                           if (status.status[0] != "exist") {
@@ -128,7 +129,25 @@ angular.module('crowdsourcing')
                               ]
                             });
                           }
-                      })
+                        })
+                      }
+                      else {
+                        $scope.loadingshow = false;
+                        $ionicLoading.hide();
+
+                        var alertPopup = $ionicPopup.alert({
+                          title: '<h6 class="popups title">Whoops!</h6>',
+                          subTitle: '<br><h6 class="popups">Password must contains at least 6 characters with digits and characters</h6> ',
+                          scope: $scope,
+                          buttons: [
+                            {
+                              text: '<b>Ok</b>',
+                              type: 'button button-stable',
+
+                            },
+                          ]
+                        });
+                      }
                     }
                     else {
                       $scope.loadingshow = false;
@@ -154,7 +173,7 @@ angular.module('crowdsourcing')
 
                     var alertPopup = $ionicPopup.alert({
                       title: '<h6 class="popups title">Whoops!</h6>',
-                      subTitle: '<br><h6 class="popups">Contact number should start with 6/8/9 and contains 8 numbers</h6> ',
+                      subTitle: '<br><h6 class="popups">Contact number should start with 8/9 and contains 8 numbers</h6> ',
                       scope: $scope,
                       buttons: [
                         {
@@ -286,6 +305,11 @@ angular.module('crowdsourcing')
       return re.test(email);
     }
 
+    function validatePassword(password){
+      var re = /(?=.*\d)(?=.*[A-z]).{6,20}/;
+      return re.test(password);
+    }
+
     function validateName(name) {
       return /^[a-zA-Z\s\,\-\/]+$/.test(name);
     }
@@ -304,7 +328,7 @@ angular.module('crowdsourcing')
     }
 
     function validateContact(contact){
-      if(contact.charAt(0) == "9" || contact.charAt(0) == "8" || contact.charAt(0) == "6")
+      if(contact.charAt(0) == "9" || contact.charAt(0) == "8")
       {
         //valid
         return true;

@@ -2229,7 +2229,7 @@ h2.rankbody{
 }
 
 h2.rankbody2{
-  font-size: 4.5vmin;
+  font-size: 3.8vmin;
   text-align: left;
   margin-left: 5%;
 }
@@ -2338,6 +2338,11 @@ textarea.feedback{
 
 /*leaderboard*/
 
+.hour{
+  margin-right: 2%;
+  padding: 5%;
+  font-size: 3.8vmin;
+}
 .list.card.leaderboard{
   /*background: linear-gradient(#29A29C, #185C97);*/
   background-color: #25557E;

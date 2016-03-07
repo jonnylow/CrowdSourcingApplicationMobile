@@ -138,15 +138,13 @@ angular.module('crowdsourcing')
 
             $http.get(urlString)
               .success(function (data) {
+                /*
                 var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
                 $http.get(sendEmail)
                   .success(function (data) {
 
-                  })
+                  })*/
 
-                  .error(function (data) {
-                    alert("Error in connection");
-                  });
 
                 var status = data;
                 if (status != null) {

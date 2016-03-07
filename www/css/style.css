@@ -540,6 +540,22 @@ label.item
   width:98.5%;
 }
 
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .date-input.dob {
+  position: absolute;
+  left: -3%;
+  }
+}
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .date-input.dob {
+  position: absolute;
+  left: 3%;
+  }
+}
+
 div.item{
   background-color: transparent ;
 }
@@ -559,6 +575,7 @@ label.item.item-input.registration{
   border-left:none;
   border-bottom:none;
   font-size: 4vmin;
+  padding-right:3%;
 }
 
 label.item.item-input.registration.dob{
@@ -695,13 +712,13 @@ button.button.button-block.button-calm.registration{
   margin-bottom: -40px;
 }
 
-
 select.dropdown.update{
   direction:rtl;
   position: absolute;
   width: 55%;
   right:7px;
-  height: 52px;
+  height: 80%;
+  top:14%;
   font-size: 3.5vmin;
 }
 
@@ -851,6 +868,8 @@ label.item.item-input.item-stacked-label.registration{
 select.dropdown.morequestions{
   padding:10px;
   height:40px;
+  margin-left: 7%;
+  font-size: 4vmin;
 }
 
 button.button.button-light.button-small.NRICbutton1{
@@ -917,7 +936,7 @@ h3.morequestions{
 }
 
 select.dropdown.register{
-  padding-left: 12px;
+  margin-left: 7%;
   height:40px;
 }
 
@@ -938,7 +957,7 @@ h4.skip{
 }
 
 .button.button-dark.paddedbutton.skip{
-  width:25%;
+  width:30%;
   padding:-10%;
   padding-top:-30%;
   border-radius: 10px;
@@ -964,6 +983,13 @@ h4.verify1{
   color:#000;
   margin:10px;
   font-size: 17px;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+h4.verify2{
+  color:#000;
+  font-size: 4vmin;
   text-align: center;
   margin-bottom: -10px;
 }
@@ -1324,12 +1350,35 @@ p.activityconfirmation{
   background-color: #AEE1E0;
 }
 
-p.myactivitymarker{
+.platform-android .p.myactivitymarker{
+  position: absolute;
+  top: 20%;
+  right: 46%;
+  font-size: 5.5vmin;
+}
+
+
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .myactivitymarker{
   position: absolute;
   top: 15%;
   right: 46%;
   font-size: 5.5vmin;
 }
+}
+
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .myactivitymarker{
+  position: absolute;
+  top: 20%;
+  right: 46%;
+  font-size: 5.5vmin;
+}
+}
+
 div.col.myactivitynum{
   background-color: transparent;
   line-height: 40px;
@@ -1924,7 +1973,7 @@ h3.me{
 
 input.edit{
   text-align: right;
-  font-size: 3.5vmin;
+  font-size: 4vmin;
   width: 100%;
   max-width: 60%;
   position:absolute;
@@ -2059,10 +2108,11 @@ label.item.item-input.registration2{
 }
 
 input.dobupdate{
-  font-size:3.5vmin;
+  font-size:4vmin;
   text-align: right;
   width:63%;
   height:29px;
+  margin-right: 8%;
 }
 
 h3.update{
@@ -2073,8 +2123,31 @@ h3.update{
   color: #666;
 }
 
-.checkbox.manage{
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .checkbox.manage{
+    font-size: 4vmin;
+    position:relative;
+    left:43%;
+  }
+}
+
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .checkbox.manage{
+    font-size: 4vmin;
+    position:relative;
+    left:50%;
+  }
+}
+
+.platform-android .checkbox.manage{
   margin-left: 45%;
+}
+
+.item.item-input.update.car{
+  width:100%;
 }
 
 /*end of manage account page*/
@@ -2193,12 +2266,24 @@ h2.rank{
 }
 
 h5.rank{
-  margin-left: -5%;
+  margin-left: 0%;
   text-align: center;
   color: #999;
   font-size: 4vmin;
   margin-bottom: 20px;
 }
+
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .h5.rank {
+    margin-left: -9%;
+  text-align: center;
+  color: #999;
+  font-size: 4vmin;
+  margin-bottom: 20px;
+}
+}
+
 
 .col.col-33.rankfirst{
   padding-left: 3%;
@@ -2223,7 +2308,7 @@ h5.rank{
 p.rank{
   font-size: 3.5vmin;
   text-align: left;
-  margin-top: 32%;
+  margin-top: 34%;
   position: relative;
 }
 

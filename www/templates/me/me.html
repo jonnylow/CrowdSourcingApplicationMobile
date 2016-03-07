@@ -1,11 +1,11 @@
-<ion-view view-title="My Profile">
+<ion-view view-title="My Profile" can-swipe-back="false">
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons>
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content padding="false" ng-show=!loadingshow>
+  <ion-content scroll="false" padding="false" ng-show=!loadingshow>
 
 <!--ng-click="goRank()" remove the rank linkage to the rank page from the div below-->
   <div class="list card me">

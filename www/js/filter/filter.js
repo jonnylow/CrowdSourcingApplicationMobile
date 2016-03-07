@@ -19,6 +19,7 @@ angular.module('crowdsourcing')
         {
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
           $http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=start&id="+$scope.id)
+            //$http.get("http://changhuapeng.com/laravel/api/retrieveFilter?filter=start")
             .success(function (data) {
               var results = data;
 

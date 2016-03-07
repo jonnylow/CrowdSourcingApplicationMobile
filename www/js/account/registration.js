@@ -16,7 +16,7 @@ angular.module('crowdsourcing')
     }
     else
     {
-
+      $scope.fields = {name:"", email:"", password:"", contactnumber:"", dob:new Date('1950-01-01'), gender:"", carChecked:""};
       //$scope.modal.show();
       $ionicModal.fromTemplateUrl('templates/account/OrientationModal.html', {
         scope: $scope,

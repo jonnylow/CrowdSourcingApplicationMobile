@@ -16,7 +16,6 @@ angular.module('crowdsourcing')
     }
     else
     {
-      $scope.fields = {name:"", email:"", password:"", contactnumber:"", dob:new Date('1950-01-01'), gender:"", carChecked:""};
       //$scope.modal.show();
       $ionicModal.fromTemplateUrl('templates/account/OrientationModal.html', {
         scope: $scope,
@@ -74,62 +73,64 @@ angular.module('crowdsourcing')
             var tempGender = fields.gender;
 
             if (validateDOB(tempDOB) == true) {
-              var dd = tempDOB.getDate();
-              var mm = tempDOB.getMonth() + 1;
-              var yyyy = tempDOB.getFullYear();
-              if (dd < 10) {
-                dd = '0' + dd
-              }
-              if (mm < 10) {
-                mm = '0' + mm
-              }
-              tempDOB = yyyy + '-' + mm + '-' + dd;
+              if(validateDOBAge(fields.dob.getFullYear()) == true)
+              {
+                var dd = tempDOB.getDate();
+                var mm = tempDOB.getMonth() + 1;
+                var yyyy = tempDOB.getFullYear();
+                if (dd < 10) {
+                  dd = '0' + dd
+                }
+                if (mm < 10) {
+                  mm = '0' + mm
+                }
+                tempDOB = yyyy + '-' + mm + '-' + dd;
                 if (validateName(tempName) == true) {
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
                       if (validatePassword(tempPassword) == true) {
-                      $http.get(apiUrl + "checkEmail?email=" + tempEmail)
-                        .success(function (data) {
+                        $http.get(apiUrl + "checkEmail?email=" + tempEmail)
+                          .success(function (data) {
 
-                          var status = data;
-                          if (status.status[0] != "exist") {
-                            if (fields.carChecked == true) {
-                              $scope.tempCarChecked = 1;
+                            var status = data;
+                            if (status.status[0] != "exist") {
+                              if (fields.carChecked == true) {
+                                $scope.tempCarChecked = 1;
+                              }
+                              else {
+                                $scope.tempCarChecked = 0;
+                              }
+
+                              window.localStorage.setItem("tempName", tempName);
+                              window.localStorage.setItem("tempEmail", tempEmail);
+                              window.localStorage.setItem("tempPassword", tempPassword);
+                              window.localStorage.setItem("tempContactnumber", tempContactnumber);
+                              window.localStorage.setItem("tempDOB", tempDOB);
+                              window.localStorage.setItem("tempHaveCar", $scope.tempCarChecked);
+                              window.localStorage.setItem("tempGender", fields.gender);
+
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+                              $state.go('moreQuestions', {}, {reload: true});
                             }
                             else {
-                              $scope.tempCarChecked = 0;
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+
+                              var alertPopup = $ionicPopup.alert({
+                                title: '<h6 class="popups title">Whoops!</h6>',
+                                subTitle: '<br><h6 class="popups">Email address has been registered</h6> ',
+                                scope: $scope,
+                                buttons: [
+                                  {
+                                    text: '<b>Ok</b>',
+                                    type: 'button button-stable',
+
+                                  },
+                                ]
+                              });
                             }
-
-                            window.localStorage.setItem("tempName", tempName);
-                            window.localStorage.setItem("tempEmail", tempEmail);
-                            window.localStorage.setItem("tempPassword", tempPassword);
-                            window.localStorage.setItem("tempContactnumber", tempContactnumber);
-                            window.localStorage.setItem("tempDOB", tempDOB);
-                            window.localStorage.setItem("tempHaveCar", $scope.tempCarChecked);
-                            window.localStorage.setItem("tempGender", fields.gender);
-
-                            $scope.loadingshow = false;
-                            $ionicLoading.hide();
-                            $state.go('moreQuestions', {}, {reload: true});
-                          }
-                          else {
-                            $scope.loadingshow = false;
-                            $ionicLoading.hide();
-
-                            var alertPopup = $ionicPopup.alert({
-                              title: '<h6 class="popups title">Whoops!</h6>',
-                              subTitle: '<br><h6 class="popups">Email address has been registered</h6> ',
-                              scope: $scope,
-                              buttons: [
-                                {
-                                  text: '<b>Ok</b>',
-                                  type: 'button button-stable',
-
-                                },
-                              ]
-                            });
-                          }
-                        })
+                          })
                       }
                       else {
                         $scope.loadingshow = false;
@@ -202,6 +203,24 @@ angular.module('crowdsourcing')
                     ]
                   });
                 }
+              }
+              else {
+                $scope.loadingshow = false;
+                $ionicLoading.hide();
+
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Whoops!</h6>',
+                  subTitle: '<br><h6 class="popups">Volunteers of CareGuide are required to be at least 16 years old</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: '<b>Ok</b>',
+                      type: 'button button-stable',
+
+                    },
+                  ]
+                });
+              }
             }
             else {
               $scope.loadingshow = false;
@@ -324,6 +343,18 @@ angular.module('crowdsourcing')
       {
         //ok
         return true;
+      }
+    }
+
+    function validateDOBAge(year){
+      var currentDate = new Date();
+      if(currentDate.getFullYear() - year >= 16)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
       }
     }
 

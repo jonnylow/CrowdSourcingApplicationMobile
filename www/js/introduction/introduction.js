@@ -12,4 +12,10 @@ angular.module('crowdsourcing')
         slider.prev();
       });
 
+      $scope.goHome = function()
+      {
+        window.localStorage.setItem("intro", "done");
+        $state.go('landingPage');
+      }
+
     });

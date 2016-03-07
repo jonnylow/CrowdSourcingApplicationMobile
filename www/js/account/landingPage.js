@@ -39,6 +39,10 @@ angular.module('crowdsourcing')
           }
         }
 
+        if (window.localStorage.getItem("intro")==null){
+          $state.go('introduction',{},{reload:true});
+        }
+
 
         //FOR USER STUDY
         /*

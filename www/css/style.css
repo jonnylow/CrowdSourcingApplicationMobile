@@ -664,7 +664,7 @@ label.item.item-input.registration.dob,
     overflow:hidden;
     text-overflow: ellipsis;
     margin-left: 2%;
-    margin-top: 2px;
+    margin-top: -1%;
     font-size: 0.9em;
   }
 }
@@ -678,6 +678,15 @@ span.input-label.dob{
 input.registration{
   margin-left: 10px;
   font-size: 4vmin;
+}
+
+/*iphone 6 plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios input.registration{
+  margin-left: 10px;
+  padding-top:3%;
+  font-size: 4vmin;
+  }
 }
 
 h1.title.registration{
@@ -787,7 +796,24 @@ select.dropdown.update{
   color: #ABABAB;
 }
 
-.orientation.checkbox{
+.platform-ios .checkbox.registration{
+  position: relative;
+  margin-left: -23%;
+}
+
+.platform-android .checkbox.registration{
+  position: relative;
+  margin-left: 5%;
+}
+
+.platform-ios .orientation.checkbox{
+  position: relative;
+  margin-left: -2%;
+  margin-bottom: 1%;
+  margin-top: 4%;
+}
+
+.platform-android .orientation.checkbox{
   position: relative;
   margin-left: -2%;
   margin-bottom: 1%;
@@ -2213,17 +2239,16 @@ h3.update{
   .platform-ios .checkbox.manage{
     font-size: 4vmin;
     position:relative;
-    left:43%;
+    left:45.5%;
   }
 }
-
 
 /*iphone 6plus*/
 @media only screen and (min-device-width:414px){
   .platform-ios .checkbox.manage{
     font-size: 4vmin;
     position:relative;
-    left:50%;
+    left:53%;
   }
 }
 
@@ -2453,6 +2478,15 @@ div.col.rankfirst{
   padding-left: 15px;
   max-height:110%;
   margin-top: -2%;
+}
+
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .row.rank{
+  height:60px;
+  border-top: solid 2px #F1F3F5;
+  padding-top: 2%;
+  }
 }
 
 .row.rank{

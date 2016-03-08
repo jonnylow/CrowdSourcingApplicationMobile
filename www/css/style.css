@@ -782,11 +782,11 @@ select.dropdown.update{
 }
 
 .orientation.checkbox{
-  margin-left: 30%;
+  margin-left: -4%;
 }
 
 .login.checkbox{
-  margin-left: -4%;
+  margin-left: -2%;
 }
 
 .platform-android .list.card.myactivitymain.orientation{
@@ -1892,6 +1892,8 @@ p.me{
   margin-bottom: 0;
   text-align: left;
   color: #848484;
+  height:8%;
+  font-size: 4vmin;
 }
 
 .button.gotoedit2{
@@ -1900,6 +1902,8 @@ p.me{
   margin-bottom: 0;
   text-align: left;
   color: #848484;
+  height:8%;
+  font-size: 4vmin;
 }
 
 .list.mestats{
@@ -2284,7 +2288,6 @@ h5.rank{
 }
 }
 
-
 .col.col-33.rankfirst{
   padding-left: 3%;
 }
@@ -2308,21 +2311,20 @@ h5.rank{
 p.rank{
   font-size: 3.5vmin;
   text-align: left;
-  margin-top: 34%;
-  position: relative;
+  margin-left: 2%;
 }
 
 p.rank2{
   font-size: 3.5vmin;
   text-align: center;
-  margin-top: 34%;
+  margin-top:5%;
 }
 
 p.rank3{
   font-size: 3.5vmin;
   text-align: center;
-  margin-right: 8%;
-  margin-top: -2%
+  margin-top:8%;
+  margin-left:-9%;
 }
 
 .item.rankheader{
@@ -2340,18 +2342,21 @@ h2.rankbody{
   font-size: 4.5vmin;
   text-align: left;
   margin-left: 40%;
+  margin-top: 5%;
 }
 
 h2.rankbody2{
   font-size: 3.8vmin;
   text-align: left;
   margin-left: 5%;
+  margin-top:5%;
 }
 
 h2.rankbody3{
   font-size: 4.5vmin;
   text-align: left;
-  margin-left: 40%;
+  margin-top:2%;
+  margin-left: 15%;
 }
 
 div.col.rankfirst{
@@ -2363,7 +2368,7 @@ div.col.rankfirst{
 }
 
 .row.rank{
-  height:85px;
+  height:30%;
   border-top: solid 2px #F1F3F5;
   padding-top: 2%;
 }

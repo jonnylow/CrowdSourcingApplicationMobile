@@ -396,6 +396,7 @@ i.icon{
 
 .list.card.aboutus{
   padding:3%;
+  margin-top: 0;
 }
 
 h6.aboutus{
@@ -408,7 +409,8 @@ h6.aboutus2{
   color:#6E6E6E;
   font-size: 5vmin;
   font-weight: bold;
-  margin-top: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 h6.aboutus.body{
@@ -417,6 +419,9 @@ h6.aboutus.body{
   font-size: 4vmin;
 }
 
+img.aboutus{
+  width:100%;
+}
 /***************END OG GETTING STARTED PAGE**************/
 /**********************LANDING PAGE**********************/
 .mainimage{
@@ -955,9 +960,9 @@ p.skip{
 }
 
 h4.skip{
-  color:#fff;
+  color:#666;
   margin-bottom: 20%;
-  font-size: 5vmin;
+  font-size: 4vmin;
 }
 
 .button.button-dark.paddedbutton.skip{
@@ -1067,7 +1072,7 @@ h2.home{
 
 h2.homemain{
   color: #333;
-  font-size: 4vmin;
+  font-size: 4.2vmin;
   font-weight: bold;
   text-align: leftupdat;
   line-height: 20px;
@@ -1208,7 +1213,7 @@ p.home{
 }
 
 .item.stat{
-  font-size: 4vmin;
+  font-size: 4.5vmin;
   padding-top: 3%;
   border:none;
   line-height: 25px;
@@ -1241,7 +1246,7 @@ h6.home-page{
 }
 
 .button.joinus{
-  margin-bottom: 0px;
+  margin-bottom: -1px;
   background-color: #1C6F6B;
   color: #fff;
   border:none;
@@ -1905,6 +1910,7 @@ div.col.col-66.me{
 }
 .ion-ribbon-a.me{
   vertical-align: middle;
+  margin-right:2%;
 }
 
 div.row.me{
@@ -2482,18 +2488,22 @@ h2.help{
   font-size: 8vmin;
   margin-top: 1%;
   text-transform: uppercase;
-  margin-left: 2%;
+  margin-left: 3%;
 }
 
 h5.help{
   text-align: left;
-  margin-left: 2%;
+  margin-left: 3%;
   color:#999;
 }
 
 p.help{
   font-size: 4vmin;
+  line-height: 30px;
+  color: #333;
+  margin-left: 2%;
 }
+
 /* end of help page*/
 
 /*Feedback*/

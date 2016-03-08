@@ -2217,7 +2217,17 @@ label.item.item-input.registration2{
   width:94%;
 }
 
-input.dobupdate{
+.platform-ios input.dobupdate{
+  font-size:4vmin;
+  text-align: right;
+  width:63%;
+  height:29px;
+  position: absolute;
+  right:0%;
+  top:20%;
+}
+
+.platform-android input.dobupdate{
   font-size:4vmin;
   text-align: right;
   width:63%;

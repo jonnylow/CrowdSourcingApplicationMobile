@@ -54,7 +54,7 @@ angular.module('crowdsourcing')
         //plot map
         if($scope.transportID != null && $scope.transportName != null && $scope.transportDateTimeStart !=null) {
           uiGmapGoogleMapApi.then(function (maps) {
-            //var myIcon = new google.maps.MarkerImage("img/blue-dot.png", null, null, null, new google.maps.Size(35,35));
+            var myIcon = new google.maps.MarkerImage("img/noopacity.png", null, null, null, new google.maps.Size(30,30));
             //plot marker for 'mylocation'
             $scope.currentLocationMarker = {
               id: 0,
@@ -64,7 +64,9 @@ angular.module('crowdsourcing')
               },
               "window": {
                 "title": "Current Location"
-              }
+              },
+              icon:myIcon,
+              optimized: false
             };
 
             //map configuration
@@ -146,7 +148,7 @@ angular.module('crowdsourcing')
                         $scope.transportLocationFromLatLng.push([parseFloat(transportDetails.activities[i].departure_centre.lat), parseFloat(transportDetails.activities[i].departure_centre.lng)])
                         getDistanceMarker(from, to);
 
-                        var myIcon = new google.maps.MarkerImage("img/blue-dot.png", null, null, null, new google.maps.Size(35,35));
+                        var myIcon = new google.maps.MarkerImage("img/map-marker-icon1.png", null, null, null, new google.maps.Size(30,30));
 
                         var tempMarker = {
                           id: i + 1,
@@ -157,7 +159,8 @@ angular.module('crowdsourcing')
                           "window": {
                             "title": transportDetails.activities[i].departure_centre.name
                           },
-                          icon:myIcon
+                          icon:myIcon,
+                          optimized: false
                         };
                         $scope.markers.push(tempMarker);
                         $scope.markersStatus.push(false);

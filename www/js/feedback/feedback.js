@@ -7,7 +7,7 @@ angular.module('crowdsourcing')
       {
         if (validateEmail(fields.email) == true) {
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
-          var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=jonathanlow.2013@sis.smu.edu.sg&message=Feedback:" + fields.feedback;
+          var sendEmail = apiUrl+"sendFeedback?email="+fields.feedback+"&feedback="+fields.feedback;
           $http.get(sendEmail)
             .success(function (data) {
               $ionicLoading.hide();

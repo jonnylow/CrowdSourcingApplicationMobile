@@ -358,8 +358,9 @@ i.icon{
 }
 
 .platform-android .item-checkbox{
-  padding-top:4%;
-  padding-bottom: 4%;
+  position: absolute;
+  top:-55%;
+  left:-5%;
 }
 
 .platform-ios .item-checkbox{
@@ -782,7 +783,10 @@ select.dropdown.update{
 }
 
 .orientation.checkbox{
-  margin-left: -4%;
+  position: relative;
+  margin-left: -2%;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 
 .login.checkbox{
@@ -1350,7 +1354,7 @@ p.activityconfirmation{
   background-color: #AEE1E0;
 }
 
-.platform-android .p.myactivitymarker{
+.platform-android .myactivitymarker{
   position: absolute;
   top: 20%;
   right: 46%;
@@ -2116,7 +2120,8 @@ input.dobupdate{
   text-align: right;
   width:63%;
   height:29px;
-  margin-right: 8%;
+  position: absolute;
+  right:-14%;
 }
 
 h3.update{
@@ -2147,11 +2152,18 @@ h3.update{
 }
 
 .platform-android .checkbox.manage{
-  margin-left: 45%;
+  position:absolute;
+  right:0%;
+  font-size: 4vmin;
 }
 
-.item.item-input.update.car{
+.platform-ios .item-input.update.car{
   width:100%;
+}
+
+.platform-android .item-input.update.car{
+  width:100%;
+  height:43px;
 }
 
 /*end of manage account page*/
@@ -2317,13 +2329,13 @@ p.rank{
 p.rank2{
   font-size: 3.5vmin;
   text-align: center;
-  margin-top:5%;
+  margin-top:-1%;
 }
 
 p.rank3{
   font-size: 3.5vmin;
   text-align: center;
-  margin-top:8%;
+  margin-top:6%;
   margin-left:-9%;
 }
 
@@ -2349,14 +2361,14 @@ h2.rankbody2{
   font-size: 3.8vmin;
   text-align: left;
   margin-left: 5%;
-  margin-top:5%;
+  margin-top:8%;
 }
 
 h2.rankbody3{
   font-size: 4.5vmin;
   text-align: left;
-  margin-top:2%;
   margin-left: 15%;
+  margin-top: 0.5%;
 }
 
 div.col.rankfirst{
@@ -2368,7 +2380,7 @@ div.col.rankfirst{
 }
 
 .row.rank{
-  height:30%;
+  height:70px;
   border-top: solid 2px #F1F3F5;
   padding-top: 2%;
 }
@@ -2376,20 +2388,6 @@ div.col.rankfirst{
 div.col.ranksecond{
   padding-left: 15px;
   text-align: left;
-}
-
-.icon.ion-clock.me{
-  color:#b8b8b8;
-  font-size: 8.5vmin;
-  margin-left: 30%;
-  position:absolute;
-  left:15%;
-}
-
-.icon.ion-clipboard.me{
-  color:#b8b8b8;
-  font-size: 8.5vmin;
-  margin-left: 30%;
 }
 
 .crown{

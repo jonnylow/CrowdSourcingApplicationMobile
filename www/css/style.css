@@ -446,6 +446,9 @@ img.aboutus{
   opacity:0.9;
 }
 
+.platform-ios .list-inset.login{
+  margin-bottom: 0;
+}
 .list-inset.login.retrieve{
   margin-top: 5px;
 }
@@ -801,6 +804,13 @@ select.dropdown.update{
   margin-left: -23%;
 }
 
+/*iphone 6 plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .checkbox.registration{
+    margin-left:0;
+  }
+}
+
 .platform-android .checkbox.registration{
   position: relative;
   margin-left: 5%;
@@ -839,7 +849,7 @@ select.dropdown.update{
 }
 
 h6.orientation{
-  font-size: 4.3vmin;
+  font-size: 4vmin;
   font-weight: normal;
 }
 
@@ -2026,6 +2036,13 @@ p.me{
 /*end of profile page*/
 
 /*manage account page*/
+
+.platform-android .checkbox.manage{
+  position:absolute;
+  top:10%;
+  left:60%;
+  font-size: 4vmin;
+}
 
 .list.list-inset.update{
   margin-top: 15px;

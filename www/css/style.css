@@ -383,6 +383,7 @@ i.icon{
 /*******************GETTING STARTED PAGE*****************/
 .platform-android .gettingstarted{
   width:100%;
+ 
 }
 
 .platform-ios .gettingstarted{
@@ -391,7 +392,12 @@ i.icon{
 }
 
 .slider-pager{
-  bottom:0px;
+  bottom:5%;
+  position: absolute;
+}
+
+.icon.ion-record:before{
+  color:#fff;
 }
 
 .list.card.aboutus{
@@ -2250,7 +2256,8 @@ label.item.item-input.registration2{
   width:63%;
   height:29px;
   position: absolute;
-  right:-14%;
+  top:10%;
+  right:-10%;
 }
 
 h3.update{

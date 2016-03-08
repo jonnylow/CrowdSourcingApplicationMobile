@@ -1061,9 +1061,23 @@ h2.home{
   color: #164F86;
   font-size: 4vmin;
   font-weight: bold;
-  text-align: left;
+  text-align: leftupdat;
   line-height: 20px;
 }
+
+h2.homemain{
+  color: #333;
+  font-size: 4vmin;
+  font-weight: bold;
+  text-align: leftupdat;
+  line-height: 20px;
+}
+
+h2.homemain.urgent{
+  margin-left: 10%;
+  color:#666;
+}
+
 
 .item.item-divider.home{
   padding-bottom: 8px;
@@ -1073,11 +1087,17 @@ h2.home{
   border-top-left-radius: 5px;
 }
 
+i.urgent{
+  margin-right: 10px;
+  font-size: 120%;
+  color: #D52A21;
+}
+
 h6.home.urgent{
   font-size: 4.7vmin;
   top:10%;
   font-weight: bold;
-  color:#FF4000;
+  color:#333;
 }
 
 .item.item-text-wrap.home{
@@ -1130,9 +1150,28 @@ p.homep{
 
 .list.card.myactivitymain.recommendation{
   width:95%;
-  background-color: #D8D8D8;
+  background-color: #fff;
   border-radius: 7px;
   box-shadow: none;
+}
+
+.list.card.myactivitymain.updatestatus{
+  width:95%;
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+.item.item-divider.updatestatus{
+  background-color: #fff;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.item.item-text-wrap.updatestatus{
+  background-color: #fff;
+  padding-bottom: 8px;
+  text-align: center;
 }
 
 .list.card.myactivitymain.stat{
@@ -1141,6 +1180,23 @@ p.homep{
   text-align: left;
   width: 100%;
   margin:0;
+}
+
+p.home{
+  font-size: 3.5vmin;
+  color: #fff;
+  font-weight: bold;
+  line-height: 20px;
+  margin:0;
+}
+
+.button-updatestatus{
+  background-color: #1C6F6B;
+  border:none;
+  border-radius: 20px;
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px
 }
 
 .list.card.myactivitymain.stat2{
@@ -1152,12 +1208,19 @@ p.homep{
 }
 
 .item.stat{
-  font-size: 4.5vmin;
+  font-size: 4vmin;
   padding-top: 3%;
+  border:none;
+  line-height: 25px;
 }
 
+.item.stat2{
+  padding:0;
+  border:none;
+  text-align: center;
+}
 .item.statuser{
-  padding: 5px;
+  padding: 4px;
 }
 
 .elderly-image{
@@ -1177,22 +1240,29 @@ h6.home-page{
   position: relative;
 }
 
+.button.joinus{
+  margin-bottom: 0px;
+  background-color: #1C6F6B;
+  color: #fff;
+  border:none;
+}
+
 .icon.ion-person-stalker.dark.stats{
-  font-size: 7vmin;
+  font-size: 6vmin;
   color:#b0b0b0;
   margin-right: 3%;
   margin-left: 5%;
 }
 
 .icon.ion-clock.dark.stats{
-  font-size: 7vmin;
+  font-size: 6vmin;
   color:#b0b0b0;
   margin-right: 1%;
   margin-left: 5%;
 }
 
 b.home.stats{
-  font-size: 7vmin;
+  font-size: 4.5vmin;
 }
 /*end of home page*/
 
@@ -2456,14 +2526,15 @@ textarea.feedback{
 /*leaderboard*/
 
 .hour{
-  margin-right: 2%;
-  padding: 5%;
   font-size: 3.8vmin;
+  text-align: right;
+  margin-right: 5%;
+  color: #666;
+  font-weight: bold;
 }
 
 .list.card.leaderboard{
-  /*background: linear-gradient(#29A29C, #185C97);*/
-  background-color: #25557E;
+  background: linear-gradient(#29A29C, #185C97);
   box-shadow: none;
   margin:0;
   padding-top:5%;
@@ -2487,7 +2558,7 @@ p.leaderboardmain{
 
 h5.leaderboard{
   color:#fff;
-  font-size:6vmin;
+  font-size:4vmin;
   text-align: center;
   font-weight: bold;
 
@@ -2516,17 +2587,19 @@ ion-item.leaderboardtop{
 
 h4.leaderboard{
   color:#000;
-  margin-bottom: 10px;
-  font-size: 6vmin;
+  font-size: 4vmin;
+  text-align: left;
+  margin-top: 4px;
+  color:#666;
+}
+
+h4.leaderboard.number{
+  text-align: right;
+  color:#666;
+  margin-right: 10%;
 }
 
 .ion-ribbon-a.leaderboard{
   padding: 2%;
-}
-
-h8.leaderboard.position{
-  font-size: 6vmin;
-  font-weight: bold;
-  padding-right: 2%;
 }
 /*end of leaderboard page*/

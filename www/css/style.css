@@ -1121,7 +1121,6 @@ h2.homemain{
 }
 
 h2.homemain.urgent{
-  margin-left: 10%;
   color:#666;
 }
 
@@ -1136,8 +1135,9 @@ h2.homemain.urgent{
 
 i.urgent{
   margin-right: 10px;
-  font-size: 120%;
+  font-size: 200%;
   color: #D52A21;
+  vertical-align: middle;
 }
 
 h6.home.urgent{
@@ -1246,6 +1246,16 @@ p.home{
   margin-bottom: 10px
 }
 
+.button-updatestatus.active, .button-updatestatus.activated{
+  background-color: #1C6F6B;
+  border:none;
+  border-radius: 20px;
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 .list.card.myactivitymain.stat2{
   position:absolute;
   bottom:0%;
@@ -1255,10 +1265,12 @@ p.home{
 }
 
 .item.stat{
-  font-size: 4.5vmin;
+  font-size: 4vmin;
   padding-top: 3%;
   border:none;
-  line-height: 25px;
+  height: 100%;
+  text-align: center;
+  line-height: 30px;
 }
 
 .item.stat2{
@@ -1288,28 +1300,22 @@ h6.home-page{
 }
 
 .button.joinus{
-  margin-bottom: -1px;
   background-color: #1C6F6B;
   color: #fff;
   border:none;
-}
-
-.icon.ion-person-stalker.dark.stats{
-  font-size: 6vmin;
-  color:#b0b0b0;
-  margin-right: 3%;
-  margin-left: 5%;
+  height: 50px;
 }
 
 .icon.ion-clock.dark.stats{
   font-size: 6vmin;
-  color:#b0b0b0;
-  margin-right: 1%;
-  margin-left: 5%;
+  color:#666;
 }
 
-b.home.stats{
-  font-size: 4.5vmin;
+h2.stat{
+  font-size: 6vmin;
+  font-weight: bold;
+  color:#333;
+  margin-top: 7px;
 }
 /*end of home page*/
 
@@ -2544,11 +2550,12 @@ div.col.ranksecond{
 
 /***** Help page*****/
 .list.myactivity.help{
-  margin-top: 0%;
+  margin-top: 4%;
 }
 
 .item.help{
   background-color:#F6F6F7;
+  padding: 5px 10px;
 }
 
 h2.help{
@@ -2569,7 +2576,7 @@ p.help{
   font-size: 4vmin;
   line-height: 30px;
   color: #333;
-  margin-left: 2%;
+  margin-left: 4%;
 }
 
 /* end of help page*/

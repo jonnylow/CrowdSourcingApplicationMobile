@@ -1257,8 +1257,18 @@ p.home{
   border:none;
   text-align: center;
 }
+
 .item.statuser{
   padding: 4px;
+  position:relative;
+}
+
+/*nexus 4*/
+@media screen and (device-width: 384px) and (device-height: 592px){
+  .platform-android .chart.chart-bar{
+    height:85px !important;
+    width:100% !important;
+  }
 }
 
 .elderly-image{

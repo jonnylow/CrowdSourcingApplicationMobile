@@ -357,11 +357,6 @@ i.icon{
   padding:5px;
 }
 
-.platform-android .item-checkbox{
-  position: absolute;
-  top:-55%;
-  left:-5%;
-}
 
 .platform-ios .item-checkbox{
   padding-top:4%;
@@ -805,22 +800,6 @@ select.dropdown.update{
   color: #ABABAB;
 }
 
-.platform-ios .checkbox.registration{
-  position: relative;
-  margin-left: -23%;
-}
-
-/*iphone 6 plus*/
-@media only screen and (min-device-width:414px){
-  .platform-ios .checkbox.registration{
-    margin-left:0;
-  }
-}
-
-.platform-android .checkbox.registration{
-  position: relative;
-  margin-left: 5%;
-}
 
 .platform-ios .orientation.checkbox{
   position: relative;
@@ -2264,11 +2243,12 @@ label.item.item-input.registration2{
 .platform-android input.dobupdate{
   font-size:4vmin;
   text-align: right;
-  width:63%;
+  width:40%;
   height:29px;
-  position: absolute;
-  top:10%;
-  right:-10%;
+  position: relative;
+  right:5%;
+  margin-right:-20%;
+  margin-top: -2%;
 }
 
 h3.update{
@@ -2370,6 +2350,17 @@ select.search{
 /*end of search pages*/
 
 /*Filter pages*/
+.platform-ios h5.filter{
+  margin-top: 1%;
+  margin-left:2%;
+  font-size: 4.5vmin;
+}
+
+.platform-android h5.filter{
+  margin-left:2%;
+  font-size: 4.5vmin;
+}
+
 .list.card.filterheader{
   box-shadow: 0 0 0 0;
   margin-bottom: 0px;
@@ -2382,7 +2373,16 @@ select.search{
 .item.filterheader{
   padding-top: 0;
 }
-.list.card.filtermain{
+
+.platform-android .list.card.filtermain{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 5%;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.platform-ios .list.card.filtermain{
   box-shadow: 0 0 0 0;
   margin-bottom: 16px;
   margin-top: 0px;
@@ -2464,20 +2464,19 @@ h5.rank{
 p.rank{
   font-size: 3.5vmin;
   text-align: left;
-  margin-left: 2%;
+  position:center;
 }
 
 p.rank2{
   font-size: 3.5vmin;
   text-align: center;
-  margin-top:-1%;
+  position:center;
 }
 
 p.rank3{
   font-size: 3.5vmin;
   text-align: center;
-  margin-top:6%;
-  margin-left:-9%;
+  position:center;
 }
 
 .item.rankheader{
@@ -2493,23 +2492,23 @@ p.rank3{
 
 h2.rankbody{
   font-size: 4.5vmin;
-  text-align: left;
-  margin-left: 40%;
-  margin-top: 5%;
+  text-align: center;
+  position:center;
+  margin-top: 10%;
 }
 
 h2.rankbody2{
   font-size: 3.8vmin;
-  text-align: left;
-  margin-left: 5%;
-  margin-top:8%;
+  text-align: center;
+  position:center;
+  margin-top: 12%;
 }
 
 h2.rankbody3{
   font-size: 4.5vmin;
-  text-align: left;
-  margin-left: 15%;
-  margin-top: 0.5%;
+  text-align: center;
+  position:center;
+  margin-top: 5%;
 }
 
 div.col.rankfirst{
@@ -2590,7 +2589,7 @@ p.help{
   padding-bottom: 2%;
 }
 
-.item.item-input.feedback{
+.item.item-feedback{
   font-size: 20px;
 }
 

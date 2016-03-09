@@ -7,22 +7,38 @@ angular.module('crowdsourcing')
       $scope.tempContactNumber = window.localStorage.getItem("tempContactnumber");
       $scope.tempDOB = window.localStorage.getItem("tempDOB");
       $scope.tempGender = window.localStorage.getItem("tempGender");
-
-      if(window.localStorage.getItem("tempPreferences1") != null || window.localStorage.getItem("tempPreferences2") != null || window.localStorage.getItem("tempOccupation") != null || window.localStorage.getItem("tempGender") != null)
+      $scope.fields = {preferences_1:"", preferences_2:"", occupation:""};
+      if(window.localStorage.getItem("tempPreferences1") != null || window.localStorage.getItem("tempPreferences2") != null || window.localStorage.getItem("tempOccupation") != null)
       {
-        $scope.fields = {preferences_1:window.localStorage.getItem("tempPreferences1"), preferences_2:window.localStorage.getItem("tempPreferences2"), occupation:window.localStorage.getItem("tempOccupation"), gender:window.localStorage.getItem("tempGender")};
+        $scope.fields = {preferences_1:window.localStorage.getItem("tempPreferences1"), preferences_2:window.localStorage.getItem("tempPreferences2"), occupation:window.localStorage.getItem("tempOccupation")};
       }
 
       $scope.verify = function(fields)
       {
         if(fields != null && fields.preferences_1 != null && fields.preferences_2 != null && fields.occupation != null && fields.occupation != "") {
-            if(fields.preferences_1 != fields.preferences_2) {
+            if((fields.preferences_1 == "" && fields.preferences_2 == "") || fields.preferences_1 != fields.preferences_2) {
+                if(validateOccupation(fields.occupation) == true) {
+                  window.localStorage.setItem("tempOccupation", fields.occupation);
+                  window.localStorage.setItem("tempPreferences1", fields.preferences_1);
+                  window.localStorage.setItem("tempPreferences2", fields.preferences_2);
 
-                window.localStorage.setItem("tempOccupation", fields.occupation);
-                window.localStorage.setItem("tempPreferences1", fields.preferences_1);
-                window.localStorage.setItem("tempPreferences2", fields.preferences_2);
+                  $state.go('verify', {}, {reload: true});
+                }
+              else
+                {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Whoops!</h6>',
+                    subTitle: '<br><h6 class="popups">Occupation should consist of alphabetical letters only</h6> ',
+                    scope: $scope,
+                    buttons: [
+                      {
+                        text: '<b>Ok</b>',
+                        type: 'button button-stable',
 
-                $state.go('verify', {}, {reload: true});
+                      },
+                    ]
+                  });
+                }
             }
             else
             {
@@ -91,6 +107,10 @@ angular.module('crowdsourcing')
           {"direction": "down"}
         );
       }
+    }
+
+    function validateOccupation(occupation) {
+      return /^[a-zA-Z\s]+$/.test(occupation);
     }
 
   });

@@ -7,7 +7,7 @@ angular.module('crowdsourcing')
       {
         if (validateEmail(fields.email) == true) {
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
-          var sendEmail = apiUrl+"sendFeedback?email="+fields.feedback+"&feedback="+fields.feedback;
+          var sendEmail = apiUrl+"sendFeedback?email="+fields.email+"&feedback="+fields.feedback;
           $http.get(sendEmail)
             .success(function (data) {
               $ionicLoading.hide();
@@ -52,7 +52,7 @@ angular.module('crowdsourcing')
         $ionicLoading.hide();
         var alertPopup = $ionicPopup.alert({
           title: '<h6 class="popups title">Whoops!</h6>',
-          subTitle: '<br><h6 class="popups">Please enter a feedback before submitting</h6> ',
+          subTitle: '<br><h6 class="popups">Please fill in all fields</h6> ',
           scope: $scope,
           buttons: [
             {

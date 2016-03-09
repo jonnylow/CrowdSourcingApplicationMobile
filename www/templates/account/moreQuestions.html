@@ -2,14 +2,14 @@
 
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
-      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="registration"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
 <!--header-->
 <ion-content padding="true">
-  
-        
+
+
     <form ng-submit="verify(fields)">
       <div class="list list-inset registration">
         <!--Area of Preferences 1-->
@@ -38,7 +38,7 @@
             <i class="icon ion-heart dark "></i>
           </div>
         <select class="dropdown morequestions" ng-model="fields.preferences_2">
-          <option value="" disabled selected>Voluntary Task Preference 2</option>
+          <option value="" selected>Voluntary Task Preference 2</option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
           <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
           <option value="Lead games/exercises">Lead games/exercises</option>
@@ -55,7 +55,7 @@
           <div class="iconcontainer">
             <i class="icon ion-briefcase dark "></i>
           </div>
-        
+
         <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
       </label>
             </div>
@@ -63,20 +63,13 @@
     <div style="text-align: center; ">
      <img src="img/steps002.png" class = "page-image"/>
     </div>
-    
-    <div class="row">
-      <div class="col 50">
-         <button ui-sref="registration" class="button button-light paddedbutton">Back</button>
-      </div>
-      <div class="col 50">
+
       <button class="button button-energized paddedbutton">Next</button>
-      </div>
-    </div>
     </form>
 
         <!--skip-->
       <button class="button button-dark paddedbutton" ng-click="skip()" style="color: #000;"><h4 class="skip">Skip for now</h4></button>
-    
+
 
   </ion-content>
 </ion-view>

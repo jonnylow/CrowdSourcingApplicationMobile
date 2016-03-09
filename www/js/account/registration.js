@@ -138,7 +138,7 @@ angular.module('crowdsourcing')
 
                         var alertPopup = $ionicPopup.alert({
                           title: '<h6 class="popups title">Whoops!</h6>',
-                          subTitle: '<br><h6 class="popups">Password must contains at least 6 characters with digits and characters</h6> ',
+                          subTitle: '<br><h6 class="popups">Password should consist of at least 6 characters with numbers and alphabets</h6> ',
                           scope: $scope,
                           buttons: [
                             {
@@ -210,7 +210,7 @@ angular.module('crowdsourcing')
 
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups">Volunteers of CareGuide are required to be at least 16 years old</h6> ',
+                  subTitle: '<br><h6 class="popups">Volunteers of CareGuide are required to be between 16 to 70 years old</h6> ',
                   scope: $scope,
                   buttons: [
                     {
@@ -348,7 +348,7 @@ angular.module('crowdsourcing')
 
     function validateDOBAge(year){
       var currentDate = new Date();
-      if(currentDate.getFullYear() - year >= 16)
+      if(currentDate.getFullYear() - year >= 16 && currentDate.getFullYear() - year <= 70)
       {
         return true;
       }

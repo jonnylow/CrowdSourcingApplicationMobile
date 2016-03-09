@@ -170,7 +170,7 @@ angular.module('crowdsourcing')
       {
         var alertPopup = $ionicPopup.alert({
           title: '<h6 class="popups title">Whoops!</h6>',
-          subTitle: '<br><h6 class="popups">You are not allow to withdraw from the activity on the actual date. Please call the centre if you cannot make it.</h6> ',
+          subTitle: '<br><h6 class="popups">You are not allowed to withdraw from the activity on the actual date. Please call the centre if you cannot make it.</h6> ',
           scope: $scope,
           buttons: [
             {

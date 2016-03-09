@@ -60,6 +60,6 @@ angular.module('crowdsourcing')
       $ionicHistory.clearHistory();
       $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
       $scope.closePopover();
-      $state.go('landingPage', {}, {reload: true});
+      $state.go('login', {}, {reload: true});
     }
     });

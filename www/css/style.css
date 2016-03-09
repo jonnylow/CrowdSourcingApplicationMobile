@@ -1473,8 +1473,8 @@ p.activityconfirmation{
 
 .platform-android .myactivitymarker{
   position: absolute;
-  top: 20%;
-  right: 46%;
+  top: 19%;
+  right: 45%;
   font-size: 5.5vmin;
 }
 
@@ -1528,7 +1528,12 @@ div.row.myactivity{
 
 div.col.myactivity{
   margin-left: 12px;
+  margin-top: 1%;
 
+}
+
+.col.col-10.activity{
+  margin-top: 1%;
 }
 
 p.myactivity{

@@ -6,9 +6,16 @@
 
     <div class="item item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
         <div class="row home">
-          <div class="col col-80">
-            <h6 class = "home urgent"><i class="ion-android-alert urgent"></i>URGENT ACTIVITIES</h6>
-            <h2 class="homemain urgent">{{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+          <div class="col col-10">
+            <i class="ion-android-alert urgent"></i>
+          </div>
+          <div class="col col-60">
+            <h6 class = "home urgent">
+              URGENT ACTIVITIES
+            </h6>
+            <h2 class="homemain urgent">
+              {{ activity.dateTime | date : "d MMM yyyy, h:mm a"}}
+            </h2>
           </div>
           <div class="col col-20">
             <a class="home" ui-sref="recommended">See All</a>
@@ -64,10 +71,10 @@
   
     <div class="list card myactivitymain stat" ng-if="totalVolunteers != null && showUrgent == true" ng-show=!loadingshow>
       <div class="item item-text-wrap stat">
-        <i class="icon ion-person-stalker dark stats"></i><b class="home stats">{{totalVolunteers}}</b> volunteers have contributed 
-        <br>
-        <i class="icon ion-clock dark stats"></i>
-        <b class="home stats">{{totalTaskHours}}</b> hours in total!
+        <h2 class="stat"><i class="icon ion-clock dark stats"></i>
+        {{totalTaskHours}} Hours</h2>
+          has been contributed by 
+        {{totalVolunteers}} volunteers!
       </div>
       <div class="item stat2">
         <button class="button button-full joinus" ui-sref="login">Join Us Today!</button>

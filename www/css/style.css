@@ -2277,8 +2277,8 @@ h3.update{
 @media screen and (device-aspect-ratio:40/71){
   .platform-ios .checkbox.manage{
     font-size: 4vmin;
-    position:relative;
-    left:45.5%;
+    position:absolute;
+    right:0%;
   }
 }
 
@@ -2291,9 +2291,9 @@ h3.update{
   }
 }
 
-
 .platform-ios .item-input.update.car{
   width:100%;
+  height: 43px;
 }
 
 .platform-android .item-input.update.car{

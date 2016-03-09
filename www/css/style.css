@@ -803,9 +803,7 @@ select.dropdown.update{
 
 .platform-ios .orientation.checkbox{
   position: relative;
-  margin-left: -2%;
-  margin-bottom: 1%;
-  margin-top: 4%;
+  margin-left:-5%;
 }
 
 .platform-android .orientation.checkbox{
@@ -1257,8 +1255,18 @@ p.home{
   border:none;
   text-align: center;
 }
+
 .item.statuser{
   padding: 4px;
+  position:relative;
+}
+
+/*nexus 4*/
+@media screen and (device-width: 384px) and (device-height: 592px){
+  .platform-android .chart.chart-bar{
+    height:85px !important;
+    width:100% !important;
+  }
 }
 
 .elderly-image{

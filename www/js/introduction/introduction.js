@@ -15,7 +15,12 @@ angular.module('crowdsourcing')
       $scope.goHome = function()
       {
         window.localStorage.setItem("intro", "done");
-        $state.go('landingPage');
+        if (window.localStorage.getItem("token") == null ) {
+          $state.go('landingPage');
+        } else {
+          $state.go('tab.home');
+        }
+        
       }
 
     });

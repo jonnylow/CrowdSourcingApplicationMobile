@@ -803,9 +803,7 @@ select.dropdown.update{
 
 .platform-ios .orientation.checkbox{
   position: relative;
-  margin-left: -2%;
-  margin-bottom: 1%;
-  margin-top: 4%;
+  margin-left:-5%;
 }
 
 .platform-android .orientation.checkbox{

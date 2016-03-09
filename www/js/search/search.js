@@ -111,7 +111,9 @@ angular.module('crowdsourcing')
             }
           }
         }
-
+        $scope.transportActivity.sort(function (a, b) {
+          return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+        });
         $scope.loadingshow = false;
         $ionicLoading.hide();
       })

@@ -2282,15 +2282,10 @@ h3.update{
   .platform-ios .checkbox.manage{
     font-size: 4vmin;
     position:relative;
-    left:53%;
+    left:50%;
   }
 }
 
-.platform-android .checkbox.manage{
-  position:absolute;
-  right:0%;
-  font-size: 4vmin;
-}
 
 .platform-ios .item-input.update.car{
   width:100%;

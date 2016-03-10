@@ -1,9 +1,10 @@
 angular.module('crowdsourcing')
 
-    .controller('leaderboardController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl) {
+    .controller('leaderboardController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl, $ionicHistory) {
     if(window.localStorage.getItem("token") != null) {
       $scope.name = window.localStorage.getItem("loginUserName");
       $scope.id = window.localStorage.getItem("loginId");
+      $scope.backView = $ionicHistory.backView();
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
@@ -57,4 +58,17 @@ angular.module('crowdsourcing')
           $ionicLoading.hide();
         }
       })
+
+    $scope.back=function()
+    {
+      if($scope.backView != null)
+      {
+        $scope.backView.go();
+      }
+      else
+      {
+        $state.go('tab.home', {}, {reload: true});
+      }
+      //$ionicHistory.goBack();
+    }
   });

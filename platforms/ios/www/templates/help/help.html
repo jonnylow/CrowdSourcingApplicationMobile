@@ -9,15 +9,15 @@
     <!--current activity listing-->
     <ion-list>
       <div class="list card activityconfirmation">
-        <h2 class="help">FAQs</h2>
+        <h2 class="help">FAQ</h2>
         <h5 class="help">Frequently Asked Questions</h5>
       </div>
       <div class="list myactivity help">
         <div ng-repeat="group in groups">
-          <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
-            <div class="row myactivity">
-              <div class="col myactivity">
-                <p class="help">{{group.name}}</p>
+          <ion-item class="item item-text-wrap help" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+            <div class="row">
+              <div class="col">
+                <p class="help"><b>{{group.name}}</b></p>
               </div>
               <div class="col col-10">
                 <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>

@@ -22,50 +22,59 @@
           <div class="iconcontainer">
             <i class="icon ion-email dark "></i>
           </div>
-          <input class="registration" type="text" autocapitalize="off" placeholder="Email address" ng-model="fields.email" >
+          <input class="registration" type="text" autocapitalize="off" placeholder="Email address*" ng-model="fields.email" >
         </label>
         <label class="item item-icon-left item-input registration" >
           <div class="iconcontainer">
             <i class="icon ion-locked dark "></i>
           </div>
-          <input class="registration" type="password" placeholder="Password" ng-model="fields.password">
+          <input class="registration" type="password" placeholder="Password*" ng-model="fields.password">
         </label>
 
         <label class="item item-icon-left item-input registration" >
           <div class="iconcontainer">
             <i class="icon ion-person dark " style="font-size:30px;"></i>
           </div>
-          <input class="registration" type="text" placeholder="Name" ng-model="fields.name" >
+          <input class="registration" type="text" placeholder="Name*" ng-model="fields.name" >
         </label>
         <label class="item item-icon-left item-input registration dob">
           <div class="iconcontainer">
           <i class="icon ion-calendar dark "></i></div>
-          <span class="label-text dob" ng-show="fields.dob == null || fields.dob == ''"><h6 class="registration dob">Date of Birth</h6></span>
-          <input class="registration" class="date-input dob" type="date" min="1950-01-01" max="2000-12-31" color="#ffffff" ng-model="fields.dob">
+          <span class="label-text dob" ng-show="fields.dob == null || fields.dob == ''"><h6 class="registration dob">Date of Birth*</h6></span>
+          <input class="date-input dob" type="date" color="#ffffff" ng-model="fields.dob">
         </label>
         <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
             <i class="icon ion-ios-telephone dark" style="font-size:35px;"></i>
           </div>
-          <input class="registration" type="text" placeholder="Contact Number" colour:"#ffffff" ng-model="fields.contactnumber">
+          <input class="registration" type="text" placeholder="Contact Number*" colour:"#ffffff" ng-model="fields.contactnumber">
         </label>
 
-      <!--Have a car checkbox-->
+        <!--Gender-->
       <label class="item item-icon-left item-input registration">
-        <div class="iconcontainer car">
-          <i class="icon ion-android-car dark "></i>
-        </div>
-        <ion-checkbox class="checkbox registration"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
-      </label>
-      </div>
-      <div style="text-align: center; ">
-        <img src="img/steps001.png" class = "page-image"/>
-      </div>
+          <div class="iconcontainer">
+            <i class="icon ion-transgender dark "></i>
+          </div>
+          <select class="dropdown register" ng-model="fields.gender">
+            <option value="" selected disabled>Gender*</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
+          <i class="ion-android-arrow-dropdown dropdown" style="color: #000"></i>
+        </label>
 
-
-
-      <!--Occupation-->
-
+        <!--Car Ownership-->
+      <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-android-car dark "></i>
+          </div>
+          <select class="dropdown register" ng-model="fields.carChecked">
+            <option value="" selected disabled>Car Ownership*</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+          <i class="ion-android-arrow-dropdown dropdown" style="color: #000"></i>
+        </label>
 
     <button  class="button button-energized paddedbutton">Next</button>
     </form>

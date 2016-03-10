@@ -47,37 +47,61 @@ angular.module('crowdsourcing')
                       {
                         if(tempCurrentPassword != tempNewPassword)
                         {
-                          var urlString = apiUrl+"updateUserAccount?id=" + $scope.id + "&password=" + tempNewPassword;
+                          if (validatePassword(tempNewPassword) == true) {
+                            var urlString = apiUrl + "updateUserAccount?id=" + $scope.id + "&password=" + tempNewPassword;
 
-                          $http.get(urlString)
-                            .success(function (data) {
-                              var status = data;
-                              if (status != null) {
-                                $scope.loadingshow = false;
-                                $ionicLoading.hide();
+                            $http.get(urlString)
+                              .success(function (data) {
+                                var status = data;
+                                if (status != null) {
+                                  $scope.loadingshow = false;
+                                  $ionicLoading.hide();
 
-                                var alertPopup = $ionicPopup.alert({
-                                  //title: '<b>Status</b>',
-                                  subTitle: "<h6 class='popups'>Your password has been successfully changed.</h6>",
-                                  scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: '<b>Ok</b>',
-                                      type: 'button button-stable',
-                                      onTap: function (e) {
-                                        $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
-                                        $state.go('me', {}, {reload: true});
-                                      }
-                                    },
-                                  ]
-                                });
+                                  if(window.localStorage.getItem("loginPasswordToStore") != null)
+                                  {
+                                    window.localStorage.setItem("loginPasswordToStore", tempNewPassword);
+                                  }
 
-                              }
-                            })
+                                  var alertPopup = $ionicPopup.alert({
+                                    //title: '<b>Status</b>',
+                                    subTitle: "<h6 class='popups'>Your password has been successfully changed.</h6>",
+                                    scope: $scope,
+                                    buttons: [
+                                      {
+                                        text: '<b>Ok</b>',
+                                        type: 'button button-stable',
+                                        onTap: function (e) {
+                                          $scope.fields = {currentpassword: "", confirmpassword: "", newpassword: ""};
+                                          $state.go('me', {}, {reload: true});
+                                        }
+                                      },
+                                    ]
+                                  });
 
-                            .error(function (data) {
-                              alert("Error in connection");
+                                }
+                              })
+
+                              .error(function (data) {
+                                alert("Error in connection");
+                              });
+                          }
+                          else {
+                            $scope.loadingshow = false;
+                            $ionicLoading.hide();
+
+                            var alertPopup = $ionicPopup.alert({
+                              title: '<h6 class="popups title">Whoops!</h6>',
+                              subTitle: '<br><h6 class="popups">New password should consist of at least 6 characters with numbers and alphabets</h6> ',
+                              scope: $scope,
+                              buttons: [
+                                {
+                                  text: '<b>Ok</b>',
+                                  type: 'button button-stable',
+
+                                },
+                              ]
                             });
+                          }
                         }
                         else
                         {
@@ -186,4 +210,9 @@ angular.module('crowdsourcing')
           }
           return p.join('&');
         };
+
+        function validatePassword(password){
+          var re = /(?=.*\d)(?=.*[A-z]).{6,20}/;
+          return re.test(password);
+        }
     });

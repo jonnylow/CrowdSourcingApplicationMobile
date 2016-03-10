@@ -1,6 +1,16 @@
 angular.module('crowdsourcing')
 
     .controller('loginController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory, apiUrl) {
+      $scope.remember= {checkBox:false};
+      $scope.fields= {email:"", password:""};
+      if(window.localStorage.getItem("loginUsernameToStore") != null && window.localStorage.getItem("loginPasswordToStore") != null
+      && window.localStorage.getItem("loginUsernameToStore").trim() != "" && window.localStorage.getItem("loginPasswordToStore").trim() != "")
+      {
+        $scope.fields.email = window.localStorage.getItem("loginUsernameToStore");
+        $scope.fields.password = window.localStorage.getItem("loginPasswordToStore");
+        $scope.remember.checkBox = true;
+      }
+
       $scope.login = function(fields){
           $scope.loadingshow = true;
         //ionic loading screen
@@ -13,7 +23,11 @@ angular.module('crowdsourcing')
                 var tempPassword = fields.password;
 
               if (validateEmail(tempNRIC) == true) {
+                $http.get(apiUrl + "checkEmail?email=" + tempNRIC)
+                  .success(function (data) {
 
+                    var status = data;
+                    if (status.status[0] == "exist") {
                 // to be use to port over to laraval login webservice
                 var loginObject = { email: tempNRIC,password:tempPassword};
 
@@ -35,6 +49,17 @@ angular.module('crowdsourcing')
                         if(status.user.is_approved == "approved") {
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
+                          if($scope.remember.checkBox == true)
+                          {
+                            window.localStorage.setItem("loginUsernameToStore", tempNRIC);
+                            window.localStorage.setItem("loginPasswordToStore", tempPassword);
+                          }
+                          else
+                          {
+                            window.localStorage.removeItem("loginUsernameToStore");
+                            window.localStorage.removeItem("loginPasswordToStore");
+                          }
+
                           window.localStorage.setItem("token", status.token);
                           window.localStorage.setItem("loginId", status.user.volunteer_id);
                           window.localStorage.setItem("loginUserName", status.user.name);
@@ -98,13 +123,31 @@ angular.module('crowdsourcing')
                     //error
                     console.log("error: " + status);
                   });
+               }
+               else {
+                      $scope.loadingshow = false;
+                      $ionicLoading.hide();
+                      var alertPopup = $ionicPopup.alert({
+                        title: '<h6 class="popups title error">Whoops!</h6>',
+                        subTitle: '<br><h6 class="popups">Email is not recognised. Please sign up first</h6>',
+                        scope: $scope,
+                        buttons: [
+                          {
+                            text: '<b>Ok</b>',
+                            type: 'button button-stable',
+
+                          },
+                        ]
+                      });
+               }
+             })
               }
               else {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title error">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups">Email and password do not match</h6>',
+                  subTitle: '<br><h6 class="popups">Invalid email address</h6>',
                   scope: $scope,
                     buttons: [
                       {

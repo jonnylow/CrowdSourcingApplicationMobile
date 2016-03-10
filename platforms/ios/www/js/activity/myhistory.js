@@ -57,6 +57,15 @@ angular.module('crowdsourcing')
               }
             }
           }
+          $scope.groups[0].items.sort(function (a, b) {
+            return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+          });
+          $scope.groups[1].items.sort(function (a, b) {
+            return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+          });
+          $scope.groups[2].items.sort(function (a, b) {
+            return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+          });
           $scope.loadingshow = false;
           $ionicLoading.hide();
         })

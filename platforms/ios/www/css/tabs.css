@@ -6,7 +6,7 @@
 }
 
 .platform-android .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
-  border-bottom-color: #666;
+  border-bottom: solid 3px #fff !important;
   color: #fff;
   font-weight: bold;
 }
@@ -18,8 +18,8 @@
 }
 
 .platform-ios .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
-  border-bottom-color: #fff;
-  border-bottom: solid 2px;
+  border-bottom-color: #29A29C;
+  border-bottom: solid 5px !important;
   color: #fff;
   font-weight: bold;
 }

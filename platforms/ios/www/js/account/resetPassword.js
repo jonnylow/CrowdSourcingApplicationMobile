@@ -62,7 +62,8 @@ angular.module('crowdsourcing')
 
 
               }
-          else
+          
+        }else
           {
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
@@ -77,9 +78,8 @@ angular.module('crowdsourcing')
                                     },
                                   ]
             });
-            $scope.loadingshow = false;
+            //$scope.loadingshow = false;
           }
-        }
       }
 
     $scope.landingPage = function () {

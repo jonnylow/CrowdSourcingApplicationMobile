@@ -382,7 +382,7 @@ i.icon{
 /*******************GETTING STARTED PAGE*****************/
 .platform-android .gettingstarted{
   width:100%;
- 
+
 }
 
 .platform-ios .gettingstarted{
@@ -433,12 +433,14 @@ img.aboutus{
   width:100%;
 }
 
-.button.paddedbutton.gs{
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 95%;
+.button.gs , .button.gs.activated{
+  background-color: #1C6F6B;
+  color: #fff;
+  border:none;
+  height: 50px;
+  width:95%;
+  font-size: 4.5vmin;
   border-radius: 5px;
-  margin-top: 0%;
 }
 /***************END OF GETTING STARTED PAGE**************/
 /**********************LANDING PAGE**********************/
@@ -1292,7 +1294,7 @@ h6.home-page{
   position: relative;
 }
 
-.button.joinus{
+.button.joinus , .button.joinus.activated{
   background-color: #1C6F6B;
   color: #fff;
   border:none;

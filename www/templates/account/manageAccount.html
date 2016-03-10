@@ -55,24 +55,14 @@
             <input class="edit" type="text" ng-model="fields.name" >
           </label>
           <label class="item item-input update car">
-            <span>
-              <b class="account">
-              <i class="icon ion-android-car larger" style="color:#8D8D8D;"></i></b>
-            </span>
-              <ion-checkbox class="checkbox manage"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
+            <i class="icon ion-android-car larger" style="color:#8D8D8D;"></i>
+            <ion-checkbox class="checkbox manage"ng-model="fields.carChecked">
+              <font color="black">I have a car</font>
+            </ion-checkbox>
           </label>
         </div>
         <h3 class="update">MORE DETAILS</h3>
         <div class="list list-inset update">
-          <label class="item item-input update">
-            <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
-            <span class="input-label">
-              <b class="account">
-              Occupation</b>
-            </span>
-            <input class="edit" type="text" ng-model="fields.occupation" >
-          </label>
-
           <label class="item item-input update">
             <i class="icon ion-transgender larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -84,6 +74,7 @@
                <option value="M">Male</option>
                <option value="F">Female</option>
              </select>
+             <i class="ion-android-arrow-dropdown"></i>
           </label>
 
           <label class="item item-input update">
@@ -93,6 +84,15 @@
               Date Of Birth*</b>
             </span>
             <input class="dobupdate" type="date" color="#ffffff" ng-model="fields.dob">
+          </label>
+
+          <label class="item item-input update">
+            <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
+            <span class="input-label">
+              <b class="account">
+              Occupation</b>
+            </span>
+            <input class="edit" type="text" ng-model="fields.occupation" >
           </label>
         </div>
 
@@ -105,7 +105,7 @@
               <b class="account">
               Preference 1</b>
             </span>
-             <select class="dropdown update" ng-model="fields.preferences_1">
+             <select class="dropdown preference" ng-model="fields.preferences_1">
                <option value="" selected>Option 1</option>
                <option value="Befriend senior citizens">Befriend senior citizens</option>
                <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
@@ -117,6 +117,7 @@
                <option value="Prepare tea/snacks">Prepare tea/snacks</option>
                <option value="Written translation for brochures">Written translation for brochures</option>
              </select>
+             <i class="ion-android-arrow-dropdown"></i>
           </label>
           <label class="item item-input update">
             <i class="icon ion-heart larger" style="color:#8D8D8D;"></i>
@@ -124,7 +125,7 @@
               <b class="account">
               Preference 2</b>
             </span>
-             <select class="dropdown update" ng-model="fields.preferences_2">
+             <select class="dropdown preference" ng-model="fields.preferences_2">
                <option value="" selected>Option 2</option>
                <option value="Befriend senior citizens">Befriend senior citizens</option>
                <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
@@ -136,6 +137,7 @@
                <option value="Prepare tea/snacks">Prepare tea/snacks</option>
                <option value="Written translation for brochures">Written translation for brochures</option>
              </select>
+             <i class="ion-android-arrow-dropdown"></i>
           </label>
           </div>
 

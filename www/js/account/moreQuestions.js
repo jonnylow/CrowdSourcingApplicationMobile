@@ -15,9 +15,9 @@ angular.module('crowdsourcing')
 
       $scope.verify = function(fields)
       {
-        if(fields != null && fields.preferences_1 != null && fields.preferences_2 != null && fields.occupation != null && fields.occupation != "") {
+        if(fields != null && fields.preferences_1 != null && fields.preferences_2 != null && fields.occupation != null) {
             if((fields.preferences_1 == "" && fields.preferences_2 == "") || fields.preferences_1 != fields.preferences_2) {
-                if(validateOccupation(fields.occupation) == true) {
+                if(fields.occupation == "" || validateOccupation(fields.occupation) == true) {
                   window.localStorage.setItem("tempOccupation", fields.occupation);
                   window.localStorage.setItem("tempPreferences1", fields.preferences_1);
                   window.localStorage.setItem("tempPreferences2", fields.preferences_2);

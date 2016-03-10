@@ -25,21 +25,19 @@ angular.module('crowdsourcing')
             if (!enabled) {
               $ionicLoading.hide();
               var myPopup = $ionicPopup.show({
-                title: '<b>Notice</b>',
-                subTitle: '<h5 class="popups home">No location services detected. Please enable before using CareRide.</h5>',
+                subTitle: '<h5 class="popups home">Turn On Location Services to Allow "CareGuide" to Determine Your Current Location</h5>',
                 scope: $scope,
-                cssClass: "popup-vertical-buttons",
                 buttons: [
                   {
-                    text: '<h5 class="popups"><font color="#29A29C">Proceed to Location Services</font></h5>',
-                    type: 'button button-stable',
+                    text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
+                    type: 'button button-stable registration',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
                       cordova.plugins.diagnostic.switchToLocationSettings();
                     }
                   },
                   {
-                    text: '<h5 class="popups"><font color="#29A29C">Proceed without Location Services</font></h5>',
+                    text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
                     type: 'button button-stable',
                     onTap: function (e) {
                       //use default location
@@ -61,20 +59,19 @@ angular.module('crowdsourcing')
                   $ionicLoading.hide();
 
                   var myPopup = $ionicPopup.show({
-                    title: '<b>Notice</b>',
-                    subTitle: 'Please switch location service mode to High Accuracy.',
+                    subTitle: '<h5 class="popups home">Turn On Location Service Mode to High Accuracy</h5>',
                     scope: $scope,
                     buttons: [
                       {
-                        text: 'Proceed to Location Services',
-                        type: 'button button-stable',
+                        text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
+                        type: 'button button-stable registration',
                         onTap: function (e) {
                           $state.go('landingPage', {}, {reload: true});
                           cordova.plugins.diagnostic.switchToLocationSettings();
                         }
                       },
                       {
-                        text: 'Proceed without Location Services',
+                        text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
                         type: 'button button-stable',
                         onTap: function (e) {
                           //use default location
@@ -275,14 +272,12 @@ angular.module('crowdsourcing')
                     {
                       $ionicLoading.hide();
                       var myPopup = $ionicPopup.show({
-                        title: '<b>Notice</b>',
-                        subTitle: '<h5 class="popups home">No location services detected. Please enable before using CareRide.</h5>',
+                        subTitle: '<h5 class="popups home">Turn On Location Services to Allow "CareGuide" to Determine Your Current Location</h5>',
                         scope: $scope,
-                        cssClass: "popup-vertical-buttons",
                         buttons: [
                           {
-                            text: '<h5 class="popups"><font color="#29A29C">Proceed to Settings</font></h5>',
-                            type: 'button button-stable',
+                            text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
+                            type: 'button button-stable registration',
                             onTap: function (e) {
                               $state.go('landingPage', {}, {reload: true});
                               cordova.plugins.diagnostic.switchToSettings(function(){
@@ -293,7 +288,7 @@ angular.module('crowdsourcing')
                             }
                           },
                           {
-                            text: '<h5 class="popups"><font color="#29A29C">Proceed without Location Services</font></h5>',
+                            text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
                             type: 'button button-stable',
                             onTap: function (e) {
                               //use default location

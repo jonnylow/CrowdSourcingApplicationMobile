@@ -156,7 +156,16 @@ button.home{
   font-size: 18px;
   border: transparent;
   background-color: transparent;
-  height: 30px;
+  height: 50px;
+}
+
+.button-stable.active, .button-stable.activated{
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  height: 50px;
+  box-shadow: inset 2px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .button.button-stable.registration{
@@ -165,7 +174,17 @@ button.home{
   border-right: solid 1px;
   border-right-color: #ccc;
   background-color: transparent;
-  height: 30px;
+  height: 50px;
+}
+
+.button-stable.registration.active, .button-stable.registration.activated{
+  color: #29A29C;
+  font-size: 18px;
+  border-right: solid 1px;
+  border-right-color: #ccc;
+  background-color: transparent;
+  height: 50px;
+  box-shadow: inset 2px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .platform-android .ion-android-arrow-dropdown.dropdown{
@@ -274,7 +293,7 @@ a:link {
 
 .popup-container .popup{
   border-radius: 5px;
-  width: 300px;
+  width: 85%;
 }
 .popup-head{
   border-bottom: 1px solid #C4C8CB
@@ -282,7 +301,7 @@ a:link {
 
 .popup-buttons {
   padding: 0px;
-  min-height: 45px;
+  min-height: 50px;
 }
 
 h6.popups{
@@ -304,10 +323,21 @@ h6.popups.title{
   margin-bottom: 5px;
 }
 
-h3.popups.home{
-  font-size: 16px;
-  font-style: normal;
-  margin-top: 0px;
+h5.popups.home{
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+h5.popups.option{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+h6.popups.locationservice{
+  font-size:20px;
+  font-weight: bold;
 }
 
 

@@ -63,18 +63,18 @@
           <i class="ion-android-arrow-dropdown dropdown" style="color: #000"></i>
         </label>
 
-      <!--Have a car checkbox-->
+        <!--Car Ownership-->
       <label class="item item-icon-left item-input registration">
-        <div class="iconcontainer car">
-          <i class="icon ion-android-car dark "></i>
-        </div>
-        <ion-checkbox class="checkbox registration"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
-      </label>
-      </div>
-      <div style="text-align: center; ">
-        <img src="img/steps001.png" class = "page-image"/>
-      </div>
-
+          <div class="iconcontainer">
+            <i class="icon ion-android-car dark "></i>
+          </div>
+          <select class="dropdown register" ng-model="fields.carChecked">
+            <option value="" selected disabled>Car Ownership*</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+          <i class="ion-android-arrow-dropdown dropdown" style="color: #000"></i>
+        </label>
 
     <button  class="button button-energized paddedbutton">Next</button>
     </form>

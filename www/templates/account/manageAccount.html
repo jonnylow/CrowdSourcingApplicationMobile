@@ -54,11 +54,17 @@
             </span>
             <input class="edit" type="text" ng-model="fields.name" >
           </label>
-          <label class="item item-input update car">
-            <i class="icon ion-android-car larger" style="color:#8D8D8D;"></i>
-            <ion-checkbox class="checkbox manage"ng-model="fields.carChecked">
-              <font color="black">I have a car</font>
-            </ion-checkbox>
+          <label class="item item-input update">
+            <i class="icon ion-transgender larger" style="color:#8D8D8D;"></i>
+            <span class="input-label">
+              <b class="account">
+              Car Ownership*</b>
+            </span>
+            <select class="dropdown update" ng-model="fields.carChecked">
+               <option value="true">Yes</option>
+               <option value="false">No</option>
+             </select>
+             <i class="ion-android-arrow-dropdown"></i>
           </label>
         </div>
         <h3 class="update">MORE DETAILS</h3>

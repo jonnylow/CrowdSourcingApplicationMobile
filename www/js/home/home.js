@@ -96,6 +96,14 @@ angular.module('crowdsourcing')
             alert("The following error occurred: " + error);
           });
         }
+        else
+        {
+          cordova.plugins.diagnostic.requestLocationAuthorization(function(status){
+
+          }, function(error){
+              console.error(error);
+          });
+        }
       }
     }
 
@@ -260,6 +268,52 @@ angular.module('crowdsourcing')
             //$state.go('landingPage', {}, {reload: true});
             $scope.loadingshow = false;
             $ionicLoading.hide();
+            if (typeof cordova != 'undefined') {
+              if(ionic.Platform.isAndroid() == false) {
+                cordova.plugins.diagnostic.isLocationAuthorized(function(enabled){
+                    if(!enabled)
+                    {
+                      $ionicLoading.hide();
+                      var myPopup = $ionicPopup.show({
+                        title: '<b>Notice</b>',
+                        subTitle: '<h5 class="popups home">No location services detected. Please enable before using CareRide.</h5>',
+                        scope: $scope,
+                        cssClass: "popup-vertical-buttons",
+                        buttons: [
+                          {
+                            text: '<h5 class="popups"><font color="#29A29C">Proceed to Settings</font></h5>',
+                            type: 'button button-stable',
+                            onTap: function (e) {
+                              $state.go('landingPage', {}, {reload: true});
+                              cordova.plugins.diagnostic.switchToSettings(function(){
+                                
+                              }, function(error){
+                                  console.error("The following error occurred: "+error);
+                              });
+                            }
+                          },
+                          {
+                            text: '<h5 class="popups"><font color="#29A29C">Proceed without Location Services</font></h5>',
+                            type: 'button button-stable',
+                            onTap: function (e) {
+                              //use default location
+                              window.localStorage.setItem("userLat", "1.297507");
+                              window.localStorage.setItem("userLong", "103.850436");
+
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+                            }
+
+                          },
+                        ]
+                      });
+                    }
+                  }, 
+                  function(error){
+                    console.error("The following error occurred: "+error);
+                  });
+              }
+            }
           }
 
           //get location with 10 secs timeout

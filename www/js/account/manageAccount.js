@@ -21,7 +21,15 @@ angular.module('crowdsourcing')
           var temp = userDetails.volunteer[0].date_of_birth.split(" ");
           $scope.fields.dob =new Date(temp[0]);
           $scope.fields.gender = userDetails.volunteer[0].gender;
-          $scope.fields.carChecked = userDetails.volunteer[0].has_car;
+
+          if(userDetails.volunteer[0].has_car == true)
+          {
+              $scope.fields.carChecked = "true";
+          }
+          else
+          {
+              $scope.fields.carChecked = "false";
+          }
           $scope.fields.email =userDetails.volunteer[0].email;
           currentEmail = userDetails.volunteer[0].email;
           $scope.fields.name = userDetails.volunteer[0].name;
@@ -58,6 +66,15 @@ angular.module('crowdsourcing')
             var dob = yyyy + '-' + mm + '-' + dd;
             var occupation = fields.occupation;
             var hasCar = fields.carChecked;
+            if(fields.carChecked == "false")
+            {
+              hasCar = "0";
+            }
+            else
+            {
+              hasCar = "1";
+            }
+
             var email = fields.email;
 
             if (p1 == null) {

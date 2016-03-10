@@ -8,10 +8,10 @@ angular.module('crowdsourcing')
       window.localStorage.getItem("tempDOB")!= null && window.localStorage.getItem("tempHaveCar")!= null)
     {
       if (window.localStorage.getItem("tempHaveCar") == 1) {
-        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")), gender:window.localStorage.getItem("tempGender"), carChecked:true};
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")), gender:window.localStorage.getItem("tempGender"), carChecked:"1"};
       }
       else {
-        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")), gender:window.localStorage.getItem("tempGender"), carChecked:false};
+        $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")), gender:window.localStorage.getItem("tempGender"), carChecked:"0"};
       }
     }
     else
@@ -64,7 +64,7 @@ angular.module('crowdsourcing')
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
           if (fields.name!= null && fields.name.trim() != "" && fields.contactnumber != null && fields.contactnumber.trim() != ""
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
-            &&  fields.dob!= null && fields.gender != null && fields.gender.trim() != "") {
+            &&  fields.dob!= null && fields.gender != null && fields.gender.trim() != "" && fields.carChecked != null && fields.carChecked != "") {
             var tempName = fields.name;
             var tempEmail = fields.email;
             var tempPassword = fields.password;
@@ -94,7 +94,7 @@ angular.module('crowdsourcing')
 
                             var status = data;
                             if (status.status[0] != "exist") {
-                              if (fields.carChecked == true) {
+                              if (fields.carChecked == "1") {
                                 $scope.tempCarChecked = 1;
                               }
                               else {

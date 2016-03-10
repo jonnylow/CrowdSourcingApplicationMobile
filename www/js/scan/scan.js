@@ -56,18 +56,35 @@ angular.module('crowdsourcing')
           uiGmapGoogleMapApi.then(function (maps) {
             var myIcon = new google.maps.MarkerImage("img/noopacity.png", null, null, null, new google.maps.Size(30,30));
             //plot marker for 'mylocation'
-            $scope.currentLocationMarker = {
-              id: 0,
-              coords: {
-                latitude: $scope.myLocation.lat,
-                longitude: $scope.myLocation.lng
-              },
-              "window": {
-                "title": "Current Location"
-              },
-              icon:myIcon,
-              optimized: false
-            };
+            if(window.localStorage.getItem("userLat") == 1.367870 && window.localStorage.getItem("userLong") == 103.802889) {
+              $scope.currentLocationMarker = {
+                id: 0,
+                coords: {
+                  latitude: $scope.myLocation.lat,
+                  longitude: $scope.myLocation.lng
+                },
+                "window": {
+                  "title": "Central Region"
+                },
+                icon: myIcon,
+                optimized: false
+              };
+            }
+            else
+            {
+              $scope.currentLocationMarker = {
+                id: 0,
+                coords: {
+                  latitude: $scope.myLocation.lat,
+                  longitude: $scope.myLocation.lng
+                },
+                "window": {
+                  "title": "Current Location"
+                },
+                icon: myIcon,
+                optimized: false
+              };
+            }
 
             //map configuration
             $scope.map = {

@@ -43,8 +43,8 @@ angular.module('crowdsourcing')
                     type: 'button button-stable',
                     onTap: function (e) {
                       //use default location
-                      window.localStorage.setItem("userLat", "1.297507");
-                      window.localStorage.setItem("userLong", "103.850436");
+                      window.localStorage.setItem("userLat", "1.367870");
+                      window.localStorage.setItem("userLong", "103.802889");
 
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
@@ -78,8 +78,8 @@ angular.module('crowdsourcing')
                         type: 'button button-stable',
                         onTap: function (e) {
                           //use default location
-                          window.localStorage.setItem("userLat", "1.297507");
-                          window.localStorage.setItem("userLong", "103.850436");
+                          window.localStorage.setItem("userLat", "1.367870");
+                          window.localStorage.setItem("userLong", "103.802889");
 
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
@@ -286,7 +286,7 @@ angular.module('crowdsourcing')
                             onTap: function (e) {
                               $state.go('landingPage', {}, {reload: true});
                               cordova.plugins.diagnostic.switchToSettings(function(){
-                                
+
                               }, function(error){
                                   console.error("The following error occurred: "+error);
                               });
@@ -297,8 +297,8 @@ angular.module('crowdsourcing')
                             type: 'button button-stable',
                             onTap: function (e) {
                               //use default location
-                              window.localStorage.setItem("userLat", "1.297507");
-                              window.localStorage.setItem("userLong", "103.850436");
+                              window.localStorage.setItem("userLat", "1.367870");
+                              window.localStorage.setItem("userLong", "103.802889");
 
                               $scope.loadingshow = false;
                               $ionicLoading.hide();
@@ -308,7 +308,7 @@ angular.module('crowdsourcing')
                         ]
                       });
                     }
-                  }, 
+                  },
                   function(error){
                     console.error("The following error occurred: "+error);
                   });

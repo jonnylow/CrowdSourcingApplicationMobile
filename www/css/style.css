@@ -1315,6 +1315,7 @@ h2.stat{
 /*end of home page*/
 
 /*activity page*/
+
 .item.details{
   font-size: 17px;
 }
@@ -1479,7 +1480,32 @@ p.activityconfirmation{
   font-size: 5.5vmin;
 }
 
+.platform-android .myactivitymarker2{
+  position: absolute;
+  top: 19%;
+  right: 38%;
+  font-size: 5.5vmin;
+}
 
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .myactivitymarker2{
+  position: absolute;
+  top: 15%;
+  right: 38%;
+  font-size: 5.5vmin;
+}
+}
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .myactivitymarker2{
+  position: absolute;
+  top: 20%;
+  right: 38%;
+  font-size: 5.5vmin;
+}
+}
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
   .platform-ios .myactivitymarker{

@@ -23,7 +23,10 @@
           <div class="row myactivity">
             <div class="col col-20 col-center myactivitynum">
               <img src="img/marker.png" class="marker-image"/>
-                <p class="myactivitymarker" ng-if="group.items.length>0" style="color:#333">
+                <p class="myactivitymarker" ng-if="group.items.length>0 && group.items.length<10" style="color:#333">
+                  {{group.items.length}}
+                </p>
+                <p class="myactivitymarker2" ng-if="group.items.length>10" style="color:#333">
                   {{group.items.length}}
                 </p>
                 <p class="myactivitymarker" ng-if="group.items.length==0" style="color:#585858">

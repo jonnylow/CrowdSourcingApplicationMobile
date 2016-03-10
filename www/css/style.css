@@ -391,13 +391,18 @@ i.icon{
 }
 
 .slider-pager{
-  bottom:5%;
+  bottom:0%;
   position: absolute;
 }
 
-.icon.ion-record:before{
-  color:#fff;
+/*nexus 4*/
+@media screen and (device-width: 384px) and (device-height: 592px){
+  .platform-android .slider-pager{
+  bottom:6% !important;
+  position: absolute !important;
 }
+}
+
 
 .list.card.aboutus{
   padding:3%;
@@ -427,7 +432,15 @@ h6.aboutus.body{
 img.aboutus{
   width:100%;
 }
-/***************END OG GETTING STARTED PAGE**************/
+
+.button.paddedbutton.gs{
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 95%;
+  border-radius: 5px;
+  margin-top: 0%;
+}
+/***************END OF GETTING STARTED PAGE**************/
 /**********************LANDING PAGE**********************/
 .mainimage{
   max-width: 60%;

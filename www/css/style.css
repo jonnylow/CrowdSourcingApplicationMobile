@@ -1483,7 +1483,7 @@ p.activityconfirmation{
 .platform-android .myactivitymarker2{
   position: absolute;
   top: 19%;
-  right: 38%;
+  right: 37%;
   font-size: 5.5vmin;
 }
 
@@ -1492,7 +1492,7 @@ p.activityconfirmation{
   .platform-ios .myactivitymarker2{
   position: absolute;
   top: 15%;
-  right: 38%;
+  right: 37%;
   font-size: 5.5vmin;
 }
 }
@@ -1502,7 +1502,7 @@ p.activityconfirmation{
   .platform-ios .myactivitymarker2{
   position: absolute;
   top: 20%;
-  right: 38%;
+  right: 37%;
   font-size: 5.5vmin;
 }
 }

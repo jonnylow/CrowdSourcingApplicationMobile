@@ -121,6 +121,22 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       controller: "resetPasswordController"
     })
 
+    .state('introduction', {
+      cache: false,
+      url: '/introduction',
+      templateUrl: 'templates/introduction/introduction.html',
+      controller: "introductionController"
+    })
+
+    .state('about_us', {
+      cache: false,
+      url: '/about_us',
+      templateUrl: 'templates/home/about_us.html'
+    })
+
+
+
+
   .state('landingPage', {
       cache: false,
       url: '/landingPage',

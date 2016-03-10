@@ -47,25 +47,36 @@ angular.module('crowdsourcing')
                 var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
                 var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
+                var dateTimeCompare = dateTime;
+                var currentDate = new Date();
+
                 if(transportDetails.task[i].approval == "approved")
                 {
                   if(transportDetails.task[i].approval == "approved" && transportDetails.task[i].status == "new task")
                   {
-                    $scope.groups[1].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                    if((dateTimeCompare.getDate() == currentDate.getDate() && dateTimeCompare.getMonth() == currentDate.getMonth() && dateTimeCompare.getYear() == currentDate.getYear()) || currentDate > dateTimeCompare)
+                    {
+                      $scope.groups[1].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                    }
+                    else
+                    {
+                      $scope.groups[1].items.push({updateStatusEnable:false, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                    }
+
                   }
                   else
                   {
                     if(transportDetails.task[i].status == "pick-up")
                     {
-                      $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
+                      $scope.groups[0].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
                     }
                     else if(transportDetails.task[i].status == "at check-up")
                     {
-                      $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
+                      $scope.groups[0].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
                     }
                     else if(transportDetails.task[i].status == "check-up completed")
                     {
-                      $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
+                      $scope.groups[0].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
                     }
                   }
                 }
@@ -90,6 +101,18 @@ angular.module('crowdsourcing')
               }
             }
           }
+          $scope.groups[0].items.sort(function (a, b) {
+            return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+          });
+          $scope.groups[1].items.sort(function (a, b) {
+            return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+          });
+          $scope.groups[2].items.sort(function (a, b) {
+            return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+          });
+          $scope.groups[3].items.sort(function (a, b) {
+            return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
+          });
           $scope.loadingshow = false;
           $ionicLoading.hide();
         })

@@ -2,21 +2,24 @@
 
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
-      <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
+      <button class="button ion-chevron-left button-clear button-light" ui-sref="registration"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
 <!--header-->
 <ion-content padding="true">
-    <div class="list card moreQuestions">
-      What kind of voluntary activities interest you?
-    </div>
+
+
     <form ng-submit="verify(fields)">
+      <div class="list list-inset registration">
         <!--Area of Preferences 1-->
-      <label class="item item-input item-stacked-label registration1" >
-        <!--<font color="black" >Area of Preferences 1</font><br>-->
+      <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-heart dark "></i>
+          </div>
         <select class="dropdown morequestions" ng-model="fields.preferences_1">
-          <option value="" disabled selected>Option 1*</option>
+          <option value="" selected>Voluntary Task Preference 1
+        </option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
           <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
           <option value="Lead games/exercises">Lead games/exercises</option>
@@ -27,13 +30,16 @@
           <option value="Prepare tea/snacks">Prepare tea/snacks</option>
           <option value="Written translation for brochures">Written translation for brochures</option>
         </select>
+        <i class="ion-android-arrow-dropdown dropdown" style="color: #000"></i>
       </label>
 
       <!--Area of Preferences 2-->
-      <label class="item item-input item-stacked-label registration">
-        <!--<font color="black">Area of Preferences 2</font><br>-->
+      <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-heart dark "></i>
+          </div>
         <select class="dropdown morequestions" ng-model="fields.preferences_2">
-          <option value="" disabled selected>Option 2*</option>
+          <option value="" selected>Voluntary Task Preference 2</option>
           <option value="Befriend senior citizens">Befriend senior citizens</option>
           <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
           <option value="Lead games/exercises">Lead games/exercises</option>
@@ -44,45 +50,28 @@
           <option value="Prepare tea/snacks">Prepare tea/snacks</option>
           <option value="Written translation for brochures">Written translation for brochures</option>
         </select>
+        <i class="ion-android-arrow-dropdown dropdown" style="color: #000"></i>
       </label>
 
-      <div class="list card moreQuestions1">
-      Gender
-      </div>
-      <label class="item item-input gender">
-        
-        <select class="dropdown register" ng-model="fields.gender">
-          <option value="" disabled selected >Gender*</option>
-          <option value="M">M</option>
-          <option value="F">F</option>
-        </select>
-      </label>
+      <label class="item item-icon-left item-input registration">
+          <div class="iconcontainer">
+            <i class="icon ion-briefcase dark "></i>
+          </div>
 
-      <div class="list card moreQuestions1">
-      Occupation
-    </div>
-      <label class="item item-input occupation">
-        
         <input class="morequestions" placeholder="Occupation" type="text" ng-model="fields.occupation">
       </label>
-    <br>
+            </div>
 
     <div style="text-align: center; ">
      <img src="img/steps002.png" class = "page-image"/>
     </div>
-    <p style="text-align: center;">
-        <a class="button button-dark otp" ng-click="skip()" style="color: #000;"><u>Skip
-        </u></a>
-      </p>
-    <div class="row">
-      <div class="col 50">
-         <button ui-sref="registration" class="button button-light paddedbutton">Back</button>
-      </div>
-      <div class="col 50">
+
       <button class="button button-energized paddedbutton">Next</button>
-      </div>
-    </div>
-      
     </form>
+
+        <!--skip-->
+      <button class="button button-dark paddedbutton" ng-click="skip()" style="color: #000;"><h4 class="skip">Skip for now</h4></button>
+
+
   </ion-content>
 </ion-view>

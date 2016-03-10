@@ -92,15 +92,8 @@ angular.module('crowdsourcing')
     }
 
     $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){
-      if(ionic.Platform.isAndroid() == true) { //android
         var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
         window.open(url,'_system','location=yes');
         return false;
-      }
-      else { //ios
-        var url = 'http://maps.apple.com/?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
-        window.open(url,'_system','location=yes');
-        return false;
-      }
     };
 });

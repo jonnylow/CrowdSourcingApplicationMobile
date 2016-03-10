@@ -1,4 +1,4 @@
-<ion-view view-title="Edit Profile">
+<ion-view view-title="Edit Profile" can-swipe-back="false">
   <!--<ion-nav-bar class="bar-stable">
   <ion-nav-buttons side="left">
     <button class="button" ng-click="back()">Back</button>
@@ -55,15 +55,44 @@
             <input class="edit" type="text" ng-model="fields.name" >
           </label>
           <label class="item item-input update">
-            <span>
+            <i class="icon ion-transgender larger" style="color:#8D8D8D;"></i>
+            <span class="input-label">
               <b class="account">
-              <i class="icon ion-android-car larger" style="color:#8D8D8D;"></i></b>
+              Car Ownership*</b>
             </span>
-              <ion-checkbox class="checkbox registration"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
-          </label> 
+            <select class="dropdown update" ng-model="fields.carChecked">
+              <option value="" selected disabled>Car Ownership</option>
+               <option value="true">Yes</option>
+               <option value="false">No</option>
+             </select>
+             <i class="ion-android-arrow-dropdown"></i>
+          </label>
         </div>
         <h3 class="update">MORE DETAILS</h3>
         <div class="list list-inset update">
+          <label class="item item-input update">
+            <i class="icon ion-transgender larger" style="color:#8D8D8D;"></i>
+            <span class="input-label">
+              <b class="account">
+              Gender*</b>
+            </span>
+            <select class="dropdown update" ng-model="fields.gender">
+               <option value="" selected disabled>Gender</option>
+               <option value="M">Male</option>
+               <option value="F">Female</option>
+             </select>
+             <i class="ion-android-arrow-dropdown"></i>
+          </label>
+
+          <label class="item item-input update">
+            <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
+            <span class="input-label">
+              <b class="account">
+              Date Of Birth*</b>
+            </span>
+            <input class="dobupdate" type="date" color="#ffffff" ng-model="fields.dob">
+          </label>
+
           <label class="item item-input update">
             <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -72,28 +101,6 @@
             </span>
             <input class="edit" type="text" ng-model="fields.occupation" >
           </label>
-
-          <label class="item item-input update">
-            <i class="icon ion-transgender larger" style="color:#8D8D8D;"></i>
-            <span class="input-label">
-              <b class="account">
-              Gender</b>
-            </span>
-            <select class="dropdown update" ng-model="fields.gender">
-               <option value="" disabled selected >Gender</option>
-               <option value="M">Male</option>
-               <option value="F">Female</option>
-             </select>
-          </label>   
-
-          <label class="item item-input update">
-            <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
-            <span class="input-label">
-              <b class="account">
-              Date Of Birth</b>
-            </span>
-            <input class="dobupdate" type="date" color="#ffffff" ng-model="fields.dob">
-          </label>                          
         </div>
 
         <h3 class="update">MY PREFERRED VOLUNTARY TYPES</h3>
@@ -105,8 +112,8 @@
               <b class="account">
               Preference 1</b>
             </span>
-             <select class="dropdown update" ng-model="fields.preferences_1">
-               <option value="" disabled selected>Option 1*</option>
+             <select class="dropdown preference" ng-model="fields.preferences_1">
+               <option value="" selected>Preference 1</option>
                <option value="Befriend senior citizens">Befriend senior citizens</option>
                <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
                <option value="Lead games/exercises">Lead games/exercises</option>
@@ -117,15 +124,16 @@
                <option value="Prepare tea/snacks">Prepare tea/snacks</option>
                <option value="Written translation for brochures">Written translation for brochures</option>
              </select>
-          </label>            
+             <i class="ion-android-arrow-dropdown"></i>
+          </label>
           <label class="item item-input update">
             <i class="icon ion-heart larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
               <b class="account">
               Preference 2</b>
             </span>
-             <select class="dropdown update" ng-model="fields.preferences_2">
-               <option value="" disabled selected>Option 2*</option>
+             <select class="dropdown preference" ng-model="fields.preferences_2">
+               <option value="" selected>Preference 2</option>
                <option value="Befriend senior citizens">Befriend senior citizens</option>
                <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
                <option value="Lead games/exercises">Lead games/exercises</option>
@@ -136,8 +144,9 @@
                <option value="Prepare tea/snacks">Prepare tea/snacks</option>
                <option value="Written translation for brochures">Written translation for brochures</option>
              </select>
-          </label>  
-          </div>         
+             <i class="ion-android-arrow-dropdown"></i>
+          </label>
+          </div>
 
 
 
@@ -149,7 +158,7 @@
 <!--
          <h3 class="me">PERSONAL DETAILS</h3>
          <div class="list list-inset update">
-           <label class="item item-icon-left item-input registration2">  
+           <label class="item item-icon-left item-input registration2">
             <div class="iconcontainer update">
              <i class="icon ion-email  larger update" style="color:#8D8D8D;"></i>
            </div>

@@ -156,7 +156,16 @@ button.home{
   font-size: 18px;
   border: transparent;
   background-color: transparent;
-  height: 30px;
+  height: 50px;
+}
+
+.button-stable.active, .button-stable.activated{
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  height: 50px;
+  box-shadow: inset 2px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .button.button-stable.registration{
@@ -165,7 +174,21 @@ button.home{
   border-right: solid 1px;
   border-right-color: #ccc;
   background-color: transparent;
-  height: 30px;
+  height: 50px;
+}
+
+.button-stable.registration.active, .button-stable.registration.activated{
+  color: #29A29C;
+  font-size: 18px;
+  border-right: solid 1px;
+  border-right-color: #ccc;
+  background-color: transparent;
+  height: 50px;
+  box-shadow: inset 2px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.platform-android .ion-android-arrow-dropdown.dropdown{
+  font-size: 0;
 }
 
 p.home{
@@ -270,7 +293,7 @@ a:link {
 
 .popup-container .popup{
   border-radius: 5px;
-  width: 300px;
+  width: 85%;
 }
 .popup-head{
   border-bottom: 1px solid #C4C8CB
@@ -278,7 +301,7 @@ a:link {
 
 .popup-buttons {
   padding: 0px;
-  min-height: 45px;
+  min-height: 50px;
 }
 
 h6.popups{
@@ -300,10 +323,21 @@ h6.popups.title{
   margin-bottom: 5px;
 }
 
-h3.popups.home{
-  font-size: 16px;
-  font-style: normal;
-  margin-top: 0px;
+h5.popups.home{
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+h5.popups.option{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+h6.popups.locationservice{
+  font-size:20px;
+  font-weight: bold;
 }
 
 
@@ -358,10 +392,10 @@ i.icon{
 }
 
 
-
-.item-checkbox{
-  padding-top:6px;
-  padding-bottom: 6px;
+.platform-ios .item-checkbox{
+  padding-top:4%;
+  padding-bottom: 6%;
+  margin-left: 3%;
 }
 
 .button.ion-chevron-left.button-clear{
@@ -375,7 +409,70 @@ i.icon{
   margin-top: -6px;
 }
 /*end of tab*/
+/*******************GETTING STARTED PAGE*****************/
+.platform-android .gettingstarted{
+  width:100%;
 
+}
+
+.platform-ios .gettingstarted{
+  width:100%;
+  margin-top: 6%;
+}
+
+.slider-pager{
+  bottom:0%;
+  position: absolute;
+}
+
+/*nexus 4*/
+@media screen and (device-width: 384px) and (device-height: 592px){
+  .platform-android .slider-pager{
+  bottom:6% !important;
+  position: absolute !important;
+}
+}
+
+
+.list.card.aboutus{
+  padding:3%;
+  margin-top: 0;
+}
+
+h6.aboutus{
+  color:#6E6E6E;
+  font-size: 5vmin;
+  font-weight: bold;
+}
+
+h6.aboutus2{
+  color:#6E6E6E;
+  font-size: 5vmin;
+  font-weight: bold;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+h6.aboutus.body{
+  font-weight: normal;
+  color:#848484;
+  font-size: 4vmin;
+}
+
+img.aboutus{
+  width:100%;
+}
+
+.button.gs , .button.gs.activated{
+  background-color: #1C6F6B;
+  color: #fff;
+  border:none;
+  height: 50px;
+  width:95%;
+  font-size: 4.5vmin;
+  border-radius: 5px;
+}
+/***************END OF GETTING STARTED PAGE**************/
 /**********************LANDING PAGE**********************/
 .mainimage{
   max-width: 60%;
@@ -399,6 +496,9 @@ i.icon{
   opacity:0.9;
 }
 
+.platform-ios .list-inset.login{
+  margin-bottom: 0;
+}
 .list-inset.login.retrieve{
   margin-top: 5px;
 }
@@ -499,6 +599,22 @@ label.item
   width:98.5%;
 }
 
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .date-input.dob {
+  position: absolute;
+  left: -3%;
+  }
+}
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .date-input.dob {
+  position: absolute;
+  left: 3%;
+  }
+}
+
 div.item{
   background-color: transparent ;
 }
@@ -517,7 +633,8 @@ label.item.item-input.registration{
   border-right:none;
   border-left:none;
   border-bottom:none;
-  font-size: 4vmin;
+  font-size: 14px;
+  padding-right:3%;
 }
 
 label.item.item-input.registration.dob{
@@ -545,7 +662,7 @@ label.item.item-input.registration.dob,
     margin: 0;
     background: none;
     font: inherit;
-    font-size: 4vmin;
+    font-size: 14px;
   }
 
   label.item.item-input.registration.dob > input:focus {
@@ -555,7 +672,7 @@ label.item.item-input.registration.dob,
 
   h6.registration.dob{
     color:#B0B0B0;
-    font-size: 4vmin;
+    font-size: 14px;
     font-weight: normal;
     margin-top: 3%;
   }
@@ -600,7 +717,7 @@ label.item.item-input.registration.dob,
     overflow:hidden;
     text-overflow: ellipsis;
     margin-left: 2%;
-    margin-top: 2px;
+    margin-top: -1%;
     font-size: 0.9em;
   }
 }
@@ -613,7 +730,16 @@ span.input-label.dob{
 
 input.registration{
   margin-left: 10px;
-  font-size: 4vmin;
+  font-size: 14px;
+}
+
+/*iphone 6 plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios input.registration{
+  margin-left: 10px;
+  padding-top:3%;
+  font-size: 14px;
+  }
 }
 
 h1.title.registration{
@@ -654,13 +780,23 @@ button.button.button-block.button-calm.registration{
   margin-bottom: -40px;
 }
 
-
 select.dropdown.update{
   direction:rtl;
   position: absolute;
   width: 55%;
   right:7px;
-  height: 52px;
+  height: 80%;
+  top:14%;
+  font-size: 4vmin;
+}
+
+select.dropdown.preference{
+  direction:rtl;
+  position: absolute;
+  width: 55%;
+  right:7px;
+  height: 80%;
+  top:14%;
   font-size: 3.5vmin;
 }
 
@@ -723,19 +859,44 @@ select.dropdown.update{
   color: #ABABAB;
 }
 
-.list.card.orientation{
-  margin-top: 20%;
-  max-width: 90%;
-  background-color: #fff;
-  padding:4%;
-  text-align: justify;
-  font-size: 4.3vmin;
-  font-weight: bold;
+
+.platform-ios .orientation.checkbox{
+  position: relative;
+  margin-left:-5%;
 }
 
-.orientation.checkbox{
-  margin-left: 30%;
-  margin-top: -5%;
+.platform-android .orientation.checkbox{
+  position: relative;
+  margin-left: -2%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.login.checkbox{
+  margin-left: -2%;
+}
+
+.platform-android .list.card.myactivitymain.orientation{
+  margin-top: 18%;
+  padding:4%;
+  font-size: 4.3vmin;
+  text-align: justify;
+}
+
+.platform-ios .list.card.myactivitymain.orientation{
+  margin-top: 23%;
+  padding:4%;
+  font-size: 4.3vmin;
+  text-align: justify;
+}
+
+h6.orientation{
+  font-size: 4vmin;
+  font-weight: normal;
+}
+
+.item-content{
+  margin-left: -5%;
 }
 
 /*end of login and registration page*/
@@ -794,75 +955,12 @@ label.item.item-input.item-stacked-label.registration{
 select.dropdown.morequestions{
   padding:10px;
   height:40px;
-}
-
-button.button.button-light.button-small.NRICbutton1{
-  background-color: #fff;
-  border-color: #A4A4A4;
-  border-radius: 5px;
-  font-size: 3.5vmin;
-  width:70px;
-  bottom:-32%;
-  left:27%;
-  position: absolute;
-}
-
-button.button.button-light.button-small.NRICbutton{
-  background-color: #fff;
-  border-color: #A4A4A4;
-  border-radius: 5px;
-  font-size: 3.5vmin;
-  right:24%;
-  width:70px;
-  bottom:-32%;
-  position: absolute;
-}
-
-.NRICbox{
-  top:40%;
-  width:40%;
-  height:25%;
-  position:absolute;
-  border-style: thin;
-  border-color:#000;
-  padding:0px;
-  background-color: #164F86;
-  border-radius: 15px;
-  left:5%;
-}
-
-.NRICbox1{
-  top:40%;
-  width:40%;
-  height:25%;
-  position:absolute;
-  border-style: thin;
-  border-color:#000;
-  padding:0px;
-  background-color: #164F86;
-  border-radius: 15px;
-  right:5%;
-}
-
-label.ic.front{
-  margin-bottom: 150px;
-  color:#000;
-}
-
-label.ic.back{
-  color:#000;
-}
-
-img.frontic{
-z-index:1;
-}
-
-img.backic{
-z-index: 1;
+  margin-left: 3%;
+  font-size: 14px;
 }
 
 h3.morequestions{
-  font-size: 5vmin;
+  font-size: 14px;
   padding:5px;
   height:40px;
   font-weight: bold;
@@ -872,19 +970,11 @@ h3.morequestions{
   left:25%;
 }
 
-.icon.ion-camera.light.morequestions{
-  font-size: 13vmin;
-  padding-top: 0px;
-  position: absolute;
-  left:33%;
-  top:5%;
-}
-
 .list.card.moreQuestions{
   background-color: transparent;
   box-shadow: 0 0 0 0;
   margin-left: 8px;
-  font-size: 4.5vmin;
+  font-size: 14px;
   margin-bottom: 0px;
 }
 
@@ -892,7 +982,7 @@ h3.morequestions{
   background-color: transparent;
   box-shadow: 0 0 0 0;
   margin-left: 8px;
-  font-size: 4.5vmin;
+  font-size: 14px;
   margin-bottom: 0px;
   margin-top: 3%;
 }
@@ -903,7 +993,7 @@ h3.morequestions{
 }
 
 select.dropdown.register{
-  padding-left: 12px;
+  margin-left: 7%;
   height:40px;
 }
 
@@ -913,14 +1003,31 @@ select.dropdown.register{
   margin-left: 2%;
 }
 
+p.skip{
+  margin-top: -5%;
+}
 
+h4.skip{
+  color:#666;
+  margin-bottom: 20%;
+  font-size: 4vmin;
+}
+
+.button.button-dark.paddedbutton.skip{
+  width:30%;
+  padding:-10%;
+  padding-top:-30%;
+  border-radius: 10px;
+  margin-top:3%;
+  margin-bottom:2%;
+  background-color: #44788E;
+}
 /*end of more questions page*/
 
 /**********************VERIFY**********************/
 
-.button.button-dark.otp{
-  width:100%;
-}
+
+
 h4.verify{
   color:#000;
   margin:10px;
@@ -932,17 +1039,25 @@ h4.verify{
 h4.verify1{
   color:#000;
   margin:10px;
-  font-size: 17px;
+  font-size: 14px;
   text-align: center;
   margin-bottom: -10px;
 }
 
+h4.verify2{
+  color:#000;
+  font-size: 4vmin;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 input.otp{
-  max-width:60%;
+  max-width:70%;
   opacity: 0.6;
   text-align: left;
   padding:0px;
-  box-shadow: 1px 1px  #888;
+  border: solid 1px #ccc;
+  height: 40px;
 }
 
 div.box{
@@ -1000,9 +1115,22 @@ h2.home{
   color: #164F86;
   font-size: 4vmin;
   font-weight: bold;
-  text-align: left;
+  text-align: leftupdat;
   line-height: 20px;
 }
+
+h2.homemain{
+  color: #333;
+  font-size: 4.2vmin;
+  font-weight: bold;
+  text-align: leftupdat;
+  line-height: 20px;
+}
+
+h2.homemain.urgent{
+  color:#666;
+}
+
 
 .item.item-divider.home{
   padding-bottom: 8px;
@@ -1012,11 +1140,18 @@ h2.home{
   border-top-left-radius: 5px;
 }
 
+i.urgent{
+  margin-right: 10px;
+  font-size: 200%;
+  color: #D52A21;
+  vertical-align: middle;
+}
+
 h6.home.urgent{
   font-size: 4.7vmin;
   top:10%;
   font-weight: bold;
-  color:#585858;
+  color:#333;
 }
 
 .item.item-text-wrap.home{
@@ -1069,12 +1204,66 @@ p.homep{
 
 .list.card.myactivitymain.recommendation{
   width:95%;
-  background-color: #D8D8D8;
+  background-color: #fff;
   border-radius: 7px;
   box-shadow: none;
 }
 
+.list.card.myactivitymain.updatestatus{
+  width:95%;
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+.item.item-divider.updatestatus{
+  background-color: #fff;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.item.item-text-wrap.updatestatus{
+  background-color: #fff;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
 .list.card.myactivitymain.stat{
+  position:absolute;
+  bottom:0%;
+  text-align: left;
+  width: 100%;
+  margin:0;
+}
+
+p.home{
+  font-size: 3.5vmin;
+  color: #fff;
+  font-weight: bold;
+  line-height: 20px;
+  margin:0;
+}
+
+.button-updatestatus{
+  background-color: #1C6F6B;
+  border:none;
+  border-radius: 20px;
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+.button-updatestatus.active, .button-updatestatus.activated{
+  background-color: #1C6F6B;
+  border:none;
+  border-radius: 20px;
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.list.card.myactivitymain.stat2{
   position:absolute;
   bottom:0%;
   text-align: center;
@@ -1083,13 +1272,41 @@ p.homep{
 }
 
 .item.stat{
-  font-size: 4.5vmin;
+  font-size: 4vmin;
+  padding-top: 3%;
+  border:none;
+  height: 100%;
+  text-align: center;
+  line-height: 30px;
+}
+
+.item.stat2{
+  padding:0;
+  border:none;
+  text-align: center;
 }
 
 .item.statuser{
-  padding: 5px;
+  padding: 4px;
+  position:relative;
 }
 
+/*nexus 4*/
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+  .chart.chart-bar{
+    height:85px !important;
+    width:100% !important;
+  }
+}
+
+/*nexus 4*/
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+  .platform-android .elderly-image{
+    height:17%;
+    width:17%;
+    position:relative;
+  }
+}
 .elderly-image{
   height:20%;
   width:20%;
@@ -1106,9 +1323,29 @@ h6.home-page{
   text-align: center;
   position: relative;
 }
+
+.button.joinus , .button.joinus.activated{
+  background-color: #1C6F6B;
+  color: #fff;
+  border:none;
+  height: 50px;
+}
+
+.icon.ion-clock.dark.stats{
+  font-size: 6vmin;
+  color:#666;
+}
+
+h2.stat{
+  font-size: 6vmin;
+  font-weight: bold;
+  color:#333;
+  margin-top: 7px;
+}
 /*end of home page*/
 
 /*activity page*/
+
 .item.details{
   font-size: 17px;
 }
@@ -1256,9 +1493,9 @@ p.activityconfirmation{
 }
 
 .marker-image{
-  max-width: 30px;
-  max-height: 40px;
+  max-width: 55%;
   z-index: -1;
+  margin-top: 3%;
 }
 
 .item-divider {
@@ -1266,11 +1503,60 @@ p.activityconfirmation{
   background-color: #AEE1E0;
 }
 
-p.myactivitymarker{
+.platform-android .myactivitymarker{
   position: absolute;
-  top: 0px;
-  right: 49%;
+  top: 19%;
+  right: 45%;
+  font-size: 5.5vmin;
 }
+
+.platform-android .myactivitymarker2{
+  position: absolute;
+  top: 19%;
+  right: 37%;
+  font-size: 5.5vmin;
+}
+
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .myactivitymarker2{
+  position: absolute;
+  top: 15%;
+  right: 37%;
+  font-size: 5.5vmin;
+}
+}
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .myactivitymarker2{
+  position: absolute;
+  top: 20%;
+  right: 37%;
+  font-size: 5.5vmin;
+}
+}
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .myactivitymarker{
+  position: absolute;
+  top: 15%;
+  right: 46%;
+  font-size: 5.5vmin;
+}
+}
+
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .myactivitymarker{
+  position: absolute;
+  top: 20%;
+  right: 46%;
+  font-size: 5.5vmin;
+}
+}
+
 div.col.myactivitynum{
   background-color: transparent;
   line-height: 40px;
@@ -1299,7 +1585,12 @@ div.row.myactivity{
 
 div.col.myactivity{
   margin-left: 12px;
+  margin-top: 1%;
 
+}
+
+.col.col-10.activity{
+  margin-top: 1%;
 }
 
 p.myactivity{
@@ -1687,8 +1978,6 @@ div.list.profile{
   width:94%;
 }
 
-
-
 div.col.col-66.me{
   margin-left: 10px;
 }
@@ -1725,6 +2014,7 @@ div.col.col-66.me{
 }
 .ion-ribbon-a.me{
   vertical-align: middle;
+  margin-right:2%;
 }
 
 div.row.me{
@@ -1733,7 +2023,8 @@ div.row.me{
 }
 
 .list.card.me{
-  background: linear-gradient(#F6F3EC, #9CCECC);
+  /*background: linear-gradient(#F6F3EC, #9CCECC);*/
+  background:transparent;
   box-shadow: none;
   line-height:50%;
   margin:0;
@@ -1781,30 +2072,45 @@ p.me{
 }
 
 .button.gotoedit{
-  border-color: #E7E9EB;
-  border-width:0.25px;
+  border: solid 1px #E7E9EB;
   margin-bottom: 0;
   text-align: left;
-  color: #999;
+  color: #848484;
+  height:8%;
+  font-size: 4vmin;
 }
 
 .button.gotoedit2{
+  border: solid 1px #E7E9EB;
   border-top:none;
-  border-color: #E7E9EB;
-  border-width:0.25px;
   margin-bottom: 0;
   text-align: left;
-  color: #999;
+  color: #848484;
+  height:8%;
+  font-size: 4vmin;
 }
 
 .list.mestats{
   box-shadow: none;
-  margin:0;
+  position: relative;
+  margin: 0%;
+}
 
+.rankrec{
+  z-index: -10;
+  position:absolute;
+  top:20%;
 }
 /*end of profile page*/
 
 /*manage account page*/
+
+.platform-android .checkbox.manage{
+  position: absolute;
+  top:10%;
+  right:0;
+  font-size: 4vmin;
+}
 
 .list.list-inset.update{
   margin-top: 15px;
@@ -1862,7 +2168,7 @@ h3.me{
 
 input.edit{
   text-align: right;
-  font-size: 3.5vmin;
+  font-size: 4vmin;
   width: 100%;
   max-width: 60%;
   position:absolute;
@@ -1996,11 +2302,23 @@ label.item.item-input.registration2{
   width:94%;
 }
 
-input.dobupdate{
-  font-size:3.5vmin;
+.platform-ios input.dobupdate{
+  font-size:4vmin;
   text-align: right;
   width:63%;
   height:29px;
+  position: absolute;
+  right:0%;
+  top:20%;
+}
+
+.platform-android input.dobupdate{
+  font-size:4vmin;
+  text-align: right;
+  width:40%;
+  height:29px;
+  position: relative;
+  margin-right: -5%;
 }
 
 h3.update{
@@ -2009,6 +2327,28 @@ h3.update{
   margin-top: 6%;
   margin-left: 6%;
   color: #666;
+}
+
+.platform-ios .checkbox.manage{
+  font-size: 4vmin;
+  position:absolute;
+  right:0%;
+  padding-bottom: 5%;
+}
+
+.platform-ios select{
+  background:none;
+}
+
+.platform-ios .item-input.update.car{
+  width:100%;
+  height: 43px;
+  text-align: right;
+}
+
+.platform-android .item-input.update.car{
+  width:100%;
+  height:43px;
 }
 
 /*end of manage account page*/
@@ -2074,6 +2414,17 @@ select.search{
 /*end of search pages*/
 
 /*Filter pages*/
+.platform-ios h5.filter{
+  margin-top: 1%;
+  margin-left:2%;
+  font-size: 4.5vmin;
+}
+
+.platform-android h5.filter{
+  margin-left:2%;
+  font-size: 4.5vmin;
+}
+
 .list.card.filterheader{
   box-shadow: 0 0 0 0;
   margin-bottom: 0px;
@@ -2086,7 +2437,16 @@ select.search{
 .item.filterheader{
   padding-top: 0;
 }
-.list.card.filtermain{
+
+.platform-android .list.card.filtermain{
+  box-shadow: 0 0 0 0;
+  margin-bottom: 5%;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.platform-ios .list.card.filtermain{
   box-shadow: 0 0 0 0;
   margin-bottom: 16px;
   margin-top: 0px;
@@ -2127,17 +2487,62 @@ h2.rank{
 }
 
 h5.rank{
-  margin-left:2%;
+  margin-left: 0%;
   text-align: center;
   color: #999;
   font-size: 4vmin;
   margin-bottom: 20px;
 }
 
-p.rank{
-  font-size: 3.2vmin;
-  text-align: left;
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .h5.rank {
+    margin-left: -9%;
+  text-align: center;
+  color: #999;
+  font-size: 4vmin;
+  margin-bottom: 20px;
 }
+}
+
+.col.col-33.rankfirst{
+  padding-left: 3%;
+}
+
+.platform-android .careguidepoints{
+  width:8%;
+  height:32%;
+  left:13%;
+  top:25%;
+  position:absolute;
+}
+
+.platform-ios .careguidepoints{
+  width:7.5%;
+  height:25%;
+  left:13%;
+  top:25%;
+  position:absolute;
+}
+
+p.rank{
+  font-size: 3.5vmin;
+  text-align: left;
+  position:center;
+}
+
+p.rank2{
+  font-size: 3.5vmin;
+  text-align: center;
+  position:center;
+}
+
+p.rank3{
+  font-size: 3.5vmin;
+  text-align: center;
+  position:center;
+}
+
 .item.rankheader{
   padding:0px;
 }
@@ -2151,28 +2556,69 @@ p.rank{
 
 h2.rankbody{
   font-size: 4.5vmin;
-  text-align: left;
+  text-align: center;
+  position:center;
+  margin-top: 10%;
+}
+
+h2.rankbody2{
+  font-size: 3.8vmin;
+  text-align: center;
+  position:center;
+  margin-top: 12%;
+}
+
+h2.rankbody3{
+  font-size: 4.5vmin;
+  text-align: center;
+  position:center;
+  margin-top: 5%;
 }
 
 div.col.rankfirst{
   border-right: solid 2px #F1F3F5;
   text-align: left;
   padding-left: 15px;
+  max-height:110%;
+  margin-top: -2%;
+}
+
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .row.rank{
+  height:60px;
+  border-top: solid 2px #F1F3F5;
+  padding-top: 2%;
+  }
+}
+
+.row.rank{
+  height:70px;
+  border-top: solid 2px #F1F3F5;
+  padding-top: 2%;
 }
 
 div.col.ranksecond{
   padding-left: 15px;
   text-align: left;
 }
+
+.crown{
+  max-width: 55%;
+  z-index: -1;
+  margin-left: 25%;
+  margin-top: -14%;
+}
 /*end of rank page*/
 
 /***** Help page*****/
 .list.myactivity.help{
-  margin-top: 0%;
+  margin-top: 4%;
 }
 
 .item.help{
   background-color:#F6F6F7;
+  padding: 5px 10px;
 }
 
 h2.help{
@@ -2180,18 +2626,22 @@ h2.help{
   font-size: 8vmin;
   margin-top: 1%;
   text-transform: uppercase;
-  margin-left: 2%;
+  margin-left: 3%;
 }
 
 h5.help{
   text-align: left;
-  margin-left: 2%;
+  margin-left: 3%;
   color:#999;
 }
 
 p.help{
   font-size: 4vmin;
+  line-height: 30px;
+  color: #333;
+  margin-left: 4%;
 }
+
 /* end of help page*/
 
 /*Feedback*/
@@ -2203,7 +2653,7 @@ p.help{
   padding-bottom: 2%;
 }
 
-.item.item-input.feedback{
+.item.item-feedback{
   font-size: 20px;
 }
 
@@ -2212,12 +2662,27 @@ textarea.feedback{
   padding-top: 5%;
   padding-left: 4%;
 }
+
+.item.item-input.feedback.email{
+  margin-top:3%;
+  margin-bottom: 2%;
+  padding:2%;
+  background-color: #fff;
+}
 /* end of feedback page*/
 
 /*leaderboard*/
 
+.hour{
+  font-size: 3.8vmin;
+  text-align: right;
+  margin-right: 5%;
+  color: #666;
+  font-weight: bold;
+}
+
 .list.card.leaderboard{
-  background-color: #44788E;
+  background: linear-gradient(#29A29C, #185C97);
   box-shadow: none;
   margin:0;
   padding-top:5%;
@@ -2228,6 +2693,7 @@ p.leaderboard{
   font-size:4vmin;
   text-align: center;
   font-weight: 200;
+  margin-top: 15%;
 }
 
 p.leaderboardmain{
@@ -2237,18 +2703,20 @@ p.leaderboardmain{
   font-weight: 200;
   margin-bottom:7px;
 }
+
 h5.leaderboard{
   color:#fff;
-  font-size:6vmin;
+  font-size:4vmin;
   text-align: center;
   font-weight: bold;
+
 }
 
 h2.leaderboard{
   color: #fff;
   text-align: center;
   font-size:7vmin;
-  margin-top:0px;
+  margin-top:6%;
   font-weight: bold;
 }
 
@@ -2267,6 +2735,19 @@ ion-item.leaderboardtop{
 
 h4.leaderboard{
   color:#000;
-  margin-bottom: 10px;
+  font-size: 4vmin;
+  text-align: left;
+  margin-top: 4px;
+  color:#666;
+}
+
+h4.leaderboard.number{
+  text-align: right;
+  color:#666;
+  margin-right: 10%;
+}
+
+.ion-ribbon-a.leaderboard{
+  padding: 2%;
 }
 /*end of leaderboard page*/

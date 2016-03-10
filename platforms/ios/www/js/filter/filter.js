@@ -17,8 +17,18 @@ angular.module('crowdsourcing')
         //depends what filter user select (start/end/time)
         if($scope.filter == 'Start Location')
         {
+          var urlToRun = "";
+          if(window.localStorage.getItem("token") != null)
+          {
+            urlToRun = apiUrl+"retrieveFilter?filter=start&id="+window.localStorage.getItem("token");
+          }
+          else
+          {
+            urlToRun = apiUrl+"retrieveFilter?filter=start";
+          }
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
-          $http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=start&id="+$scope.id)
+          //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=start&id="+$scope.id)
+          $http.get(urlToRun)
             .success(function (data) {
               var results = data;
 
@@ -55,8 +65,18 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'End Location')
         {
+          var urlToRun = "";
+          if(window.localStorage.getItem("token") != null)
+          {
+            urlToRun = apiUrl+"retrieveFilter?filter=end&id="+window.localStorage.getItem("token");
+          }
+          else
+          {
+            urlToRun = apiUrl+"retrieveFilter?filter=end";
+          }
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=end")
-          $http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=end&id="+$scope.id)
+          //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=end&id="+$scope.id)
+          $http.get(urlToRun)
             .success(function (data) {
               var results = data;
 
@@ -93,8 +113,18 @@ angular.module('crowdsourcing')
         }
         else if($scope.filter == 'Time')
         {
+          var urlToRun = "";
+          if(window.localStorage.getItem("token") != null)
+          {
+            urlToRun = apiUrl+"retrieveFilter?filter=time&id="+window.localStorage.getItem("token");
+          }
+          else
+          {
+            urlToRun = apiUrl+"retrieveFilter?filter=time";
+          }
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=time")
-          $http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=time&id="+$scope.id)
+          //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=time&id="+$scope.id)
+          $http.get(urlToRun)
             .success(function (data) {
               var results = data;
               var morning;

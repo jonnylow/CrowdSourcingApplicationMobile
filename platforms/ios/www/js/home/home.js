@@ -25,26 +25,24 @@ angular.module('crowdsourcing')
             if (!enabled) {
               $ionicLoading.hide();
               var myPopup = $ionicPopup.show({
-                title: '<b>Notice</b>',
-                subTitle: '<h5 class="popups home">No location services detected. Please enable before using CareRide.</h5>',
+                subTitle: '<h5 class="popups home">Turn On Location Services to Allow "CareGuide" to Determine Your Current Location</h5>',
                 scope: $scope,
-                cssClass: "popup-vertical-buttons",
                 buttons: [
                   {
-                    text: '<h5 class="popups"><font color="#29A29C">Proceed to Location Services</font></h5>',
-                    type: 'button button-stable',
+                    text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
+                    type: 'button button-stable registration',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
                       cordova.plugins.diagnostic.switchToLocationSettings();
                     }
                   },
                   {
-                    text: '<h5 class="popups"><font color="#29A29C">Proceed without Location Services</font></h5>',
+                    text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
                     type: 'button button-stable',
                     onTap: function (e) {
                       //use default location
-                      window.localStorage.setItem("userLat", "1.297507");
-                      window.localStorage.setItem("userLong", "103.850436");
+                      window.localStorage.setItem("userLat", "1.367870");
+                      window.localStorage.setItem("userLong", "103.802889");
 
                       $scope.loadingshow = false;
                       $ionicLoading.hide();
@@ -61,25 +59,24 @@ angular.module('crowdsourcing')
                   $ionicLoading.hide();
 
                   var myPopup = $ionicPopup.show({
-                    title: '<b>Notice</b>',
-                    subTitle: 'Please switch location service mode to High Accuracy.',
+                    subTitle: '<h5 class="popups home">Turn On Location Service Mode to High Accuracy</h5>',
                     scope: $scope,
                     buttons: [
                       {
-                        text: 'Proceed to Location Services',
-                        type: 'button button-stable',
+                        text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
+                        type: 'button button-stable registration',
                         onTap: function (e) {
                           $state.go('landingPage', {}, {reload: true});
                           cordova.plugins.diagnostic.switchToLocationSettings();
                         }
                       },
                       {
-                        text: 'Proceed without Location Services',
+                        text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
                         type: 'button button-stable',
                         onTap: function (e) {
                           //use default location
-                          window.localStorage.setItem("userLat", "1.297507");
-                          window.localStorage.setItem("userLong", "103.850436");
+                          window.localStorage.setItem("userLat", "1.367870");
+                          window.localStorage.setItem("userLong", "103.802889");
 
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
@@ -94,6 +91,14 @@ angular.module('crowdsourcing')
             }
           }, function (error) {
             alert("The following error occurred: " + error);
+          });
+        }
+        else
+        {
+          cordova.plugins.diagnostic.requestLocationAuthorization(function(status){
+
+          }, function(error){
+              console.error(error);
           });
         }
       }
@@ -158,7 +163,7 @@ angular.module('crowdsourcing')
                 var t = data.activityToReturn.datetime_start.split(/[- :]/);
                 $scope.inProgressId = data.activityToReturn.activity_id;
                 $scope.InProgressActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                $scope.InProgressStatus = data.taskStatus;
+                $scope.InProgressStatus = $scope.capitalizeFirstLetter(data.taskStatus);
                 $scope.showUrgent = false;
                 $scope.inProgress = true;
               }
@@ -241,8 +246,6 @@ angular.module('crowdsourcing')
         //ionic loading screen
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Getting your location...'})
 
-        //NOTE BACKEND DEVELOPERS: remove latlng global vars from other logout function when stable
-        //NOTE BACKEND DEVELOPERS: set timeout to only fire error once
         if(window.localStorage.getItem("userLat") == null) {
           var onSuccess = function(position) {
             var lat = position.coords.latitude;
@@ -262,10 +265,54 @@ angular.module('crowdsourcing')
             //$state.go('landingPage', {}, {reload: true});
             $scope.loadingshow = false;
             $ionicLoading.hide();
+            if (typeof cordova != 'undefined') {
+              if(ionic.Platform.isAndroid() == false) {
+                cordova.plugins.diagnostic.isLocationAuthorized(function(enabled){
+                    if(!enabled)
+                    {
+                      $ionicLoading.hide();
+                      var myPopup = $ionicPopup.show({
+                        subTitle: '<h5 class="popups home">Turn On Location Services to Allow "CareGuide" to Determine Your Current Location</h5>',
+                        scope: $scope,
+                        buttons: [
+                          {
+                            text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
+                            type: 'button button-stable registration',
+                            onTap: function (e) {
+                              $state.go('landingPage', {}, {reload: true});
+                              cordova.plugins.diagnostic.switchToSettings(function(){
+
+                              }, function(error){
+                                  console.error("The following error occurred: "+error);
+                              });
+                            }
+                          },
+                          {
+                            text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
+                            type: 'button button-stable',
+                            onTap: function (e) {
+                              //use default location
+                              window.localStorage.setItem("userLat", "1.367870");
+                              window.localStorage.setItem("userLong", "103.802889");
+
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+                            }
+
+                          },
+                        ]
+                      });
+                    }
+                  },
+                  function(error){
+                    console.error("The following error occurred: "+error);
+                  });
+              }
+            }
           }
 
           //get location with 10 secs timeout
-          navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, enableHighAccuracy: true });
+          navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 15000, enableHighAccuracy: true });
         }
         else
         {
@@ -286,22 +333,22 @@ angular.module('crowdsourcing')
       {
         status = "pick-up";
       }
-      else if(status == "pick-up")
+      else if(status == "Pick-up")
       {
         status = "at check-up";
       }
-      else if(status == "at check-up")
+      else if(status == "At Check-up")
       {
         status = "check-up completed";
       }
-      else if(status == "check-up completed")
+      else if(status == "Check-up Completed")
       {
         status = "completed";
       }
 
       var confirmPopup = $ionicPopup.confirm({
         title: '<h6 class="popups title">Update Status?</h6>',
-        subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + status + "' ?</h6>",
+        subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + $scope.capitalizeFirstLetter(status) + "' ?</h6>",
         okType:"button button-stable",
         cancelType:"button button-stable registration"
       });
@@ -347,5 +394,9 @@ angular.module('crowdsourcing')
           $state.go('tab.home', {}, {reload: true});
         }
       });
+    }
+    $scope.capitalizeFirstLetter=function(str)
+    {
+      return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
     });

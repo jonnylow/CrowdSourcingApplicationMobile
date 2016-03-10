@@ -20,7 +20,7 @@
     <div class="list card filtermain">
 
       <ion-checkbox ng-repeat="item in filterListDisplay" ng-model="item.checked" ng-checked="item.checked">
-        {{ item.textShown }}
+        <h5 class="filter">{{ item.textShown }}</h5>
       </ion-checkbox>
     </div>
     <button class="button paddedbutton button-energized" ng-click="goFilter()">Set</button>

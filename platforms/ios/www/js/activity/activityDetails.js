@@ -81,7 +81,7 @@ angular.module('crowdsourcing')
                         $scope.loadingshow = false;
                         $ionicLoading.hide();
 
-                        var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New Applicant on CareRide&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
+                    /*    var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New Applicant on CareRide&message=There is a new transport application from "+window.localStorage.getItem("loginUserName") ;
                         $http.get(sendEmail)
                           .success(function (data) {
                           //email send
@@ -90,13 +90,9 @@ angular.module('crowdsourcing')
                           .error(function (data) {
                             alert("Error in connection");
                           });
-
+*/
                         $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
                       })
-
-                      .error(function (data) {
-                        alert("Error in connection");
-                      });
                   }
                   else
                   {
@@ -105,7 +101,7 @@ angular.module('crowdsourcing')
 
                     var myPopup = $ionicPopup.show({
                       title: '<h6 class="popups title">Hold on...</h6>',
-                      subTitle: '<br><h6 class="popups">You already have a activity happening at the same date/time.</h3>',
+                      subTitle: '<br><h6 class="popups">You already have an activity happening at the same date/time.</h3>',
                       scope: $scope,
                       buttons: [
                         {
@@ -158,15 +154,8 @@ angular.module('crowdsourcing')
       }
 
       $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){
-        if(ionic.Platform.isAndroid() == true) { //android
-          var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
-          window.open(url,'_system','location=yes');
-          return false;
-        }
-        else { //ios
-          var url = 'http://maps.apple.com/?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
-          window.open(url,'_system','location=yes');
-          return false;
-        }
+        var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
+        window.open(url,'_system','location=yes');
+        return false;
       };
   });

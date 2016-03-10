@@ -118,7 +118,7 @@ angular.module('crowdsourcing')
     {
       var currentDate = new Date();
       currentDate.setHours(0,0,0,0);
-      currentDate.setDate(currentDate.getDate() + 1);
+      currentDate.setDate(currentDate.getDate() + 2);
 
       if($scope.dateTime > currentDate)
       {
@@ -138,15 +138,13 @@ angular.module('crowdsourcing')
 
             $http.get(urlString)
               .success(function (data) {
+                /*
                 var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
                 $http.get(sendEmail)
                   .success(function (data) {
 
-                  })
+                  })*/
 
-                  .error(function (data) {
-                    alert("Error in connection");
-                  });
 
                 var status = data;
                 if (status != null) {
@@ -172,7 +170,7 @@ angular.module('crowdsourcing')
       {
         var alertPopup = $ionicPopup.alert({
           title: '<h6 class="popups title">Whoops!</h6>',
-          subTitle: '<br><h6 class="popups">You are not allow to withdraw from the activity on the actual date. Please call the centre if you cannot make it.</h6> ',
+          subTitle: '<br><h6 class="popups">You are not allowed to withdraw from the activity on the actual date. Please call the centre if you cannot make it.</h6> ',
           scope: $scope,
           buttons: [
             {
@@ -186,15 +184,8 @@ angular.module('crowdsourcing')
     }
 
     $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){
-      if(ionic.Platform.isAndroid() == true) { //android
         var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
         window.open(url,'_system','location=yes');
         return false;
-      }
-      else { //ios
-        var url = 'http://maps.apple.com/?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
-        window.open(url,'_system','location=yes');
-        return false;
-      }
     };
 });

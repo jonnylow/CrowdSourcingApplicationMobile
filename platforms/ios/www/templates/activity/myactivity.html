@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view can-swipe-back="false"> 
   <!--body-->
   <!--history to current tab-->
 
@@ -25,17 +25,21 @@
             <div class="row myactivity">
               <div class="col col-20 col-center myactivitynum">
                 <img src="img/marker.png" class="marker-image"/>
-                <p class="myactivitymarker" ng-if="group.items.length>0" style="color:#333">
+                <p class="myactivitymarker" ng-if="group.items.length>0&& group.items.length<10" style="color:#333">
                   {{group.items.length}}
                 </p>
-                <p class="myactivitymarker" ng-if="group.items.length==0" style="color:#999">
+
+                <p class="myactivitymarker2" ng-if="group.items.length>10" style="color:#333">
+                  {{group.items.length}}
+                </p>
+                <p class="myactivitymarker" ng-if="group.items.length==0" style="color:#585858">
                   {{group.items.length}}
                 </p>
               </div>
               <div class="col myactivity">
                 {{group.name}}
               </div>
-              <div class="col col-10">
+              <div class="col col-10 activity" ng-if="group.items.length!=0">
                 <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
                 &nbsp;
               </div>
@@ -64,7 +68,7 @@
           </div>
           <div class="item myactivitybutton">
             <div ng-if="item.statusDisplay == 'Pick-Up' || item.statusDisplay == 'At Check-Up' || item.statusDisplay == 'Check-Up Completed' || item.statusDisplay == 'Completed'">
-              <button class="button button-full button-energized myactivity" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
+              <button class="button button-full button-energized myactivity" ng-disabled = "!item.updateStatusEnable" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
             </div>
           </div>
       </div>

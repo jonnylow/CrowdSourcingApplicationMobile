@@ -1,15 +1,15 @@
-<ion-view view-title="My Profile">
+<ion-view view-title="My Profile" can-swipe-back="false">
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons>
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content padding="false" ng-show=!loadingshow>
+  <ion-content scroll="false" padding="false" ng-show=!loadingshow>
 
 <!--ng-click="goRank()" remove the rank linkage to the rank page from the div below-->
   <div class="list card me">
-      <button class="button me">
+      <button class="button me" ui-sref="viewLeaderboard">
       <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 350%"></i>
       <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 350%"></i>
       <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 350%"></i>
@@ -31,34 +31,32 @@
       </p>
     </div>
   </div>
+  <img src="img/rankrec.png" class="rankrec">
 
   <div class="list card mestats">
     <div class="item rankheader">
-      <div class="row">
-        <div class="col col-33 rankfirst">
+      <div class="row rank">
+        <div class="col col-33 rankfirst">          
           <h2 class="rankbody"><b>{{hoursCompleted}}</b></h2>
           <p class="rank">CareGuide points</hp>
         </div>
         <div class="col col-33 rankfirst">
-          <h2 class="rankbody"><b>{{hoursCompleted}}</b> hrs <b>{{minsCompleted}}</b>  min</h2>
-          <p class="rank">Volunteered</p>
+          <h2 class="rankbody2"><b>{{hoursCompleted}}</b> hrs <b>{{minsCompleted}}</b>  min</h2>
+          <p class="rank2">Volunteered</p>
+          
         </div>
-        <div class="col col-33 ranksecond">
-          <h2 class="rankbody"><b>{{completed}}</b></h2>
-          <p class="rank"> Completed</p>
+        <div class="col col-33 ">
+          <h2 class="rankbody3"><b>{{completed}}</b></h2>
+          <p class="rank3"> Completed</p>
+        </div>          
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-      <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit" ng-click="manageAccount()" ui-sref="manageAccount">Edit Profile</button>
+  
+  <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit" ng-click="manageAccount()" ui-sref="manageAccount">Edit Profile</button>
 
       <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit2" ui-sref="updateAccount">Change Password</button>
-
-
 
   </ion-content>
 </ion-view>

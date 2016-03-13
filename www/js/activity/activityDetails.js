@@ -34,6 +34,22 @@ angular.module('crowdsourcing')
                 $scope.locationToAddressLat = transportDetails.activity.arrival_centre.lat;
                 $scope.locationToAddressLng = transportDetails.activity.arrival_centre.lng;
                 $scope.moreInformation = transportDetails.activity.more_information;
+                $http.get(apiUrl+"retrieveElderyInformation?transportId=" + transportDetails.activity.activity_id)
+                  .success(function (data) {
+                    var elderyInformation = data;
+
+                    if (elderyInformation != null) {
+                      if(elderyInformation != null)
+                      {
+                        if(elderyInformation.elderly.name != null && elderyInformation.elderly.next_of_kin_name != null
+                          && elderyInformation.elderly.next_of_kin_contact !=null )
+                        {
+                          $scope.Elderly= getInitials(elderyInformation.elderly.name);
+                        }
+                      }
+                    }
+                  })
+
                 if($scope.moreInformation == "")
                 {
                   $scope.moreInformation = "No Additional Information"
@@ -158,4 +174,14 @@ angular.module('crowdsourcing')
         window.open(url,'_system','location=yes');
         return false;
       };
+
+    function getInitials(string) {
+      var names = string.split(' '),
+        initials = names[0].substring(0, 1).toUpperCase();
+
+      if (names.length > 1) {
+        initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+      }
+      return initials;
+    }
   });

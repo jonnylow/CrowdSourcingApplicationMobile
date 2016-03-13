@@ -55,6 +55,7 @@ angular.module('crowdsourcing')
     {
       urlToRun = apiUrl+"retrieveTransportActivity";
     }
+
     $http.get(urlToRun)
       .success(function (data) {
         var transportDetails = data;
@@ -77,6 +78,10 @@ angular.module('crowdsourcing')
 
               //if activityIds is empty, display all results (no filter)
               if($scope.activityIds == null || $scope.activityIds == "") {
+                var tempElderly = "";
+                if(transportDetails.activities[i].elderly != null) {
+                  tempElderly = getInitials(transportDetails.activities[i].elderly.name);
+                }
                 //push to arrays to store all activities in array (also use for displaying)
                 $scope.transportActivity.push({
                   no: i + 1,
@@ -86,7 +91,8 @@ angular.module('crowdsourcing')
                   name: transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name,
                   date:date,
                   time:formatAMPM(dateTime),
-                  dateTime: dateTime
+                  dateTime: dateTime,
+                  elderly:tempElderly
                 });
               }
               else //if activityIds not empty, split up results into array and only display those in the array
@@ -188,4 +194,13 @@ angular.module('crowdsourcing')
       return strTime;
     }
 
+    function getInitials(string) {
+      var names = string.split(' '),
+        initials = names[0].substring(0, 1).toUpperCase();
+
+      if (names.length > 1) {
+        initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+      }
+      return initials;
+    }
   });

@@ -39,6 +39,22 @@ angular.module('crowdsourcing')
               }
               $scope.approvalStatus = capitalizeFirstLetter(transportDetails.task[0].approval);
 
+              $http.get(apiUrl+"retrieveElderyInformation?transportId=" + transportDetails.activities[0].activity_id)
+                .success(function (data) {
+                  var elderyInformation = data;
+
+                  if (elderyInformation != null) {
+                    if(elderyInformation != null)
+                    {
+                      if(elderyInformation.elderly.name != null && elderyInformation.elderly.next_of_kin_name != null
+                        && elderyInformation.elderly.next_of_kin_contact !=null )
+                      {
+                        $scope.Elderly= getInitials(elderyInformation.elderly.name);
+                      }
+                    }
+                  }
+                })
+
               var transportStatusToDisplay;
               if(transportDetails.task[0].status == "new task")
               {
@@ -188,4 +204,14 @@ angular.module('crowdsourcing')
         window.open(url,'_system','location=yes');
         return false;
     };
+
+    function getInitials(string) {
+      var names = string.split(' '),
+        initials = names[0].substring(0, 1).toUpperCase();
+
+      if (names.length > 1) {
+        initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+      }
+      return initials;
+    }
 });

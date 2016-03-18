@@ -153,6 +153,11 @@ angular.module('crowdsourcing')
               };
             }
           })
+          .error(function (data) {
+            alert("Error in connection, Please try again");
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          });
 
         $http.get(inProgressUrl)
           .success(function (data) {
@@ -190,9 +195,19 @@ angular.module('crowdsourcing')
                       }
                     }
                   })
+                  .error(function (data) {
+                    alert("Error in connection, Please try again");
+                    $scope.loadingshow = false;
+                    $ionicLoading.hide();
+                  });
               }
             }
           })
+          .error(function (data) {
+            alert("Error in connection, Please try again");
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          });
       }
       else
       {
@@ -206,6 +221,11 @@ angular.module('crowdsourcing')
               $scope.totalTaskHours = data.totalTaskHours;
             }
           })
+          .error(function (data) {
+            alert("Error in connection, Please try again");
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          });
         $scope.showUrgent = true;
         $scope.inProgress = false;
       }
@@ -241,6 +261,11 @@ angular.module('crowdsourcing')
             $scope.loadingshow = false;
             $ionicLoading.hide();
         })
+        .error(function (data) {
+          alert("Error in connection, Please try again");
+          $scope.loadingshow = false;
+          $ionicLoading.hide();
+        });
 
       $scope.scan = function () {
         //ionic loading screen
@@ -362,23 +387,36 @@ angular.module('crowdsourcing')
 
           $http.get(urlString)
             .success(function (data) {
-              var status = data;
-              if (status != null) {
+              var status1 = data;
+              if (status1 != null) {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
 
-                var alertPopup = $ionicPopup.alert({
-                  title: '<h6 class="popups title">Status</h6>',
-                  subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
-                  okType:"button button-stable"
-                });
-
                 if(status == "completed")
                 {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups'>"+"Congrats, you have completed an activity! Check history tab view the activity."+"</h6>",
+                    okType:"button button-stable"
+                  });
                   $state.go('tab.myhistory', {}, {reload: true});
+                }
+                else if(status == "pick-up")
+                {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups'>"+"Update Successful! Activity is in progress"+"</h6>",
+                    okType:"button button-stable"
+                  });
+                  $state.go('tab.home', {}, {reload: true});
                 }
                 else
                 {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
+                    okType:"button button-stable"
+                  });
                   //window.location.reload(true);
                   $state.go('tab.home', {}, {reload: true});
                 }
@@ -386,7 +424,9 @@ angular.module('crowdsourcing')
             })
 
             .error(function (data) {
-              alert("Error in connection");
+              alert("Error in connection, Please try again");
+              $scope.loadingshow = false;
+              $ionicLoading.hide();
             });
         }
         else

@@ -49,6 +49,11 @@ angular.module('crowdsourcing')
                       }
                     }
                   })
+                  .error(function (data) {
+                    alert("Error in connection, Please try again");
+                    $scope.loadingshow = false;
+                    $ionicLoading.hide();
+                  });
 
                 if($scope.moreInformation == "")
                 {
@@ -60,6 +65,11 @@ angular.module('crowdsourcing')
           }
         }
       })
+      .error(function (data) {
+        alert("Error in connection, Please try again");
+        $scope.loadingshow = false;
+        $ionicLoading.hide();
+      });
 
       $scope.apply=function()
       {
@@ -109,6 +119,11 @@ angular.module('crowdsourcing')
 */
                         $state.go('activityConfirmation', {transportId: $scope.transportId, transportActivityName: $scope.transportActivityName});
                       })
+                      .error(function (data) {
+                        alert("Error in connection, Please try again");
+                        $scope.loadingshow = false;
+                        $ionicLoading.hide();
+                      });
                   }
                   else
                   {
@@ -133,7 +148,9 @@ angular.module('crowdsourcing')
                 })
 
                 .error(function (data) {
-                  alert("Error in connection");
+                  alert("Error in connection, Please try again");
+                  $scope.loadingshow = false;
+                  $ionicLoading.hide();
                 });
             }
           });

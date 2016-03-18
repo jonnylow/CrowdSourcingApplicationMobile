@@ -34,7 +34,7 @@ angular.module('crowdsourcing')
 
                 if(transportDetails.task[i].approval == "approved" && transportDetails.task[i].status== "completed")
                 {
-                  $scope.groups[0].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Completed"});
+                  $scope.groups[0].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Completed"});
                 }
                 else
                 {
@@ -42,15 +42,15 @@ angular.module('crowdsourcing')
                   if(dateTime < currentDateTime)
                   {
                     if(transportDetails.task[i].approval == "withdrawn") {
-                      $scope.groups[2].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
+                      $scope.groups[2].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
                     else if(transportDetails.task[i].approval == "rejected")
                     {
-                      $scope.groups[2].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
+                      $scope.groups[2].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
                     else if(transportDetails.task[i].approval == "pending")
                     {
-                      $scope.groups[1].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
+                      $scope.groups[1].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, statusDisplay:"Not Applicable"});
                     }
                   }
                 }
@@ -66,6 +66,11 @@ angular.module('crowdsourcing')
           $scope.groups[2].items.sort(function (a, b) {
             return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
           });
+          $scope.loadingshow = false;
+          $ionicLoading.hide();
+        })
+        .error(function (data) {
+          alert("Error in connection, Please try again");
           $scope.loadingshow = false;
           $ionicLoading.hide();
         })
@@ -100,4 +105,14 @@ angular.module('crowdsourcing')
       });
       $state.go('tab.activity');
     }
+    function getInitials(string) {
+      var names = string.split(' '),
+        initials = names[0].substring(0, 1).toUpperCase();
+
+      if (names.length > 1) {
+        initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+      }
+      return initials;
+    }
+
 });

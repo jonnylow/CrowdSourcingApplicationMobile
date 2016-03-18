@@ -108,6 +108,12 @@ angular.module('crowdsourcing')
                     ]
                   });
                 })
+
+                .error(function (data) {
+                  alert("Error in connection, Please try again");
+                  $scope.loadingshow = false;
+                  $ionicLoading.hide();
+                });
             }
             else
             {

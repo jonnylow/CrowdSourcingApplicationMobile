@@ -62,6 +62,11 @@ angular.module('crowdsourcing')
               $scope.loadingshow = false;
               $ionicLoading.hide();
             })
+            .error(function (data) {
+              alert("Error in connection, Please try again");
+              $scope.loadingshow = false;
+              $ionicLoading.hide();
+            });
         }
         else if($scope.filter == 'End Location')
         {
@@ -110,6 +115,11 @@ angular.module('crowdsourcing')
               $scope.loadingshow = false;
               $ionicLoading.hide();
             })
+            .error(function (data) {
+              alert("Error in connection, Please try again");
+              $scope.loadingshow = false;
+              $ionicLoading.hide();
+            });
         }
         else if($scope.filter == 'Time')
         {
@@ -210,6 +220,11 @@ angular.module('crowdsourcing')
               $scope.loadingshow = false;
               $ionicLoading.hide();
             })
+            .error(function (data) {
+              alert("Error in connection, Please try again");
+              $scope.loadingshow = false;
+              $ionicLoading.hide();
+            });
         }
       }
 

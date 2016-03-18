@@ -54,6 +54,11 @@ angular.module('crowdsourcing')
                     }
                   }
                 })
+                .error(function (data) {
+                  alert("Error in connection, Please try again");
+                  $scope.loadingshow = false;
+                  $ionicLoading.hide();
+                });
 
               var transportStatusToDisplay;
               if(transportDetails.task[0].status == "new task")
@@ -102,6 +107,11 @@ angular.module('crowdsourcing')
         $scope.loadingshow = false;
         $ionicLoading.hide();
       })
+      .error(function (data) {
+        alert("Error in connection, Please try again");
+        $scope.loadingshow = false;
+        $ionicLoading.hide();
+      });
 
     function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -177,7 +187,9 @@ angular.module('crowdsourcing')
               })
 
               .error(function (data) {
-                alert("Error in connection");
+                alert("Error in connection, Please try again");
+                $scope.loadingshow = false;
+                $ionicLoading.hide();
               });
           }
         });

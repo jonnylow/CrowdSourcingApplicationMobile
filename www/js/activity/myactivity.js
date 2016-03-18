@@ -56,11 +56,11 @@ angular.module('crowdsourcing')
                   {
                     if((dateTimeCompare.getDate() == currentDate.getDate() && dateTimeCompare.getMonth() == currentDate.getMonth() && dateTimeCompare.getYear() == currentDate.getYear()) || currentDate > dateTimeCompare)
                     {
-                      $scope.groups[1].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                      $scope.groups[1].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
                     }
                     else
                     {
-                      $scope.groups[1].items.push({updateStatusEnable:false, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
+                      $scope.groups[1].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), updateStatusEnable:false, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Activity not yet started", statusDisplay:"Pick-Up"});
                     }
 
                   }
@@ -68,15 +68,15 @@ angular.module('crowdsourcing')
                   {
                     if(transportDetails.task[i].status == "pick-up")
                     {
-                      $scope.groups[0].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
+                      $scope.groups[0].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Picked Up", statusDisplay:"At Check-Up"});
                     }
                     else if(transportDetails.task[i].status == "at check-up")
                     {
-                      $scope.groups[0].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
+                      $scope.groups[0].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"At Check-Up", statusDisplay:"Check-Up Completed"});
                     }
                     else if(transportDetails.task[i].status == "check-up completed")
                     {
-                      $scope.groups[0].items.push({updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
+                      $scope.groups[0].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), updateStatusEnable:true, id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Check-Up Completed", statusDisplay:"Completed"});
                     }
                   }
                 }
@@ -86,15 +86,15 @@ angular.module('crowdsourcing')
                   if(dateTime >= currentDateTime)
                   {
                     if(transportDetails.task[i].approval == "pending" && transportDetails.task[i].status == "new task") {
-                      $scope.groups[2].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[2].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                     else if(transportDetails.task[i].approval == "rejected" && transportDetails.task[i].status == "new task")
                     {
-                      $scope.groups[3].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[3].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                     else if(transportDetails.task[i].approval == "withdrawn" && transportDetails.task[i].status == "new task")
                     {
-                      $scope.groups[3].items.push({id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
+                      $scope.groups[3].items.push({elderlyIntials:getInitials(transportDetails.activities[i].elderly.name), id:transportDetails.activities[i].activity_id, from:transportDetails.activities[i].departure_centre.name, to:transportDetails.activities[i].arrival_centre.name, name:transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name, dateTime:dateTime, status:"Not Applicable", statusDisplay:"No status to update"});
                     }
                   }
                 }
@@ -116,6 +116,12 @@ angular.module('crowdsourcing')
           $scope.loadingshow = false;
           $ionicLoading.hide();
         })
+        .error(function (data) {
+          alert("Error in connection, Please try again");
+          $scope.loadingshow = false;
+          $ionicLoading.hide();
+        })
+
         .finally(function() {
           // Stop the ion-refresher from spinning
           $scope.$broadcast('scroll.refreshComplete');
@@ -250,22 +256,36 @@ angular.module('crowdsourcing')
 
           $http.get(urlString)
             .success(function (data) {
-              var status = data;
-              if (status != null) {
+              var status1 = data;
+              if (status1 != null) {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
 
-                var alertPopup = $ionicPopup.alert({
-                  title: '<h6 class="popups title">Status</h6>',
-                  subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
-                  okType:"button button-stable"
-                });
                 if(status == "completed")
                 {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups'>"+"Congrats, you have completed an activity! Check history tab view the activity."+"</h6>",
+                    okType:"button button-stable"
+                  });
                   $state.go('tab.myhistory', {}, {reload: true});
+                }
+                else if(status == "pick-up")
+                {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups'>"+"Update Successful! Activity is in progress"+"</h6>",
+                    okType:"button button-stable"
+                  });
+                  $state.go('tab.activity', {}, {reload: true});
                 }
                 else
                 {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
+                    okType:"button button-stable"
+                  });
                   //window.location.reload(true);
                   $state.go('tab.activity', {}, {reload: true});
                 }
@@ -273,7 +293,9 @@ angular.module('crowdsourcing')
             })
 
             .error(function (data) {
-              alert("Error in connection");
+              alert("Error in connection, Please try again");
+              $scope.loadingshow = false;
+              $ionicLoading.hide();
             });
         }
         else
@@ -294,5 +316,15 @@ angular.module('crowdsourcing')
         disableAnimate: true
       });
       $state.go('tab.myhistory');
+    }
+
+    function getInitials(string) {
+      var names = string.split(' '),
+        initials = names[0].substring(0, 1).toUpperCase();
+
+      if (names.length > 1) {
+        initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+      }
+      return initials;
     }
 });

@@ -72,7 +72,17 @@ angular.module('crowdsourcing')
             $scope.loadingshow = false;
             $ionicLoading.hide();
           })
+          .error(function (data) {
+            alert("Error in connection, Please try again");
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          });
       })
+      .error(function (data) {
+        alert("Error in connection, Please try again");
+        $scope.loadingshow = false;
+        $ionicLoading.hide();
+      });
 
     function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);

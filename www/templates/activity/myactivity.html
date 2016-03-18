@@ -1,4 +1,4 @@
-<ion-view can-swipe-back="false"> 
+<ion-view can-swipe-back="false">
   <!--body-->
   <!--history to current tab-->
 
@@ -60,6 +60,10 @@
                 <td><p class="myactivity">To</p></td>
                 <td><p class="myactivity"><b>{{item.to}}</b></p></td>
               </tr>
+              <tr>
+                <td><p class="myactivity">Elderly</p></td>
+                <td><p class="myactivity"><b>{{item.elderlyIntials}}</b></p></td>
+              </tr>
             </table>
             <div ng-if="item.status != 'Not Applicable'">
             <p class="homep">Current Status: {{item.status}}</p>
@@ -68,7 +72,7 @@
           </div>
           <div class="item myactivitybutton">
             <div ng-if="item.statusDisplay == 'Pick-Up' || item.statusDisplay == 'At Check-Up' || item.statusDisplay == 'Check-Up Completed' || item.statusDisplay == 'Completed'">
-              <button class="button button-full button-energized myactivity" ng-disabled = "!item.updateStatusEnable" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status: {{item.statusDisplay}}</button>
+              <button class="button button-full button-energized myactivity" ng-disabled = "!item.updateStatusEnable" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status to {{item.statusDisplay}}</button>
             </div>
           </div>
       </div>

@@ -1523,13 +1523,34 @@ h2.stat{
   margin-top: -20%;
 }
 
-.refresh{
+.platform-android .refresh{
   margin-top: 15%;
   margin-bottom: -10%;
   padding:1%;
   text-align:center;
   font-size: 4.5vmin; 
   background-color: transparent;
+}
+
+.platform-ios .refresh{
+  margin-top: 15%;
+  margin-bottom: -15%;
+  padding:1%;
+  text-align:center;
+  font-size: 4.5vmin; 
+  background-color: transparent;
+}
+
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+  .platform-ios .refresh{
+  margin-top: 20%;
+  margin-bottom: -15%;
+  padding:1%;
+  text-align:center;
+  font-size: 4.5vmin; 
+  background-color: transparent;
+}
 }
 
 .ion-arrow-down-c.dark{
@@ -1689,6 +1710,15 @@ p.activityconfirmation{
   margin-top: 10%;
 }
 
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+.marker-image{
+  max-width: 55%;
+  z-index: -1;
+  margin-top: 20%;
+}
+}
+
 .item-divider {
   min-height: 40px;
   background-color: #AEE1E0;
@@ -1708,59 +1738,20 @@ p.activityconfirmation{
   font-size: 5.3vmin;
 }
 
-/*iphone 5*/
-@media screen and (device-aspect-ratio:40/71){
-  .platform-ios .myactivitymarker2{
-  position: absolute;
-  top: 15%;
-  right: 37%;
-  font-size: 5.3vmin;
-}
-}
-
-/*iphone 6plus*/
-@media only screen and (min-device-width:414px){
-  .platform-ios .myactivitymarker2{
-  position: absolute;
-  top: 20%;
-  right: 37%;
-  font-size: 5.3vmin;
-}
-}
-
-/*iphone 5*/
-@media screen and (device-aspect-ratio:40/71){
-  .platform-ios .myactivitymarker{
-  position: absolute;
-  top: 15%;
-  right: 46%;
-  font-size: 5.5vmin;
-}
-}
-
 .platform-ios .myactivitymarker{
   position: absolute;
-  top: 15%;
+  top: 17%;
   right: 46%;
-  font-size: 5.3vmin;
+  font-size: 5.5vmin;
 }
 
 .platform-ios .myactivitymarker2{
   position: absolute;
-  top: 15%;
+  top: 17%;
   right: 38%;
   font-size: 5.5vmin;
 }
 
-/*iphone 6plus*/
-@media only screen and (min-device-width:414px){
-  .platform-ios .myactivitymarker{
-  position: absolute;
-  top: 20%;
-  right: 46%;
-  font-size: 5.5vmin;
-}
-}
 
 div.col.myactivitynum{
   background-color: transparent;

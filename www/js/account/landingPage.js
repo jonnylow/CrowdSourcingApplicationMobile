@@ -98,7 +98,7 @@ angular.module('crowdsourcing')
                     scope: $scope,
                     buttons: [
                       {
-                        text: '<b>Ok</b>',
+                        text: 'OK',
                         type: 'button button-stable',
                         onTap: function (e) {
                           window.localStorage.setItem("survey", "done");
@@ -125,7 +125,7 @@ angular.module('crowdsourcing')
                 scope: $scope,
                 buttons: [
                   {
-                    text: '<b>Ok</b>',
+                    text: 'OK',
                     type: 'button button-stable',
 
                   },
@@ -141,7 +141,7 @@ angular.module('crowdsourcing')
               scope: $scope,
               buttons: [
                 {
-                  text: '<b>Ok</b>',
+                  text: 'OK',
                   type: 'button button-stable',
 
                 },

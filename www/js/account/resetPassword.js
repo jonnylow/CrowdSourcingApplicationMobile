@@ -27,7 +27,7 @@ angular.module('crowdsourcing')
                               scope: $scope,
                               buttons: [
                                 {
-                                  text: 'Ok',
+                                  text: 'OK',
                                   type: 'button button-stable',
                                   onTap: function(e) {
                                     $ionicHistory.nextViewOptions({
@@ -48,7 +48,7 @@ angular.module('crowdsourcing')
                               scope: $scope,
                               buttons: [
                                 {
-                                  text: 'Ok',
+                                  text: 'OK',
                                   type: 'button button-stable',
                                   onTap: function(e) {
                                   }
@@ -77,7 +77,7 @@ angular.module('crowdsourcing')
               scope: $scope,
                                   buttons: [
                                     {
-                                      text: '<b>Ok</b>',
+                                      text: 'OK',
                                       type: 'button button-stable',
 
                                     },

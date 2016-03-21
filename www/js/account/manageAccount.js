@@ -117,7 +117,7 @@ angular.module('crowdsourcing')
                                 scope: $scope,
                                 buttons: [
                                   {
-                                    text: '<b>Ok</b>',
+                                    text: 'OK',
                                     type: 'button button-stable',
                                     onTap: function (e) {
                                       $state.go('me', {}, {reload: true});
@@ -158,7 +158,7 @@ angular.module('crowdsourcing')
                                       scope: $scope,
                                       buttons: [
                                         {
-                                          text: '<b>Ok</b>',
+                                          text: 'OK',
                                           type: 'button button-stable',
                                           onTap: function (e) {
                                             $state.go('me', {}, {reload: true});
@@ -185,7 +185,7 @@ angular.module('crowdsourcing')
                                 scope: $scope,
                                 buttons: [
                                   {
-                                    text: '<b>Ok</b>',
+                                    text: 'OK',
                                     type: 'button button-stable',
 
                                   },
@@ -210,7 +210,7 @@ angular.module('crowdsourcing')
                         scope: $scope,
                         buttons: [
                           {
-                            text: '<b>Ok</b>',
+                            text: 'OK',
                             type: 'button button-stable',
 
                           },
@@ -234,7 +234,7 @@ angular.module('crowdsourcing')
                               scope: $scope,
                               buttons: [
                                 {
-                                  text: '<b>Ok</b>',
+                                  text: 'OK',
                                   type: 'button button-stable',
                                   onTap: function (e) {
                                     $state.go('me', {}, {reload: true});
@@ -275,7 +275,7 @@ angular.module('crowdsourcing')
                                     scope: $scope,
                                     buttons: [
                                       {
-                                        text: '<b>Ok</b>',
+                                        text: 'OK',
                                         type: 'button button-stable',
                                         onTap: function (e) {
                                           $state.go('me', {}, {reload: true});
@@ -302,7 +302,7 @@ angular.module('crowdsourcing')
                               scope: $scope,
                               buttons: [
                                 {
-                                  text: '<b>Ok</b>',
+                                  text: 'OK',
                                   type: 'button button-stable',
 
                                 },
@@ -327,7 +327,7 @@ angular.module('crowdsourcing')
                     scope: $scope,
                     buttons: [
                       {
-                        text: '<b>Ok</b>',
+                        text: 'OK',
                         type: 'button button-stable',
 
                       },
@@ -341,11 +341,11 @@ angular.module('crowdsourcing')
 
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups">Date of Birth cannot be larger than the current date or volunteers of CareGuide are required to be between 16 to 70 years old</h6> ',
+                  subTitle: '<br><h6 class="popups dob">Date of Birth cannot be larger than the current date or volunteers of CareGuide are required to be between 16 to 70 years old</h6> ',
                   scope: $scope,
                   buttons: [
                     {
-                      text: '<b>Ok</b>',
+                      text: 'OK',
                       type: 'button button-stable',
 
                     },
@@ -362,7 +362,7 @@ angular.module('crowdsourcing')
                 scope: $scope,
                 buttons: [
                   {
-                    text: '<b>Ok</b>',
+                    text: 'OK',
                     type: 'button button-stable',
 
                   },
@@ -380,7 +380,7 @@ angular.module('crowdsourcing')
                 scope: $scope,
                 buttons: [
                   {
-                    text: '<b>Ok</b>',
+                    text: 'OK',
                     type: 'button button-stable',
 
                   },
@@ -398,7 +398,7 @@ angular.module('crowdsourcing')
               scope: $scope,
               buttons: [
                 {
-                  text: '<b>Ok</b>',
+                  text: 'OK',
                   type: 'button button-stable',
 
                 },
@@ -416,7 +416,7 @@ angular.module('crowdsourcing')
             scope: $scope,
             buttons: [
               {
-                text: '<b>Ok</b>',
+                text: 'OK',
                 type: 'button button-stable',
 
               },

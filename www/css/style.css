@@ -151,13 +151,111 @@ button.home{
   border-radius: 5px;
 }
 
-.button.button-stable{
+.platform-ios .button.button-stable{
   color: #29A29C;
   font-size: 18px;
   border: transparent;
   background-color: transparent;
   height: 50px;
 }
+
+.platform-android .button.button-stable{
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  position:absolute;
+  right:5%;
+  height: 50px;
+}
+
+.platform-android .button.button-stable.home1{ /*location services*/
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  position:absolute;
+  right:15%;
+  height: 50px;
+  width:60%;
+}
+
+.platform-android .button.button-stable.home2{ /*location services*/
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  position:absolute;
+  right:5%;
+  height: 50px;
+  width:20%;
+}
+
+.platform-android .button.button-stable.home3{ /*location services*/
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  position:absolute;
+  right:2%;
+  height: 50px;
+  width:2%;
+}
+.platform-android .button.button-stable.home4{ /*location services*/
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  position:absolute;
+  right:20%;
+  height: 50px;
+  width:30%;
+  padding:0%;
+  margin:0%;
+}
+
+.platform-android .button.button-stable.activity1{ /*location services*/
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  position:absolute;
+  right:20%;
+  height: 50px;
+  width:20%;
+  padding:0%;
+  margin:0%;
+}
+
+.platform-android .button.button-stable.activity2{ /*location services*/
+  color: #29A29C;
+  font-size: 18px;
+  border: transparent;
+  background-color: transparent;
+  position:absolute;
+  right:2%;
+  height: 50px;
+  width:10%;
+  padding:0%;
+  margin:0%;
+}
+
+.platform-android .popup-buttons{
+  border:transparent;
+  padding: 0px;
+  min-height: 50px;
+}
+
+.platform-android .popup-head{
+  border:transparent;
+}
+
+.platform-android .popups.registration{
+  text-align: left;
+  padding-left:5%;
+}
+
+
 
 .button-stable.active, .button-stable.activated{
   color: #29A29C;
@@ -291,23 +389,61 @@ a:link {
 
 /*for all popups*/
 
-.popup-container .popup{
+.platform-ios .popup-container .popup{
   border-radius: 5px;
   width: 85%;
 }
-.popup-head{
+
+.platform-android .popup-container .popup{
+  width: 85%;
+  height:22%;
+}
+
+.platform-ios .popup-head{
   border-bottom: 1px solid #C4C8CB
 }
 
-.popup-buttons {
+.platform-ios .popup-buttons {
   padding: 0px;
   min-height: 50px;
 }
 
-h6.popups{
+.platform-ios h6.popups{
   font-size: 14px;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.platform-android h6.popups{
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left:5%;
+}
+
+.platform-android h6.popups.withdraw{
+  font-size: 14px;
+  margin-top: 0%;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left:5%;
+}
+
+.platform-android h6.popups.dob{
+  font-size: 13px;
+  margin-top: -3%;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left:5%;
+}
+
+.platform-android h6.popups.status{
+  font-size: 14px;
+  margin-top: 10%;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left:5%;
 }
 
 h6.popups.title.error{
@@ -317,29 +453,41 @@ h6.popups.title.error{
   font-weight: bold;
 }
 
-h6.popups.title{
+.platform-ios h6.popups.title{
   font-size: 20px;
   margin-top: 0px;
   margin-bottom: 5px;
 }
 
-h5.popups.home{
-  font-size: 17px;
+.platform-android h6.popups.title{
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 5px;
   font-weight: bold;
-  line-height: 25px;
+  text-align: left;
+  padding-left: 5%;
 }
 
-h5.popups.option{
+h5.popups.home{ /*location services*/
+  font-size: 4.5vmin;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: left;
+  padding-left: 5%;
+}
+
+h5.popups.option{ /*location services*/
   font-size: 15px;
   font-weight: bold;
+  padding-left: 5%;
 }
 
 
-h6.popups.locationservice{
+h6.popups.locationservice{/*location services*/ 
   font-size:20px;
   font-weight: bold;
+  padding-left: 5%;
 }
-
 
 /***BOX SIZES***/
 div.row{
@@ -471,6 +619,15 @@ img.aboutus{
   width:95%;
   font-size: 4.5vmin;
   border-radius: 5px;
+}
+
+.button-dark.paddedbutton.gs{
+  background-color: transparent;
+  color:#1C6F6B;
+  position: relative;
+  margin-top: -8%;
+  margin-bottom:5%;
+  font-size:5vmin;
 }
 /***************END OF GETTING STARTED PAGE**************/
 /**********************LANDING PAGE**********************/
@@ -1120,11 +1277,28 @@ h2.home{
 }
 
 h2.homemain{
-  color: #333;
+  color: #29a29c;
   font-size: 4.2vmin;
   font-weight: bold;
   text-align: leftupdat;
   line-height: 20px;
+}
+
+h2.homemain.status{
+  color: #000;
+  font-size: 5.5vmin;
+  font-weight: bold;
+  text-align: leftupdat;
+  line-height: 20px;
+}
+
+h2.homemain.progress{
+  color: #585858;
+  font-size: 4vmin;
+  font-weight: bold;
+  text-align: leftupdat;
+  line-height: 20px;
+  margin-top: 2%;
 }
 
 h2.homemain.urgent{
@@ -1495,7 +1669,7 @@ p.activityconfirmation{
 .marker-image{
   max-width: 55%;
   z-index: -1;
-  margin-top: 3%;
+  margin-top: 10%;
 }
 
 .item-divider {
@@ -1505,16 +1679,16 @@ p.activityconfirmation{
 
 .platform-android .myactivitymarker{
   position: absolute;
-  top: 19%;
+  top: 15%;
   right: 45%;
   font-size: 5.5vmin;
 }
 
 .platform-android .myactivitymarker2{
   position: absolute;
-  top: 19%;
-  right: 37%;
-  font-size: 5.5vmin;
+  top: 14%;
+  right: 39%;
+  font-size: 5.3vmin;
 }
 
 /*iphone 5*/
@@ -1523,7 +1697,7 @@ p.activityconfirmation{
   position: absolute;
   top: 15%;
   right: 37%;
-  font-size: 5.5vmin;
+  font-size: 5.3vmin;
 }
 }
 
@@ -1533,9 +1707,10 @@ p.activityconfirmation{
   position: absolute;
   top: 20%;
   right: 37%;
-  font-size: 5.5vmin;
+  font-size: 5.3vmin;
 }
 }
+
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
   .platform-ios .myactivitymarker{
@@ -1546,6 +1721,19 @@ p.activityconfirmation{
 }
 }
 
+.platform-ios .myactivitymarker{
+  position: absolute;
+  top: 15%;
+  right: 46%;
+  font-size: 5.3vmin;
+}
+
+.platform-ios .myactivitymarker2{
+  position: absolute;
+  top: 15%;
+  right: 38%;
+  font-size: 5.5vmin;
+}
 
 /*iphone 6plus*/
 @media only screen and (min-device-width:414px){

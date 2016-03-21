@@ -77,8 +77,8 @@ angular.module('crowdsourcing')
           var confirmPopup = $ionicPopup.confirm({
             title: '<h6 class="popups title">Apply?</h6>',
             subTitle: '<h6 class="popups">Are you sure you want to apply for this transport activity?</h6>' ,
-            cancelType: 'button button-stable registration',
-            okType:'button button-stable'
+            cancelType: 'button button-stable activity1',
+            okType:'button button-stable activity2'
           });
 
           confirmPopup.then(function(res) {
@@ -136,7 +136,7 @@ angular.module('crowdsourcing')
                       scope: $scope,
                       buttons: [
                         {
-                          text: '<b>Ok</b>',
+                          text: 'OK',
                           type: 'button button-stable',
                           onTap: function(e) {
                             $state.go('tab.home', {}, {reload: true});
@@ -162,7 +162,7 @@ angular.module('crowdsourcing')
             scope: $scope,
             buttons: [
               {
-                text: '<b>Ok</b>',
+                text: 'OK',
                 type: 'button button-stable',
                 onTap: function(e) {
                   $state.go('landingPage', {}, {reload: true});

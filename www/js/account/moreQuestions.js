@@ -32,7 +32,7 @@ angular.module('crowdsourcing')
                     scope: $scope,
                     buttons: [
                       {
-                        text: '<b>Ok</b>',
+                        text: 'OK',
                         type: 'button button-stable',
 
                       },
@@ -48,7 +48,7 @@ angular.module('crowdsourcing')
                 scope: $scope,
                 buttons: [
                   {
-                    text: '<b>Ok</b>',
+                    text: 'OK',
                     type: 'button button-stable',
 
                   },
@@ -64,7 +64,7 @@ angular.module('crowdsourcing')
             scope: $scope,
             buttons: [
               {
-                text: '<b>Ok</b>',
+                text: 'OK',
                 type: 'button button-stable',
 
               },

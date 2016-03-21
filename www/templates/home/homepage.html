@@ -33,7 +33,8 @@
     <div class="item item-text-wrap updatestatus">
       <h2 class="homemain">{{ todayActivityDate | date : "d MMM yyyy"}}, {{ todayActivityDate | date : "h:mm a"}}</h2>
     
-      <h2 class="homemain">{{todayStatus}}</h2>
+      <h2 class="homemain status">{{todayStatus}}</h2>
+        
         <button class="button button-updatestatus" ng-click="updateStatus(todayId, todayStatus)"><p class="home">UPDATE STATUS</p></button>
     </div>
     </div>
@@ -46,7 +47,11 @@
     </div>
     <div class="item item-text-wrap updatestatus">
       <h2 class="homemain">{{ InProgressActivityDate | date : "d MMM yyyy, h:mm a"}}</h2>
-      <h2 class="homemain">{{InProgressStatus}}</h2>
+      <h2 class="homemain status">{{InProgressStatus}}</h2>
+          <h2 class="homemain progress" ng-if="InProgressStatus=='Pick-up'" >1 out of 4 completed</h2>
+          <h2 class="homemain progress" ng-if="InProgressStatus=='At Check-up'" >2 out of 4 completed</h2>
+          <h2 class="homemain progress" ng-if="InProgressStatus=='Check-up Completed'" >3 out of 4 completed</h2>
+          <h2 class="homemain progress" ng-if="InProgressStatus=='Completed'" >4 out of 4 completed</h2>
         <button class="button button-updatestatus" ng-click="updateStatus(inProgressId, InProgressStatus)"><p class="home">UPDATE STATUS</p></button>
     </div>
     </div>

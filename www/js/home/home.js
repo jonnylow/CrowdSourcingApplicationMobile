@@ -30,7 +30,7 @@ angular.module('crowdsourcing')
                 buttons: [
                   {
                     text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
-                    type: 'button button-stable registration',
+                    type: 'button button-stable home1',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
                       cordova.plugins.diagnostic.switchToLocationSettings();
@@ -38,7 +38,7 @@ angular.module('crowdsourcing')
                   },
                   {
                     text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
-                    type: 'button button-stable',
+                    type: 'button button-stable home2',
                     onTap: function (e) {
                       //use default location
                       window.localStorage.setItem("userLat", "1.367870");
@@ -374,8 +374,8 @@ angular.module('crowdsourcing')
       var confirmPopup = $ionicPopup.confirm({
         title: '<h6 class="popups title">Update Status?</h6>',
         subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + $scope.capitalizeFirstLetter(status) + "' ?</h6>",
-        okType:"button button-stable",
-        cancelType:"button button-stable registration"
+        okType:"button button-stable home3",
+        cancelType:"button button-stable home4"
       });
 
       confirmPopup.then(function(res) {
@@ -405,7 +405,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Status</h6>',
-                    subTitle: "<h6 class='popups'>"+"Update Successful! Activity is in progress"+"</h6>",
+                    subTitle: "<h6 class='popups status'>"+"Update Successful! Activity is in progress"+"</h6>",
                     okType:"button button-stable"
                   });
                   $state.go('tab.home', {}, {reload: true});
@@ -414,7 +414,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Status</h6>',
-                    subTitle: "<h6 class='popups'>"+"Update Successful"+"</h6>",
+                    subTitle: "<h6 class='popups status'>"+"Update Successful"+"</h6>",
                     okType:"button button-stable"
                   });
                   //window.location.reload(true);

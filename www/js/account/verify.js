@@ -21,7 +21,7 @@ angular.module('crowdsourcing')
       scope: $scope,
       buttons: [
         {
-          text: '<b>Ok</b>',
+          text: 'OK',
           type: 'button button-stable',
           onTap: function(e) {
             //=========uncomment bottom line if do not want to use OTP========//
@@ -91,7 +91,7 @@ angular.module('crowdsourcing')
                             scope: $scope,
                             buttons: [
                               {
-                                text: '<b>Ok</b>',
+                                text: 'OK',
                                 type: 'button button-stable',
                                 onTap: function (e) {
                                   $ionicHistory.clearCache();
@@ -121,7 +121,7 @@ angular.module('crowdsourcing')
                       scope: $scope,
                       buttons: [
                         {
-                          text: '<b>Ok</b>',
+                          text: 'OK',
                           type: 'button button-stable',
 
                         },
@@ -140,7 +140,7 @@ angular.module('crowdsourcing')
                     scope: $scope,
                     buttons: [
                       {
-                        text: '<b>Ok</b>',
+                        text: 'OK',
                         type: 'button button-stable',
 
                       },
@@ -165,7 +165,7 @@ angular.module('crowdsourcing')
               scope: $scope,
               buttons: [
                 {
-                  text: '<b>Ok</b>',
+                  text: 'OK',
                   type: 'button button-stable',
 
                 },
@@ -184,7 +184,7 @@ angular.module('crowdsourcing')
             scope: $scope,
             buttons: [
               {
-                text: '<b>Ok</b>',
+                text: 'OK',
                 type: 'button button-stable',
 
               },

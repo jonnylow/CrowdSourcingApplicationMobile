@@ -151,8 +151,8 @@ angular.module('crowdsourcing')
         var confirmPopup = $ionicPopup.confirm({
           title: "<h6 class='popups title error'>Withdraw?</h6>",
           subTitle: "<h6 class='popups'>Are you sure you want to withdraw from this activity?</h6>",
-          cancelType: 'button button-stable registration',
-          okType:'button button-stable'
+          cancelType: 'button button-stable activity1',
+          okType:'button button-stable activity2'
         });
 
         confirmPopup.then(function(res) {
@@ -198,15 +198,9 @@ angular.module('crowdsourcing')
       {
         var alertPopup = $ionicPopup.alert({
           title: '<h6 class="popups title">Whoops!</h6>',
-          subTitle: '<br><h6 class="popups">You are not allowed to withdraw from the activity on the actual date. Please call the centre if you cannot make it.</h6> ',
-          scope: $scope,
-          buttons: [
-            {
-              text: '<b>Ok</b>',
-              type: 'button button-stable',
+          subTitle: '<br><h6 class="popups withdraw">You are not allowed to withdraw from the activity on the actual date. Please call the centre if you cannot make it.</h6> ',
+          okType:'button button-stable activity2'
 
-            },
-          ]
         });
       }
     }

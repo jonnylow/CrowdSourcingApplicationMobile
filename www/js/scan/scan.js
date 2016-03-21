@@ -189,9 +189,20 @@ angular.module('crowdsourcing')
                 }
               })
               .error(function (data) {
-                alert("Error in connection, Please try again");
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Whoops!</h6>',
+                  subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: 'OK',
+                      type: 'button button-stable',
+
+                    },
+                  ]
+                });
               });
           });
         }

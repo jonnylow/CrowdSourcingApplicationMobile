@@ -32,9 +32,9 @@
     </div>
     <div class="item item-text-wrap updatestatus">
       <h2 class="homemain">{{ todayActivityDate | date : "d MMM yyyy"}}, {{ todayActivityDate | date : "h:mm a"}}</h2>
-    
+
       <h2 class="homemain status">{{todayStatus}}</h2>
-        
+
         <button class="button button-updatestatus" ng-click="updateStatus(todayId, todayStatus)"><p class="home">UPDATE STATUS</p></button>
     </div>
     </div>
@@ -48,7 +48,7 @@
     <div class="item item-text-wrap updatestatus">
       <h2 class="homemain">{{ InProgressActivityDate | date : "d MMM yyyy, h:mm a"}}</h2>
       <h2 class="homemain status">{{InProgressStatus}}</h2>
-          <h2 class="homemain progress" ng-if="InProgressStatus=='Pick-up'" >1 out of 4 completed</h2>
+          <h2 class="homemain progress" ng-if="InProgressStatus=='Picked-up'" >1 out of 4 completed</h2>
           <h2 class="homemain progress" ng-if="InProgressStatus=='At Check-up'" >2 out of 4 completed</h2>
           <h2 class="homemain progress" ng-if="InProgressStatus=='Check-up Completed'" >3 out of 4 completed</h2>
           <h2 class="homemain progress" ng-if="InProgressStatus=='Completed'" >4 out of 4 completed</h2>
@@ -73,12 +73,12 @@
     </button>
   </div>-->
   </ion-content>
-  
+
     <div class="list card myactivitymain stat" ng-if="totalVolunteers != null && showUrgent == true" ng-show=!loadingshow>
       <div class="item item-text-wrap stat">
         <h2 class="stat"><i class="icon ion-clock dark stats"></i>
         {{totalTaskHours}} Hours</h2>
-          has been contributed by 
+          has been contributed by
         {{totalVolunteers}} volunteers!
       </div>
       <div class="item stat2">

@@ -154,9 +154,20 @@ angular.module('crowdsourcing')
             }
           })
           .error(function (data) {
-            alert("Error in connection, Please try again");
             $scope.loadingshow = false;
             $ionicLoading.hide();
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Whoops!</h6>',
+              subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: 'OK',
+                  type: 'button button-stable',
+
+                },
+              ]
+            });
           });
 
         $http.get(inProgressUrl,{timeout: 6000})
@@ -168,7 +179,12 @@ angular.module('crowdsourcing')
                 var t = data.activityToReturn.datetime_start.split(/[- :]/);
                 $scope.inProgressId = data.activityToReturn.activity_id;
                 $scope.InProgressActivityDate = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                $scope.InProgressStatus = $scope.capitalizeFirstLetter(data.taskStatus);
+                if(data.taskStatus == "pick-up") {
+                  $scope.InProgressStatus = "Picked-up";
+                }
+                else {
+                  $scope.InProgressStatus = $scope.capitalizeFirstLetter(data.taskStatus);
+                }
                 $scope.showUrgent = false;
                 $scope.inProgress = true;
               }
@@ -199,14 +215,37 @@ angular.module('crowdsourcing')
                     alert("Error in connection, Please try again");
                     $scope.loadingshow = false;
                     $ionicLoading.hide();
+                    var alertPopup = $ionicPopup.alert({
+                      title: '<h6 class="popups title">Whoops!</h6>',
+                      subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                      scope: $scope,
+                      buttons: [
+                        {
+                          text: 'OK',
+                          type: 'button button-stable',
+
+                        },
+                      ]
+                    });
                   });
               }
             }
           })
           .error(function (data) {
-            alert("Error in connection, Please try again");
             $scope.loadingshow = false;
             $ionicLoading.hide();
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Whoops!</h6>',
+              subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: 'OK',
+                  type: 'button button-stable',
+
+                },
+              ]
+            });
           });
       }
       else
@@ -222,9 +261,20 @@ angular.module('crowdsourcing')
             }
           })
           .error(function (data) {
-            alert("Error in connection, Please try again");
             $scope.loadingshow = false;
             $ionicLoading.hide();
+            var alertPopup = $ionicPopup.alert({
+              title: '<h6 class="popups title">Whoops!</h6>',
+              subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+              scope: $scope,
+              buttons: [
+                {
+                  text: 'OK',
+                  type: 'button button-stable',
+
+                },
+              ]
+            });
           });
         $scope.showUrgent = true;
         $scope.inProgress = false;
@@ -262,9 +312,20 @@ angular.module('crowdsourcing')
             $ionicLoading.hide();
         })
         .error(function (data) {
-          alert("Error in connection, Please try again");
           $scope.loadingshow = false;
           $ionicLoading.hide();
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: 'OK',
+                type: 'button button-stable',
+
+              },
+            ]
+          });
         });
 
       $scope.scan = function () {
@@ -358,7 +419,7 @@ angular.module('crowdsourcing')
       {
         status = "pick-up";
       }
-      else if(status == "Pick-up")
+      else if(status == "Picked-up")
       {
         status = "at check-up";
       }
@@ -424,9 +485,20 @@ angular.module('crowdsourcing')
             })
 
             .error(function (data) {
-              alert("Error in connection, Please try again");
               $scope.loadingshow = false;
               $ionicLoading.hide();
+              var alertPopup = $ionicPopup.alert({
+                title: '<h6 class="popups title">Whoops!</h6>',
+                subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                scope: $scope,
+                buttons: [
+                  {
+                    text: 'OK',
+                    type: 'button button-stable',
+
+                  },
+                ]
+              });
             });
         }
         else

@@ -1519,6 +1519,23 @@ h2.stat{
 /*end of home page*/
 
 /*activity page*/
+.refresher{
+  margin-top: -20%;
+}
+
+.refresh{
+  margin-top: 15%;
+  margin-bottom: -10%;
+  padding:1%;
+  text-align:center;
+  font-size: 4.5vmin; 
+  background-color: transparent;
+}
+
+.ion-arrow-down-c.dark{
+  font-size: 5vmin;
+  margin-right: 2%;
+}
 
 .item.details{
   font-size: 17px;
@@ -2800,6 +2817,9 @@ div.col.ranksecond{
 /*end of rank page*/
 
 /***** Help page*****/
+.faq{
+  border-color: #000;
+}
 .list.myactivity.help{
   margin-top: 4%;
 }
@@ -2922,17 +2942,31 @@ ion-item.leaderboardtop{
 }
 
 h4.leaderboard{
-  color:#000;
   font-size: 4vmin;
   text-align: left;
   margin-top: 4px;
   color:#666;
 }
 
+h4.leaderboard.selected{
+  font-size: 4vmin;
+  text-align: left;
+  margin-top: 4px;
+  color:#29A29C;
+  font-weight: bold;
+}
+
 h4.leaderboard.number{
   text-align: right;
   color:#666;
   margin-right: 10%;
+}
+
+h4.leaderboard.number.selected{
+  text-align: right;
+  color:#29A29C;
+  margin-right: 10%;
+  font-weight: bold;
 }
 
 .ion-ribbon-a.leaderboard{

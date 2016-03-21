@@ -27,13 +27,29 @@
           </ion-item>
 
           <div class="list" ng-show="isGroupShown(group)">
-            <a class="item-text-wrap" >
+            <a class="item-text-wrap" ng-if="group.name=='What are the volunteers responsibilities for the activities?'" >
+              <div class="item help">
+                <p class="help">The volunteers are medical escorts who will accompany elderly residents to and from their medical appointments. They will be responsible to: 
+                  <br>a. Escort elderly residents to and from their medical appointments <br>b. Should be physically fit to wheel the elderly,
+                  <br>c. Interact with the elderly,
+                  <br>d. Wait for the elderly during the medical appointments.</p>
+              </div>
+            </a>  
+            <a class="item-text-wrap" ng-if="group.name!='What are the volunteers responsibilities for the activities?' && group.name!= 'What are the different activities’ transport statuses that volunteers are required to update and when do they have to update?'" >
               <div class="item help">
                 <p class="help">{{group.answer}}</p>
               </div>              
             </a>
-          </div>
-        </div>
+            <a class="item-text-wrap" ng-if="group.name=='What are the different activities’ transport statuses that volunteers are required to update and when do they have to update?'" >
+              <div class="item help">
+                <p class="help">
+                There are 4 activities’ transport statuses on CareGuide:
+                <br> a. <b>Picked Up</b>: Update this status after the volunteer pick up the elderly from the home.
+                <br>b. <b>At Check Up</b>: Update this status after the volunteer arrive at the medical appointment location. 
+                <br>c. <b>Check Up Completed</b>: Update this status after the elderly has completed all medical checks.
+                <br>d. <b>Completed</b>: Update this status after the volunteer has accompanied the elderly back to the home. </p>
+              </div>            
+            </a>
       </div>
     </ion-list>
   </ion-content>

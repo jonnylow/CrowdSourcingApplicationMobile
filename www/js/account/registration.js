@@ -89,7 +89,7 @@ angular.module('crowdsourcing')
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
                     if (validateEmail(tempEmail) == true) {
                       if (validatePassword(tempPassword) == true) {
-                        $http.get(apiUrl + "checkEmail?email=" + tempEmail)
+                        $http.get(apiUrl + "checkEmail?email=" + tempEmail,{timeout: 6000})
                           .success(function (data) {
 
                             var status = data;

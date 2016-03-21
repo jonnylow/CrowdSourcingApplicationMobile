@@ -12,7 +12,7 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
-    $http.get(apiUrl+"retrieveTransportActivityDetails?transportId=" + $scope.transportId)
+    $http.get(apiUrl+"retrieveTransportActivityDetails?transportId=" + $scope.transportId,{timeout: 6000})
       .success(function (data) {
         var transportDetails = data;
         if (transportDetails != null) {
@@ -34,7 +34,7 @@ angular.module('crowdsourcing')
                 $scope.locationToAddressLat = transportDetails.activity.arrival_centre.lat;
                 $scope.locationToAddressLng = transportDetails.activity.arrival_centre.lng;
                 $scope.moreInformation = transportDetails.activity.more_information;
-                $http.get(apiUrl+"retrieveElderyInformation?transportId=" + transportDetails.activity.activity_id)
+                $http.get(apiUrl+"retrieveElderyInformation?transportId=" + transportDetails.activity.activity_id,{timeout: 6000})
                   .success(function (data) {
                     var elderyInformation = data;
 
@@ -96,13 +96,13 @@ angular.module('crowdsourcing')
 
               var checkUrlString = apiUrl+"checkActivityApplication?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
-              $http.get(checkUrlString)
+              $http.get(checkUrlString,{timeout: 6000})
                 .success(function (data) {
                   if(data.status[0]=="do not exist")
                   {
                     var urlString = apiUrl+"addNewActivity?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
-                    $http.get(urlString)
+                    $http.get(urlString,{timeout: 6000})
                       .success(function (data) {
                         $scope.loadingshow = false;
                         $ionicLoading.hide();

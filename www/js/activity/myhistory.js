@@ -21,7 +21,7 @@ angular.module('crowdsourcing')
 
       var urlString = apiUrl+"retrieveTransportByUser?id=" +$scope.id+"&type=2";
 
-      $http.get(urlString)
+      $http.get(urlString,{timeout: 6000})
         .success(function (data) {
           var transportDetails = data;
 

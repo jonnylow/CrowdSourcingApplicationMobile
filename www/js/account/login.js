@@ -23,7 +23,7 @@ angular.module('crowdsourcing')
                 var tempPassword = fields.password;
 
               if (validateEmail(tempNRIC) == true) {
-                $http.get(apiUrl + "checkEmail?email=" + tempNRIC)
+                $http.get(apiUrl + "checkEmail?email=" + tempNRIC,{timeout: 6000})
                   .success(function (data) {
 
                     var status = data;

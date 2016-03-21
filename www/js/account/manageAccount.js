@@ -14,7 +14,7 @@ angular.module('crowdsourcing')
 
     var urlString = apiUrl+"retrieveUserDetails?id="+$scope.id;
     var currentEmail = "";
-    $http.get(urlString)
+    $http.get(urlString,{timeout: 6000})
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null) {
@@ -105,7 +105,7 @@ angular.module('crowdsourcing')
 
                         urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
-                        $http.get(urlStringUpdate)
+                        $http.get(urlStringUpdate,{timeout: 6000})
                           .success(function (data) {
                             var status = data;
                             if (status != null) {
@@ -135,14 +135,14 @@ angular.module('crowdsourcing')
                           });
                       }
                       else {
-                        $http.get(apiUrl + "checkEmail?email=" + email)
+                        $http.get(apiUrl + "checkEmail?email=" + email,{timeout: 6000})
                           .success(function (data) {
 
                             var status = data;
                             if (status.status[0] != "exist") {
                               urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
-                              $http.get(urlStringUpdate)
+                              $http.get(urlStringUpdate,{timeout: 6000})
                                 .success(function (data) {
                                   var status = data;
                                   if (status != null) {
@@ -222,7 +222,7 @@ angular.module('crowdsourcing')
                     if (email == currentEmail) {
                       urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
-                      $http.get(urlStringUpdate)
+                      $http.get(urlStringUpdate,{timeout: 6000})
                         .success(function (data) {
                           var status = data;
                           if (status != null) {
@@ -252,14 +252,14 @@ angular.module('crowdsourcing')
                         });
                     }
                     else {
-                      $http.get(apiUrl + "checkEmail?email=" + email)
+                      $http.get(apiUrl + "checkEmail?email=" + email,{timeout: 6000})
                         .success(function (data) {
 
                           var status = data;
                           if (status.status[0] != "exist") {
                             urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
-                            $http.get(urlStringUpdate)
+                            $http.get(urlStringUpdate,{timeout: 6000})
                               .success(function (data) {
                                 var status = data;
                                 if (status != null) {

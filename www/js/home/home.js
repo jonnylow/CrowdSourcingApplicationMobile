@@ -122,7 +122,7 @@ angular.module('crowdsourcing')
 
         $scope.totalVolunteers = null;
         $scope.totalTaskHours = null;
-        $http.get(secondUrl)
+        $http.get(secondUrl,{timeout: 6000})
           .success(function (data) {
             if(data != null)
             {
@@ -159,7 +159,7 @@ angular.module('crowdsourcing')
             $ionicLoading.hide();
           });
 
-        $http.get(inProgressUrl)
+        $http.get(inProgressUrl,{timeout: 6000})
           .success(function (data) {
             if(data != null)
             {
@@ -175,7 +175,7 @@ angular.module('crowdsourcing')
               else
               {
                 //check if there is activities happening today
-                $http.get(todayUrl)
+                $http.get(todayUrl,{timeout: 6000})
                   .success(function (data) {
                     if(data != null)
                     {
@@ -213,7 +213,7 @@ angular.module('crowdsourcing')
       {
         url = apiUrl+"retrieveRecommendedTransportActivity?limit=1";
         secondUrl = apiUrl+"getAllVolunteerContribution";
-        $http.get(secondUrl)
+        $http.get(secondUrl,{timeout: 6000})
           .success(function (data) {
             if(data != null)
             {
@@ -230,7 +230,7 @@ angular.module('crowdsourcing')
         $scope.inProgress = false;
       }
 
-      $http.get(url)
+      $http.get(url,{timeout: 6000})
         .success(function (data) {
           var transportDetails = data;
 
@@ -385,7 +385,7 @@ angular.module('crowdsourcing')
 
           urlString = apiUrl+"updateActivityStatus?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+id+"&status="+status;
 
-          $http.get(urlString)
+          $http.get(urlString,{timeout: 6000})
             .success(function (data) {
               var status1 = data;
               if (status1 != null) {

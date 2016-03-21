@@ -25,7 +25,7 @@ angular.module('crowdsourcing')
         ]
       });
     }
-    $http.get(apiUrl+"volunteerLeaderboard?token="+window.localStorage.getItem("token"))
+    $http.get(apiUrl+"volunteerLeaderboard?token="+window.localStorage.getItem("token"),{timeout: 6000})
       .success(function (data) {
         if(data != null)
         {

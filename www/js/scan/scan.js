@@ -134,7 +134,7 @@ angular.module('crowdsourcing')
               urlToRun = apiUrl+"retrieveTransportActivity";
             }
 
-            $http.get(urlToRun)
+            $http.get(urlToRun,{timeout: 6000})
               .success(function (data) {
                 var transportDetails = data;
 

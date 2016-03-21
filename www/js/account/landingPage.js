@@ -89,7 +89,7 @@ angular.module('crowdsourcing')
             if (validateEmail(fields.email) == true) {
               $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
               var sendEmail = apiUrl + "email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] Survey for CareRide&message=Willing: " + fields.willing + ", Area volunteer: " + fields.survey + ", Day of week: " + fields.day + ", Contact email: " + fields.email;
-              $http.get(sendEmail)
+              $http.get(sendEmail,{timeout: 6000})
                 .success(function (data) {
                   $ionicLoading.hide();
                   var alertPopup = $ionicPopup.alert({

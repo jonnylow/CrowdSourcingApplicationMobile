@@ -56,7 +56,7 @@ angular.module('crowdsourcing')
       urlToRun = apiUrl+"retrieveTransportActivity";
     }
 
-    $http.get(urlToRun)
+    $http.get(urlToRun,{timeout: 6000})
       .success(function (data) {
         var transportDetails = data;
 
@@ -101,6 +101,12 @@ angular.module('crowdsourcing')
 
                 if(activity_ids.indexOf(transportDetails.activities[i].activity_id+"") != -1)
                 {
+
+                  var tempElderly = "";
+                  if(transportDetails.activities[i].elderly != null) {
+                    tempElderly = getInitials(transportDetails.activities[i].elderly.name);
+                  }
+
                   //push to arrays to store all activities in array (also use for displaying)
                   $scope.transportActivity.push({
                     no: i + 1,
@@ -110,7 +116,8 @@ angular.module('crowdsourcing')
                     name: transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name,
                     date:date,
                     time:formatAMPM(dateTime),
-                    dateTime: dateTime
+                    dateTime: dateTime,
+                    elderly:tempElderly
                   });
                 }
               }

@@ -33,7 +33,7 @@ angular.module('crowdsourcing')
             var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
             $scope.loadingshow = true;
             $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
-            $http.get(sendURL)
+            $http.get(sendURL,{timeout: 6000})
               .success(function (data) {
                 //message sent
                 var status = data;
@@ -78,7 +78,7 @@ angular.module('crowdsourcing')
                       + "&gender=" + $scope.tempGender + "&haveCar=" + $scope.tempHaveCar + "&preferences1=" + $scope.tempPreferences1
                       + "&preferences2=" + $scope.tempPreferences2 + "&occupation=" + $scope.tempOccupation + "&rank=4";
 
-                    $http.get(urlString)
+                    $http.get(urlString,{timeout: 6000})
                       .success(function (data) {
 
                         var status = data;
@@ -210,7 +210,7 @@ angular.module('crowdsourcing')
                 var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
                 $scope.loadingshow = true;
                 $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
-                $http.get(sendURL)
+                $http.get(sendURL,{timeout: 6000})
                   .success(function (data) {
                     //message sent
                     var status = data;

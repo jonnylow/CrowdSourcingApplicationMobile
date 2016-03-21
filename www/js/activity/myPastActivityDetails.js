@@ -9,9 +9,9 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get(apiUrl+"retrieveElderyInformation?transportId=" + $scope.transportId)
+    $http.get(apiUrl+"retrieveElderyInformation?transportId=" + $scope.transportId,{timeout: 6000})
       .success(function (elderly) {
-        $http.get(apiUrl+"retrieveMyTransportActivityDetails?transportId=" + $scope.transportId+"&id="+$scope.id)
+        $http.get(apiUrl+"retrieveMyTransportActivityDetails?transportId=" + $scope.transportId+"&id="+$scope.id,{timeout: 6000})
           .success(function (data) {
             var transportDetails = data;
             if (transportDetails != null) {

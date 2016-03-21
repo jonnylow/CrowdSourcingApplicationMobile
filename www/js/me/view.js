@@ -26,7 +26,7 @@ angular.module('crowdsourcing')
       }
 
 
-    $http.get(apiUrl+"retrieveUserDetails?id="+$scope.id)
+    $http.get(apiUrl+"retrieveUserDetails?id="+$scope.id,{timeout: 6000})
       .success(function (data) {
         var userDetails = data;
         if (userDetails != null && userDetails.length!=0 ) {
@@ -70,7 +70,7 @@ angular.module('crowdsourcing')
             $scope.toDisplayInformation = $scope.nextPts +" points to "+$scope.nextRank;
           }
 
-          $http.get(apiUrl+"retrieveRankingDetails?id="+$scope.id)
+          $http.get(apiUrl+"retrieveRankingDetails?id="+$scope.id,{timeout: 6000})
             .success(function (data) {
               var userDetails = data;
               if (userDetails != null ) {

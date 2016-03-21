@@ -36,7 +36,7 @@ angular.module('crowdsourcing')
 
       var urlString = apiUrl+"retrieveTransportByUser?id=" +$scope.id+"&type=1";
 
-      $http.get(urlString)
+      $http.get(urlString,{timeout: 6000})
         .success(function (data) {
           var transportDetails = data;
 
@@ -254,7 +254,7 @@ angular.module('crowdsourcing')
 
           urlString = apiUrl+"updateActivityStatus?volunteer_id="+$scope.id+"&activity_id="+id+"&status="+status;
 
-          $http.get(urlString)
+          $http.get(urlString,{timeout: 6000})
             .success(function (data) {
               var status1 = data;
               if (status1 != null) {

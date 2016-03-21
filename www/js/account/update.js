@@ -50,7 +50,7 @@ angular.module('crowdsourcing')
                           if (validatePassword(tempNewPassword) == true) {
                             var urlString = apiUrl + "updateUserAccount?id=" + $scope.id + "&password=" + tempNewPassword;
 
-                            $http.get(urlString)
+                            $http.get(urlString,{timeout: 6000})
                               .success(function (data) {
                                 var status = data;
                                 if (status != null) {

@@ -15,7 +15,7 @@ angular.module('crowdsourcing')
       url = apiUrl+"retrieveRecommendedTransportActivity?limit=5";
     }
 
-    $http.get(url)
+    $http.get(url,{timeout: 6000})
       .success(function (data) {
         var transportDetails = data;
 

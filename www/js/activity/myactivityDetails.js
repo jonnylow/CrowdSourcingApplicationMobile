@@ -10,7 +10,7 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
 
-    $http.get(apiUrl+"retrieveMyTransportActivityDetails?transportId=" + $scope.transportId +"&id="+$scope.id)
+    $http.get(apiUrl+"retrieveMyTransportActivityDetails?transportId=" + $scope.transportId +"&id="+$scope.id,{timeout: 6000})
       .success(function (data) {
         var transportDetails = data;
 
@@ -39,7 +39,7 @@ angular.module('crowdsourcing')
               }
               $scope.approvalStatus = capitalizeFirstLetter(transportDetails.task[0].approval);
 
-              $http.get(apiUrl+"retrieveElderyInformation?transportId=" + transportDetails.activities[0].activity_id)
+              $http.get(apiUrl+"retrieveElderyInformation?transportId=" + transportDetails.activities[0].activity_id,{timeout: 6000})
                 .success(function (data) {
                   var elderyInformation = data;
 
@@ -162,7 +162,7 @@ angular.module('crowdsourcing')
 
             urlString = apiUrl+"withdraw?volunteer_id="+$scope.id+"&activity_id="+$scope.transportId;
 
-            $http.get(urlString)
+            $http.get(urlString,{timeout: 6000})
               .success(function (data) {
                 /*
                 var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";

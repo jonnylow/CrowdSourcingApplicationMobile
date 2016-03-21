@@ -10,7 +10,7 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
-    $http.get(apiUrl+"retrieveElderyInformation?transportId=" + $scope.transportId)
+    $http.get(apiUrl+"retrieveElderyInformation?transportId=" + $scope.transportId,{timeout: 6000})
       .success(function (data) {
         var elderyInformation = data;
 

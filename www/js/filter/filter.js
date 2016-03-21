@@ -28,7 +28,7 @@ angular.module('crowdsourcing')
           }
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
           //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=start&id="+$scope.id)
-          $http.get(urlToRun)
+          $http.get(urlToRun,{timeout: 6000})
             .success(function (data) {
               var results = data;
 
@@ -81,7 +81,7 @@ angular.module('crowdsourcing')
           }
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=end")
           //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=end&id="+$scope.id)
-          $http.get(urlToRun)
+          $http.get(urlToRun,{timeout: 6000})
             .success(function (data) {
               var results = data;
 
@@ -134,7 +134,7 @@ angular.module('crowdsourcing')
           }
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=time")
           //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=time&id="+$scope.id)
-          $http.get(urlToRun)
+          $http.get(urlToRun,{timeout: 6000})
             .success(function (data) {
               var results = data;
               var morning;

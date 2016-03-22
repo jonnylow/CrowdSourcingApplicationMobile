@@ -64,7 +64,7 @@ angular.module('crowdsourcing')
                     buttons: [
                       {
                         text: '<h5 class="popups option"><font color="#29A29C">Location Settings</font></h5>',
-                        type: 'button button-stable registration',
+                        type: 'button button-stable home1',
                         onTap: function (e) {
                           $state.go('landingPage', {}, {reload: true});
                           cordova.plugins.diagnostic.switchToLocationSettings();
@@ -72,7 +72,7 @@ angular.module('crowdsourcing')
                       },
                       {
                         text: '<h5 class="popups option"><font color="#29A29C">Skip</font></h5>',
-                        type: 'button button-stable',
+                        type: 'button button-stable home2',
                         onTap: function (e) {
                           //use default location
                           window.localStorage.setItem("userLat", "1.367870");

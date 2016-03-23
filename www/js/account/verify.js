@@ -2,7 +2,7 @@ angular.module('crowdsourcing')
 
     .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading, $ionicHistory,apiUrl) {
     $scope.tempName = window.localStorage.getItem("tempName");
-    $scope.tempEmail = window.localStorage.getItem("tempEmail");
+    $scope.tempEmail = window.localStorage.getItem("tempEmail").toLowerCase();
     $scope.tempPassword = window.localStorage.getItem("tempPassword");
     $scope.tempContactNumber = window.localStorage.getItem("tempContactnumber");
     $scope.tempDOB = window.localStorage.getItem("tempDOB");

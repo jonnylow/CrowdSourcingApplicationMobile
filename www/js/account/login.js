@@ -19,7 +19,7 @@ angular.module('crowdsourcing')
           if(fields != null) {
             if (fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != "")
             {
-                var tempNRIC = fields.email;
+                var tempNRIC = fields.email.toLowerCase();
                 var tempPassword = fields.password;
 
               if (validateEmail(tempNRIC) == true) {

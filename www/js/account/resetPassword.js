@@ -11,7 +11,7 @@ angular.module('crowdsourcing')
             {
                 var tempNRIC = fields.email;
                 var tempphone = fields.phone;
-                $http.get(apiUrl+"verifyUserEmailandPassword?email=" + tempNRIC + "&phone=" + tempphone,{timeout: 6000})
+                $http.get(apiUrl+"verifyUserEmailandPassword?email=" + tempNRIC + "&phone=" + tempphone,{timeout: 12000})
                 .success(function (data) {
                   var verfiy = data;
                   if (verfiy != null) {

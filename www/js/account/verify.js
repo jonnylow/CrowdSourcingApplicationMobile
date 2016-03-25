@@ -33,7 +33,7 @@ angular.module('crowdsourcing')
             var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
             $scope.loadingshow = true;
             $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
-            $http.get(sendURL,{timeout: 6000})
+            $http.get(sendURL,{timeout: 12000})
               .success(function (data) {
                 //message sent
                 var status = data;
@@ -53,7 +53,7 @@ angular.module('crowdsourcing')
         if(fields != null) {
 
 
-          if (fields.otp!= null)
+          if (fields.otp!= null && fields.otp.trim() != "")
           {
             $http.get(apiUrl+"checkEmail?email=" + $scope.tempEmail)
               .success(function (data) {
@@ -78,7 +78,7 @@ angular.module('crowdsourcing')
                       + "&gender=" + $scope.tempGender + "&haveCar=" + $scope.tempHaveCar + "&preferences1=" + $scope.tempPreferences1
                       + "&preferences2=" + $scope.tempPreferences2 + "&occupation=" + $scope.tempOccupation + "&rank=4";
 
-                    $http.get(urlString,{timeout: 6000})
+                    $http.get(urlString,{timeout: 12000})
                       .success(function (data) {
 
                         var status = data;
@@ -232,7 +232,7 @@ angular.module('crowdsourcing')
                 var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
                 $scope.loadingshow = true;
                 $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
-                $http.get(sendURL,{timeout: 6000})
+                $http.get(sendURL,{timeout: 12000})
                   .success(function (data) {
                     //message sent
                     var status = data;

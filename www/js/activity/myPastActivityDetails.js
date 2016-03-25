@@ -10,9 +10,9 @@ angular.module('crowdsourcing')
     }
 
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
-      $http.get(apiUrl + "retrieveElderyInformation?transportId=" + $scope.transportId, {timeout: 6000})
+      $http.get(apiUrl + "retrieveElderyInformation?transportId=" + $scope.transportId, {timeout: 12000})
         .success(function (elderly) {
-          $http.get(apiUrl + "retrieveMyTransportActivityDetails?transportId=" + $scope.transportId + "&id=" + $scope.id, {timeout: 6000})
+          $http.get(apiUrl + "retrieveMyTransportActivityDetails?transportId=" + $scope.transportId + "&id=" + $scope.id, {timeout: 12000})
             .success(function (data) {
               var transportDetails = data;
               if (transportDetails != null) {

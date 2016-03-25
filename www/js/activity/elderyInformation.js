@@ -11,7 +11,7 @@ angular.module('crowdsourcing')
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
-      $http.get(apiUrl + "retrieveElderyInformation?transportId=" + $scope.transportId, {timeout: 6000})
+      $http.get(apiUrl + "retrieveElderyInformation?transportId=" + $scope.transportId, {timeout: 12000})
         .success(function (data) {
           var elderyInformation = data;
 

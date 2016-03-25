@@ -8,7 +8,7 @@ angular.module('crowdsourcing')
         if (validateEmail(fields.email) == true) {
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
           var sendEmail = apiUrl+"sendFeedback?email="+fields.email+"&feedback="+fields.feedback;
-          $http.get(sendEmail,{timeout: 6000})
+          $http.get(sendEmail,{timeout: 12000})
             .success(function (data) {
               $ionicLoading.hide();
               var alertPopup = $ionicPopup.alert({

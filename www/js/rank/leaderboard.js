@@ -27,7 +27,7 @@ angular.module('crowdsourcing')
     }
 
     if(window.localStorage.getItem("token") != null) {
-      $http.get(apiUrl + "volunteerLeaderboard?token=" + window.localStorage.getItem("token"), {timeout: 6000})
+      $http.get(apiUrl + "volunteerLeaderboard?token=" + window.localStorage.getItem("token"), {timeout: 12000})
         .success(function (data) {
           if (data != null) {
             $scope.volunteersArray = [];

@@ -122,7 +122,7 @@ angular.module('crowdsourcing')
 
         $scope.totalVolunteers = null;
         $scope.totalTaskHours = null;
-        $http.get(secondUrl,{timeout: 6000})
+        $http.get(secondUrl,{timeout: 12000})
           .success(function (data) {
             if(data != null)
             {
@@ -170,7 +170,7 @@ angular.module('crowdsourcing')
             });
           });
 
-        $http.get(inProgressUrl,{timeout: 6000})
+        $http.get(inProgressUrl,{timeout: 12000})
           .success(function (data) {
             if(data != null)
             {
@@ -191,7 +191,7 @@ angular.module('crowdsourcing')
               else
               {
                 //check if there is activities happening today
-                $http.get(todayUrl,{timeout: 6000})
+                $http.get(todayUrl,{timeout: 12000})
                   .success(function (data) {
                     if(data != null)
                     {
@@ -252,7 +252,7 @@ angular.module('crowdsourcing')
       {
         url = apiUrl+"retrieveRecommendedTransportActivity?limit=1";
         secondUrl = apiUrl+"getAllVolunteerContribution";
-        $http.get(secondUrl,{timeout: 6000})
+        $http.get(secondUrl,{timeout: 12000})
           .success(function (data) {
             if(data != null)
             {
@@ -280,7 +280,7 @@ angular.module('crowdsourcing')
         $scope.inProgress = false;
       }
 
-      $http.get(url,{timeout: 6000})
+      $http.get(url,{timeout: 12000})
         .success(function (data) {
           var transportDetails = data;
 
@@ -446,7 +446,7 @@ angular.module('crowdsourcing')
 
           urlString = apiUrl+"updateActivityStatus?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+id+"&status="+status;
 
-          $http.get(urlString,{timeout: 6000})
+          $http.get(urlString,{timeout: 12000})
             .success(function (data) {
               var status1 = data;
               if (status1 != null) {
@@ -457,7 +457,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Status</h6>',
-                    subTitle: "<h6 class='popups'>"+"Congrats, you have completed an activity! Check history tab view the activity."+"</h6>",
+                    subTitle: "<h6 class='popups'>"+"Congratulations! You have completed your voluntary activity today! The activity is now at the history tab for your future reference"+"</h6>",
                     okType:"button button-stable"
                   });
                   $state.go('tab.myhistory', {}, {reload: true});
@@ -467,6 +467,24 @@ angular.module('crowdsourcing')
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Status</h6>',
                     subTitle: "<h6 class='popups status'>"+"Update Successful! Activity is in progress"+"</h6>",
+                    okType:"button button-stable"
+                  });
+                  $state.go('tab.home', {}, {reload: true});
+                }
+                else if(status == "at check-up")
+                {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups status'>"+"Update Successful! Elderly is at check up now"+"</h6>",
+                    okType:"button button-stable"
+                  });
+                  $state.go('tab.home', {}, {reload: true});
+                }
+                else if(status == "check-up completed")
+                {
+                  var alertPopup = $ionicPopup.alert({
+                    title: '<h6 class="popups title">Status</h6>',
+                    subTitle: "<h6 class='popups status'>"+"Update Successful! Elderly has completed the check up"+"</h6>",
                     okType:"button button-stable"
                   });
                   $state.go('tab.home', {}, {reload: true});

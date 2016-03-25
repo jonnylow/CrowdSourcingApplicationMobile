@@ -22,7 +22,7 @@ angular.module('crowdsourcing')
     }
 
     if ($stateParams.id != null) {
-      $http.get(apiUrl + "retrieveRankingDetails?id=" + $scope.id, {timeout: 6000})
+      $http.get(apiUrl + "retrieveRankingDetails?id=" + $scope.id, {timeout: 12000})
         .success(function (data) {
           var userDetails = data;
           if (userDetails != null) {

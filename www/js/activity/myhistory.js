@@ -22,7 +22,7 @@ angular.module('crowdsourcing')
 
         var urlString = apiUrl+"retrieveTransportByUser?id=" +$scope.id+"&type=2";
 
-        $http.get(urlString,{timeout: 6000})
+        $http.get(urlString,{timeout: 12000})
           .success(function (data) {
             var transportDetails = data;
 

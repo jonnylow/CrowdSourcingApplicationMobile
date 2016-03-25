@@ -11,7 +11,7 @@ angular.module('crowdsourcing')
     }
 
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
-      $http.get(apiUrl + "retrieveMyTransportActivityDetails?transportId=" + $scope.transportId + "&id=" + $scope.id, {timeout: 6000})
+      $http.get(apiUrl + "retrieveMyTransportActivityDetails?transportId=" + $scope.transportId + "&id=" + $scope.id, {timeout: 12000})
         .success(function (data) {
           var transportDetails = data;
 
@@ -37,7 +37,7 @@ angular.module('crowdsourcing')
                 }
                 $scope.approvalStatus = capitalizeFirstLetter(transportDetails.task[0].approval);
 
-                $http.get(apiUrl + "retrieveElderyInformation?transportId=" + transportDetails.activities[0].activity_id, {timeout: 6000})
+                $http.get(apiUrl + "retrieveElderyInformation?transportId=" + transportDetails.activities[0].activity_id, {timeout: 12000})
                   .success(function (data) {
                     var elderyInformation = data;
 
@@ -167,7 +167,7 @@ angular.module('crowdsourcing')
 
               urlString = apiUrl + "withdraw?volunteer_id=" + $scope.id + "&activity_id=" + $scope.transportId;
 
-              $http.get(urlString, {timeout: 6000})
+              $http.get(urlString, {timeout: 12000})
                 .success(function (data) {
                   /*
                    var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";

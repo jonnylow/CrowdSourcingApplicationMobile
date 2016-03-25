@@ -12,56 +12,54 @@ angular.module('crowdsourcing')
           $state.go('landingPage', {}, {reload: true});
         }
 
-    var urlString = apiUrl+"retrieveUserDetails?id="+$scope.id;
-    var currentEmail = "";
-    $http.get(urlString,{timeout: 6000})
-      .success(function (data) {
-        var userDetails = data;
-        if (userDetails != null) {
-          var temp = userDetails.volunteer[0].date_of_birth.split(" ");
-          $scope.fields.dob =new Date(temp[0]);
-          $scope.fields.gender = userDetails.volunteer[0].gender;
+    if(window.localStorage.getItem("loginUserName") != null) {
+      var urlString = apiUrl + "retrieveUserDetails?id=" + $scope.id;
+      var currentEmail = "";
+      $http.get(urlString, {timeout: 6000})
+        .success(function (data) {
+          var userDetails = data;
+          if (userDetails != null) {
+            var temp = userDetails.volunteer[0].date_of_birth.split(" ");
+            $scope.fields.dob = new Date(temp[0]);
+            $scope.fields.gender = userDetails.volunteer[0].gender;
 
-          if(userDetails.volunteer[0].has_car == true)
-          {
+            if (userDetails.volunteer[0].has_car == true) {
               $scope.fields.carChecked = "true";
-          }
-          else
-          {
+            }
+            else {
               $scope.fields.carChecked = "false";
+            }
+            $scope.fields.email = userDetails.volunteer[0].email;
+            currentEmail = userDetails.volunteer[0].email;
+            $scope.fields.name = userDetails.volunteer[0].name;
+            $scope.fields.occupation = userDetails.volunteer[0].occupation;
+            $scope.fields.preferences_1 = userDetails.volunteer[0].area_of_preference_1;
+            $scope.fields.preferences_2 = userDetails.volunteer[0].area_of_preference_2;
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
           }
-          $scope.fields.email =userDetails.volunteer[0].email;
-          currentEmail = userDetails.volunteer[0].email;
-          $scope.fields.name = userDetails.volunteer[0].name;
-          $scope.fields.occupation=userDetails.volunteer[0].occupation;
-          $scope.fields.preferences_1=userDetails.volunteer[0].area_of_preference_1;
-          $scope.fields.preferences_2=userDetails.volunteer[0].area_of_preference_2;
+        })
+        .error(function (data) {
           $scope.loadingshow = false;
           $ionicLoading.hide();
-        }
-      })
-      .error(function (data) {
-        $scope.loadingshow = false;
-        $ionicLoading.hide();
-        var alertPopup = $ionicPopup.alert({
-          title: '<h6 class="popups title">Whoops!</h6>',
-          subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
-          scope: $scope,
-          buttons: [
-            {
-              text: 'OK',
-              type: 'button button-stable',
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: 'OK',
+                type: 'button button-stable',
 
-            },
-          ]
+              },
+            ]
+          });
         });
-      });
 
-      $scope.update=function(fields)
-      {
+      $scope.update = function (fields) {
         $scope.loadingshow = true;
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
-        if(fields != null) {
+        if (fields != null) {
           if (fields.name != null && fields.name.trim() != "" && fields.email != null && fields.email.trim() != ""
             && fields.dob != null) {
             var name = fields.name;
@@ -82,12 +80,10 @@ angular.module('crowdsourcing')
             var dob = yyyy + '-' + mm + '-' + dd;
             var occupation = fields.occupation;
             var hasCar = fields.carChecked;
-            if(fields.carChecked == "false")
-            {
+            if (fields.carChecked == "false") {
               hasCar = "0";
             }
-            else
-            {
+            else {
               hasCar = "1";
             }
 
@@ -106,17 +102,167 @@ angular.module('crowdsourcing')
               occupation = '';
             }
             if (validateEmail(email) == true) {
-              if (occupation =="" || validateOccupation(occupation) == true) {
+              if (occupation == "" || validateOccupation(occupation) == true) {
 
-              if (validateDOBAge(fields.dob.getFullYear()) == true && validateDOB(tempDOB) == true) {
-                if (validateName(name) == true) {
-                  if (p1 != '' || p2 != '') {
-                    if (p1 != p2) {
+                if (validateDOBAge(fields.dob.getFullYear()) == true && validateDOB(tempDOB) == true) {
+                  if (validateName(name) == true) {
+                    if (p1 != '' || p2 != '') {
+                      if (p1 != p2) {
+                        if (email == currentEmail) {
+
+                          urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
+
+                          $http.get(urlStringUpdate, {timeout: 6000})
+                            .success(function (data) {
+                              var status = data;
+                              if (status != null) {
+                                $scope.loadingshow = false;
+                                $ionicLoading.hide();
+                                var alertPopup = $ionicPopup.alert({
+                                  //title: '<b><h6 class="popups title">Status</h6></b>',
+                                  title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
+                                  scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: 'OK',
+                                      type: 'button button-stable',
+                                      onTap: function (e) {
+                                        $state.go('me', {}, {reload: true});
+                                      }
+                                    },
+                                  ]
+                                });
+                              }
+                            })
+
+                            .error(function (data) {
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+                              var alertPopup = $ionicPopup.alert({
+                                title: '<h6 class="popups title">Whoops!</h6>',
+                                subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                                scope: $scope,
+                                buttons: [
+                                  {
+                                    text: 'OK',
+                                    type: 'button button-stable',
+
+                                  },
+                                ]
+                              });
+                            });
+                        }
+                        else {
+                          $http.get(apiUrl + "checkEmail?email=" + email, {timeout: 6000})
+                            .success(function (data) {
+
+                              var status = data;
+                              if (status.status[0] != "exist") {
+                                urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
+
+                                $http.get(urlStringUpdate, {timeout: 6000})
+                                  .success(function (data) {
+                                    var status = data;
+                                    if (status != null) {
+                                      $scope.loadingshow = false;
+                                      $ionicLoading.hide();
+                                      if (window.localStorage.getItem("loginUsernameToStore") != null) {
+                                        window.localStorage.setItem("loginUsernameToStore", email);
+                                      }
+
+                                      var alertPopup = $ionicPopup.alert({
+                                        //title: '<b><h6 class="popups title">Status</h6></b>',
+                                        title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
+                                        scope: $scope,
+                                        buttons: [
+                                          {
+                                            text: 'OK',
+                                            type: 'button button-stable',
+                                            onTap: function (e) {
+                                              $state.go('me', {}, {reload: true});
+                                            }
+                                          },
+                                        ]
+                                      });
+                                    }
+                                  })
+
+                                  .error(function (data) {
+                                    $scope.loadingshow = false;
+                                    $ionicLoading.hide();
+                                    var alertPopup = $ionicPopup.alert({
+                                      title: '<h6 class="popups title">Whoops!</h6>',
+                                      subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                                      scope: $scope,
+                                      buttons: [
+                                        {
+                                          text: 'OK',
+                                          type: 'button button-stable',
+
+                                        },
+                                      ]
+                                    });
+                                  });
+                              }
+                              else {
+                                $scope.loadingshow = false;
+                                $ionicLoading.hide();
+
+                                var alertPopup = $ionicPopup.alert({
+                                  title: '<h6 class="popups title">Whoops!</h6>',
+                                  subTitle: '<br><h6 class="popups">Email address has been registered</h6> ',
+                                  scope: $scope,
+                                  buttons: [
+                                    {
+                                      text: 'OK',
+                                      type: 'button button-stable',
+
+                                    },
+                                  ]
+                                });
+                              }
+                            })
+                            .error(function (data) {
+                              $scope.loadingshow = false;
+                              $ionicLoading.hide();
+                              var alertPopup = $ionicPopup.alert({
+                                title: '<h6 class="popups title">Whoops!</h6>',
+                                subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                                scope: $scope,
+                                buttons: [
+                                  {
+                                    text: 'OK',
+                                    type: 'button button-stable',
+
+                                  },
+                                ]
+                              });
+                            });
+                        }
+                      }
+                      else {
+                        $scope.loadingshow = false;
+                        $ionicLoading.hide();
+
+                        var alertPopup = $ionicPopup.alert({
+                          title: '<h6 class="popups title">Whoops!</h6>',
+                          subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
+                          scope: $scope,
+                          buttons: [
+                            {
+                              text: 'OK',
+                              type: 'button button-stable',
+
+                            },
+                          ]
+                        });
+                      }
+                    }
+                    else {
                       if (email == currentEmail) {
-
                         urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
-                        $http.get(urlStringUpdate,{timeout: 6000})
+                        $http.get(urlStringUpdate, {timeout: 6000})
                           .success(function (data) {
                             var status = data;
                             if (status != null) {
@@ -157,14 +303,14 @@ angular.module('crowdsourcing')
                           });
                       }
                       else {
-                        $http.get(apiUrl + "checkEmail?email=" + email,{timeout: 6000})
+                        $http.get(apiUrl + "checkEmail?email=" + email, {timeout: 6000})
                           .success(function (data) {
 
                             var status = data;
                             if (status.status[0] != "exist") {
                               urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
-                              $http.get(urlStringUpdate,{timeout: 6000})
+                              $http.get(urlStringUpdate, {timeout: 6000})
                                 .success(function (data) {
                                   var status = data;
                                   if (status != null) {
@@ -244,163 +390,31 @@ angular.module('crowdsourcing')
                           });
                       }
                     }
-                    else {
-                      $scope.loadingshow = false;
-                      $ionicLoading.hide();
-
-                      var alertPopup = $ionicPopup.alert({
-                        title: '<h6 class="popups title">Whoops!</h6>',
-                        subTitle: '<br><h6 class="popups">Please choose different area of preferences.</h6> ',
-                        scope: $scope,
-                        buttons: [
-                          {
-                            text: 'OK',
-                            type: 'button button-stable',
-
-                          },
-                        ]
-                      });
-                    }
                   }
                   else {
-                    if (email == currentEmail) {
-                      urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
+                    $scope.loadingshow = false;
+                    $ionicLoading.hide();
+                    var alertPopup = $ionicPopup.alert({
+                      title: '<h6 class="popups title">Whoops!</h6>',
+                      subTitle: '<br><h6 class="popups">Name should consist of alphabetical letters only</h6> ',
+                      scope: $scope,
+                      buttons: [
+                        {
+                          text: 'OK',
+                          type: 'button button-stable',
 
-                      $http.get(urlStringUpdate,{timeout: 6000})
-                        .success(function (data) {
-                          var status = data;
-                          if (status != null) {
-                            $scope.loadingshow = false;
-                            $ionicLoading.hide();
-                            var alertPopup = $ionicPopup.alert({
-                              //title: '<b><h6 class="popups title">Status</h6></b>',
-                              title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
-                              scope: $scope,
-                              buttons: [
-                                {
-                                  text: 'OK',
-                                  type: 'button button-stable',
-                                  onTap: function (e) {
-                                    $state.go('me', {}, {reload: true});
-                                  }
-                                },
-                              ]
-                            });
-                          }
-                        })
-
-                        .error(function (data) {
-                          $scope.loadingshow = false;
-                          $ionicLoading.hide();
-                          var alertPopup = $ionicPopup.alert({
-                            title: '<h6 class="popups title">Whoops!</h6>',
-                            subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
-                            scope: $scope,
-                            buttons: [
-                              {
-                                text: 'OK',
-                                type: 'button button-stable',
-
-                              },
-                            ]
-                          });
-                        });
-                    }
-                    else {
-                      $http.get(apiUrl + "checkEmail?email=" + email,{timeout: 6000})
-                        .success(function (data) {
-
-                          var status = data;
-                          if (status.status[0] != "exist") {
-                            urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
-
-                            $http.get(urlStringUpdate,{timeout: 6000})
-                              .success(function (data) {
-                                var status = data;
-                                if (status != null) {
-                                  $scope.loadingshow = false;
-                                  $ionicLoading.hide();
-                                  if (window.localStorage.getItem("loginUsernameToStore") != null) {
-                                    window.localStorage.setItem("loginUsernameToStore", email);
-                                  }
-
-                                  var alertPopup = $ionicPopup.alert({
-                                    //title: '<b><h6 class="popups title">Status</h6></b>',
-                                    title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
-                                    scope: $scope,
-                                    buttons: [
-                                      {
-                                        text: 'OK',
-                                        type: 'button button-stable',
-                                        onTap: function (e) {
-                                          $state.go('me', {}, {reload: true});
-                                        }
-                                      },
-                                    ]
-                                  });
-                                }
-                              })
-
-                              .error(function (data) {
-                                $scope.loadingshow = false;
-                                $ionicLoading.hide();
-                                var alertPopup = $ionicPopup.alert({
-                                  title: '<h6 class="popups title">Whoops!</h6>',
-                                  subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
-                                  scope: $scope,
-                                  buttons: [
-                                    {
-                                      text: 'OK',
-                                      type: 'button button-stable',
-
-                                    },
-                                  ]
-                                });
-                              });
-                          }
-                          else {
-                            $scope.loadingshow = false;
-                            $ionicLoading.hide();
-
-                            var alertPopup = $ionicPopup.alert({
-                              title: '<h6 class="popups title">Whoops!</h6>',
-                              subTitle: '<br><h6 class="popups">Email address has been registered</h6> ',
-                              scope: $scope,
-                              buttons: [
-                                {
-                                  text: 'OK',
-                                  type: 'button button-stable',
-
-                                },
-                              ]
-                            });
-                          }
-                        })
-                        .error(function (data) {
-                          $scope.loadingshow = false;
-                          $ionicLoading.hide();
-                          var alertPopup = $ionicPopup.alert({
-                            title: '<h6 class="popups title">Whoops!</h6>',
-                            subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
-                            scope: $scope,
-                            buttons: [
-                              {
-                                text: 'OK',
-                                type: 'button button-stable',
-
-                              },
-                            ]
-                          });
-                        });
-                    }
+                        },
+                      ]
+                    });
                   }
                 }
                 else {
                   $scope.loadingshow = false;
                   $ionicLoading.hide();
+
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Whoops!</h6>',
-                    subTitle: '<br><h6 class="popups">Name should consist of alphabetical letters only</h6> ',
+                    subTitle: '<br><h6 class="popups dob">Date of Birth cannot be larger than the current date or volunteers of CareGuide are required to be between 16 to 70 years old</h6> ',
                     scope: $scope,
                     buttons: [
                       {
@@ -415,10 +429,9 @@ angular.module('crowdsourcing')
               else {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
-
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups dob">Date of Birth cannot be larger than the current date or volunteers of CareGuide are required to be between 16 to 70 years old</h6> ',
+                  subTitle: '<br><h6 class="popups">Occupation should consist of alphabetical letters only</h6> ',
                   scope: $scope,
                   buttons: [
                     {
@@ -430,23 +443,6 @@ angular.module('crowdsourcing')
                 });
               }
             }
-            else {
-                $scope.loadingshow = false;
-                $ionicLoading.hide();
-              var alertPopup = $ionicPopup.alert({
-                title: '<h6 class="popups title">Whoops!</h6>',
-                subTitle: '<br><h6 class="popups">Occupation should consist of alphabetical letters only</h6> ',
-                scope: $scope,
-                buttons: [
-                  {
-                    text: 'OK',
-                    type: 'button button-stable',
-
-                  },
-                ]
-              });
-            }
-          }
             else {
               $scope.loadingshow = false;
               $ionicLoading.hide();
@@ -464,9 +460,8 @@ angular.module('crowdsourcing')
                 ]
               });
             }
-        }
-          else
-          {
+          }
+          else {
             $scope.loadingshow = false;
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
@@ -483,8 +478,7 @@ angular.module('crowdsourcing')
             });
           }
         }
-        else
-        {
+        else {
           $scope.loadingshow = false;
           $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
@@ -502,46 +496,42 @@ angular.module('crowdsourcing')
         }
       }
 
-    function validateOccupation(occupation) {
-      return /^[a-zA-Z\s]+$/.test(occupation);
-    }
-
-    function validateEmail(email) {
-      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-      return re.test(email);
-    }
-
-    function validateName(name) {
-      return /^[a-zA-Z\s]+$/.test(name);
-    }
-
-    function validateDOB(tempDOB){
-      if(tempDOB > new Date())
-      {
-        //larger
-        return false;
+      function validateOccupation(occupation) {
+        return /^[a-zA-Z\s]+$/.test(occupation);
       }
-      else
-      {
-        //ok
-        return true;
-      }
-    }
 
-    function validateDOBAge(year){
-      var currentDate = new Date();
-      if(currentDate.getFullYear() - year >= 16 && currentDate.getFullYear() - year <= 70)
-      {
-        return true;
+      function validateEmail(email) {
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return re.test(email);
       }
-      else
-      {
-        return false;
-      }
-    }
 
-      $scope.back=function()
-      {
+      function validateName(name) {
+        return /^[a-zA-Z\s]+$/.test(name);
+      }
+
+      function validateDOB(tempDOB) {
+        if (tempDOB > new Date()) {
+          //larger
+          return false;
+        }
+        else {
+          //ok
+          return true;
+        }
+      }
+
+      function validateDOBAge(year) {
+        var currentDate = new Date();
+        if (currentDate.getFullYear() - year >= 16 && currentDate.getFullYear() - year <= 70) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+
+      $scope.back = function () {
         $ionicHistory.goBack();
       }
+    }
     });

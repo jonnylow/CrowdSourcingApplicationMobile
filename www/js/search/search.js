@@ -31,17 +31,6 @@ angular.module('crowdsourcing')
       {
         $scope.timeCheck = true;
       }
-/*
-      $scope.filterOptions = [{
-        value: 'start',
-        label: 'Start Location'
-      }, {
-        value: 'end',
-        label: 'End Location'
-      }, {
-        value: 'time',
-        label: 'Time'
-      }];*/
 
     $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})

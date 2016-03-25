@@ -25,103 +25,107 @@ angular.module('crowdsourcing')
         });
       }
 
+    if(window.localStorage.getItem("loginUserName") != null) {
+      $http.get(apiUrl + "retrieveUserDetails?id=" + $scope.id, {timeout: 6000})
+        .success(function (data) {
+          var userDetails = data;
+          if (userDetails != null && userDetails.length != 0) {
+            $scope.username = userDetails.volunteer[0].name;
+            $scope.nric = userDetails.volunteer[0].nric;
+            $scope.email = userDetails.volunteer[0].email;
+            $scope.gender = userDetails.volunteer[0].gender;
+            $scope.dob = userDetails.volunteer[0].date_of_birth;
+            $scope.contactnumber = userDetails.volunteer[0].contact_no;
 
-    $http.get(apiUrl+"retrieveUserDetails?id="+$scope.id,{timeout: 6000})
-      .success(function (data) {
-        var userDetails = data;
-        if (userDetails != null && userDetails.length!=0 ) {
-          $scope.username = userDetails.volunteer[0].name;
-          $scope.nric=userDetails.volunteer[0].nric;
-          $scope.email =userDetails.volunteer[0].email;
-          $scope.gender=userDetails.volunteer[0].gender;
-          $scope.dob=userDetails.volunteer[0].date_of_birth;
-          $scope.contactnumber=userDetails.volunteer[0].contact_no;
+            $scope.hoursCompletedTemp = userDetails.volunteerHours.split(",");
 
-          $scope.hoursCompletedTemp=userDetails.volunteerHours.split(",");
+            //hours completed
+            var hoursCompletedT = $scope.hoursCompletedTemp[0].trim().split(" ");
+            $scope.hoursCompleted = hoursCompletedT[0].trim();
 
-          //hours completed
-          var hoursCompletedT=$scope.hoursCompletedTemp[0].trim().split(" ");
-          $scope.hoursCompleted=hoursCompletedT[0].trim();
+            //mins completed
+            var minsCompletedT = $scope.hoursCompletedTemp[1].trim().split(" ");
+            $scope.minsCompleted = minsCompletedT[0].trim();
 
-          //mins completed
-          var minsCompletedT=$scope.hoursCompletedTemp[1].trim().split(" ");
-          $scope.minsCompleted = minsCompletedT[0].trim();
+            $scope.occuption = userDetails.volunteer[0].occupation;
+            $scope.preference1 = userDetails.volunteer[0].area_of_preference_1;
+            $scope.preference2 = userDetails.volunteer[0].area_of_preference_2;
+            $scope.rank = userDetails.volunteer[0].rank.name;
+            if (userDetails.nextRank != "") {
+              $scope.nextRank = userDetails.nextRank.name;
+              $scope.nextRankMin = userDetails.nextRank.min;
+            }
+            else {
+              $scope.nextRank = "NA";
+              $scope.nextRankMin = "NA";
+            }
+            $scope.nextPts = parseInt($scope.nextRankMin) - parseInt($scope.hoursCompleted);
+            if ($scope.nextRank == "NA" && $scope.nextRankMin == "NA") {
+              $scope.toDisplayInformation = "Platinum is the highest rank available.";
+            }
+            else {
+              $scope.toDisplayInformation = $scope.nextPts + " points to " + $scope.nextRank;
+            }
 
-          $scope.occuption=userDetails.volunteer[0].occupation;
-          $scope.preference1=userDetails.volunteer[0].area_of_preference_1;
-          $scope.preference2=userDetails.volunteer[0].area_of_preference_2;
-          $scope.rank=userDetails.volunteer[0].rank.name;
-          if(userDetails.nextRank != "") {
-            $scope.nextRank = userDetails.nextRank.name;
-            $scope.nextRankMin = userDetails.nextRank.min;
-          }
-          else
-          {
-            $scope.nextRank = "NA";
-            $scope.nextRankMin = "NA";
-          }
-          $scope.nextPts = parseInt($scope.nextRankMin) - parseInt($scope.hoursCompleted);
-          if($scope.nextRank == "NA" && $scope.nextRankMin == "NA")
-          {
-            $scope.toDisplayInformation = "Platinum is the highest rank available.";
-          }
-          else
-          {
-            $scope.toDisplayInformation = $scope.nextPts +" points to "+$scope.nextRank;
-          }
-
-          $http.get(apiUrl+"retrieveRankingDetails?id="+$scope.id,{timeout: 6000})
-            .success(function (data) {
-              var userDetails = data;
-              if (userDetails != null ) {
-                $scope.completed = userDetails.completed;
-                $scope.withdrawn = userDetails.withdrawn;
-                $ionicLoading.hide();
+            $http.get(apiUrl + "retrieveRankingDetails?id=" + $scope.id, {timeout: 6000})
+              .success(function (data) {
+                var userDetails = data;
+                if (userDetails != null) {
+                  $scope.completed = userDetails.completed;
+                  $scope.withdrawn = userDetails.withdrawn;
+                  $ionicLoading.hide();
+                  $scope.loadingshow = false;
+                }
+              })
+              .error(function (data) {
                 $scope.loadingshow = false;
-              }
-            })
-            .error(function (data) {
-              $scope.loadingshow = false;
-              $ionicLoading.hide();
-              var alertPopup = $ionicPopup.alert({
-                title: '<h6 class="popups title">Whoops!</h6>',
-                subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
-                scope: $scope,
-                buttons: [
-                  {
-                    text: 'OK',
-                    type: 'button button-stable',
+                $ionicLoading.hide();
+                var alertPopup = $ionicPopup.alert({
+                  title: '<h6 class="popups title">Whoops!</h6>',
+                  subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                  scope: $scope,
+                  buttons: [
+                    {
+                      text: 'OK',
+                      type: 'button button-stable',
 
-                  },
-                ]
+                    },
+                  ]
+                });
               });
-            });
-        }
-      })
-      .error(function (data) {
-        $scope.loadingshow = false;
-        $ionicLoading.hide();
-        var alertPopup = $ionicPopup.alert({
-          title: '<h6 class="popups title">Whoops!</h6>',
-          subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
-          scope: $scope,
-          buttons: [
-            {
-              text: 'OK',
-              type: 'button button-stable',
+          }
+        })
+        .error(function (data) {
+          $scope.loadingshow = false;
+          $ionicLoading.hide();
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: 'OK',
+                type: 'button button-stable',
 
-            },
-          ]
+              },
+            ]
+          });
         });
-      });
 
-      $scope.manageAccount = function()
-      {
+      $scope.manageAccount = function () {
         $state.go('manageAccount', {id: $scope.id});
       }
 
-      $scope.goRank = function()
-      {
-        $state.go('viewRanking', {id: $scope.id, currentRank:$scope.rank, hoursCompleted:$scope.hoursCompleted, minsCompleted:$scope.minsCompleted, nextRank:$scope.nextRank, nextRankMin:$scope.nextRankMin});
+      $scope.goRank = function () {
+        $state.go('viewRanking', {
+          id: $scope.id,
+          currentRank: $scope.rank,
+          hoursCompleted: $scope.hoursCompleted,
+          minsCompleted: $scope.minsCompleted,
+          nextRank: $scope.nextRank,
+          nextRankMin: $scope.nextRankMin
+        });
       }
+    }
     });
+

@@ -21,30 +21,32 @@ angular.module('crowdsourcing')
       }
     }
 
-    $http.get(apiUrl+"retrieveRankingDetails?id="+$scope.id,{timeout: 6000})
-      .success(function (data) {
-        var userDetails = data;
-        if (userDetails != null ) {
-          $scope.completed = userDetails.completed;
-          $scope.withdrawn = userDetails.withdrawn;
-          $ionicLoading.hide();
+    if ($stateParams.id != null) {
+      $http.get(apiUrl + "retrieveRankingDetails?id=" + $scope.id, {timeout: 6000})
+        .success(function (data) {
+          var userDetails = data;
+          if (userDetails != null) {
+            $scope.completed = userDetails.completed;
+            $scope.withdrawn = userDetails.withdrawn;
+            $ionicLoading.hide();
+            $scope.loadingshow = false;
+          }
+        })
+        .error(function (data) {
           $scope.loadingshow = false;
-        }
-      })
-      .error(function (data) {
-        $scope.loadingshow = false;
-        $ionicLoading.hide();
-        var alertPopup = $ionicPopup.alert({
-          title: '<h6 class="popups title">Whoops!</h6>',
-          subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
-          scope: $scope,
-          buttons: [
-            {
-              text: 'OK',
-              type: 'button button-stable',
+          $ionicLoading.hide();
+          var alertPopup = $ionicPopup.alert({
+            title: '<h6 class="popups title">Whoops!</h6>',
+            subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+            scope: $scope,
+            buttons: [
+              {
+                text: 'OK',
+                type: 'button button-stable',
 
-            },
-          ]
+              },
+            ]
+          });
         });
-      });
+    }
   });

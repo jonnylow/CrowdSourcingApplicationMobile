@@ -25,50 +25,46 @@ angular.module('crowdsourcing')
         ]
       });
     }
-    $http.get(apiUrl+"volunteerLeaderboard?token="+window.localStorage.getItem("token"),{timeout: 6000})
-      .success(function (data) {
-        if(data != null)
-        {
-          $scope.volunteersArray=[];
-          $scope.pos = data.pos;
-          $scope.rank = data.rank;
-          $scope.totalMinutes = Math.floor(data.totalMinutes/60);
 
-          var toRun = 0;
-          if(data.returnArray.length <=10)
-          {
-            toRun = data.returnArray.length;
-          }
-          else
-          {
-            toRun = 10;
-          }
-          for(var i = 0; i<toRun; i++)
-          {
-            var info = data.returnArray[i].split(",");
+    if(window.localStorage.getItem("token") != null) {
+      $http.get(apiUrl + "volunteerLeaderboard?token=" + window.localStorage.getItem("token"), {timeout: 6000})
+        .success(function (data) {
+          if (data != null) {
+            $scope.volunteersArray = [];
+            $scope.pos = data.pos;
+            $scope.rank = data.rank;
+            $scope.totalMinutes = Math.floor(data.totalMinutes / 60);
 
-            $scope.volunteersArray.push({
-              name: info[1],
-              mins: Math.floor(info[0]/60),
-              pos: info[2]
-            });
-          }
+            var toRun = 0;
+            if (data.returnArray.length <= 10) {
+              toRun = data.returnArray.length;
+            }
+            else {
+              toRun = 10;
+            }
+            for (var i = 0; i < toRun; i++) {
+              var info = data.returnArray[i].split(",");
 
-          $scope.loadingshow = false;
-          $ionicLoading.hide();
+              $scope.volunteersArray.push({
+                name: info[1],
+                mins: Math.floor(info[0] / 60),
+                pos: info[2]
+              });
+            }
+
+            $scope.loadingshow = false;
+            $ionicLoading.hide();
+          }
+        })
+
+      $scope.back = function () {
+        if ($scope.backView != null) {
+          $scope.backView.go();
         }
-      })
-
-    $scope.back=function()
-    {
-      if($scope.backView != null)
-      {
-        $scope.backView.go();
+        else {
+          $state.go('tab.home', {}, {reload: true});
+        }
+        //$ionicHistory.goBack();
       }
-      else
-      {
-        $state.go('tab.home', {}, {reload: true});
-      }
-      //$ionicHistory.goBack();
     }
   });

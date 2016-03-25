@@ -26,35 +26,6 @@ angular.module('crowdsourcing')
         $scope.modal = modal;
         $scope.modal.show();
       });
-
-/*
-      var myPopup = $ionicPopup.show({
-        title: '<h6 class="popups title">Notice</h6>',
-        subTitle: ' <br><h6 class="popups registration">Approved volunteers will have an orientation session with the Centre for Seniors (CFS). CFS will contact you shortly after registration</h6>',
-        scope: $scope,
-        buttons: [
-          {
-            text: 'Cancel',
-            onTap: function(e) {
-              $ionicHistory.nextViewOptions({
-                disableAnimate: true
-              });
-              $state.go('landingPage', {}, {reload: true});
-              if (window.plugins != null) {
-                window.plugins.nativepagetransitions.slide(
-                  {"direction": "down"}
-                );
-              }
-            },
-            type: 'button button-stable registration'
-          },
-          {
-            text: '<b>Ok</b>',
-            type: 'button button-stable'
-
-          },
-        ]
-      });*/
     }
 
       $scope.register = function(fields)

@@ -2,6 +2,10 @@ angular.module('crowdsourcing')
 
     .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover, $ionicLoading, apiUrl) {
 
+        if ($ionicHistory.backView() != null) {
+          $scope.backView = $ionicHistory.backView();
+        }
+
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -187,13 +191,20 @@ angular.module('crowdsourcing')
             $ionicLoading.hide();
             var alertPopup = $ionicPopup.alert({
               title: '<h6 class="popups title">Whoops!</h6>',
-              subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+              subTitle: '<br><h6 class="popups">Something went wrong. Please try again.</h6> ',
               scope: $scope,
               buttons: [
                 {
                   text: 'OK',
                   type: 'button button-stable',
-
+                  onTap: function (e) {
+                    if ($scope.backView != null) {
+                      $scope.backView.go();
+                    }
+                    else {
+                      $state.go('landingPage', {}, {reload: true});
+                    }
+                  }
                 },
               ]
             });
@@ -302,13 +313,20 @@ angular.module('crowdsourcing')
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                   title: '<h6 class="popups title">Whoops!</h6>',
-                  subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                  subTitle: '<br><h6 class="popups">Something went wrong. Please try again.</h6> ',
                   scope: $scope,
                   buttons: [
                     {
                       text: 'OK',
                       type: 'button button-stable',
-
+                      onTap: function (e) {
+                        if ($scope.backView != null) {
+                          $scope.backView.go();
+                        }
+                        else {
+                          $state.go('landingPage', {}, {reload: true});
+                        }
+                      }
                     },
                   ]
                 });

@@ -1,6 +1,11 @@
 angular.module('crowdsourcing')
 
     .controller('resetPasswordController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory, apiUrl) {
+
+    if ($ionicHistory.backView() != null) {
+      $scope.backView = $ionicHistory.backView();
+    }
+
       $scope.resetPassword = function(fields){
           $scope.loadingshow = true;
         //ionic loading screen
@@ -64,19 +69,24 @@ angular.module('crowdsourcing')
                     $ionicLoading.hide();
                     var alertPopup = $ionicPopup.alert({
                       title: '<h6 class="popups title">Whoops!</h6>',
-                      subTitle: '<br><h6 class="popups">Error in connection. Please try again.</h6> ',
+                      subTitle: '<br><h6 class="popups">Something went wrong. Please try again.</h6> ',
                       scope: $scope,
                       buttons: [
                         {
                           text: 'OK',
                           type: 'button button-stable',
-
+                          onTap: function (e) {
+                            if ($scope.backView != null) {
+                              $scope.backView.go();
+                            }
+                            else {
+                              $state.go('landingPage', {}, {reload: true});
+                            }
+                          }
                         },
                       ]
                     });
                   });
-
-
               }
 
         }else

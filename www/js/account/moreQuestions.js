@@ -1,6 +1,11 @@
 angular.module('crowdsourcing')
 
     .controller('moreQuestionsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory) {
+
+    if ($ionicHistory.backView() != null) {
+      $scope.backView = $ionicHistory.backView();
+    }
+
       $scope.tempName = window.localStorage.getItem("tempName");
       $scope.tempEmail = window.localStorage.getItem("tempEmail");
       $scope.tempPassword = window.localStorage.getItem("tempPassword");

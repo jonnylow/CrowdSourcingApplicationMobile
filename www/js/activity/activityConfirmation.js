@@ -1,6 +1,11 @@
 angular.module('crowdsourcing')
 
     .controller('activityConfirmationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading) {
+
+    if ($ionicHistory.backView() != null) {
+      $scope.backView = $ionicHistory.backView();
+    }
+
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;

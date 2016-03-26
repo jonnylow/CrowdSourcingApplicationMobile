@@ -1,6 +1,11 @@
 angular.module('crowdsourcing')
 
     .controller('leaderboardController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl, $ionicHistory) {
+
+    if ($ionicHistory.backView() != null) {
+      $scope.backView = $ionicHistory.backView();
+    }
+
     if(window.localStorage.getItem("token") != null) {
       $scope.name = window.localStorage.getItem("loginUserName");
       $scope.id = window.localStorage.getItem("loginId");

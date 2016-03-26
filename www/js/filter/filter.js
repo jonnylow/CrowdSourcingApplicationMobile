@@ -25,13 +25,12 @@ angular.module('crowdsourcing')
           var urlToRun = "";
           if(window.localStorage.getItem("token") != null)
           {
-            urlToRun = apiUrl+"retrieveFilter?filter=start&id="+window.localStorage.getItem("token");
+            urlToRun = apiUrl+"retrieveFilter?filter=start&token="+window.localStorage.getItem("token");
           }
           else
           {
             urlToRun = apiUrl+"retrieveFilter?filter=start";
           }
-          console.log(urlToRun);
           //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
           //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=start&id="+$scope.id)
           $http.get(urlToRun,{timeout: 12000})
@@ -97,7 +96,7 @@ angular.module('crowdsourcing')
           var urlToRun = "";
           if(window.localStorage.getItem("token") != null)
           {
-            urlToRun = apiUrl+"retrieveFilter?filter=end&id="+window.localStorage.getItem("token");
+            urlToRun = apiUrl+"retrieveFilter?filter=end&token="+window.localStorage.getItem("token");
           }
           else
           {
@@ -168,7 +167,7 @@ angular.module('crowdsourcing')
           var urlToRun = "";
           if(window.localStorage.getItem("token") != null)
           {
-            urlToRun = apiUrl+"retrieveFilter?filter=time&id="+window.localStorage.getItem("token");
+            urlToRun = apiUrl+"retrieveFilter?filter=time&token="+window.localStorage.getItem("token");
           }
           else
           {

@@ -232,9 +232,9 @@ angular.module('crowdsourcing')
       $scope.updateStatus = function (id, status) {
         var confirmPopup = $ionicPopup.confirm({
           title: '<h6 class="popups title">Update Status?</h6>',
-          subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + status + "' ?</h6>",
-          okType: "button button-stable",
-          cancelType: "button button-stable registration"
+          subTitle: "<h6 class='popups body'>Are you sure you want to update status for this activity to '" + status + "' ?</h6>",
+          okType:"button button-stable activity2",
+          cancelType:"button button-stable activity1"
         });
 
         confirmPopup.then(function (res) {
@@ -275,7 +275,7 @@ angular.module('crowdsourcing')
                   else if (status == "pick-up") {
                     var alertPopup = $ionicPopup.alert({
                       title: '<h6 class="popups title">Status</h6>',
-                      subTitle: "<h6 class='popups'>" + "Update Successful! Activity is in progress" + "</h6>",
+                      subTitle: "<h6 class='popups body'>" + "Update Successful! Activity is in progress" + "</h6>",
                       okType: "button button-stable"
                     });
                     $state.go('tab.activity', {}, {reload: true});
@@ -283,7 +283,7 @@ angular.module('crowdsourcing')
                   else if (status == "at check-up") {
                     var alertPopup = $ionicPopup.alert({
                       title: '<h6 class="popups title">Status</h6>',
-                      subTitle: "<h6 class='popups'>" + "Update Successful! Elderly is at check up now" + "</h6>",
+                      subTitle: "<h6 class='popups update'>" + "Update Successful! Elderly is at check up now" + "</h6>",
                       okType: "button button-stable"
                     });
                     $state.go('tab.activity', {}, {reload: true});
@@ -291,7 +291,7 @@ angular.module('crowdsourcing')
                   else if (status == "check-up completed") {
                     var alertPopup = $ionicPopup.alert({
                       title: '<h6 class="popups title">Status</h6>',
-                      subTitle: "<h6 class='popups'>" + "Update Successful! Elderly has completed the check up" + "</h6>",
+                      subTitle: "<h6 class='popups update'>" + "Update Successful! Elderly has completed the check up" + "</h6>",
                       okType: "button button-stable"
                     });
                     $state.go('tab.activity', {}, {reload: true});
@@ -299,7 +299,7 @@ angular.module('crowdsourcing')
                   else {
                     var alertPopup = $ionicPopup.alert({
                       title: '<h6 class="popups title">Status</h6>',
-                      subTitle: "<h6 class='popups'>" + "Update Successful" + "</h6>",
+                      subTitle: "<h6 class='popups update'>" + "Update Successful" + "</h6>",
                       okType: "button button-stable"
                     });
                     //window.location.reload(true);

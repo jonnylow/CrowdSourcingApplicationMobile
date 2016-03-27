@@ -117,7 +117,7 @@ angular.module('crowdsourcing')
         if(window.localStorage.getItem("loginUserName") != null) {
           var confirmPopup = $ionicPopup.confirm({
             title: '<h6 class="popups title">Apply?</h6>',
-            subTitle: '<h6 class="popups">Are you sure you want to apply for this transport activity?</h6>' ,
+            subTitle: '<h6 class="popups body">Are you sure you want to apply for this transport activity?</h6>' ,
             cancelType: 'button button-stable activity1',
             okType:'button button-stable activity2'
           });
@@ -155,7 +155,7 @@ angular.module('crowdsourcing')
                         $ionicLoading.hide();
                         var alertPopup = $ionicPopup.alert({
                           title: '<h6 class="popups title">Whoops!</h6>',
-                          subTitle: '<br><h6 class="popups">Something went wrong. Please try again.</h6> ',
+                          subTitle: '<br><h6 class="popups body">Something went wrong. Please try again.</h6> ',
                           scope: $scope,
                           buttons: [
                             {

@@ -174,7 +174,7 @@ angular.module('crowdsourcing')
         if ($scope.dateTime > currentDate) {
           var confirmPopup = $ionicPopup.confirm({
             title: "<h6 class='popups title error'>Withdraw?</h6>",
-            subTitle: "<h6 class='popups'>Are you sure you want to withdraw from this activity?</h6>",
+            subTitle: "<h6 class='popups body'>Are you sure you want to withdraw from this activity?</h6>",
             cancelType: 'button button-stable activity1',
             okType: 'button button-stable activity2'
           });
@@ -201,8 +201,8 @@ angular.module('crowdsourcing')
                     $scope.loadingshow = false;
                     $ionicLoading.hide();
                     var alertPopup = $ionicPopup.alert({
-                      //title: 'Status',
-                      title: "<h6 class='popups'>" + status.status[0] + "</h6>",
+                      title: "<h6 class='popups title'>Success",
+                      subTitle: "<h6 class='popups body'>You have withdrawn from this activity.</h6>",
                       okType: 'button button-stable'
                     });
                     //window.location.reload(true);

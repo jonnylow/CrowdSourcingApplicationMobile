@@ -424,8 +424,8 @@ a:link {
 
 .platform-android h6.popups.withdraw{
   font-size: 14px;
-  margin-top: 0%;
-  margin-bottom: 10px;
+  margin-top: -2%;
+  margin-bottom: 0%;
   text-align: left;
   padding-left:5%;
 }
@@ -446,12 +446,31 @@ a:link {
   padding-left:5%;
 }
 
+.platform-android h6.popups.update{
+  font-size: 14px;
+  margin-top: 10%;
+  margin-bottom: -5%;
+  text-align: left;
+  padding-left:5%;
+}
+
 h6.popups.title.error{
   font-size: 18px;
   margin-top: 0px;
   margin-bottom: 5px;
   font-weight: bold;
 }
+
+.platform-android h6.popups.body{
+  margin-top: 5%;
+}
+
+.platform-android h6.popups.long{
+  margin-top: -2%;
+  margin-bottom: 0%;
+  font-size: 14px;
+}
+
 
 .platform-ios h6.popups.title{
   font-size: 20px;
@@ -630,6 +649,13 @@ img.aboutus{
   font-size:5vmin;
 }
 /***************END OF GETTING STARTED PAGE**************/
+
+/**/
+.platform-ios button.button.paddedbutton.button-energized.reset{
+  margin-top: 5%;
+}
+/**/
+
 /**********************LANDING PAGE**********************/
 .mainimage{
   max-width: 60%;

@@ -42,7 +42,7 @@ angular.module('crowdsourcing')
             && fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != ""
             &&  fields.dob!= null && fields.gender != null && fields.gender.trim() != "" && fields.carChecked != null && fields.carChecked != "") {
             var tempName = fields.name;
-            var tempEmail = fields.email;
+            var tempEmail = fields.email.toLowerCase();
             var tempPassword = fields.password;
             var tempContactnumber = fields.contactnumber;
             var tempDOB = fields.dob;

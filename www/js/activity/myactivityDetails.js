@@ -202,7 +202,7 @@ angular.module('crowdsourcing')
                     $ionicLoading.hide();
                     var alertPopup = $ionicPopup.alert({
                       title: "<h6 class='popups title'>Success",
-                      subTitle: "<h6 class='popups body'>You have withdrawn from this activity.</h6>",
+                      subTitle: "<h6 class='popups body'>You have withdrawn from this activity</h6>",
                       okType: 'button button-stable'
                     });
                     //window.location.reload(true);

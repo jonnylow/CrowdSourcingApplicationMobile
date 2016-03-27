@@ -30,10 +30,10 @@ angular.module('crowdsourcing')
           type: 'button button-stable',
           onTap: function(e) {
             //=========uncomment bottom line if do not want to use OTP========//
-            otpCheck = "123";
+            //otpCheck = "123";
 
             //=========comment this few lines if do not want to use OTP========//
-/*
+
             otpCheck = Math.floor(Math.random()*90000) + 10000;
             var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
             $scope.loadingshow = true;
@@ -44,7 +44,7 @@ angular.module('crowdsourcing')
                 var status = data;
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
-              })*/
+              })
             //=========comment this few lines if do not want to use OTP=========//
           }
         },
@@ -236,7 +236,7 @@ angular.module('crowdsourcing')
 
       $scope.resend = function()
       {
-        /*
+
         var myPopup = $ionicPopup.show({
           title: '<h6 class="popups">The one-time password will be resent to you via SMS</h6>',
           scope: $scope,
@@ -262,7 +262,7 @@ angular.module('crowdsourcing')
               }
             },
           ]
-        });*/
+        });
       }
 
     $scope.landingPage = function () {

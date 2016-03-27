@@ -255,8 +255,6 @@ button.home{
   padding-left:5%;
 }
 
-
-
 .button-stable.active, .button-stable.activated{
   color: #29A29C;
   font-size: 18px;
@@ -266,7 +264,7 @@ button.home{
   box-shadow: inset 2px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
-.button.button-stable.registration{
+.platform-ios .button.button-stable.registration{
   color: #29A29C;
   font-size: 18px;
   border-right: solid 1px;
@@ -275,7 +273,25 @@ button.home{
   height: 50px;
 }
 
-.button-stable.registration.active, .button-stable.registration.activated{
+.platform-ios .button.button-stable.home4{
+  color: #29A29C;
+  font-size: 18px;
+  border-right: solid 1px;
+  border-right-color: #ccc;
+  background-color: transparent;
+  height: 50px;
+}
+
+.platform-ios .button.button-stable.activity2{
+  color: #29A29C;
+  font-size: 18px;
+  border-right: solid 1px;
+  border-right-color: #ccc;
+  background-color: transparent;
+  height: 50px;
+}
+
+.platform-ios .button-stable.registration.active, .button-stable.registration.activated{
   color: #29A29C;
   font-size: 18px;
   border-right: solid 1px;
@@ -488,6 +504,12 @@ h6.popups.title.error{
 }
 
 h5.popups.home{ /*location services*/
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.platform-android h5.popups.home{ /*location services*/
   font-size: 4.5vmin;
   font-weight: bold;
   line-height: 20px;

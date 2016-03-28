@@ -173,7 +173,7 @@ angular.module('crowdsourcing')
 
         if ($scope.dateTime > currentDate) {
           var confirmPopup = $ionicPopup.confirm({
-            title: "<h6 class='popups title error'>Withdraw?</h6>",
+            title: "<h6 class='popups title'>Withdraw?</h6>",
             subTitle: "<h6 class='popups body'>Are you sure you want to withdraw from this activity?</h6>",
             cancelType: 'button button-stable activity1',
             okType: 'button button-stable activity2'

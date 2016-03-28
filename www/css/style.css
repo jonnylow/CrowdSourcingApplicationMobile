@@ -285,8 +285,8 @@ button.home{
 .platform-ios .button.button-stable.activity2{
   color: #29A29C;
   font-size: 18px;
-  border-right: solid 1px;
-  border-right-color: #ccc;
+  border-left: solid 1px;
+  border-left-color: #ccc;
   background-color: transparent;
   height: 50px;
 }
@@ -303,6 +303,11 @@ button.home{
 
 .platform-android .ion-android-arrow-dropdown.dropdown{
   font-size: 0;
+}
+
+.platform-ios .ion-android-arrow-dropdown{
+  font-size: 1;
+  margin-top: 1%;
 }
 
 p.home{
@@ -881,6 +886,16 @@ label.item.item-input.registration.dob,
     font-weight: normal;
     margin-top: 3%;
   }
+  /*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  h6.registration.dob{
+    color:#B0B0B0;
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 8%;
+  margin-left: -1%
+  }
+}
 
 .platform-android .label-text {
   position: absolute;
@@ -892,6 +907,20 @@ label.item.item-input.registration.dob,
   overflow:hidden;
   text-overflow: ellipsis;
 }
+
+.platform-ios .label-text {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 2% 2%;
+    color: #ccc;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    margin-left: %;
+    margin-top: 2px;
+    font-size: 0.9em;
+  }
 
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
@@ -992,7 +1021,7 @@ select.dropdown.update{
   right:7px;
   height: 80%;
   top:14%;
-  font-size: 4vmin;
+  font-size: 14px;
 }
 
 select.dropdown.preference{
@@ -1096,7 +1125,7 @@ select.dropdown.preference{
 }
 
 h6.orientation{
-  font-size: 4vmin;
+  font-size: 14px;
   font-weight: normal;
 }
 
@@ -1200,6 +1229,14 @@ h3.morequestions{
 select.dropdown.register{
   margin-left: 7%;
   height:40px;
+}
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  select.dropdown.register{
+    margin-left: 4%;
+    height:40px;
+  }
 }
 
 .item.item-input.occupation{
@@ -1318,7 +1355,7 @@ button.button.button-block.button-light.verify{
 
 h2.home{
   color: #164F86;
-  font-size: 4vmin;
+  font-size: 14px;
   font-weight: bold;
   text-align: leftupdat;
   line-height: 20px;
@@ -1599,6 +1636,45 @@ h2.stat{
   font-size: 4.5vmin; 
   background-color: transparent;
 }
+}
+
+.platform-ios .button-block.refreshing{
+  margin-top: 0%;
+  margin-bottom: -0.5%;
+  width: 60%;
+  border-radius: 7px;
+  background-color: transparent;
+}
+
+
+/*iphone 5*/
+@media screen and (device-aspect-ratio:40/71){
+.platform-ios .button-block.refreshing{
+  margin-top: -2%;
+  margin-bottom: -3%;
+  width: 70%;
+  border-radius: 7px;
+  background-color: transparent;
+}
+}
+
+/*iphone 6plus*/
+@media only screen and (min-device-width:414px){
+  .platform-ios .button-block.refreshing{
+  margin-top: -2%;
+  margin-bottom: 0.5%;
+  width: 60%;
+  border-radius: 7px;
+  background-color: transparent;
+}
+}
+
+.platform-android .button-block.refreshing{
+  margin-top: -2%;
+  margin-bottom: -1%;
+  width: 60%;
+  border-radius: 7px;
+  background-color: transparent;
 }
 
 .ion-arrow-down-c.dark{
@@ -2348,12 +2424,15 @@ p.me{
 /*end of profile page*/
 
 /*manage account page*/
+.ion-transgender.larger{
+  font-size:22px;
+}
 
 .platform-android .checkbox.manage{
   position: absolute;
   top:10%;
   right:0;
-  font-size: 4vmin;
+  font-size: 14px;
 }
 
 .list.list-inset.update{
@@ -2365,7 +2444,7 @@ input.readonly.me{
   margin-top:-1%;
   text-align: left;
   width: 100%;
-  font-size: 4.5vmin;
+  font-size: 14px;
   background-color: transparent;
   color:#8D8D8D;
 }
@@ -2373,7 +2452,7 @@ input.readonly.me{
 b.account{
   margin-bottom:0px;
   margin-top: 0px;
-  font-size: 4vmin;
+  font-size: 14px;
   color:#8D8D8D;
   font-weight: normal;
   margin-left:10%;
@@ -2384,7 +2463,7 @@ b.account.aop{
   margin-top: 0px;
   margin-left: -5%;
   margin-right: 2%;
-  font-size: 4.5vmin;
+  font-size: 14px;
   color:#8D8D8D;
   font-weight: normal;
 }
@@ -2395,7 +2474,7 @@ select.aop{
   margin-top: 3%;
   margin-left: -15%;
   width:89%;
-  font-size: 4.5vmin;
+  font-size: 14px;
   padding:2%;
   background-color: transparent;
   line-height: 200%;
@@ -2403,7 +2482,7 @@ select.aop{
 }
 
 h3.me{
-  font-size: 4.5vmin;
+  font-size: 14px;
   font-weight: bold;
   margin-top: 6%;
   margin-left: 6%;
@@ -2412,7 +2491,7 @@ h3.me{
 
 input.edit{
   text-align: right;
-  font-size: 4vmin;
+  font-size: 14px;
   width: 100%;
   max-width: 60%;
   position:absolute;
@@ -2427,7 +2506,7 @@ input.edit{
 
 input.update.contact{
   text-align: center;
-  font-size: 4.5vmin;
+  font-size: 14px;
   background-color: #E4E4E4;
   width:140px;
   float:right;
@@ -2435,19 +2514,19 @@ input.update.contact{
 
 input.update.occupation{
   text-align: center;
-  font-size: 4.5vmin;
+  font-size: 14px;
   background-color: #E4E4E4;
   width:140px;
 }
 
 b.update{
-  font-size: 4.5vmin;
+  font-size: 14px;
   color:#8D8D8D;
   font-weight: normal;
 }
 
 b.update.occupation{
-  font-size: 4.5vmin;
+  font-size: 14px;
   color:#8D8D8D;
   font-weight: normal;
 }
@@ -2547,7 +2626,7 @@ label.item.item-input.registration2{
 }
 
 .platform-ios input.dobupdate{
-  font-size:4vmin;
+  font-size:14px;
   text-align: right;
   width:63%;
   height:29px;
@@ -2566,7 +2645,7 @@ label.item.item-input.registration2{
 }
 
 h3.update{
-  font-size: 4vmin;
+  font-size: 14px;
   font-weight: bold;
   margin-top: 6%;
   margin-left: 6%;
@@ -2574,7 +2653,7 @@ h3.update{
 }
 
 .platform-ios .checkbox.manage{
-  font-size: 4vmin;
+  font-size: 14px;
   position:absolute;
   right:0%;
   padding-bottom: 5%;
@@ -2596,6 +2675,8 @@ h3.update{
 }
 
 /*end of manage account page*/
+
+
 
 /*change password page*/
 
@@ -2732,9 +2813,9 @@ h2.rank{
 
 h5.rank{
   margin-left: 0%;
-  text-align: center;
+  text-align: left;
   color: #999;
-  font-size: 4vmin;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 
@@ -2742,9 +2823,9 @@ h5.rank{
 @media screen and (device-aspect-ratio:40/71){
   .platform-ios .h5.rank {
     margin-left: -9%;
-  text-align: center;
+  text-align: left;
   color: #999;
-  font-size: 4vmin;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 }
@@ -2892,6 +2973,10 @@ p.help{
 /* end of help page*/
 
 /*Feedback*/
+input.feedback{
+  padding:2%;
+}
+
 .item.feedback{
   padding-left: 0;
   padding-right: 0;

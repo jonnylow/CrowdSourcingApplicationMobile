@@ -175,7 +175,7 @@ button.home{
   border: transparent;
   background-color: transparent;
   position:absolute;
-  right:15%;
+  right:20%;
   height: 50px;
   width:60%;
 }
@@ -417,7 +417,7 @@ a:link {
 
 .platform-android .popup-container .popup{
   width: 85%;
-  height:22%;
+  height:140px;
 }
 
 .platform-ios .popup-head{
@@ -1638,43 +1638,39 @@ h2.stat{
 }
 }
 
-.platform-ios .button-block.refreshing{
-  margin-top: 0%;
-  margin-bottom: -0.5%;
-  width: 60%;
-  border-radius: 7px;
-  background-color: transparent;
+h6.refreshing{
+  font-size: 4.5vmin;
+  text-align: center;
+  position:absolute;
+  left:30%;
+  top:35%;
 }
 
-
-/*iphone 5*/
-@media screen and (device-aspect-ratio:40/71){
-.platform-ios .button-block.refreshing{
-  margin-top: -2%;
-  margin-bottom: -3%;
-  width: 70%;
-  border-radius: 7px;
-  background-color: transparent;
-}
+.item.myactivity.refreshing{
+  background-color: #e6e6e6;
 }
 
-/*iphone 6plus*/
-@media only screen and (min-device-width:414px){
-  .platform-ios .button-block.refreshing{
-  margin-top: -2%;
-  margin-bottom: 0.5%;
-  width: 60%;
-  border-radius: 7px;
-  background-color: transparent;
-}
+.ion-arrow-down-c.dark{
+  font-size: 6vmin;
+  position: absolute;
+  left:22%;
+  top:25%;
 }
 
-.platform-android .button-block.refreshing{
-  margin-top: -2%;
-  margin-bottom: -1%;
-  width: 60%;
-  border-radius: 7px;
-  background-color: transparent;
+.platform-android .list.myactivity{
+  margin-top: 42px;
+}
+
+.platform-ios .list.myactivity{
+  margin-top: 60px;
+}
+
+.platform-android .list.myactivity2{
+  margin-top: 47px;
+}
+
+.platform-ios .list.myactivity2{
+  margin-top: 60px;
 }
 
 .ion-arrow-down-c.dark{

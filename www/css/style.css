@@ -1604,8 +1604,8 @@ h2.stat{
 /*end of home page*/
 
 /*activity page*/
-.refresher{
-  margin-top: -20%;
+.platform-android .refresher{
+  margin-top: -5%;
 }
 
 .platform-android .refresh{

@@ -1,16 +1,16 @@
 <ion-popover-view>
   <ion-content has-header="false" scroll="false" class="padding">
   <div class="list">
-      <a class="item popout" ng-click="goFilter('start')">
+      <a class="item popout filter" ng-click="goFilter('start')">
       Start Location <i class="ion-checkmark" ng-show="startCheck"></i>
       </a>
-    <a class="item popout" ng-click="goFilter('end')">
+    <a class="item popout filter" ng-click="goFilter('end')">
       	End Location <i class="ion-checkmark" ng-show="endCheck"></i>
       </a>
-    <a class="item popout" ng-click="goFilter('time')">
+    <a class="item popout filter" ng-click="goFilter('time')">
       	Time <i class="ion-checkmark" ng-show="timeCheck"></i>
     </a>
-    <a class="item popout" ui-sref="tab.search({filter: '', activityIds: ''})">
+    <a class="item popout filter" ui-sref="tab.search({filter: '', activityIds: ''})">
       Reset Filter
     </a>
   </div>

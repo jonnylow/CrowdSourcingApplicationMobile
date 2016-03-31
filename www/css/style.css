@@ -1824,11 +1824,40 @@ p.activityconfirmation{
   color: #ABABAB;
 }
 
-.marker-image{
+.platform-android .marker-image{
   max-width: 55%;
   z-index: -1;
-  margin-top: 10%;
+  position:absolute;
+  top:-170%;
+  left:10%;
 }
+
+.platform-ios .marker-image{
+  max-width: 55%;
+  z-index: -1;
+  margin-top: 10%
+}
+
+.button.me.activity{
+  background-color: #fff !important;
+  z-index: -2 !important;
+  position: relative !important;
+  display: inline-block;
+  margin: 2px;
+  min-width: 10vw;
+  min-height: 10vw;
+  border-radius: 50% !important;
+  border-color: #848484;
+  box-shadow:  0 0px 0px 0 rgba(0, 0, 0, 0.4);
+}
+
+/*.ion-ios-circle-outline{
+  font-size: 12vw;
+  color:#848484;
+  position:relative !important;
+  display: inline-block !important;
+  z-index: -1 !important; 
+}*/
 
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
@@ -1845,17 +1874,20 @@ p.activityconfirmation{
 }
 
 .platform-android .myactivitymarker{
-  position: absolute;
-  top: 15%;
-  right: 45%;
-  font-size: 5.5vmin;
+  position: relative ;
+  color: #000;
+  font-size: 5vmin;
+  font-weight: bold;
+  z-index: 10 !important;
+  width:18px;
 }
 
 .platform-android .myactivitymarker2{
-  position: absolute;
-  top: 14%;
-  right: 39%;
-  font-size: 5.3vmin;
+  position: relative;
+  font-size: 4vmin;
+  padding:0px;
+  font-weight: bold;
+  z-index: 1 !important;
 }
 
 .platform-ios .myactivitymarker{

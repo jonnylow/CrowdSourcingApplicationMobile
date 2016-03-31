@@ -30,7 +30,8 @@
           <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
           <div class="row myactivity">
             <div class="col col-20 col-center myactivitynum">
-              <img src="img/marker.png" class="marker-image"/>
+              <!--<img src="img/marker.png" class="marker-image"/>-->
+              <button class="button me activity">
                 <p class="myactivitymarker" ng-if="group.items.length>0 && group.items.length<10" style="color:#333">
                   {{group.items.length}}
                 </p>

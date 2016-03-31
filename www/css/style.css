@@ -1873,7 +1873,7 @@ p.activityconfirmation{
   background-color: #AEE1E0;
 }
 
-.platform-android .myactivitymarker{
+.myactivitymarker{
   position: relative ;
   color: #000;
   font-size: 5vmin;
@@ -1882,7 +1882,7 @@ p.activityconfirmation{
   width:18px;
 }
 
-.platform-android .myactivitymarker2{
+.myactivitymarker2{
   position: relative;
   font-size: 4vmin;
   padding:0px;
@@ -1890,7 +1890,7 @@ p.activityconfirmation{
   z-index: 1 !important;
 }
 
-.platform-ios .myactivitymarker{
+/*.platform-ios .myactivitymarker{
   position: absolute;
   top: 17%;
   right: 46%;
@@ -1902,7 +1902,7 @@ p.activityconfirmation{
   top: 17%;
   right: 38%;
   font-size: 5.5vmin;
-}
+}*/
 
 
 div.col.myactivitynum{

@@ -473,7 +473,7 @@ angular.module('crowdsourcing')
 
       var confirmPopup = $ionicPopup.confirm({
         title: '<h6 class="popups title">Update Status?</h6>',
-        subTitle: "<h6 class='popups'>Are you sure you want to update status for this activity to '" + $scope.capitalizeFirstLetter(status) + "' ?</h6>",
+        subTitle: "<h6 class='popups status'>Are you sure you want to update status for this activity to '" + $scope.capitalizeFirstLetter(status) + "' ?</h6>",
         okType:"button button-stable home3",
         cancelType:"button button-stable home4"
       });
@@ -496,7 +496,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Congratulations!</h6>',
-                    subTitle: "<h6 class='popups'>"+"You have completed your voluntary activity today! The activity is now at the history tab for your future reference"+"</h6>",
+                    subTitle: "<h6 class='popups status'>"+"You have completed your voluntary activity today! The activity is now at the history tab for your future reference."+"</h6>",
                     okType:"button button-stable"
                   });
                   $state.go('tab.myhistory', {}, {reload: true});
@@ -505,7 +505,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Success!</h6>',
-                    subTitle: "<h6 class='popups status'>"+"Update Successful! Activity is in progress"+"</h6>",
+                    subTitle: "<h6 class='popups status'>"+"Update Successful! Activity is in progress."+"</h6>",
                     okType:"button button-stable"
                   });
                   $state.go('tab.home', {}, {reload: true});
@@ -514,7 +514,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Success!</h6>',
-                    subTitle: "<h6 class='popups status'>"+"Update Successful! Elderly is at check up now"+"</h6>",
+                    subTitle: "<h6 class='popups status'>"+"Update Successful! Elderly is at check up now."+"</h6>",
                     okType:"button button-stable"
                   });
                   $state.go('tab.home', {}, {reload: true});
@@ -523,7 +523,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Success!</h6>',
-                    subTitle: "<h6 class='popups status'>"+"Update Successful! Elderly has completed the check up"+"</h6>",
+                    subTitle: "<h6 class='popups status'>"+"Update Successful! Elderly has completed the check up."+"</h6>",
                     okType:"button button-stable"
                   });
                   $state.go('tab.home', {}, {reload: true});
@@ -532,7 +532,7 @@ angular.module('crowdsourcing')
                 {
                   var alertPopup = $ionicPopup.alert({
                     title: '<h6 class="popups title">Success!</h6>',
-                    subTitle: "<h6 class='popups status'>"+"Update Successful"+"</h6>",
+                    subTitle: "<h6 class='popups status'>"+"Update Successful!"+"</h6>",
                     okType:"button button-stable"
                   });
                   //window.location.reload(true);

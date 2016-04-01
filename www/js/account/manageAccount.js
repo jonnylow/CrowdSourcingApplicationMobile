@@ -130,8 +130,8 @@ angular.module('crowdsourcing')
                                 $scope.loadingshow = false;
                                 $ionicLoading.hide();
                                 var alertPopup = $ionicPopup.alert({
-                                  //title: '<b><h6 class="popups title">Status</h6></b>',
-                                  title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
+                                  title: '<h6 class="popups title"> ' + status.status[0]  + "</h6>",
+                                  subTitle: '<br><h6 class="popups">Your account has been successfully changed</h6>',
                                   scope: $scope,
                                   buttons: [
                                     {
@@ -191,8 +191,8 @@ angular.module('crowdsourcing')
                                         }
 
                                         var alertPopup = $ionicPopup.alert({
-                                          //title: '<b><h6 class="popups title">Status</h6></b>',
-                                          title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
+                                          title: '<h6 class="popups title"> ' + status.status[0]  + "</h6>",
+                                          subTitle: '<br><h6 class="popups">Your account has been successfully changed</h6>',
                                           scope: $scope,
                                           buttons: [
                                             {
@@ -304,8 +304,8 @@ angular.module('crowdsourcing')
                               $scope.loadingshow = false;
                               $ionicLoading.hide();
                               var alertPopup = $ionicPopup.alert({
-                                //title: '<b><h6 class="popups title">Status</h6></b>',
-                                title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
+                                title: '<h6 class="popups title"> ' + status.status[0]  + "</h6>",
+                                subTitle: '<br><h6 class="popups">Your account has been successfully changed</h6>',
                                 scope: $scope,
                                 buttons: [
                                   {
@@ -363,8 +363,8 @@ angular.module('crowdsourcing')
                                     }
 
                                     var alertPopup = $ionicPopup.alert({
-                                      //title: '<b><h6 class="popups title">Status</h6></b>',
-                                      title: '<br><h6 class="popups"> ' + status.status[0] + "</h6>",
+                                      title: '<h6 class="popups title"> ' + status.status[0]  + "</h6>",
+                                      subTitle: '<br><h6 class="popups">Your account has been successfully changed</h6>',
                                       scope: $scope,
                                       buttons: [
                                         {

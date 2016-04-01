@@ -1267,7 +1267,9 @@ h4.skip{
 /*end of more questions page*/
 
 /**********************VERIFY**********************/
-
+.button-dark.otp{
+  width:90%;
+}
 
 
 h4.verify{

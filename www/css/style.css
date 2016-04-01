@@ -2747,6 +2747,13 @@ select.search{
 /*end of search pages*/
 
 /*Filter pages*/
+
+
+.platform-ios .popover-arrow{
+  left:81% !important;
+}
+
+
 .platform-ios h5.filter{
   margin-top: 1%;
   margin-left:2%;

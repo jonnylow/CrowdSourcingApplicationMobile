@@ -35,7 +35,7 @@ angular.module('crowdsourcing')
             //=========comment this few lines if do not want to use OTP========//
 
             otpCheck = Math.floor(Math.random()*90000) + 10000;
-            var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
+            var sendURL = apiUrl + "sendSMS?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
             $scope.loadingshow = true;
             $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
             $http.get(sendURL,{timeout: 12000})
@@ -248,7 +248,7 @@ angular.module('crowdsourcing')
 
                 //=========comment this few lines if do not want to use OTP========//
                 otpCheck = Math.floor(Math.random()*90000) + 10000;
-                var sendURL = "http://www.changhuapeng.com/volunteer/php/sendSMS/send.php?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
+                var sendURL = apiUrl + "sendSMS?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
                 $scope.loadingshow = true;
                 $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
                 $http.get(sendURL,{timeout: 12000})

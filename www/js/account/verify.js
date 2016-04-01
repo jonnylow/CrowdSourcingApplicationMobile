@@ -236,32 +236,42 @@ angular.module('crowdsourcing')
 
       $scope.resend = function()
       {
+        var confirmPopup = $ionicPopup.confirm({
+          title: "<h6 class='popups title'>Resend OTP</h6>",
+          subTitle: "<h6 class='popups body'>Are you sure you want us to resend the one-time password?</h6>",
+          cancelType: 'button button-stable activity1',
+          okType: 'button button-stable activity2'
+        });
 
-        var myPopup = $ionicPopup.show({
-          title: '<h6 class="popups">The one-time password will be resent to you via SMS</h6>',
-          scope: $scope,
-          buttons: [
-            {
-              text: '<b>Ok</b>',
-              type: 'button button-stable',
-              onTap: function(e) {
+        confirmPopup.then(function (res) {
+          if (res) {
+            var myPopup = $ionicPopup.show({
+              title: '<h6 class="popups">The one-time password will be resent to you via SMS</h6>',
+              scope: $scope,
+              buttons: [
+                {
+                  text: '<b>Ok</b>',
+                  type: 'button button-stable',
+                  onTap: function(e) {
 
-                //=========comment this few lines if do not want to use OTP========//
-                otpCheck = Math.floor(Math.random()*90000) + 10000;
-                var sendURL = apiUrl + "sendSMS?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
-                $scope.loadingshow = true;
-                $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
-                $http.get(sendURL,{timeout: 12000})
-                  .success(function (data) {
-                    //message sent
-                    var status = data;
-                    $scope.loadingshow = false;
-                    $ionicLoading.hide();
-                  })
-                //=========comment this few lines if do not want to use OTP=========//
-              }
-            },
-          ]
+                    //=========comment this few lines if do not want to use OTP========//
+                    otpCheck = Math.floor(Math.random()*90000) + 10000;
+                    var sendURL = apiUrl + "sendSMS?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;
+                    $scope.loadingshow = true;
+                    $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Sending OTP...'})
+                    $http.get(sendURL,{timeout: 12000})
+                      .success(function (data) {
+                        //message sent
+                        var status = data;
+                        $scope.loadingshow = false;
+                        $ionicLoading.hide();
+                      })
+                    //=========comment this few lines if do not want to use OTP=========//
+                  }
+                },
+              ]
+            });
+          }
         });
       }
 

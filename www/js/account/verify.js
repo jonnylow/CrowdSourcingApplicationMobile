@@ -246,14 +246,14 @@ angular.module('crowdsourcing')
         confirmPopup.then(function (res) {
           if (res) {
             var myPopup = $ionicPopup.show({
-              title: '<h6 class="popups">The one-time password will be resent to you via SMS</h6>',
+              title: '<h6 class="popups title">Success!</h6>',
+              subTitle: '<h6 class="popups status">The one-time password will be resent to you via SMS.</h6>',
               scope: $scope,
               buttons: [
                 {
                   text: '<b>Ok</b>',
                   type: 'button button-stable',
                   onTap: function(e) {
-
                     //=========comment this few lines if do not want to use OTP========//
                     otpCheck = Math.floor(Math.random()*90000) + 10000;
                     var sendURL = apiUrl + "sendSMS?message="+otpCheck+"&number=+65"+$scope.tempContactNumber;

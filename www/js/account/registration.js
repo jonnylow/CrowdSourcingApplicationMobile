@@ -1,7 +1,12 @@
+/**
+ * This js script will handle all logic for the registration. Its corresponding html file is registration.html.
+ * The main purpose of this page is just to handle input checks for the first page of registration
+ */
+
 angular.module('crowdsourcing')
 
     .controller('registrationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, $ionicHistory, apiUrl, $ionicModal) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
@@ -12,6 +17,7 @@ angular.module('crowdsourcing')
       window.localStorage.getItem("tempPassword")!= null && window.localStorage.getItem("tempContactnumber")!= null &&
       window.localStorage.getItem("tempDOB")!= null && window.localStorage.getItem("tempHaveCar")!= null)
     {
+      //display information depending if the storage has the information, if have, meaning user click back on the second page of registration.
       if (window.localStorage.getItem("tempHaveCar") == 1) {
         $scope.fields = {name:window.localStorage.getItem("tempName"), email:window.localStorage.getItem("tempEmail"), password:window.localStorage.getItem("tempPassword"), contactnumber:window.localStorage.getItem("tempContactnumber"), dob:new Date(window.localStorage.getItem("tempDOB")), gender:window.localStorage.getItem("tempGender"), carChecked:"1"};
       }
@@ -21,6 +27,7 @@ angular.module('crowdsourcing')
     }
     else
     {
+      //to show orientation modal before dislaying the page
       //$scope.modal.show();
       $ionicModal.fromTemplateUrl('templates/account/OrientationModal.html', {
         scope: $scope,
@@ -33,6 +40,7 @@ angular.module('crowdsourcing')
       });
     }
 
+      //register method will be called when user click on the register button
       $scope.register = function(fields)
       {
         if(fields != null) {
@@ -48,9 +56,11 @@ angular.module('crowdsourcing')
             var tempDOB = fields.dob;
             var tempGender = fields.gender;
 
+            //validate the dob
             if (validateDOB(tempDOB) == true) {
               if(validateDOBAge(fields.dob.getFullYear()) == true)
               {
+                //convert date to format such that it can be displayed
                 var dd = tempDOB.getDate();
                 var mm = tempDOB.getMonth() + 1;
                 var yyyy = tempDOB.getFullYear();
@@ -61,9 +71,13 @@ angular.module('crowdsourcing')
                   mm = '0' + mm
                 }
                 tempDOB = yyyy + '-' + mm + '-' + dd;
+                //validate name
                 if (validateName(tempName) == true) {
+                  //validate contact details
                   if (tempContactnumber.length == 8 && !isNaN(tempContactnumber) && validateContact(tempContactnumber) == true) {
+                    //validate email
                     if (validateEmail(tempEmail) == true) {
+                      //validate password
                       if (validatePassword(tempPassword) == true) {
                         $http.get(apiUrl + "checkEmail?email=" + tempEmail,{timeout: 12000})
                           .success(function (data) {
@@ -77,6 +91,7 @@ angular.module('crowdsourcing')
                                 $scope.tempCarChecked = 0;
                               }
 
+                              //put details in storage if all information is ok and navigate to the second pae of registration
                               window.localStorage.setItem("tempName", tempName);
                               window.localStorage.setItem("tempEmail", tempEmail);
                               window.localStorage.setItem("tempPassword", tempPassword);
@@ -278,10 +293,12 @@ angular.module('crowdsourcing')
         }
       }
 
+    //method to validate orientation during
     function validateOccupation(occupation) {
       return /^[a-zA-Z\s]+$/.test(occupation);
     }
 
+    //method to validate NRIC if needed in future
     function validateNRIC(nric) {
       if(nric.length == 9 && nric.charAt(0).toLowerCase() == "s" && /^[a-zA-Z]+$/.test(nric.charAt(8)) == true)
       {
@@ -318,20 +335,24 @@ angular.module('crowdsourcing')
       return false;
     }
 
+    //method to validate eamil
     function validateEmail(email) {
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       return re.test(email);
     }
 
+    //method to validate password
     function validatePassword(password){
       var re = /(?=.*\d)(?=.*[A-z]).{6,20}/;
       return re.test(password);
     }
 
+    //method to validate name
     function validateName(name) {
       return /^[a-zA-Z\s\,\-\/]+$/.test(name);
     }
 
+    //method to validate dob
     function validateDOB(tempDOB){
       if(tempDOB > new Date())
       {
@@ -345,6 +366,7 @@ angular.module('crowdsourcing')
       }
     }
 
+    //method to censure volunteer to be of a certain age
     function validateDOBAge(year){
       var currentDate = new Date();
       if(currentDate.getFullYear() - year >= 16 && currentDate.getFullYear() - year <= 70)
@@ -357,6 +379,7 @@ angular.module('crowdsourcing')
       }
     }
 
+    //method to validate contact details
     function validateContact(contact){
       if(contact.charAt(0) == "9" || contact.charAt(0) == "8")
       {
@@ -370,6 +393,7 @@ angular.module('crowdsourcing')
       }
     }
 
+    //method to go back to landing page if clicke on the 'x/
     $scope.landingPage = function () {
       window.localStorage.removeItem("tempName");
       window.localStorage.removeItem("tempEmail");
@@ -410,6 +434,7 @@ angular.module('crowdsourcing')
       $state.go('login', {}, {reload: true});
     }
 
+    //method that will be called when use click on the tab
     $scope.proceedRegistration = function()
     {
       if($scope.orientation.checkBox != true)

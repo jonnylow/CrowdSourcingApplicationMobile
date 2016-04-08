@@ -1,7 +1,11 @@
+/**
+ * This js script will handle all logic for dropdown menu. Its corresponding html file is tabs.html.
+ * The main purpose of this page is just to handle any logic when user click on the dropdown menu buttons.
+ */
 angular.module('crowdsourcing')
 
     .controller('tabsController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout) {
-
+      //depending on the user login status, display the correct menu
       // .fromTemplateUrl() method
       if (window.localStorage.getItem("loginUserName") == null) {
         $ionicPopover.fromTemplateUrl('templates/home/menu_popout_guest.html', {
@@ -29,6 +33,7 @@ angular.module('crowdsourcing')
         $scope.popover.remove();
       });
 
+    //function for user to logout; it will remove all the runtime data store on storage
     $scope.logout = function () {
       var username = "";
       var password = "";
@@ -55,6 +60,7 @@ angular.module('crowdsourcing')
       //$state.transitionTo('loginHome', null, {'reload':true});
     }
 
+    //function for user to login; provide the redirection to login page
     $scope.login = function () {
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();

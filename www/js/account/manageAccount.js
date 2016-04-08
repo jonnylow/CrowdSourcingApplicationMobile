@@ -1,10 +1,17 @@
+/**
+ * This js script will handle all logic for the LandingPage. Its corresponding html file is landingPage.html.
+ * The main purpose of this page is just to provide navigation to login/register page and home page
+ */
+
 angular.module('crowdsourcing')
 
     .controller('manageAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //check if user is logged in using credentials stored in storage navigate to landing page if user is not login
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.fields= {email: "", name:"", carChecked:"",occupation:"", gender:"", dob:"", preferences_1:"", preferences_2:""};
           $scope.name = window.localStorage.getItem("loginUserName");
@@ -17,12 +24,16 @@ angular.module('crowdsourcing')
         }
 
     if(window.localStorage.getItem("loginUserName") != null) {
+      //call laravel web service to retrieve user details to show
       var urlString = apiUrl + "retrieveUserDetails?id=" + $scope.id;
       var currentEmail = "";
+      //http call with 12s timeout
       $http.get(urlString, {timeout: 12000})
         .success(function (data) {
           var userDetails = data;
+          //if valid
           if (userDetails != null) {
+            //set details in the respective input fields
             var temp = userDetails.volunteer[0].date_of_birth.split(" ");
             $scope.fields.dob = new Date(temp[0]);
             $scope.fields.gender = userDetails.volunteer[0].gender;
@@ -67,18 +78,21 @@ angular.module('crowdsourcing')
           });
         });
 
+      //this method will handle the update button. It will be called when user clicked on it
       $scope.update = function (fields) {
         $scope.loadingshow = true;
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
         if (fields != null) {
           if (fields.name != null && fields.name.trim() != "" && fields.email != null && fields.email.trim() != ""
             && fields.dob != null) {
+            //get details from the input fields
             var name = fields.name;
             var p1 = fields.preferences_1;
             var p2 = fields.preferences_2;
             var gender = fields.gender;
             var tempDOB = fields.dob;
 
+            //configure the dates field so that it can be displayed accordingly
             var dd = tempDOB.getDate();
             var mm = tempDOB.getMonth() + 1;
             var yyyy = tempDOB.getFullYear();
@@ -112,15 +126,18 @@ angular.module('crowdsourcing')
             if (occupation == null) {
               occupation = '';
             }
+            //check for validate email using the method
             if (validateEmail(email) == true) {
               if (occupation == "" || validateOccupation(occupation) == true) {
 
                 if (validateDOBAge(fields.dob.getFullYear()) == true && validateDOB(tempDOB) == true) {
                   if (validateName(name) == true) {
-                    if (p1 != '' || p2 != '') {
+                    if (p1 != '' || p2 != '') { //ensure that the preferences are not the same
                       if (p1 != p2) {
+                        //check if user is changing his current email. If he is, there is different check to be done because email must be validated with the database
                         if (email == currentEmail) {
 
+                          //http web service call
                           urlStringUpdate = apiUrl + "updateUserDetails?id=" + $scope.id + "&name=" + name + "&occupation=" + occupation + "&p1=" + p1 + "&p2=" + p2 + "&gender=" + gender + "&dob=" + dob + "&hasCar=" + hasCar + "&email=" + email;
 
                           $http.get(urlStringUpdate, {timeout: 12000})
@@ -173,6 +190,7 @@ angular.module('crowdsourcing')
                         else {
                           if (email != null && email.trim() != "")
                           {
+                            //if changing email, have to check new email with the emails in the database
                             $http.get(apiUrl + "checkEmail?email=" + email, {timeout: 12000})
                               .success(function (data) {
 
@@ -344,7 +362,7 @@ angular.module('crowdsourcing')
                             });
                           });
                       }
-                      else {
+                      else { //if preferences are not empty, it will enter this loop
                         $http.get(apiUrl + "checkEmail?email=" + email, {timeout: 12000})
                           .success(function (data) {
 
@@ -552,19 +570,23 @@ angular.module('crowdsourcing')
         }
       }
 
+      //method to validate occupation
       function validateOccupation(occupation) {
         return /^[a-zA-Z\s]+$/.test(occupation);
       }
 
+      //method to validate email
       function validateEmail(email) {
         var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
         return re.test(email);
       }
 
+      //method to validate name
       function validateName(name) {
         return /^[a-zA-Z\s]+$/.test(name);
       }
 
+      //method to validate DOB
       function validateDOB(tempDOB) {
         if (tempDOB > new Date()) {
           //larger
@@ -576,6 +598,7 @@ angular.module('crowdsourcing')
         }
       }
 
+      //method to check that user dob is within a certain year
       function validateDOBAge(year) {
         var currentDate = new Date();
         if (currentDate.getFullYear() - year >= 16 && currentDate.getFullYear() - year <= 70) {

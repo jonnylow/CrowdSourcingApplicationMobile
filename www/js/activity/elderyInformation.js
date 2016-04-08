@@ -1,11 +1,16 @@
+/**
+ * This js script will handle all logic for elderlyInformation. Its corresponding html file is elderlyInformation.html.
+ * The main purpose of this page is just to handle any logic when displaying elderly information.
+ */
 angular.module('crowdsourcing')
 
     .controller('elderyInformationController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //get activity id and name from the url
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -15,6 +20,8 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
     }
+    //call the web service to get details based on the id retrieve from the url parameters
+    //after which display the information on the respective input fields in the html file
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $http.get(apiUrl + "retrieveElderyInformation?transportId=" + $scope.transportId, {timeout: 12000})
         .success(function (data) {
@@ -34,6 +41,7 @@ angular.module('crowdsourcing')
                 }
 
                 $scope.languages = elderyInformation.elderly.languages;
+                //handle multiple languages
                 var languages = "";
                 if ($scope.languages == "") {
                   $scope.languages = "No Language Information";
@@ -82,6 +90,7 @@ angular.module('crowdsourcing')
           });
         });
 
+      //back function. To redirect user back to previous page, depending where the user came from, page retrieve as soon as this page is loaded
       $scope.back = function () {
         if ($scope.backView != null) {
           $scope.backView.go();

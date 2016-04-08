@@ -1,4 +1,9 @@
-angular.module('crowdsourcing')
+/**
+ * This js script will handle all logic for search. Its corresponding html file is search.html.
+ * The main purpose of this page is just to handle any logic for the content when displaying search information
+ * */
+
+ angular.module('crowdsourcing')
 
     .controller('searchController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl, $ionicHistory) {
 
@@ -13,7 +18,7 @@ angular.module('crowdsourcing')
       $scope.activityIds= $stateParams.activityIds;
       $scope.filter= $stateParams.filter;
 
-      //check icon
+      //check icon to see if user is doing any previous filtering from storage
       $scope.startCheck = false;
       $scope.endCheck = false;
       $scope.timeCheck = false;
@@ -40,6 +45,7 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
+     //DEPENDINg if user is login, use different url
     var urlToRun = "";
     if(window.localStorage.getItem("token") != null)
     {
@@ -50,6 +56,7 @@ angular.module('crowdsourcing')
       urlToRun = apiUrl+"retrieveTransportActivity";
     }
 
+     //display the activity based on whatever that is returned from the web service
     $http.get(urlToRun,{timeout: 12000})
       .success(function (data) {
         var transportDetails = data;
@@ -118,6 +125,7 @@ angular.module('crowdsourcing')
             }
           }
         }
+        //sort the activity based on date
         $scope.transportActivity.sort(function (a, b) {
           return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
         });
@@ -148,6 +156,7 @@ angular.module('crowdsourcing')
         });
       });
 
+     //function to proceed to activity details
       $scope.proceed = function(id, name)
       {
         $state.go('activityDetails', {transportId: id, transportActivityName: name});
@@ -218,6 +227,7 @@ angular.module('crowdsourcing')
       return strTime;
     }
 
+     //function to get elderly initials
     function getInitials(string) {
       var names = string.split(' '),
         initials = names[0].substring(0, 1).toUpperCase();

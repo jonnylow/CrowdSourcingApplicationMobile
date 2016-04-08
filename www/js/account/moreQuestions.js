@@ -1,11 +1,17 @@
+/**
+ * This js script will handle all logic for the moreQuestions. Its corresponding html file is lmoreQuestions.html.
+ * The main purpose of this page is just to handle input checks for the second page of registration
+ */
+
 angular.module('crowdsourcing')
 
     .controller('moreQuestionsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+      //get item from the previous page
       $scope.tempName = window.localStorage.getItem("tempName");
       $scope.tempEmail = window.localStorage.getItem("tempEmail");
       $scope.tempPassword = window.localStorage.getItem("tempPassword");
@@ -18,10 +24,12 @@ angular.module('crowdsourcing')
         $scope.fields = {preferences_1:window.localStorage.getItem("tempPreferences1"), preferences_2:window.localStorage.getItem("tempPreferences2"), occupation:window.localStorage.getItem("tempOccupation")};
       }
 
+      //verify method, will be called when click on the next button
       $scope.verify = function(fields)
       {
         if(fields != null && fields.preferences_1 != null && fields.preferences_2 != null && fields.occupation != null) {
             if((fields.preferences_1 == "" && fields.preferences_2 == "") || fields.preferences_1 != fields.preferences_2) {
+                //validate occupation and set preferences and occupation to storage before navigate user to the last page of registration
                 if(fields.occupation == "" || validateOccupation(fields.occupation) == true) {
                   window.localStorage.setItem("tempOccupation", fields.occupation);
                   window.localStorage.setItem("tempPreferences1", fields.preferences_1);
@@ -78,6 +86,7 @@ angular.module('crowdsourcing')
         }
       }
 
+    //skip button will be activate when user click on the skip button
     $scope.skip = function()
     {
       window.localStorage.setItem("tempOccupation", "");
@@ -87,6 +96,7 @@ angular.module('crowdsourcing')
       $state.go('verify', {}, {reload: true});
     }
 
+    //this method will be activated when user click on the 'x' button. It will delete current registration details from the storage
     $scope.landingPage = function () {
       window.localStorage.removeItem("tempName");
       window.localStorage.removeItem("tempEmail");
@@ -114,6 +124,7 @@ angular.module('crowdsourcing')
       }
     }
 
+    //method to validate occupation using regular expression
     function validateOccupation(occupation) {
       return /^[a-zA-Z\s]+$/.test(occupation);
     }

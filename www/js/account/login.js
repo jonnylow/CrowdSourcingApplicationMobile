@@ -1,10 +1,16 @@
+/**
+ * This js script will handle all logic for the Login. Its corresponding html file is login.html.
+ * The main purpose of this page is just to supply methods for user to login to the application
+ */
 angular.module('crowdsourcing')
 
     .controller('loginController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory, apiUrl) {
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //Check storage if user stored his credentials previously. If yes, then display it in the input
       $scope.remember= {checkBox:false};
       $scope.fields= {email:"", password:""};
       if(window.localStorage.getItem("loginUsernameToStore") != null && window.localStorage.getItem("loginPasswordToStore") != null
@@ -15,6 +21,7 @@ angular.module('crowdsourcing')
         $scope.remember.checkBox = true;
       }
 
+      //Login method
       $scope.login = function(fields){
           $scope.loadingshow = true;
         //ionic loading screen
@@ -23,13 +30,16 @@ angular.module('crowdsourcing')
           if(fields != null) {
             if (fields.email != null && fields.email.trim() != "" && fields.password != null && fields.password.trim() != "")
             {
+              //get inputs from input fields
                 var tempNRIC = fields.email.toLowerCase();
                 var tempPassword = fields.password;
 
+              //call web service to validate email
               if (validateEmail(tempNRIC) == true) {
                 $http.get(apiUrl + "checkEmail?email=" + tempNRIC,{timeout: 12000})
                   .success(function (data) {
 
+                //use POST web service to authenticate with the application
                     var status = data;
                     if (status.status[0] == "exist") {
                 // to be use to port over to laraval login webservice
@@ -43,16 +53,18 @@ angular.module('crowdsourcing')
                   headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }
 
+                //http call
                 $http(req).
                   success(function(data, status, headers, config)
                   {
                     var status = data;
                     if(status != null){
-                      if(status.token != null && status.error == null)
+                      if(status.token != null && status.error == null) //when login successfully
                       {
                         if(status.user.is_approved == "approved") {
                           $scope.loadingshow = false;
                           $ionicLoading.hide();
+                          //store user credentials if checkbox is ticked
                           if($scope.remember.checkBox == true)
                           {
                             window.localStorage.setItem("loginUsernameToStore", tempNRIC);
@@ -64,10 +76,13 @@ angular.module('crowdsourcing')
                             window.localStorage.removeItem("loginPasswordToStore");
                           }
 
+                          //store some user information so that other functions can use
                           window.localStorage.setItem("token", status.token);
                           window.localStorage.setItem("loginId", status.user.volunteer_id);
                           window.localStorage.setItem("loginUserName", status.user.name);
                           window.localStorage.setItem("loginEmail", status.user.email);
+
+                          //direct user to home page after login
                           $state.go('tab.home', {}, {reload: true});
                         }
                         else if(status.user.is_approved == "rejected"){
@@ -224,11 +239,13 @@ angular.module('crowdsourcing')
           }
         }
 
+    //method to validate user email using regular expression
     function validateEmail(email) {
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
       return re.test(email);
     }
 
+    //this method will be called when user click on the 'x' on the page
     $scope.landingPage = function () {
       $ionicHistory.nextViewOptions({
         disableAnimate: true
@@ -260,6 +277,7 @@ angular.module('crowdsourcing')
       return p.join('&');
     };
 
+    //this method will be called when user click on the 'registration' tab to navigate user to the registration page
     $scope.goRegistration = function()
     {
       $ionicHistory.nextViewOptions({
@@ -268,6 +286,7 @@ angular.module('crowdsourcing')
       $state.go('tab.registration');
     }
 
+    //this method will be called when user click on forget password
     $scope.goReset = function () {
       $ionicHistory.nextViewOptions({
         disableAnimate: true

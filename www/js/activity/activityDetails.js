@@ -1,11 +1,16 @@
+/**
+ * This js script will handle all logic for activity details. Its corresponding html file is activityDetails.html.
+ * The main purpose of this page is just to handle any logic when displaying activity that user click on.
+ */
 angular.module('crowdsourcing')
 
     .controller('activityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //get activity id and name from the url
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -17,6 +22,8 @@ angular.module('crowdsourcing')
     $scope.loadingshow = true;
     $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
+    //call the web service to get details based on the id retrieve from the url parameters
+    //after which display the information on the respective input fields in the html file
     $http.get(apiUrl+"retrieveTransportActivityDetails?transportId=" + $scope.transportId,{timeout: 12000})
       .success(function (data) {
         var transportDetails = data;
@@ -39,6 +46,7 @@ angular.module('crowdsourcing')
                 $scope.locationToAddressLat = transportDetails.activity.arrival_centre.lat;
                 $scope.locationToAddressLng = transportDetails.activity.arrival_centre.lng;
                 $scope.moreInformation = transportDetails.activity.more_information;
+                //getting just the elderly information/initials to display on the details page
                 $http.get(apiUrl+"retrieveElderyInformation?transportId=" + transportDetails.activity.activity_id,{timeout: 12000})
                   .success(function (data) {
                     var elderyInformation = data;
@@ -112,8 +120,10 @@ angular.module('crowdsourcing')
         });
       });
 
+    //this function will be called when user click on the apply button
       $scope.apply=function()
       {
+        //ask for a confirmation
         if(window.localStorage.getItem("loginUserName") != null) {
           var confirmPopup = $ionicPopup.confirm({
             title: '<h6 class="popups title">Apply?</h6>',
@@ -135,12 +145,14 @@ angular.module('crowdsourcing')
               window.localStorage.setItem("tempALocationToAddress", $scope.locationToAddress);
               window.localStorage.setItem("tempAdditionalInformation", $scope.moreInformation);
 
+              //call webservice to check that user does not have a actvity happening at the same time/has applied for this activity already
               var checkUrlString = apiUrl+"checkActivityApplication?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
               $http.get(checkUrlString,{timeout: 12000})
                 .success(function (data) {
                   if(data.status[0]=="do not exist")
                   {
+                    //if all is ok, add new activity in the database and direct user to the confirmation page
                     var urlString = apiUrl+"addNewActivity?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+$scope.transportId;
 
                     $http.get(urlString,{timeout: 12000})
@@ -240,6 +252,7 @@ angular.module('crowdsourcing')
         }
       }
 
+      //back function. To redirect user back to previous page, depending where the user came from, page retrieve as soon as this page is loaded
       $scope.back=function()
       {
         if($scope.backView != null)
@@ -253,12 +266,14 @@ angular.module('crowdsourcing')
         //$ionicHistory.goBack();
       }
 
+      //this function is use when user click on the google map icon to open the directions based on the user current lat/lng to the destination lat/lng
       $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng){
         var url = 'http://maps.google.com/maps?saddr='+locationFromAddressLat+','+locationFromAddressLng+'&daddr='+locationToAddressLat+','+locationToAddressLng+'&dirflg=d"';
         window.open(url,'_system','location=yes');
         return false;
       };
 
+    //function to get initials of a string
     function getInitials(string) {
       var names = string.split(' '),
         initials = names[0].substring(0, 1).toUpperCase();

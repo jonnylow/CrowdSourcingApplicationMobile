@@ -1,11 +1,16 @@
+/**
+ * This js script will handle all logic for creation of a new account. Its corresponding html file is verify.html.
+ * The main purpose of this page is just to handle input checks, OTP management and creation of new user account.
+ */
 angular.module('crowdsourcing')
 
     .controller('verifyController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading, $ionicHistory,apiUrl) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //get relevant data needed from storage before removing inforamtion from the storage
     $scope.tempName = window.localStorage.getItem("tempName");
     $scope.tempEmail = window.localStorage.getItem("tempEmail").toLowerCase();
     $scope.tempPassword = window.localStorage.getItem("tempPassword");
@@ -20,6 +25,7 @@ angular.module('crowdsourcing')
     $scope.fields= {otp: ""};
     var otpCheck;
 
+    //create and send OTP using web service
     var myPopup = $ionicPopup.show({
       title: '<h6 class="popups title">Notice</h6>',
       subTitle: '<br><h6 class="popups registration">The one-time password will be sent to you via sms</h6>',
@@ -51,6 +57,9 @@ angular.module('crowdsourcing')
       ]
     });
 
+      //this function is called when user click on the button after keying in the otp.
+      //it will check the otp information is correct, before using the details retrieve from the storage and calling the web service to create the account
+      //it will then direct the user back to the login page after creation.
       $scope.verify = function(fields)
       {
         $scope.loadingshow = true;
@@ -234,6 +243,7 @@ angular.module('crowdsourcing')
         }
       }
 
+      //This method is for the resend password function. It will be called when user pressed the resend password button.
       $scope.resend = function()
       {
         var confirmPopup = $ionicPopup.confirm({
@@ -275,6 +285,7 @@ angular.module('crowdsourcing')
         });
       }
 
+    //this method will be activated when user click on the 'x' button. It will delete current registration details from the storage
     $scope.landingPage = function () {
       window.localStorage.removeItem("tempName");
       window.localStorage.removeItem("tempEmail");

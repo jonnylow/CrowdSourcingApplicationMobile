@@ -1,7 +1,13 @@
-angular.module('crowdsourcing')
+/**
+ * This js script will handle all logic for recommended. Its corresponding html file is recommended.html.
+ * The main purpose of this page is just to handle any logic for the content when displaying recommended information
+ * */
+
+ angular.module('crowdsourcing')
 
     .controller('recommendedController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicLoading, apiUrl, $ionicHistory) {
 
+     //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
@@ -10,6 +16,7 @@ angular.module('crowdsourcing')
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
+     //get max of 5 recommended activity and different url based on user login
     var url = "";
     if(window.localStorage.getItem("token") != null)
     {
@@ -20,6 +27,7 @@ angular.module('crowdsourcing')
       url = apiUrl+"retrieveRecommendedTransportActivity?limit=5";
     }
 
+     //get information from the web service and display the activity on the input fields of the web service
     $http.get(url,{timeout: 12000})
       .success(function (data) {
         var transportDetails = data;
@@ -72,6 +80,7 @@ angular.module('crowdsourcing')
         });
       });
 
+     //method for user to proceed to activity details page
       $scope.proceed = function(id, name)
       {
         $state.go('activityDetails', {transportId: id, transportActivityName: name});

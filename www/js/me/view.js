@@ -1,11 +1,18 @@
+/**
+ * This js script will handle all logic for user details. Its corresponding html file is me.html.
+ * The main purpose of this page is just to handle any logic for the content when displaying user information.
+ */
+
 angular.module('crowdsourcing')
 
     .controller('viewAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $ionicHistory, $timeout, $ionicLoading, apiUrl) {
 
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //if user not login, direct to login
       if(window.localStorage.getItem("loginUserName") != null) {
         $scope.name = window.localStorage.getItem("loginUserName");
         $scope.id = window.localStorage.getItem("loginId");
@@ -31,6 +38,7 @@ angular.module('crowdsourcing')
       }
 
     if(window.localStorage.getItem("loginUserName") != null) {
+      //call the webservice using login id and upon getting information, display them on the fields at the html file
       $http.get(apiUrl + "retrieveUserDetails?id=" + $scope.id, {timeout: 12000})
         .success(function (data) {
           var userDetails = data;
@@ -72,6 +80,7 @@ angular.module('crowdsourcing')
               $scope.toDisplayInformation = $scope.nextPts + " points to " + $scope.nextRank;
             }
 
+            //web service to retrieve the user ranking details
             $http.get(apiUrl + "retrieveRankingDetails?id=" + $scope.id, {timeout: 12000})
               .success(function (data) {
                 var userDetails = data;
@@ -131,10 +140,12 @@ angular.module('crowdsourcing')
           });
         });
 
+      //this function will provide the redirection for user to manage/edit his account
       $scope.manageAccount = function () {
         $state.go('manageAccount', {id: $scope.id});
       }
 
+      //this function is currently not in use
       $scope.goRank = function () {
         $state.go('viewRanking', {
           id: $scope.id,

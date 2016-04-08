@@ -1,11 +1,16 @@
+/**
+ * This js script will handle all logic for showing user's activity. Its corresponding html file is myactivity.html.
+ * The main purpose of this page is just to handle any logic when displaying activities information for a user.
+ */
 angular.module('crowdsourcing')
 
     .controller('myactivityController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover, $ionicLoading, apiUrl) {
-
+        //Store the backview page in a storage to be use later on
         if ($ionicHistory.backView() != null) {
           $scope.backView = $ionicHistory.backView();
         }
 
+        //if user not login, direct to login
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -30,20 +35,24 @@ angular.module('crowdsourcing')
         }
 
     if(window.localStorage.getItem("loginUserName") != null) {
+      //put whole codes into method, so that 'Refresh' function could call this function
       $scope.toLoad = function () {
         $scope.groups = [];
-
+        //create the different array for the different grouping base on the status
         $scope.groups.push({name: "In-Progress", items: []});
         $scope.groups.push({name: "Approved", items: []});
         $scope.groups.push({name: "Pending", items: []});
         $scope.groups.push({name: "Rejected/Withdrawn", items: []});
 
+        //call web service to get activity from the user base on current or past dates.
         var urlString = apiUrl + "retrieveTransportByUser?id=" + $scope.id + "&type=1";
 
         $http.get(urlString, {timeout: 12000})
           .success(function (data) {
+            //web service will return all activity details in an array, and information will be placed in the respective array to be displayed at the input fields of the html
             var transportDetails = data;
 
+            //loop each activity
             if (transportDetails != null) {
               for (var i = 0; i < transportDetails.activities.length; i++) {
 
@@ -53,9 +62,11 @@ angular.module('crowdsourcing')
 
                   var dateTimeCompare = dateTime;
                   var currentDate = new Date();
-
+                  //check status of the activity
                   if (transportDetails.task[i].approval == "approved") {
                     if (transportDetails.task[i].approval == "approved" && transportDetails.task[i].status == "new task") {
+                      //check the current date and the activity date to see if the update status button should be active for the user to update
+                      //time could be within 24 hrs if not the button should not be active
                       if ((dateTimeCompare.getDate() == currentDate.getDate() && dateTimeCompare.getMonth() == currentDate.getMonth() && dateTimeCompare.getYear() == currentDate.getYear()) || currentDate > dateTimeCompare) {
                         $scope.groups[1].items.push({
                           elderlyIntials: getInitials(transportDetails.activities[i].elderly.name),
@@ -64,7 +75,6 @@ angular.module('crowdsourcing')
                           from: transportDetails.activities[i].departure_centre.name,
                           to: transportDetails.activities[i].arrival_centre.name,
                           name: transportDetails.activities[i].departure_centre.name + " - " + transportDetails.activities[i].arrival_centre.name,
-                          dateTime: dateTime,
                           status: "Activity not yet started",
                           statusDisplay: "Pick-Up"
                         });
@@ -171,6 +181,7 @@ angular.module('crowdsourcing')
                 }
               }
             }
+            //sort all the activity in the groups base on dates
             $scope.groups[0].items.sort(function (a, b) {
               return ((a.dateTime < b.dateTime) ? -1 : ((a.dateTime == b.dateTime) ? 0 : 1));
             });
@@ -216,8 +227,10 @@ angular.module('crowdsourcing')
           });
       }
 
+      //this method will be run at the first load
       $scope.toLoad();
 
+      //this method is to handle the toggling of the groups
       $scope.toggleGroup = function (group) {
         if ($scope.isGroupShown(group)) {
           $scope.shownGroup = null;
@@ -229,6 +242,7 @@ angular.module('crowdsourcing')
         return $scope.shownGroup === group;
       };
 
+      //this method is for updating of status
       $scope.updateStatus = function (id, status) {
         var confirmPopup = $ionicPopup.confirm({
           title: '<h6 class="popups title">Update Status?</h6>',
@@ -255,6 +269,7 @@ angular.module('crowdsourcing')
             $scope.loadingshow = true;
             $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
+            //using the web service to update the status based on what is display and what is the next status
             urlString = apiUrl + "updateActivityStatus?volunteer_id=" + $scope.id + "&activity_id=" + id + "&status=" + status;
 
             $http.get(urlString, {timeout: 12000})
@@ -264,6 +279,7 @@ angular.module('crowdsourcing')
                   $scope.loadingshow = false;
                   $ionicLoading.hide();
 
+                  //different pop up messages for different status update
                   if (status == "completed") {
                     var alertPopup = $ionicPopup.alert({
                       title: '<h6 class="popups title">Status</h6>',
@@ -338,10 +354,12 @@ angular.module('crowdsourcing')
         });
       }
 
+      //this function will direct the user to the activity details of the particular activity
       $scope.proceed = function (id, name) {
         $state.go('myactivityDetails', {transportId: id, transportActivityName: name});
       }
 
+      //this function will direct user to the history tab
       $scope.goHistory = function () {
         $ionicHistory.nextViewOptions({
           disableAnimate: true
@@ -349,6 +367,7 @@ angular.module('crowdsourcing')
         $state.go('tab.myhistory');
       }
 
+      //function to get initials of a string
       function getInitials(string) {
         var names = string.split(' '),
           initials = names[0].substring(0, 1).toUpperCase();

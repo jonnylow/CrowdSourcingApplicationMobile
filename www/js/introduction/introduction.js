@@ -1,3 +1,8 @@
+/**
+ * This js script will handle all logic for getting started. Its corresponding html file is introduction.html.
+ * The main purpose of this page is just to handle any logic for the content getting started.
+ */
+
 angular.module('crowdsourcing')
 
     .controller('introductionController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicHistory, $ionicLoading, $ionicHistory,apiUrl,$ionicSlideBoxDelegate) {
@@ -20,7 +25,7 @@ angular.module('crowdsourcing')
         } else {
           $state.go('tab.home');
         }
-        
+
       }
 
     });

@@ -1,7 +1,13 @@
-angular.module('crowdsourcing')
+/**
+ * This js script will handle all logic for scan page. Its corresponding html file is scan.html.
+ * The main purpose of this page is just to handle any logic for the content when displaying map information
+ * */
+
+ angular.module('crowdsourcing')
 
     .controller('scanController', function ($scope, $ionicPopup, $state, $http, $jrCrop, uiGmapGoogleMapApi, $ionicLoading,apiUrl, $ionicModal, $ionicHistory) {
 
+     //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
@@ -128,7 +134,7 @@ angular.module('crowdsourcing')
 
             $scope.showTag = true;
 
-            //retrieve from DB
+            //retrieve activity from web service depending if user is login or not
             var urlToRun = "";
             if(window.localStorage.getItem("token") != null)
             {
@@ -139,6 +145,7 @@ angular.module('crowdsourcing')
               urlToRun = apiUrl+"retrieveTransportActivity";
             }
 
+            //after retrieve information from the web service, push each activity details to the different array
             $http.get(urlToRun,{timeout: 12000})
               .success(function (data) {
                 var transportDetails = data;
@@ -234,7 +241,7 @@ angular.module('crowdsourcing')
                 $scope.transportDistanceFromLatLng.push(distance);
                 $scope.transportTimeFromLatLng.push(time);
               }
-              else if (status === google.maps.DirectionsStatus.OVER_QUERY_LIMIT)
+              else if (status === google.maps.DirectionsStatus.OVER_QUERY_LIMIT) //call back method to call in blocks of 10 calls (api limitation)
               {
                 setTimeout(function() {
                   getDistanceMarker(from,to);

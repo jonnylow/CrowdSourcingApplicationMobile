@@ -1,7 +1,12 @@
+/**
+ * This js script will handle all logic for filter. Its corresponding html file is filter.html.
+ * The main purpose of this page is just to handle any logic for filtering activities.
+ */
+
 angular.module('crowdsourcing')
 
     .controller('filterController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicPopover, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
@@ -22,6 +27,7 @@ angular.module('crowdsourcing')
         //depends what filter user select (start/end/time)
         if($scope.filter == 'Start Location')
         {
+          //different url to call for web service depending if user is login
           var urlToRun = "";
           if(window.localStorage.getItem("token") != null)
           {
@@ -31,8 +37,6 @@ angular.module('crowdsourcing')
           {
             urlToRun = apiUrl+"retrieveFilter?filter=start";
           }
-          //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=start")
-          //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=start&id="+$scope.id)
           $http.get(urlToRun,{timeout: 12000})
             .success(function (data) {
               var results = data;
@@ -91,9 +95,10 @@ angular.module('crowdsourcing')
               });
             });
         }
-        else if($scope.filter == 'End Location')
+        else if($scope.filter == 'End Location') //filter by end location
         {
           var urlToRun = "";
+          //different url to call for web service depending if user is login
           if(window.localStorage.getItem("token") != null)
           {
             urlToRun = apiUrl+"retrieveFilter?filter=end&token="+window.localStorage.getItem("token");
@@ -102,8 +107,6 @@ angular.module('crowdsourcing')
           {
             urlToRun = apiUrl+"retrieveFilter?filter=end";
           }
-          //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=end")
-          //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=end&id="+$scope.id)
           $http.get(urlToRun,{timeout: 12000})
             .success(function (data) {
               var results = data;
@@ -162,8 +165,9 @@ angular.module('crowdsourcing')
               });
             });
         }
-        else if($scope.filter == 'Time')
+        else if($scope.filter == 'Time') //filter by time
         {
+          //different url to call for web service depending if user is login
           var urlToRun = "";
           if(window.localStorage.getItem("token") != null)
           {
@@ -173,10 +177,9 @@ angular.module('crowdsourcing')
           {
             urlToRun = apiUrl+"retrieveFilter?filter=time";
           }
-          //$http.get("http://changhuapeng.com/volunteer/php/RetrieveFilter.php?filter=time")
-          //$http.get("http://52.77.41.63/php/RetrieveFilter.php?filter=time&id="+$scope.id)
           $http.get(urlToRun,{timeout: 12000})
             .success(function (data) {
+              //seperate the results by tie
               var results = data;
               var morning;
               var afternoon;
@@ -224,9 +227,6 @@ angular.module('crowdsourcing')
                     }
                   }
                 }
-                //console.log(morning);
-                //console.log(afternoon);
-                //console.log(evening);
 
                 //three main categories to push
                 //if there is existing filter, tick the checkbox. If not leave it all untick.
@@ -287,6 +287,7 @@ angular.module('crowdsourcing')
         }
       }
 
+    //back function. To redirect user back to previous page, depending where the user came from, page retrieve as soon as this page is loaded
       $scope.goBack = function()
       {
         if($scope.backView != null)

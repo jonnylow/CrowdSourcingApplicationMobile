@@ -1,7 +1,12 @@
+/**
+ * This js script will handle all logic for home. Its corresponding html file is home.html.
+ * The main purpose of this page is just to handle any logic for the content at the home page.
+ */
+
 angular.module('crowdsourcing')
 
     .controller('homeController', function ($scope, $ionicPopup, $state, $http, $ionicPopover, $ionicHistory, $timeout, $ionicLoading, apiUrl) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
@@ -23,7 +28,7 @@ angular.module('crowdsourcing')
 
     if(window.localStorage.getItem("userLat") == null || window.localStorage.getItem("userLong") == null) {
       if (typeof cordova != 'undefined') {
-        if(ionic.Platform.isAndroid() == true) {
+        if(ionic.Platform.isAndroid() == true) { //only for android
 
           //check location whether is it enabled
           cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
@@ -38,7 +43,7 @@ angular.module('crowdsourcing')
                     type: 'button button-stable home1',
                     onTap: function (e) {
                       $state.go('landingPage', {}, {reload: true});
-                      cordova.plugins.diagnostic.switchToLocationSettings();
+                      cordova.plugins.diagnostic.switchToLocationSettings(); //go to settings
                     }
                   },
                   {
@@ -72,7 +77,7 @@ angular.module('crowdsourcing')
                         type: 'button button-stable home1',
                         onTap: function (e) {
                           $state.go('landingPage', {}, {reload: true});
-                          cordova.plugins.diagnostic.switchToLocationSettings();
+                          cordova.plugins.diagnostic.switchToLocationSettings(); //go to settings
                         }
                       },
                       {
@@ -120,11 +125,13 @@ angular.module('crowdsourcing')
 
       if(window.localStorage.getItem("token") != null)
       {
+        //a few web service to run when hoe page is loaded; getting recommended activity,graph details, activity for user that fall on today and activity for user to update status.
         url = apiUrl+"retrieveRecommendedTransportActivity?limit=1&token="+window.localStorage.getItem("token");
         secondUrl = apiUrl+"graphInformation?token="+window.localStorage.getItem("token");
         var todayUrl = apiUrl+"todayActivity?token="+window.localStorage.getItem("token");
         var inProgressUrl = apiUrl+"todayActivityInProgress?token="+window.localStorage.getItem("token");
 
+        //this webservice will get the details needed from the webservice to display the graph information
         $scope.totalVolunteers = null;
         $scope.totalTaskHours = null;
         $http.get(secondUrl,{timeout: 12000})
@@ -182,6 +189,7 @@ angular.module('crowdsourcing')
             });
           });
 
+        //this web service will get the activity if there are any activity that are currently in progress
         $http.get(inProgressUrl,{timeout: 12000})
           .success(function (data) {
             if(data != null)
@@ -275,6 +283,7 @@ angular.module('crowdsourcing')
       }
       else
       {
+        //this webservice will get recommended activity and display it in a small tab. recommend activity are those within 2 weeks from current date
         url = apiUrl+"retrieveRecommendedTransportActivity?limit=1";
         secondUrl = apiUrl+"getAllVolunteerContribution";
         $http.get(secondUrl,{timeout: 12000})
@@ -367,8 +376,10 @@ angular.module('crowdsourcing')
           });
         });
 
+    //this function is for the scan button. it will be called when user click on the scan button
       $scope.scan = function () {
         //ionic loading screen
+        //it will get user location using the plugin and for iOS it will do the check here to see if the location is enabled
         $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Getting your location...'})
 
         if(window.localStorage.getItem("userLat") == null) {
@@ -391,7 +402,7 @@ angular.module('crowdsourcing')
             $scope.loadingshow = false;
             $ionicLoading.hide();
             if (typeof cordova != 'undefined') {
-              if(ionic.Platform.isAndroid() == false) {
+              if(ionic.Platform.isAndroid() == false) { //for iOS
                 cordova.plugins.diagnostic.isLocationAuthorized(function(enabled){
                     if(!enabled)
                     {
@@ -405,7 +416,7 @@ angular.module('crowdsourcing')
                             type: 'button button-stable registration',
                             onTap: function (e) {
                               $state.go('landingPage', {}, {reload: true});
-                              cordova.plugins.diagnostic.switchToSettings(function(){
+                              cordova.plugins.diagnostic.switchToSettings(function(){ //go to setting page
 
                               }, function(error){
                                   console.error("The following error occurred: "+error);
@@ -436,7 +447,7 @@ angular.module('crowdsourcing')
             }
           }
 
-          //get location with 10 secs timeout
+          //get location with 15 secs timeout
           navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 15000, enableHighAccuracy: true });
         }
         else
@@ -447,12 +458,14 @@ angular.module('crowdsourcing')
         }
       }
 
+    //this method is to direct user to the activity information page
       $scope.proceed = function(id, name)
       {
         $state.go('activityDetails', {transportId: id, transportActivityName: name});
       }
 
-    $scope.updateStatus=function(id, status)
+    //this method is for updating of status
+      $scope.updateStatus=function(id, status)
     {
       if(status == "New Task")
       {
@@ -483,6 +496,7 @@ angular.module('crowdsourcing')
           $scope.loadingshow = true;
           $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
 
+          //using the web service to update the status based on what is display and what is the next status
           urlString = apiUrl+"updateActivityStatus?volunteer_id="+window.localStorage.getItem("loginId")+"&activity_id="+id+"&status="+status;
 
           $http.get(urlString,{timeout: 12000})
@@ -491,7 +505,7 @@ angular.module('crowdsourcing')
               if (status1 != null) {
                 $scope.loadingshow = false;
                 $ionicLoading.hide();
-
+                //different pop up messages for different status update
                 if(status == "completed")
                 {
                   var alertPopup = $ionicPopup.alert({
@@ -571,6 +585,7 @@ angular.module('crowdsourcing')
         }
       });
     }
+    //this function will capitalize the first letter of the string
     $scope.capitalizeFirstLetter=function(str)
     {
       return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});

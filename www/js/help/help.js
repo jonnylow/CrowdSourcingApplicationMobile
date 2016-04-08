@@ -1,7 +1,12 @@
+/**
+ * This js script will handle all logic for help. Its corresponding html file is help.html.
+ * The main purpose of this page is just to handle any logic for the FAQ.
+ */
 angular.module('crowdsourcing')
 
     .controller('helpController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicPopover, $ionicLoading, apiUrl) {
 
+      //put each qna as a group for display
       $scope.groups = [];
 
       $scope.groups.push({name: 'Do i have to stay for the whole duration?', answer: 'Yes you have to. All transportation activities require volunteers to be with the senior all the way until they are safely brought back to the home and is accounted for.'});
@@ -13,6 +18,8 @@ angular.module('crowdsourcing')
       $scope.groups.push({name: 'What is the purpose for updating the activities’ transport statuses throughout the medical appointment?', answer: 'Medical escorts will be required to update transport activity status on CareGuide. In this way, the staff at the Home will be able to keep track of your current transport status so that they will know the current location of the elderly.'});
       $scope.groups.push({name: 'What are the different activities’ transport statuses that volunteers are required to update and when do they have to update?', answer: 'There are 4 activities’ transport statuses on CareGuide:Picked Up - Update this status after the volunteer pick up the elderly from the home.At Check Up - Update this status after the volunteer arrive at the medical appointment location. Check Up Completed - Update this status after the elderly has completed all medical checks.Completed - Update this status after the volunteer has accompanied the elderly back to the home.'});
       $scope.groups.push({name: 'What are the types of volunteering activities available through NTUC Healthcare?', answer: 'Currently we are in need of medical escorts. These voluntary activities require volunteers to accompany our elderly residents to and from their medical appointments.'});
+
+    //function to toggle the different grouping to show faq
     $scope.toggleGroup = function(group) {
       if ($scope.isGroupShown(group)) {
         $scope.shownGroup = null;

@@ -1,10 +1,15 @@
+/**
+ * This js script will handle all logic for the LandingPage. Its corresponding html file is landingPage.html.
+ * The main purpose of this page is just to provide navigation to login/register page and home page
+ */
 angular.module('crowdsourcing')
 
     .controller('landingPageController', function ($scope, $ionicPopup, $state, $http, $ionicHistory, $ionicLoading, $ionicModal, apiUrl) {
-      //reset userLat and userlng
+      //Removing stored lat and lng when user enter landing page
       window.localStorage.removeItem("userLat");
       window.localStorage.removeItem("userLong");
 
+      //if user has login previously, remove all stored user information from storage
       if(window.localStorage.getItem("loginId") != null)
       {
         var username = "";
@@ -28,6 +33,7 @@ angular.module('crowdsourcing')
         $ionicHistory.nextViewOptions({disableBack: true, historyRoot: true});
       }
 
+      //Login method (to navigate user to login/register menu)
         $scope.login = function () {
           $ionicHistory.nextViewOptions({
             disableAnimate: true
@@ -48,6 +54,7 @@ angular.module('crowdsourcing')
           }
         }
 
+        //Getting started guide, will navigate to this page if user is logging in for the first time
         if (window.localStorage.getItem("intro")==null){
           $state.go('introduction',{},{reload:true});
         }

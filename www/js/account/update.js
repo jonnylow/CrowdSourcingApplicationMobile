@@ -1,11 +1,17 @@
+/**
+ * This js script will handle all logic for update. Its corresponding html file is update.html.
+ * The main purpose of this page is just to handle input checks when user change its password
+ */
+
 angular.module('crowdsourcing')
 
     .controller('updateAccountController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $ionicLoading, apiUrl, $ionicHistory) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //depending with user is logged in
         if(window.localStorage.getItem("loginUserName") != null) {
           $scope.name = window.localStorage.getItem("loginUserName");
           $scope.id = window.localStorage.getItem("loginId");
@@ -24,11 +30,13 @@ angular.module('crowdsourcing')
         if (fields != null) {
           if (fields.currentpassword != null && fields.currentpassword.trim() != "" && fields.newpassword != null && fields.newpassword.trim() != ""
             && fields.confirmpassword != null && fields.confirmpassword.trim() != "") {
+            //get inputs from the input fields
             var tempCurrentPassword = fields.currentpassword;
             var tempNewPassword = fields.newpassword;
             var tempConfirmpassword = fields.confirmpassword;
 
-            // to be use to port over to laraval login webservice
+            //use post when calling web service
+            // to be use to port over to laraval login webservice to check if current password is correct
             var checkLoginObject = {email: $scope.email, password: tempCurrentPassword};
 
             var req =
@@ -41,6 +49,8 @@ angular.module('crowdsourcing')
 
             $http(req).
               success(function (data, status, headers, config) {
+                /*If yes, do the relevant check to ensure that the rest pf the inputs fields are in the correct format before calling the webservice to change the password and
+                update the password in the storage*/
                 var status = data;
                 if (status != null) {
                   if (status.token != null && status.error == null) {

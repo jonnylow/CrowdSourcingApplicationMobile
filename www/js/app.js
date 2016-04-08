@@ -14,6 +14,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       StatusBar.styleLightContent();
     }
 
+    //user for the sliding up animations at landing page
     if(window.plugins != null) {
       // then override any default you want
       window.plugins.nativepagetransitions.globalOptions.duration = 500;
@@ -28,7 +29,7 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
 
   });
 })
-
+  //google map configurations, libraries used and keys
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyBbjSHUY2EgODcwXrHZsuYJ228CxICux3E',
@@ -240,13 +241,6 @@ angular.module('crowdsourcing', ['ionic', 'ionic.ion.autoListDivider', 'uiGmapgo
       url: '/recommended',
       templateUrl: 'templates/recommended/recommended.html',
       controller: "recommendedController"
-    })
-
-    .state('viewRanking', {
-      cache: false,
-      url: '/ranking/:id/:currentRank/:hoursCompleted/:minsCompleted/:nextRank/:nextRankMin',
-      templateUrl: 'templates/rank/rank.html',
-      controller: "rankController"
     })
 
     .state('viewLeaderboard', {

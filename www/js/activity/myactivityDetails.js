@@ -1,11 +1,16 @@
+/**
+ * This js script will handle all logic for activity details. Its corresponding html file is myactivityDetails.html.
+ * The main purpose of this page is just to handle any logic when displaying activity that user click on.
+ */
 angular.module('crowdsourcing')
 
     .controller('myactivityDetailsController', function ($scope, $ionicPopup, $state, $http, $jrCrop, $stateParams, $ionicHistory, $ionicLoading, apiUrl) {
-
+    //Store the backview page in a storage to be use later on
     if ($ionicHistory.backView() != null) {
       $scope.backView = $ionicHistory.backView();
     }
 
+    //get activity id and name from the url
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
       $scope.transportId= $stateParams.transportId;
       $scope.transportActivityName = $stateParams.transportActivityName;
@@ -16,6 +21,8 @@ angular.module('crowdsourcing')
     }
 
     if ($stateParams.transportId != null && $stateParams.transportActivityName != null) {
+      //call the web service to get details based on the id retrieve from the url parameters
+      //after which display the information on the respective input fields in the html file
       $http.get(apiUrl + "retrieveMyTransportActivityDetails?transportId=" + $scope.transportId + "&id=" + $scope.id, {timeout: 12000})
         .success(function (data) {
           var transportDetails = data;
@@ -42,6 +49,7 @@ angular.module('crowdsourcing')
                 }
                 $scope.approvalStatus = capitalizeFirstLetter(transportDetails.task[0].approval);
 
+                //getting just the elderly information/initials to display on the details page
                 $http.get(apiUrl + "retrieveElderyInformation?transportId=" + transportDetails.activities[0].activity_id, {timeout: 12000})
                   .success(function (data) {
                     var elderyInformation = data;
@@ -89,7 +97,7 @@ angular.module('crowdsourcing')
 
                 $scope.transportStatus = capitalizeFirstLetter(transportStatusToDisplay);
 
-
+                //based on the activity status check what button to show
                 if (transportDetails.task[0].status != "completed" && transportDetails.task[0].approval == "approved") {
                   $scope.eldery = false;
                   $scope.updateStatus = false;
@@ -144,14 +152,17 @@ angular.module('crowdsourcing')
           });
         });
 
+      //this function is to capitalize the first letter of the string
       function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
 
+      //this method is to direct user to the elderly information page
       $scope.proceed = function (id, name, date) {
         $state.go('elderyInformation', {transportId: id, transportActivityName: name, transportActivityDate: date});
       }
 
+      //back function. To redirect user back to previous page, depending where the user came from, page retrieve as soon as this page is loaded
       $scope.back = function () {
         if ($scope.backView != null) {
           $scope.backView.go();
@@ -166,7 +177,9 @@ angular.module('crowdsourcing')
         $state.go('myactivityStatus', {transportId: id, transportActivityName: name, status: $scope.transportStatus});
       }
 
+      //this function is for withdraw function
       $scope.withdraw = function () {
+        //check whether user can withdraw. withdraw period is 2 days before activity start date
         var currentDate = new Date();
         currentDate.setHours(0, 0, 0, 0);
         currentDate.setDate(currentDate.getDate() + 2);
@@ -188,14 +201,6 @@ angular.module('crowdsourcing')
 
               $http.get(urlString, {timeout: 12000})
                 .success(function (data) {
-                  /*
-                   var sendEmail = "http://www.changhuapeng.com/volunteer/php/email/sendEmail.php?email=imchosen6@gmail.com&title=[CareRide Alert] New withdrawal on CareRide&message="+window.localStorage.getItem("loginUserName")+ " has withdrawn from a transport activity";
-                   $http.get(sendEmail)
-                   .success(function (data) {
-
-                   })*/
-
-
                   var status = data;
                   if (status != null) {
                     $scope.loadingshow = false;
@@ -246,6 +251,7 @@ angular.module('crowdsourcing')
         }
       }
 
+      //this function is use when user click on the google map icon to open the directions based on the user current lat/lng to the destination lat/lng
       $scope.openUrl = function (locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng) {
         var url = 'http://maps.google.com/maps?saddr=' + locationFromAddressLat + ',' + locationFromAddressLng + '&daddr=' + locationToAddressLat + ',' + locationToAddressLng + '&dirflg=d"';
         window.open(url, '_system', 'location=yes');

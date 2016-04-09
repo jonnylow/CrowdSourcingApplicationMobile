@@ -1,4 +1,9 @@
-angular.module('crowdsourcing')
+/**
+ * This js script will handle all logic for the resetPassowrd Page. Its corresponding html file is resetPassword.html.
+ * The main purpose of this page is to allow users to reset their password using their Mobile Number and login email.
+ */
+
+ angular.module('crowdsourcing')
 
     .controller('resetPasswordController', function ($scope, $ionicPopup, $state, $http, $ionicLoading, $ionicHistory, apiUrl) {
 

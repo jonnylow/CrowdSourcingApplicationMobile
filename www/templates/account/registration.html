@@ -1,3 +1,4 @@
+<!--header-->
 <ion-view view-title="Join Us Today!" can-swipe-back="false">
 
   <ion-nav-bar class="bar bar-header bar-positive">
@@ -6,7 +7,6 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-<!--header-->
 <ion-content padding="false">
 <center>
   <button class="button button-small button-light register" ui-sref="login" ng-click="goLogin()">Login</button>
@@ -16,14 +16,18 @@
     <!-- Registration form-->
     <form ng-submit="register(fields)">
 
-      <!--email-->
+      
       <div class="list list-inset registration">
+        
+        <!--Email Field-->
         <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
             <i class="icon ion-email dark "></i>
           </div>
           <input class="registration" type="text" autocapitalize="off" placeholder="Email address*" ng-model="fields.email" >
         </label>
+
+        <!--Password Field-->
         <label class="item item-icon-left item-input registration" >
           <div class="iconcontainer">
             <i class="icon ion-locked dark "></i>
@@ -31,18 +35,23 @@
           <input class="registration" type="password" placeholder="Password*" ng-model="fields.password">
         </label>
 
+        <!--Name Field-->
         <label class="item item-icon-left item-input registration" >
           <div class="iconcontainer">
             <i class="icon ion-person dark " style="font-size:30px;"></i>
           </div>
           <input class="registration" type="text" placeholder="Name*" ng-model="fields.name" >
         </label>
+
+        <!--Date of Birth Field-->
         <label class="item item-icon-left item-input registration dob">
           <div class="iconcontainer">
           <i class="icon ion-calendar dark "></i></div>
           <span class="label-text dob" ng-show="fields.dob == null || fields.dob == ''"><h6 class="registration dob">Date of Birth*</h6></span>
           <input class="date-input dob" type="date" color="#ffffff" ng-model="fields.dob">
         </label>
+
+        <!--Number Field-->
         <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
             <i class="icon ion-ios-telephone dark" style="font-size:35px;"></i>
@@ -50,8 +59,8 @@
           <input class="registration" type="tel" placeholder="Contact Number*" colour:"#ffffff" ng-model="fields.contactnumber">
         </label>
 
-        <!--Gender-->
-      <label class="item item-icon-left item-input registration">
+        <!--Gender Field-->
+        <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
             <i class="icon ion-transgender dark "></i>
           </div>
@@ -64,7 +73,7 @@
         </label>
 
         <!--Car Ownership-->
-      <label class="item item-icon-left item-input registration">
+        <label class="item item-icon-left item-input registration">
           <div class="iconcontainer">
             <i class="icon ion-android-car dark "></i>
           </div>
@@ -76,10 +85,10 @@
           <i class="ion-android-arrow-dropdown dropdown" style="color: #000"></i>
         </label>
       </div>
+
+     <!--Next Button-->
     <button  class="button button-energized paddedbutton">Next</button>
     </form>
 
-    <!--cancel button
-    <button ui-sref="login" class="button button-block button-light">Cancel</button>-->
   </ion-content>
 </ion-view>

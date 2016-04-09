@@ -1,3 +1,4 @@
+<!--Header-->
 <ion-view view-title="Change Password">
 
     <ion-nav-bar class="bar bar-header bar-positive">
@@ -7,8 +8,10 @@
     </ion-nav-bar>
 
   <ion-content>
+    <!--Change Password-->
     <form ng-submit="update(fields)">
       <div class="list list-inset updatePassword1">
+        <!--Old Password Field-->
         <label class="item item-input updatePassword">
           <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.currentpassword">
           <input type="password" placeholder="Current Password" ng-if="!showPasswordIsChecked" ng-model="fields.currentpassword">
@@ -16,19 +19,21 @@
       </div>
 
       <div class="list list-inset updatePassword2">
+        <!--New Password Field-->
         <label class="item item-input updatePassword">
           <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.newpassword">
           <input type="password" placeholder="New Password" ng-if="!showPasswordIsChecked" ng-model="fields.newpassword">
         </label>
-
+        <!--New Password Confirmation Field-->
         <label class="item item-input updatePassword">
           <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="fields.confirmpassword">
           <input type="password" placeholder="Confirm New Password" ng-if="!showPasswordIsChecked" ng-model="fields.confirmpassword">
         </label>
       </div>
 
+      <!--Checkbox to mask and unmask password-->
       <ion-checkbox class="maskPassword" ng-model="showPasswordIsChecked">Show password</ion-checkbox>
-
+      <!--Change password button-->
       <button class="button paddedbutton button-energized">Change Password</button>
     </form>
   </ion-content>

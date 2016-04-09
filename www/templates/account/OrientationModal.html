@@ -1,5 +1,5 @@
 <div class="modal">
-
+  <!--header-->
   <div class="bar bar-header listmodal">
     <a class="icon ion-close-round light" ng-click="hideModal()"></a>
     <h6 class="title listmodal">Orientation Session Notice</h1>
@@ -7,16 +7,17 @@
 
   <ion-content style="background-color:#F1F3F5;" has-header="true">
   <center>
+    <!--Orientation details-->
     <div class = "list card myactivitymain orientation">
     You will be required to attend an orientation session (max. 2 hours) with Centre for Seniors before your account can be approved. CFS will contact you shortly after registration.
     </div></center>
 
-      <!--<label class="checkbox">
-        <input class="checkbox" type="checkbox" ng-model="orientation.checkBox" required="required">
-      </label>-->
-      <div class ="orientation checkbox">
-        <ion-checkbox class="checkbox" ng-model="orientation.checkBox" required="required"><h6 class="orientation">I agree to attend the orientation session</h6></ion-checkbox>
-      </div>
+    <!--Agreement checkbox-->
+    <div class ="orientation checkbox">
+      <ion-checkbox class="checkbox" ng-model="orientation.checkBox" required="required"><h6 class="orientation">I agree to attend the orientation session</h6></ion-checkbox>
+    </div>
+
+    <!--Proceed button-->
     <button class="button button-block button-energized paddedbutton" ng-click="proceedRegistration()">Proceed</button>
   </ion-content>
 </div>

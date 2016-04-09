@@ -6,7 +6,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-
+  <!--Recommended activity list-->
   <ion-content ng-show=!loadingshow>
       <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:searchText" ng-click="proceed(activity.id, activity.name)">
         <table>

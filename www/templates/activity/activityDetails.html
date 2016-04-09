@@ -2,15 +2,17 @@
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
+      <!--back button-->
       <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
+      <!--home button-->
       <button class="button ion-home button-clear activitydetails button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content ng-show=!loadingshow>
-  <!--activity details-->
+  
     <div class="list card myactivitymain">
       <div class="item item-icon-left item-text-wrap myactivitymain activitydetails">
         <i class="icon car"><img src="img/car.png" class="homeicon-image"></i>
@@ -20,7 +22,10 @@
         </div>
       </div>
       <div class="item item-icon-left item-text-wrap myactivitymain activitydetails2">
+        <!--google map icon-->
         <i class="icon map" ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><img src="img/googlemap_icon.png" class="homeicon-image"></i>
+
+        <!--activity details-->
         <div class="row">
           <div class="col routecol">
             <table>
@@ -44,28 +49,32 @@
           </div>
         </div>
       </div>
+      <!--Elderly Information-->
       <div class="item item-icon-left activitymain">
         <i class="icon ion-android-walk"></i>
         <p class="activity">Elderly</p>
         <h5 class="myactivity">{{Elderly}}</h5>
       </div>
+      <!--Pick up Time-->
       <div class="item item-icon-left activitymain">
         <i class="icon ion-android-calendar"></i>
         <p class="activity">Pick-Up Time</p>
         <h5 class="myactivity">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h5>
       </div>
+      <!--Expected Duration-->
       <div class="item item-icon-left activitymain">
         <i class="icon ion-clock"></i>
         <p class="myactivity">Expected Duration</p>
         <h5 class="myactivity">{{expectedDuration}}</h5>
       </div>
+      <!--Additional Information-->
       <div class="item item-icon-left activitymain item-text-wrap">
         <i class="icon ion-information-circled"></i>
         <p class="myactivity">Additional Information</p>
         <h5 class="myactivity">{{moreInformation}}</h5>
       </div>
     </div>
-
+    <!--Apply button-->
     <button class="button paddedbutton button-energized" ng-click="apply()">Apply</button>
   </ion-content>
 </ion-view>

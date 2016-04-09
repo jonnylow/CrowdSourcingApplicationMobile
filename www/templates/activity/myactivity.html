@@ -1,26 +1,18 @@
 <ion-view can-swipe-back="false">
-  <!--body-->
-  <!--history to current tab-->
-
+  
   <ion-header-bar class="bar-subheader myactivity">
-
+    <!--history to current tab-->
     <div class="button-bar myactivity">
       <button class="button button-selected myactivity">Current</button>
       <button class="button button-nonselected myactivity" ng-click="goHistory()">History</button>
     </div>
   </ion-header-bar>
-  <!--history to current tab-->
 
   <ion-content has-subheader="true">
 
     <!--Pull to refresh-->
     <ion-refresher pulling-text="Refreshing..." on-refresh="toLoad()" class="refresher"></ion-refresher>
-    <!--<div class="refresh">
-      <center>
-      <button class="button button-block refreshing">
-      <i class="icon ion-arrow-down-c dark "></i>Pull down to refresh
-    </button></center>
-    </div>-->
+
     <!--current activity listing-->
     <ion-list>
       <div class="list myactivity">
@@ -28,13 +20,10 @@
           <i class="ion-arrow-down-c dark"> Pull down to refresh</i>
         </div>
         <div ng-repeat="group in groups">
-
           <ion-item class="item myactivity2" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
             <div class="row myactivity">
               <div class="col col-20 col-center myactivitynum">
-                
-                <!--<i class = "icon ion-ios-circle-outline"></i>
-                <img src="img/marker.png" class="marker-image"/>-->
+                <!--Number of activities under each statuses-->
                 <button class="button me activity">
                 <p class="myactivitymarker" ng-if="group.items.length>0&& group.items.length<10" style="color:#333">
                   {{group.items.length}}
@@ -56,31 +45,32 @@
               </div>
             </div>
           </ion-item>
-
+        <!--Drop down card with activity summary-->
         <div class="list card myactivitymain" ng-repeat="item in group.items" ng-show="isGroupShown(group)" >
           <div ng-click="proceed(item.id, item.name)">
-          <div class="item item-icon-left item-text-wrap myactivityoverall">
-            <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
-            <h2 class="home">{{ item.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
-            <table>
-              <tr>
-                <td><p class="myactivity">From</p></td>
-                <td><p class="myactivity"><b>{{item.from}}</b></p></td>
-              </tr>
-              <tr>
-                <td><p class="myactivity">To</p></td>
-                <td><p class="myactivity"><b>{{item.to}}</b></p></td>
-              </tr>
-              <tr>
-                <td><p class="myactivity">Elderly</p></td>
-                <td><p class="myactivity"><b>{{item.elderlyIntials}}</b></p></td>
-              </tr>
-            </table>
-            <div ng-if="item.status != 'Not Applicable'">
-            <p class="homep">Current Status: {{item.status}}</p>
+            <div class="item item-icon-left item-text-wrap myactivityoverall">
+              <i class="icon"><img src="img/car.png" class="homeicon-image"></i>
+              <h2 class="home">{{ item.dateTime | date : "d MMM yyyy, h:mm a"}}</h2>
+              <table>
+                <tr>
+                  <td><p class="myactivity">From</p></td>
+                  <td><p class="myactivity"><b>{{item.from}}</b></p></td>
+                </tr>
+                <tr>
+                  <td><p class="myactivity">To</p></td>
+                  <td><p class="myactivity"><b>{{item.to}}</b></p></td>
+                </tr>
+                <tr>
+                  <td><p class="myactivity">Elderly</p></td>
+                  <td><p class="myactivity"><b>{{item.elderlyIntials}}</b></p></td>
+                </tr>
+              </table>
+              <div ng-if="item.status != 'Not Applicable'">
+                <p class="homep">Current Status: {{item.status}}</p>
+              </div>
+            </div>
           </div>
-        </div>
-          </div>
+          <!--Update status button-->
           <div class="item myactivitybutton">
             <div ng-if="item.statusDisplay == 'Pick-Up' || item.statusDisplay == 'At Check-Up' || item.statusDisplay == 'Check-Up Completed' || item.statusDisplay == 'Completed'">
               <button class="button button-full button-energized myactivity" ng-disabled = "!item.updateStatusEnable" ng-click="updateStatus(item.id, item.statusDisplay)"> Update Status to {{item.statusDisplay}}</button>
@@ -89,6 +79,6 @@
       </div>
     </div>
   </div>
-    </ion-list>
+  </ion-list>
   </ion-content>
 </ion-view>

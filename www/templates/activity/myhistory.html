@@ -13,12 +13,7 @@
 
     <!--Pull to refresh-->
     <ion-refresher pulling-text="Refreshing..." on-refresh="toLoad()" class="refresher"></ion-refresher>
-     <!--<div class="refresh">
-      <center>
-      <button class="button button-block refreshing">
-      <i class="icon ion-arrow-down-c dark "></i>Pull down to refresh
-    </button></center>
-    </div>-->
+
     <!--historical activity listing-->
     <ion-list>
       <div class="list myactivity">
@@ -29,8 +24,8 @@
 
           <ion-item class="item myactivity" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
           <div class="row myactivity">
+            <!--Number of activities under each statuses-->
             <div class="col col-20 col-center myactivitynum">
-              <!--<img src="img/marker.png" class="marker-image"/>-->
               <button class="button me activity">
                 <p class="myactivitymarker" ng-if="group.items.length>0 && group.items.length<10" style="color:#333">
                   {{group.items.length}}
@@ -53,7 +48,7 @@
            </div>
 
         </ion-item>
-
+        <!--Drop down card with activity summary-->
         <div class="list card myactivitymain" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-click="proceed(item.id, item.name)">
           <div class="item item-icon-left item-text-wrap myactivityoverall">
             <i class="icon"><img src="img/car.png" class="homeicon-image"></i>

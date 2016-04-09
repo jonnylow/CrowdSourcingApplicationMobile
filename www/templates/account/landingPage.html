@@ -1,13 +1,15 @@
 <ion-view hide-nav-bar="true">
   <ion-content class="main" padding="true">
+    <!--logo-->
     <div style="text-align: center;">
      <img src="img/careguidewhite.png" class = "mainimage"/>
     </div>
     <br>
     </ion-content>
     <div class="landing-buttons">
+      <!--log in and sign up button-->
       <button class="button button-block button-energized" ng-click="login()"><b>Log in</b> or <b>Sign up</b> here!</button>
-      <!--<button class="button button-block button-calm" ng-click="registration()">Sign Up</button>-->
+      <!--proceed without login button-->
       <button ui-sref="tab.home" class="button button-block button-dark main">Proceed Without Logging In</button>
     </div>
 </ion-view>

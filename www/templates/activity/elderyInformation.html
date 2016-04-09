@@ -2,6 +2,7 @@
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
+      <!--back button-->
       <button class="button ion-chevron-left button-clear button-light" ng-click="back()"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
@@ -41,53 +42,52 @@
     </div>
     <h3 class="me">ELDERLY INFORMATION</h3>
       <div class="list card myactivitymain">
+        <!--Name-->
         <div class="item item-icon-left activitymain">
           <i class="icon ion-person"></i>
           <p class="activity">Name</p>
           <h5 class="myactivity">{{name}}</h5>
         </div>
+        <!--Gender-->
         <div class="item item-icon-left activitymain">
           <i class="icon ion-transgender"></i>
           <p class="activity">Gender</p>
           <h5 class="myactivity">{{gender}}</h5>
         </div>
+        <!--Age-->
         <div class="item item-icon-left activitymain">
           <i class="icon ion-egg"></i>
           <p class="activity">Age</p>
           <h5 class="myactivity">{{age}}</h5>
         </div>
+        <!--Languge Spoken-->
         <div class="item item-icon-left activitymain">
           <i class="icon ion-chatbubble-working"></i>
           <p class="activity">Languages Spoken</p>
           <h5 class="myactivity">{{languages}}</h5>
         </div>
+        <!--Medical Information-->
         <div class="item item-icon-left activitymain">
           <i class="icon ion-medkit"></i>
           <p class="activity">Medical Information</p>
           <h5 class="myactivity">{{medical}}</h5>
         </div>
       </div>
-        <h3 class="me">NEXT-OF-KIN INFORMATION</h3>
-        <div class="list card myactivitymain">
-          <div class="item item-icon-left activitymain">
-            <i class="icon ion-person"></i>
-            <p class="activity">Name</p>
-            <h5 class="myactivity">{{kin}}</h5>
-          </div>
-          <div class="item item-icon-left activitymain">
-            <p class="activity">Contact Number</p>
-            <i class="icon ion-ios-telephone"></i>
-            <h5 class="myactivity">{{contact}}</h5>
-          </div>
-          </div>
+      <!--NOK information-->
+      <h3 class="me">NEXT-OF-KIN INFORMATION</h3>
+      <div class="list card myactivitymain">
+        <!--NOK Name-->
+        <div class="item item-icon-left activitymain">
+          <i class="icon ion-person"></i>
+          <p class="activity">Name</p>
+          <h5 class="myactivity">{{kin}}</h5>
+        </div>
+        <!--NOK Number-->
+        <div class="item item-icon-left activitymain">
+          <p class="activity">Contact Number</p>
+          <i class="icon ion-ios-telephone"></i>
+          <h5 class="myactivity">{{contact}}</h5>
+        </div>
       </div>
-
-      </div>
-
-      <!--
-      <div class="item item-text-wrap">
-        Branch: {{branchName}}
-      </div>-->
-
   </ion-content>
 </ion-view>

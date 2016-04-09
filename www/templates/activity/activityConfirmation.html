@@ -7,13 +7,15 @@
   </ion-nav-bar>
 
   <ion-content>
+    <!--success message-->
     <div class="list card activityconfirmation">
       <div class="item item-icon-left item-text-wrap activityconfirmation">
-      <i class="icon ion-checkmark-circled" style="font-size: 200%; color: green"></i>
-      <p class="activityconfirmation">You have successfully applied for this activity. Please wait for the center to confirm your application. </p>
+        <i class="icon ion-checkmark-circled" style="font-size: 200%; color: green"></i>
+        <p class="activityconfirmation">You have successfully applied for this activity. Please wait for the center to confirm your application. </p>
+      </div>
     </div>
-  </div>
-      <div class="list card myactivitymain">
+    <!--activity details-->
+    <div class="list card myactivitymain">
       <div class="item item-icon-left item-text-wrap activitymain">
         <i class="icon myactivity"><img src="img/car.png" class="homeicon-image"></i>
         <div class="row">
@@ -39,32 +41,36 @@
           </div>
         </div>
       </div>
+      <!--Pick up Time-->
       <div class="item item-icon-left activitymain">
         <i class="icon ion-android-calendar"></i>
         <p class="activity">Pick-Up Time</p>
         <h5 class="myactivity">{{ dateTime | date : "d MMM yyyy, h:mm a"}}</h5>
       </div>
-
+      <!--Expected Duration-->
       <div class="item item-icon-left activitymain">
         <i class="icon ion-clock"></i>
         <p class="activity">Expected Duration</p>
         <h5 class="myactivity">{{expectedDuration}}</h5>
       </div>
+      <!--Approval Status-->
       <div class="item item-icon-left activitymain">
         <i class="icon ion-minus-circled"></i>
         <p class="activity">Approval Status</p>
         <h5 class="myactivity">Pending</h5>
       </div>
+      <!--Transport Status-->
       <div class="item item-icon-left activitymain">
         <i class="icon ion-android-car"></i>
         <p class="activity">Transport Status</p>
         <h5 class="myactivity">Not Started Yet</h5>
       </div>
-        <div class="item item-icon-left activitymain">
-          <i class="icon ion-information-circled"></i>
-          <p class="myactivity">Additional Information</p>
-          <h5 class="myactivity">{{moreInformation}}</h5>
-        </div>
+      <!--Additional Information-->
+      <div class="item item-icon-left activitymain">
+        <i class="icon ion-information-circled"></i>
+        <p class="myactivity">Additional Information</p>
+        <h5 class="myactivity">{{moreInformation}}</h5>
       </div>
+    </div>
   </ion-content>
 </ion-view>

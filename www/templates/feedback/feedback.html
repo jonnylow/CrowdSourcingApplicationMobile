@@ -1,25 +1,32 @@
+<!--Header-->
 <ion-view view-title="Feedback">
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons>
+      <!--back button-->
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content>
+    <!--Feedback Form-->
     <form ng-submit="submit(fields)">
       <div class="list card activityconfirmation">
         <div class="item item-text-wrap feedback">
           <h5 class="rank">We will get in touch with you as soon as possible</h5>
         </div>
+
+        <!--Email Field-->
         <div class="item item-input feedback email">
           <input class="feedback" type="text" placeholder="Email" ng-model="fields.email">
         </div>
+
+        <!--Feedback Field-->
         <div class="item item-input feedback">
           <textarea placeholder="Send us your feedback" class="feedback" rows="15" ng-model="fields.feedback"></textarea>
         </div>
       </div>
-
-        <button class="button paddedbutton button-energized">Submit</button>
+      <!--Submit Button-->
+      <button class="button paddedbutton button-energized">Submit</button>
       </form>
   </ion-content>
 </ion-view>

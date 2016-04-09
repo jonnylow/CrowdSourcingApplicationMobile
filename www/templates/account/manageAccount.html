@@ -2,7 +2,7 @@
 <ion-view view-title="Edit Profile" can-swipe-back="false">
   
   <ion-nav-bar class="bar bar-header bar-positive">
-    <!--back button!-->
+    <!--back button-->
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ui-sref="me"></button>
     </ion-nav-buttons>
@@ -12,11 +12,11 @@
 
     <!-- manage account form-->
     <form ng-submit="update(fields)">
-         <!--Account Details section!-->
+         <!--Account Details section-->
          <h3 class="update">ACCOUNT DETAILS</h3>
          <div class="list list-inset update">
           
-          <!--Email field!-->
+          <!--Email field-->
           <label class="item item-input update">
             <i class="icon ion-email larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -26,7 +26,7 @@
             <input class="edit" type="text" ng-model="fields.email" >
           </label>
 
-          <!--Name field!-->
+          <!--Name field-->
           <label class="item item-input update">
             <i class="icon ion-person larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -36,7 +36,7 @@
             <input class="edit" type="text" ng-model="fields.name" >
           </label>
 
-          <!--Car Ownership dropdown!-->
+          <!--Car Ownership dropdown-->
           <label class="item item-input update">
             <i class="icon ion-android-car dark larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -52,11 +52,11 @@
           </label>
         </div>
 
-        <!--More Details section!-->
+        <!--More Details section-->
         <h3 class="update">MORE DETAILS</h3>
         <div class="list list-inset update">
 
-          <!--Gender dropdown!-->
+          <!--Gender dropdown-->
           <label class="item item-input update">
             <i class="icon ion-transgender larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -71,7 +71,7 @@
              <i class="ion-android-arrow-dropdown"></i>
           </label>
 
-          <!--Account Details section!-->
+          <!--Date of Birth-->
           <label class="item item-input update">
             <i class="icon ion-calendar larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -81,6 +81,7 @@
             <input class="dobupdate" type="date" color="#ffffff" ng-model="fields.dob">
           </label>
 
+          <!--Occupation field-->
           <label class="item item-input update">
             <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -91,9 +92,11 @@
           </label>
         </div>
 
+        <!--Preferred voluntary type section-->
         <h3 class="update">MY PREFERRED VOLUNTARY TYPES</h3>
          <div class="list list-inset update">
 
+          <!--Preference 1-->
           <label class="item item-input update">
             <i class="icon ion-heart larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -114,6 +117,8 @@
              </select>
              <i class="ion-android-arrow-dropdown"></i>
           </label>
+
+          <!--Preference 2-->
           <label class="item item-input update">
             <i class="icon ion-heart larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -136,110 +141,7 @@
           </label>
           </div>
 
-
-
-
-
-
-
-
-<!--
-         <h3 class="me">PERSONAL DETAILS</h3>
-         <div class="list list-inset update">
-           <label class="item item-icon-left item-input registration2">
-            <div class="iconcontainer update">
-             <i class="icon ion-email  larger update" style="color:#8D8D8D;"></i>
-           </div>
-             <b class="account">Email</b>
-               <input class="edit" type="text" ng-model="fields.email" >
-           </label>
-
-           <label class="item item-icon-left item-input registration2">  <div class="iconcontainer update">
-               <i class="icon ion-person larger update" style="color:#8D8D8D;"></i>
-             </div>
-             <b class="account">Name</b>
-             <div class="container">
-               <input class="edit" type="text" ng-model="fields.name" >
-             </div>
-           </label>
-
-           <label class="item item-icon-left item-input registration">
-             <div class="iconcontainer">
-               <i class="icon ion-transgender dark "></i>
-             </div>
-             <select class="dropdown register" ng-model="fields.gender">
-               <option value="" disabled selected >Gender*</option>
-               <option value="M">M</option>
-               <option value="F">F</option>
-             </select>
-           </label>
-
-           <label class="item item-icon-left item-input registration dob">
-             <div class="iconcontainer">
-               <i class="icon ion-calendar dark "></i></div>
-             <span class="label-text" ng-show="fields.dob == null || fields.dob == ''"><font color="#B0B0B0">Date of Birth</font></span>
-             <input class="registration" class="date-input dob" type="date" color="#ffffff" ng-model="fields.dob">
-           </label>
-
-           <label class="item item-icon-left item-input registration2">
-             <div class="iconcontainer update">
-               <i class="icon ion-briefcase update"style="color:#8D8D8D;"></i>
-             </div>
-             <b class="account">Occupation</b>
-             <div class="container">
-               <input class="update occupation" type="text" colour:"#ffffff" ng-model="fields.occupation">
-             </div>
-           </label>
-
-           <label class="item item-icon-left item-input registration">
-             <div class="iconcontainer car">
-               <i class="icon ion-android-car dark "></i>
-             </div>
-             <ion-checkbox class="checkbox registration"ng-model="fields.carChecked"><font color="black">I have a car</ion-checkbox></font>
-           </label>
-
-           <label class="item item-input item-stacked-label update">
-             <div class="updateinfo">
-
-               <div class="iconcontainer update">
-                 <i class="icon ion-heart larger update" style="color:#8D8D8D;"></i>
-               </div><b class="account aop">Voluntary activity you are interested in</b>
-             </div>
-             <select class="aop" ng-model="fields.preferences_1">
-               <option value="" disabled selected>Option 1*</option>
-               <option value="Befriend senior citizens">Befriend senior citizens</option>
-               <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
-               <option value="Lead games/exercises">Lead games/exercises</option>
-               <option value="Organise fund-raising activities">Organise fund raising activities</option>
-               <option value="Organise publicity events">Organise publicity events</option>
-               <option value="Organize social activities">Organize social activities</option>
-               <option value="Prepare publicity materials">Prepare publicity materials</option>
-               <option value="Prepare tea/snacks">Prepare tea/snacks</option>
-               <option value="Written translation for brochures">Written translation for brochures</option>
-             </select>
-           </label>
-
-          <label class="item item-input item-stacked-label update2" >
-             <div class="updateinfo">
-               <div class="iconcontainer update">
-                 <i class="icon ion-heart larger update" style="color:#8D8D8D;"></i>
-               </div><b class="account aop">Voluntary activity you are interested in</b>
-             </div>
-             <select class="aop" ng-model="fields.preferences_2">
-               <option value="" disabled selected>Option 2*</option>
-               <option value="Befriend senior citizens">Befriend senior citizens</option>
-               <option value="Design/Maintain Webpage">Design/Maintain Webpage</option>
-               <option value="Lead games/exercises">Lead games/exercises</option>
-               <option value="Organise fund-raising activities">Organise fund raising activities</option>
-               <option value="Organise publicity events">Organise publicity events</option>
-               <option value="Organize social activities">Organize social activities</option>
-               <option value="Prepare publicity materials">Prepare publicity materials</option>
-               <option value="Prepare tea/snacks">Prepare tea/snacks</option>
-               <option value="Written translation for brochures">Written translation for brochures</option>
-             </select>
-           </label>
-         </div>-->
-
+          <!--Done button-->
          <button  class="button paddedbutton button-energized update">Done</button>
        </form>
        </ion-content>

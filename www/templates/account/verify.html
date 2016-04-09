@@ -1,12 +1,14 @@
+<!--header-->
 <ion-view view-title="Join Us Today!" can-swipe-back="false">
 
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
+      <!--back button-->
       <button class="button ion-close-round button-clear button-light" ng-click="landingPage()"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
-<!--header-->
+
 <ion-content padding="true">
 
 <h4 class="verify"><b>A One-Time Password has been sent to your contact number: {{tempContactNumber}}</b></h4>
@@ -15,26 +17,29 @@
 
 
       <div class="box">
+        
+        <!--OTP-->
         <label class="item item-input item-stacked-label">
           <center><h4 class="verify2">One-Time Password</h4></center>
           <center>
           <input class="otp" type="tel" placeholder="" style="color:#000;" ng-model="fields.otp"></center>
         </label>
+
+        <!--button to resend OTP-->
         <p style="text-align: center;">
           <a class="button button-dark otp" ng-click="resend()" style="color: #000;"><u>Resend One-Time Password
           </u></a>
         </p>
       </div>
+
+      <!--Progress bar-->
       <div style="text-align: center; ">
         <img src="img/steps003.png" class = "page-image"/>
       </div>
+
+      <!--Sign Up button-->
       <div class="row">
-        <!--<div class="col 50">
-          <button ui-sref="moreQuestions" class="button button-block button-light verify">Back</button>
-        </div>
-        <div class="col 50">-->
          <button class="button button-energized paddedbutton">Sign Up!</button>
-        <!--</div>-->
       </div>
 
     </form>

@@ -16,8 +16,11 @@
             </div>
         </div>
       </div>
+
       <div class="item item-icon-left item-text-wrap myactivitymain activitydetails2">
+        <!--google map icon-->
         <i class="icon map" ng-click="openUrl(locationFromAddressLat, locationFromAddressLng, locationToAddressLat, locationToAddressLng)"><img src="img/googlemap_icon.png" class="homeicon-image"></i>
+        <!--activity details-->
         <div class="row">
           <div class="col routecol">
             <table>
@@ -45,6 +48,7 @@
 
     <div class="row" style="text-align: center;">
       <div class="col col-50">
+        <!--Expected Duration-->
         <div class="list card myactivitydetails">
           <i class="ion-clock" style="font-size: 300%"></i>
           <p class="myactivitydetails">Expected Duration</p>
@@ -52,6 +56,7 @@
         </div>
       </div>
       <div class="col col-50">
+        <!--Approval Status-->
         <div class="list card myactivitydetails">
         <i class="ion-checkmark-circled" style="font-size: 300%" ng-if="approvalStatus == 'Approved'"></i>
         <i class="ion-minus-circled" style="font-size: 300%" ng-if="approvalStatus == 'Pending'"></i>
@@ -63,26 +68,27 @@
     </div>
     <div class="row" style="text-align: center;">
       <div class="col col-50">
+        <!--Transport Status-->
         <div class="list card myactivitydetails">
-        <i class="ion-android-car" style="font-size: 300%"></i>
-        <p class="myactivitydetails">Transport Status</p>
-        <h5 class="myactivity">{{transportStatus}}</h5>
-                <!--<button class="button button-energized status" ng-disabled="updateStatus" ng-click="goStatus(transportId, transportActivityName)">Update Status</button>-->
+          <i class="ion-android-car" style="font-size: 300%"></i>
+          <p class="myactivitydetails">Transport Status</p>
+          <h5 class="myactivity">{{transportStatus}}</h5>
         </div>
       </div>
       <div class="col col-50">
+        <!--Elderly Information-->
         <div class="list card myactivitydetails" style="height: 104px">
-        <i class="ion-person myactivity" style="font-size: 300%"></i>
-        <p class="myactivitydetails" ng-if="eldery == true">Elderly Information</p>
-
-        <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName, dateTime)">View Elderly Information</button>
-        <h5 class="myactivity" ng-show="eldery">{{Elderly}}</h5>
-
+          <i class="ion-person myactivity" style="font-size: 300%"></i>
+          <p class="myactivitydetails" ng-if="eldery == true">Elderly Information</p>
+          <!--View Elderly Information button-->
+          <button class="button button-energized button-small" ng-show="!eldery" ng-click="proceed(transportId, transportActivityName, dateTime)">View Elderly Information</button>
+          <h5 class="myactivity" ng-show="eldery">{{Elderly}}</h5>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
+        <!--Additional Information-->
         <div class="list card myactivitydetails item-text-wrap">
           <div class="item item-icon-left">
             <i class="icon ion-information-circled"></i>
@@ -95,6 +101,7 @@
 
    <div class="row" ng-show="rejection != null">
      <div class="col">
+      <!--Rejection Reason-->
        <div class="list card myactivitydetails">
          <div class="item item-icon-left">
            <i class="icon ion-android-cancel"></i>
@@ -105,7 +112,7 @@
      </div>
    </div>
 
-    <!--withdraw-->
+    <!--withdraw button-->
 	   <button class="button ion-close-round button-light paddedbutton" style="background-color:#C82506;color:#fff" ng-show="!withdrawShow" ng-click="withdraw()"> Withdraw from activity</button>
   </ion-content>
 </ion-view>

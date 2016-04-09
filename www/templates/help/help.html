@@ -17,6 +17,7 @@
           <ion-item class="item item-text-wrap help" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
             <div class="row">
               <div class="col">
+                <!--Retrieves questions and answers-->
                 <p class="help"><b>{{group.name}}</b></p>
               </div>
               <div class="col col-10">
@@ -25,7 +26,7 @@
               </div>
             </div>
           </ion-item>
-
+          <!--Only for questions whose answers need to be styled.-->
           <div class="list" ng-show="isGroupShown(group)">
             <a class="item-text-wrap" ng-if="group.name=='What are the volunteers responsibilities for the activities?'" >
               <div class="item help">

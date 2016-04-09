@@ -1,12 +1,14 @@
 <div class="modal">
-
+  <!--header-->
   <div class="bar bar-header listmodal">
+    <!--close button-->
     <a class="icon ion-close-round light" ng-click="modal.hide()"></a>
     <h6 class="title listmodal">Nearby Location</h1>
   </div>
 
   <ion-content style="background-color:#F1F3F5;" has-header="true">
     <div class="list card search scan">
+      <!--Search bar-->
       <label class="item item-input listtransport">
         <i class="icon ion-search placeholder-icon"></i>
         <b><input type="text" placeholder="Search" ng-model="modal.searchText"></b>
@@ -14,6 +16,7 @@
     </div>
 
     <center>
+      <!--table showing driving information-->
       <table class="section2" ng-show=!showTag>
           <td><div class="card scan header">
             <h6 class="scan">Distance from Current<br>Location :
@@ -33,7 +36,7 @@
       </table></center>
 
 
-
+    <!--Activity details-->
     <div class="list card myactivitymain" ng-repeat="activity in transportActivity | filter:modal.searchText" ng-click="proceed(activity.id, activity.name)">
       <table>
         <tr>
@@ -56,9 +59,7 @@
                   <td><p class="myactivity">Elderly</p></td>
                   <td><p class="myactivity"><b>{{activity.elderly}}</b></p></td>
                 </tr>
-              </table><p class="myactivity"/><!--
-              <p class="myactivity">Pickup Location: {{activity.distance.split('|')[0]}}</p>
-              <p class="myactivity">{{activity.distance.split('|')[1]}}</p>-->
+              </table><p class="myactivity"/>
             </div>
           </td>
         </tr>

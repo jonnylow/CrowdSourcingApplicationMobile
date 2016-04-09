@@ -2,9 +2,10 @@
 <!--header bar-->
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons side="left">
+      <!--Back button-->
       <button class="button ion-chevron-left button-clear button-light" ng-click="goBack()"></button>
     </ion-nav-buttons>
-
+    <!--Clear all filters-->
     <ion-nav-buttons side="right">
       <button class="button button-dark" ng-click="clear()">Clear</button>
     </ion-nav-buttons>
@@ -18,11 +19,12 @@
       </div>
   </div>
     <div class="list card filtermain">
-
+      <!--Populates all options based on current available activities-->
       <ion-checkbox ng-repeat="item in filterListDisplay" ng-model="item.checked" ng-checked="item.checked">
         <h5 class="filter">{{ item.textShown }}</h5>
       </ion-checkbox>
     </div>
+    <!--Set button-->
     <button class="button paddedbutton button-energized" ng-click="goFilter()">Set</button>
   </ion-content>
 </ion-view>

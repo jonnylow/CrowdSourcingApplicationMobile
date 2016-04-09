@@ -1,29 +1,30 @@
+<!--Header-->
 <ion-view view-title="My Profile" can-swipe-back="false">
   <ion-nav-bar class="bar bar-header bar-positive">
     <ion-nav-buttons>
+      <!--back button-->
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
 
   <ion-content scroll="false" padding="false" ng-show=!loadingshow>
-
-<!--ng-click="goRank()" remove the rank linkage to the rank page from the div below-->
+  <!--Rank-->
   <div class="list card me">
       <button class="button me" ui-sref="viewLeaderboard">
       <i class="ion-ribbon-a me" ng-if="rank=='Bronze'" style="color: #C38359; font-size: 350%"></i>
       <i class="ion-ribbon-a me"ng-if="rank=='Silver'" style="color: #DCDEE0; font-size: 350%"></i>
       <i class="ion-ribbon-a me" ng-if="rank=='Gold'" style="color: #EBA345; font-size: 350%"></i>
       <i class="ion-ribbon-a me" ng-if="rank=='Platinum'" style="color: #A6AAA9; font-size: 350%"></i></button>
-    <!--<h5 class="me" ng-click="goRank()">{{rank}} Volunteer
-    </h5>-->
-    <h2 class="me">{{username}}</h2>
 
+    <h2 class="me">{{username}}</h2>
+    <!--Email-->
     <div class="item me">
       <p class="me">
         <i class="icon ion-email" style="color:#53585F; font-size: 20px"></i>
         {{email}}
       </p>
     </div>
+    <!--Contact Number-->
     <div class="item me">
       <p class="me">
         <i class="icon ion-ios-telephone" style="color:#53585F; font-size: 20px"></i>
@@ -32,7 +33,7 @@
     </div>
   </div>
   <img src="img/rankrec.png" class="rankrec">
-
+  <!--Account details-->
   <div class="list card mestats">
     <div class="item rankheader">
       <div class="row rank">
@@ -53,10 +54,10 @@
       </div>
     </div>
   </div>
-  
+  <!--Edit profile button-->
   <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit" ng-click="manageAccount()" ui-sref="manageAccount">Edit Profile</button>
-
-      <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit2" ui-sref="updateAccount">Change Password</button>
+  <!--Change Password button-->
+  <button class="button icon-right ion-ios-arrow-forward button-full button-light gotoedit2" ui-sref="updateAccount">Change Password</button>
 
   </ion-content>
 </ion-view>

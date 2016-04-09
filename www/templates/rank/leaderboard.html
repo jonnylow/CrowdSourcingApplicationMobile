@@ -5,7 +5,7 @@
       <button class="button ion-chevron-left button-clear button-light" ui-sref="tab.home"></button>
     </ion-nav-buttons>
   </ion-nav-bar>
-
+  <!--Leaderboard ranking-->
   <ion-content ng-show=!loadingshow>
     <div class="list card leaderboard">
         <div class="row">
@@ -25,27 +25,25 @@
           </div>
         </div>
     </div>
-
-        <div class="list card leaderboardtop">
-          <ion-item ng-repeat="item in volunteersArray" class="leaderboardtop" >
-          <div class="row">
-            <div class="col col-10">
-                <h4 class="leaderboard selected" ng-if="item.pos==pos">{{item.pos}}</h4>
-                <h4 class="leaderboard" ng-if="item.pos!=pos">{{item.pos}}</h4>
-            </div>
-            <div class="col col-60">
-                <h4 class="leaderboard selected" ng-if="item.pos==pos"> {{item.name}}</h4>
-                <h4 class="leaderboard" ng-if="item.pos!=pos"> {{item.name}}</h4>
-            </div>
-            <div class="col col-30 leaderboard">
-             <h4 class ="leaderboard number selected" ng-if="item.pos==pos">{{item.mins}} points</h4>
-             <h4 class ="leaderboard number" ng-if="item.pos!=pos">{{item.mins}} points</h4>
-           </div>
-          </ion-item>
-          </div>
-
-
+    <!--Highlighting Own name and rank-->
+    <div class="list card leaderboardtop">
+      <ion-item ng-repeat="item in volunteersArray" class="leaderboardtop" >
+      <div class="row">
+        <div class="col col-10">
+            <h4 class="leaderboard selected" ng-if="item.pos==pos">{{item.pos}}</h4>
+            <h4 class="leaderboard" ng-if="item.pos!=pos">{{item.pos}}</h4>
         </div>
+        <div class="col col-60">
+            <h4 class="leaderboard selected" ng-if="item.pos==pos"> {{item.name}}</h4>
+            <h4 class="leaderboard" ng-if="item.pos!=pos"> {{item.name}}</h4>
+        </div>
+        <div class="col col-30 leaderboard">
+         <h4 class ="leaderboard number selected" ng-if="item.pos==pos">{{item.mins}} points</h4>
+         <h4 class ="leaderboard number" ng-if="item.pos!=pos">{{item.mins}} points</h4>
+       </div>
+      </ion-item>
+      </div>
+    </div>
 
   </ion-content>
 </ion-view>

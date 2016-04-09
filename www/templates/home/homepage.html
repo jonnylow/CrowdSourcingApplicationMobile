@@ -3,7 +3,7 @@
   <ion-content ng-show=!loadingshow>
     <!--Recommendation-->
   <div class="list card myactivitymain recommendation" ng-show=!loadingshow ng-if="showUrgent == true">
-
+    <!--Urgent activities-->
     <div class="item item-text-wrap homemain" ng-repeat="activity in transportActivity" ng-click="proceed(activity.id, activity.name)">
         <div class="row home">
           <div class="col col-10">
@@ -21,8 +21,8 @@
             <a class="home" ui-sref="recommended">See All</a>
           </div>
         </div>
+    </div>
   </div>
-</div>
 
     <!--Today Activity (Approved)-->
   <div class="list card myactivitymain updatestatus" ng-show=!loadingshow ng-if="showUrgent == false && inProgress == false">
@@ -41,23 +41,23 @@
 
   <!--In Progress (Approved)-->
   <div class="list card myactivitymain updatestatus" ng-show=!loadingshow ng-if="showUrgent == false && inProgress == true">
-
-  <div class="item item-divider updatestatus">
-      <h6 class = "home urgent">CURRENT ACTIVITY</h6>
+    <!--Statuses-->
+    <div class="item item-divider updatestatus">
+        <h6 class = "home urgent">CURRENT ACTIVITY</h6>
+      </div>
+      <div class="item item-text-wrap updatestatus">
+        <h2 class="homemain">{{ InProgressActivityDate | date : "d MMM yyyy, h:mm a"}}</h2>
+        <h2 class="homemain status">{{InProgressStatus}}</h2>
+            <h2 class="homemain progress" ng-if="InProgressStatus=='Picked-up'" >1 out of 4 completed</h2>
+            <h2 class="homemain progress" ng-if="InProgressStatus=='At Check-up'" >2 out of 4 completed</h2>
+            <h2 class="homemain progress" ng-if="InProgressStatus=='Check-up Completed'" >3 out of 4 completed</h2>
+            <h2 class="homemain progress" ng-if="InProgressStatus=='Completed'" >4 out of 4 completed</h2>
+          <button class="button button-updatestatus" ng-click="updateStatus(inProgressId, InProgressStatus)"><p class="home">UPDATE STATUS</p></button>
+      </div>
     </div>
-    <div class="item item-text-wrap updatestatus">
-      <h2 class="homemain">{{ InProgressActivityDate | date : "d MMM yyyy, h:mm a"}}</h2>
-      <h2 class="homemain status">{{InProgressStatus}}</h2>
-          <h2 class="homemain progress" ng-if="InProgressStatus=='Picked-up'" >1 out of 4 completed</h2>
-          <h2 class="homemain progress" ng-if="InProgressStatus=='At Check-up'" >2 out of 4 completed</h2>
-          <h2 class="homemain progress" ng-if="InProgressStatus=='Check-up Completed'" >3 out of 4 completed</h2>
-          <h2 class="homemain progress" ng-if="InProgressStatus=='Completed'" >4 out of 4 completed</h2>
-        <button class="button button-updatestatus" ng-click="updateStatus(inProgressId, InProgressStatus)"><p class="home">UPDATE STATUS</p></button>
-    </div>
-    </div>
-
-  <center><img src="img/elderly.png" class="elderly-image"></center>
-  <h6 class="home-page"> Accompany an elderly today!</h6>
+    <!--Elderly Image-->
+    <center><img src="img/elderly.png" class="elderly-image"></center>
+    <h6 class="home-page"> Accompany an elderly today!</h6>
 
   <!-- Scan button -->
   <div style="text-align: center;">
@@ -65,15 +65,9 @@
       <h4 class="home">FIND ACTIVITIES NEAR ME</h4>
     </button>
   </div>
-  <!--<div style="text-align: center;">
-    <button class="button button-float animated shake" ui-sref="scan">
-      <h1 class="ion-map" style="color: white;"></h1>
-      <h3 style="color: white">Press to</h3>
-      <h1 style="color: white">Scan</h1>
-    </button>
-  </div>-->
-  </ion-content>
 
+  </ion-content>
+    <!--App Stats, when user is not logged in-->
     <div class="list card myactivitymain stat" ng-if="totalVolunteers != null && showUrgent == true" ng-show=!loadingshow>
       <div class="item item-text-wrap stat">
         <h2 class="stat"><i class="icon ion-clock dark stats"></i>
@@ -87,6 +81,7 @@
     </div>
 
   <div class="list card myactivitymain stat2" ng-if="totalVolunteers == null && showUrgent == true" ng-show=!loadingshow>
+    <!--Personal stats, when user is logged in-->
     <div class="item item-text-wrap statuser">
       <b>Your Volunteering Hours </b>
 

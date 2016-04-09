@@ -8,7 +8,7 @@
     background-size: cover;
 }
 
-/**ios changes**/
+/****ios changes****/
 .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
   margin-top: 13px;
 }
@@ -27,7 +27,7 @@
 .platform-ios .button.button-light.button-clear{
   padding-left: 5px;
 }
-/*Background image/gradient color for main page*/
+/****Background image/gradient color for main page****/
 .scroll-content.main{
 background: linear-gradient(#6991A4, #4E989A);
 }
@@ -101,24 +101,6 @@ left: 0;
   background-color: #44788E;
   box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
 }
-/*.button-float{
-  background-color: #29A29C !important;
-  z-index: 12 !important;
-  position: relative !important;
-  display: inline-block;
-  margin: 2px;
-  margin-top: 10px;
-  width: 70vw;
-  min-height: 70vw;
-  border-radius: 50% !important;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
-}
-
-.button-float:active{
-  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
-  background-color: #FF9800;
-  opacity: 50% !important;
-}*/
 .button.joinus{
   margin-bottom: 0px;
 }
@@ -492,7 +474,6 @@ h6.popups.title.error{
   font-size: 14px;
 }
 
-
 .platform-ios h6.popups.title{
   font-size: 20px;
   margin-top: 0px;
@@ -585,7 +566,6 @@ i.icon{
   padding:5px;
 }
 
-
 .platform-ios .item-checkbox{
   padding-top:4%;
   padding-bottom: 6%;
@@ -626,7 +606,6 @@ i.icon{
   position: absolute !important;
 }
 }
-
 
 .list.card.aboutus{
   padding:3%;
@@ -677,11 +656,9 @@ img.aboutus{
 }
 /***************END OF GETTING STARTED PAGE**************/
 
-/**/
 .platform-ios button.button.paddedbutton.button-energized.reset{
   margin-top: 5%;
 }
-/**/
 
 /**********************LANDING PAGE**********************/
 .mainimage{
@@ -700,6 +677,7 @@ img.aboutus{
 .button.button-block.button-dark.main{
   font-size: 13px;
 }
+/***************** END OF LANDING PAGE*******************/
 
 /**********************LOGIN & REGISTRATION**********************/
 .list-inset.login{
@@ -733,17 +711,6 @@ img.aboutus{
   border-bottom:none;
 }
 
-div.transbox1 {
- margin-right: 0;
- margin-bottom: 0px;
- background-color: #fff   ;
- border: none ;
- opacity:0.6;
- filter: alpha(opacity=60); /* For IE8 and earlier */
- width: 100%;
- float: left;
-}
-
 div.iconcontainer{
   margin-bottom: 0;
   width: 17%;
@@ -767,13 +734,6 @@ div.iconcontainer.car{
   padding-left: 1% ;
   padding-bottom: 2% ;
   margin-right: -10px;
-}
-
-div.transbox1 input{
- margin: 1%;
- color: #000;
- width: 200px;
- padding: 5px;
 }
 
 label.item
@@ -831,8 +791,6 @@ div.item{
 
 .list.list-inset.registration{
   margin-top: 7px;
-  /*box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.26);*/
-
 }
 
 label.item.item-input.registration{
@@ -886,6 +844,7 @@ label.item.item-input.registration.dob,
     font-weight: normal;
     margin-top: 3%;
   }
+
   /*iphone 6plus*/
 @media only screen and (min-device-width:414px){
   h6.registration.dob{
@@ -1133,7 +1092,7 @@ h6.orientation{
   margin-left: -5%;
 }
 
-/*end of login and registration page*/
+/***************END OF LOGIN AND REGISTRATION*******************/
 
 /**********************MORE QUESTIONS**********************/
 label.item.item-input.morequestions{
@@ -1264,7 +1223,7 @@ h4.skip{
   margin-bottom:2%;
   background-color: #44788E;
 }
-/*end of more questions page*/
+/*********************END OF MORE QUESTIONS PAGE******************/
 
 /**********************VERIFY**********************/
 .button-dark.otp{
@@ -1333,9 +1292,9 @@ button.button.button-block.button-light.verify{
   padding:0px;
   margin: 0px;
 }
-/*end of verify page*/
+/*****************END OF VERIFY PAGE*********************/
 
-/*home page*/
+/***********************HOME PAGE*************************/
 .popover {
     height: auto;
     width: 50%;
@@ -1450,8 +1409,6 @@ p.homep{
   padding-bottom: 5px;
   padding-right: 5px;
 }
-
-
 
 .popup-vertical-buttons button
 {
@@ -1603,9 +1560,9 @@ h2.stat{
   color:#333;
   margin-top: 7px;
 }
-/*end of home page*/
+/***********************END OF HOME PAGE*********************/
 
-/*activity page*/
+/*********************ACTIVITY PAGE**************************/
 .platform-android .refresher{
   margin-top: -5%;
 }
@@ -1738,9 +1695,9 @@ p.activityconfirmation{
   top: -35px;
 }
 
-/*end of activity page*/
+/***************END OF ACTIVITY PAGE*********************/
 
-/*myactivity page*/
+/******************MYACTIVITY PAGE************************/
 
 .platform-android .button.button-selected{
   border-color: #65B0AD;
@@ -1833,14 +1790,6 @@ p.activityconfirmation{
   box-shadow:  0 0px 0px 0 rgba(0, 0, 0, 0.4);
 }
 
-/*.ion-ios-circle-outline{
-  font-size: 12vw;
-  color:#848484;
-  position:relative !important;
-  display: inline-block !important;
-  z-index: -1 !important; 
-}*/
-
 /*iphone 5*/
 @media screen and (device-aspect-ratio:40/71){
 .marker-image{
@@ -1871,21 +1820,6 @@ p.activityconfirmation{
   font-weight: bold;
   z-index: 1 !important;
 }
-
-/*.platform-ios .myactivitymarker{
-  position: absolute;
-  top: 17%;
-  right: 46%;
-  font-size: 5.5vmin;
-}
-
-.platform-ios .myactivitymarker2{
-  position: absolute;
-  top: 17%;
-  right: 38%;
-  font-size: 5.5vmin;
-}*/
-
 
 div.col.myactivitynum{
   background-color: transparent;
@@ -2044,9 +1978,9 @@ i.myactivity{
 .scroll-refresher{
   top: 0px;
 }
-/*end of myactivity page*/
+/****************** END OF MYACTIVITY PAGE********************/
 
-/*scan page*/
+/******************SCAN PAGE*******************/
 
 ion-item.item{
   padding-right:5px;
@@ -2266,9 +2200,9 @@ table.section2{
   background-color: #29a29c;
   min-height:10.5%;
 }
-/*end of scan page*/
+/****************** END OF SCAN PAGE********************/
 
-/*list transport page*/
+/****************** LIST TRANSPORT PAGE********************/
 .bar-subheader.listtransport{
   background-color: transparent;
   border-color: transparent;
@@ -2289,9 +2223,9 @@ table.section2{
   padding-top: 3px;
   padding-bottom: 3px;
 }
-/*end of list transport page*/
+/****************** END OF LIST TRANSPORT PAGE********************/
 
-/*profile page*/
+/****************** PROFILE PAGE********************/
 div.list.profile{
   opacity:0.7;
   margin: 11px;
@@ -2353,7 +2287,6 @@ div.row.me{
 }
 
 .list.card.me{
-  /*background: linear-gradient(#F6F3EC, #9CCECC);*/
   background:transparent;
   box-shadow: none;
   line-height:50%;
@@ -2431,9 +2364,9 @@ p.me{
   position:absolute;
   top:20%;
 }
-/*end of profile page*/
+/****************** END OF PROFILE PAGE********************/
 
-/*manage account page*/
+/****************** MANAGE ACCOUNT PAGE********************/
 .ion-transgender.larger{
   font-size:22px;
 }
@@ -2478,8 +2411,6 @@ b.account.aop{
   font-weight: normal;
 }
 
-
-
 select.aop{
   margin-top: 3%;
   margin-left: -15%;
@@ -2488,7 +2419,6 @@ select.aop{
   padding:2%;
   background-color: transparent;
   line-height: 200%;
-
 }
 
 h3.me{
@@ -2684,11 +2614,9 @@ h3.update{
   height:43px;
 }
 
-/*end of manage account page*/
+/****************** END OF MANAGE ACCOUNT PAGE********************/
 
-
-
-/*change password page*/
+/****************** CHANGE PASSWORD PAGE********************/
 
 .list.updatePassword1{
 
@@ -2722,9 +2650,9 @@ h3.update{
   margin-top: -13px;
   margin-bottom: 5px;
 }
-/*end of change password page*/
+/****************** END OF CHANGE PASSWORD PAGE********************/
 
-/*Search pages*/
+/****************** SEARCH PAGE********************/
 td.search{
   background-color: #A6AAA9;
   width: 30px;
@@ -2746,10 +2674,9 @@ select.search{
   margin-right:0px;
   margin-top: 10px;
 }
-/*end of search pages*/
+/****************** END OF SEARCH PAGE********************/
 
-/*Filter pages*/
-
+/****************** FILTER PAGE********************/
 
 .platform-ios .popover-arrow{
   left:81% !important;
@@ -2796,7 +2723,6 @@ select.search{
   padding-bottom: 0px;
 }
 
-
 .ion-funnel.filter{
   font-size: 12px;
 
@@ -2817,16 +2743,16 @@ select.search{
   border-right: none;
 }
 
-/*end of filter page*/
+/****************** END OF FILTER PAGE********************/
 
-/*****Elderly information page*****/
+/****************** ELDERLY INFORMATION PAGE********************/
 .icon.elderly{
   margin-left: -5px;
 }
 
-/*****End of Elderly information page*****/
+/****************** END OF ELDERLY INFORMATION PAGE********************/
 
-/*****Ranking page*****/
+/****************** LEADERBOARD PAGE********************/
 
 h2.rank{
   text-align: center;
@@ -2959,76 +2885,6 @@ div.col.ranksecond{
   margin-left: 25%;
   margin-top: -14%;
 }
-/*end of rank page*/
-
-/***** Help page*****/
-.faq{
-  border-color: #000;
-}
-.list.myactivity.help{
-  margin-top: 4%;
-}
-
-.item.help{
-  background-color:#F6F6F7;
-  padding: 5px 10px;
-}
-
-h2.help{
-  text-align: left;
-  font-size: 8vmin;
-  margin-top: 1%;
-  text-transform: uppercase;
-  margin-left: 3%;
-}
-
-h5.help{
-  text-align: left;
-  margin-left: 3%;
-  color:#999;
-}
-
-p.help{
-  font-size: 4vmin;
-  line-height: 30px;
-  color: #333;
-  margin-left: 4%;
-}
-
-/* end of help page*/
-
-/*Feedback*/
-input.feedback{
-  padding:2%;
-}
-
-.item.feedback{
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 10px;
-  border: transparent;
-  padding-bottom: 2%;
-}
-
-.item.item-feedback{
-  font-size: 20px;
-}
-
-textarea.feedback{
-  font-size: 15px;
-  padding-top: 5%;
-  padding-left: 4%;
-}
-
-.item.item-input.feedback.email{
-  margin-top:3%;
-  margin-bottom: 2%;
-  padding:2%;
-  background-color: #fff;
-}
-/* end of feedback page*/
-
-/*leaderboard*/
 
 .hour{
   font-size: 3.8vmin;
@@ -3121,4 +2977,71 @@ h4.leaderboard.number.selected{
 .ion-ribbon-a.leaderboard{
   padding: 2%;
 }
-/*end of leaderboard page*/
+/****************** END OF LEADERBOARD PAGE********************/
+
+/****************** HELP PAGE********************/
+.faq{
+  border-color: #000;
+}
+.list.myactivity.help{
+  margin-top: 4%;
+}
+
+.item.help{
+  background-color:#F6F6F7;
+  padding: 5px 10px;
+}
+
+h2.help{
+  text-align: left;
+  font-size: 8vmin;
+  margin-top: 1%;
+  text-transform: uppercase;
+  margin-left: 3%;
+}
+
+h5.help{
+  text-align: left;
+  margin-left: 3%;
+  color:#999;
+}
+
+p.help{
+  font-size: 4vmin;
+  line-height: 30px;
+  color: #333;
+  margin-left: 4%;
+}
+
+/****************** END OF HELP PAGE********************/
+
+/****************** FEEDBACK PAGE********************/
+input.feedback{
+  padding:2%;
+}
+
+.item.feedback{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  border: transparent;
+  padding-bottom: 2%;
+}
+
+.item.item-feedback{
+  font-size: 20px;
+}
+
+textarea.feedback{
+  font-size: 15px;
+  padding-top: 5%;
+  padding-left: 4%;
+}
+
+.item.item-input.feedback.email{
+  margin-top:3%;
+  margin-bottom: 2%;
+  padding:2%;
+  background-color: #fff;
+}
+/****************** END OF FEEDBACK PAGE********************/

@@ -12,6 +12,7 @@
       $scope.backView = $ionicHistory.backView();
     }
 
+     $scope.elderlyName = [];
       $scope.transportActivity = [];
       $scope.loadingshow = true;
       $ionicLoading.show({template: '<ion-spinner icon="spiral"/></ion-spinner><br>Loading...'})
@@ -37,6 +38,14 @@
           {
             if(transportDetails.activities[i].activity_id != null)
             {
+              $http.get(apiUrl + "retrieveElderyInformation?transportId=" + transportDetails.activities[i].activity_id, {timeout: 12000})
+                .success(function (data) {
+                  if(data != null)
+                  {
+                    $scope.elderlyName.push(getInitials(data.elderly.name));
+                  }
+                });
+
               //format date/time
               var t = transportDetails.activities[i].datetime_start.split(/[- :]/);
               var dateTime = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
@@ -85,4 +94,14 @@
       {
         $state.go('activityDetails', {transportId: id, transportActivityName: name});
       }
+
+     function getInitials(string) {
+       var names = string.split(' '),
+         initials = names[0].substring(0, 1).toUpperCase();
+
+       if (names.length > 1) {
+         initials += "." + names[names.length - 1].substring(0, 1).toUpperCase();
+       }
+       return initials;
+     }
     });

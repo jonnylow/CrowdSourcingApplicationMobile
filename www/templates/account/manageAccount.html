@@ -1,10 +1,8 @@
+<!--Header!-->
 <ion-view view-title="Edit Profile" can-swipe-back="false">
-  <!--<ion-nav-bar class="bar-stable">
-  <ion-nav-buttons side="left">
-    <button class="button" ng-click="back()">Back</button>
-  </ion-nav-buttons>
-  </ion-nav-bar>-->
+  
   <ion-nav-bar class="bar bar-header bar-positive">
+    <!--back button!-->
     <ion-nav-buttons side="left">
       <button class="button ion-chevron-left button-clear button-light" ui-sref="me"></button>
     </ion-nav-buttons>
@@ -14,29 +12,11 @@
 
     <!-- manage account form-->
     <form ng-submit="update(fields)">
-      <!--   <h3 class="me">ACCOUNT DETAILS</h3>
-         <div class="list list-inset update">
-           <label class="item item-icon-left item-input registration">
-             <div class="iconcontainer update">
-               <i class="icon ion-card dark update"></i>
-             </div>
-             <b class="account">NRIC</b>
-             <span class="item-note">
-               <input class="readonly me" readonly=true type="text" ng-model="fields.nric">
-             </span>
-           </label>
-           <label class="item item-icon-left item-input registration">
-             <div class="iconcontainer update">
-               <i class="icon ion-email dark update"></i>
-             </div>
-             <b class="account">Email</b>
-             <span class="item-note">
-               <input class="readonly me" readonly=true type="text" ng-model="fields.email" >
-             </span>
-           </label>
-         </div>-->
+         <!--Account Details section!-->
          <h3 class="update">ACCOUNT DETAILS</h3>
          <div class="list list-inset update">
+          
+          <!--Email field!-->
           <label class="item item-input update">
             <i class="icon ion-email larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -46,6 +26,7 @@
             <input class="edit" type="text" ng-model="fields.email" >
           </label>
 
+          <!--Name field!-->
           <label class="item item-input update">
             <i class="icon ion-person larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -54,6 +35,8 @@
             </span>
             <input class="edit" type="text" ng-model="fields.name" >
           </label>
+
+          <!--Car Ownership dropdown!-->
           <label class="item item-input update">
             <i class="icon ion-android-car dark larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -68,8 +51,12 @@
              <i class="ion-android-arrow-dropdown"></i>
           </label>
         </div>
+
+        <!--More Details section!-->
         <h3 class="update">MORE DETAILS</h3>
         <div class="list list-inset update">
+
+          <!--Gender dropdown!-->
           <label class="item item-input update">
             <i class="icon ion-transgender larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
@@ -84,8 +71,9 @@
              <i class="ion-android-arrow-dropdown"></i>
           </label>
 
+          <!--Account Details section!-->
           <label class="item item-input update">
-            <i class="icon ion-briefcase larger" style="color:#8D8D8D;"></i>
+            <i class="icon ion-calendar larger" style="color:#8D8D8D;"></i>
             <span class="input-label">
               <b class="account">
               Date Of Birth*</b>
